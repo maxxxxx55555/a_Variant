@@ -23,17 +23,20 @@ def test_localization():
     print(f"✓ Localization key parity test passed ({len(ru_keys)} keys verified)")
 
 def test_data_resources():
-    files = [
-        'data/weapons/iron_sword.tres',
-        'data/armors/leather_armor.tres',
-        'data/potions/health_potion.tres'
-    ]
-    for f in files:
+    tres_files = []
+    for root, dirs, files in os.walk('data'):
+        for file in files:
+            if file.endswith('.tres'):
+                tres_files.append(os.path.join(root, file))
+
+    assert len(tres_files) > 0, "No .tres data files found in data/"
+
+    for f in tres_files:
         assert os.path.exists(f), f"Data resource missing: {f}"
         with open(f, 'r', encoding='utf-8') as file:
             content = file.read()
             assert 'script = ExtResource' in content or 'type="Resource"' in content, f"Invalid format in {f}"
-    print(f"✓ Data resources check passed ({len(files)} resources verified)")
+    print(f"✓ Data resources check passed ({len(tres_files)} resources verified in data/)")
 
 def test_project_structure():
     required = [
