@@ -1,0 +1,58 @@
+key,ru,en
+ui.title,Клятвы Пограничья,Oaths of the March
+ui.resume,Продолжить,Resume
+ui.save,Сохранить,Save Game
+ui.load,Загрузить,Load Game
+ui.settings,Настройки,Settings
+ui.exit,Выйти,Exit
+ui.language,Язык,Language
+ui.lang_ru,Русский,Russian
+ui.lang_en,English,English
+ui.volume_master,Общая громкость,Master Volume
+ui.volume_music,Музыка,Music
+ui.volume_sfx,Эффекты,SFX
+ui.volume_ui,Интерфейс,UI Volume
+ui.mouse_sensitivity,Чувствительность мыши,Mouse Sensitivity
+ui.camera_bobbing,Покачивание камеры,Camera Bobbing
+ui.camera_shake,Тряска камеры,Camera Shake
+ui.inventory,Инвентарь,Inventory
+ui.equipment,Экипировка,Equipment
+ui.slot_head,Голова,Head
+ui.slot_torso,Торс,Torso
+ui.slot_legs,Ноги,Legs
+ui.slot_weapon,Оружие,Weapon
+ui.equip,Экипировать,Equip
+ui.unequip,Снять,Unequip
+ui.use,Использовать,Use
+ui.drop,Выбросить,Drop
+ui.stats.damage,Урон,Damage
+ui.stats.defense,Защита,Armor
+ui.stats.weight,Вес,Weight
+ui.stats.speed,Скорость,Speed
+ui.stats.durability,Прочность,Durability
+ui.stats.reach,Дальность,Reach
+ui.stats.stamina_cost,Расход выносливости,Stamina Cost
+ui.stats.heal_amount,Лечение,Healing
+ui.stats.rarity,Редкость,Rarity
+ui.rarity.common,Обычное,Common
+ui.rarity.uncommon,Необычное,Uncommon
+ui.rarity.rare,Редкое,Rare
+ui.rarity.epic,Эпическое,Epic
+ui.rarity.legendary,Легендарное,Legendary
+prompt.interact,Нажмите E для взаимодействия,Press E to interact
+prompt.pickup,Нажмите E чтобы подобрать {item},Press E to pick up {item}
+msg.picked_up,Подобран предмет: {item},Picked up item: {item}
+msg.hp_full,Здоровье уже полное!,Health is already full!
+msg.potion_used,Использовано зелье: {item},Used potion: {item}
+msg.equipped,Экипировано: {item},Equipped: {item}
+msg.unequipped,Снято: {item},Unequipped: {item}
+msg.game_saved,Игра сохранена,Game Saved
+msg.game_loaded,Игра загружена,Game Loaded
+msg.save_error,Ошибка сохранения,Save Error
+msg.enemy_slain,Враг повержен!,Enemy slain!
+item.iron_sword.name,Железный меч,Iron Sword
+item.iron_sword.desc,Надёжный железный меч пограничника.,A reliable borderland iron sword.
+item.leather_armor.name,Кожаный доспех,Leather Armor
+item.leather_armor.desc,Плотная кожаная броня для защиты в лесу.,Sturdy leather armor for wilderness protection.
+item.health_potion.name,Малое зелье здоровья,Minor Health Potion
+item.health_potion.desc,Восстанавливает 35 единиц здоровья.,Restores 35 health points.

@@ -1,0 +1,92 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/InventoryUI.gd" id="1_inv"]
+
+[node name="InventoryUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_inv")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.08, 0.08, 0.1, 0.85)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="LeftPanel" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="EquipSlots" type="VBoxContainer" parent="MarginContainer/HBoxContainer/LeftPanel"]
+layout_mode = 2
+
+[node name="HeadBtn" type="Button" parent="MarginContainer/HBoxContainer/LeftPanel/EquipSlots"]
+layout_mode = 2
+text = "Head: [None]"
+
+[node name="TorsoBtn" type="Button" parent="MarginContainer/HBoxContainer/LeftPanel/EquipSlots"]
+layout_mode = 2
+text = "Torso: [None]"
+
+[node name="LegsBtn" type="Button" parent="MarginContainer/HBoxContainer/LeftPanel/EquipSlots"]
+layout_mode = 2
+text = "Legs: [None]"
+
+[node name="WeaponBtn" type="Button" parent="MarginContainer/HBoxContainer/LeftPanel/EquipSlots"]
+layout_mode = 2
+text = "Weapon: [None]"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/HBoxContainer/LeftPanel"]
+layout_mode = 2
+
+[node name="ItemList" type="ItemList" parent="MarginContainer/HBoxContainer/LeftPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RightPanel" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ItemCardLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/RightPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+
+[node name="ButtonContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/RightPanel"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="EquipButton" type="Button" parent="MarginContainer/HBoxContainer/RightPanel/ButtonContainer"]
+layout_mode = 2
+text = "Equip"
+
+[node name="UseButton" type="Button" parent="MarginContainer/HBoxContainer/RightPanel/ButtonContainer"]
+layout_mode = 2
+text = "Use"
+
+[node name="DropButton" type="Button" parent="MarginContainer/HBoxContainer/RightPanel/ButtonContainer"]
+layout_mode = 2
+text = "Drop"
