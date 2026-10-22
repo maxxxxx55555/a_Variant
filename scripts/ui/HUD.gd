@@ -9,6 +9,7 @@ extends Control
 @onready var interact_btn: Button = $MobileControls/InteractBtn
 @onready var potion_btn: Button = $MobileControls/PotionBtn
 @onready var inventory_btn: Button = $MobileControls/InventoryBtn
+@onready var town_btn: Button = $MobileControls/TownBtn
 
 var notification_timer: float = 0.0
 
@@ -21,6 +22,11 @@ func _ready() -> void:
 	if interact_btn: interact_btn.pressed.connect(func(): Input.action_press("interact"); Input.action_release("interact"))
 	if potion_btn: potion_btn.pressed.connect(func(): Input.action_press("quick_potion"); Input.action_release("quick_potion"))
 	if inventory_btn: inventory_btn.pressed.connect(func(): Input.action_press("inventory"); Input.action_release("inventory"))
+	if town_btn: town_btn.pressed.connect(func():
+		var scene = get_tree().current_scene
+		if scene and scene.has_method("toggle_settlement"):
+			scene.toggle_settlement()
+	)
 
 	update_bars()
 

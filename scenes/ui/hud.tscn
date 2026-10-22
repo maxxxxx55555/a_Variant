@@ -123,3 +123,15 @@ offset_right = -20.0
 offset_bottom = 80.0
 grow_horizontal = 0
 text = "BAG (I)"
+
+[node name="TownBtn" type="Button" parent="MobileControls"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -230.0
+offset_top = 20.0
+offset_right = -130.0
+offset_bottom = 80.0
+grow_horizontal = 0
+text = "TOWN (B)"

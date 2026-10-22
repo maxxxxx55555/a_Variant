@@ -70,3 +70,10 @@ item.healing_herb.name,Целебная трава,Healing Herb
 item.healing_herb.desc,Ингредиент для варки зелий здоровья.,Ingredient for brewing health potions.
 ui.alchemy,Алхимия,Alchemy
 ui.brew,Сварить,Brew
+ui.settlement,Поселение,Settlement
+ui.population,Население,Population
+ui.happiness,Счастье,Happiness
+ui.health,Здоровье,Health
+ui.food_forecast,Запас еды (дней),Food forecast (days)
+ui.resources,Ресурсы,Resources
+ui.laws,Законы,Laws

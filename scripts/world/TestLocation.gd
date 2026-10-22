@@ -4,6 +4,7 @@ extends Node3D
 @onready var inventory_ui: Control = $CanvasLayer/InventoryUI
 @onready var pause_menu: Control = $CanvasLayer/PauseMenu
 @onready var alchemy_ui: Control = $CanvasLayer/AlchemyUI
+@onready var settlement_ui: Control = $CanvasLayer/SettlementUI
 @onready var player: Node3D = $Player
 @onready var enemy: Node3D = $Enemy
 @onready var armor_pickup: Node3D = $ArmorPickup
@@ -12,6 +13,7 @@ func _ready() -> void:
 	inventory_ui.visible = false
 	pause_menu.visible = false
 	if alchemy_ui: alchemy_ui.visible = false
+	if settlement_ui: settlement_ui.visible = false
 
 	if GameState.inventory.is_empty():
 		var sword_res = load("res://data/weapons/iron_sword.tres")
@@ -31,22 +33,39 @@ func _unhandled_input(event: InputEvent) -> void:
 		toggle_inventory()
 	elif Input.is_action_just_pressed("pause"):
 		toggle_pause()
+	elif event is InputEventKey and event.pressed and event.keycode == KEY_B:
+		toggle_settlement()
 
 func toggle_inventory() -> void:
 	if pause_menu.visible:
 		return
 	inventory_ui.visible = not inventory_ui.visible
 	if alchemy_ui: alchemy_ui.visible = false
+	if settlement_ui: settlement_ui.visible = false
 	if inventory_ui.visible:
 		if AudioManager: AudioManager.play_sound("inventory_open")
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	else:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
-func toggle_pause() -> void:
-	if inventory_ui.visible or (alchemy_ui and alchemy_ui.visible):
+func toggle_settlement() -> void:
+	if pause_menu.visible:
+		return
+	if settlement_ui:
+		settlement_ui.visible = not settlement_ui.visible
 		inventory_ui.visible = false
 		if alchemy_ui: alchemy_ui.visible = false
+		if settlement_ui.visible:
+			if AudioManager: AudioManager.play_sound("ui_click")
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		else:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+func toggle_pause() -> void:
+	if inventory_ui.visible or (alchemy_ui and alchemy_ui.visible) or (settlement_ui and settlement_ui.visible):
+		inventory_ui.visible = false
+		if alchemy_ui: alchemy_ui.visible = false
+		if settlement_ui: settlement_ui.visible = false
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		return
 

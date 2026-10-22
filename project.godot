@@ -28,6 +28,10 @@ LocalizationManager="*res://scripts/autoload/LocalizationManager.gd"
 IntegrityLogger="*res://scripts/autoload/IntegrityLogger.gd"
 InputManager="*res://scripts/autoload/InputManager.gd"
 WorldManager="*res://scripts/autoload/WorldManager.gd"
+AlchemySystem="*res://scripts/autoload/AlchemySystem.gd"
+PopulationSystem="*res://scripts/systems/PopulationSystem.gd"
+EconomySystem="*res://scripts/systems/EconomySystem.gd"
+SettlementSystem="*res://scripts/systems/SettlementSystem.gd"
 
 [display]
 
