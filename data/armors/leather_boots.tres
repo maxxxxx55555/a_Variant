@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ArmorData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/autoload/ArmorData.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = "leather_boots"
+name_key = "item.leather_boots.name"
+desc_key = "item.leather_boots.desc"
+weight = 2.0
+rarity = "common"
+type = "armor"
+defense = 10.0
+slot = "legs"
+durability = 100.0

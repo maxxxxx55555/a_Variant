@@ -25,6 +25,9 @@ ui.equip,Экипировать,Equip
 ui.unequip,Снять,Unequip
 ui.use,Использовать,Use
 ui.drop,Выбросить,Drop
+ui.repair,Отремонтировать,Repair
+ui.encumbered,Перегруз!,Encumbered!
+ui.total_load,Загрузка,Total Load
 ui.stats.damage,Урон,Damage
 ui.stats.defense,Защита,Armor
 ui.stats.weight,Вес,Weight
@@ -43,9 +46,13 @@ prompt.interact,Нажмите E для взаимодействия,Press E to 
 prompt.pickup,Нажмите E чтобы подобрать {item},Press E to pick up {item}
 msg.picked_up,Подобран предмет: {item},Picked up item: {item}
 msg.hp_full,Здоровье уже полное!,Health is already full!
+msg.stamina_full,Выносливость уже полная!,Stamina is already full!
+msg.strength_potion_used,Зелье силы использовано! Урон увеличен.,Strength potion used! Damage increased.
 msg.potion_used,Использовано зелье: {item},Used potion: {item}
 msg.equipped,Экипировано: {item},Equipped: {item}
 msg.unequipped,Снято: {item},Unequipped: {item}
+msg.repaired,Отремонтировано: {item},Repaired: {item}
+msg.encumbered_warning,Вы перегружены! Скорость снижена.,You are encumbered! Speed is reduced.
 msg.game_saved,Игра сохранена,Game Saved
 msg.game_loaded,Игра загружена,Game Loaded
 msg.save_error,Ошибка сохранения,Save Error
@@ -68,6 +75,30 @@ item.stamina_potion.name,Зелье выносливости,Stamina Potion
 item.stamina_potion.desc,Восстанавливает сил для боя.,Restores stamina for battle.
 item.healing_herb.name,Целебная трава,Healing Herb
 item.healing_herb.desc,Ингредиент для варки зелий здоровья.,Ingredient for brewing health potions.
+item.iron_spear.name,Железное копьё,Iron Spear
+item.iron_spear.desc,Длинное копьё с острым наконечником.,A long spear with a sharp tip.
+item.war_axe.name,Боевой топор,War Axe
+item.war_axe.desc,Тяжёлый боевой топор с высоким уроном.,A heavy war axe with high damage.
+item.wooden_shield.name,Деревянный щит,Wooden Shield
+item.wooden_shield.desc,Простой дубовый щит.,A simple oak shield.
+item.iron_greaves.name,Железные поножи,Iron Greaves
+item.iron_greaves.desc,Защитные пластины для ног.,Protective leg plates.
+item.dagger.name,Острый кинжал,Sharp Dagger
+item.dagger.desc,Быстрое и лёгкое оружие ближнего боя.,A fast and lightweight melee weapon.
+item.mace.name,Тяжёлая булава,Heavy Mace
+item.mace.desc,Дробящее оружие против бронированных целей.,A crushing weapon effective against armored targets.
+item.plate_armor.name,Латы,Plate Armor
+item.plate_armor.desc,Тяжёлая стальная броня высочайшего качества.,Heavy steel armor of exquisite craftsmanship.
+item.leather_boots.name,Кожаные сапоги,Leather Boots
+item.leather_boots.desc,Удобная обувь для дальних походов.,Comfortable footwear for long marches.
+item.health_potion_large.name,Большое зелье здоровья,Large Health Potion
+item.health_potion_large.desc,Восстанавливает 75 единиц здоровья.,Restores 75 health points.
+item.antidote_potion.name,Противоядие,Antidote Potion
+item.antidote_potion.desc,Снимает отравление и немного лечит.,Cures poison and heals slightly.
+item.strength_potion.name,Зелье силы,Strength Potion
+item.strength_potion.desc,Временно повышает силу в бою.,Temporarily increases combat strength.
+recipe.health.name,Рецепт зелья здоровья,Health Potion Recipe
+recipe.antidote.name,Рецепт противоядия,Antidote Recipe
 ui.alchemy,Алхимия,Alchemy
 ui.brew,Сварить,Brew
 ui.settlement,Поселение,Settlement

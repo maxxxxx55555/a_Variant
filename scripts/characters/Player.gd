@@ -42,7 +42,8 @@ func _physics_process(delta: float) -> void:
 
 	# Movement & Sprinting
 	var is_sprinting = Input.is_action_pressed("sprint") and GameState.player_stamina > 5.0
-	var current_speed = sprint_speed if is_sprinting else speed
+	var speed_mod = GameState.get_speed_modifier()
+	var current_speed = (sprint_speed if is_sprinting else speed) * speed_mod
 
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
@@ -123,6 +124,8 @@ func perform_attack() -> void:
 			stamina_cost = w_res.get("stamina_cost")
 			dmg = w_res.get("damage")
 			reach = w_res.get("reach")
+
+	dmg *= GameState.get_damage_modifier()
 
 	if GameState.consume_stamina(stamina_cost):
 		apply_camera_shake(0.05)
