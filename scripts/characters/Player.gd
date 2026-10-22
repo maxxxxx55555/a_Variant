@@ -10,6 +10,7 @@ extends CharacterBody3D
 
 var bob_time: float = 0.0
 var original_cam_y: float = 0.0
+var last_prompt: String = ""
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -78,22 +79,32 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("attack"):
 		perform_attack()
 
+func take_damage(amount: float) -> void:
+	GameState.take_damage(amount)
+
 func check_interaction() -> void:
 	if interact_ray and interact_ray.is_colliding():
 		var collider = interact_ray.get_collider()
 		if collider and collider.has_method("get_interaction_prompt"):
 			var prompt = collider.get_interaction_prompt()
-			EventBus.notification_posted.emit(prompt, false)
+			if prompt != last_prompt:
+				EventBus.notification_posted.emit(prompt, false)
+				last_prompt = prompt
 			if Input.is_action_just_pressed("interact"):
 				collider.interact(self)
+				last_prompt = ""
+	else:
+		last_prompt = ""
 
 func use_quick_potion() -> void:
 	for i in range(GameState.inventory.size()):
 		var item = GameState.inventory[i]
-		var res = item.get("resource")
-		if res and res.get("type") == "potion":
-			GameState.use_potion(i)
-			return
+		var path = item.get("resource_path", "")
+		if not path.is_empty():
+			var res = load(path)
+			if res and res.get("type") == "potion":
+				GameState.use_potion(i)
+				return
 
 func perform_attack() -> void:
 	var weapon = GameState.equipment.get("weapon")
@@ -101,15 +112,17 @@ func perform_attack() -> void:
 	var dmg = 15.0
 	var reach = 2.0
 
-	if weapon and weapon.get("resource"):
-		var w_res = weapon.get("resource")
-		stamina_cost = w_res.get("stamina_cost")
-		dmg = w_res.get("damage")
-		reach = w_res.get("reach")
+	if weapon and weapon.get("resource_path"):
+		var w_res = load(weapon.get("resource_path"))
+		if w_res:
+			stamina_cost = w_res.get("stamina_cost")
+			dmg = w_res.get("damage")
+			reach = w_res.get("reach")
 
 	if GameState.consume_stamina(stamina_cost):
 		apply_camera_shake(0.05)
-		# Melee raycast/box test
+		if AudioManager: AudioManager.play_sound("attack")
+		# Melee raycast
 		var space_state = get_world_3d().direct_space_state
 		var origin = camera.global_position
 		var end = origin - camera.global_transform.basis.z * reach
