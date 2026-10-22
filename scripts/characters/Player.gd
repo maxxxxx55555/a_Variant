@@ -11,6 +11,7 @@ extends CharacterBody3D
 var bob_time: float = 0.0
 var original_cam_y: float = 0.0
 var last_prompt: String = ""
+var shake_offset: Vector3 = Vector3.ZERO
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -60,13 +61,17 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-	# Camera Bobbing
+	# Camera Bobbing & Shake Recovery
+	shake_offset = shake_offset.move_toward(Vector3.ZERO, delta * 2.0)
+
+	var target_y = original_cam_y
 	if SettingsManager.camera_bobbing and is_on_floor() and direction:
 		bob_time += delta * (12.0 if is_sprinting else 8.0)
-		camera.position.y = original_cam_y + sin(bob_time) * (0.08 if is_sprinting else 0.04)
+		target_y += sin(bob_time) * (0.08 if is_sprinting else 0.04)
 	else:
 		bob_time = 0.0
-		camera.position.y = move_toward(camera.position.y, original_cam_y, delta * 2.0)
+
+	camera.position = Vector3(shake_offset.x, target_y + shake_offset.y, shake_offset.z)
 
 	# Interaction Ray
 	check_interaction()
@@ -133,5 +138,5 @@ func perform_attack() -> void:
 				result.collider.take_damage(dmg)
 
 func apply_camera_shake(intensity: float) -> void:
-	if SettingsManager.camera_shake and camera:
-		camera.position += Vector3(randf_range(-intensity, intensity), randf_range(-intensity, intensity), 0)
+	if SettingsManager.camera_shake:
+		shake_offset += Vector3(randf_range(-intensity, intensity), randf_range(-intensity, intensity), 0)

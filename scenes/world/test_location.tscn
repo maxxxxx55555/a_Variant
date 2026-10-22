@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3]
+[gd_scene load_steps=19 format=3]
 
 [ext_resource type="Script" path="res://scripts/world/TestLocation.gd" id="1_test_loc"]
 [ext_resource type="PackedScene" path="res://scenes/characters/player.tscn" id="2_player"]
@@ -7,7 +7,8 @@
 [ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="5_hud"]
 [ext_resource type="PackedScene" path="res://scenes/ui/inventory_ui.tscn" id="6_inv"]
 [ext_resource type="PackedScene" path="res://scenes/ui/pause_menu.tscn" id="7_pause"]
-[ext_resource type="Resource" path="res://data/armors/leather_armor.tres" id="8_armor_res"]
+[ext_resource type="PackedScene" path="res://scenes/ui/alchemy_ui.tscn" id="8_alchemy"]
+[ext_resource type="Resource" path="res://data/armors/leather_armor.tres" id="9_armor_res"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1"]
 sky_top_color = Color(0.25, 0.35, 0.5, 1)
@@ -81,12 +82,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -8)
 
 [node name="ArmorPickup" parent="." instance=ExtResource("4_world_item")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, 3)
-item_resource = ExtResource("8_armor_res")
+item_resource = ExtResource("9_armor_res")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("5_hud")]
 
 [node name="InventoryUI" parent="CanvasLayer" instance=ExtResource("6_inv")]
+
+[node name="AlchemyUI" parent="CanvasLayer" instance=ExtResource("8_alchemy")]
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("7_pause")]

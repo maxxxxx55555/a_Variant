@@ -56,3 +56,17 @@ item.leather_armor.name,Кожаный доспех,Leather Armor
 item.leather_armor.desc,Плотная кожаная броня для защиты в лесу.,Sturdy leather armor for wilderness protection.
 item.health_potion.name,Малое зелье здоровья,Minor Health Potion
 item.health_potion.desc,Восстанавливает 35 единиц здоровья.,Restores 35 health points.
+item.steel_sword.name,Стальной меч,Steel Sword
+item.steel_sword.desc,Острый меч из закалённой стали.,A sharp sword of tempered steel.
+item.hunter_bow.name,Охотничий лук,Hunter's Bow
+item.hunter_bow.desc,Прочный деревянный лук.,A durable wooden bow.
+item.iron_helmet.name,Железный шлем,Iron Helmet
+item.iron_helmet.desc,Простой металлический шлем.,A simple metallic helmet.
+item.chainmail.name,Кольчуга,Chainmail
+item.chainmail.desc,Надёжная стальная кольчуга.,Reliable steel chainmail.
+item.stamina_potion.name,Зелье выносливости,Stamina Potion
+item.stamina_potion.desc,Восстанавливает сил для боя.,Restores stamina for battle.
+item.healing_herb.name,Целебная трава,Healing Herb
+item.healing_herb.desc,Ингредиент для варки зелий здоровья.,Ingredient for brewing health potions.
+ui.alchemy,Алхимия,Alchemy
+ui.brew,Сварить,Brew

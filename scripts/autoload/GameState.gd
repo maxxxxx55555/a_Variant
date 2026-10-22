@@ -109,13 +109,20 @@ func use_potion(item_index: int) -> bool:
 	if not res or res.get("type") != "potion":
 		return false
 
-	if player_hp >= max_hp:
-		EventBus.notification_posted.emit(LocalizationManager.get_string("msg.hp_full"), true)
-		return false
-
 	var heal = res.get("heal_amount")
-	player_hp = min(max_hp, player_hp + heal)
-	EventBus.player_hp_changed.emit(player_hp, max_hp)
+	if res.id == "stamina_potion" or heal == 0.0:
+		if player_stamina >= max_stamina:
+			EventBus.notification_posted.emit("Stamina is already full!", true)
+			return false
+		player_stamina = min(max_stamina, player_stamina + 50.0)
+		EventBus.player_stamina_changed.emit(player_stamina, max_stamina)
+	else:
+		if player_hp >= max_hp:
+			EventBus.notification_posted.emit(LocalizationManager.get_string("msg.hp_full"), true)
+			return false
+		player_hp = min(max_hp, player_hp + heal)
+		EventBus.player_hp_changed.emit(player_hp, max_hp)
+
 	if AudioManager:
 		AudioManager.play_sound("potion")
 

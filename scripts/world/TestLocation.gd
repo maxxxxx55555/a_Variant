@@ -3,6 +3,7 @@ extends Node3D
 @onready var hud: Control = $CanvasLayer/HUD
 @onready var inventory_ui: Control = $CanvasLayer/InventoryUI
 @onready var pause_menu: Control = $CanvasLayer/PauseMenu
+@onready var alchemy_ui: Control = $CanvasLayer/AlchemyUI
 @onready var player: Node3D = $Player
 @onready var enemy: Node3D = $Enemy
 @onready var armor_pickup: Node3D = $ArmorPickup
@@ -10,6 +11,7 @@ extends Node3D
 func _ready() -> void:
 	inventory_ui.visible = false
 	pause_menu.visible = false
+	if alchemy_ui: alchemy_ui.visible = false
 
 	if GameState.inventory.is_empty():
 		var sword_res = load("res://data/weapons/iron_sword.tres")
@@ -19,6 +21,10 @@ func _ready() -> void:
 		var potion_res = load("res://data/potions/health_potion.tres")
 		if potion_res:
 			GameState.add_item(potion_res, 2)
+
+		var herb_res = load("res://data/potions/healing_herb.tres")
+		if herb_res:
+			GameState.add_item(herb_res, 4)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("inventory"):
@@ -30,6 +36,7 @@ func toggle_inventory() -> void:
 	if pause_menu.visible:
 		return
 	inventory_ui.visible = not inventory_ui.visible
+	if alchemy_ui: alchemy_ui.visible = false
 	if inventory_ui.visible:
 		if AudioManager: AudioManager.play_sound("inventory_open")
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -37,8 +44,9 @@ func toggle_inventory() -> void:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func toggle_pause() -> void:
-	if inventory_ui.visible:
+	if inventory_ui.visible or (alchemy_ui and alchemy_ui.visible):
 		inventory_ui.visible = false
+		if alchemy_ui: alchemy_ui.visible = false
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		return
 

@@ -159,4 +159,6 @@ func _on_use_pressed() -> void:
 func _on_drop_pressed() -> void:
 	if selected_index >= 0 and selected_index < GameState.inventory.size():
 		GameState.inventory.remove_at(selected_index)
+		selected_index = -1
+		clear_card()
 		EventBus.inventory_updated.emit()

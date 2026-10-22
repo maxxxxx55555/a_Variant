@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ArmorData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/autoload/ArmorData.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = "chainmail"
+name_key = "item.chainmail.name"
+desc_key = "item.chainmail.desc"
+weight = 8.0
+rarity = "rare"
+type = "armor"
+defense = 35.0
+slot = "torso"
+durability = 150.0

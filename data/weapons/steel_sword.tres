@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/autoload/WeaponData.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = "steel_sword"
+name_key = "item.steel_sword.name"
+desc_key = "item.steel_sword.desc"
+weight = 4.0
+rarity = "uncommon"
+type = "weapon"
+damage = 38.0
+speed = 1.3
+reach = 2.3
+stamina_cost = 14.0
+durability = 120.0
