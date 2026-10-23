@@ -32,6 +32,9 @@ AlchemySystem="*res://scripts/autoload/AlchemySystem.gd"
 PopulationSystem="*res://scripts/systems/PopulationSystem.gd"
 EconomySystem="*res://scripts/systems/EconomySystem.gd"
 SettlementSystem="*res://scripts/systems/SettlementSystem.gd"
+ArmySystem="*res://scripts/systems/ArmySystem.gd"
+FactionSystem="*res://scripts/systems/FactionSystem.gd"
+DiplomacySystem="*res://scripts/systems/DiplomacySystem.gd"
 
 [display]
 

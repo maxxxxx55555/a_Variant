@@ -20,20 +20,36 @@ def test_localization():
                 en_keys[row[0].strip()] = row[2].strip()
 
     assert set(ru_keys.keys()) == set(en_keys.keys()), f"Key mismatch! RU extra: {set(ru_keys.keys()) - set(en_keys.keys())}, EN extra: {set(en_keys.keys()) - set(ru_keys.keys())}"
+
+    # Verify unit entries
+    unit_keys = ['unit.militia_spear.name', 'unit.shield_swordsmen.name', 'unit.archers.name', 'unit.heavy_infantry.name']
+    for uk in unit_keys:
+        assert uk in ru_keys, f"Unit key missing in RU: {uk}"
+        assert uk in en_keys, f"Unit key missing in EN: {uk}"
+
+    # Verify faction entries
+    faction_keys = ['faction.woodland_freeholders.name', 'faction.borderland_watch.name', 'faction.iron_guild.name']
+    for fk in faction_keys:
+        assert fk in ru_keys, f"Faction key missing in RU: {fk}"
+        assert fk in en_keys, f"Faction key missing in EN: {fk}"
+
     print(f"✓ Localization key parity test passed ({len(ru_keys)} keys verified)")
 
 def test_data_resources():
-    files = [
-        'data/weapons/iron_sword.tres',
-        'data/armors/leather_armor.tres',
-        'data/potions/health_potion.tres'
-    ]
-    for f in files:
+    tres_files = []
+    for root, dirs, files in os.walk('data'):
+        for file in files:
+            if file.endswith('.tres'):
+                tres_files.append(os.path.join(root, file))
+
+    assert len(tres_files) > 0, "No .tres data files found in data/"
+
+    for f in tres_files:
         assert os.path.exists(f), f"Data resource missing: {f}"
         with open(f, 'r', encoding='utf-8') as file:
             content = file.read()
             assert 'script = ExtResource' in content or 'type="Resource"' in content, f"Invalid format in {f}"
-    print(f"✓ Data resources check passed ({len(files)} resources verified)")
+    print(f"✓ Data resources check passed ({len(tres_files)} resources verified in data/)")
 
 def test_project_structure():
     required = [
@@ -47,7 +63,12 @@ def test_project_structure():
         'scripts/autoload/GameState.gd',
         'scripts/autoload/SaveSystem.gd',
         'scripts/autoload/LocalizationManager.gd',
-        'scripts/autoload/IntegrityLogger.gd'
+        'scripts/autoload/IntegrityLogger.gd',
+        'scripts/autoload/UnitData.gd',
+        'scripts/autoload/FactionData.gd',
+        'scripts/systems/ArmySystem.gd',
+        'scripts/systems/FactionSystem.gd',
+        'scripts/systems/DiplomacySystem.gd'
     ]
     for r in required:
         assert os.path.exists(r), f"Required file missing: {r}"

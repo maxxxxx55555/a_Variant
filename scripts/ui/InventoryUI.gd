@@ -76,14 +76,29 @@ func update_card(index: int) -> void:
 	var desc_str = LocalizationManager.get_string(res.get("desc_key"))
 	var type_str = res.get("type")
 	var weight = res.get("weight")
+	if weight == null:
+		weight = 0.0
 	var rarity = res.get("rarity")
+	if rarity == null:
+		rarity = "common"
+	var durability = item.get("durability", 100.0)
 
 	var text = "[b]" + name_str + "[/b]\n"
 	text += LocalizationManager.get_string("ui.stats.rarity") + ": " + LocalizationManager.get_string("ui.rarity." + rarity) + "\n"
-	text += LocalizationManager.get_string("ui.stats.weight") + ": " + str(weight) + " kg\n\n"
-	text += desc_str + "\n\n"
+	text += LocalizationManager.get_string("ui.stats.weight") + ": " + str(weight) + " kg\n"
+
+	var total_w = GameState.get_total_weight()
+	var max_w = GameState.max_carry_weight
+	var weight_color = "[color=red]" if GameState.is_encumbered() else "[color=green]"
+	text += LocalizationManager.get_string("ui.total_load") + ": " + weight_color + str(snapped(total_w, 0.1)) + " / " + str(max_w) + " kg[/color]"
+	if GameState.is_encumbered():
+		text += " (" + LocalizationManager.get_string("ui.encumbered") + ")"
+	text += "\n\n" + desc_str + "\n\n"
 
 	# Stat comparisons
+	if type_str in ["weapon", "armor"]:
+		text += LocalizationManager.get_string("ui.stats.durability") + ": " + str(snapped(durability, 1.0)) + "%\n"
+
 	if type_str == "weapon":
 		var dmg = res.get("damage")
 		var spd = res.get("speed")

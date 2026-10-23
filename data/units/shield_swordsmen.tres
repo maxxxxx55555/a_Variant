@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="UnitData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/autoload/UnitData.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = "shield_swordsmen"
+name_key = "unit.shield_swordsmen.name"
+desc_key = "unit.shield_swordsmen.desc"
+unit_type = "swordsmen"
+health = 110.0
+damage = 20.0
+defense = 25.0
+speed = 3.8
+range_distance = 2.0
+food_consumption = 1.5
+daily_wage = 2.5
+formation_type = "shield_wall"
