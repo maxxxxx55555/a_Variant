@@ -57,6 +57,8 @@ msg.law_updated,Закон изменён: {law} на {val},Law updated: {law} s
 msg.squad_order_issued,Приказ отряду: {order},Squad order issued: {order}
 msg.squad_selected,Выбран {unit} (Приказ: {order}),Selected {unit} (Order: {order})
 msg.desertion_warning,ВНИМАНИЕ: Мораль отряда критически низкая!,WARNING: Squad morale is critically low!
+msg.treaty_signed,Подписан договор с фракцией {faction}: {treaty},Treaty signed with {faction}: {treaty}
+msg.escalation_warning,ВНИМАНИЕ: Рост тревоги фракции {faction}! Уровень: {level},WARNING: Threat escalated for {faction}! Level: {level}
 msg.game_saved,Игра сохранена,Game Saved
 msg.game_loaded,Игра загружена,Game Loaded
 msg.save_error,Ошибка сохранения,Save Error
@@ -109,6 +111,12 @@ unit.archers.name,Лучники,Archers
 unit.archers.desc,Стрелки для поддержки на дистанции.,Ranged support marksmen.
 unit.heavy_infantry.name,Тяжёлая пехота,Heavy Infantry
 unit.heavy_infantry.desc,Закованные в броню элитные воины.,Armored elite warriors for heavy impact.
+faction.woodland_freeholders.name,Вольные Земледельцы,Woodland Freeholders
+faction.woodland_freeholders.desc,Мирные общины лесных хуторов и ферм.,Peaceful communities of forest hamlets and farms.
+faction.borderland_watch.name,Стража Пограничья,Borderland Watch
+faction.borderland_watch.desc,Организованные гарнизоны старых застав.,Organized garrisons of old border outposts.
+faction.iron_guild.name,Гильдия Рудокопов,Iron Guild
+faction.iron_guild.desc,Богатая гильдия шахтёров и кузнецов.,Rich guild of miners and smiths.
 recipe.health.name,Рецепт зелья здоровья,Health Potion Recipe
 recipe.antidote.name,Рецепт противоядия,Antidote Recipe
 ui.alchemy,Алхимия,Alchemy
@@ -129,7 +137,15 @@ ui.squad,Отряд,Squad
 ui.morale,Мораль,Morale
 ui.formation,Строй,Formation
 ui.order,Приказ,Order
+ui.diplomacy,Дипломатия,Diplomacy
+ui.factions,Фракции,Factions
+ui.threat,Угроза,Threat
+ui.escalation,Эскалация,Escalation
 order.follow,Следуй за мной,Follow Me
 order.hold_position,Удерживать позицию,Hold Position
 order.attack,Атаковать врага,Attack Enemy
 order.retreat,Отступать,Retreat
+treaty.peace,Мирный договор,Peace Treaty
+treaty.trade,Торговый договор,Trade Agreement
+treaty.non_aggression,Пакт о ненападении,Non-Aggression Pact
+treaty.alliance,Союзный договор,Alliance Pact

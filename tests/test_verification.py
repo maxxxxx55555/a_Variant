@@ -27,6 +27,12 @@ def test_localization():
         assert uk in ru_keys, f"Unit key missing in RU: {uk}"
         assert uk in en_keys, f"Unit key missing in EN: {uk}"
 
+    # Verify faction entries
+    faction_keys = ['faction.woodland_freeholders.name', 'faction.borderland_watch.name', 'faction.iron_guild.name']
+    for fk in faction_keys:
+        assert fk in ru_keys, f"Faction key missing in RU: {fk}"
+        assert fk in en_keys, f"Faction key missing in EN: {fk}"
+
     print(f"✓ Localization key parity test passed ({len(ru_keys)} keys verified)")
 
 def test_data_resources():
@@ -59,7 +65,10 @@ def test_project_structure():
         'scripts/autoload/LocalizationManager.gd',
         'scripts/autoload/IntegrityLogger.gd',
         'scripts/autoload/UnitData.gd',
-        'scripts/systems/ArmySystem.gd'
+        'scripts/autoload/FactionData.gd',
+        'scripts/systems/ArmySystem.gd',
+        'scripts/systems/FactionSystem.gd',
+        'scripts/systems/DiplomacySystem.gd'
     ]
     for r in required:
         assert os.path.exists(r), f"Required file missing: {r}"
