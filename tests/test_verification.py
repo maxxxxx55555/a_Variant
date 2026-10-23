@@ -21,11 +21,11 @@ def test_localization():
 
     assert set(ru_keys.keys()) == set(en_keys.keys()), f"Key mismatch! RU extra: {set(ru_keys.keys()) - set(en_keys.keys())}, EN extra: {set(en_keys.keys()) - set(ru_keys.keys())}"
 
-    # Verify key settlement entries
-    settlement_keys = ['ui.food', 'ui.wood', 'ui.ore', 'ui.gold', 'msg.law_updated']
-    for sk in settlement_keys:
-        assert sk in ru_keys, f"Settlement key missing in RU: {sk}"
-        assert sk in en_keys, f"Settlement key missing in EN: {sk}"
+    # Verify unit entries
+    unit_keys = ['unit.militia_spear.name', 'unit.shield_swordsmen.name', 'unit.archers.name', 'unit.heavy_infantry.name']
+    for uk in unit_keys:
+        assert uk in ru_keys, f"Unit key missing in RU: {uk}"
+        assert uk in en_keys, f"Unit key missing in EN: {uk}"
 
     print(f"✓ Localization key parity test passed ({len(ru_keys)} keys verified)")
 
@@ -57,7 +57,9 @@ def test_project_structure():
         'scripts/autoload/GameState.gd',
         'scripts/autoload/SaveSystem.gd',
         'scripts/autoload/LocalizationManager.gd',
-        'scripts/autoload/IntegrityLogger.gd'
+        'scripts/autoload/IntegrityLogger.gd',
+        'scripts/autoload/UnitData.gd',
+        'scripts/systems/ArmySystem.gd'
     ]
     for r in required:
         assert os.path.exists(r), f"Required file missing: {r}"

@@ -54,6 +54,9 @@ msg.unequipped,Снято: {item},Unequipped: {item}
 msg.repaired,Отремонтировано: {item},Repaired: {item}
 msg.encumbered_warning,Вы перегружены! Скорость снижена.,You are encumbered! Speed is reduced.
 msg.law_updated,Закон изменён: {law} на {val},Law updated: {law} set to {val}
+msg.squad_order_issued,Приказ отряду: {order},Squad order issued: {order}
+msg.squad_selected,Выбран {unit} (Приказ: {order}),Selected {unit} (Order: {order})
+msg.desertion_warning,ВНИМАНИЕ: Мораль отряда критически низкая!,WARNING: Squad morale is critically low!
 msg.game_saved,Игра сохранена,Game Saved
 msg.game_loaded,Игра загружена,Game Loaded
 msg.save_error,Ошибка сохранения,Save Error
@@ -98,6 +101,14 @@ item.antidote_potion.name,Противоядие,Antidote Potion
 item.antidote_potion.desc,Снимает отравление и немного лечит.,Cures poison and heals slightly.
 item.strength_potion.name,Зелье силы,Strength Potion
 item.strength_potion.desc,Временно повышает силу в бою.,Temporarily increases combat strength.
+unit.militia_spear.name,Ополчение с копьями,Spear Militia
+unit.militia_spear.desc,Недорогие ополченцы с длинными копьями.,Inexpensive militia with long spears.
+unit.shield_swordsmen.name,Мечники со щитами,Shield Swordsmen
+unit.shield_swordsmen.desc,Универсальные пехотинцы для держи строя.,Versatile infantry trained for wall defense.
+unit.archers.name,Лучники,Archers
+unit.archers.desc,Стрелки для поддержки на дистанции.,Ranged support marksmen.
+unit.heavy_infantry.name,Тяжёлая пехота,Heavy Infantry
+unit.heavy_infantry.desc,Закованные в броню элитные воины.,Armored elite warriors for heavy impact.
 recipe.health.name,Рецепт зелья здоровья,Health Potion Recipe
 recipe.antidote.name,Рецепт противоядия,Antidote Recipe
 ui.alchemy,Алхимия,Alchemy
@@ -113,3 +124,12 @@ ui.food,Еда,Food
 ui.wood,Древесина,Wood
 ui.ore,Руда,Ore
 ui.gold,Золото,Gold
+ui.army,Армия,Army
+ui.squad,Отряд,Squad
+ui.morale,Мораль,Morale
+ui.formation,Строй,Formation
+ui.order,Приказ,Order
+order.follow,Следуй за мной,Follow Me
+order.hold_position,Удерживать позицию,Hold Position
+order.attack,Атаковать врага,Attack Enemy
+order.retreat,Отступать,Retreat
