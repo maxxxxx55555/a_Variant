@@ -53,6 +53,7 @@ msg.equipped,Экипировано: {item},Equipped: {item}
 msg.unequipped,Снято: {item},Unequipped: {item}
 msg.repaired,Отремонтировано: {item},Repaired: {item}
 msg.encumbered_warning,Вы перегружены! Скорость снижена.,You are encumbered! Speed is reduced.
+msg.law_updated,Закон изменён: {law} на {val},Law updated: {law} set to {val}
 msg.game_saved,Игра сохранена,Game Saved
 msg.game_loaded,Игра загружена,Game Loaded
 msg.save_error,Ошибка сохранения,Save Error
@@ -108,3 +109,7 @@ ui.health,Здоровье,Health
 ui.food_forecast,Запас еды (дней),Food forecast (days)
 ui.resources,Ресурсы,Resources
 ui.laws,Законы,Laws
+ui.food,Еда,Food
+ui.wood,Древесина,Wood
+ui.ore,Руда,Ore
+ui.gold,Золото,Gold

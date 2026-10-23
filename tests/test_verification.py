@@ -20,6 +20,13 @@ def test_localization():
                 en_keys[row[0].strip()] = row[2].strip()
 
     assert set(ru_keys.keys()) == set(en_keys.keys()), f"Key mismatch! RU extra: {set(ru_keys.keys()) - set(en_keys.keys())}, EN extra: {set(en_keys.keys()) - set(ru_keys.keys())}"
+
+    # Verify key settlement entries
+    settlement_keys = ['ui.food', 'ui.wood', 'ui.ore', 'ui.gold', 'msg.law_updated']
+    for sk in settlement_keys:
+        assert sk in ru_keys, f"Settlement key missing in RU: {sk}"
+        assert sk in en_keys, f"Settlement key missing in EN: {sk}"
+
     print(f"✓ Localization key parity test passed ({len(ru_keys)} keys verified)")
 
 def test_data_resources():

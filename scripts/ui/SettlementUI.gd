@@ -26,4 +26,8 @@ func refresh_ui() -> void:
 		var wood = EconomySystem.stockpiles.get("wood", 0.0)
 		var ore = EconomySystem.stockpiles.get("ore", 0.0)
 		var gold = EconomySystem.stockpiles.get("gold", 0.0)
-		resources_label.text = "Food: %d | Wood: %d | Ore: %d | Gold: %d" % [food, wood, ore, gold]
+		var food_str = LocalizationManager.get_string("ui.food")
+		var wood_str = LocalizationManager.get_string("ui.wood")
+		var ore_str = LocalizationManager.get_string("ui.ore")
+		var gold_str = LocalizationManager.get_string("ui.gold")
+		resources_label.text = "%s: %d | %s: %d | %s: %d | %s: %d" % [food_str, food, wood_str, wood, ore_str, ore, gold_str, gold]
