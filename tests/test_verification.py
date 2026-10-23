@@ -39,6 +39,12 @@ def test_localization():
         assert ok in ru_keys, f"Objective key missing in RU: {ok}"
         assert ok in en_keys, f"Objective key missing in EN: {ok}"
 
+    # Verify quest and companion keys
+    quest_keys = ['quest.main_01.title', 'companion.warrior_shield.name', 'boss.bandit_leader.name']
+    for qk in quest_keys:
+        assert qk in ru_keys, f"Quest/Companion key missing in RU: {qk}"
+        assert qk in en_keys, f"Quest/Companion key missing in EN: {qk}"
+
     print(f"✓ Localization key parity test passed ({len(ru_keys)} keys verified)")
 
 def test_data_resources():
@@ -72,9 +78,13 @@ def test_project_structure():
         'scripts/autoload/IntegrityLogger.gd',
         'scripts/autoload/UnitData.gd',
         'scripts/autoload/FactionData.gd',
+        'scripts/autoload/QuestData.gd',
+        'scripts/autoload/CompanionData.gd',
         'scripts/systems/ArmySystem.gd',
         'scripts/systems/FactionSystem.gd',
-        'scripts/systems/DiplomacySystem.gd'
+        'scripts/systems/DiplomacySystem.gd',
+        'scripts/systems/QuestSystem.gd',
+        'scripts/ai/BossEnemy.gd'
     ]
     for r in required:
         assert os.path.exists(r), f"Required file missing: {r}"

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CompanionData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/autoload/CompanionData.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = "mercenary_commander"
+name_key = "companion.mercenary_commander.name"
+role_key = "companion.mercenary_commander.role"
+health = 130.0
+damage = 28.0
+defense = 28.0
+relationship = 50.0
+personal_quest_id = "main_quest_01"

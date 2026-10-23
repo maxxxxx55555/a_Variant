@@ -35,6 +35,7 @@ SettlementSystem="*res://scripts/systems/SettlementSystem.gd"
 ArmySystem="*res://scripts/systems/ArmySystem.gd"
 FactionSystem="*res://scripts/systems/FactionSystem.gd"
 DiplomacySystem="*res://scripts/systems/DiplomacySystem.gd"
+QuestSystem="*res://scripts/systems/QuestSystem.gd"
 
 [display]
 

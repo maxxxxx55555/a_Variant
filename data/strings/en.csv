@@ -60,6 +60,8 @@ msg.desertion_warning,ВНИМАНИЕ: Мораль отряда критиче
 msg.treaty_signed,Подписан договор с фракцией {faction}: {treaty},Treaty signed with {faction}: {treaty}
 msg.escalation_warning,ВНИМАНИЕ: Рост тревоги фракции {faction}! Уровень: {level},WARNING: Threat escalated for {faction}! Level: {level}
 msg.vertical_slice_completed,Поздравляем! Вертикальный срез 30-60 минут успешно пройден!,Congratulations! 30-60 min vertical slice successfully completed!
+msg.quest_completed,Квест выполнен: {title} (+{gold} золота, +{exp} опыта),Quest completed: {title} (+{gold} gold, +{exp} exp)
+msg.boss_enraged,ВНИМАНИЕ: Босс вошёл в фазу ярости!,WARNING: Boss entered enraged phase!
 msg.game_saved,Игра сохранена,Game Saved
 msg.game_loaded,Игра загружена,Game Loaded
 msg.save_error,Ошибка сохранения,Save Error
@@ -69,6 +71,23 @@ objective.brew_potion,Сварите зелье здоровья,Brew a health p
 objective.manage_settlement,Откройте меню поселения (B) и проверьте запасы,Open settlement menu (B) and inspect supplies
 objective.command_army,Выберите отряд (1-5) и отдайте приказ,Select squad (1-5) and issue an order
 objective.diplomacy_treaty,Подпишите договор с соседней фракцией,Sign a treaty with a neighboring faction
+quest.main_01.title,Угроза Пограничью,Threat to the March
+quest.main_01.desc,Разгромите главаря бандитов на старом перевале.,Defeat the bandit leader at the old pass.
+quest.side_clear_camp.title,Зачистка лагеря,Clear the Camp
+quest.side_clear_camp.desc,Очистите лесной лагерь от разбойников.,Clear the forest camp of bandits.
+quest.companion_01.title,Клятва Щита,Oath of the Shield
+quest.companion_01.desc,Помогите соратнику вернуть фамильное оружие.,Help your companion recover family heirloom weapon.
+companion.warrior_shield.name,Борн Щитоносец,Born the Shieldbearer
+companion.warrior_shield.role,Защитник,Protector
+companion.archer_scout.name,Лира Следопыт,Lyra the Scout
+companion.archer_scout.role,Разведчица,Scout
+companion.healer_alchemist.name,Мира Алхимик,Mira the Alchemist
+companion.healer_alchemist.role,Лекарь,Healer
+companion.mercenary_commander.name,Капитан Варан,Captain Varan
+companion.mercenary_commander.role,Командир,Commander
+boss.army_commander.name,Командир вражеской армии,Enemy Army Commander
+boss.bandit_leader.name,Главарь банды,Bandit Chieftain
+boss.pass_master.name,Хозяин Перевала,Master of the Pass
 item.iron_sword.name,Железный меч,Iron Sword
 item.iron_sword.desc,Надёжный железный меч пограничника.,A reliable borderland iron sword.
 item.leather_armor.name,Кожаный доспех,Leather Armor
