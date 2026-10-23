@@ -36,6 +36,8 @@ ArmySystem="*res://scripts/systems/ArmySystem.gd"
 FactionSystem="*res://scripts/systems/FactionSystem.gd"
 DiplomacySystem="*res://scripts/systems/DiplomacySystem.gd"
 QuestSystem="*res://scripts/systems/QuestSystem.gd"
+WeatherSystem="*res://scripts/systems/WeatherSystem.gd"
+TutorialSystem="*res://scripts/systems/TutorialSystem.gd"
 
 [display]
 

@@ -45,6 +45,12 @@ def test_localization():
         assert qk in ru_keys, f"Quest/Companion key missing in RU: {qk}"
         assert qk in en_keys, f"Quest/Companion key missing in EN: {qk}"
 
+    # Verify weather and tutorial keys
+    wt_keys = ['weather.rain', 'tutorial.movement.title', 'tutorial.combat.desc']
+    for tk in wt_keys:
+        assert tk in ru_keys, f"Weather/Tutorial key missing in RU: {tk}"
+        assert tk in en_keys, f"Weather/Tutorial key missing in EN: {tk}"
+
     print(f"✓ Localization key parity test passed ({len(ru_keys)} keys verified)")
 
 def test_data_resources():
@@ -84,6 +90,8 @@ def test_project_structure():
         'scripts/systems/FactionSystem.gd',
         'scripts/systems/DiplomacySystem.gd',
         'scripts/systems/QuestSystem.gd',
+        'scripts/systems/WeatherSystem.gd',
+        'scripts/systems/TutorialSystem.gd',
         'scripts/ai/BossEnemy.gd'
     ]
     for r in required:

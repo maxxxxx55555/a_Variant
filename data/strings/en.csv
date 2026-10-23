@@ -62,6 +62,8 @@ msg.escalation_warning,ВНИМАНИЕ: Рост тревоги фракции 
 msg.vertical_slice_completed,Поздравляем! Вертикальный срез 30-60 минут успешно пройден!,Congratulations! 30-60 min vertical slice successfully completed!
 msg.quest_completed,Квест выполнен: {title} (+{gold} золота, +{exp} опыта),Quest completed: {title} (+{gold} gold, +{exp} exp)
 msg.boss_enraged,ВНИМАНИЕ: Босс вошёл в фазу ярости!,WARNING: Boss entered enraged phase!
+msg.boss_defeated,Босс повержен: {boss},Boss defeated: {boss}
+msg.current_objective,Текущая цель: {objective},Current Objective: {objective}
 msg.game_saved,Игра сохранена,Game Saved
 msg.game_loaded,Игра загружена,Game Loaded
 msg.save_error,Ошибка сохранения,Save Error
@@ -174,3 +176,21 @@ treaty.peace,Мирный договор,Peace Treaty
 treaty.trade,Торговый договор,Trade Agreement
 treaty.non_aggression,Пакт о ненападении,Non-Aggression Pact
 treaty.alliance,Союзный договор,Alliance Pact
+msg.weather_changed,Погода изменилась: ,Weather changed:
+weather.clear,Ясно,Clear
+weather.rain,Дождь,Rain
+weather.fog,Туман,Fog
+weather.storm,Гроза,Storm
+weather.snow,Снег,Snow
+tutorial.movement.title,Основы движения,Movement Basics
+tutorial.movement.desc,Используйте WASD для движения и Shift для бега.,Use WASD to move and Shift to sprint.
+tutorial.combat.title,Боевая система,Combat System
+tutorial.combat.desc,Нажимайте ЛКМ для атаки и ПКМ для блока.,Click LMB to attack and RMB to block.
+tutorial.inventory.title,Инвентарь,Inventory
+tutorial.inventory.desc,Нажмите Tab или I для управления предметами и снаряжением.,Press Tab or I to manage items and equipment.
+tutorial.potion.title,Быстрое лечение,Quick Healing
+tutorial.potion.desc,Нажмите Q для быстрого использования зелья здоровья.,Press Q to quickly drink a health potion.
+tutorial.settlement.title,Управление поселением,Settlement Management
+tutorial.settlement.desc,Нажмите B для управления ресурсами законами и населением.,Press B to manage settlement resources laws and population.
+tutorial.army.title,Командование отрядами,Squad Command
+tutorial.army.desc,Нажимайте 1-5 для выбора отрядов и отдачи приказов.,Press 1-5 to select squads and issue tactical commands.

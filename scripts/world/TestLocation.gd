@@ -50,7 +50,8 @@ func show_current_objective() -> void:
 		_: key = "msg.vertical_slice_completed"
 
 	var text = LocalizationManager.get_string(key)
-	EventBus.notification_posted.emit("Current Objective: " + text, false)
+	var template = LocalizationManager.get_string("msg.current_objective")
+	EventBus.notification_posted.emit(template.replace("{objective}", text), false)
 
 func advance_objective() -> void:
 	current_objective_step += 1

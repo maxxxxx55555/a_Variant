@@ -31,5 +31,6 @@ func die() -> void:
 		QuestSystem.complete_quest("main_quest_01")
 
 	var boss_title = LocalizationManager.get_string(boss_name_key)
-	EventBus.notification_posted.emit(boss_title + " defeated!", false)
+	var msg_template = LocalizationManager.get_string("msg.boss_defeated")
+	EventBus.notification_posted.emit(msg_template.replace("{boss}", boss_title), false)
 	queue_free()
