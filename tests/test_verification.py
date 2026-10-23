@@ -33,6 +33,12 @@ def test_localization():
         assert fk in ru_keys, f"Faction key missing in RU: {fk}"
         assert fk in en_keys, f"Faction key missing in EN: {fk}"
 
+    # Verify vertical slice objective entries
+    objective_keys = ['objective.defeat_enemy', 'objective.brew_potion', 'objective.manage_settlement', 'objective.command_army', 'objective.diplomacy_treaty', 'msg.vertical_slice_completed']
+    for ok in objective_keys:
+        assert ok in ru_keys, f"Objective key missing in RU: {ok}"
+        assert ok in en_keys, f"Objective key missing in EN: {ok}"
+
     print(f"✓ Localization key parity test passed ({len(ru_keys)} keys verified)")
 
 def test_data_resources():

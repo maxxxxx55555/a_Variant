@@ -59,10 +59,16 @@ msg.squad_selected,Выбран {unit} (Приказ: {order}),Selected {unit} (
 msg.desertion_warning,ВНИМАНИЕ: Мораль отряда критически низкая!,WARNING: Squad morale is critically low!
 msg.treaty_signed,Подписан договор с фракцией {faction}: {treaty},Treaty signed with {faction}: {treaty}
 msg.escalation_warning,ВНИМАНИЕ: Рост тревоги фракции {faction}! Уровень: {level},WARNING: Threat escalated for {faction}! Level: {level}
+msg.vertical_slice_completed,Поздравляем! Вертикальный срез 30-60 минут успешно пройден!,Congratulations! 30-60 min vertical slice successfully completed!
 msg.game_saved,Игра сохранена,Game Saved
 msg.game_loaded,Игра загружена,Game Loaded
 msg.save_error,Ошибка сохранения,Save Error
 msg.enemy_slain,Враг повержен!,Enemy slain!
+objective.defeat_enemy,Зачистите окрестности от разбойника,Clear the surroundings of the bandit
+objective.brew_potion,Сварите зелье здоровья,Brew a health potion
+objective.manage_settlement,Откройте меню поселения (B) и проверьте запасы,Open settlement menu (B) and inspect supplies
+objective.command_army,Выберите отряд (1-5) и отдайте приказ,Select squad (1-5) and issue an order
+objective.diplomacy_treaty,Подпишите договор с соседней фракцией,Sign a treaty with a neighboring faction
 item.iron_sword.name,Железный меч,Iron Sword
 item.iron_sword.desc,Надёжный железный меч пограничника.,A reliable borderland iron sword.
 item.leather_armor.name,Кожаный доспех,Leather Armor
