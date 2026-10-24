@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="UnitData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/autoload/UnitData.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = "archers"
+name_key = "unit.archers.name"
+desc_key = "unit.archers.desc"
+unit_type = "archer"
+health = 75.0
+damage = 18.0
+defense = 8.0
+speed = 4.5
+range_distance = 18.0
+food_consumption = 1.5
+daily_wage = 2.0
+formation_type = "loose"

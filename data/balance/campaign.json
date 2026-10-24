@@ -1,0 +1,1243 @@
+{
+  "seed": 74109,
+  "world_size": 4000,
+  "factions": [
+    {
+      "id": "woodland_freeholders",
+      "name": "faction.woodland_freeholders.name",
+      "story": "faction.woodland_freeholders.desc",
+      "relationship": 10,
+      "color": "#799554"
+    },
+    {
+      "id": "iron_guild",
+      "name": "faction.iron_guild.name",
+      "story": "faction.iron_guild.desc",
+      "relationship": 15,
+      "color": "#7c8c9b"
+    },
+    {
+      "id": "borderland_watch",
+      "name": "faction.borderland_watch.name",
+      "story": "faction.borderland_watch.desc",
+      "relationship": 0,
+      "color": "#a56449"
+    },
+    {
+      "id": "river_covenant",
+      "name": "faction.river_covenant.name",
+      "story": "faction.river_covenant.desc",
+      "relationship": 0,
+      "color": "#4a939b"
+    },
+    {
+      "id": "stone_circle",
+      "name": "faction.stone_circle.name",
+      "story": "faction.stone_circle.desc",
+      "relationship": 5,
+      "color": "#9c916f"
+    },
+    {
+      "id": "marsh_keepers",
+      "name": "faction.marsh_keepers.name",
+      "story": "faction.marsh_keepers.desc",
+      "relationship": 0,
+      "color": "#7e6b96"
+    },
+    {
+      "id": "sunfield_union",
+      "name": "faction.sunfield_union.name",
+      "story": "faction.sunfield_union.desc",
+      "relationship": 10,
+      "color": "#c2a253"
+    },
+    {
+      "id": "pass_clans",
+      "name": "faction.pass_clans.name",
+      "story": "faction.pass_clans.desc",
+      "relationship": 0,
+      "color": "#86685c"
+    }
+  ],
+  "towns": [
+    {
+      "id": "greenhaven",
+      "name": "town.greenhaven",
+      "x": 0,
+      "z": -150,
+      "faction": "woodland_freeholders",
+      "danger": 1
+    },
+    {
+      "id": "ironford",
+      "name": "town.ironford",
+      "x": 420,
+      "z": -340,
+      "faction": "iron_guild",
+      "danger": 1
+    },
+    {
+      "id": "old_watch",
+      "name": "town.old_watch",
+      "x": 770,
+      "z": -650,
+      "faction": "borderland_watch",
+      "danger": 2
+    },
+    {
+      "id": "reed_crossing",
+      "name": "town.reed_crossing",
+      "x": 1150,
+      "z": -250,
+      "faction": "river_covenant",
+      "danger": 2
+    },
+    {
+      "id": "stonewell",
+      "name": "town.stonewell",
+      "x": 1100,
+      "z": 350,
+      "faction": "stone_circle",
+      "danger": 3
+    },
+    {
+      "id": "moss_hearth",
+      "name": "town.moss_hearth",
+      "x": 500,
+      "z": 700,
+      "faction": "marsh_keepers",
+      "danger": 3
+    },
+    {
+      "id": "sunmill",
+      "name": "town.sunmill",
+      "x": -150,
+      "z": 900,
+      "faction": "sunfield_union",
+      "danger": 4
+    },
+    {
+      "id": "high_pass",
+      "name": "town.high_pass",
+      "x": -700,
+      "z": 1200,
+      "faction": "pass_clans",
+      "danger": 4
+    },
+    {
+      "id": "pine_rest",
+      "name": "town.pine_rest",
+      "x": -450,
+      "z": -420,
+      "faction": "woodland_freeholders",
+      "danger": 1
+    },
+    {
+      "id": "copper_hollow",
+      "name": "town.copper_hollow",
+      "x": 900,
+      "z": -1200,
+      "faction": "iron_guild",
+      "danger": 1
+    },
+    {
+      "id": "ash_bastion",
+      "name": "town.ash_bastion",
+      "x": 1500,
+      "z": -1050,
+      "faction": "borderland_watch",
+      "danger": 2
+    },
+    {
+      "id": "willow_wharf",
+      "name": "town.willow_wharf",
+      "x": 1500,
+      "z": 900,
+      "faction": "river_covenant",
+      "danger": 2
+    },
+    {
+      "id": "white_quarry",
+      "name": "town.white_quarry",
+      "x": -950,
+      "z": 300,
+      "faction": "stone_circle",
+      "danger": 3
+    },
+    {
+      "id": "winter_gate",
+      "name": "town.winter_gate",
+      "x": -1400,
+      "z": 1500,
+      "faction": "pass_clans",
+      "danger": 4
+    }
+  ],
+  "quests": [
+    {
+      "id": "arc_01_01",
+      "kind": "visit",
+      "faction": "woodland_freeholders",
+      "town": "greenhaven",
+      "requires": [],
+      "title": "quest.arc_01_01.title",
+      "description": "quest.arc_01_01.desc",
+      "reward": 25
+    },
+    {
+      "id": "arc_01_02",
+      "kind": "delivery",
+      "faction": "woodland_freeholders",
+      "town": "greenhaven",
+      "requires": [
+        "arc_01_01"
+      ],
+      "title": "quest.arc_01_02.title",
+      "description": "quest.arc_01_02.desc",
+      "reward": 50
+    },
+    {
+      "id": "arc_01_03",
+      "kind": "camp",
+      "faction": "woodland_freeholders",
+      "town": "greenhaven",
+      "requires": [
+        "arc_01_02"
+      ],
+      "title": "quest.arc_01_03.title",
+      "description": "quest.arc_01_03.desc",
+      "reward": 100
+    },
+    {
+      "id": "arc_01_04",
+      "kind": "trust",
+      "faction": "woodland_freeholders",
+      "town": "greenhaven",
+      "requires": [
+        "arc_01_03"
+      ],
+      "title": "quest.arc_01_04.title",
+      "description": "quest.arc_01_04.desc",
+      "reward": 50
+    },
+    {
+      "id": "arc_01_05",
+      "kind": "oath",
+      "faction": "woodland_freeholders",
+      "town": "greenhaven",
+      "requires": [
+        "arc_01_04"
+      ],
+      "title": "quest.arc_01_05.title",
+      "description": "quest.arc_01_05.desc",
+      "reward": 75
+    },
+    {
+      "id": "arc_01_06",
+      "kind": "report",
+      "faction": "woodland_freeholders",
+      "town": "greenhaven",
+      "requires": [
+        "arc_01_05"
+      ],
+      "title": "quest.arc_01_06.title",
+      "description": "quest.arc_01_06.desc",
+      "reward": 100
+    },
+    {
+      "id": "arc_02_01",
+      "kind": "visit",
+      "faction": "iron_guild",
+      "town": "ironford",
+      "requires": [],
+      "title": "quest.arc_02_01.title",
+      "description": "quest.arc_02_01.desc",
+      "reward": 25
+    },
+    {
+      "id": "arc_02_02",
+      "kind": "delivery",
+      "faction": "iron_guild",
+      "town": "ironford",
+      "requires": [
+        "arc_02_01"
+      ],
+      "title": "quest.arc_02_02.title",
+      "description": "quest.arc_02_02.desc",
+      "reward": 50
+    },
+    {
+      "id": "arc_02_03",
+      "kind": "camp",
+      "faction": "iron_guild",
+      "town": "ironford",
+      "requires": [
+        "arc_02_02"
+      ],
+      "title": "quest.arc_02_03.title",
+      "description": "quest.arc_02_03.desc",
+      "reward": 100
+    },
+    {
+      "id": "arc_02_04",
+      "kind": "trust",
+      "faction": "iron_guild",
+      "town": "ironford",
+      "requires": [
+        "arc_02_03"
+      ],
+      "title": "quest.arc_02_04.title",
+      "description": "quest.arc_02_04.desc",
+      "reward": 50
+    },
+    {
+      "id": "arc_02_05",
+      "kind": "oath",
+      "faction": "iron_guild",
+      "town": "ironford",
+      "requires": [
+        "arc_02_04"
+      ],
+      "title": "quest.arc_02_05.title",
+      "description": "quest.arc_02_05.desc",
+      "reward": 75
+    },
+    {
+      "id": "arc_02_06",
+      "kind": "report",
+      "faction": "iron_guild",
+      "town": "ironford",
+      "requires": [
+        "arc_02_05"
+      ],
+      "title": "quest.arc_02_06.title",
+      "description": "quest.arc_02_06.desc",
+      "reward": 100
+    },
+    {
+      "id": "arc_03_01",
+      "kind": "visit",
+      "faction": "borderland_watch",
+      "town": "old_watch",
+      "requires": [],
+      "title": "quest.arc_03_01.title",
+      "description": "quest.arc_03_01.desc",
+      "reward": 25
+    },
+    {
+      "id": "arc_03_02",
+      "kind": "delivery",
+      "faction": "borderland_watch",
+      "town": "old_watch",
+      "requires": [
+        "arc_03_01"
+      ],
+      "title": "quest.arc_03_02.title",
+      "description": "quest.arc_03_02.desc",
+      "reward": 50
+    },
+    {
+      "id": "arc_03_03",
+      "kind": "camp",
+      "faction": "borderland_watch",
+      "town": "old_watch",
+      "requires": [
+        "arc_03_02"
+      ],
+      "title": "quest.arc_03_03.title",
+      "description": "quest.arc_03_03.desc",
+      "reward": 100
+    },
+    {
+      "id": "arc_03_04",
+      "kind": "trust",
+      "faction": "borderland_watch",
+      "town": "old_watch",
+      "requires": [
+        "arc_03_03"
+      ],
+      "title": "quest.arc_03_04.title",
+      "description": "quest.arc_03_04.desc",
+      "reward": 50
+    },
+    {
+      "id": "arc_03_05",
+      "kind": "oath",
+      "faction": "borderland_watch",
+      "town": "old_watch",
+      "requires": [
+        "arc_03_04"
+      ],
+      "title": "quest.arc_03_05.title",
+      "description": "quest.arc_03_05.desc",
+      "reward": 75
+    },
+    {
+      "id": "arc_03_06",
+      "kind": "report",
+      "faction": "borderland_watch",
+      "town": "old_watch",
+      "requires": [
+        "arc_03_05"
+      ],
+      "title": "quest.arc_03_06.title",
+      "description": "quest.arc_03_06.desc",
+      "reward": 100
+    },
+    {
+      "id": "arc_04_01",
+      "kind": "visit",
+      "faction": "river_covenant",
+      "town": "reed_crossing",
+      "requires": [],
+      "title": "quest.arc_04_01.title",
+      "description": "quest.arc_04_01.desc",
+      "reward": 25
+    },
+    {
+      "id": "arc_04_02",
+      "kind": "delivery",
+      "faction": "river_covenant",
+      "town": "reed_crossing",
+      "requires": [
+        "arc_04_01"
+      ],
+      "title": "quest.arc_04_02.title",
+      "description": "quest.arc_04_02.desc",
+      "reward": 50
+    },
+    {
+      "id": "arc_04_03",
+      "kind": "camp",
+      "faction": "river_covenant",
+      "town": "reed_crossing",
+      "requires": [
+        "arc_04_02"
+      ],
+      "title": "quest.arc_04_03.title",
+      "description": "quest.arc_04_03.desc",
+      "reward": 100
+    },
+    {
+      "id": "arc_04_04",
+      "kind": "trust",
+      "faction": "river_covenant",
+      "town": "reed_crossing",
+      "requires": [
+        "arc_04_03"
+      ],
+      "title": "quest.arc_04_04.title",
+      "description": "quest.arc_04_04.desc",
+      "reward": 50
+    },
+    {
+      "id": "arc_04_05",
+      "kind": "oath",
+      "faction": "river_covenant",
+      "town": "reed_crossing",
+      "requires": [
+        "arc_04_04"
+      ],
+      "title": "quest.arc_04_05.title",
+      "description": "quest.arc_04_05.desc",
+      "reward": 75
+    },
+    {
+      "id": "arc_04_06",
+      "kind": "report",
+      "faction": "river_covenant",
+      "town": "reed_crossing",
+      "requires": [
+        "arc_04_05"
+      ],
+      "title": "quest.arc_04_06.title",
+      "description": "quest.arc_04_06.desc",
+      "reward": 100
+    },
+    {
+      "id": "arc_05_01",
+      "kind": "visit",
+      "faction": "stone_circle",
+      "town": "stonewell",
+      "requires": [],
+      "title": "quest.arc_05_01.title",
+      "description": "quest.arc_05_01.desc",
+      "reward": 25
+    },
+    {
+      "id": "arc_05_02",
+      "kind": "delivery",
+      "faction": "stone_circle",
+      "town": "stonewell",
+      "requires": [
+        "arc_05_01"
+      ],
+      "title": "quest.arc_05_02.title",
+      "description": "quest.arc_05_02.desc",
+      "reward": 50
+    },
+    {
+      "id": "arc_05_03",
+      "kind": "camp",
+      "faction": "stone_circle",
+      "town": "stonewell",
+      "requires": [
+        "arc_05_02"
+      ],
+      "title": "quest.arc_05_03.title",
+      "description": "quest.arc_05_03.desc",
+      "reward": 100
+    },
+    {
+      "id": "arc_05_04",
+      "kind": "trust",
+      "faction": "stone_circle",
+      "town": "stonewell",
+      "requires": [
+        "arc_05_03"
+      ],
+      "title": "quest.arc_05_04.title",
+      "description": "quest.arc_05_04.desc",
+      "reward": 50
+    },
+    {
+      "id": "arc_05_05",
+      "kind": "oath",
+      "faction": "stone_circle",
+      "town": "stonewell",
+      "requires": [
+        "arc_05_04"
+      ],
+      "title": "quest.arc_05_05.title",
+      "description": "quest.arc_05_05.desc",
+      "reward": 75
+    },
+    {
+      "id": "arc_05_06",
+      "kind": "report",
+      "faction": "stone_circle",
+      "town": "stonewell",
+      "requires": [
+        "arc_05_05"
+      ],
+      "title": "quest.arc_05_06.title",
+      "description": "quest.arc_05_06.desc",
+      "reward": 100
+    },
+    {
+      "id": "arc_06_01",
+      "kind": "visit",
+      "faction": "marsh_keepers",
+      "town": "moss_hearth",
+      "requires": [],
+      "title": "quest.arc_06_01.title",
+      "description": "quest.arc_06_01.desc",
+      "reward": 25
+    },
+    {
+      "id": "arc_06_02",
+      "kind": "delivery",
+      "faction": "marsh_keepers",
+      "town": "moss_hearth",
+      "requires": [
+        "arc_06_01"
+      ],
+      "title": "quest.arc_06_02.title",
+      "description": "quest.arc_06_02.desc",
+      "reward": 50
+    },
+    {
+      "id": "arc_06_03",
+      "kind": "camp",
+      "faction": "marsh_keepers",
+      "town": "moss_hearth",
+      "requires": [
+        "arc_06_02"
+      ],
+      "title": "quest.arc_06_03.title",
+      "description": "quest.arc_06_03.desc",
+      "reward": 100
+    },
+    {
+      "id": "arc_06_04",
+      "kind": "trust",
+      "faction": "marsh_keepers",
+      "town": "moss_hearth",
+      "requires": [
+        "arc_06_03"
+      ],
+      "title": "quest.arc_06_04.title",
+      "description": "quest.arc_06_04.desc",
+      "reward": 50
+    },
+    {
+      "id": "arc_06_05",
+      "kind": "oath",
+      "faction": "marsh_keepers",
+      "town": "moss_hearth",
+      "requires": [
+        "arc_06_04"
+      ],
+      "title": "quest.arc_06_05.title",
+      "description": "quest.arc_06_05.desc",
+      "reward": 75
+    },
+    {
+      "id": "arc_06_06",
+      "kind": "report",
+      "faction": "marsh_keepers",
+      "town": "moss_hearth",
+      "requires": [
+        "arc_06_05"
+      ],
+      "title": "quest.arc_06_06.title",
+      "description": "quest.arc_06_06.desc",
+      "reward": 100
+    },
+    {
+      "id": "arc_07_01",
+      "kind": "visit",
+      "faction": "sunfield_union",
+      "town": "sunmill",
+      "requires": [],
+      "title": "quest.arc_07_01.title",
+      "description": "quest.arc_07_01.desc",
+      "reward": 25
+    },
+    {
+      "id": "arc_07_02",
+      "kind": "delivery",
+      "faction": "sunfield_union",
+      "town": "sunmill",
+      "requires": [
+        "arc_07_01"
+      ],
+      "title": "quest.arc_07_02.title",
+      "description": "quest.arc_07_02.desc",
+      "reward": 50
+    },
+    {
+      "id": "arc_07_03",
+      "kind": "camp",
+      "faction": "sunfield_union",
+      "town": "sunmill",
+      "requires": [
+        "arc_07_02"
+      ],
+      "title": "quest.arc_07_03.title",
+      "description": "quest.arc_07_03.desc",
+      "reward": 100
+    },
+    {
+      "id": "arc_07_04",
+      "kind": "trust",
+      "faction": "sunfield_union",
+      "town": "sunmill",
+      "requires": [
+        "arc_07_03"
+      ],
+      "title": "quest.arc_07_04.title",
+      "description": "quest.arc_07_04.desc",
+      "reward": 50
+    },
+    {
+      "id": "arc_07_05",
+      "kind": "oath",
+      "faction": "sunfield_union",
+      "town": "sunmill",
+      "requires": [
+        "arc_07_04"
+      ],
+      "title": "quest.arc_07_05.title",
+      "description": "quest.arc_07_05.desc",
+      "reward": 75
+    },
+    {
+      "id": "arc_07_06",
+      "kind": "report",
+      "faction": "sunfield_union",
+      "town": "sunmill",
+      "requires": [
+        "arc_07_05"
+      ],
+      "title": "quest.arc_07_06.title",
+      "description": "quest.arc_07_06.desc",
+      "reward": 100
+    },
+    {
+      "id": "arc_08_01",
+      "kind": "visit",
+      "faction": "pass_clans",
+      "town": "high_pass",
+      "requires": [],
+      "title": "quest.arc_08_01.title",
+      "description": "quest.arc_08_01.desc",
+      "reward": 25
+    },
+    {
+      "id": "arc_08_02",
+      "kind": "delivery",
+      "faction": "pass_clans",
+      "town": "high_pass",
+      "requires": [
+        "arc_08_01"
+      ],
+      "title": "quest.arc_08_02.title",
+      "description": "quest.arc_08_02.desc",
+      "reward": 50
+    },
+    {
+      "id": "arc_08_03",
+      "kind": "camp",
+      "faction": "pass_clans",
+      "town": "high_pass",
+      "requires": [
+        "arc_08_02"
+      ],
+      "title": "quest.arc_08_03.title",
+      "description": "quest.arc_08_03.desc",
+      "reward": 100
+    },
+    {
+      "id": "arc_08_04",
+      "kind": "trust",
+      "faction": "pass_clans",
+      "town": "high_pass",
+      "requires": [
+        "arc_08_03"
+      ],
+      "title": "quest.arc_08_04.title",
+      "description": "quest.arc_08_04.desc",
+      "reward": 50
+    },
+    {
+      "id": "arc_08_05",
+      "kind": "oath",
+      "faction": "pass_clans",
+      "town": "high_pass",
+      "requires": [
+        "arc_08_04"
+      ],
+      "title": "quest.arc_08_05.title",
+      "description": "quest.arc_08_05.desc",
+      "reward": 75
+    },
+    {
+      "id": "arc_08_06",
+      "kind": "report",
+      "faction": "pass_clans",
+      "town": "high_pass",
+      "requires": [
+        "arc_08_05"
+      ],
+      "title": "quest.arc_08_06.title",
+      "description": "quest.arc_08_06.desc",
+      "reward": 100
+    },
+    {
+      "id": "survey_woodland_freeholders",
+      "kind": "survey",
+      "faction": "woodland_freeholders",
+      "requires": [],
+      "reward": 45,
+      "title": "quest.survey_woodland_freeholders.title",
+      "description": "quest.survey_woodland_freeholders.desc"
+    },
+    {
+      "id": "survey_iron_guild",
+      "kind": "survey",
+      "faction": "iron_guild",
+      "requires": [],
+      "reward": 45,
+      "title": "quest.survey_iron_guild.title",
+      "description": "quest.survey_iron_guild.desc"
+    },
+    {
+      "id": "survey_borderland_watch",
+      "kind": "survey",
+      "faction": "borderland_watch",
+      "requires": [],
+      "reward": 45,
+      "title": "quest.survey_borderland_watch.title",
+      "description": "quest.survey_borderland_watch.desc"
+    },
+    {
+      "id": "survey_river_covenant",
+      "kind": "survey",
+      "faction": "river_covenant",
+      "requires": [],
+      "reward": 45,
+      "title": "quest.survey_river_covenant.title",
+      "description": "quest.survey_river_covenant.desc"
+    },
+    {
+      "id": "survey_stone_circle",
+      "kind": "survey",
+      "faction": "stone_circle",
+      "requires": [],
+      "reward": 45,
+      "title": "quest.survey_stone_circle.title",
+      "description": "quest.survey_stone_circle.desc"
+    },
+    {
+      "id": "survey_marsh_keepers",
+      "kind": "survey",
+      "faction": "marsh_keepers",
+      "requires": [],
+      "reward": 45,
+      "title": "quest.survey_marsh_keepers.title",
+      "description": "quest.survey_marsh_keepers.desc"
+    },
+    {
+      "id": "survey_sunfield_union",
+      "kind": "survey",
+      "faction": "sunfield_union",
+      "requires": [],
+      "reward": 45,
+      "title": "quest.survey_sunfield_union.title",
+      "description": "quest.survey_sunfield_union.desc"
+    },
+    {
+      "id": "survey_pass_clans",
+      "kind": "survey",
+      "faction": "pass_clans",
+      "requires": [],
+      "reward": 45,
+      "title": "quest.survey_pass_clans.title",
+      "description": "quest.survey_pass_clans.desc"
+    },
+    {
+      "id": "companion_warrior_shield",
+      "kind": "companion",
+      "companion": "warrior_shield",
+      "faction": "woodland_freeholders",
+      "requires": [],
+      "reward": 100,
+      "title": "quest.companion_warrior_shield.title",
+      "description": "quest.companion_warrior_shield.desc"
+    },
+    {
+      "id": "companion_archer_scout",
+      "kind": "companion",
+      "companion": "archer_scout",
+      "faction": "borderland_watch",
+      "requires": [],
+      "reward": 100,
+      "title": "quest.companion_archer_scout.title",
+      "description": "quest.companion_archer_scout.desc"
+    },
+    {
+      "id": "companion_healer_alchemist",
+      "kind": "companion",
+      "companion": "healer_alchemist",
+      "faction": "marsh_keepers",
+      "requires": [],
+      "reward": 100,
+      "title": "quest.companion_healer_alchemist.title",
+      "description": "quest.companion_healer_alchemist.desc"
+    },
+    {
+      "id": "companion_mercenary_commander",
+      "kind": "companion",
+      "companion": "mercenary_commander",
+      "faction": "pass_clans",
+      "requires": [],
+      "reward": 100,
+      "title": "quest.companion_mercenary_commander.title",
+      "description": "quest.companion_mercenary_commander.desc"
+    }
+  ],
+  "points": [
+    {
+      "id": "woodland_freeholders_camp",
+      "kind": "camp",
+      "faction": "woodland_freeholders",
+      "x": 85,
+      "z": -135,
+      "danger": 1,
+      "boss": false
+    },
+    {
+      "id": "woodland_freeholders_shrine",
+      "kind": "shrine",
+      "faction": "woodland_freeholders",
+      "x": -70,
+      "z": -170,
+      "danger": 1,
+      "boss": false
+    },
+    {
+      "id": "woodland_freeholders_cache",
+      "kind": "cache",
+      "faction": "woodland_freeholders",
+      "x": 30,
+      "z": -60,
+      "danger": 1,
+      "boss": false
+    },
+    {
+      "id": "woodland_freeholders_ruins",
+      "kind": "ruins",
+      "faction": "woodland_freeholders",
+      "x": -75,
+      "z": -60,
+      "danger": 1,
+      "boss": false
+    },
+    {
+      "id": "woodland_freeholders_mine",
+      "kind": "mine",
+      "faction": "woodland_freeholders",
+      "x": 90,
+      "z": -230,
+      "danger": 1,
+      "boss": false
+    },
+    {
+      "id": "iron_guild_camp",
+      "kind": "camp",
+      "faction": "iron_guild",
+      "x": 505,
+      "z": -325,
+      "danger": 1,
+      "boss": false
+    },
+    {
+      "id": "iron_guild_shrine",
+      "kind": "shrine",
+      "faction": "iron_guild",
+      "x": 350,
+      "z": -360,
+      "danger": 1,
+      "boss": false
+    },
+    {
+      "id": "iron_guild_cache",
+      "kind": "cache",
+      "faction": "iron_guild",
+      "x": 450,
+      "z": -250,
+      "danger": 1,
+      "boss": false
+    },
+    {
+      "id": "iron_guild_ruins",
+      "kind": "ruins",
+      "faction": "iron_guild",
+      "x": 345,
+      "z": -250,
+      "danger": 1,
+      "boss": false
+    },
+    {
+      "id": "iron_guild_mine",
+      "kind": "mine",
+      "faction": "iron_guild",
+      "x": 510,
+      "z": -420,
+      "danger": 1,
+      "boss": false
+    },
+    {
+      "id": "borderland_watch_camp",
+      "kind": "camp",
+      "faction": "borderland_watch",
+      "x": 855,
+      "z": -635,
+      "danger": 2,
+      "boss": true
+    },
+    {
+      "id": "borderland_watch_shrine",
+      "kind": "shrine",
+      "faction": "borderland_watch",
+      "x": 700,
+      "z": -670,
+      "danger": 2,
+      "boss": false
+    },
+    {
+      "id": "borderland_watch_cache",
+      "kind": "cache",
+      "faction": "borderland_watch",
+      "x": 800,
+      "z": -560,
+      "danger": 2,
+      "boss": false
+    },
+    {
+      "id": "borderland_watch_ruins",
+      "kind": "ruins",
+      "faction": "borderland_watch",
+      "x": 695,
+      "z": -560,
+      "danger": 2,
+      "boss": false
+    },
+    {
+      "id": "borderland_watch_mine",
+      "kind": "mine",
+      "faction": "borderland_watch",
+      "x": 860,
+      "z": -730,
+      "danger": 2,
+      "boss": false
+    },
+    {
+      "id": "river_covenant_camp",
+      "kind": "camp",
+      "faction": "river_covenant",
+      "x": 1235,
+      "z": -235,
+      "danger": 2,
+      "boss": false
+    },
+    {
+      "id": "river_covenant_shrine",
+      "kind": "shrine",
+      "faction": "river_covenant",
+      "x": 1080,
+      "z": -270,
+      "danger": 2,
+      "boss": false
+    },
+    {
+      "id": "river_covenant_cache",
+      "kind": "cache",
+      "faction": "river_covenant",
+      "x": 1180,
+      "z": -160,
+      "danger": 2,
+      "boss": false
+    },
+    {
+      "id": "river_covenant_ruins",
+      "kind": "ruins",
+      "faction": "river_covenant",
+      "x": 1075,
+      "z": -160,
+      "danger": 2,
+      "boss": false
+    },
+    {
+      "id": "river_covenant_mine",
+      "kind": "mine",
+      "faction": "river_covenant",
+      "x": 1240,
+      "z": -330,
+      "danger": 2,
+      "boss": false
+    },
+    {
+      "id": "stone_circle_camp",
+      "kind": "camp",
+      "faction": "stone_circle",
+      "x": 1185,
+      "z": 365,
+      "danger": 3,
+      "boss": false
+    },
+    {
+      "id": "stone_circle_shrine",
+      "kind": "shrine",
+      "faction": "stone_circle",
+      "x": 1030,
+      "z": 330,
+      "danger": 3,
+      "boss": false
+    },
+    {
+      "id": "stone_circle_cache",
+      "kind": "cache",
+      "faction": "stone_circle",
+      "x": 1130,
+      "z": 440,
+      "danger": 3,
+      "boss": false
+    },
+    {
+      "id": "stone_circle_ruins",
+      "kind": "ruins",
+      "faction": "stone_circle",
+      "x": 1025,
+      "z": 440,
+      "danger": 3,
+      "boss": false
+    },
+    {
+      "id": "stone_circle_mine",
+      "kind": "mine",
+      "faction": "stone_circle",
+      "x": 1190,
+      "z": 270,
+      "danger": 3,
+      "boss": false
+    },
+    {
+      "id": "marsh_keepers_camp",
+      "kind": "camp",
+      "faction": "marsh_keepers",
+      "x": 585,
+      "z": 715,
+      "danger": 3,
+      "boss": true
+    },
+    {
+      "id": "marsh_keepers_shrine",
+      "kind": "shrine",
+      "faction": "marsh_keepers",
+      "x": 430,
+      "z": 680,
+      "danger": 3,
+      "boss": false
+    },
+    {
+      "id": "marsh_keepers_cache",
+      "kind": "cache",
+      "faction": "marsh_keepers",
+      "x": 530,
+      "z": 790,
+      "danger": 3,
+      "boss": false
+    },
+    {
+      "id": "marsh_keepers_ruins",
+      "kind": "ruins",
+      "faction": "marsh_keepers",
+      "x": 425,
+      "z": 790,
+      "danger": 3,
+      "boss": false
+    },
+    {
+      "id": "marsh_keepers_mine",
+      "kind": "mine",
+      "faction": "marsh_keepers",
+      "x": 590,
+      "z": 620,
+      "danger": 3,
+      "boss": false
+    },
+    {
+      "id": "sunfield_union_camp",
+      "kind": "camp",
+      "faction": "sunfield_union",
+      "x": -65,
+      "z": 915,
+      "danger": 4,
+      "boss": false
+    },
+    {
+      "id": "sunfield_union_shrine",
+      "kind": "shrine",
+      "faction": "sunfield_union",
+      "x": -220,
+      "z": 880,
+      "danger": 4,
+      "boss": false
+    },
+    {
+      "id": "sunfield_union_cache",
+      "kind": "cache",
+      "faction": "sunfield_union",
+      "x": -120,
+      "z": 990,
+      "danger": 4,
+      "boss": false
+    },
+    {
+      "id": "sunfield_union_ruins",
+      "kind": "ruins",
+      "faction": "sunfield_union",
+      "x": -225,
+      "z": 990,
+      "danger": 4,
+      "boss": false
+    },
+    {
+      "id": "sunfield_union_mine",
+      "kind": "mine",
+      "faction": "sunfield_union",
+      "x": -60,
+      "z": 820,
+      "danger": 4,
+      "boss": false
+    },
+    {
+      "id": "pass_clans_camp",
+      "kind": "camp",
+      "faction": "pass_clans",
+      "x": -615,
+      "z": 1215,
+      "danger": 4,
+      "boss": true
+    },
+    {
+      "id": "pass_clans_shrine",
+      "kind": "shrine",
+      "faction": "pass_clans",
+      "x": -770,
+      "z": 1180,
+      "danger": 4,
+      "boss": false
+    },
+    {
+      "id": "pass_clans_cache",
+      "kind": "cache",
+      "faction": "pass_clans",
+      "x": -670,
+      "z": 1290,
+      "danger": 4,
+      "boss": false
+    },
+    {
+      "id": "pass_clans_ruins",
+      "kind": "ruins",
+      "faction": "pass_clans",
+      "x": -775,
+      "z": 1290,
+      "danger": 4,
+      "boss": false
+    },
+    {
+      "id": "pass_clans_mine",
+      "kind": "mine",
+      "faction": "pass_clans",
+      "x": -610,
+      "z": 1120,
+      "danger": 4,
+      "boss": false
+    }
+  ],
+  "delivery_cost": {
+    "food": 20,
+    "wood": 10,
+    "ore": 5
+  },
+  "travel_cost": {
+    "food": 3,
+    "gold": 5
+  },
+  "difficulties": [
+    {
+      "id": "story",
+      "enemy_health": 0.65,
+      "enemy_damage": 0.65
+    },
+    {
+      "id": "normal",
+      "enemy_health": 1,
+      "enemy_damage": 1
+    },
+    {
+      "id": "hard",
+      "enemy_health": 1.25,
+      "enemy_damage": 1.2
+    },
+    {
+      "id": "expert",
+      "enemy_health": 1.55,
+      "enemy_damage": 1.5
+    }
+  ]
+}

@@ -8,3 +8,4 @@ extends Resource
 @export var weight: float = 1.0
 @export var rarity: String = "common" # common, uncommon, rare, epic, legendary
 @export var type: String = "misc" # weapon, armor, potion, misc
+@export var repair_cost_per_point: float = 0.25

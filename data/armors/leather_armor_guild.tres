@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ArmorData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/autoload/ArmorData.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = "leather_armor_guild"
+name_key = "item.leather_armor_guild.name"
+desc_key = "item.leather_armor_guild.desc"
+weight = 5.0
+rarity = "epic"
+type = "armor"
+defense = 38.00
+slot = "torso"
+durability = 190.00

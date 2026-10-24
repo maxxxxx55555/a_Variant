@@ -31,6 +31,9 @@ func _ready() -> void:
 	refresh_equipment()
 
 func refresh_inventory() -> void:
+	equip_button.text = LocalizationManager.get_string("ui.equip")
+	use_button.text = LocalizationManager.get_string("ui.use")
+	drop_button.text = LocalizationManager.get_string("ui.drop")
 	item_list.clear()
 	for item in GameState.inventory:
 		var name_key = item.get("name_key", "")
@@ -55,7 +58,7 @@ func get_slot_text(slot_name: String) -> String:
 		if res:
 			var item_name = LocalizationManager.get_string(res.get("name_key"))
 			return slot_title + ": " + item_name + " [" + LocalizationManager.get_string("ui.unequip") + "]"
-	return slot_title + ": [None]"
+	return slot_title + ": [" + LocalizationManager.get_string("ui.empty") + "]"
 
 func _on_item_selected(index: int) -> void:
 	selected_index = index
@@ -82,8 +85,12 @@ func update_card(index: int) -> void:
 	text += LocalizationManager.get_string("ui.stats.rarity") + ": " + LocalizationManager.get_string("ui.rarity." + rarity) + "\n"
 	text += LocalizationManager.get_string("ui.stats.weight") + ": " + str(weight) + " kg\n\n"
 	text += desc_str + "\n\n"
+	if res is WeaponData or res is ArmorData:
+		text += LocalizationManager.get_string("ui.stats.durability") + ": " + str(item.get("durability", res.durability)) + "/" + str(res.durability) + "\n"
 
 	# Stat comparisons
+	equip_button.visible = false
+	use_button.visible = false
 	if type_str == "weapon":
 		var dmg = res.get("damage")
 		var spd = res.get("speed")

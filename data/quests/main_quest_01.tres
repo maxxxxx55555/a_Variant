@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="QuestData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/autoload/QuestData.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = "main_quest_01"
+title_key = "quest.main_01.title"
+desc_key = "quest.main_01.desc"
+is_main_quest = true
+reward_gold = 250.0
+reward_exp = 150.0
+target_enemy_id = "bandit_leader"
+is_completed = false

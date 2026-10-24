@@ -1,0 +1,98 @@
+[gd_scene load_steps=20 format=3]
+
+[ext_resource type="Script" path="res://scripts/world/CampaignWorld.gd" id="1_test_loc"]
+[ext_resource type="PackedScene" path="res://scenes/characters/player.tscn" id="2_player"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/enemy.tscn" id="3_enemy"]
+[ext_resource type="PackedScene" path="res://scenes/items/world_item.tscn" id="4_world_item"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="5_hud"]
+[ext_resource type="PackedScene" path="res://scenes/ui/inventory_ui.tscn" id="6_inv"]
+[ext_resource type="PackedScene" path="res://scenes/ui/pause_menu.tscn" id="7_pause"]
+[ext_resource type="PackedScene" path="res://scenes/ui/alchemy_ui.tscn" id="8_alchemy"]
+[ext_resource type="PackedScene" path="res://scenes/ui/settlement_ui.tscn" id="9_settlement"]
+[ext_resource type="Resource" path="res://data/armors/leather_armor.tres" id="10_armor_res"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1"]
+sky_top_color = Color(0.25, 0.35, 0.5, 1)
+sky_horizon_color = Color(0.65, 0.65, 0.7, 1)
+ground_bottom_color = Color(0.2, 0.2, 0.2, 1)
+ground_horizon_color = Color(0.65, 0.65, 0.7, 1)
+
+[sub_resource type="Sky" id="Sky_1"]
+sky_material = SubResource("ProceduralSkyMaterial_1")
+
+[sub_resource type="Environment" id="Environment_1"]
+background_mode = 2
+sky = SubResource("Sky_1")
+tonemap_mode = 2
+ssao_enabled = true
+volumetric_fog_enabled = false
+volumetric_fog_density = 0.02
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_1"]
+vertices = PackedVector3Array(-24, 0.1, -24, -24, 0.1, 24, 24, 0.1, 24, 24, 0.1, -24)
+polygons = [PackedInt32Array(0, 1, 2), PackedInt32Array(0, 2, 3)]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_floor"]
+size = Vector3(50, 1, 50)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ground"]
+albedo_color = Color(0.22, 0.35, 0.18, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ground"]
+material = SubResource("StandardMaterial3D_ground")
+size = Vector3(50, 1, 50)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cart"]
+albedo_color = Color(0.4, 0.25, 0.15, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cart"]
+material = SubResource("StandardMaterial3D_cart")
+size = Vector3(1.5, 1, 2)
+
+[node name="March" type="Node3D"]
+script = ExtResource("1_test_loc")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866025, -0.353553, 0.353553, 0, 0.707107, 0.707107, -0.5, -0.612372, 0.612372, 0, 10, 0)
+shadow_enabled = true
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_1")
+
+[node name="Ground" type="StaticBody3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Ground"]
+shape = SubResource("BoxShape3D_floor")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Ground"]
+mesh = SubResource("BoxMesh_ground")
+
+[node name="MicroPOI_BrokenCart" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.9, 0, 0.4, 0, 1, 0, -0.4, 0, 0.9, 5, 0.5, -4)
+mesh = SubResource("BoxMesh_cart")
+
+[node name="Player" parent="." groups=["player"] instance=ExtResource("2_player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 5)
+
+[node name="Enemy" parent="." instance=ExtResource("3_enemy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -8)
+
+[node name="ArmorPickup" parent="." instance=ExtResource("4_world_item")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, 3)
+item_resource = ExtResource("10_armor_res")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("5_hud")]
+
+[node name="InventoryUI" parent="CanvasLayer" instance=ExtResource("6_inv")]
+
+[node name="AlchemyUI" parent="CanvasLayer" instance=ExtResource("8_alchemy")]
+
+[node name="SettlementUI" parent="CanvasLayer" instance=ExtResource("9_settlement")]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("7_pause")]

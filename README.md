@@ -1,0 +1,44 @@
+# Marchland Oaths
+
+A first-person frontier RPG with settlement management, small armies and diplomacy. Unite eight regions through alliances, conquest or a mixture of both, then continue exploring after the ending.
+
+## Play
+
+Extract the whole Windows archive and run `MarchlandOaths.exe`. The illustrated title screen offers Russian/English, four difficulties, five manual saves, autosave and iron mode. Iron mode has permanent death.
+
+Equip the starting sword through I, collect armor, defeat the first bandit and make the settlement's food production sustainable through B. Greenhaven's reeve is north of home: aim and press E. The journal J lists objectives; M opens the connected map. Menus pause the simulation.
+
+Each region has supply deliveries, a camp, exploration and a report. Alliances require 60 trust and 100 gold. A paid gift improves trust. Report to the reeve after resolving the region to unlock the next road. All eight reports lead to a diplomatic, military or mixed ending. Companion oaths have additional stated requirements, including five surviving soldiers for the commander; replace real casualties through the recruitment menu.
+
+## Sieges
+
+Recruit at least three soldiers through R. A blockade costs 12 food, 8 wood and 15 gold, followed by 6 food and 2 gold per day plus normal upkeep. After a day, an assault costs another 10 wood and 5 food. Use ordinary attacks to breach the physical gate and defeat the garrison. After three supplied days, an exhausted garrison can surrender. Insufficient soldiers or supplies lift the blockade. Gate damage, army casualties and siege state are saved.
+
+## Controls
+
+WASD move; mouse look; Shift sprint; Space jump; left mouse attack; right mouse block; E interact; Q potion; I inventory; C alchemy; B settlement; R/F/J army/diplomacy/journal; M map; Esc close/pause. Weapons have six visible silhouettes. Enemy and allied attacks respect solid cover. Nearby damage displays a brief health readout and hit confirmation.
+
+## Contents
+
+A connected 4×4 km terrain, eight factions, fourteen settlements, forty marked locations, sixty objectives, four companions, three bosses, seventy equipment items, twenty-five potions/recipes, twelve crafting blueprints and ten building types. Jobs, population, laws, food, salary, morale, equipment wear/repair, seasons and weather influence progression. Forty-two cosmetic civilians follow daytime routines and flee nearby combat without blocking required quest access. The terrain, sky, animated meadow cover, timber buildings, fields, carts, markets and wells use original procedural art. The regional objective structure is deliberately repeated across the frontier.
+
+## Build and test
+
+Open `project.godot` in Godot 4.7 and press F5, or use:
+
+```text
+godot --headless --path . --export-release "Windows Desktop" builds/windows/MarchlandOaths.exe
+python tests/run_tests.py --godot /path/to/godot --rendered --full-campaign --artifacts /path/to/logs
+```
+
+The suite covers 45 core regressions, 15 introductory playthrough checks, strategy, 624 RU/EN keys, sieges, civilians, cover, weapon models, triangle-exact cached terrain sampling, audio and saves. Complete diplomatic and military routes use actual movement, attacks, interactions and ordinary UI payments. The native verifier accepts `--military` for the conquest route. Normal difficulty is the full-route test baseline; other hardware and long unscripted play sessions require further independent QA.
+
+Identical houses share baked meshes and preserve their individual physical colliders. On the tested AMD integrated GPU at1280×720, this reduced the measured world load from20.50s to8.46s; the180-frame sample averaged57.56FPS with729draw calls. These are measurements from one machine, not minimum-spec guarantees.
+
+## Release scope and verification
+
+Version 1.0.0 is the initial portable Windows desktop edition, built with Godot 4.7 Stable. It is a small standalone game with original stylized/procedural visuals. Earlier design documents include broader ideas for future development; they are not a list of promised features in this edition.
+
+The test runner imports the real project in Godot, exercises gameplay, save/load, audio controls and rendered UI. Packaged executables also contain an opt-in complete-playthrough verifier: `-- --verify-build`. It starts a new QA game, so use isolated APPDATA/LOCALAPPDATA folders. QA is silent through `GAME_AUDIO_MUTED=1`; this does not remove the player's music/effects controls. Folders and formats from the previous game names remain compatible.
+
+The release report records the exact tested files, hashes, routes, screenshots and platform limits. Tests are automated in the actual engine; they do not constitute a long independent human playtest or testing on every graphics card. Portable Windows executables are not Authenticode signed. Keep third_party/Godot/LICENSE.txt, COPYRIGHT.txt and assets/audio/LICENSE.md when redistributing. The soundtrack “Where the Fog Rests” has its own generation/provenance record; procedural sound effects are covered separately.

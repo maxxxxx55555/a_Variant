@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CompanionData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/autoload/CompanionData.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = "archer_scout"
+name_key = "companion.archer_scout.name"
+role_key = "companion.archer_scout.role"
+health = 100.0
+damage = 25.0
+defense = 15.0
+relationship = 55.0
+personal_quest_id = "side_quest_clear_camp"

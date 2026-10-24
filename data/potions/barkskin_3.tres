@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PotionData" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/autoload/PotionData.gd" id="1"]
+[resource]
+script = ExtResource("1")
+id = "barkskin_3"
+name_key = "item.barkskin_3.name"
+desc_key = "item.barkskin_3.desc"
+heal_amount = 0.0
+defense_bonus = 36.00
+effect_duration = 50.0

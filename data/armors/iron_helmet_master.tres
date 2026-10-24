@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ArmorData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/autoload/ArmorData.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = "iron_helmet_master"
+name_key = "item.iron_helmet_master.name"
+desc_key = "item.iron_helmet_master.desc"
+weight = 3.0
+rarity = "legendary"
+type = "armor"
+defense = 27.60
+slot = "head"
+durability = 230.00

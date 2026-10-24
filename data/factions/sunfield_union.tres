@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FactionData" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/autoload/FactionData.gd" id="1"]
+[resource]
+script = ExtResource("1")
+id = "sunfield_union"
+name_key = "faction.sunfield_union.name"
+desc_key = "faction.sunfield_union.desc"
+personality_type = "honorable"
+military_power = 88.0
+relationship_to_player = 10.0

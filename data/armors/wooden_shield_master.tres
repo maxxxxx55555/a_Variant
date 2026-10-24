@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ArmorData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/autoload/ArmorData.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = "wooden_shield_master"
+name_key = "item.wooden_shield_master.name"
+desc_key = "item.wooden_shield_master.desc"
+weight = 3.0
+rarity = "legendary"
+type = "armor"
+defense = 34.50
+slot = "torso"
+durability = 230.00

@@ -1,0 +1,6 @@
+.godot/
+builds/
+*.translation
+*.import
+.test-profile/
+__pycache__/

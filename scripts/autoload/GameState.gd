@@ -5,6 +5,12 @@ var max_hp: float = 100.0
 var player_stamina: float = 100.0
 var max_stamina: float = 100.0
 
+var max_carry_weight: float = 40.0
+var strength_buff_timer: float = 0.0
+var timed_effects: Dictionary = {}
+var poison_timer: float = 0.0
+var poison_tick: float = 0.0
+
 var inventory: Array = []
 var equipment: Dictionary = {
 	"head": null,
@@ -17,6 +23,24 @@ var current_defense: float = 0.0
 
 func _ready() -> void:
 	recalculate_stats()
+
+func _process(delta: float) -> void:
+	if strength_buff_timer > 0:
+		strength_buff_timer -= delta
+	for effect in timed_effects.keys():
+		timed_effects[effect].seconds -= delta
+		if timed_effects[effect].seconds <= 0:
+			timed_effects.erase(effect)
+			recalculate_stats()
+	if poison_timer > 0 and player_hp > 0:
+		poison_timer = maxf(0, poison_timer - delta)
+		poison_tick += delta
+		if poison_tick >= 1:
+			poison_tick = 0
+			take_damage(2)
+
+func get_damage_modifier() -> float:
+	return maxf(1.35 if strength_buff_timer > 0 else 1.0, timed_effects.get("damage", {}).get("value", 1.0))
 
 func clamp_values() -> void:
 	max_hp = max(10.0, max_hp)
@@ -31,28 +55,61 @@ func recalculate_stats() -> void:
 		if armor and armor.has("resource_path"):
 			var res = load(armor["resource_path"])
 			if res and res.get("defense"):
-				total_def += res.get("defense")
-	current_defense = max(0.0, total_def)
+				total_def += res.get("defense") * (0.5 if armor.get("durability", res.get("durability")) <= 0 else 1.0)
+	current_defense = max(0.0, total_def + timed_effects.get("defense", {}).get("value", 0.0))
+
+func get_total_weight() -> float:
+	var total: float = 0.0
+	for item in inventory:
+		var w = item.get("weight")
+		if w == null:
+			w = 0.0
+		var cnt = item.get("count", 1)
+		total += float(w) * cnt
+	for slot in equipment.keys():
+		var item = equipment[slot]
+		if item:
+			var w = item.get("weight")
+			if w == null:
+				w = 0.0
+			total += float(w)
+	return total
+
+func is_encumbered() -> bool:
+	return get_total_weight() > max_carry_weight
+
+func get_speed_modifier() -> float:
+	return (0.6 if is_encumbered() else 1.0) * timed_effects.get("movement", {}).get("value", 1.0) * WeatherSystem.movement_speed_modifier
 
 func add_item(item_resource: Resource, count: int = 1) -> bool:
 	if not item_resource or not item_resource.resource_path:
 		IntegrityLogger.log_anomaly("GameState", "Attempted to add invalid item resource")
 		return false
+	var w = item_resource.get("weight")
+	if w == null:
+		w = 0.0
 	var item_dict = {
 		"id": item_resource.resource_path.get_file().get_basename(),
 		"resource_path": item_resource.resource_path,
 		"name_key": item_resource.get("name_key"),
 		"desc_key": item_resource.get("desc_key"),
-		"weight": item_resource.get("weight"),
+		"weight": float(w),
 		"rarity": item_resource.get("rarity"),
 		"type": item_resource.get("type"),
+		"durability": item_resource.get("durability") if item_resource.get("durability") != null else 100.0,
 		"count": count
 	}
+	if item_resource is WeaponData or item_resource is ArmorData:
+		item_dict["durability"] = item_resource.durability
 	inventory.append(item_dict)
 	EventBus.inventory_updated.emit()
 	if AudioManager:
 		AudioManager.play_sound("pickup")
 	EventBus.notification_posted.emit(LocalizationManager.get_string("msg.picked_up", {"item": LocalizationManager.get_string(item_resource.get("name_key"))}), false)
+
+	if is_encumbered():
+		EventBus.notification_posted.emit(LocalizationManager.get_string("msg.encumbered_warning"), true)
+
 	return true
 
 func equip_item(item_index: int) -> bool:
@@ -101,6 +158,25 @@ func unequip_item(slot: String) -> bool:
 		EventBus.notification_posted.emit(LocalizationManager.get_string("msg.unequipped", {"item": LocalizationManager.get_string(res.get("name_key"))}), false)
 	return true
 
+func repair_item(item_index: int) -> bool:
+	if item_index < 0 or item_index >= inventory.size():
+		return false
+	var item = inventory[item_index]
+	var resource: Resource = load(item.resource_path)
+	if not (resource is WeaponData or resource is ArmorData):
+		return false
+	var cost := ceilf(maxf(0, resource.durability - item.get("durability", resource.durability)) * resource.repair_cost_per_point)
+	if cost <= 0 or EconomySystem.stockpiles.gold < cost:
+		return false
+	EconomySystem.stockpiles.gold -= cost
+	item["durability"] = resource.durability
+	EventBus.inventory_updated.emit()
+	if AudioManager:
+		AudioManager.play_sound("ui_click")
+	var name_key = item.get("name_key", "")
+	EventBus.notification_posted.emit(LocalizationManager.get_string("msg.repaired", {"item": LocalizationManager.get_string(name_key)}), false)
+	return true
+
 func use_potion(item_index: int) -> bool:
 	if item_index < 0 or item_index >= inventory.size():
 		return false
@@ -109,19 +185,28 @@ func use_potion(item_index: int) -> bool:
 	if not res or res.get("type") != "potion":
 		return false
 
-	var heal = res.get("heal_amount")
-	if res.id == "stamina_potion" or heal == 0.0:
-		if player_stamina >= max_stamina:
-			EventBus.notification_posted.emit("Stamina is already full!", true)
-			return false
-		player_stamina = min(max_stamina, player_stamina + 50.0)
+	var useful := false
+	var stamina: float = 50.0 if res.id == "stamina_potion" else res.stamina_amount
+	if stamina > 0 and player_stamina < max_stamina:
+		player_stamina = minf(max_stamina, player_stamina + stamina)
 		EventBus.player_stamina_changed.emit(player_stamina, max_stamina)
-	else:
-		if player_hp >= max_hp:
-			EventBus.notification_posted.emit(LocalizationManager.get_string("msg.hp_full"), true)
-			return false
-		player_hp = min(max_hp, player_hp + heal)
+		useful = true
+	if res.heal_amount > 0 and player_hp < max_hp:
+		player_hp = minf(max_hp, player_hp + res.heal_amount)
 		EventBus.player_hp_changed.emit(player_hp, max_hp)
+		useful = true
+	var damage_boost: float = 1.35 if res.id == "strength_potion" else res.damage_multiplier
+	for entry in [["damage", damage_boost, 1.0], ["defense", res.defense_bonus, 0.0], ["movement", res.movement_multiplier, 1.0]]:
+		if entry[1] > entry[2]:
+			timed_effects[entry[0]] = {"value": entry[1], "seconds": res.effect_duration}
+			useful = true
+	if res.id == "antidote_potion" and poison_timer > 0:
+		poison_timer = 0
+		useful = true
+	if not useful:
+		EventBus.notification_posted.emit(LocalizationManager.get_string("msg.hp_full"), true)
+		return false
+	recalculate_stats()
 
 	if AudioManager:
 		AudioManager.play_sound("potion")
@@ -138,6 +223,8 @@ func take_damage(raw_damage: float) -> void:
 	var effective_mitigation = current_defense / (current_defense + 100.0)
 	var final_damage = max(1.0, raw_damage * (1.0 - effective_mitigation))
 	player_hp -= final_damage
+	for slot in ["head", "torso", "legs"]:
+		wear_equipment(slot, 1.0)
 	clamp_values()
 	EventBus.player_hp_changed.emit(player_hp, max_hp)
 	if player_hp <= 0:
@@ -155,3 +242,32 @@ func consume_stamina(amount: float) -> bool:
 		EventBus.player_stamina_changed.emit(player_stamina, max_stamina)
 		return true
 	return false
+
+func wear_equipment(slot: String, amount: float) -> void:
+	var item = equipment.get(slot)
+	if item:
+		var resource = load(item.resource_path)
+		item["durability"] = maxf(0, item.get("durability", resource.durability) - amount)
+		recalculate_stats()
+		EventBus.equipment_updated.emit()
+
+func get_repair_cost() -> float:
+	var cost := 0.0
+	for item in equipment.values():
+		if item:
+			var resource = load(item.resource_path)
+			cost += maxf(0, resource.durability - item.get("durability", resource.durability)) * resource.repair_cost_per_point
+	return ceilf(cost)
+
+func repair_equipment() -> bool:
+	var cost := get_repair_cost()
+	if cost <= 0 or EconomySystem.stockpiles.gold < cost:
+		return false
+	EconomySystem.stockpiles.gold -= cost
+	for item in equipment.values():
+		if item:
+			item["durability"] = load(item.resource_path).durability
+	recalculate_stats()
+	EventBus.equipment_updated.emit()
+	EventBus.settlement_updated.emit()
+	return true

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FactionData" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/autoload/FactionData.gd" id="1"]
+[resource]
+script = ExtResource("1")
+id = "river_covenant"
+name_key = "faction.river_covenant.name"
+desc_key = "faction.river_covenant.desc"
+personality_type = "mercantile"
+military_power = 64.0
+relationship_to_player = 0.0

@@ -5,6 +5,9 @@ extends Area3D
 
 @onready var prompt_label: String = "prompt.pickup"
 
+func _ready() -> void:
+	add_to_group("world_items")
+
 func get_interaction_prompt() -> String:
 	var name_key = "item"
 	if item_resource and item_resource.get("name_key"):

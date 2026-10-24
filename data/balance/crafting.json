@@ -1,0 +1,110 @@
+[
+  {
+    "id": "dagger_hardened",
+    "result": "res://data/weapons/dagger_hardened.tres",
+    "cost": {
+      "ore": 8,
+      "wood": 4,
+      "gold": 15
+    }
+  },
+  {
+    "id": "hunter_bow_hardened",
+    "result": "res://data/weapons/hunter_bow_hardened.tres",
+    "cost": {
+      "ore": 10,
+      "wood": 5,
+      "gold": 20
+    }
+  },
+  {
+    "id": "iron_spear_hardened",
+    "result": "res://data/weapons/iron_spear_hardened.tres",
+    "cost": {
+      "ore": 12,
+      "wood": 6,
+      "gold": 25
+    }
+  },
+  {
+    "id": "iron_sword_hardened",
+    "result": "res://data/weapons/iron_sword_hardened.tres",
+    "cost": {
+      "ore": 14,
+      "wood": 7,
+      "gold": 30
+    }
+  },
+  {
+    "id": "mace_hardened",
+    "result": "res://data/weapons/mace_hardened.tres",
+    "cost": {
+      "ore": 16,
+      "wood": 8,
+      "gold": 35
+    }
+  },
+  {
+    "id": "steel_sword_hardened",
+    "result": "res://data/weapons/steel_sword_hardened.tres",
+    "cost": {
+      "ore": 18,
+      "wood": 9,
+      "gold": 40
+    }
+  },
+  {
+    "id": "war_axe_hardened",
+    "result": "res://data/weapons/war_axe_hardened.tres",
+    "cost": {
+      "ore": 20,
+      "wood": 10,
+      "gold": 45
+    }
+  },
+  {
+    "id": "chainmail_hardened",
+    "result": "res://data/armors/chainmail_hardened.tres",
+    "cost": {
+      "ore": 22,
+      "wood": 11,
+      "gold": 50
+    }
+  },
+  {
+    "id": "iron_greaves_hardened",
+    "result": "res://data/armors/iron_greaves_hardened.tres",
+    "cost": {
+      "ore": 24,
+      "wood": 12,
+      "gold": 55
+    }
+  },
+  {
+    "id": "iron_helmet_hardened",
+    "result": "res://data/armors/iron_helmet_hardened.tres",
+    "cost": {
+      "ore": 26,
+      "wood": 13,
+      "gold": 60
+    }
+  },
+  {
+    "id": "leather_armor_hardened",
+    "result": "res://data/armors/leather_armor_hardened.tres",
+    "cost": {
+      "ore": 28,
+      "wood": 14,
+      "gold": 65
+    }
+  },
+  {
+    "id": "leather_boots_hardened",
+    "result": "res://data/armors/leather_boots_hardened.tres",
+    "cost": {
+      "ore": 30,
+      "wood": 15,
+      "gold": 70
+    }
+  }
+]

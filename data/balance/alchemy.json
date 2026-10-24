@@ -1,0 +1,201 @@
+[
+  {
+    "id": "health_potion_recipe",
+    "result": "res://data/potions/health_potion.tres",
+    "ingredients": {
+      "healing_herb": 2
+    }
+  },
+  {
+    "id": "vitality_1_recipe",
+    "result": "res://data/potions/vitality_1.tres",
+    "ingredients": {
+      "healing_herb": 1,
+      "ember_bloom": 1
+    }
+  },
+  {
+    "id": "vitality_2_recipe",
+    "result": "res://data/potions/vitality_2.tres",
+    "ingredients": {
+      "healing_herb": 2,
+      "ember_bloom": 2
+    }
+  },
+  {
+    "id": "vitality_3_recipe",
+    "result": "res://data/potions/vitality_3.tres",
+    "ingredients": {
+      "healing_herb": 3,
+      "ember_bloom": 3
+    }
+  },
+  {
+    "id": "vitality_4_recipe",
+    "result": "res://data/potions/vitality_4.tres",
+    "ingredients": {
+      "healing_herb": 4,
+      "ember_bloom": 4
+    }
+  },
+  {
+    "id": "vigor_1_recipe",
+    "result": "res://data/potions/vigor_1.tres",
+    "ingredients": {
+      "healing_herb": 1,
+      "river_mint": 1
+    }
+  },
+  {
+    "id": "vigor_2_recipe",
+    "result": "res://data/potions/vigor_2.tres",
+    "ingredients": {
+      "healing_herb": 2,
+      "river_mint": 2
+    }
+  },
+  {
+    "id": "vigor_3_recipe",
+    "result": "res://data/potions/vigor_3.tres",
+    "ingredients": {
+      "healing_herb": 3,
+      "river_mint": 3
+    }
+  },
+  {
+    "id": "vigor_4_recipe",
+    "result": "res://data/potions/vigor_4.tres",
+    "ingredients": {
+      "healing_herb": 4,
+      "river_mint": 4
+    }
+  },
+  {
+    "id": "might_1_recipe",
+    "result": "res://data/potions/might_1.tres",
+    "ingredients": {
+      "healing_herb": 1,
+      "stone_moss": 1
+    }
+  },
+  {
+    "id": "might_2_recipe",
+    "result": "res://data/potions/might_2.tres",
+    "ingredients": {
+      "healing_herb": 2,
+      "stone_moss": 2
+    }
+  },
+  {
+    "id": "might_3_recipe",
+    "result": "res://data/potions/might_3.tres",
+    "ingredients": {
+      "healing_herb": 3,
+      "stone_moss": 3
+    }
+  },
+  {
+    "id": "might_4_recipe",
+    "result": "res://data/potions/might_4.tres",
+    "ingredients": {
+      "healing_herb": 4,
+      "stone_moss": 4
+    }
+  },
+  {
+    "id": "barkskin_1_recipe",
+    "result": "res://data/potions/barkskin_1.tres",
+    "ingredients": {
+      "healing_herb": 1,
+      "marsh_root": 1
+    }
+  },
+  {
+    "id": "barkskin_2_recipe",
+    "result": "res://data/potions/barkskin_2.tres",
+    "ingredients": {
+      "healing_herb": 2,
+      "marsh_root": 2
+    }
+  },
+  {
+    "id": "barkskin_3_recipe",
+    "result": "res://data/potions/barkskin_3.tres",
+    "ingredients": {
+      "healing_herb": 3,
+      "marsh_root": 3
+    }
+  },
+  {
+    "id": "barkskin_4_recipe",
+    "result": "res://data/potions/barkskin_4.tres",
+    "ingredients": {
+      "healing_herb": 4,
+      "marsh_root": 4
+    }
+  },
+  {
+    "id": "swift_1_recipe",
+    "result": "res://data/potions/swift_1.tres",
+    "ingredients": {
+      "healing_herb": 1,
+      "ember_bloom": 1
+    }
+  },
+  {
+    "id": "swift_2_recipe",
+    "result": "res://data/potions/swift_2.tres",
+    "ingredients": {
+      "healing_herb": 2,
+      "ember_bloom": 2
+    }
+  },
+  {
+    "id": "swift_3_recipe",
+    "result": "res://data/potions/swift_3.tres",
+    "ingredients": {
+      "healing_herb": 3,
+      "ember_bloom": 3
+    }
+  },
+  {
+    "id": "swift_4_recipe",
+    "result": "res://data/potions/swift_4.tres",
+    "ingredients": {
+      "healing_herb": 4,
+      "ember_bloom": 4
+    }
+  },
+  {
+    "id": "stamina_potion_recipe",
+    "result": "res://data/potions/stamina_potion.tres",
+    "ingredients": {
+      "healing_herb": 3,
+      "marsh_root": 1
+    }
+  },
+  {
+    "id": "strength_potion_recipe",
+    "result": "res://data/potions/strength_potion.tres",
+    "ingredients": {
+      "healing_herb": 3,
+      "marsh_root": 1
+    }
+  },
+  {
+    "id": "health_potion_large_recipe",
+    "result": "res://data/potions/health_potion_large.tres",
+    "ingredients": {
+      "healing_herb": 3,
+      "marsh_root": 1
+    }
+  },
+  {
+    "id": "antidote_potion_recipe",
+    "result": "res://data/potions/antidote_potion.tres",
+    "ingredients": {
+      "healing_herb": 3,
+      "marsh_root": 1
+    }
+  }
+]

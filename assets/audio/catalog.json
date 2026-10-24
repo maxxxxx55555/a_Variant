@@ -1,0 +1,250 @@
+{
+  "sample_rate": 32000,
+  "license": "Mixed: synthesized SFX CC0-1.0; Gemini generated music, see LICENSE.md and music-provenance.json",
+  "music": {
+    "exploration": {
+      "path": "calm_theme.wav",
+      "seconds": 116.5843,
+      "loop": true,
+      "channels": 2,
+      "source": "Google Gemini / Lyria",
+      "license": "Generated output; Google Terms of Service"
+    },
+    "settlement": {
+      "path": "calm_theme.wav",
+      "seconds": 116.5843,
+      "loop": true,
+      "channels": 2,
+      "source": "Google Gemini / Lyria",
+      "license": "Generated output; Google Terms of Service"
+    },
+    "combat": {
+      "path": "calm_theme.wav",
+      "seconds": 116.5843,
+      "loop": true,
+      "channels": 2,
+      "source": "Google Gemini / Lyria",
+      "license": "Generated output; Google Terms of Service"
+    },
+    "war": {
+      "path": "calm_theme.wav",
+      "seconds": 116.5843,
+      "loop": true,
+      "channels": 2,
+      "source": "Google Gemini / Lyria",
+      "license": "Generated output; Google Terms of Service"
+    }
+  },
+  "sfx": {
+    "ui_click": {
+      "path": "ui_click.wav",
+      "seconds": 0.38,
+      "loop": false,
+      "channels": 1
+    },
+    "inventory_open": {
+      "path": "inventory_open.wav",
+      "seconds": 0.38,
+      "loop": false,
+      "channels": 1
+    },
+    "pickup": {
+      "path": "pickup.wav",
+      "seconds": 0.38,
+      "loop": false,
+      "channels": 1
+    },
+    "purchase": {
+      "path": "purchase.wav",
+      "seconds": 0.38,
+      "loop": false,
+      "channels": 1
+    },
+    "sale": {
+      "path": "sale.wav",
+      "seconds": 0.38,
+      "loop": false,
+      "channels": 1
+    },
+    "coin": {
+      "path": "coin.wav",
+      "seconds": 0.38,
+      "loop": false,
+      "channels": 1
+    },
+    "upgrade": {
+      "path": "upgrade.wav",
+      "seconds": 1.1,
+      "loop": false,
+      "channels": 1
+    },
+    "potion": {
+      "path": "potion.wav",
+      "seconds": 0.65,
+      "loop": false,
+      "channels": 1
+    },
+    "victory": {
+      "path": "victory.wav",
+      "seconds": 2.8,
+      "loop": false,
+      "channels": 1
+    },
+    "defeat": {
+      "path": "defeat.wav",
+      "seconds": 2.2,
+      "loop": false,
+      "channels": 1
+    },
+    "swing": {
+      "path": "swing.wav",
+      "seconds": 0.38,
+      "loop": false,
+      "channels": 1
+    },
+    "attack": {
+      "path": "attack.wav",
+      "seconds": 0.38,
+      "loop": false,
+      "channels": 1
+    },
+    "hit": {
+      "path": "hit.wav",
+      "seconds": 0.38,
+      "loop": false,
+      "channels": 1
+    },
+    "hit_metal": {
+      "path": "hit_metal.wav",
+      "seconds": 0.38,
+      "loop": false,
+      "channels": 1
+    },
+    "hit_flesh": {
+      "path": "hit_flesh.wav",
+      "seconds": 0.38,
+      "loop": false,
+      "channels": 1
+    },
+    "block": {
+      "path": "block.wav",
+      "seconds": 0.38,
+      "loop": false,
+      "channels": 1
+    },
+    "enemy_hurt": {
+      "path": "enemy_hurt.wav",
+      "seconds": 0.38,
+      "loop": false,
+      "channels": 1
+    },
+    "enemy_death": {
+      "path": "enemy_death.wav",
+      "seconds": 0.9,
+      "loop": false,
+      "channels": 1
+    },
+    "ambience_forest": {
+      "path": "ambience_forest.wav",
+      "seconds": 16.0,
+      "loop": true,
+      "channels": 1
+    },
+    "ambience_camp": {
+      "path": "ambience_camp.wav",
+      "seconds": 16.0,
+      "loop": true,
+      "channels": 1
+    },
+    "footstep_grass_0": {
+      "path": "footstep_grass_0.wav",
+      "seconds": 0.38,
+      "loop": false,
+      "channels": 1
+    },
+    "footstep_grass_1": {
+      "path": "footstep_grass_1.wav",
+      "seconds": 0.38,
+      "loop": false,
+      "channels": 1
+    },
+    "footstep_grass_2": {
+      "path": "footstep_grass_2.wav",
+      "seconds": 0.38,
+      "loop": false,
+      "channels": 1
+    },
+    "footstep_dirt_0": {
+      "path": "footstep_dirt_0.wav",
+      "seconds": 0.38,
+      "loop": false,
+      "channels": 1
+    },
+    "footstep_dirt_1": {
+      "path": "footstep_dirt_1.wav",
+      "seconds": 0.38,
+      "loop": false,
+      "channels": 1
+    },
+    "footstep_dirt_2": {
+      "path": "footstep_dirt_2.wav",
+      "seconds": 0.38,
+      "loop": false,
+      "channels": 1
+    },
+    "footstep_stone_0": {
+      "path": "footstep_stone_0.wav",
+      "seconds": 0.38,
+      "loop": false,
+      "channels": 1
+    },
+    "footstep_stone_1": {
+      "path": "footstep_stone_1.wav",
+      "seconds": 0.38,
+      "loop": false,
+      "channels": 1
+    },
+    "footstep_stone_2": {
+      "path": "footstep_stone_2.wav",
+      "seconds": 0.38,
+      "loop": false,
+      "channels": 1
+    },
+    "footstep_wood_0": {
+      "path": "footstep_wood_0.wav",
+      "seconds": 0.38,
+      "loop": false,
+      "channels": 1
+    },
+    "footstep_wood_1": {
+      "path": "footstep_wood_1.wav",
+      "seconds": 0.38,
+      "loop": false,
+      "channels": 1
+    },
+    "footstep_wood_2": {
+      "path": "footstep_wood_2.wav",
+      "seconds": 0.38,
+      "loop": false,
+      "channels": 1
+    },
+    "footstep_snow_0": {
+      "path": "footstep_snow_0.wav",
+      "seconds": 0.38,
+      "loop": false,
+      "channels": 1
+    },
+    "footstep_snow_1": {
+      "path": "footstep_snow_1.wav",
+      "seconds": 0.38,
+      "loop": false,
+      "channels": 1
+    },
+    "footstep_snow_2": {
+      "path": "footstep_snow_2.wav",
+      "seconds": 0.38,
+      "loop": false,
+      "channels": 1
+    }
+  }
+}

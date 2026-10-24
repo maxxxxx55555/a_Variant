@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PotionData" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/autoload/PotionData.gd" id="1"]
+[resource]
+script = ExtResource("1")
+id = "might_2"
+name_key = "item.might_2.name"
+desc_key = "item.might_2.desc"
+heal_amount = 0.0
+damage_multiplier = 1.24
+effect_duration = 40.0

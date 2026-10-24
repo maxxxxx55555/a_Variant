@@ -1,0 +1,19 @@
+{
+  "calm_theme.wav": {
+    "provider": "Google Gemini / Lyria",
+    "date": "2026-10-24",
+    "moods": [
+      "exploration",
+      "settlement",
+      "combat",
+      "war"
+    ],
+    "prompt": "Спокойный инструментальный фон, мягкое пианино и тёплые струнные, 65 BPM; без колокольчиков, резких синтезаторов, ударных и навязчивой мелодии; две минуты, ровная тихая динамика.",
+    "source_filename": "where_the_fog_rests.mp4",
+    "source_sha256": "6f8dd774f9731d8fe707e6794e933a88e1fc654d2cba120486efc0fbe615908d",
+    "wav_sha256": "17c7908081b7930406d684d96bd05c5551b86aa748f30fe8a05b6618edc351f0",
+    "processing": "32 kHz stereo PCM, quiet gain, two-second overlap crossfade, 2 ms edge taper",
+    "terms": "https://policies.google.com/terms",
+    "policy": "https://policies.google.com/terms/generative-ai/use-policy"
+  }
+}

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FactionData" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/autoload/FactionData.gd" id="1"]
+[resource]
+script = ExtResource("1")
+id = "borderland_watch"
+name_key = "faction.borderland_watch.name"
+desc_key = "faction.borderland_watch.desc"
+personality_type = "honorable"
+military_power = 56.0
+relationship_to_player = 0.0

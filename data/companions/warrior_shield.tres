@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CompanionData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/autoload/CompanionData.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = "warrior_shield"
+name_key = "companion.warrior_shield.name"
+role_key = "companion.warrior_shield.role"
+health = 150.0
+damage = 22.0
+defense = 35.0
+relationship = 60.0
+personal_quest_id = "companion_quest_01"
