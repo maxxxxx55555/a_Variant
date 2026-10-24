@@ -1,6 +1,8 @@
 class_name MarchArt
 extends RefCounted
 
+static var house_templates: Dictionary = {}
+
 static func material(color: Color, glow: float = 0.0) -> StandardMaterial3D:
 	var result := StandardMaterial3D.new()
 	result.albedo_color = color
@@ -118,6 +120,25 @@ static func house(parent: Node3D, position: Vector3, tint: Color) -> Node3D:
 	var house_root := Node3D.new()
 	house_root.position = position
 	parent.add_child(house_root)
+	var key := tint.to_html()
+	if house_templates.has(key):
+		for data in house_templates[key]:
+			var mesh := MeshInstance3D.new()
+			mesh.mesh = data.mesh
+			mesh.material_override = data.material
+			mesh.visibility_range_end = 280
+			mesh.visibility_range_end_margin = 35
+			house_root.add_child(mesh)
+		var body := StaticBody3D.new()
+		body.position.y = 1.7
+		body.set_meta("surface", "wood")
+		house_root.add_child(body)
+		var collision := CollisionShape3D.new()
+		var shape := BoxShape3D.new()
+		shape.size = Vector3(4.2, 3.4, 5.5)
+		collision.shape = shape
+		body.add_child(collision)
+		return house_root
 	box(house_root, Vector3(0, 1.7, 0), Vector3(4.2, 3.4, 5.5), tint, true)
 	var roof := PrismMesh.new()
 	roof.size = Vector3(5, 2.1, 6.3)
@@ -161,6 +182,10 @@ static func house(parent: Node3D, position: Vector3, tint: Color) -> Node3D:
 			var batten := box(house_root, Vector3(side * 1.25, 4.1, index * 1.1 - 2.75), Vector3(3.0, 0.065, 0.08), Color("76594a"))
 			batten.rotation.z = side * -0.61
 	merge_static_meshes(house_root)
+	var template: Array = []
+	for child in house_root.get_children():
+		if child is MeshInstance3D: template.append({"mesh": child.mesh, "material": child.material_override})
+	house_templates[key] = template
 	return house_root
 
 static func merge_static_meshes(parent: Node3D) -> void:

@@ -33,6 +33,8 @@ python tests/run_tests.py --godot /path/to/godot --rendered --full-campaign --ar
 
 The suite covers 45 core regressions, 15 introductory playthrough checks, strategy, 624 RU/EN keys, sieges, civilians, cover, weapon models, triangle-exact cached terrain sampling, audio and saves. Complete diplomatic and military routes use actual movement, attacks, interactions and ordinary UI payments. The native verifier accepts `--military` for the conquest route. Normal difficulty is the full-route test baseline; other hardware and long unscripted play sessions require further independent QA.
 
+Identical houses share baked meshes and preserve their individual physical colliders. On the tested AMD integrated GPU at1280×720, this reduced the measured world load from20.50s to8.46s; the180-frame sample averaged57.56FPS with729draw calls. These are measurements from one machine, not minimum-spec guarantees.
+
 ## Release scope and verification
 
 Version 1.0.0 is the initial portable Windows desktop edition, built with Godot 4.7 Stable. It is a small standalone game with original stylized/procedural visuals. Earlier design documents include broader ideas for future development; they are not a list of promised features in this edition.
