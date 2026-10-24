@@ -192,9 +192,43 @@ func run() -> void:
 		await walk_to(Vector3(town.x - 70, 0, town.z + 30))
 		await walk_to(Vector3(town.x, 0, town.z + 30))
 		if military:
+			# Boss encounters can inflict real casualties; replace losses before
+			# committing the surviving field army to its next blockade.
+			var replacements: int = maxi(0, 5 - root.get_node("ArmySystem").get_total_soldiers())
+			if replacements > 0:
+				world.toggle_strategy(0)
+				world.strategy_ui.unit_choice.selected = 0
+				world.strategy_ui.recruit_count.value = replacements
+				button("ui.recruit").pressed.emit()
+				world.toggle_pause()
 			await talk(town.id)
+			for resource in ["wood", "food"]:
+				var target_stock := 18 if resource == "wood" else 60
+				while root.get_node("EconomySystem").stockpiles[resource] < target_stock and not failed:
+					var before: float = root.get_node("EconomySystem").stockpiles[resource]
+					for control in world.town_ui.find_children("*", "Button", true, false):
+						if control.get_meta("trade_resource", "") == resource and control.get_meta("text_key", "") == "ui.buy": control.pressed.emit()
+					if root.get_node("EconomySystem").stockpiles[resource] <= before: fail("Unable to buy siege provisions: " + resource)
+			world.town_ui.blockade_button.pressed.emit()
+			if not root.get_node("SiegeSystem").states.has(fid):
+				fail("Blockade setup refused: resources=" + str(root.get_node("EconomySystem").stockpiles) + " troops=" + str(root.get_node("ArmySystem").get_total_soldiers()) + " states=" + str(root.get_node("SiegeSystem").states) + " bound=" + str(campaign.bound(fid)))
+				break
+			world.town_ui.wait_button.pressed.emit()
 			world.town_ui.assault_button.pressed.emit()
+			if get_tree().paused:
+				fail("Prepared assault could not be launched")
+				break
 			await combat()
+			await walk_to(Vector3(town.x, 0, town.z + 17.8), 0.2)
+			player.camera.look_at(Vector3(town.x, world.terrain.ground_at(town.x, town.z + 19) + 1.5, town.z + 19))
+			var breach_frames := 0
+			while root.get_node("SiegeSystem").states[fid].wall_hp > 0 and breach_frames < 2500 and not failed:
+				if breach_frames % 2 == 0: Input.action_press("attack")
+				else: Input.action_release("attack")
+				await frame()
+				breach_frames += 1
+			Input.action_release("attack")
+			if breach_frames >= 2500: fail("Ordinary weapon attacks did not breach the siege gate: position=" + str(player.position) + " weapon=" + str(state.equipment.weapon) + " wall=" + str(root.get_node("SiegeSystem").states[fid].wall_hp))
 			if fid not in campaign.conquests: fail("Defeating the garrison did not secure its faction")
 		else:
 			world.toggle_strategy(1)

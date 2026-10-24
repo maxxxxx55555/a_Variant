@@ -6,6 +6,8 @@ var represented_count: int = 1
 var health: float = 100
 var data: Resource
 var attack_cooldown: float = 0
+var visual: Node3D
+var walk_phase: float = 0
 
 func _ready() -> void:
 	add_to_group("allies")
@@ -20,7 +22,7 @@ func _ready() -> void:
 	collider.shape = shape
 	collider.position.y = 0.85
 	add_child(collider)
-	MarchArt.humanoid(self, Color("446879"), true)
+	visual = MarchArt.humanoid(self, Color("446879"), true)
 
 func take_damage(amount: float) -> void:
 	health -= amount * 100.0 / (100.0 + data.defense)
@@ -78,3 +80,5 @@ func _physics_process(delta: float) -> void:
 		velocity.z = 0
 	velocity.y -= 9.8 * delta
 	move_and_slide()
+	walk_phase += delta * Vector2(velocity.x, velocity.z).length() * 2
+	MarchArt.animate_walk(visual, walk_phase, minf(0.5, Vector2(velocity.x, velocity.z).length() * 0.12))

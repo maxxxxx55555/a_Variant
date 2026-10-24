@@ -92,9 +92,11 @@ func forest() -> void:
 	var rng := RandomNumberGenerator.new()
 	rng.seed = int(CampaignSystem.definition.seed)
 	var transforms: Array[Transform3D] = []
-	for attempt in 6000:
+	for attempt in 16000:
 		var x := rng.randf_range(-1950, 1950)
 		var z := rng.randf_range(-1950, 1950)
+		# Broad wooded clusters leave natural meadows between forest regions.
+		if noise.get_noise_2d(x * 2.4, z * 2.4) < -0.3: continue
 		if Vector2(x, z).length() < 38:
 			continue
 		var blocked := false

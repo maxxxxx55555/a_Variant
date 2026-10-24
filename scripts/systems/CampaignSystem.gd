@@ -44,6 +44,7 @@ func new_campaign(level: int, iron: bool) -> void:
 	assaults.clear()
 	completed.clear()
 	companions.clear()
+	SiegeSystem.states.clear()
 	brewed = 0
 	difficulty = clampi(level, 0, 3)
 	iron_mode = iron
@@ -143,20 +144,13 @@ func camp_cleared(id: String, garrison: bool = false) -> bool:
 	return faction_exists(id)
 
 func start_assault(id: String) -> bool:
-	var world := get_tree().current_scene
-	if not faction_exists(id) or bound(id) or id in assaults or not world or not world.has_method("spawn_garrison"):
-		return false
-	assaults.append(id)
-	FactionSystem.update_relationship(id, -100)
-	FactionSystem.factions[id].escalation_level = 5
-	world.spawn_garrison(id)
-	refresh()
-	return true
+	return SiegeSystem.launch_assault(id)
 
 func capture_faction(id: String) -> bool:
-	if id not in assaults or id in conquests or not camp_cleared(id, true):
+	if id not in assaults or id in conquests or not camp_cleared(id, true) or not SiegeSystem.breached(id):
 		return false
 	conquests.append(id)
+	SiegeSystem.states[id].phase = "captured"
 	EconomySystem.stockpiles.gold += 100
 	refresh()
 	return true
@@ -266,7 +260,7 @@ func travel(id: String) -> bool:
 	return true
 
 func capture_state() -> Dictionary:
-	return {"visited": visited.duplicate(), "roads": roads.duplicate(), "deliveries": deliveries.duplicate(), "reports": reports.duplicate(), "explored": explored.duplicate(), "fallen": fallen.duplicate(), "conquests": conquests.duplicate(), "assaults": assaults.duplicate(), "completed": completed.duplicate(), "companions": companions.duplicate(), "brewed": brewed, "difficulty": difficulty, "iron_mode": iron_mode, "iron_dead": iron_dead, "active": active, "announced_ending": announced_ending}
+	return {"visited": visited.duplicate(), "roads": roads.duplicate(), "deliveries": deliveries.duplicate(), "reports": reports.duplicate(), "explored": explored.duplicate(), "fallen": fallen.duplicate(), "conquests": conquests.duplicate(), "assaults": assaults.duplicate(), "completed": completed.duplicate(), "companions": companions.duplicate(), "brewed": brewed, "difficulty": difficulty, "iron_mode": iron_mode, "iron_dead": iron_dead, "active": active, "announced_ending": announced_ending, "sieges": SiegeSystem.capture_state()}
 
 func restore_state(data: Dictionary) -> void:
 	for key in ["visited", "roads", "deliveries", "reports", "explored", "fallen", "conquests", "assaults", "completed", "companions"]:
@@ -277,4 +271,5 @@ func restore_state(data: Dictionary) -> void:
 	iron_dead = data.get("iron_dead", false)
 	active = data.get("active", false)
 	announced_ending = data.get("announced_ending", "")
+	SiegeSystem.restore_state(data.get("sieges", {}))
 	changed.emit()

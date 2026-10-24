@@ -78,13 +78,27 @@ func run() -> void:
 		await process_frame
 		var restored: Array = get_nodes_in_group("enemies").filter(func(actor): return actor.get_meta("campaign_id", "") == enemy_id)
 		check(restored.size() == 1, "Loading an earlier snapshot restores a camp enemy killed after that save")
-		campaign.start_assault("iron_guild")
+		root.get_node("ArmySystem").recruit("militia_spear", 3)
+		root.get_node("SiegeSystem").begin("iron_guild")
+		root.get_node("TimeSystem").advance_day()
+		check(campaign.start_assault("iron_guild"), "A supplied blockade launches a real siege battle")
 		saved_world = world.get_world_state()
 		world.load_world_state(saved_world)
 		world.load_world_state(saved_world)
 		await process_frame
 		var guards: Array = get_nodes_in_group("enemies").filter(func(actor): return str(actor.get_meta("campaign_id", "")).begins_with("iron_guild_guard_"))
 		check(guards.size() == 3, "Repeated loads cannot duplicate a living garrison")
+		var siege: Node = root.get_node("SiegeSystem")
+		siege.damage_gate("iron_guild", 66)
+		saved_simulation = world.pause_menu.capture_simulation()
+		saved_world = world.get_world_state()
+		siege.damage_gate("iron_guild", 500)
+		await process_frame
+		world.pause_menu.restore_simulation(saved_simulation)
+		world.load_world_state(saved_world)
+		await process_frame
+		check(siege.states.iron_guild.wall_hp == 114 and is_instance_valid(world.siege_gates.get("iron_guild")), "Loading before a breach restores the physical damaged gate and its exact health")
+		check(get_nodes_in_group("civilians").size() == 42, "Every town has three nonblocking residents while quest reeves remain available")
 		world.queue_free()
 		await process_frame
 		check(root.get_node("EventBus").get_signal_connection_list("language_changed").size() == language_listeners, "Leaving a world removes its language listeners before the next campaign starts")

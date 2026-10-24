@@ -6,6 +6,7 @@ var health: float
 var cooldown: float = 0
 var downed_time: float = 0
 var visual: Node3D
+var walk_phase: float = 0
 
 func _ready() -> void:
 	add_to_group("allies")
@@ -77,3 +78,5 @@ func _physics_process(delta: float) -> void:
 		velocity.z = 0
 	velocity.y -= 9.8 * delta
 	move_and_slide()
+	walk_phase += delta * Vector2(velocity.x, velocity.z).length() * 2
+	MarchArt.animate_walk(visual, walk_phase, minf(0.5, Vector2(velocity.x, velocity.z).length() * 0.12))

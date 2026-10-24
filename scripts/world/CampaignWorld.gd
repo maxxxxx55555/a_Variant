@@ -9,6 +9,7 @@ var autosave_time: float = 0
 var ending_panel: PanelContainer
 var companion_actors: Dictionary = {}
 var current_ambience: String = "forest"
+var siege_gates: Dictionary = {}
 
 func _ready() -> void:
 	if not CampaignSystem.active:
@@ -19,6 +20,7 @@ func _ready() -> void:
 	terrain = TERRAIN_SCRIPT.new()
 	add_child(terrain)
 	terrain.generate()
+	preload("res://scripts/world/MarchRoads.gd").build(self, terrain)
 	var environment: Environment = $WorldEnvironment.environment
 	environment.volumetric_fog_enabled = false
 	environment.fog_enabled = true
@@ -31,6 +33,10 @@ func _ready() -> void:
 	$DirectionalLight3D.light_color = Color("ffe0af")
 	$DirectionalLight3D.light_energy = 0.7
 	$DirectionalLight3D.rotation_degrees = Vector3(-33, -28, 0)
+	$DirectionalLight3D.light_color = Color("fff0d6")
+	environment.background_mode = Environment.BG_COLOR
+	environment.background_color = Color("9bb5bc")
+	environment.fog_light_color = Color("a5bbbd")
 	MarchArt.house(self, Vector3(-9, terrain.ground_at(-9, 12), 12), Color("a49878"))
 	MarchArt.house(self, Vector3(9, terrain.ground_at(9, 12), 12), Color("8b8d76"))
 	MarchArt.label(self, LocalizationManager.get_string("ui.home"), Vector3(0, 5, 16))
@@ -43,6 +49,8 @@ func _ready() -> void:
 	town_ui.theme = strategy_ui.theme
 	town_ui.hide()
 	CampaignSystem.campaign_finished.connect(show_ending)
+	SiegeSystem.changed.connect(sync_siege_gates)
+	sync_siege_gates()
 	if not CampaignSystem.pending_load.is_empty():
 		var pending: Dictionary = CampaignSystem.pending_load
 		CampaignSystem.pending_load = {}
@@ -71,6 +79,19 @@ func build_town(data: Dictionary) -> void:
 	var flag := MarchArt.box(self, origin + Vector3(5, 4, 4), Vector3(2.0, 1.3, 0.08), Color(faction.color))
 	MarchArt.box(self, origin + Vector3(4, 2.5, 4), Vector3(0.12, 5, 0.12), Color("514533"))
 	flag.rotation.y = 0.2
+	preload("res://scripts/world/MarchScenery.gd").dress_town(self, terrain, data)
+	MarchArt.market(self, origin + Vector3(-6, 0, -6), Color(faction.color).darkened(0.15))
+	MarchArt.well(self, origin + Vector3(6, 0, -4))
+	for index in 3:
+		var civilian := preload("res://scripts/ai/CivilianActor.gd").new()
+		civilian.town_id = data.id
+		civilian.occupation = index
+		var side := -1 if index < 2 else 1
+		civilian.home = origin + Vector3(side * 8, 0, -13 + index)
+		civilian.workplace = origin + Vector3(side * 8, 0, -6 + index * 2)
+		civilian.plaza = origin + Vector3(side * 6, 0, 1 + index)
+		civilian.process_mode = Node.PROCESS_MODE_PAUSABLE
+		add_child(civilian)
 
 func build_point(data: Dictionary) -> void:
 	var origin := Vector3(data.x, terrain.ground_at(data.x, data.z), data.z)
@@ -141,6 +162,22 @@ func in_combat() -> bool:
 		if is_instance_valid(actor) and not actor.is_dead and actor.global_position.distance_to(player.global_position) < 23:
 			return true
 	return false
+
+func sync_siege_gates() -> void:
+	if not is_instance_valid(terrain): return
+	for id in siege_gates.keys():
+		if not is_instance_valid(siege_gates[id]) or siege_gates[id].is_queued_for_deletion(): siege_gates.erase(id)
+	for id in SiegeSystem.states:
+		var state: Dictionary = SiegeSystem.states[id]
+		if state.phase != "assault" or state.wall_hp <= 0 or siege_gates.has(id): continue
+		for data in CampaignSystem.definition.towns:
+			if data.faction != id: continue
+			var gate := preload("res://scripts/world/SiegeGate.gd").new()
+			gate.faction_id = id
+			add_child(gate)
+			gate.position = Vector3(data.x, terrain.ground_at(data.x, data.z + 19), data.z + 19)
+			siege_gates[id] = gate
+			break
 
 func _process(delta: float) -> void:
 	super._process(delta)
@@ -269,6 +306,7 @@ func load_world_state(data: Dictionary) -> void:
 			break
 	for id in CampaignSystem.assaults:
 		if not CampaignSystem.camp_cleared(id, true): spawn_garrison(id)
+	sync_siege_gates()
 	for id in companion_actors.keys():
 		if is_instance_valid(companion_actors[id]): companion_actors[id].queue_free()
 	companion_actors.clear()

@@ -15,13 +15,16 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 run/max_fps=60
-config/name="Oaths of the March"
+config/name="Marchland Oaths"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="Godot/app_userdata/Oaths of the March"
 config/name_localized={
-"en": "Oaths of the March",
-"ru": "Клятвы Пограничья"
+"en": "Marchland Oaths",
+"ru": "Marchland Oaths"
 }
-config/description="Oaths of the March / Клятвы Пограничья - Fantasy Action RPG & Settlement Strategy"
+config/description="Marchland Oaths - Fantasy Action RPG & Settlement Strategy"
 run/main_scene="res://scenes/ui/main_menu.tscn"
+config/icon="res://icon.svg"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 
 [autoload]
@@ -47,6 +50,7 @@ QuestSystem="*res://scripts/systems/QuestSystem.gd"
 WeatherSystem="*res://scripts/systems/WeatherSystem.gd"
 CampaignSystem="*res://scripts/systems/CampaignSystem.gd"
 WorkshopSystem="*res://scripts/systems/WorkshopSystem.gd"
+SiegeSystem="*res://scripts/systems/SiegeSystem.gd"
 
 [display]
 

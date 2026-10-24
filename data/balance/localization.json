@@ -1,7 +1,7 @@
 {
   "ui.title": {
-    "ru": "Клятвы Пограничья",
-    "en": "Oaths of the March"
+    "ru": "Marchland Oaths",
+    "en": "Marchland Oaths"
   },
   "ui.resume": {
     "ru": "Продолжить",
@@ -332,8 +332,8 @@
     "en": "Potion"
   },
   "ui.controls": {
-    "ru": "WASD — движение · Shift — бег · Пробел — прыжок\nЛКМ — атака · ПКМ — блок · E — действие · Q — зелье\nI — вещи · C — алхимия · B — поселение · R/F/J — совет · M — карта · Esc — пауза",
-    "en": "WASD move · Shift sprint · Space jump\nLMB attack · RMB block · E interact · Q potion\nI inventory · C alchemy · B settlement · R/F/J council · M map · Esc pause"
+    "ru": "WASD — движение · Shift — бег · Пробел — прыжокЛКМ — атака · ПКМ — блок · E — действие · Q — зельеI — вещи · C — алхимия · B — поселение · R/F/J — совет · M — карта · Esc — пауза",
+    "en": "WASD move · Shift sprint · Space jumpLMB attack · RMB block · E interact · Q potionI inventory · C alchemy · B settlement · R/F/J council · M map · Esc pause"
   },
   "ui.empty": {
     "ru": "Пусто",
@@ -468,8 +468,8 @@
     "en": "Make food production sustainable (B)"
   },
   "tutorial.completed": {
-    "ru": "ВЫЛАЗКА ЗАВЕРШЕНА!\nВы освоили доступный игровой цикл.\nПолная кампания ещё в разработке.",
-    "en": "EXPEDITION COMPLETE!\nYou have mastered the available gameplay loop.\nThe full campaign is still in development."
+    "ru": "ВЫЛАЗКА ЗАВЕРШЕНА!Вы освоили доступный игровой цикл.Полная кампания ещё в разработке.",
+    "en": "EXPEDITION COMPLETE!You have mastered the available gameplay loop.The full campaign is still in development."
   },
   "ui.close": {
     "ru": "Закрыть",
@@ -2111,10 +2111,6 @@
     "ru": "Объявить войну и атаковать гарнизон",
     "en": "Declare war and assault the garrison"
   },
-  "ui.town_help": {
-    "ru": "Помогите общине обозом и очистите лагерь в 85 метрах к востоку. Святилище на западе укрепит доверие. Союз доступен в Совете [F] при отношении 60 и за 100 золота. После союза вернитесь за дорожной грамотой. Военный путь: объявите войну и победите трёх защитников гарнизона.",
-    "en": "Deliver supplies and clear the camp 85 metres east. The western shrine earns trust. Propose an alliance in the Council [F] at 60 trust for 100 gold. Return after the alliance to receive a road charter. Military route: declare war and defeat all three garrison defenders."
-  },
   "ui.home": {
     "ru": "Очаг Пограничья",
     "en": "Hearth of the March"
@@ -2172,8 +2168,8 @@
     "en": "A Council of Steel and Trust"
   },
   "ending.body": {
-    "ru": "Все восемь общин признали общий совет.\nВыполнено заданий: {quests}/60. Прошло дней: {days}.\nЛичные клятвы спутников и неразведанные земли ещё ждут вас.",
-    "en": "All eight communities recognize the common council.\nQuests completed: {quests}/60. Days elapsed: {days}.\nYour companions' personal oaths and unexplored lands still await."
+    "ru": "Все восемь общин признали общий совет.Выполнено заданий: {quests}/60. Прошло дней: {days}.Личные клятвы спутников и неразведанные земли ещё ждут вас.",
+    "en": "All eight communities recognize the common council.Quests completed: {quests}/60. Days elapsed: {days}.Your companions' personal oaths and unexplored lands still await."
   },
   "poi.shrine": {
     "ru": "Старое святилище",
@@ -2226,10 +2222,6 @@
   "ui.campaign_intro": {
     "ru": "Вы — новый хранитель пограничного очага. Накормите жителей, помогите общинам и объедините восемь фракций клятвами или силой. Начните с меча [I], полей [R → строительство] и старосты Тихой Сечи на севере. Карта [M] и журнал [J] всегда под рукой.",
     "en": "You are the new keeper of a frontier hearth. Feed your people, aid the communities and unite eight factions through oaths or force. Start with your sword [I], farms [R → building] and Greenhaven's reeve to the north. The map [M] and journal [J] are always available."
-  },
-  "ui.preview": {
-    "ru": "Кампания • версия для проверки",
-    "en": "Campaign • preview build"
   },
   "ui.iron_dead": {
     "ru": "Клятва оборвалась. Начните новую кампанию.",
@@ -2450,5 +2442,57 @@
   "tutorial.basics_complete": {
     "ru": "Основы освоены. Впереди восемь клятв. Журнал [J], карта [M].",
     "en": "Basics complete. Eight oaths await. Journal [J], map [M]."
+  },
+  "ui.preview": {
+    "ru": "Хранитель очага. Союзы. Война за пограничье.",
+    "en": "Keep the hearth. Forge alliances. Unite the March."
+  },
+  "ui.town_help": {
+    "ru": "Доставьте припасы и очистите лагерь в 85 метрах к востоку. Святилище на западе укрепляет доверие. Союз в Совете [F]: 60 доверия и 100 золота. Затем доложите старосте. Военный путь: блокада с 3 бойцами, прорыв ворот и победа над гарнизоном либо его капитуляция.",
+    "en": "Deliver supplies and clear the camp 85 metres east. The western shrine earns trust. Alliance in the Council [F]: 60 trust and 100 gold. Return to report. Military route: blockade with 3 troops, breach the gate and defeat the garrison, or negotiate its surrender."
+  },
+  "siege.begin": {
+    "ru": "Установить блокаду · 3 бойца / 12 еды / 8 дерева / 15 золота",
+    "en": "Establish blockade · 3 troops / 12 food / 8 timber / 15 gold"
+  },
+  "siege.wait": {
+    "ru": "Держать блокаду 1 день · 6 еды / 2 золота + содержание армии",
+    "en": "Maintain blockade 1 day · 6 food / 2 gold + army upkeep"
+  },
+  "siege.surrender": {
+    "ru": "Принять капитуляцию истощённого гарнизона",
+    "en": "Negotiate the exhausted garrison’s surrender"
+  },
+  "siege.lift": {
+    "ru": "Снять блокаду",
+    "en": "Lift blockade"
+  },
+  "siege.assault": {
+    "ru": "Начать штурм · 10 дерева / 5 еды",
+    "en": "Launch assault · 10 timber / 5 food"
+  },
+  "siege.help": {
+    "ru": "Для осады нужны 3 бойца и припасы. Держите блокаду хотя бы день; затем штурмуйте ворота или истощите гарнизон за 3 дня. Содержание жителей и армии оплачивается каждый день.",
+    "en": "Recruit 3 troops and bring supplies. Blockade for at least one day, then breach the gate or exhaust the garrison over 3 days. Each day also pays normal civilian and army upkeep."
+  },
+  "siege.status": {
+    "ru": "Осада: {days} дн. · Припасы гарнизона {supplies}% · Боевой дух {morale}% · Ворота {wall}/180",
+    "en": "Siege: {days} days · Defender supplies {supplies}% · Morale {morale}% · Gate {wall}/180"
+  },
+  "siege.breach_help": {
+    "ru": "Уничтожьте ворота оружием (ЛКМ) и победите гарнизон. Ворота находятся у южного въезда в город.",
+    "en": "Break the gate with your weapon (LMB) and defeat the garrison. The gate stands at the town’s southern entrance."
+  },
+  "siege.gate": {
+    "ru": "Осадные ворота · {hp}/180 · ЛКМ: удар",
+    "en": "Siege gate · {hp}/180 · LMB: strike"
+  },
+  "siege.unsupplied": {
+    "ru": "Армия сняла блокаду: не хватает бойцов или припасов.",
+    "en": "Your army lifted the blockade: insufficient troops or provisions."
+  },
+  "siege.secured": {
+    "ru": "Регион под вашим покровительством. Доложите старосте, чтобы открыть следующую дорогу.",
+    "en": "This region is secured. Report to the reeve to open the next road."
   }
 }

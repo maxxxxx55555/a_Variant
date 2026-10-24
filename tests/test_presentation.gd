@@ -10,9 +10,15 @@ func run() -> void:
 	root.add_child(world)
 	current_scene = world
 	await process_frame
+	var failed := false
+	if world.hud.controls_label.autowrap_mode == TextServer.AUTOWRAP_OFF:
+		push_error("Keyboard help must wrap inside its allotted HUD area")
+		failed = true
+	if not DisplayServer.is_touchscreen_available() and world.hud.attack_btn.visible:
+		push_error("Desktop keyboard help must not overlap unnecessary touch action buttons")
+		failed = true
 	world.show_ending("diplomatic")
 	world._sync_menu_state()
-	var failed := false
 	if world.hud.visible or not paused:
 		push_error("The ending must remain modal and hide the HUD after menu synchronization")
 		failed = true

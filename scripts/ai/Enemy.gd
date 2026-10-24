@@ -86,6 +86,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	walk_phase += delta * velocity.length() * 2
 	if visual:
+		MarchArt.animate_walk(visual, walk_phase, minf(0.5, Vector2(velocity.x, velocity.z).length() * 0.12))
 		visual.rotation.z = sin(walk_phase) * 0.035
 		visual.rotation.x = -0.22 if windup > 0 else 0.0
 

@@ -66,9 +66,14 @@ func _ready() -> void:
 	controls_label.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_LEFT)
 	controls_label.position = Vector2(25, -110)
 	controls_label.size = Vector2(900, 90)
+	controls_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	controls_label.add_theme_font_size_override("font_size", 18)
 	controls_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(controls_label)
+	for control in [attack_btn, interact_btn, potion_btn]:
+		control.visible = DisplayServer.is_touchscreen_available()
+	# Desktop help spans the bottom safely; touch devices retain action space.
+	controls_label.size.x = 1150 if not DisplayServer.is_touchscreen_available() else 900
 	EventBus.language_changed.connect(func(_lang): localize())
 	localize()
 
