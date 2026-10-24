@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PotionData" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/autoload/PotionData.gd" id="1"]
+[resource]
+script = ExtResource("1")
+id = "swift_1"
+name_key = "item.swift_1.name"
+desc_key = "item.swift_1.desc"
+heal_amount = 0.0
+movement_multiplier = 1.08
+effect_duration = 30.0

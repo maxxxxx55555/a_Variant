@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PotionData" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/autoload/PotionData.gd" id="1"]
+[resource]
+script = ExtResource("1")
+id = "vigor_4"
+name_key = "item.vigor_4.name"
+desc_key = "item.vigor_4.desc"
+heal_amount = 0.0
+stamina_amount = 100.00
+effect_duration = 60.0

@@ -25,12 +25,14 @@ func _on_day_passed(_day: int) -> void:
 	var woodcutters = PopulationSystem.jobs.get("woodcutters", 0)
 	var miners = PopulationSystem.jobs.get("miners", 0)
 
-	var food_prod = farmers * 2.5
+	var seasonal_yield: float = [1.0, 1.1, 0.9, 0.6][TimeSystem.current_season_idx]
+	var food_prod = farmers * 2.5 * seasonal_yield
 	var wood_prod = woodcutters * 2.0
 	var ore_prod = miners * 1.5
 
 	# Daily consumption (1 food per citizen)
-	var food_cons = PopulationSystem.total_population * (0.5 if SettlementSystem.current_laws.rations == "half" else 1.0)
+	var civilians: int = maxi(0, PopulationSystem.total_population - ArmySystem.get_total_soldiers())
+	var food_cons = civilians * (0.5 if SettlementSystem.current_laws.rations == "half" else 1.0)
 
 	daily_net["food"] = food_prod - food_cons
 	daily_net["wood"] = wood_prod
@@ -48,8 +50,10 @@ func _on_day_passed(_day: int) -> void:
 	EventBus.settlement_updated.emit()
 
 func get_food_days_remaining() -> int:
-	var food_cons = PopulationSystem.total_population * (0.5 if SettlementSystem.current_laws.rations == "half" else 1.0)
-	var net_consumption: float = food_cons - PopulationSystem.jobs.get("farmers", 0) * 2.5
+	var civilians: int = maxi(0, PopulationSystem.total_population - ArmySystem.get_total_soldiers())
+	var food_cons: float = civilians * (0.5 if SettlementSystem.current_laws.rations == "half" else 1.0) + ArmySystem.get_upkeep().food
+	var seasonal_yield: float = [1.0, 1.1, 0.9, 0.6][TimeSystem.current_season_idx]
+	var net_consumption: float = food_cons - PopulationSystem.jobs.get("farmers", 0) * 2.5 * seasonal_yield - WorkshopSystem.levels.get("farm", 0) * 8 * seasonal_yield
 	if net_consumption <= 0:
 		return 999
 	return int(stockpiles["food"] / net_consumption)

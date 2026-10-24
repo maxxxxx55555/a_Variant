@@ -1,0 +1,338 @@
+[
+  {
+    "id": "dagger_hardened",
+    "path": "res://data/weapons/dagger_hardened.tres",
+    "price": 90,
+    "tier": 1
+  },
+  {
+    "id": "dagger_tempered",
+    "path": "res://data/weapons/dagger_tempered.tres",
+    "price": 155,
+    "tier": 2
+  },
+  {
+    "id": "dagger_guild",
+    "path": "res://data/weapons/dagger_guild.tres",
+    "price": 220,
+    "tier": 3
+  },
+  {
+    "id": "dagger_master",
+    "path": "res://data/weapons/dagger_master.tres",
+    "price": 285,
+    "tier": 4
+  },
+  {
+    "id": "hunter_bow_hardened",
+    "path": "res://data/weapons/hunter_bow_hardened.tres",
+    "price": 90,
+    "tier": 1
+  },
+  {
+    "id": "hunter_bow_tempered",
+    "path": "res://data/weapons/hunter_bow_tempered.tres",
+    "price": 155,
+    "tier": 2
+  },
+  {
+    "id": "hunter_bow_guild",
+    "path": "res://data/weapons/hunter_bow_guild.tres",
+    "price": 220,
+    "tier": 3
+  },
+  {
+    "id": "hunter_bow_master",
+    "path": "res://data/weapons/hunter_bow_master.tres",
+    "price": 285,
+    "tier": 4
+  },
+  {
+    "id": "iron_spear_hardened",
+    "path": "res://data/weapons/iron_spear_hardened.tres",
+    "price": 90,
+    "tier": 1
+  },
+  {
+    "id": "iron_spear_tempered",
+    "path": "res://data/weapons/iron_spear_tempered.tres",
+    "price": 155,
+    "tier": 2
+  },
+  {
+    "id": "iron_spear_guild",
+    "path": "res://data/weapons/iron_spear_guild.tres",
+    "price": 220,
+    "tier": 3
+  },
+  {
+    "id": "iron_spear_master",
+    "path": "res://data/weapons/iron_spear_master.tres",
+    "price": 285,
+    "tier": 4
+  },
+  {
+    "id": "iron_sword_hardened",
+    "path": "res://data/weapons/iron_sword_hardened.tres",
+    "price": 90,
+    "tier": 1
+  },
+  {
+    "id": "iron_sword_tempered",
+    "path": "res://data/weapons/iron_sword_tempered.tres",
+    "price": 155,
+    "tier": 2
+  },
+  {
+    "id": "iron_sword_guild",
+    "path": "res://data/weapons/iron_sword_guild.tres",
+    "price": 220,
+    "tier": 3
+  },
+  {
+    "id": "iron_sword_master",
+    "path": "res://data/weapons/iron_sword_master.tres",
+    "price": 285,
+    "tier": 4
+  },
+  {
+    "id": "mace_hardened",
+    "path": "res://data/weapons/mace_hardened.tres",
+    "price": 90,
+    "tier": 1
+  },
+  {
+    "id": "mace_tempered",
+    "path": "res://data/weapons/mace_tempered.tres",
+    "price": 155,
+    "tier": 2
+  },
+  {
+    "id": "mace_guild",
+    "path": "res://data/weapons/mace_guild.tres",
+    "price": 220,
+    "tier": 3
+  },
+  {
+    "id": "mace_master",
+    "path": "res://data/weapons/mace_master.tres",
+    "price": 285,
+    "tier": 4
+  },
+  {
+    "id": "steel_sword_hardened",
+    "path": "res://data/weapons/steel_sword_hardened.tres",
+    "price": 90,
+    "tier": 1
+  },
+  {
+    "id": "steel_sword_tempered",
+    "path": "res://data/weapons/steel_sword_tempered.tres",
+    "price": 155,
+    "tier": 2
+  },
+  {
+    "id": "steel_sword_guild",
+    "path": "res://data/weapons/steel_sword_guild.tres",
+    "price": 220,
+    "tier": 3
+  },
+  {
+    "id": "steel_sword_master",
+    "path": "res://data/weapons/steel_sword_master.tres",
+    "price": 285,
+    "tier": 4
+  },
+  {
+    "id": "war_axe_hardened",
+    "path": "res://data/weapons/war_axe_hardened.tres",
+    "price": 90,
+    "tier": 1
+  },
+  {
+    "id": "war_axe_tempered",
+    "path": "res://data/weapons/war_axe_tempered.tres",
+    "price": 155,
+    "tier": 2
+  },
+  {
+    "id": "war_axe_guild",
+    "path": "res://data/weapons/war_axe_guild.tres",
+    "price": 220,
+    "tier": 3
+  },
+  {
+    "id": "war_axe_master",
+    "path": "res://data/weapons/war_axe_master.tres",
+    "price": 285,
+    "tier": 4
+  },
+  {
+    "id": "chainmail_hardened",
+    "path": "res://data/armors/chainmail_hardened.tres",
+    "price": 90,
+    "tier": 1
+  },
+  {
+    "id": "chainmail_tempered",
+    "path": "res://data/armors/chainmail_tempered.tres",
+    "price": 155,
+    "tier": 2
+  },
+  {
+    "id": "chainmail_guild",
+    "path": "res://data/armors/chainmail_guild.tres",
+    "price": 220,
+    "tier": 3
+  },
+  {
+    "id": "chainmail_master",
+    "path": "res://data/armors/chainmail_master.tres",
+    "price": 285,
+    "tier": 4
+  },
+  {
+    "id": "iron_greaves_hardened",
+    "path": "res://data/armors/iron_greaves_hardened.tres",
+    "price": 90,
+    "tier": 1
+  },
+  {
+    "id": "iron_greaves_tempered",
+    "path": "res://data/armors/iron_greaves_tempered.tres",
+    "price": 155,
+    "tier": 2
+  },
+  {
+    "id": "iron_greaves_guild",
+    "path": "res://data/armors/iron_greaves_guild.tres",
+    "price": 220,
+    "tier": 3
+  },
+  {
+    "id": "iron_greaves_master",
+    "path": "res://data/armors/iron_greaves_master.tres",
+    "price": 285,
+    "tier": 4
+  },
+  {
+    "id": "iron_helmet_hardened",
+    "path": "res://data/armors/iron_helmet_hardened.tres",
+    "price": 90,
+    "tier": 1
+  },
+  {
+    "id": "iron_helmet_tempered",
+    "path": "res://data/armors/iron_helmet_tempered.tres",
+    "price": 155,
+    "tier": 2
+  },
+  {
+    "id": "iron_helmet_guild",
+    "path": "res://data/armors/iron_helmet_guild.tres",
+    "price": 220,
+    "tier": 3
+  },
+  {
+    "id": "iron_helmet_master",
+    "path": "res://data/armors/iron_helmet_master.tres",
+    "price": 285,
+    "tier": 4
+  },
+  {
+    "id": "leather_armor_hardened",
+    "path": "res://data/armors/leather_armor_hardened.tres",
+    "price": 90,
+    "tier": 1
+  },
+  {
+    "id": "leather_armor_tempered",
+    "path": "res://data/armors/leather_armor_tempered.tres",
+    "price": 155,
+    "tier": 2
+  },
+  {
+    "id": "leather_armor_guild",
+    "path": "res://data/armors/leather_armor_guild.tres",
+    "price": 220,
+    "tier": 3
+  },
+  {
+    "id": "leather_armor_master",
+    "path": "res://data/armors/leather_armor_master.tres",
+    "price": 285,
+    "tier": 4
+  },
+  {
+    "id": "leather_boots_hardened",
+    "path": "res://data/armors/leather_boots_hardened.tres",
+    "price": 90,
+    "tier": 1
+  },
+  {
+    "id": "leather_boots_tempered",
+    "path": "res://data/armors/leather_boots_tempered.tres",
+    "price": 155,
+    "tier": 2
+  },
+  {
+    "id": "leather_boots_guild",
+    "path": "res://data/armors/leather_boots_guild.tres",
+    "price": 220,
+    "tier": 3
+  },
+  {
+    "id": "leather_boots_master",
+    "path": "res://data/armors/leather_boots_master.tres",
+    "price": 285,
+    "tier": 4
+  },
+  {
+    "id": "plate_armor_hardened",
+    "path": "res://data/armors/plate_armor_hardened.tres",
+    "price": 90,
+    "tier": 1
+  },
+  {
+    "id": "plate_armor_tempered",
+    "path": "res://data/armors/plate_armor_tempered.tres",
+    "price": 155,
+    "tier": 2
+  },
+  {
+    "id": "plate_armor_guild",
+    "path": "res://data/armors/plate_armor_guild.tres",
+    "price": 220,
+    "tier": 3
+  },
+  {
+    "id": "plate_armor_master",
+    "path": "res://data/armors/plate_armor_master.tres",
+    "price": 285,
+    "tier": 4
+  },
+  {
+    "id": "wooden_shield_hardened",
+    "path": "res://data/armors/wooden_shield_hardened.tres",
+    "price": 90,
+    "tier": 1
+  },
+  {
+    "id": "wooden_shield_tempered",
+    "path": "res://data/armors/wooden_shield_tempered.tres",
+    "price": 155,
+    "tier": 2
+  },
+  {
+    "id": "wooden_shield_guild",
+    "path": "res://data/armors/wooden_shield_guild.tres",
+    "price": 220,
+    "tier": 3
+  },
+  {
+    "id": "wooden_shield_master",
+    "path": "res://data/armors/wooden_shield_master.tres",
+    "price": 285,
+    "tier": 4
+  }
+]

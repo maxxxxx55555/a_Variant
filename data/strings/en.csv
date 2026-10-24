@@ -82,9 +82,11 @@ ui.ingredients,Ингредиенты,Ingredients
 ui.attack,Атака,Attack
 ui.interact,Подобрать,Pick up
 ui.potion,Зелье,Potion
-ui.controls,"WASD — движение · Мышь — обзор · ЛКМ — удар · ПКМ — блок
-E — подбор · I/Tab — инвентарь · C — алхимия · B — поселение · Esc — пауза","WASD — move · Mouse — look · LMB — attack · RMB — block
-E — pick up · I/Tab — inventory · C — alchemy · B — settlement · Esc — pause"
+ui.controls,"WASD — движение · Shift — бег · Пробел — прыжок
+ЛКМ — атака · ПКМ — блок · E — действие · Q — зелье
+I — вещи · C — алхимия · B — поселение · R/F/J — совет · M — карта · Esc — пауза","WASD move · Shift sprint · Space jump
+LMB attack · RMB block · E interact · Q potion
+I inventory · C alchemy · B settlement · R/F/J council · M map · Esc pause"
 ui.empty,Пусто,Empty
 msg.law_changed,Закон поселения изменён,Settlement law changed
 msg.starvation,Голод! Еда закончилась — здоровье и счастье жителей падают.,Starvation! Food is exhausted — health and happiness decline.
@@ -138,7 +140,7 @@ msg.desertion_warning,ВНИМАНИЕ: Мораль отряда критиче
 msg.treaty_signed,Подписан договор с фракцией {faction}: {treaty},Treaty signed with {faction}: {treaty}
 msg.escalation_warning,ВНИМАНИЕ: Рост тревоги фракции {faction}! Уровень: {level},WARNING: Threat escalated for {faction}! Level: {level}
 msg.vertical_slice_completed,Поздравляем! Вертикальный срез 30-60 минут успешно пройден!,Congratulations! 30-60 min vertical slice successfully completed!
-msg.quest_completed,Квест выполнен: {title} (+{gold} золота, +{exp} опыта),Quest completed: {title} (+{gold} gold, +{exp} exp)
+msg.quest_completed,"Квест выполнен: {title} (+{gold} золота, +{exp} опыта)","Quest completed: {title} (+{gold} gold, +{exp} experience)"
 msg.boss_enraged,ВНИМАНИЕ: Босс вошёл в фазу ярости!,WARNING: Boss entered enraged phase!
 msg.boss_defeated,Босс повержен: {boss},Boss defeated: {boss}
 msg.current_objective,Текущая цель: {objective},Current Objective: {objective}
@@ -153,13 +155,13 @@ quest.side_clear_camp.title,Зачистка лагеря,Clear the Camp
 quest.side_clear_camp.desc,Очистите лесной лагерь от разбойников.,Clear the forest camp of bandits.
 quest.companion_01.title,Клятва Щита,Oath of the Shield
 quest.companion_01.desc,Помогите соратнику вернуть фамильное оружие.,Help your companion recover family heirloom weapon.
-companion.warrior_shield.name,Борн Щитоносец,Born the Shieldbearer
+companion.warrior_shield.name,Рада,Rada
 companion.warrior_shield.role,Защитник,Protector
-companion.archer_scout.name,Лира Следопыт,Lyra the Scout
+companion.archer_scout.name,Терен,Teren
 companion.archer_scout.role,Разведчица,Scout
-companion.healer_alchemist.name,Мира Алхимик,Mira the Alchemist
+companion.healer_alchemist.name,Мира,Mira
 companion.healer_alchemist.role,Лекарь,Healer
-companion.mercenary_commander.name,Капитан Варан,Captain Varan
+companion.mercenary_commander.name,Освин,Oswin
 companion.mercenary_commander.role,Командир,Commander
 boss.army_commander.name,Командир вражеской армии,Enemy Army Commander
 boss.bandit_leader.name,Главарь банды,Bandit Chieftain
@@ -195,34 +197,34 @@ unit.archers.desc,Стрелки для поддержки на дистанци
 unit.heavy_infantry.name,Тяжёлая пехота,Heavy Infantry
 unit.heavy_infantry.desc,Закованные в броню элитные воины.,Armored elite warriors for heavy impact.
 faction.woodland_freeholders.name,Вольные Земледельцы,Woodland Freeholders
-faction.woodland_freeholders.desc,Мирные общины лесных хуторов и ферм.,Peaceful communities of forest hamlets and farms.
+faction.woodland_freeholders.desc,Лесные общины теряют зерно из-за налётчиков.,Forest communities are losing grain to raiders.
 faction.borderland_watch.name,Стража Пограничья,Borderland Watch
-faction.borderland_watch.desc,Организованные гарнизоны старых застав.,Organized garrisons of old border outposts.
+faction.borderland_watch.desc,Старые гарнизоны разобщены после исчезновения маршала.,The old garrisons are divided after the marshal vanished.
 faction.iron_guild.name,Гильдия Рудокопов,Iron Guild
-faction.iron_guild.desc,Богатая гильдия шахтёров и кузнецов.,Rich guild of miners and smiths.
+faction.iron_guild.desc,Шахтёрам нужен безопасный путь для железных караванов.,The miners need a safe road for their iron caravans.
 recipe.health.name,Рецепт зелья здоровья,Health Potion Recipe
 recipe.antidote.name,Рецепт противоядия,Antidote Recipe
 ui.food,Еда,Food
 ui.wood,Древесина,Wood
 ui.ore,Руда,Ore
 ui.gold,Золото,Gold
-ui.army,Армия,Army
+ui.army,Армия [R],Army [R]
 ui.squad,Отряд,Squad
 ui.morale,Мораль,Morale
 ui.formation,Строй,Formation
 ui.order,Приказ,Order
-ui.diplomacy,Дипломатия,Diplomacy
+ui.diplomacy,Дипломатия [F],Diplomacy [F]
 ui.factions,Фракции,Factions
 ui.threat,Угроза,Threat
 ui.escalation,Эскалация,Escalation
-order.follow,Следуй за мной,Follow Me
+order.follow,За мной,Follow
 order.hold_position,Удерживать позицию,Hold Position
-order.attack,Атаковать врага,Attack Enemy
+order.attack,Атаковать,Attack
 order.retreat,Отступать,Retreat
-treaty.peace,Мирный договор,Peace Treaty
-treaty.trade,Торговый договор,Trade Agreement
-treaty.non_aggression,Пакт о ненападении,Non-Aggression Pact
-treaty.alliance,Союзный договор,Alliance Pact
+treaty.peace,Мир,Peace
+treaty.trade,Торговое соглашение,Trade agreement
+treaty.non_aggression,Ненападение,Non-aggression
+treaty.alliance,Союз,Alliance
 msg.weather_changed,Погода изменилась: ,Weather changed:
 weather.clear,Ясно,Clear
 weather.rain,Дождь,Rain
@@ -241,3 +243,384 @@ tutorial.settlement.title,Управление поселением,Settlement M
 tutorial.settlement.desc,Нажмите B для управления ресурсами законами и населением.,Press B to manage settlement resources laws and population.
 tutorial.army.title,Командование отрядами,Squad Command
 tutorial.army.desc,Нажимайте 1-5 для выбора отрядов и отдачи приказов.,Press 1-5 to select squads and issue tactical commands.
+ui.strategy,Совет Пограничья,March Council
+ui.recruit,Нанять,Recruit
+ui.action_done,Решение принято.,Action completed.
+ui.recruit_failed,Недостаточно свободных жителей или золота.,Not enough available citizens or gold.
+order.hold,Держать позицию,Hold
+formation.line,Линия,Line
+formation.shield_wall,Стена щитов,Shield wall
+formation.loose,Рассыпной строй,Loose
+ui.disband,Распустить отряд,Disband squad
+ui.treaty_terms,{treaty} · доверие {relation} · {gold} золота,{treaty} · trust {relation} · {gold} gold
+ui.sign_treaty,Предложить договор,Propose treaty
+ui.treaty_failed,Нужны доверие и золото. Договор не должен уже действовать.,Requires trust and gold; the treaty must not already be active.
+ui.gift,Отправить дар,Send gift
+ui.journal,Журнал [J],Journal [J]
+ui.army_upkeep,"Содержание в день: {food} еды, {gold} золота. Свободных жителей: {workers}","Daily upkeep: {food} food, {gold} gold. Available citizens: {workers}"
+treaty.defensive_pact,Оборонительный пакт,Defensive pact
+faction.river_covenant.name,Речной Договор,River Covenant
+faction.river_covenant.desc,Перевозчики удерживают переправы от вымогателей.,The ferrymen are defending their crossings from extortionists.
+faction.stone_circle.name,Каменный Круг,Stone Circle
+faction.stone_circle.desc,Каменоломни больше не могут снабжать западные стены.,The quarries can no longer supply the western walls.
+faction.marsh_keepers.name,Хранители Топей,Marsh Keepers
+faction.marsh_keepers.desc,Лекари болот ищут исчезнувшие запасы целебного мха.,The marsh healers are searching for their missing medicinal moss.
+faction.sunfield_union.name,Союз Солнечных Полей,Sunfield Union
+faction.sunfield_union.desc,Разорённым мельницам нужна защита перед зимним голодом.,The ruined mills need protection before the winter famine.
+faction.pass_clans.name,Кланы Перевала,Pass Clans
+faction.pass_clans.desc,Кланы спорят о пошлинах пока крепость занята наёмниками.,The clans argue over tolls while mercenaries occupy the fortress.
+town.greenhaven,Тихая Сечь,Greenhaven
+town.ironford,Железный Брод,Ironford
+town.old_watch,Старая Застава,Old Watch
+town.reed_crossing,Камышовая Переправа,Reed Crossing
+town.stonewell,Каменный Колодец,Stonewell
+town.moss_hearth,Моховой Очаг,Moss Hearth
+town.sunmill,Солнечная Мельница,Sunmill
+town.high_pass,Верхний Перевал,High Pass
+town.pine_rest,Сосновый Привал,Pine Rest
+town.copper_hollow,Медная Лощина,Copper Hollow
+town.ash_bastion,Ясеневый Бастион,Ash Bastion
+town.willow_wharf,Ивовая Пристань,Willow Wharf
+town.white_quarry,Белая Каменоломня,White Quarry
+town.winter_gate,Зимние Ворота,Winter Gate
+quest.arc_01_01.title,Голос общины: Вольные Земледельцы,The Community Speaks: Woodland Freeholders
+quest.arc_01_01.desc,Найдите старосту: Тихая Сечь. Выслушайте беду общины.,Find the reeve in Greenhaven and hear the community's trouble.
+quest.arc_01_02.title,Обоз надежды: Вольные Земледельцы,A Wagon of Hope: Woodland Freeholders
+quest.arc_01_02.desc,"Передайте общине 20 еды, 10 дерева и 5 руды через старосту.","Deliver 20 food, 10 wood and 5 ore through the reeve."
+quest.arc_01_03.title,Дорога без разбойников: Вольные Земледельцы,A Road Without Raiders: Woodland Freeholders
+quest.arc_01_03.desc,Очистите лагерь к востоку от поселения. Его защитники сражаются в мире.,Clear the camp east of town. Its defenders fight in the actual world.
+quest.arc_01_04.title,Цена доверия: Вольные Земледельцы,The Price of Trust: Woodland Freeholders
+quest.arc_01_04.desc,Добейтесь отношения 60 или победите гарнизон. Помощь и дары укрепляют доверие.,Reach 60 trust or defeat the garrison. Aid and gifts build trust.
+quest.arc_01_05.title,Клятва у очага: Вольные Земледельцы,An Oath at the Hearth: Woodland Freeholders
+quest.arc_01_05.desc,Заключите союз в Совете [F] или захватите укрепление через старосту.,"Sign an alliance in the Council [F], or seize the stronghold through the reeve."
+quest.arc_01_06.title,Место за общим столом: Вольные Земледельцы,A Seat at the Council: Woodland Freeholders
+quest.arc_01_06.desc,Вернитесь к старосте после союза или завоевания. Откроется дорога к следующей общине.,Return to the reeve after alliance or conquest. The road to the next community will open.
+quest.arc_02_01.title,Голос общины: Гильдия Рудокопов,The Community Speaks: Iron Guild
+quest.arc_02_01.desc,Найдите старосту: Железный Брод. Выслушайте беду общины.,Find the reeve in Ironford and hear the community's trouble.
+quest.arc_02_02.title,Обоз надежды: Гильдия Рудокопов,A Wagon of Hope: Iron Guild
+quest.arc_02_02.desc,"Передайте общине 20 еды, 10 дерева и 5 руды через старосту.","Deliver 20 food, 10 wood and 5 ore through the reeve."
+quest.arc_02_03.title,Дорога без разбойников: Гильдия Рудокопов,A Road Without Raiders: Iron Guild
+quest.arc_02_03.desc,Очистите лагерь к востоку от поселения. Его защитники сражаются в мире.,Clear the camp east of town. Its defenders fight in the actual world.
+quest.arc_02_04.title,Цена доверия: Гильдия Рудокопов,The Price of Trust: Iron Guild
+quest.arc_02_04.desc,Добейтесь отношения 60 или победите гарнизон. Помощь и дары укрепляют доверие.,Reach 60 trust or defeat the garrison. Aid and gifts build trust.
+quest.arc_02_05.title,Клятва у очага: Гильдия Рудокопов,An Oath at the Hearth: Iron Guild
+quest.arc_02_05.desc,Заключите союз в Совете [F] или захватите укрепление через старосту.,"Sign an alliance in the Council [F], or seize the stronghold through the reeve."
+quest.arc_02_06.title,Место за общим столом: Гильдия Рудокопов,A Seat at the Council: Iron Guild
+quest.arc_02_06.desc,Вернитесь к старосте после союза или завоевания. Откроется дорога к следующей общине.,Return to the reeve after alliance or conquest. The road to the next community will open.
+quest.arc_03_01.title,Голос общины: Стража Пограничья,The Community Speaks: Borderland Watch
+quest.arc_03_01.desc,Найдите старосту: Старая Застава. Выслушайте беду общины.,Find the reeve in Old Watch and hear the community's trouble.
+quest.arc_03_02.title,Обоз надежды: Стража Пограничья,A Wagon of Hope: Borderland Watch
+quest.arc_03_02.desc,"Передайте общине 20 еды, 10 дерева и 5 руды через старосту.","Deliver 20 food, 10 wood and 5 ore through the reeve."
+quest.arc_03_03.title,Дорога без разбойников: Стража Пограничья,A Road Without Raiders: Borderland Watch
+quest.arc_03_03.desc,Очистите лагерь к востоку от поселения. Его защитники сражаются в мире.,Clear the camp east of town. Its defenders fight in the actual world.
+quest.arc_03_04.title,Цена доверия: Стража Пограничья,The Price of Trust: Borderland Watch
+quest.arc_03_04.desc,Добейтесь отношения 60 или победите гарнизон. Помощь и дары укрепляют доверие.,Reach 60 trust or defeat the garrison. Aid and gifts build trust.
+quest.arc_03_05.title,Клятва у очага: Стража Пограничья,An Oath at the Hearth: Borderland Watch
+quest.arc_03_05.desc,Заключите союз в Совете [F] или захватите укрепление через старосту.,"Sign an alliance in the Council [F], or seize the stronghold through the reeve."
+quest.arc_03_06.title,Место за общим столом: Стража Пограничья,A Seat at the Council: Borderland Watch
+quest.arc_03_06.desc,Вернитесь к старосте после союза или завоевания. Откроется дорога к следующей общине.,Return to the reeve after alliance or conquest. The road to the next community will open.
+quest.arc_04_01.title,Голос общины: Речной Договор,The Community Speaks: River Covenant
+quest.arc_04_01.desc,Найдите старосту: Камышовая Переправа. Выслушайте беду общины.,Find the reeve in Reed Crossing and hear the community's trouble.
+quest.arc_04_02.title,Обоз надежды: Речной Договор,A Wagon of Hope: River Covenant
+quest.arc_04_02.desc,"Передайте общине 20 еды, 10 дерева и 5 руды через старосту.","Deliver 20 food, 10 wood and 5 ore through the reeve."
+quest.arc_04_03.title,Дорога без разбойников: Речной Договор,A Road Without Raiders: River Covenant
+quest.arc_04_03.desc,Очистите лагерь к востоку от поселения. Его защитники сражаются в мире.,Clear the camp east of town. Its defenders fight in the actual world.
+quest.arc_04_04.title,Цена доверия: Речной Договор,The Price of Trust: River Covenant
+quest.arc_04_04.desc,Добейтесь отношения 60 или победите гарнизон. Помощь и дары укрепляют доверие.,Reach 60 trust or defeat the garrison. Aid and gifts build trust.
+quest.arc_04_05.title,Клятва у очага: Речной Договор,An Oath at the Hearth: River Covenant
+quest.arc_04_05.desc,Заключите союз в Совете [F] или захватите укрепление через старосту.,"Sign an alliance in the Council [F], or seize the stronghold through the reeve."
+quest.arc_04_06.title,Место за общим столом: Речной Договор,A Seat at the Council: River Covenant
+quest.arc_04_06.desc,Вернитесь к старосте после союза или завоевания. Откроется дорога к следующей общине.,Return to the reeve after alliance or conquest. The road to the next community will open.
+quest.arc_05_01.title,Голос общины: Каменный Круг,The Community Speaks: Stone Circle
+quest.arc_05_01.desc,Найдите старосту: Каменный Колодец. Выслушайте беду общины.,Find the reeve in Stonewell and hear the community's trouble.
+quest.arc_05_02.title,Обоз надежды: Каменный Круг,A Wagon of Hope: Stone Circle
+quest.arc_05_02.desc,"Передайте общине 20 еды, 10 дерева и 5 руды через старосту.","Deliver 20 food, 10 wood and 5 ore through the reeve."
+quest.arc_05_03.title,Дорога без разбойников: Каменный Круг,A Road Without Raiders: Stone Circle
+quest.arc_05_03.desc,Очистите лагерь к востоку от поселения. Его защитники сражаются в мире.,Clear the camp east of town. Its defenders fight in the actual world.
+quest.arc_05_04.title,Цена доверия: Каменный Круг,The Price of Trust: Stone Circle
+quest.arc_05_04.desc,Добейтесь отношения 60 или победите гарнизон. Помощь и дары укрепляют доверие.,Reach 60 trust or defeat the garrison. Aid and gifts build trust.
+quest.arc_05_05.title,Клятва у очага: Каменный Круг,An Oath at the Hearth: Stone Circle
+quest.arc_05_05.desc,Заключите союз в Совете [F] или захватите укрепление через старосту.,"Sign an alliance in the Council [F], or seize the stronghold through the reeve."
+quest.arc_05_06.title,Место за общим столом: Каменный Круг,A Seat at the Council: Stone Circle
+quest.arc_05_06.desc,Вернитесь к старосте после союза или завоевания. Откроется дорога к следующей общине.,Return to the reeve after alliance or conquest. The road to the next community will open.
+quest.arc_06_01.title,Голос общины: Хранители Топей,The Community Speaks: Marsh Keepers
+quest.arc_06_01.desc,Найдите старосту: Моховой Очаг. Выслушайте беду общины.,Find the reeve in Moss Hearth and hear the community's trouble.
+quest.arc_06_02.title,Обоз надежды: Хранители Топей,A Wagon of Hope: Marsh Keepers
+quest.arc_06_02.desc,"Передайте общине 20 еды, 10 дерева и 5 руды через старосту.","Deliver 20 food, 10 wood and 5 ore through the reeve."
+quest.arc_06_03.title,Дорога без разбойников: Хранители Топей,A Road Without Raiders: Marsh Keepers
+quest.arc_06_03.desc,Очистите лагерь к востоку от поселения. Его защитники сражаются в мире.,Clear the camp east of town. Its defenders fight in the actual world.
+quest.arc_06_04.title,Цена доверия: Хранители Топей,The Price of Trust: Marsh Keepers
+quest.arc_06_04.desc,Добейтесь отношения 60 или победите гарнизон. Помощь и дары укрепляют доверие.,Reach 60 trust or defeat the garrison. Aid and gifts build trust.
+quest.arc_06_05.title,Клятва у очага: Хранители Топей,An Oath at the Hearth: Marsh Keepers
+quest.arc_06_05.desc,Заключите союз в Совете [F] или захватите укрепление через старосту.,"Sign an alliance in the Council [F], or seize the stronghold through the reeve."
+quest.arc_06_06.title,Место за общим столом: Хранители Топей,A Seat at the Council: Marsh Keepers
+quest.arc_06_06.desc,Вернитесь к старосте после союза или завоевания. Откроется дорога к следующей общине.,Return to the reeve after alliance or conquest. The road to the next community will open.
+quest.arc_07_01.title,Голос общины: Союз Солнечных Полей,The Community Speaks: Sunfield Union
+quest.arc_07_01.desc,Найдите старосту: Солнечная Мельница. Выслушайте беду общины.,Find the reeve in Sunmill and hear the community's trouble.
+quest.arc_07_02.title,Обоз надежды: Союз Солнечных Полей,A Wagon of Hope: Sunfield Union
+quest.arc_07_02.desc,"Передайте общине 20 еды, 10 дерева и 5 руды через старосту.","Deliver 20 food, 10 wood and 5 ore through the reeve."
+quest.arc_07_03.title,Дорога без разбойников: Союз Солнечных Полей,A Road Without Raiders: Sunfield Union
+quest.arc_07_03.desc,Очистите лагерь к востоку от поселения. Его защитники сражаются в мире.,Clear the camp east of town. Its defenders fight in the actual world.
+quest.arc_07_04.title,Цена доверия: Союз Солнечных Полей,The Price of Trust: Sunfield Union
+quest.arc_07_04.desc,Добейтесь отношения 60 или победите гарнизон. Помощь и дары укрепляют доверие.,Reach 60 trust or defeat the garrison. Aid and gifts build trust.
+quest.arc_07_05.title,Клятва у очага: Союз Солнечных Полей,An Oath at the Hearth: Sunfield Union
+quest.arc_07_05.desc,Заключите союз в Совете [F] или захватите укрепление через старосту.,"Sign an alliance in the Council [F], or seize the stronghold through the reeve."
+quest.arc_07_06.title,Место за общим столом: Союз Солнечных Полей,A Seat at the Council: Sunfield Union
+quest.arc_07_06.desc,Вернитесь к старосте после союза или завоевания. Откроется дорога к следующей общине.,Return to the reeve after alliance or conquest. The road to the next community will open.
+quest.arc_08_01.title,Голос общины: Кланы Перевала,The Community Speaks: Pass Clans
+quest.arc_08_01.desc,Найдите старосту: Верхний Перевал. Выслушайте беду общины.,Find the reeve in High Pass and hear the community's trouble.
+quest.arc_08_02.title,Обоз надежды: Кланы Перевала,A Wagon of Hope: Pass Clans
+quest.arc_08_02.desc,"Передайте общине 20 еды, 10 дерева и 5 руды через старосту.","Deliver 20 food, 10 wood and 5 ore through the reeve."
+quest.arc_08_03.title,Дорога без разбойников: Кланы Перевала,A Road Without Raiders: Pass Clans
+quest.arc_08_03.desc,Очистите лагерь к востоку от поселения. Его защитники сражаются в мире.,Clear the camp east of town. Its defenders fight in the actual world.
+quest.arc_08_04.title,Цена доверия: Кланы Перевала,The Price of Trust: Pass Clans
+quest.arc_08_04.desc,Добейтесь отношения 60 или победите гарнизон. Помощь и дары укрепляют доверие.,Reach 60 trust or defeat the garrison. Aid and gifts build trust.
+quest.arc_08_05.title,Клятва у очага: Кланы Перевала,An Oath at the Hearth: Pass Clans
+quest.arc_08_05.desc,Заключите союз в Совете [F] или захватите укрепление через старосту.,"Sign an alliance in the Council [F], or seize the stronghold through the reeve."
+quest.arc_08_06.title,Место за общим столом: Кланы Перевала,A Seat at the Council: Pass Clans
+quest.arc_08_06.desc,Вернитесь к старосте после союза или завоевания. Откроется дорога к следующей общине.,Return to the reeve after alliance or conquest. The road to the next community will open.
+quest.survey_woodland_freeholders.title,Следы прошлого: Вольные Земледельцы,Traces of the Past: Woodland Freeholders
+quest.survey_woodland_freeholders.desc,Осмотрите святилище к западу от поселения. Найденные припасы помогут общине.,Explore the shrine west of town. Its supplies will help the community.
+quest.survey_iron_guild.title,Следы прошлого: Гильдия Рудокопов,Traces of the Past: Iron Guild
+quest.survey_iron_guild.desc,Осмотрите святилище к западу от поселения. Найденные припасы помогут общине.,Explore the shrine west of town. Its supplies will help the community.
+quest.survey_borderland_watch.title,Следы прошлого: Стража Пограничья,Traces of the Past: Borderland Watch
+quest.survey_borderland_watch.desc,Осмотрите святилище к западу от поселения. Найденные припасы помогут общине.,Explore the shrine west of town. Its supplies will help the community.
+quest.survey_river_covenant.title,Следы прошлого: Речной Договор,Traces of the Past: River Covenant
+quest.survey_river_covenant.desc,Осмотрите святилище к западу от поселения. Найденные припасы помогут общине.,Explore the shrine west of town. Its supplies will help the community.
+quest.survey_stone_circle.title,Следы прошлого: Каменный Круг,Traces of the Past: Stone Circle
+quest.survey_stone_circle.desc,Осмотрите святилище к западу от поселения. Найденные припасы помогут общине.,Explore the shrine west of town. Its supplies will help the community.
+quest.survey_marsh_keepers.title,Следы прошлого: Хранители Топей,Traces of the Past: Marsh Keepers
+quest.survey_marsh_keepers.desc,Осмотрите святилище к западу от поселения. Найденные припасы помогут общине.,Explore the shrine west of town. Its supplies will help the community.
+quest.survey_sunfield_union.title,Следы прошлого: Союз Солнечных Полей,Traces of the Past: Sunfield Union
+quest.survey_sunfield_union.desc,Осмотрите святилище к западу от поселения. Найденные припасы помогут общине.,Explore the shrine west of town. Its supplies will help the community.
+quest.survey_pass_clans.title,Следы прошлого: Кланы Перевала,Traces of the Past: Pass Clans
+quest.survey_pass_clans.desc,Осмотрите святилище к западу от поселения. Найденные припасы помогут общине.,Explore the shrine west of town. Its supplies will help the community.
+quest.companion_warrior_shield.title,Личная клятва: Рада,A Personal Oath: Rada
+quest.companion_warrior_shield.desc,Верните щит заставы из разбойничьего лагеря.,Recover the watch shield from the raider camp.
+quest.companion_archer_scout.title,Личная клятва: Терен,A Personal Oath: Teren
+quest.companion_archer_scout.desc,Откройте три дорожные точки и очистите лагерь Стражи.,Open three road points and clear the Watch camp.
+quest.companion_healer_alchemist.title,Личная клятва: Мира,A Personal Oath: Mira
+quest.companion_healer_alchemist.desc,Сварите три зелья и помогите Хранителям Топей.,Brew three potions and aid the Marsh Keepers.
+quest.companion_mercenary_commander.title,Личная клятва: Освин,A Personal Oath: Oswin
+quest.companion_mercenary_commander.desc,Соберите пять бойцов и освободите Перевал.,Recruit five soldiers and free the Pass.
+building.farm,Поле,Farm
+building.housing,Жилой дом,Housing
+building.infirmary,Лазарет,Infirmary
+building.well,Колодец,Well
+building.market,Торговый двор,Market
+building.sawmill,Лесопилка,Sawmill
+building.quarry,Каменоломня,Quarry
+building.forge,Кузница,Forge
+building.barracks,Казармы,Barracks
+building.hall,Общий зал,Council Hall
+item.dagger_hardened.name,Закалённый острый кинжал,Hardened Sharp Dagger
+item.dagger_hardened.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.dagger_tempered.name,Усиленный острый кинжал,Tempered Sharp Dagger
+item.dagger_tempered.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.dagger_guild.name,Гильдейский острый кинжал,Guild Sharp Dagger
+item.dagger_guild.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.dagger_master.name,Мастерский острый кинжал,Masterwork Sharp Dagger
+item.dagger_master.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.hunter_bow_hardened.name,Закалённый охотничий лук,Hardened Hunter's Bow
+item.hunter_bow_hardened.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.hunter_bow_tempered.name,Усиленный охотничий лук,Tempered Hunter's Bow
+item.hunter_bow_tempered.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.hunter_bow_guild.name,Гильдейский охотничий лук,Guild Hunter's Bow
+item.hunter_bow_guild.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.hunter_bow_master.name,Мастерский охотничий лук,Masterwork Hunter's Bow
+item.hunter_bow_master.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.iron_spear_hardened.name,Закалённое железное копьё,Hardened Iron Spear
+item.iron_spear_hardened.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.iron_spear_tempered.name,Усиленное железное копьё,Tempered Iron Spear
+item.iron_spear_tempered.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.iron_spear_guild.name,Гильдейское железное копьё,Guild Iron Spear
+item.iron_spear_guild.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.iron_spear_master.name,Мастерское железное копьё,Masterwork Iron Spear
+item.iron_spear_master.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.iron_sword_hardened.name,Закалённый железный меч,Hardened Iron Sword
+item.iron_sword_hardened.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.iron_sword_tempered.name,Усиленный железный меч,Tempered Iron Sword
+item.iron_sword_tempered.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.iron_sword_guild.name,Гильдейский железный меч,Guild Iron Sword
+item.iron_sword_guild.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.iron_sword_master.name,Мастерский железный меч,Masterwork Iron Sword
+item.iron_sword_master.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.mace_hardened.name,Закалённая тяжёлая булава,Hardened Heavy Mace
+item.mace_hardened.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.mace_tempered.name,Усиленная тяжёлая булава,Tempered Heavy Mace
+item.mace_tempered.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.mace_guild.name,Гильдейская тяжёлая булава,Guild Heavy Mace
+item.mace_guild.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.mace_master.name,Мастерская тяжёлая булава,Masterwork Heavy Mace
+item.mace_master.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.steel_sword_hardened.name,Закалённый стальной меч,Hardened Steel Sword
+item.steel_sword_hardened.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.steel_sword_tempered.name,Усиленный стальной меч,Tempered Steel Sword
+item.steel_sword_tempered.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.steel_sword_guild.name,Гильдейский стальной меч,Guild Steel Sword
+item.steel_sword_guild.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.steel_sword_master.name,Мастерский стальной меч,Masterwork Steel Sword
+item.steel_sword_master.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.war_axe_hardened.name,Закалённый боевой топор,Hardened War Axe
+item.war_axe_hardened.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.war_axe_tempered.name,Усиленный боевой топор,Tempered War Axe
+item.war_axe_tempered.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.war_axe_guild.name,Гильдейский боевой топор,Guild War Axe
+item.war_axe_guild.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.war_axe_master.name,Мастерский боевой топор,Masterwork War Axe
+item.war_axe_master.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.chainmail_hardened.name,Закалённая кольчуга,Hardened Chainmail
+item.chainmail_hardened.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.chainmail_tempered.name,Усиленная кольчуга,Tempered Chainmail
+item.chainmail_tempered.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.chainmail_guild.name,Гильдейская кольчуга,Guild Chainmail
+item.chainmail_guild.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.chainmail_master.name,Мастерская кольчуга,Masterwork Chainmail
+item.chainmail_master.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.iron_greaves_hardened.name,Закалённые железные поножи,Hardened Iron Greaves
+item.iron_greaves_hardened.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.iron_greaves_tempered.name,Усиленные железные поножи,Tempered Iron Greaves
+item.iron_greaves_tempered.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.iron_greaves_guild.name,Гильдейские железные поножи,Guild Iron Greaves
+item.iron_greaves_guild.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.iron_greaves_master.name,Мастерские железные поножи,Masterwork Iron Greaves
+item.iron_greaves_master.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.iron_helmet_hardened.name,Закалённый железный шлем,Hardened Iron Helmet
+item.iron_helmet_hardened.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.iron_helmet_tempered.name,Усиленный железный шлем,Tempered Iron Helmet
+item.iron_helmet_tempered.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.iron_helmet_guild.name,Гильдейский железный шлем,Guild Iron Helmet
+item.iron_helmet_guild.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.iron_helmet_master.name,Мастерский железный шлем,Masterwork Iron Helmet
+item.iron_helmet_master.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.leather_armor_hardened.name,Закалённый кожаный доспех,Hardened Leather Armor
+item.leather_armor_hardened.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.leather_armor_tempered.name,Усиленный кожаный доспех,Tempered Leather Armor
+item.leather_armor_tempered.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.leather_armor_guild.name,Гильдейский кожаный доспех,Guild Leather Armor
+item.leather_armor_guild.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.leather_armor_master.name,Мастерский кожаный доспех,Masterwork Leather Armor
+item.leather_armor_master.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.leather_boots_hardened.name,Закалённые кожаные сапоги,Hardened Leather Boots
+item.leather_boots_hardened.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.leather_boots_tempered.name,Усиленные кожаные сапоги,Tempered Leather Boots
+item.leather_boots_tempered.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.leather_boots_guild.name,Гильдейские кожаные сапоги,Guild Leather Boots
+item.leather_boots_guild.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.leather_boots_master.name,Мастерские кожаные сапоги,Masterwork Leather Boots
+item.leather_boots_master.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.plate_armor_hardened.name,Закалённые латы,Hardened Plate Armor
+item.plate_armor_hardened.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.plate_armor_tempered.name,Усиленные латы,Tempered Plate Armor
+item.plate_armor_tempered.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.plate_armor_guild.name,Гильдейские латы,Guild Plate Armor
+item.plate_armor_guild.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.plate_armor_master.name,Мастерские латы,Masterwork Plate Armor
+item.plate_armor_master.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.wooden_shield_hardened.name,Закалённый деревянный щит,Hardened Wooden Shield
+item.wooden_shield_hardened.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.wooden_shield_tempered.name,Усиленный деревянный щит,Tempered Wooden Shield
+item.wooden_shield_tempered.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.wooden_shield_guild.name,Гильдейский деревянный щит,Guild Wooden Shield
+item.wooden_shield_guild.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+item.wooden_shield_master.name,Мастерский деревянный щит,Masterwork Wooden Shield
+item.wooden_shield_master.desc,Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.,Local smithwork with improved protection or damage and durability.
+ui.talk,Поговорить,Talk
+ui.investigate,Осмотреть,Investigate
+ui.cache_found,Найдены припасы и травы. Прогресс записан в журнал.,Supplies and herbs found. Progress recorded in the journal.
+ui.already_explored,Это место уже осмотрено.,This place has already been searched.
+ui.deliver,"Передать обоз: 20 еды, 10 дерева, 5 руды","Deliver supplies: 20 food, 10 wood, 5 ore"
+ui.report,Подтвердить клятву и открыть следующую дорогу,Confirm the oath and open the next road
+ui.buy,Купить,Buy
+ui.sell,Продать,Sell
+ui.stone,камня,stone
+ui.assault,Объявить войну и атаковать гарнизон,Declare war and assault the garrison
+ui.town_help,Помогите общине обозом и очистите лагерь в 85 метрах к востоку. Святилище на западе укрепит доверие. Союз доступен в Совете [F] при отношении 60 и за 100 золота. После союза вернитесь за дорожной грамотой. Военный путь: объявите войну и победите трёх защитников гарнизона.,Deliver supplies and clear the camp 85 metres east. The western shrine earns trust. Propose an alliance in the Council [F] at 60 trust for 100 gold. Return after the alliance to receive a road charter. Military route: declare war and defeat all three garrison defenders.
+ui.home,Очаг Пограничья,Hearth of the March
+ui.travel,Отправиться по открытой дороге,Travel along the open road
+ui.travel_home,Вернуться к своему очагу,Return to your hearth
+ui.travel_cost,"Путь: 1 день, 3 еды, 5 золота. Во время боя недоступно.","Journey: 1 day, 3 food, 5 gold. Unavailable in combat."
+ui.map,Карта [M],Map [M]
+ui.workshop,Строительство и кузница,Building and forge
+ui.craft,Выковать (требуется кузница),Craft (requires forge)
+ui.danger,Опасность,Danger
+ui.campaign_progress,Клятвы: {regions}/8 · Задания: {quests}/60,Oaths: {regions}/8 · Quests: {quests}/60
+ui.companions,Спутники,Companions
+ui.continue_world,Продолжить исследование,Continue exploring
+ending.military,Пограничье под одним знаменем,The March Under One Banner
+ending.diplomatic,Пограничье связано клятвами,The March United by Oaths
+ending.mixed,Совет стали и доверия,A Council of Steel and Trust
+ending.body,"Все восемь общин признали общий совет.
+Выполнено заданий: {quests}/60. Прошло дней: {days}.
+Личные клятвы спутников и неразведанные земли ещё ждут вас.","All eight communities recognize the common council.
+Quests completed: {quests}/60. Days elapsed: {days}.
+Your companions' personal oaths and unexplored lands still await."
+poi.shrine,Старое святилище,Old Shrine
+poi.cache,Тайник перевозчиков,Carriers' Cache
+poi.ruins,Забытые руины,Forgotten Ruins
+poi.mine,Заброшенная шахта,Abandoned Mine
+ui.new_campaign,Новая кампания,New campaign
+ui.continue,Продолжить кампанию,Continue campaign
+ui.difficulty,Сложность,Difficulty
+difficulty.story,История,Story
+difficulty.normal,Обычная,Normal
+difficulty.hard,Тяжёлая,Hard
+difficulty.expert,Ветеран,Veteran
+ui.iron_mode,Железный режим: одна жизнь и одно сохранение,Iron mode: one life and one save
+ui.campaign_intro,"Вы — новый хранитель пограничного очага. Накормите жителей, помогите общинам и объедините восемь фракций клятвами или силой. Начните с меча [I], полей [R → строительство] и старосты Тихой Сечи на севере. Карта [M] и журнал [J] всегда под рукой.","You are the new keeper of a frontier hearth. Feed your people, aid the communities and unite eight factions through oaths or force. Start with your sword [I], farms [R → building] and Greenhaven's reeve to the north. The map [M] and journal [J] are always available."
+ui.preview,Кампания • версия для проверки,Campaign • preview build
+ui.iron_dead,Клятва оборвалась. Начните новую кампанию.,Your oath has ended. Start a new campaign.
+ui.to_menu,В главное меню,Main menu
+item.ember_bloom.name,Жароцвет,Ember Bloom
+item.ember_bloom.desc,Сырьё для местных алхимических настоев.,An ingredient for local alchemical infusions.
+item.river_mint.name,Речная мята,River Mint
+item.river_mint.desc,Сырьё для местных алхимических настоев.,An ingredient for local alchemical infusions.
+item.stone_moss.name,Каменный мох,Stone Moss
+item.stone_moss.desc,Сырьё для местных алхимических настоев.,An ingredient for local alchemical infusions.
+item.marsh_root.name,Болотный корень,Marsh Root
+item.marsh_root.desc,Сырьё для местных алхимических настоев.,An ingredient for local alchemical infusions.
+item.vitality_1.name,Слабый настой здоровья,Weak Vitality
+item.vitality_1.desc,Эффект: здоровья. Сила 25; длительность 30 сек. Усиления одного типа заменяют друг друга.,Vitality effect. Potency 25; duration 30 seconds. Effects of the same type replace one another.
+item.vitality_2.name,Настой здоровья,Brewed Vitality
+item.vitality_2.desc,Эффект: здоровья. Сила 50; длительность 40 сек. Усиления одного типа заменяют друг друга.,Vitality effect. Potency 50; duration 40 seconds. Effects of the same type replace one another.
+item.vitality_3.name,Концентрат здоровья,Concentrated Vitality
+item.vitality_3.desc,Эффект: здоровья. Сила 75; длительность 50 сек. Усиления одного типа заменяют друг друга.,Vitality effect. Potency 75; duration 50 seconds. Effects of the same type replace one another.
+item.vitality_4.name,Эликсир здоровья,Grand Vitality
+item.vitality_4.desc,Эффект: здоровья. Сила 100; длительность 60 сек. Усиления одного типа заменяют друг друга.,Vitality effect. Potency 100; duration 60 seconds. Effects of the same type replace one another.
+item.vigor_1.name,Слабый настой бодрости,Weak Vigor
+item.vigor_1.desc,Эффект: бодрости. Сила 25; длительность 30 сек. Усиления одного типа заменяют друг друга.,Vigor effect. Potency 25; duration 30 seconds. Effects of the same type replace one another.
+item.vigor_2.name,Настой бодрости,Brewed Vigor
+item.vigor_2.desc,Эффект: бодрости. Сила 50; длительность 40 сек. Усиления одного типа заменяют друг друга.,Vigor effect. Potency 50; duration 40 seconds. Effects of the same type replace one another.
+item.vigor_3.name,Концентрат бодрости,Concentrated Vigor
+item.vigor_3.desc,Эффект: бодрости. Сила 75; длительность 50 сек. Усиления одного типа заменяют друг друга.,Vigor effect. Potency 75; duration 50 seconds. Effects of the same type replace one another.
+item.vigor_4.name,Эликсир бодрости,Grand Vigor
+item.vigor_4.desc,Эффект: бодрости. Сила 100; длительность 60 сек. Усиления одного типа заменяют друг друга.,Vigor effect. Potency 100; duration 60 seconds. Effects of the same type replace one another.
+item.might_1.name,Слабый настой силы,Weak Might
+item.might_1.desc,Эффект: силы. Сила 1.12; длительность 30 сек. Усиления одного типа заменяют друг друга.,Might effect. Potency 1.12; duration 30 seconds. Effects of the same type replace one another.
+item.might_2.name,Настой силы,Brewed Might
+item.might_2.desc,Эффект: силы. Сила 1.24; длительность 40 сек. Усиления одного типа заменяют друг друга.,Might effect. Potency 1.24; duration 40 seconds. Effects of the same type replace one another.
+item.might_3.name,Концентрат силы,Concentrated Might
+item.might_3.desc,Эффект: силы. Сила 1.36; длительность 50 сек. Усиления одного типа заменяют друг друга.,Might effect. Potency 1.36; duration 50 seconds. Effects of the same type replace one another.
+item.might_4.name,Эликсир силы,Grand Might
+item.might_4.desc,Эффект: силы. Сила 1.48; длительность 60 сек. Усиления одного типа заменяют друг друга.,Might effect. Potency 1.48; duration 60 seconds. Effects of the same type replace one another.
+item.barkskin_1.name,Слабый настой каменной кожи,Weak Barkskin
+item.barkskin_1.desc,Эффект: каменной кожи. Сила 12; длительность 30 сек. Усиления одного типа заменяют друг друга.,Barkskin effect. Potency 12; duration 30 seconds. Effects of the same type replace one another.
+item.barkskin_2.name,Настой каменной кожи,Brewed Barkskin
+item.barkskin_2.desc,Эффект: каменной кожи. Сила 24; длительность 40 сек. Усиления одного типа заменяют друг друга.,Barkskin effect. Potency 24; duration 40 seconds. Effects of the same type replace one another.
+item.barkskin_3.name,Концентрат каменной кожи,Concentrated Barkskin
+item.barkskin_3.desc,Эффект: каменной кожи. Сила 36; длительность 50 сек. Усиления одного типа заменяют друг друга.,Barkskin effect. Potency 36; duration 50 seconds. Effects of the same type replace one another.
+item.barkskin_4.name,Эликсир каменной кожи,Grand Barkskin
+item.barkskin_4.desc,Эффект: каменной кожи. Сила 48; длительность 60 сек. Усиления одного типа заменяют друг друга.,Barkskin effect. Potency 48; duration 60 seconds. Effects of the same type replace one another.
+item.swift_1.name,Слабый настой попутного ветра,Weak Tailwind
+item.swift_1.desc,Эффект: попутного ветра. Сила 1.08; длительность 30 сек. Усиления одного типа заменяют друг друга.,Tailwind effect. Potency 1.08; duration 30 seconds. Effects of the same type replace one another.
+item.swift_2.name,Настой попутного ветра,Brewed Tailwind
+item.swift_2.desc,Эффект: попутного ветра. Сила 1.16; длительность 40 сек. Усиления одного типа заменяют друг друга.,Tailwind effect. Potency 1.16; duration 40 seconds. Effects of the same type replace one another.
+item.swift_3.name,Концентрат попутного ветра,Concentrated Tailwind
+item.swift_3.desc,Эффект: попутного ветра. Сила 1.24; длительность 50 сек. Усиления одного типа заменяют друг друга.,Tailwind effect. Potency 1.24; duration 50 seconds. Effects of the same type replace one another.
+item.swift_4.name,Эликсир попутного ветра,Grand Tailwind
+item.swift_4.desc,Эффект: попутного ветра. Сила 1.32; длительность 60 сек. Усиления одного типа заменяют друг друга.,Tailwind effect. Potency 1.32; duration 60 seconds. Effects of the same type replace one another.
+ui.slot,Сохранение,Save slot
+ui.autosave,Автосохранение,Autosave
+ui.iron_save,Железный режим,Iron mode save
+tutorial.campaign_title,ПЕРВЫЕ ШАГИ,FIRST STEPS
+tutorial.basics_complete,"Основы освоены. Впереди восемь клятв. Журнал [J], карта [M].","Basics complete. Eight oaths await. Journal [J], map [M]."

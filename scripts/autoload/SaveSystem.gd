@@ -2,42 +2,68 @@ extends Node
 
 const SAVE_PATH = "user://savegame.json"
 const BACKUP_PATH = "user://savegame.bak"
-const SCHEMA_VERSION = 2
+const SCHEMA_VERSION = 3
 const SECRET_SALT = "OathsOfTheMarch_v1_Salt"
+var selected_slot: int = 0
 
-func save_game(game_data: Dictionary) -> bool:
-	var data_str = JSON.stringify(_normalize_numbers(game_data))
+func slot_path(index: int) -> String:
+	if index == 5: return "user://autosave.json"
+	if index == 6: return "user://iron_save.json"
+	return SAVE_PATH if index == 0 else "user://savegame_%d.json" % clampi(index, 1, 4)
+
+func newest_slot() -> int:
+	var newest: int = 0
+	var timestamp: int = 0
+	for index in 7:
+		var path := slot_path(index)
+		if FileAccess.file_exists(path) and FileAccess.get_modified_time(path) >= timestamp and not _read_valid_save(path).is_empty():
+			timestamp = FileAccess.get_modified_time(path)
+			newest = index
+	return newest
+
+func load_slot(index: int) -> Dictionary:
+	var path := slot_path(index)
+	var data := _read_valid_save(path)
+	return _read_valid_save(path + ".bak") if data.is_empty() else data
+
+func save_game(game_data: Dictionary, autosave: bool = false) -> bool:
+	var path := slot_path(6 if CampaignSystem.active and CampaignSystem.iron_mode else 5 if autosave else selected_slot)
+	var backup := BACKUP_PATH if path == SAVE_PATH else path + ".bak"
+	# Hash the exact serialized bytes. Parsing floats and serializing them again
+	# can change the last decimal digit, even with full-precision JSON enabled.
+	var data_str = JSON.stringify(game_data, "", true, true)
 	var checksum = calculate_checksum(data_str)
 
 	var payload = {
 		"version": SCHEMA_VERSION,
 		"timestamp": Time.get_unix_time_from_system(),
 		"checksum": checksum,
-		"data": game_data
+		"data": data_str
 	}
 
-	var final_json = JSON.stringify(payload)
+	var final_json = JSON.stringify(payload, "", true, true)
 
-	if not _read_valid_save(SAVE_PATH).is_empty():
-		if DirAccess.copy_absolute(SAVE_PATH, BACKUP_PATH) != OK:
+	if not _read_valid_save(path).is_empty() and not (CampaignSystem.active and CampaignSystem.iron_mode):
+		if DirAccess.copy_absolute(path, backup) != OK:
 			return false
 
-	var file = FileAccess.open(SAVE_PATH + ".tmp", FileAccess.WRITE)
+	var file = FileAccess.open(path + ".tmp", FileAccess.WRITE)
 	if not file:
 		IntegrityLogger.log_anomaly("SaveSystem", "Failed to open save file for writing")
 		return false
 
 	file.store_string(final_json)
 	file.close()
-	if DirAccess.rename_absolute(SAVE_PATH + ".tmp", SAVE_PATH) != OK:
+	if DirAccess.rename_absolute(path + ".tmp", path) != OK:
 		return false
 	EventBus.notification_posted.emit(LocalizationManager.get_string("msg.game_saved"), false)
 	return true
 
 func load_game() -> Dictionary:
-	var data := _read_valid_save(SAVE_PATH)
+	var path := slot_path(selected_slot)
+	var data := _read_valid_save(path)
 	if data.is_empty():
-		data = try_load_backup()
+		data = try_load_backup() if selected_slot == 0 else _read_valid_save(path + ".bak")
 	if not data.is_empty():
 		EventBus.notification_posted.emit(LocalizationManager.get_string("msg.game_loaded"), false)
 	return data
@@ -60,7 +86,15 @@ func _read_valid_save(path: String) -> Dictionary:
 	var payload = json.data
 	if not payload is Dictionary or not payload.has("checksum") or not payload.has("data"):
 		return {}
-	if not payload["data"] is Dictionary or payload.get("version", 0) < 1 or payload.get("version", 0) > SCHEMA_VERSION:
+	if payload.get("version", 0) < 1 or payload.get("version", 0) > SCHEMA_VERSION:
+		return {}
+	if payload.get("version") == 3:
+		if not payload.data is String or calculate_checksum(payload.data) != payload.checksum:
+			IntegrityLogger.log_anomaly("SaveSystem", "Invalid save checksum: " + path)
+			return {}
+		var decoded = JSON.parse_string(payload.data)
+		return decoded if decoded is Dictionary else {}
+	if not payload.data is Dictionary:
 		return {}
 
 	var recorded_checksum = payload["checksum"]

@@ -1,15 +1,10 @@
 [gd_resource type="Resource" script_class="FactionData" load_steps=2 format=3]
-
-[ext_resource type="Script" path="res://scripts/autoload/FactionData.gd" id="1_script"]
-
+[ext_resource type="Script" path="res://scripts/autoload/FactionData.gd" id="1"]
 [resource]
-script = ExtResource("1_script")
+script = ExtResource("1")
 id = "woodland_freeholders"
 name_key = "faction.woodland_freeholders.name"
 desc_key = "faction.woodland_freeholders.desc"
-leader_name = "Elder Bryn"
 personality_type = "cautious"
 military_power = 40.0
 relationship_to_player = 10.0
-threat_perception = 0.0
-mobilization_level = 0

@@ -12,4 +12,5 @@ extends Resource
 @export var range_distance: float = 2.0
 @export var food_consumption: float = 1.5
 @export var daily_wage: float = 2.0
+@export var recruit_gold: float = 20.0
 @export var formation_type: String = "line" # line, shield_wall, loose

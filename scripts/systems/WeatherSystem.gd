@@ -70,7 +70,7 @@ func set_weather(weather: WeatherType) -> void:
 	var weather_name = get_weather_string_key(weather)
 	if LocalizationManager:
 		var localized_name = LocalizationManager.get_string(weather_name)
-		EventBus.notification_posted.emit(LocalizationManager.get_string("msg.weather_changed") + localized_name, false)
+		EventBus.notification_posted.emit(LocalizationManager.get_string("msg.weather_changed") + " " + localized_name, false)
 
 func get_weather_string_key(weather: WeatherType) -> String:
 	match weather:

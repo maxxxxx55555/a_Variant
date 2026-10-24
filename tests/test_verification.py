@@ -1,5 +1,13 @@
 import os
 import csv
+from pathlib import Path
+import sys
+import json
+import re
+
+os.chdir(Path(__file__).resolve().parents[1])
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
 
 def test_localization():
     ru_keys = {}
@@ -20,6 +28,10 @@ def test_localization():
                 en_keys[row[0].strip()] = row[2].strip()
 
     assert set(ru_keys.keys()) == set(en_keys.keys()), f"Key mismatch! RU extra: {set(ru_keys.keys()) - set(en_keys.keys())}, EN extra: {set(en_keys.keys()) - set(ru_keys.keys())}"
+    compiled = json.loads(Path('data/balance/localization.json').read_text(encoding='utf-8'))
+    for key in ru_keys:
+        assert compiled[key] == {'ru': ru_keys[key], 'en': en_keys[key]}, f'Stale compiled translation: {key}'
+        assert set(re.findall(r'\{\w+\}', ru_keys[key])) == set(re.findall(r'\{\w+\}', en_keys[key])), key
 
     # Verify unit entries
     unit_keys = ['unit.militia_spear.name', 'unit.shield_swordsmen.name', 'unit.archers.name', 'unit.heavy_infantry.name']

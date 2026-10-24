@@ -9,7 +9,7 @@ func take_damage(amount: float) -> void:
 	if is_dead:
 		return
 	current_hp -= amount
-	if AudioManager: AudioManager.play_sound("enemy_hurt")
+	AudioManager.play_at("enemy_hurt", global_position)
 
 	if not is_enraged and current_hp <= (max_hp * 0.5):
 		is_enraged = true
@@ -23,12 +23,8 @@ func take_damage(amount: float) -> void:
 
 func die() -> void:
 	is_dead = true
-	if AudioManager: AudioManager.play_sound("enemy_death")
+	AudioManager.play_at("enemy_death", global_position)
 	EventBus.enemy_died.emit(self)
-
-	# Check for quest completion
-	if QuestSystem:
-		QuestSystem.complete_quest("main_quest_01")
 
 	var boss_title = LocalizationManager.get_string(boss_name_key)
 	var msg_template = LocalizationManager.get_string("msg.boss_defeated")

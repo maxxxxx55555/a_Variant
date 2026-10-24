@@ -14,6 +14,7 @@ extends Control
 var notification_timer: float = 0.0
 var controls_label: Label
 var alchemy_btn: Button
+var council_btn: Button
 var objective_label: Label
 
 func _ready() -> void:
@@ -49,7 +50,10 @@ func _ready() -> void:
 	alchemy_btn.size = Vector2(165, 60)
 	$MobileControls.add_child(alchemy_btn)
 	alchemy_btn.pressed.connect(func(): get_tree().current_scene.toggle_alchemy())
-	var top_buttons := [inventory_btn, town_btn, alchemy_btn]
+	council_btn = Button.new()
+	$MobileControls.add_child(council_btn)
+	council_btn.pressed.connect(func(): get_tree().current_scene.toggle_strategy(0))
+	var top_buttons := [inventory_btn, town_btn, alchemy_btn, council_btn]
 	for i in range(top_buttons.size()):
 		var button: Button = top_buttons[i]
 		button.set_anchors_and_offsets_preset(Control.PRESET_TOP_RIGHT)
@@ -77,6 +81,7 @@ func localize() -> void:
 	inventory_btn.text = LocalizationManager.get_string("ui.inventory") + " (I)"
 	town_btn.text = LocalizationManager.get_string("ui.settlement") + " (B)"
 	alchemy_btn.text = LocalizationManager.get_string("ui.alchemy") + " (C)"
+	council_btn.text = LocalizationManager.get_string("ui.strategy") + " (R)"
 	controls_label.text = LocalizationManager.get_string("ui.controls")
 
 func _process(delta: float) -> void:

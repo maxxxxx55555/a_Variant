@@ -32,10 +32,14 @@ func run() -> void:
 	var save: Node = root.get_node("SaveSystem")
 	save.save_game({"hp": 75, "inventory": [], "equipment": {}})
 	check(save.load_game().get("hp") == 75, "Save data round-trips")
+	var precise_state := {"hp": 75.0, "time": 22.5478855151515, "relations": {"trust": 69.0227735908022}, "position": [0.14546716213226318, -0.0537941977381706]}
+	check(save.save_game(precise_state) and save.load_game() == precise_state, "Fractional simulation values round-trip with the exact checksum")
 	var file = FileAccess.open(save.SAVE_PATH, FileAccess.READ)
 	var payload = JSON.parse_string(file.get_as_text())
 	file.close()
-	payload["data"]["hp"] = 9999
+	var changed_data = JSON.parse_string(payload.data) if payload.data is String else payload.data
+	changed_data.hp = 9999
+	payload.data = JSON.stringify(changed_data) if payload.data is String else changed_data
 	file = FileAccess.open(save.SAVE_PATH, FileAccess.WRITE)
 	file.store_string(JSON.stringify(payload))
 	file.close()
@@ -210,6 +214,8 @@ func playthrough() -> void:
 		if state.inventory[i].resource_path.ends_with("leather_armor.tres"):
 			armor_index = i
 	check(armor_index >= 0, "E picks up armor from the world")
+	if armor_index < 0:
+		print("PLAYTHROUGH DIAGNOSTIC: pos=", player.position, " mouse=", Input.mouse_mode, " paused=", paused, " weight=", state.get_total_weight(), " ray=", player.interact_ray.get_collider())
 	if armor_index >= 0:
 		world.toggle_inventory()
 		world.inventory_ui._on_item_selected(armor_index)
@@ -228,6 +234,8 @@ func playthrough() -> void:
 		await action("attack")
 		Input.action_release("block")
 	check(not is_instance_valid(world.enemy), "Normal movement and sword attacks defeat the enemy")
+	if is_instance_valid(world.enemy):
+		print("PLAYTHROUGH DIAGNOSTIC: player=", player.position, " enemy=", world.enemy.position, " hp=", world.enemy.current_hp, " cooldown=", player.attack_cooldown)
 	check(state.player_hp > 0, "Player survives the fight")
 	await screenshot("combat")
 	var alchemy: Node = root.get_node("AlchemySystem")

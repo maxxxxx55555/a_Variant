@@ -39,7 +39,8 @@ func recalculate_threat(player_army_power: float) -> void:
 		var f = factions[fid]
 		var res = load(f["res_path"])
 		var personality_mult = 1.2 if res and res.personality_type == "cautious" else 1.0
-		var calculated_threat = max(0.0, (player_army_power * personality_mult) - f["relationship"])
+		var expansion: float = CampaignSystem.conquests.size() * 6.0
+		var calculated_threat = max(0.0, (player_army_power * personality_mult) + expansion - f["relationship"])
 		f["threat"] = calculated_threat
 
 		var new_level = 0
@@ -54,15 +55,18 @@ func recalculate_threat(player_army_power: float) -> void:
 		elif calculated_threat > 10.0:
 			new_level = 1 # Rising alarm
 
-		if new_level != f["escalation_level"]:
-			f["escalation_level"] = new_level
-			escalation_level_changed.emit(fid, new_level)
-			var fname = LocalizationManager.get_string(res.name_key) if res else fid
-			EventBus.notification_posted.emit(LocalizationManager.get_string("msg.escalation_warning", {"faction": fname, "level": str(new_level)}), new_level >= 3)
+		f["desired_escalation"] = new_level
 
 func _on_day_passed(_day: int) -> void:
-	var total_army_power = 0.0
-	if ArmySystem:
-		for sq in ArmySystem.squads:
-			total_army_power += sq.get("count", 0) * 3.0
-	recalculate_threat(total_army_power)
+	recalculate_threat(ArmySystem.get_army_power())
+	for fid in factions:
+		var faction: Dictionary = factions[fid]
+		var desired: int = faction.get("desired_escalation", 0)
+		if DiplomacySystem.has_treaty(fid, "peace") or DiplomacySystem.has_treaty(fid, "alliance"):
+			desired = mini(desired, 1)
+		var previous: int = faction.escalation_level
+		faction.escalation_level = previous + clampi(desired - previous, -1, 1)
+		if faction.escalation_level != previous:
+			escalation_level_changed.emit(fid, faction.escalation_level)
+			var data = load(faction.res_path)
+			EventBus.notification_posted.emit(LocalizationManager.get_string("msg.escalation_warning", {"faction": LocalizationManager.get_string(data.name_key), "level": str(faction.escalation_level)}), faction.escalation_level >= 3)

@@ -33,6 +33,23 @@ func _ready() -> void:
 
 	init_settings_ui()
 	localize()
+	var slot_choice := OptionButton.new()
+	for index in 5: slot_choice.add_item(LocalizationManager.get_string("ui.slot") + " " + str(index + 1))
+	slot_choice.selected = SaveSystem.selected_slot
+	slot_choice.item_selected.connect(func(index): SaveSystem.selected_slot = index)
+	$MarginContainer/VBoxContainer.add_child(slot_choice)
+	if CampaignSystem.active:
+		var menu_button := Button.new()
+		menu_button.text = LocalizationManager.get_string("ui.to_menu")
+		$MarginContainer/VBoxContainer.add_child(menu_button)
+		menu_button.pressed.connect(func():
+			_on_save(true)
+			get_tree().paused = false
+			get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
+		)
+		if CampaignSystem.iron_mode:
+			slot_choice.disabled = true
+			load_btn.disabled = true
 
 func localize() -> void:
 	resume_btn.text = LocalizationManager.get_string("ui.respawn" if GameState.player_hp <= 0 else "ui.resume")
@@ -50,12 +67,12 @@ func init_settings_ui() -> void:
 	lang_option.add_item("English", 1)
 	lang_option.selected = 0 if SettingsManager.language == "ru" else 1
 
-	master_slider.value = SettingsManager.master_volume
-	music_slider.value = SettingsManager.music_volume
-	sfx_slider.value = SettingsManager.sfx_volume
-	ui_slider.value = SettingsManager.ui_volume
-	bobbing_check.button_pressed = SettingsManager.camera_bobbing
-	shake_check.button_pressed = SettingsManager.camera_shake
+	master_slider.set_value_no_signal(SettingsManager.master_volume)
+	music_slider.set_value_no_signal(SettingsManager.music_volume)
+	sfx_slider.set_value_no_signal(SettingsManager.sfx_volume)
+	ui_slider.set_value_no_signal(SettingsManager.ui_volume)
+	bobbing_check.set_pressed_no_signal(SettingsManager.camera_bobbing)
+	shake_check.set_pressed_no_signal(SettingsManager.camera_shake)
 
 func _on_resume() -> void:
 	SettingsManager.save_settings()
@@ -67,7 +84,7 @@ func _on_resume() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	get_tree().current_scene._sync_menu_state()
 
-func _on_save() -> void:
+func _on_save(autosave: bool = false) -> void:
 	if GameState.player_hp <= 0:
 		return
 	var world_node = get_tree().current_scene
@@ -83,9 +100,11 @@ func _on_save() -> void:
 		"world": world_data,
 		"simulation": capture_simulation()
 	}
-	SaveSystem.save_game(state_data)
+	SaveSystem.save_game(state_data, autosave)
 
 func _on_load() -> void:
+	if CampaignSystem.active and CampaignSystem.iron_mode:
+		return
 	var loaded = SaveSystem.load_game()
 	if not loaded.is_empty():
 		GameState.player_hp = loaded.get("hp", 100.0)
@@ -136,6 +155,7 @@ func _on_lang_selected(idx: int) -> void:
 
 func _on_exit() -> void:
 	SettingsManager.save_settings()
+	if CampaignSystem.active: _on_save(true)
 	get_tree().quit()
 
 func capture_simulation() -> Dictionary:
@@ -145,7 +165,14 @@ func capture_simulation() -> Dictionary:
 		"population": PopulationSystem.total_population, "sick": PopulationSystem.sick_citizens,
 		"jobs": PopulationSystem.jobs.duplicate(), "happiness": PopulationSystem.happiness,
 		"health": PopulationSystem.health, "crisis_days": PopulationSystem.low_happiness_days,
-		"stockpiles": EconomySystem.stockpiles.duplicate(), "laws": SettlementSystem.current_laws.duplicate()
+		"stockpiles": EconomySystem.stockpiles.duplicate(), "laws": SettlementSystem.current_laws.duplicate(),
+		"army": ArmySystem.squads.duplicate(true), "army_next_id": ArmySystem.next_squad_id,
+		"factions": FactionSystem.factions.duplicate(true), "treaties": DiplomacySystem.active_treaties.duplicate(true),
+		"treaty_expiry": DiplomacySystem.treaty_expiry.duplicate(), "quests_active": QuestSystem.active_quests.duplicate(),
+		"quests_completed": QuestSystem.completed_quests.duplicate(), "weather": WeatherSystem.current_weather,
+		"strength_buff": GameState.strength_buff_timer,
+		"campaign": CampaignSystem.capture_state(), "buildings": WorkshopSystem.levels.duplicate(),
+		"timed_effects": GameState.timed_effects.duplicate(true), "poison": GameState.poison_timer
 	}
 
 func restore_simulation(data: Dictionary) -> void:
@@ -156,9 +183,24 @@ func restore_simulation(data: Dictionary) -> void:
 	PopulationSystem.total_population = int(data.get("population", 25))
 	PopulationSystem.sick_citizens = int(data.get("sick", 0))
 	PopulationSystem.jobs = data.get("jobs", {"farmers": 8, "woodcutters": 5, "miners": 3, "guards": 2, "blacksmiths": 2})
+	ArmySystem.squads = data.get("army", [])
+	ArmySystem.next_squad_id = int(data.get("army_next_id", 1))
 	PopulationSystem.happiness = float(data.get("happiness", 70))
 	PopulationSystem.health = float(data.get("health", 85))
 	PopulationSystem.low_happiness_days = int(data.get("crisis_days", 0))
 	PopulationSystem.reconcile_workers()
 	EconomySystem.stockpiles = data.get("stockpiles", {"food": 150.0, "wood": 80.0, "ore": 40.0, "stone": 50.0, "gold": 200.0})
 	SettlementSystem.current_laws = data.get("laws", {"taxes": "normal", "rations": "full", "conscription": "voluntary"})
+	FactionSystem.factions = data.get("factions", FactionSystem.factions)
+	DiplomacySystem.active_treaties = data.get("treaties", {})
+	DiplomacySystem.treaty_expiry = data.get("treaty_expiry", {})
+	QuestSystem.active_quests = data.get("quests_active", ["main_quest_01", "side_quest_clear_camp", "companion_quest_01"])
+	QuestSystem.completed_quests = data.get("quests_completed", [])
+	WeatherSystem.set_weather(int(data.get("weather", 0)))
+	GameState.strength_buff_timer = data.get("strength_buff", 0.0)
+	GameState.timed_effects = data.get("timed_effects", {})
+	GameState.poison_timer = data.get("poison", 0.0)
+	GameState.recalculate_stats()
+	CampaignSystem.restore_state(data.get("campaign", {}))
+	WorkshopSystem.levels = data.get("buildings", {})
+	ArmySystem.roster_changed.emit()

@@ -25,10 +25,10 @@ func update_worker_assignments(new_jobs: Dictionary) -> void:
 		if not jobs.has(j) or not (new_jobs[j] is int or new_jobs[j] is float) or new_jobs[j] < 0 or new_jobs[j] != int(new_jobs[j]):
 			return
 		assigned += new_jobs[j]
-	if assigned <= total_population - sick_citizens:
+	if assigned <= total_population - sick_citizens - _soldiers():
 		for job in jobs:
 			jobs[job] = int(new_jobs.get(job, 0))
-		available_workers = total_population - sick_citizens - assigned
+		available_workers = total_population - sick_citizens - _soldiers() - assigned
 		EventBus.settlement_updated.emit()
 
 func _on_day_passed(_day: int) -> void:
@@ -57,8 +57,12 @@ func _on_day_passed(_day: int) -> void:
 		low_happiness_days = 0
 
 func reconcile_workers() -> void:
-	var remaining := maxi(0, total_population - sick_citizens)
+	var remaining := maxi(0, total_population - sick_citizens - _soldiers())
 	for job in jobs:
 		jobs[job] = clampi(int(jobs[job]), 0, remaining)
 		remaining -= jobs[job]
 	available_workers = remaining
+
+func _soldiers() -> int:
+	var army := get_node_or_null("/root/ArmySystem")
+	return army.get_total_soldiers() if army and army.has_method("get_total_soldiers") else 0

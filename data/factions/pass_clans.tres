@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FactionData" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/autoload/FactionData.gd" id="1"]
+[resource]
+script = ExtResource("1")
+id = "pass_clans"
+name_key = "faction.pass_clans.name"
+desc_key = "faction.pass_clans.desc"
+personality_type = "pragmatic"
+military_power = 96.0
+relationship_to_player = 0.0

@@ -1,0 +1,131 @@
+[
+  {
+    "id": "farm",
+    "name": "building.farm",
+    "cost": {
+      "wood": 25,
+      "gold": 30
+    },
+    "daily": {
+      "food": 8
+    },
+    "max_level": 3
+  },
+  {
+    "id": "housing",
+    "name": "building.housing",
+    "cost": {
+      "wood": 30,
+      "stone": 10,
+      "gold": 40
+    },
+    "daily": {
+      "housing": 10
+    },
+    "max_level": 3
+  },
+  {
+    "id": "infirmary",
+    "name": "building.infirmary",
+    "cost": {
+      "wood": 35,
+      "ore": 10,
+      "gold": 65
+    },
+    "daily": {
+      "health": 2
+    },
+    "max_level": 3
+  },
+  {
+    "id": "well",
+    "name": "building.well",
+    "cost": {
+      "stone": 20,
+      "gold": 25
+    },
+    "daily": {
+      "health": 1,
+      "happiness": 1
+    },
+    "max_level": 3
+  },
+  {
+    "id": "market",
+    "name": "building.market",
+    "cost": {
+      "wood": 40,
+      "stone": 15,
+      "gold": 75
+    },
+    "daily": {
+      "gold": 10
+    },
+    "max_level": 3
+  },
+  {
+    "id": "sawmill",
+    "name": "building.sawmill",
+    "cost": {
+      "wood": 30,
+      "ore": 10,
+      "gold": 50
+    },
+    "daily": {
+      "wood": 6
+    },
+    "max_level": 3
+  },
+  {
+    "id": "quarry",
+    "name": "building.quarry",
+    "cost": {
+      "wood": 20,
+      "ore": 15,
+      "gold": 45
+    },
+    "daily": {
+      "stone": 5
+    },
+    "max_level": 3
+  },
+  {
+    "id": "forge",
+    "name": "building.forge",
+    "cost": {
+      "stone": 25,
+      "ore": 20,
+      "gold": 80
+    },
+    "daily": {
+      "ore": 4
+    },
+    "max_level": 3
+  },
+  {
+    "id": "barracks",
+    "name": "building.barracks",
+    "cost": {
+      "wood": 40,
+      "stone": 30,
+      "gold": 100
+    },
+    "daily": {
+      "housing": 5
+    },
+    "max_level": 3
+  },
+  {
+    "id": "hall",
+    "name": "building.hall",
+    "cost": {
+      "wood": 60,
+      "stone": 30,
+      "gold": 120
+    },
+    "daily": {
+      "happiness": 2
+    },
+    "max_level": 3
+  }
+]

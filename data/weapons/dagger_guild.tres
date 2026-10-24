@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/autoload/WeaponData.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = "dagger_guild"
+name_key = "item.dagger_guild.name"
+desc_key = "item.dagger_guild.desc"
+weight = 1.0
+rarity = "epic"
+type = "weapon"
+damage = 28.50
+speed = 2.0
+reach = 1.2
+stamina_cost = 5.0
+durability = 190.00

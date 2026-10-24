@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/autoload/WeaponData.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = "war_axe_guild"
+name_key = "item.war_axe_guild.name"
+desc_key = "item.war_axe_guild.desc"
+weight = 6.0
+rarity = "epic"
+type = "weapon"
+damage = 76.00
+speed = 0.9
+reach = 2.0
+stamina_cost = 18.0
+durability = 190.00

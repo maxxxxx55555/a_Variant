@@ -1,0 +1,7 @@
+{
+  "non_aggression": {"relationship": 0, "gold": 20, "days": 28},
+  "trade": {"relationship": 20, "gold": 40, "days": 28},
+  "alliance": {"relationship": 60, "gold": 100, "days": 56},
+  "peace": {"relationship": -100, "gold": 120, "days": 14},
+  "defensive_pact": {"relationship": 40, "gold": 60, "days": 28}
+}

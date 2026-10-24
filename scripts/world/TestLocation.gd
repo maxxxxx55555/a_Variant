@@ -13,8 +13,12 @@ const ENEMY_SCENE = preload("res://scenes/enemies/enemy.tscn")
 const PICKUP_SCENE = preload("res://scenes/items/world_item.tscn")
 const TUTORIAL_SCRIPT = preload("res://scripts/systems/TutorialSystem.gd")
 var tutorial: Node
+var music_check_time: float = 0.0
+var strategy_ui: Control
 
 func _ready() -> void:
+	AudioManager.play_music("exploration")
+	AudioManager.start_ambience("forest", Vector3(0, 3, 0))
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	player.process_mode = Node.PROCESS_MODE_PAUSABLE
 	enemy.process_mode = Node.PROCESS_MODE_PAUSABLE
@@ -23,6 +27,10 @@ func _ready() -> void:
 	add_child(tutorial)
 	var menu_theme := Theme.new()
 	menu_theme.default_font_size = 24
+	strategy_ui = preload("res://scripts/ui/StrategyUI.gd").new()
+	$CanvasLayer.add_child(strategy_ui)
+	strategy_ui.theme = menu_theme
+	strategy_ui.hide()
 	for menu in [inventory_ui, alchemy_ui, settlement_ui, pause_menu]:
 		menu.theme = menu_theme
 		if menu == pause_menu:
@@ -36,8 +44,8 @@ func _ready() -> void:
 		close_button.offset_top = 20
 		close_button.offset_bottom = 68
 		close_button.text = LocalizationManager.get_string("ui.close") + " (Esc)"
-		EventBus.language_changed.connect(func(_lang): close_button.text = LocalizationManager.get_string("ui.close") + " (Esc)")
 		close_button.pressed.connect(toggle_pause)
+	EventBus.language_changed.connect(_localize_close_buttons)
 	inventory_ui.visible = false
 	pause_menu.visible = false
 	if alchemy_ui: alchemy_ui.visible = false
@@ -57,8 +65,30 @@ func _ready() -> void:
 			GameState.add_item(herb_res, 4)
 	_sync_menu_state()
 
+func _localize_close_buttons(_language: String) -> void:
+	for menu in [inventory_ui, alchemy_ui, settlement_ui]:
+		menu.get_node("CloseButton").text = LocalizationManager.get_string("ui.close") + " (Esc)"
+
 func get_objective_state() -> Dictionary:
 	return tutorial.get_state()
+
+func _process(delta: float) -> void:
+	music_check_time -= delta
+	if music_check_time > 0:
+		return
+	music_check_time = 0.35
+	AudioManager.play_music(desired_music())
+
+func desired_music() -> String:
+	var in_combat := false
+	for actor in get_tree().get_nodes_in_group("enemies"):
+		if is_instance_valid(actor) and not actor.is_dead and is_instance_valid(actor.target_player) and actor.global_position.distance_to(player.global_position) < 35:
+			in_combat = true
+	if settlement_ui.visible:
+		return "settlement"
+	elif in_combat:
+		return "combat"
+	return "exploration"
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("inventory"):
@@ -69,11 +99,14 @@ func _unhandled_input(event: InputEvent) -> void:
 		toggle_settlement()
 	elif event is InputEventKey and event.pressed and event.keycode == KEY_C:
 		toggle_alchemy()
+	elif event is InputEventKey and event.pressed and event.keycode in [KEY_R, KEY_F, KEY_J]:
+		toggle_strategy([KEY_R, KEY_F, KEY_J].find(event.keycode))
 
 func toggle_inventory() -> void:
 	if pause_menu.visible:
 		return
 	inventory_ui.visible = not inventory_ui.visible
+	strategy_ui.hide()
 	if alchemy_ui: alchemy_ui.visible = false
 	if settlement_ui: settlement_ui.visible = false
 	if inventory_ui.visible:
@@ -87,6 +120,7 @@ func toggle_settlement() -> void:
 	if pause_menu.visible:
 		return
 	if settlement_ui:
+		strategy_ui.hide()
 		settlement_ui.visible = not settlement_ui.visible
 		inventory_ui.visible = false
 		if alchemy_ui: alchemy_ui.visible = false
@@ -102,13 +136,14 @@ func toggle_alchemy() -> void:
 	if pause_menu.visible or GameState.player_hp <= 0:
 		return
 	alchemy_ui.visible = not alchemy_ui.visible
+	strategy_ui.hide()
 	inventory_ui.visible = false
 	settlement_ui.visible = false
 	alchemy_ui.update_info()
 	_sync_menu_state()
 
 func _sync_menu_state() -> void:
-	var menu_open := inventory_ui.visible or pause_menu.visible or alchemy_ui.visible or settlement_ui.visible
+	var menu_open := inventory_ui.visible or pause_menu.visible or alchemy_ui.visible or settlement_ui.visible or (is_instance_valid(strategy_ui) and strategy_ui.visible)
 	get_tree().paused = menu_open
 	hud.visible = not menu_open
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE if menu_open else Input.MOUSE_MODE_CAPTURED
@@ -116,10 +151,11 @@ func _sync_menu_state() -> void:
 func toggle_pause() -> void:
 	if GameState.player_hp <= 0:
 		return
-	if inventory_ui.visible or (alchemy_ui and alchemy_ui.visible) or (settlement_ui and settlement_ui.visible):
+	if inventory_ui.visible or (alchemy_ui and alchemy_ui.visible) or (settlement_ui and settlement_ui.visible) or strategy_ui.visible:
 		inventory_ui.visible = false
 		if alchemy_ui: alchemy_ui.visible = false
 		if settlement_ui: settlement_ui.visible = false
+		strategy_ui.hide()
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		_sync_menu_state()
 		return
@@ -133,10 +169,23 @@ func toggle_pause() -> void:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	_sync_menu_state()
 
+func toggle_strategy(index: int) -> void:
+	if pause_menu.visible or GameState.player_hp <= 0:
+		return
+	inventory_ui.hide()
+	alchemy_ui.hide()
+	settlement_ui.hide()
+	if strategy_ui.visible and strategy_ui.tabs.current_tab == index:
+		strategy_ui.hide()
+	else:
+		strategy_ui.show_tab(index)
+	_sync_menu_state()
+
 func _on_player_died() -> void:
 	inventory_ui.hide()
 	alchemy_ui.hide()
 	settlement_ui.hide()
+	strategy_ui.hide()
 	pause_menu.show()
 	pause_menu.resume_btn.text = LocalizationManager.get_string("ui.respawn")
 	pause_menu.save_btn.disabled = true

@@ -72,7 +72,7 @@ func apply_jobs() -> void:
 	for job in worker_inputs:
 		assignment[job] = int(worker_inputs[job].value)
 		count += assignment[job]
-	if count > PopulationSystem.total_population - PopulationSystem.sick_citizens:
+	if count > PopulationSystem.total_population - PopulationSystem.sick_citizens - ArmySystem.get_total_soldiers():
 		EventBus.notification_posted.emit(LocalizationManager.get_string("msg.workers_invalid"), true)
 		return
 	PopulationSystem.update_worker_assignments(assignment)

@@ -19,13 +19,13 @@ func _process(delta: float) -> void:
 
 func advance_day() -> void:
 	current_day += 1
-	day_passed.emit(current_day)
 
 	current_week = int((current_day - 1) / 7) + 1
 
 	if (current_day - 1) % 28 == 0:
 		current_season_idx = (current_season_idx + 1) % seasons.size()
 		season_changed.emit(seasons[current_season_idx])
+	day_passed.emit(current_day)
 
 func get_current_season() -> String:
 	return seasons[current_season_idx]

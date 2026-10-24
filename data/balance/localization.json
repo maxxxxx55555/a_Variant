@@ -1,0 +1,2454 @@
+{
+  "ui.title": {
+    "ru": "Клятвы Пограничья",
+    "en": "Oaths of the March"
+  },
+  "ui.resume": {
+    "ru": "Продолжить",
+    "en": "Resume"
+  },
+  "ui.save": {
+    "ru": "Сохранить",
+    "en": "Save Game"
+  },
+  "ui.load": {
+    "ru": "Загрузить",
+    "en": "Load Game"
+  },
+  "ui.settings": {
+    "ru": "Настройки",
+    "en": "Settings"
+  },
+  "ui.exit": {
+    "ru": "Выйти",
+    "en": "Exit"
+  },
+  "ui.language": {
+    "ru": "Язык",
+    "en": "Language"
+  },
+  "ui.lang_ru": {
+    "ru": "Русский",
+    "en": "Russian"
+  },
+  "ui.lang_en": {
+    "ru": "English",
+    "en": "English"
+  },
+  "ui.volume_master": {
+    "ru": "Общая громкость",
+    "en": "Master Volume"
+  },
+  "ui.volume_music": {
+    "ru": "Музыка",
+    "en": "Music"
+  },
+  "ui.volume_sfx": {
+    "ru": "Эффекты",
+    "en": "SFX"
+  },
+  "ui.volume_ui": {
+    "ru": "Интерфейс",
+    "en": "UI Volume"
+  },
+  "ui.mouse_sensitivity": {
+    "ru": "Чувствительность мыши",
+    "en": "Mouse Sensitivity"
+  },
+  "ui.camera_bobbing": {
+    "ru": "Покачивание камеры",
+    "en": "Camera Bobbing"
+  },
+  "ui.camera_shake": {
+    "ru": "Тряска камеры",
+    "en": "Camera Shake"
+  },
+  "ui.inventory": {
+    "ru": "Инвентарь",
+    "en": "Inventory"
+  },
+  "ui.equipment": {
+    "ru": "Экипировка",
+    "en": "Equipment"
+  },
+  "ui.slot_head": {
+    "ru": "Голова",
+    "en": "Head"
+  },
+  "ui.slot_torso": {
+    "ru": "Торс",
+    "en": "Torso"
+  },
+  "ui.slot_legs": {
+    "ru": "Ноги",
+    "en": "Legs"
+  },
+  "ui.slot_weapon": {
+    "ru": "Оружие",
+    "en": "Weapon"
+  },
+  "ui.equip": {
+    "ru": "Экипировать",
+    "en": "Equip"
+  },
+  "ui.unequip": {
+    "ru": "Снять",
+    "en": "Unequip"
+  },
+  "ui.use": {
+    "ru": "Использовать",
+    "en": "Use"
+  },
+  "ui.drop": {
+    "ru": "Выбросить",
+    "en": "Drop"
+  },
+  "ui.stats.damage": {
+    "ru": "Урон",
+    "en": "Damage"
+  },
+  "ui.stats.defense": {
+    "ru": "Защита",
+    "en": "Armor"
+  },
+  "ui.stats.weight": {
+    "ru": "Вес",
+    "en": "Weight"
+  },
+  "ui.stats.speed": {
+    "ru": "Скорость",
+    "en": "Speed"
+  },
+  "ui.stats.durability": {
+    "ru": "Прочность",
+    "en": "Durability"
+  },
+  "ui.stats.reach": {
+    "ru": "Дальность",
+    "en": "Reach"
+  },
+  "ui.stats.stamina_cost": {
+    "ru": "Расход выносливости",
+    "en": "Stamina Cost"
+  },
+  "ui.stats.heal_amount": {
+    "ru": "Лечение",
+    "en": "Healing"
+  },
+  "ui.stats.rarity": {
+    "ru": "Редкость",
+    "en": "Rarity"
+  },
+  "ui.rarity.common": {
+    "ru": "Обычное",
+    "en": "Common"
+  },
+  "ui.rarity.uncommon": {
+    "ru": "Необычное",
+    "en": "Uncommon"
+  },
+  "ui.rarity.rare": {
+    "ru": "Редкое",
+    "en": "Rare"
+  },
+  "ui.rarity.epic": {
+    "ru": "Эпическое",
+    "en": "Epic"
+  },
+  "ui.rarity.legendary": {
+    "ru": "Легендарное",
+    "en": "Legendary"
+  },
+  "prompt.interact": {
+    "ru": "Нажмите E для взаимодействия",
+    "en": "Press E to interact"
+  },
+  "prompt.pickup": {
+    "ru": "Нажмите E чтобы подобрать {item}",
+    "en": "Press E to pick up {item}"
+  },
+  "msg.picked_up": {
+    "ru": "Подобран предмет: {item}",
+    "en": "Picked up item: {item}"
+  },
+  "msg.hp_full": {
+    "ru": "Здоровье уже полное!",
+    "en": "Health is already full!"
+  },
+  "msg.potion_used": {
+    "ru": "Использовано зелье: {item}",
+    "en": "Used potion: {item}"
+  },
+  "msg.equipped": {
+    "ru": "Экипировано: {item}",
+    "en": "Equipped: {item}"
+  },
+  "msg.unequipped": {
+    "ru": "Снято: {item}",
+    "en": "Unequipped: {item}"
+  },
+  "msg.game_saved": {
+    "ru": "Игра сохранена",
+    "en": "Game Saved"
+  },
+  "msg.game_loaded": {
+    "ru": "Игра загружена",
+    "en": "Game Loaded"
+  },
+  "msg.save_error": {
+    "ru": "Ошибка сохранения",
+    "en": "Save Error"
+  },
+  "msg.enemy_slain": {
+    "ru": "Враг повержен!",
+    "en": "Enemy slain!"
+  },
+  "item.iron_sword.name": {
+    "ru": "Железный меч",
+    "en": "Iron Sword"
+  },
+  "item.iron_sword.desc": {
+    "ru": "Надёжный железный меч пограничника.",
+    "en": "A reliable borderland iron sword."
+  },
+  "item.leather_armor.name": {
+    "ru": "Кожаный доспех",
+    "en": "Leather Armor"
+  },
+  "item.leather_armor.desc": {
+    "ru": "Плотная кожаная броня для защиты в лесу.",
+    "en": "Sturdy leather armor for wilderness protection."
+  },
+  "item.health_potion.name": {
+    "ru": "Малое зелье здоровья",
+    "en": "Minor Health Potion"
+  },
+  "item.health_potion.desc": {
+    "ru": "Восстанавливает 35 единиц здоровья.",
+    "en": "Restores 35 health points."
+  },
+  "item.steel_sword.name": {
+    "ru": "Стальной меч",
+    "en": "Steel Sword"
+  },
+  "item.steel_sword.desc": {
+    "ru": "Острый меч из закалённой стали.",
+    "en": "A sharp sword of tempered steel."
+  },
+  "item.hunter_bow.name": {
+    "ru": "Охотничий лук",
+    "en": "Hunter's Bow"
+  },
+  "item.hunter_bow.desc": {
+    "ru": "Прочный деревянный лук.",
+    "en": "A durable wooden bow."
+  },
+  "item.iron_helmet.name": {
+    "ru": "Железный шлем",
+    "en": "Iron Helmet"
+  },
+  "item.iron_helmet.desc": {
+    "ru": "Простой металлический шлем.",
+    "en": "A simple metallic helmet."
+  },
+  "item.chainmail.name": {
+    "ru": "Кольчуга",
+    "en": "Chainmail"
+  },
+  "item.chainmail.desc": {
+    "ru": "Надёжная стальная кольчуга.",
+    "en": "Reliable steel chainmail."
+  },
+  "item.stamina_potion.name": {
+    "ru": "Зелье выносливости",
+    "en": "Stamina Potion"
+  },
+  "item.stamina_potion.desc": {
+    "ru": "Восстанавливает сил для боя.",
+    "en": "Restores stamina for battle."
+  },
+  "item.healing_herb.name": {
+    "ru": "Целебная трава",
+    "en": "Healing Herb"
+  },
+  "item.healing_herb.desc": {
+    "ru": "Ингредиент для варки зелий здоровья.",
+    "en": "Ingredient for brewing health potions."
+  },
+  "ui.alchemy": {
+    "ru": "Алхимия",
+    "en": "Alchemy"
+  },
+  "ui.brew": {
+    "ru": "Сварить",
+    "en": "Brew"
+  },
+  "ui.settlement": {
+    "ru": "Поселение",
+    "en": "Settlement"
+  },
+  "ui.population": {
+    "ru": "Население",
+    "en": "Population"
+  },
+  "ui.happiness": {
+    "ru": "Счастье",
+    "en": "Happiness"
+  },
+  "ui.health": {
+    "ru": "Здоровье",
+    "en": "Health"
+  },
+  "ui.food_forecast": {
+    "ru": "Запас еды (дней)",
+    "en": "Food forecast (days)"
+  },
+  "ui.resources": {
+    "ru": "Ресурсы",
+    "en": "Resources"
+  },
+  "ui.laws": {
+    "ru": "Законы",
+    "en": "Laws"
+  },
+  "ui.restart": {
+    "ru": "Начать заново",
+    "en": "Restart"
+  },
+  "ui.ingredients": {
+    "ru": "Ингредиенты",
+    "en": "Ingredients"
+  },
+  "ui.attack": {
+    "ru": "Атака",
+    "en": "Attack"
+  },
+  "ui.interact": {
+    "ru": "Подобрать",
+    "en": "Pick up"
+  },
+  "ui.potion": {
+    "ru": "Зелье",
+    "en": "Potion"
+  },
+  "ui.controls": {
+    "ru": "WASD — движение · Shift — бег · Пробел — прыжок\nЛКМ — атака · ПКМ — блок · E — действие · Q — зелье\nI — вещи · C — алхимия · B — поселение · R/F/J — совет · M — карта · Esc — пауза",
+    "en": "WASD move · Shift sprint · Space jump\nLMB attack · RMB block · E interact · Q potion\nI inventory · C alchemy · B settlement · R/F/J council · M map · Esc pause"
+  },
+  "ui.empty": {
+    "ru": "Пусто",
+    "en": "Empty"
+  },
+  "msg.law_changed": {
+    "ru": "Закон поселения изменён",
+    "en": "Settlement law changed"
+  },
+  "msg.starvation": {
+    "ru": "Голод! Еда закончилась — здоровье и счастье жителей падают.",
+    "en": "Starvation! Food is exhausted — health and happiness decline."
+  },
+  "msg.low_happiness": {
+    "ru": "Критически низкое счастье: жители могут покинуть поселение!",
+    "en": "Critical happiness: citizens may leave the settlement!"
+  },
+  "msg.emigration": {
+    "ru": "Поселение покинули жители: {count}",
+    "en": "Citizens emigrated: {count}"
+  },
+  "ui.respawn": {
+    "ru": "Возродиться (−20% золота)",
+    "en": "Respawn (−20% gold)"
+  },
+  "ui.free_workers": {
+    "ru": "свободно",
+    "en": "unassigned"
+  },
+  "ui.resource_summary": {
+    "ru": "Еда: {food} | Дерево: {wood} | Руда: {ore} | Золото: {gold}",
+    "en": "Food: {food} | Wood: {wood} | Ore: {ore} | Gold: {gold}"
+  },
+  "ui.apply_jobs": {
+    "ru": "Назначить работников",
+    "en": "Assign workers"
+  },
+  "ui.wait_day": {
+    "ru": "Отдыхать до следующего дня",
+    "en": "Rest until next day"
+  },
+  "ui.day": {
+    "ru": "День",
+    "en": "Day"
+  },
+  "job.farmers": {
+    "ru": "Фермеры",
+    "en": "Farmers"
+  },
+  "job.woodcutters": {
+    "ru": "Дровосеки",
+    "en": "Woodcutters"
+  },
+  "job.miners": {
+    "ru": "Шахтёры",
+    "en": "Miners"
+  },
+  "job.guards": {
+    "ru": "Стража",
+    "en": "Guards"
+  },
+  "job.blacksmiths": {
+    "ru": "Кузнецы",
+    "en": "Blacksmiths"
+  },
+  "law.taxes": {
+    "ru": "Налоги",
+    "en": "Taxes"
+  },
+  "law.rations": {
+    "ru": "Пайки",
+    "en": "Rations"
+  },
+  "law.conscription": {
+    "ru": "Призыв",
+    "en": "Conscription"
+  },
+  "law.low": {
+    "ru": "Низкие",
+    "en": "Low"
+  },
+  "law.normal": {
+    "ru": "Обычные",
+    "en": "Normal"
+  },
+  "law.high": {
+    "ru": "Высокие",
+    "en": "High"
+  },
+  "law.half": {
+    "ru": "Половинные",
+    "en": "Half"
+  },
+  "law.full": {
+    "ru": "Полные",
+    "en": "Full"
+  },
+  "law.voluntary": {
+    "ru": "Добровольный",
+    "en": "Voluntary"
+  },
+  "law.forced": {
+    "ru": "Принудительный",
+    "en": "Forced"
+  },
+  "msg.workers_invalid": {
+    "ru": "Не хватает свободных жителей для назначения",
+    "en": "Not enough citizens for these assignments"
+  },
+  "tutorial.title": {
+    "ru": "ЦЕЛИ ТЕСТОВОЙ ВЫЛАЗКИ",
+    "en": "TEST EXPEDITION OBJECTIVES"
+  },
+  "tutorial.weapon": {
+    "ru": "Экипируйте меч в инвентаре (I)",
+    "en": "Equip a sword in the inventory (I)"
+  },
+  "tutorial.armor": {
+    "ru": "Подберите и наденьте доспех (E / I)",
+    "en": "Pick up and equip armor (E / I)"
+  },
+  "tutorial.combat": {
+    "ru": "Победите разбойника впереди (ЛКМ / ПКМ)",
+    "en": "Defeat the bandit ahead (LMB / RMB)"
+  },
+  "tutorial.alchemy": {
+    "ru": "Сварите зелье из трав (C)",
+    "en": "Brew a potion from herbs (C)"
+  },
+  "tutorial.settlement": {
+    "ru": "Обеспечьте поселение едой (B)",
+    "en": "Make food production sustainable (B)"
+  },
+  "tutorial.completed": {
+    "ru": "ВЫЛАЗКА ЗАВЕРШЕНА!\nВы освоили доступный игровой цикл.\nПолная кампания ещё в разработке.",
+    "en": "EXPEDITION COMPLETE!\nYou have mastered the available gameplay loop.\nThe full campaign is still in development."
+  },
+  "ui.close": {
+    "ru": "Закрыть",
+    "en": "Close"
+  },
+  "ui.repair": {
+    "ru": "Ремонт экипировки — {cost} золота",
+    "en": "Repair equipment — {cost} gold"
+  },
+  "ui.encumbered": {
+    "ru": "Перегруз!",
+    "en": "Encumbered!"
+  },
+  "ui.total_load": {
+    "ru": "Загрузка",
+    "en": "Total Load"
+  },
+  "msg.stamina_full": {
+    "ru": "Выносливость уже полная!",
+    "en": "Stamina is already full!"
+  },
+  "msg.strength_potion_used": {
+    "ru": "Зелье силы использовано! Урон увеличен.",
+    "en": "Strength potion used! Damage increased."
+  },
+  "msg.repaired": {
+    "ru": "Отремонтировано: {item}",
+    "en": "Repaired: {item}"
+  },
+  "msg.encumbered_warning": {
+    "ru": "Вы перегружены! Скорость снижена.",
+    "en": "You are encumbered! Speed is reduced."
+  },
+  "msg.law_updated": {
+    "ru": "Закон изменён: {law} на {val}",
+    "en": "Law updated: {law} set to {val}"
+  },
+  "msg.squad_order_issued": {
+    "ru": "Приказ отряду: {order}",
+    "en": "Squad order issued: {order}"
+  },
+  "msg.squad_selected": {
+    "ru": "Выбран {unit} (Приказ: {order})",
+    "en": "Selected {unit} (Order: {order})"
+  },
+  "msg.desertion_warning": {
+    "ru": "ВНИМАНИЕ: Мораль отряда критически низкая!",
+    "en": "WARNING: Squad morale is critically low!"
+  },
+  "msg.treaty_signed": {
+    "ru": "Подписан договор с фракцией {faction}: {treaty}",
+    "en": "Treaty signed with {faction}: {treaty}"
+  },
+  "msg.escalation_warning": {
+    "ru": "ВНИМАНИЕ: Рост тревоги фракции {faction}! Уровень: {level}",
+    "en": "WARNING: Threat escalated for {faction}! Level: {level}"
+  },
+  "msg.vertical_slice_completed": {
+    "ru": "Поздравляем! Вертикальный срез 30-60 минут успешно пройден!",
+    "en": "Congratulations! 30-60 min vertical slice successfully completed!"
+  },
+  "msg.quest_completed": {
+    "ru": "Квест выполнен: {title} (+{gold} золота, +{exp} опыта)",
+    "en": "Quest completed: {title} (+{gold} gold, +{exp} experience)"
+  },
+  "msg.boss_enraged": {
+    "ru": "ВНИМАНИЕ: Босс вошёл в фазу ярости!",
+    "en": "WARNING: Boss entered enraged phase!"
+  },
+  "msg.boss_defeated": {
+    "ru": "Босс повержен: {boss}",
+    "en": "Boss defeated: {boss}"
+  },
+  "msg.current_objective": {
+    "ru": "Текущая цель: {objective}",
+    "en": "Current Objective: {objective}"
+  },
+  "objective.defeat_enemy": {
+    "ru": "Зачистите окрестности от разбойника",
+    "en": "Clear the surroundings of the bandit"
+  },
+  "objective.brew_potion": {
+    "ru": "Сварите зелье здоровья",
+    "en": "Brew a health potion"
+  },
+  "objective.manage_settlement": {
+    "ru": "Откройте меню поселения (B) и проверьте запасы",
+    "en": "Open settlement menu (B) and inspect supplies"
+  },
+  "objective.command_army": {
+    "ru": "Выберите отряд (1-5) и отдайте приказ",
+    "en": "Select squad (1-5) and issue an order"
+  },
+  "objective.diplomacy_treaty": {
+    "ru": "Подпишите договор с соседней фракцией",
+    "en": "Sign a treaty with a neighboring faction"
+  },
+  "quest.main_01.title": {
+    "ru": "Угроза Пограничью",
+    "en": "Threat to the March"
+  },
+  "quest.main_01.desc": {
+    "ru": "Разгромите главаря бандитов на старом перевале.",
+    "en": "Defeat the bandit leader at the old pass."
+  },
+  "quest.side_clear_camp.title": {
+    "ru": "Зачистка лагеря",
+    "en": "Clear the Camp"
+  },
+  "quest.side_clear_camp.desc": {
+    "ru": "Очистите лесной лагерь от разбойников.",
+    "en": "Clear the forest camp of bandits."
+  },
+  "quest.companion_01.title": {
+    "ru": "Клятва Щита",
+    "en": "Oath of the Shield"
+  },
+  "quest.companion_01.desc": {
+    "ru": "Помогите соратнику вернуть фамильное оружие.",
+    "en": "Help your companion recover family heirloom weapon."
+  },
+  "companion.warrior_shield.name": {
+    "ru": "Рада",
+    "en": "Rada"
+  },
+  "companion.warrior_shield.role": {
+    "ru": "Защитник",
+    "en": "Protector"
+  },
+  "companion.archer_scout.name": {
+    "ru": "Терен",
+    "en": "Teren"
+  },
+  "companion.archer_scout.role": {
+    "ru": "Разведчица",
+    "en": "Scout"
+  },
+  "companion.healer_alchemist.name": {
+    "ru": "Мира",
+    "en": "Mira"
+  },
+  "companion.healer_alchemist.role": {
+    "ru": "Лекарь",
+    "en": "Healer"
+  },
+  "companion.mercenary_commander.name": {
+    "ru": "Освин",
+    "en": "Oswin"
+  },
+  "companion.mercenary_commander.role": {
+    "ru": "Командир",
+    "en": "Commander"
+  },
+  "boss.army_commander.name": {
+    "ru": "Командир вражеской армии",
+    "en": "Enemy Army Commander"
+  },
+  "boss.bandit_leader.name": {
+    "ru": "Главарь банды",
+    "en": "Bandit Chieftain"
+  },
+  "boss.pass_master.name": {
+    "ru": "Хозяин Перевала",
+    "en": "Master of the Pass"
+  },
+  "item.iron_spear.name": {
+    "ru": "Железное копьё",
+    "en": "Iron Spear"
+  },
+  "item.iron_spear.desc": {
+    "ru": "Длинное копьё с острым наконечником.",
+    "en": "A long spear with a sharp tip."
+  },
+  "item.war_axe.name": {
+    "ru": "Боевой топор",
+    "en": "War Axe"
+  },
+  "item.war_axe.desc": {
+    "ru": "Тяжёлый боевой топор с высоким уроном.",
+    "en": "A heavy war axe with high damage."
+  },
+  "item.wooden_shield.name": {
+    "ru": "Деревянный щит",
+    "en": "Wooden Shield"
+  },
+  "item.wooden_shield.desc": {
+    "ru": "Простой дубовый щит.",
+    "en": "A simple oak shield."
+  },
+  "item.iron_greaves.name": {
+    "ru": "Железные поножи",
+    "en": "Iron Greaves"
+  },
+  "item.iron_greaves.desc": {
+    "ru": "Защитные пластины для ног.",
+    "en": "Protective leg plates."
+  },
+  "item.dagger.name": {
+    "ru": "Острый кинжал",
+    "en": "Sharp Dagger"
+  },
+  "item.dagger.desc": {
+    "ru": "Быстрое и лёгкое оружие ближнего боя.",
+    "en": "A fast and lightweight melee weapon."
+  },
+  "item.mace.name": {
+    "ru": "Тяжёлая булава",
+    "en": "Heavy Mace"
+  },
+  "item.mace.desc": {
+    "ru": "Дробящее оружие против бронированных целей.",
+    "en": "A crushing weapon effective against armored targets."
+  },
+  "item.plate_armor.name": {
+    "ru": "Латы",
+    "en": "Plate Armor"
+  },
+  "item.plate_armor.desc": {
+    "ru": "Тяжёлая стальная броня высочайшего качества.",
+    "en": "Heavy steel armor of exquisite craftsmanship."
+  },
+  "item.leather_boots.name": {
+    "ru": "Кожаные сапоги",
+    "en": "Leather Boots"
+  },
+  "item.leather_boots.desc": {
+    "ru": "Удобная обувь для дальних походов.",
+    "en": "Comfortable footwear for long marches."
+  },
+  "item.health_potion_large.name": {
+    "ru": "Большое зелье здоровья",
+    "en": "Large Health Potion"
+  },
+  "item.health_potion_large.desc": {
+    "ru": "Восстанавливает 75 единиц здоровья.",
+    "en": "Restores 75 health points."
+  },
+  "item.antidote_potion.name": {
+    "ru": "Противоядие",
+    "en": "Antidote Potion"
+  },
+  "item.antidote_potion.desc": {
+    "ru": "Снимает отравление и немного лечит.",
+    "en": "Cures poison and heals slightly."
+  },
+  "item.strength_potion.name": {
+    "ru": "Зелье силы",
+    "en": "Strength Potion"
+  },
+  "item.strength_potion.desc": {
+    "ru": "Временно повышает силу в бою.",
+    "en": "Temporarily increases combat strength."
+  },
+  "unit.militia_spear.name": {
+    "ru": "Ополчение с копьями",
+    "en": "Spear Militia"
+  },
+  "unit.militia_spear.desc": {
+    "ru": "Недорогие ополченцы с длинными копьями.",
+    "en": "Inexpensive militia with long spears."
+  },
+  "unit.shield_swordsmen.name": {
+    "ru": "Мечники со щитами",
+    "en": "Shield Swordsmen"
+  },
+  "unit.shield_swordsmen.desc": {
+    "ru": "Универсальные пехотинцы для держи строя.",
+    "en": "Versatile infantry trained for wall defense."
+  },
+  "unit.archers.name": {
+    "ru": "Лучники",
+    "en": "Archers"
+  },
+  "unit.archers.desc": {
+    "ru": "Стрелки для поддержки на дистанции.",
+    "en": "Ranged support marksmen."
+  },
+  "unit.heavy_infantry.name": {
+    "ru": "Тяжёлая пехота",
+    "en": "Heavy Infantry"
+  },
+  "unit.heavy_infantry.desc": {
+    "ru": "Закованные в броню элитные воины.",
+    "en": "Armored elite warriors for heavy impact."
+  },
+  "faction.woodland_freeholders.name": {
+    "ru": "Вольные Земледельцы",
+    "en": "Woodland Freeholders"
+  },
+  "faction.woodland_freeholders.desc": {
+    "ru": "Лесные общины теряют зерно из-за налётчиков.",
+    "en": "Forest communities are losing grain to raiders."
+  },
+  "faction.borderland_watch.name": {
+    "ru": "Стража Пограничья",
+    "en": "Borderland Watch"
+  },
+  "faction.borderland_watch.desc": {
+    "ru": "Старые гарнизоны разобщены после исчезновения маршала.",
+    "en": "The old garrisons are divided after the marshal vanished."
+  },
+  "faction.iron_guild.name": {
+    "ru": "Гильдия Рудокопов",
+    "en": "Iron Guild"
+  },
+  "faction.iron_guild.desc": {
+    "ru": "Шахтёрам нужен безопасный путь для железных караванов.",
+    "en": "The miners need a safe road for their iron caravans."
+  },
+  "recipe.health.name": {
+    "ru": "Рецепт зелья здоровья",
+    "en": "Health Potion Recipe"
+  },
+  "recipe.antidote.name": {
+    "ru": "Рецепт противоядия",
+    "en": "Antidote Recipe"
+  },
+  "ui.food": {
+    "ru": "Еда",
+    "en": "Food"
+  },
+  "ui.wood": {
+    "ru": "Древесина",
+    "en": "Wood"
+  },
+  "ui.ore": {
+    "ru": "Руда",
+    "en": "Ore"
+  },
+  "ui.gold": {
+    "ru": "Золото",
+    "en": "Gold"
+  },
+  "ui.army": {
+    "ru": "Армия [R]",
+    "en": "Army [R]"
+  },
+  "ui.squad": {
+    "ru": "Отряд",
+    "en": "Squad"
+  },
+  "ui.morale": {
+    "ru": "Мораль",
+    "en": "Morale"
+  },
+  "ui.formation": {
+    "ru": "Строй",
+    "en": "Formation"
+  },
+  "ui.order": {
+    "ru": "Приказ",
+    "en": "Order"
+  },
+  "ui.diplomacy": {
+    "ru": "Дипломатия [F]",
+    "en": "Diplomacy [F]"
+  },
+  "ui.factions": {
+    "ru": "Фракции",
+    "en": "Factions"
+  },
+  "ui.threat": {
+    "ru": "Угроза",
+    "en": "Threat"
+  },
+  "ui.escalation": {
+    "ru": "Эскалация",
+    "en": "Escalation"
+  },
+  "order.follow": {
+    "ru": "За мной",
+    "en": "Follow"
+  },
+  "order.hold_position": {
+    "ru": "Удерживать позицию",
+    "en": "Hold Position"
+  },
+  "order.attack": {
+    "ru": "Атаковать",
+    "en": "Attack"
+  },
+  "order.retreat": {
+    "ru": "Отступать",
+    "en": "Retreat"
+  },
+  "treaty.peace": {
+    "ru": "Мир",
+    "en": "Peace"
+  },
+  "treaty.trade": {
+    "ru": "Торговое соглашение",
+    "en": "Trade agreement"
+  },
+  "treaty.non_aggression": {
+    "ru": "Ненападение",
+    "en": "Non-aggression"
+  },
+  "treaty.alliance": {
+    "ru": "Союз",
+    "en": "Alliance"
+  },
+  "msg.weather_changed": {
+    "ru": "Погода изменилась:",
+    "en": "Weather changed:"
+  },
+  "weather.clear": {
+    "ru": "Ясно",
+    "en": "Clear"
+  },
+  "weather.rain": {
+    "ru": "Дождь",
+    "en": "Rain"
+  },
+  "weather.fog": {
+    "ru": "Туман",
+    "en": "Fog"
+  },
+  "weather.storm": {
+    "ru": "Гроза",
+    "en": "Storm"
+  },
+  "weather.snow": {
+    "ru": "Снег",
+    "en": "Snow"
+  },
+  "tutorial.movement.title": {
+    "ru": "Основы движения",
+    "en": "Movement Basics"
+  },
+  "tutorial.movement.desc": {
+    "ru": "Используйте WASD для движения и Shift для бега.",
+    "en": "Use WASD to move and Shift to sprint."
+  },
+  "tutorial.combat.title": {
+    "ru": "Боевая система",
+    "en": "Combat System"
+  },
+  "tutorial.combat.desc": {
+    "ru": "Нажимайте ЛКМ для атаки и ПКМ для блока.",
+    "en": "Click LMB to attack and RMB to block."
+  },
+  "tutorial.inventory.title": {
+    "ru": "Инвентарь",
+    "en": "Inventory"
+  },
+  "tutorial.inventory.desc": {
+    "ru": "Нажмите Tab или I для управления предметами и снаряжением.",
+    "en": "Press Tab or I to manage items and equipment."
+  },
+  "tutorial.potion.title": {
+    "ru": "Быстрое лечение",
+    "en": "Quick Healing"
+  },
+  "tutorial.potion.desc": {
+    "ru": "Нажмите Q для быстрого использования зелья здоровья.",
+    "en": "Press Q to quickly drink a health potion."
+  },
+  "tutorial.settlement.title": {
+    "ru": "Управление поселением",
+    "en": "Settlement Management"
+  },
+  "tutorial.settlement.desc": {
+    "ru": "Нажмите B для управления ресурсами законами и населением.",
+    "en": "Press B to manage settlement resources laws and population."
+  },
+  "tutorial.army.title": {
+    "ru": "Командование отрядами",
+    "en": "Squad Command"
+  },
+  "tutorial.army.desc": {
+    "ru": "Нажимайте 1-5 для выбора отрядов и отдачи приказов.",
+    "en": "Press 1-5 to select squads and issue tactical commands."
+  },
+  "ui.strategy": {
+    "ru": "Совет Пограничья",
+    "en": "March Council"
+  },
+  "ui.recruit": {
+    "ru": "Нанять",
+    "en": "Recruit"
+  },
+  "ui.action_done": {
+    "ru": "Решение принято.",
+    "en": "Action completed."
+  },
+  "ui.recruit_failed": {
+    "ru": "Недостаточно свободных жителей или золота.",
+    "en": "Not enough available citizens or gold."
+  },
+  "order.hold": {
+    "ru": "Держать позицию",
+    "en": "Hold"
+  },
+  "formation.line": {
+    "ru": "Линия",
+    "en": "Line"
+  },
+  "formation.shield_wall": {
+    "ru": "Стена щитов",
+    "en": "Shield wall"
+  },
+  "formation.loose": {
+    "ru": "Рассыпной строй",
+    "en": "Loose"
+  },
+  "ui.disband": {
+    "ru": "Распустить отряд",
+    "en": "Disband squad"
+  },
+  "ui.treaty_terms": {
+    "ru": "{treaty} · доверие {relation} · {gold} золота",
+    "en": "{treaty} · trust {relation} · {gold} gold"
+  },
+  "ui.sign_treaty": {
+    "ru": "Предложить договор",
+    "en": "Propose treaty"
+  },
+  "ui.treaty_failed": {
+    "ru": "Нужны доверие и золото. Договор не должен уже действовать.",
+    "en": "Requires trust and gold; the treaty must not already be active."
+  },
+  "ui.gift": {
+    "ru": "Отправить дар",
+    "en": "Send gift"
+  },
+  "ui.journal": {
+    "ru": "Журнал [J]",
+    "en": "Journal [J]"
+  },
+  "ui.army_upkeep": {
+    "ru": "Содержание в день: {food} еды, {gold} золота. Свободных жителей: {workers}",
+    "en": "Daily upkeep: {food} food, {gold} gold. Available citizens: {workers}"
+  },
+  "treaty.defensive_pact": {
+    "ru": "Оборонительный пакт",
+    "en": "Defensive pact"
+  },
+  "faction.river_covenant.name": {
+    "ru": "Речной Договор",
+    "en": "River Covenant"
+  },
+  "faction.river_covenant.desc": {
+    "ru": "Перевозчики удерживают переправы от вымогателей.",
+    "en": "The ferrymen are defending their crossings from extortionists."
+  },
+  "faction.stone_circle.name": {
+    "ru": "Каменный Круг",
+    "en": "Stone Circle"
+  },
+  "faction.stone_circle.desc": {
+    "ru": "Каменоломни больше не могут снабжать западные стены.",
+    "en": "The quarries can no longer supply the western walls."
+  },
+  "faction.marsh_keepers.name": {
+    "ru": "Хранители Топей",
+    "en": "Marsh Keepers"
+  },
+  "faction.marsh_keepers.desc": {
+    "ru": "Лекари болот ищут исчезнувшие запасы целебного мха.",
+    "en": "The marsh healers are searching for their missing medicinal moss."
+  },
+  "faction.sunfield_union.name": {
+    "ru": "Союз Солнечных Полей",
+    "en": "Sunfield Union"
+  },
+  "faction.sunfield_union.desc": {
+    "ru": "Разорённым мельницам нужна защита перед зимним голодом.",
+    "en": "The ruined mills need protection before the winter famine."
+  },
+  "faction.pass_clans.name": {
+    "ru": "Кланы Перевала",
+    "en": "Pass Clans"
+  },
+  "faction.pass_clans.desc": {
+    "ru": "Кланы спорят о пошлинах пока крепость занята наёмниками.",
+    "en": "The clans argue over tolls while mercenaries occupy the fortress."
+  },
+  "town.greenhaven": {
+    "ru": "Тихая Сечь",
+    "en": "Greenhaven"
+  },
+  "town.ironford": {
+    "ru": "Железный Брод",
+    "en": "Ironford"
+  },
+  "town.old_watch": {
+    "ru": "Старая Застава",
+    "en": "Old Watch"
+  },
+  "town.reed_crossing": {
+    "ru": "Камышовая Переправа",
+    "en": "Reed Crossing"
+  },
+  "town.stonewell": {
+    "ru": "Каменный Колодец",
+    "en": "Stonewell"
+  },
+  "town.moss_hearth": {
+    "ru": "Моховой Очаг",
+    "en": "Moss Hearth"
+  },
+  "town.sunmill": {
+    "ru": "Солнечная Мельница",
+    "en": "Sunmill"
+  },
+  "town.high_pass": {
+    "ru": "Верхний Перевал",
+    "en": "High Pass"
+  },
+  "town.pine_rest": {
+    "ru": "Сосновый Привал",
+    "en": "Pine Rest"
+  },
+  "town.copper_hollow": {
+    "ru": "Медная Лощина",
+    "en": "Copper Hollow"
+  },
+  "town.ash_bastion": {
+    "ru": "Ясеневый Бастион",
+    "en": "Ash Bastion"
+  },
+  "town.willow_wharf": {
+    "ru": "Ивовая Пристань",
+    "en": "Willow Wharf"
+  },
+  "town.white_quarry": {
+    "ru": "Белая Каменоломня",
+    "en": "White Quarry"
+  },
+  "town.winter_gate": {
+    "ru": "Зимние Ворота",
+    "en": "Winter Gate"
+  },
+  "quest.arc_01_01.title": {
+    "ru": "Голос общины: Вольные Земледельцы",
+    "en": "The Community Speaks: Woodland Freeholders"
+  },
+  "quest.arc_01_01.desc": {
+    "ru": "Найдите старосту: Тихая Сечь. Выслушайте беду общины.",
+    "en": "Find the reeve in Greenhaven and hear the community's trouble."
+  },
+  "quest.arc_01_02.title": {
+    "ru": "Обоз надежды: Вольные Земледельцы",
+    "en": "A Wagon of Hope: Woodland Freeholders"
+  },
+  "quest.arc_01_02.desc": {
+    "ru": "Передайте общине 20 еды, 10 дерева и 5 руды через старосту.",
+    "en": "Deliver 20 food, 10 wood and 5 ore through the reeve."
+  },
+  "quest.arc_01_03.title": {
+    "ru": "Дорога без разбойников: Вольные Земледельцы",
+    "en": "A Road Without Raiders: Woodland Freeholders"
+  },
+  "quest.arc_01_03.desc": {
+    "ru": "Очистите лагерь к востоку от поселения. Его защитники сражаются в мире.",
+    "en": "Clear the camp east of town. Its defenders fight in the actual world."
+  },
+  "quest.arc_01_04.title": {
+    "ru": "Цена доверия: Вольные Земледельцы",
+    "en": "The Price of Trust: Woodland Freeholders"
+  },
+  "quest.arc_01_04.desc": {
+    "ru": "Добейтесь отношения 60 или победите гарнизон. Помощь и дары укрепляют доверие.",
+    "en": "Reach 60 trust or defeat the garrison. Aid and gifts build trust."
+  },
+  "quest.arc_01_05.title": {
+    "ru": "Клятва у очага: Вольные Земледельцы",
+    "en": "An Oath at the Hearth: Woodland Freeholders"
+  },
+  "quest.arc_01_05.desc": {
+    "ru": "Заключите союз в Совете [F] или захватите укрепление через старосту.",
+    "en": "Sign an alliance in the Council [F], or seize the stronghold through the reeve."
+  },
+  "quest.arc_01_06.title": {
+    "ru": "Место за общим столом: Вольные Земледельцы",
+    "en": "A Seat at the Council: Woodland Freeholders"
+  },
+  "quest.arc_01_06.desc": {
+    "ru": "Вернитесь к старосте после союза или завоевания. Откроется дорога к следующей общине.",
+    "en": "Return to the reeve after alliance or conquest. The road to the next community will open."
+  },
+  "quest.arc_02_01.title": {
+    "ru": "Голос общины: Гильдия Рудокопов",
+    "en": "The Community Speaks: Iron Guild"
+  },
+  "quest.arc_02_01.desc": {
+    "ru": "Найдите старосту: Железный Брод. Выслушайте беду общины.",
+    "en": "Find the reeve in Ironford and hear the community's trouble."
+  },
+  "quest.arc_02_02.title": {
+    "ru": "Обоз надежды: Гильдия Рудокопов",
+    "en": "A Wagon of Hope: Iron Guild"
+  },
+  "quest.arc_02_02.desc": {
+    "ru": "Передайте общине 20 еды, 10 дерева и 5 руды через старосту.",
+    "en": "Deliver 20 food, 10 wood and 5 ore through the reeve."
+  },
+  "quest.arc_02_03.title": {
+    "ru": "Дорога без разбойников: Гильдия Рудокопов",
+    "en": "A Road Without Raiders: Iron Guild"
+  },
+  "quest.arc_02_03.desc": {
+    "ru": "Очистите лагерь к востоку от поселения. Его защитники сражаются в мире.",
+    "en": "Clear the camp east of town. Its defenders fight in the actual world."
+  },
+  "quest.arc_02_04.title": {
+    "ru": "Цена доверия: Гильдия Рудокопов",
+    "en": "The Price of Trust: Iron Guild"
+  },
+  "quest.arc_02_04.desc": {
+    "ru": "Добейтесь отношения 60 или победите гарнизон. Помощь и дары укрепляют доверие.",
+    "en": "Reach 60 trust or defeat the garrison. Aid and gifts build trust."
+  },
+  "quest.arc_02_05.title": {
+    "ru": "Клятва у очага: Гильдия Рудокопов",
+    "en": "An Oath at the Hearth: Iron Guild"
+  },
+  "quest.arc_02_05.desc": {
+    "ru": "Заключите союз в Совете [F] или захватите укрепление через старосту.",
+    "en": "Sign an alliance in the Council [F], or seize the stronghold through the reeve."
+  },
+  "quest.arc_02_06.title": {
+    "ru": "Место за общим столом: Гильдия Рудокопов",
+    "en": "A Seat at the Council: Iron Guild"
+  },
+  "quest.arc_02_06.desc": {
+    "ru": "Вернитесь к старосте после союза или завоевания. Откроется дорога к следующей общине.",
+    "en": "Return to the reeve after alliance or conquest. The road to the next community will open."
+  },
+  "quest.arc_03_01.title": {
+    "ru": "Голос общины: Стража Пограничья",
+    "en": "The Community Speaks: Borderland Watch"
+  },
+  "quest.arc_03_01.desc": {
+    "ru": "Найдите старосту: Старая Застава. Выслушайте беду общины.",
+    "en": "Find the reeve in Old Watch and hear the community's trouble."
+  },
+  "quest.arc_03_02.title": {
+    "ru": "Обоз надежды: Стража Пограничья",
+    "en": "A Wagon of Hope: Borderland Watch"
+  },
+  "quest.arc_03_02.desc": {
+    "ru": "Передайте общине 20 еды, 10 дерева и 5 руды через старосту.",
+    "en": "Deliver 20 food, 10 wood and 5 ore through the reeve."
+  },
+  "quest.arc_03_03.title": {
+    "ru": "Дорога без разбойников: Стража Пограничья",
+    "en": "A Road Without Raiders: Borderland Watch"
+  },
+  "quest.arc_03_03.desc": {
+    "ru": "Очистите лагерь к востоку от поселения. Его защитники сражаются в мире.",
+    "en": "Clear the camp east of town. Its defenders fight in the actual world."
+  },
+  "quest.arc_03_04.title": {
+    "ru": "Цена доверия: Стража Пограничья",
+    "en": "The Price of Trust: Borderland Watch"
+  },
+  "quest.arc_03_04.desc": {
+    "ru": "Добейтесь отношения 60 или победите гарнизон. Помощь и дары укрепляют доверие.",
+    "en": "Reach 60 trust or defeat the garrison. Aid and gifts build trust."
+  },
+  "quest.arc_03_05.title": {
+    "ru": "Клятва у очага: Стража Пограничья",
+    "en": "An Oath at the Hearth: Borderland Watch"
+  },
+  "quest.arc_03_05.desc": {
+    "ru": "Заключите союз в Совете [F] или захватите укрепление через старосту.",
+    "en": "Sign an alliance in the Council [F], or seize the stronghold through the reeve."
+  },
+  "quest.arc_03_06.title": {
+    "ru": "Место за общим столом: Стража Пограничья",
+    "en": "A Seat at the Council: Borderland Watch"
+  },
+  "quest.arc_03_06.desc": {
+    "ru": "Вернитесь к старосте после союза или завоевания. Откроется дорога к следующей общине.",
+    "en": "Return to the reeve after alliance or conquest. The road to the next community will open."
+  },
+  "quest.arc_04_01.title": {
+    "ru": "Голос общины: Речной Договор",
+    "en": "The Community Speaks: River Covenant"
+  },
+  "quest.arc_04_01.desc": {
+    "ru": "Найдите старосту: Камышовая Переправа. Выслушайте беду общины.",
+    "en": "Find the reeve in Reed Crossing and hear the community's trouble."
+  },
+  "quest.arc_04_02.title": {
+    "ru": "Обоз надежды: Речной Договор",
+    "en": "A Wagon of Hope: River Covenant"
+  },
+  "quest.arc_04_02.desc": {
+    "ru": "Передайте общине 20 еды, 10 дерева и 5 руды через старосту.",
+    "en": "Deliver 20 food, 10 wood and 5 ore through the reeve."
+  },
+  "quest.arc_04_03.title": {
+    "ru": "Дорога без разбойников: Речной Договор",
+    "en": "A Road Without Raiders: River Covenant"
+  },
+  "quest.arc_04_03.desc": {
+    "ru": "Очистите лагерь к востоку от поселения. Его защитники сражаются в мире.",
+    "en": "Clear the camp east of town. Its defenders fight in the actual world."
+  },
+  "quest.arc_04_04.title": {
+    "ru": "Цена доверия: Речной Договор",
+    "en": "The Price of Trust: River Covenant"
+  },
+  "quest.arc_04_04.desc": {
+    "ru": "Добейтесь отношения 60 или победите гарнизон. Помощь и дары укрепляют доверие.",
+    "en": "Reach 60 trust or defeat the garrison. Aid and gifts build trust."
+  },
+  "quest.arc_04_05.title": {
+    "ru": "Клятва у очага: Речной Договор",
+    "en": "An Oath at the Hearth: River Covenant"
+  },
+  "quest.arc_04_05.desc": {
+    "ru": "Заключите союз в Совете [F] или захватите укрепление через старосту.",
+    "en": "Sign an alliance in the Council [F], or seize the stronghold through the reeve."
+  },
+  "quest.arc_04_06.title": {
+    "ru": "Место за общим столом: Речной Договор",
+    "en": "A Seat at the Council: River Covenant"
+  },
+  "quest.arc_04_06.desc": {
+    "ru": "Вернитесь к старосте после союза или завоевания. Откроется дорога к следующей общине.",
+    "en": "Return to the reeve after alliance or conquest. The road to the next community will open."
+  },
+  "quest.arc_05_01.title": {
+    "ru": "Голос общины: Каменный Круг",
+    "en": "The Community Speaks: Stone Circle"
+  },
+  "quest.arc_05_01.desc": {
+    "ru": "Найдите старосту: Каменный Колодец. Выслушайте беду общины.",
+    "en": "Find the reeve in Stonewell and hear the community's trouble."
+  },
+  "quest.arc_05_02.title": {
+    "ru": "Обоз надежды: Каменный Круг",
+    "en": "A Wagon of Hope: Stone Circle"
+  },
+  "quest.arc_05_02.desc": {
+    "ru": "Передайте общине 20 еды, 10 дерева и 5 руды через старосту.",
+    "en": "Deliver 20 food, 10 wood and 5 ore through the reeve."
+  },
+  "quest.arc_05_03.title": {
+    "ru": "Дорога без разбойников: Каменный Круг",
+    "en": "A Road Without Raiders: Stone Circle"
+  },
+  "quest.arc_05_03.desc": {
+    "ru": "Очистите лагерь к востоку от поселения. Его защитники сражаются в мире.",
+    "en": "Clear the camp east of town. Its defenders fight in the actual world."
+  },
+  "quest.arc_05_04.title": {
+    "ru": "Цена доверия: Каменный Круг",
+    "en": "The Price of Trust: Stone Circle"
+  },
+  "quest.arc_05_04.desc": {
+    "ru": "Добейтесь отношения 60 или победите гарнизон. Помощь и дары укрепляют доверие.",
+    "en": "Reach 60 trust or defeat the garrison. Aid and gifts build trust."
+  },
+  "quest.arc_05_05.title": {
+    "ru": "Клятва у очага: Каменный Круг",
+    "en": "An Oath at the Hearth: Stone Circle"
+  },
+  "quest.arc_05_05.desc": {
+    "ru": "Заключите союз в Совете [F] или захватите укрепление через старосту.",
+    "en": "Sign an alliance in the Council [F], or seize the stronghold through the reeve."
+  },
+  "quest.arc_05_06.title": {
+    "ru": "Место за общим столом: Каменный Круг",
+    "en": "A Seat at the Council: Stone Circle"
+  },
+  "quest.arc_05_06.desc": {
+    "ru": "Вернитесь к старосте после союза или завоевания. Откроется дорога к следующей общине.",
+    "en": "Return to the reeve after alliance or conquest. The road to the next community will open."
+  },
+  "quest.arc_06_01.title": {
+    "ru": "Голос общины: Хранители Топей",
+    "en": "The Community Speaks: Marsh Keepers"
+  },
+  "quest.arc_06_01.desc": {
+    "ru": "Найдите старосту: Моховой Очаг. Выслушайте беду общины.",
+    "en": "Find the reeve in Moss Hearth and hear the community's trouble."
+  },
+  "quest.arc_06_02.title": {
+    "ru": "Обоз надежды: Хранители Топей",
+    "en": "A Wagon of Hope: Marsh Keepers"
+  },
+  "quest.arc_06_02.desc": {
+    "ru": "Передайте общине 20 еды, 10 дерева и 5 руды через старосту.",
+    "en": "Deliver 20 food, 10 wood and 5 ore through the reeve."
+  },
+  "quest.arc_06_03.title": {
+    "ru": "Дорога без разбойников: Хранители Топей",
+    "en": "A Road Without Raiders: Marsh Keepers"
+  },
+  "quest.arc_06_03.desc": {
+    "ru": "Очистите лагерь к востоку от поселения. Его защитники сражаются в мире.",
+    "en": "Clear the camp east of town. Its defenders fight in the actual world."
+  },
+  "quest.arc_06_04.title": {
+    "ru": "Цена доверия: Хранители Топей",
+    "en": "The Price of Trust: Marsh Keepers"
+  },
+  "quest.arc_06_04.desc": {
+    "ru": "Добейтесь отношения 60 или победите гарнизон. Помощь и дары укрепляют доверие.",
+    "en": "Reach 60 trust or defeat the garrison. Aid and gifts build trust."
+  },
+  "quest.arc_06_05.title": {
+    "ru": "Клятва у очага: Хранители Топей",
+    "en": "An Oath at the Hearth: Marsh Keepers"
+  },
+  "quest.arc_06_05.desc": {
+    "ru": "Заключите союз в Совете [F] или захватите укрепление через старосту.",
+    "en": "Sign an alliance in the Council [F], or seize the stronghold through the reeve."
+  },
+  "quest.arc_06_06.title": {
+    "ru": "Место за общим столом: Хранители Топей",
+    "en": "A Seat at the Council: Marsh Keepers"
+  },
+  "quest.arc_06_06.desc": {
+    "ru": "Вернитесь к старосте после союза или завоевания. Откроется дорога к следующей общине.",
+    "en": "Return to the reeve after alliance or conquest. The road to the next community will open."
+  },
+  "quest.arc_07_01.title": {
+    "ru": "Голос общины: Союз Солнечных Полей",
+    "en": "The Community Speaks: Sunfield Union"
+  },
+  "quest.arc_07_01.desc": {
+    "ru": "Найдите старосту: Солнечная Мельница. Выслушайте беду общины.",
+    "en": "Find the reeve in Sunmill and hear the community's trouble."
+  },
+  "quest.arc_07_02.title": {
+    "ru": "Обоз надежды: Союз Солнечных Полей",
+    "en": "A Wagon of Hope: Sunfield Union"
+  },
+  "quest.arc_07_02.desc": {
+    "ru": "Передайте общине 20 еды, 10 дерева и 5 руды через старосту.",
+    "en": "Deliver 20 food, 10 wood and 5 ore through the reeve."
+  },
+  "quest.arc_07_03.title": {
+    "ru": "Дорога без разбойников: Союз Солнечных Полей",
+    "en": "A Road Without Raiders: Sunfield Union"
+  },
+  "quest.arc_07_03.desc": {
+    "ru": "Очистите лагерь к востоку от поселения. Его защитники сражаются в мире.",
+    "en": "Clear the camp east of town. Its defenders fight in the actual world."
+  },
+  "quest.arc_07_04.title": {
+    "ru": "Цена доверия: Союз Солнечных Полей",
+    "en": "The Price of Trust: Sunfield Union"
+  },
+  "quest.arc_07_04.desc": {
+    "ru": "Добейтесь отношения 60 или победите гарнизон. Помощь и дары укрепляют доверие.",
+    "en": "Reach 60 trust or defeat the garrison. Aid and gifts build trust."
+  },
+  "quest.arc_07_05.title": {
+    "ru": "Клятва у очага: Союз Солнечных Полей",
+    "en": "An Oath at the Hearth: Sunfield Union"
+  },
+  "quest.arc_07_05.desc": {
+    "ru": "Заключите союз в Совете [F] или захватите укрепление через старосту.",
+    "en": "Sign an alliance in the Council [F], or seize the stronghold through the reeve."
+  },
+  "quest.arc_07_06.title": {
+    "ru": "Место за общим столом: Союз Солнечных Полей",
+    "en": "A Seat at the Council: Sunfield Union"
+  },
+  "quest.arc_07_06.desc": {
+    "ru": "Вернитесь к старосте после союза или завоевания. Откроется дорога к следующей общине.",
+    "en": "Return to the reeve after alliance or conquest. The road to the next community will open."
+  },
+  "quest.arc_08_01.title": {
+    "ru": "Голос общины: Кланы Перевала",
+    "en": "The Community Speaks: Pass Clans"
+  },
+  "quest.arc_08_01.desc": {
+    "ru": "Найдите старосту: Верхний Перевал. Выслушайте беду общины.",
+    "en": "Find the reeve in High Pass and hear the community's trouble."
+  },
+  "quest.arc_08_02.title": {
+    "ru": "Обоз надежды: Кланы Перевала",
+    "en": "A Wagon of Hope: Pass Clans"
+  },
+  "quest.arc_08_02.desc": {
+    "ru": "Передайте общине 20 еды, 10 дерева и 5 руды через старосту.",
+    "en": "Deliver 20 food, 10 wood and 5 ore through the reeve."
+  },
+  "quest.arc_08_03.title": {
+    "ru": "Дорога без разбойников: Кланы Перевала",
+    "en": "A Road Without Raiders: Pass Clans"
+  },
+  "quest.arc_08_03.desc": {
+    "ru": "Очистите лагерь к востоку от поселения. Его защитники сражаются в мире.",
+    "en": "Clear the camp east of town. Its defenders fight in the actual world."
+  },
+  "quest.arc_08_04.title": {
+    "ru": "Цена доверия: Кланы Перевала",
+    "en": "The Price of Trust: Pass Clans"
+  },
+  "quest.arc_08_04.desc": {
+    "ru": "Добейтесь отношения 60 или победите гарнизон. Помощь и дары укрепляют доверие.",
+    "en": "Reach 60 trust or defeat the garrison. Aid and gifts build trust."
+  },
+  "quest.arc_08_05.title": {
+    "ru": "Клятва у очага: Кланы Перевала",
+    "en": "An Oath at the Hearth: Pass Clans"
+  },
+  "quest.arc_08_05.desc": {
+    "ru": "Заключите союз в Совете [F] или захватите укрепление через старосту.",
+    "en": "Sign an alliance in the Council [F], or seize the stronghold through the reeve."
+  },
+  "quest.arc_08_06.title": {
+    "ru": "Место за общим столом: Кланы Перевала",
+    "en": "A Seat at the Council: Pass Clans"
+  },
+  "quest.arc_08_06.desc": {
+    "ru": "Вернитесь к старосте после союза или завоевания. Откроется дорога к следующей общине.",
+    "en": "Return to the reeve after alliance or conquest. The road to the next community will open."
+  },
+  "quest.survey_woodland_freeholders.title": {
+    "ru": "Следы прошлого: Вольные Земледельцы",
+    "en": "Traces of the Past: Woodland Freeholders"
+  },
+  "quest.survey_woodland_freeholders.desc": {
+    "ru": "Осмотрите святилище к западу от поселения. Найденные припасы помогут общине.",
+    "en": "Explore the shrine west of town. Its supplies will help the community."
+  },
+  "quest.survey_iron_guild.title": {
+    "ru": "Следы прошлого: Гильдия Рудокопов",
+    "en": "Traces of the Past: Iron Guild"
+  },
+  "quest.survey_iron_guild.desc": {
+    "ru": "Осмотрите святилище к западу от поселения. Найденные припасы помогут общине.",
+    "en": "Explore the shrine west of town. Its supplies will help the community."
+  },
+  "quest.survey_borderland_watch.title": {
+    "ru": "Следы прошлого: Стража Пограничья",
+    "en": "Traces of the Past: Borderland Watch"
+  },
+  "quest.survey_borderland_watch.desc": {
+    "ru": "Осмотрите святилище к западу от поселения. Найденные припасы помогут общине.",
+    "en": "Explore the shrine west of town. Its supplies will help the community."
+  },
+  "quest.survey_river_covenant.title": {
+    "ru": "Следы прошлого: Речной Договор",
+    "en": "Traces of the Past: River Covenant"
+  },
+  "quest.survey_river_covenant.desc": {
+    "ru": "Осмотрите святилище к западу от поселения. Найденные припасы помогут общине.",
+    "en": "Explore the shrine west of town. Its supplies will help the community."
+  },
+  "quest.survey_stone_circle.title": {
+    "ru": "Следы прошлого: Каменный Круг",
+    "en": "Traces of the Past: Stone Circle"
+  },
+  "quest.survey_stone_circle.desc": {
+    "ru": "Осмотрите святилище к западу от поселения. Найденные припасы помогут общине.",
+    "en": "Explore the shrine west of town. Its supplies will help the community."
+  },
+  "quest.survey_marsh_keepers.title": {
+    "ru": "Следы прошлого: Хранители Топей",
+    "en": "Traces of the Past: Marsh Keepers"
+  },
+  "quest.survey_marsh_keepers.desc": {
+    "ru": "Осмотрите святилище к западу от поселения. Найденные припасы помогут общине.",
+    "en": "Explore the shrine west of town. Its supplies will help the community."
+  },
+  "quest.survey_sunfield_union.title": {
+    "ru": "Следы прошлого: Союз Солнечных Полей",
+    "en": "Traces of the Past: Sunfield Union"
+  },
+  "quest.survey_sunfield_union.desc": {
+    "ru": "Осмотрите святилище к западу от поселения. Найденные припасы помогут общине.",
+    "en": "Explore the shrine west of town. Its supplies will help the community."
+  },
+  "quest.survey_pass_clans.title": {
+    "ru": "Следы прошлого: Кланы Перевала",
+    "en": "Traces of the Past: Pass Clans"
+  },
+  "quest.survey_pass_clans.desc": {
+    "ru": "Осмотрите святилище к западу от поселения. Найденные припасы помогут общине.",
+    "en": "Explore the shrine west of town. Its supplies will help the community."
+  },
+  "quest.companion_warrior_shield.title": {
+    "ru": "Личная клятва: Рада",
+    "en": "A Personal Oath: Rada"
+  },
+  "quest.companion_warrior_shield.desc": {
+    "ru": "Верните щит заставы из разбойничьего лагеря.",
+    "en": "Recover the watch shield from the raider camp."
+  },
+  "quest.companion_archer_scout.title": {
+    "ru": "Личная клятва: Терен",
+    "en": "A Personal Oath: Teren"
+  },
+  "quest.companion_archer_scout.desc": {
+    "ru": "Откройте три дорожные точки и очистите лагерь Стражи.",
+    "en": "Open three road points and clear the Watch camp."
+  },
+  "quest.companion_healer_alchemist.title": {
+    "ru": "Личная клятва: Мира",
+    "en": "A Personal Oath: Mira"
+  },
+  "quest.companion_healer_alchemist.desc": {
+    "ru": "Сварите три зелья и помогите Хранителям Топей.",
+    "en": "Brew three potions and aid the Marsh Keepers."
+  },
+  "quest.companion_mercenary_commander.title": {
+    "ru": "Личная клятва: Освин",
+    "en": "A Personal Oath: Oswin"
+  },
+  "quest.companion_mercenary_commander.desc": {
+    "ru": "Соберите пять бойцов и освободите Перевал.",
+    "en": "Recruit five soldiers and free the Pass."
+  },
+  "building.farm": {
+    "ru": "Поле",
+    "en": "Farm"
+  },
+  "building.housing": {
+    "ru": "Жилой дом",
+    "en": "Housing"
+  },
+  "building.infirmary": {
+    "ru": "Лазарет",
+    "en": "Infirmary"
+  },
+  "building.well": {
+    "ru": "Колодец",
+    "en": "Well"
+  },
+  "building.market": {
+    "ru": "Торговый двор",
+    "en": "Market"
+  },
+  "building.sawmill": {
+    "ru": "Лесопилка",
+    "en": "Sawmill"
+  },
+  "building.quarry": {
+    "ru": "Каменоломня",
+    "en": "Quarry"
+  },
+  "building.forge": {
+    "ru": "Кузница",
+    "en": "Forge"
+  },
+  "building.barracks": {
+    "ru": "Казармы",
+    "en": "Barracks"
+  },
+  "building.hall": {
+    "ru": "Общий зал",
+    "en": "Council Hall"
+  },
+  "item.dagger_hardened.name": {
+    "ru": "Закалённый острый кинжал",
+    "en": "Hardened Sharp Dagger"
+  },
+  "item.dagger_hardened.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.dagger_tempered.name": {
+    "ru": "Усиленный острый кинжал",
+    "en": "Tempered Sharp Dagger"
+  },
+  "item.dagger_tempered.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.dagger_guild.name": {
+    "ru": "Гильдейский острый кинжал",
+    "en": "Guild Sharp Dagger"
+  },
+  "item.dagger_guild.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.dagger_master.name": {
+    "ru": "Мастерский острый кинжал",
+    "en": "Masterwork Sharp Dagger"
+  },
+  "item.dagger_master.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.hunter_bow_hardened.name": {
+    "ru": "Закалённый охотничий лук",
+    "en": "Hardened Hunter's Bow"
+  },
+  "item.hunter_bow_hardened.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.hunter_bow_tempered.name": {
+    "ru": "Усиленный охотничий лук",
+    "en": "Tempered Hunter's Bow"
+  },
+  "item.hunter_bow_tempered.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.hunter_bow_guild.name": {
+    "ru": "Гильдейский охотничий лук",
+    "en": "Guild Hunter's Bow"
+  },
+  "item.hunter_bow_guild.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.hunter_bow_master.name": {
+    "ru": "Мастерский охотничий лук",
+    "en": "Masterwork Hunter's Bow"
+  },
+  "item.hunter_bow_master.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.iron_spear_hardened.name": {
+    "ru": "Закалённое железное копьё",
+    "en": "Hardened Iron Spear"
+  },
+  "item.iron_spear_hardened.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.iron_spear_tempered.name": {
+    "ru": "Усиленное железное копьё",
+    "en": "Tempered Iron Spear"
+  },
+  "item.iron_spear_tempered.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.iron_spear_guild.name": {
+    "ru": "Гильдейское железное копьё",
+    "en": "Guild Iron Spear"
+  },
+  "item.iron_spear_guild.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.iron_spear_master.name": {
+    "ru": "Мастерское железное копьё",
+    "en": "Masterwork Iron Spear"
+  },
+  "item.iron_spear_master.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.iron_sword_hardened.name": {
+    "ru": "Закалённый железный меч",
+    "en": "Hardened Iron Sword"
+  },
+  "item.iron_sword_hardened.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.iron_sword_tempered.name": {
+    "ru": "Усиленный железный меч",
+    "en": "Tempered Iron Sword"
+  },
+  "item.iron_sword_tempered.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.iron_sword_guild.name": {
+    "ru": "Гильдейский железный меч",
+    "en": "Guild Iron Sword"
+  },
+  "item.iron_sword_guild.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.iron_sword_master.name": {
+    "ru": "Мастерский железный меч",
+    "en": "Masterwork Iron Sword"
+  },
+  "item.iron_sword_master.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.mace_hardened.name": {
+    "ru": "Закалённая тяжёлая булава",
+    "en": "Hardened Heavy Mace"
+  },
+  "item.mace_hardened.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.mace_tempered.name": {
+    "ru": "Усиленная тяжёлая булава",
+    "en": "Tempered Heavy Mace"
+  },
+  "item.mace_tempered.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.mace_guild.name": {
+    "ru": "Гильдейская тяжёлая булава",
+    "en": "Guild Heavy Mace"
+  },
+  "item.mace_guild.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.mace_master.name": {
+    "ru": "Мастерская тяжёлая булава",
+    "en": "Masterwork Heavy Mace"
+  },
+  "item.mace_master.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.steel_sword_hardened.name": {
+    "ru": "Закалённый стальной меч",
+    "en": "Hardened Steel Sword"
+  },
+  "item.steel_sword_hardened.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.steel_sword_tempered.name": {
+    "ru": "Усиленный стальной меч",
+    "en": "Tempered Steel Sword"
+  },
+  "item.steel_sword_tempered.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.steel_sword_guild.name": {
+    "ru": "Гильдейский стальной меч",
+    "en": "Guild Steel Sword"
+  },
+  "item.steel_sword_guild.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.steel_sword_master.name": {
+    "ru": "Мастерский стальной меч",
+    "en": "Masterwork Steel Sword"
+  },
+  "item.steel_sword_master.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.war_axe_hardened.name": {
+    "ru": "Закалённый боевой топор",
+    "en": "Hardened War Axe"
+  },
+  "item.war_axe_hardened.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.war_axe_tempered.name": {
+    "ru": "Усиленный боевой топор",
+    "en": "Tempered War Axe"
+  },
+  "item.war_axe_tempered.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.war_axe_guild.name": {
+    "ru": "Гильдейский боевой топор",
+    "en": "Guild War Axe"
+  },
+  "item.war_axe_guild.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.war_axe_master.name": {
+    "ru": "Мастерский боевой топор",
+    "en": "Masterwork War Axe"
+  },
+  "item.war_axe_master.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.chainmail_hardened.name": {
+    "ru": "Закалённая кольчуга",
+    "en": "Hardened Chainmail"
+  },
+  "item.chainmail_hardened.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.chainmail_tempered.name": {
+    "ru": "Усиленная кольчуга",
+    "en": "Tempered Chainmail"
+  },
+  "item.chainmail_tempered.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.chainmail_guild.name": {
+    "ru": "Гильдейская кольчуга",
+    "en": "Guild Chainmail"
+  },
+  "item.chainmail_guild.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.chainmail_master.name": {
+    "ru": "Мастерская кольчуга",
+    "en": "Masterwork Chainmail"
+  },
+  "item.chainmail_master.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.iron_greaves_hardened.name": {
+    "ru": "Закалённые железные поножи",
+    "en": "Hardened Iron Greaves"
+  },
+  "item.iron_greaves_hardened.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.iron_greaves_tempered.name": {
+    "ru": "Усиленные железные поножи",
+    "en": "Tempered Iron Greaves"
+  },
+  "item.iron_greaves_tempered.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.iron_greaves_guild.name": {
+    "ru": "Гильдейские железные поножи",
+    "en": "Guild Iron Greaves"
+  },
+  "item.iron_greaves_guild.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.iron_greaves_master.name": {
+    "ru": "Мастерские железные поножи",
+    "en": "Masterwork Iron Greaves"
+  },
+  "item.iron_greaves_master.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.iron_helmet_hardened.name": {
+    "ru": "Закалённый железный шлем",
+    "en": "Hardened Iron Helmet"
+  },
+  "item.iron_helmet_hardened.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.iron_helmet_tempered.name": {
+    "ru": "Усиленный железный шлем",
+    "en": "Tempered Iron Helmet"
+  },
+  "item.iron_helmet_tempered.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.iron_helmet_guild.name": {
+    "ru": "Гильдейский железный шлем",
+    "en": "Guild Iron Helmet"
+  },
+  "item.iron_helmet_guild.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.iron_helmet_master.name": {
+    "ru": "Мастерский железный шлем",
+    "en": "Masterwork Iron Helmet"
+  },
+  "item.iron_helmet_master.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.leather_armor_hardened.name": {
+    "ru": "Закалённый кожаный доспех",
+    "en": "Hardened Leather Armor"
+  },
+  "item.leather_armor_hardened.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.leather_armor_tempered.name": {
+    "ru": "Усиленный кожаный доспех",
+    "en": "Tempered Leather Armor"
+  },
+  "item.leather_armor_tempered.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.leather_armor_guild.name": {
+    "ru": "Гильдейский кожаный доспех",
+    "en": "Guild Leather Armor"
+  },
+  "item.leather_armor_guild.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.leather_armor_master.name": {
+    "ru": "Мастерский кожаный доспех",
+    "en": "Masterwork Leather Armor"
+  },
+  "item.leather_armor_master.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.leather_boots_hardened.name": {
+    "ru": "Закалённые кожаные сапоги",
+    "en": "Hardened Leather Boots"
+  },
+  "item.leather_boots_hardened.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.leather_boots_tempered.name": {
+    "ru": "Усиленные кожаные сапоги",
+    "en": "Tempered Leather Boots"
+  },
+  "item.leather_boots_tempered.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.leather_boots_guild.name": {
+    "ru": "Гильдейские кожаные сапоги",
+    "en": "Guild Leather Boots"
+  },
+  "item.leather_boots_guild.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.leather_boots_master.name": {
+    "ru": "Мастерские кожаные сапоги",
+    "en": "Masterwork Leather Boots"
+  },
+  "item.leather_boots_master.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.plate_armor_hardened.name": {
+    "ru": "Закалённые латы",
+    "en": "Hardened Plate Armor"
+  },
+  "item.plate_armor_hardened.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.plate_armor_tempered.name": {
+    "ru": "Усиленные латы",
+    "en": "Tempered Plate Armor"
+  },
+  "item.plate_armor_tempered.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.plate_armor_guild.name": {
+    "ru": "Гильдейские латы",
+    "en": "Guild Plate Armor"
+  },
+  "item.plate_armor_guild.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.plate_armor_master.name": {
+    "ru": "Мастерские латы",
+    "en": "Masterwork Plate Armor"
+  },
+  "item.plate_armor_master.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.wooden_shield_hardened.name": {
+    "ru": "Закалённый деревянный щит",
+    "en": "Hardened Wooden Shield"
+  },
+  "item.wooden_shield_hardened.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.wooden_shield_tempered.name": {
+    "ru": "Усиленный деревянный щит",
+    "en": "Tempered Wooden Shield"
+  },
+  "item.wooden_shield_tempered.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.wooden_shield_guild.name": {
+    "ru": "Гильдейский деревянный щит",
+    "en": "Guild Wooden Shield"
+  },
+  "item.wooden_shield_guild.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "item.wooden_shield_master.name": {
+    "ru": "Мастерский деревянный щит",
+    "en": "Masterwork Wooden Shield"
+  },
+  "item.wooden_shield_master.desc": {
+    "ru": "Работа местных кузнецов. Улучшенные защита или урон и ресурс прочности.",
+    "en": "Local smithwork with improved protection or damage and durability."
+  },
+  "ui.talk": {
+    "ru": "Поговорить",
+    "en": "Talk"
+  },
+  "ui.investigate": {
+    "ru": "Осмотреть",
+    "en": "Investigate"
+  },
+  "ui.cache_found": {
+    "ru": "Найдены припасы и травы. Прогресс записан в журнал.",
+    "en": "Supplies and herbs found. Progress recorded in the journal."
+  },
+  "ui.already_explored": {
+    "ru": "Это место уже осмотрено.",
+    "en": "This place has already been searched."
+  },
+  "ui.deliver": {
+    "ru": "Передать обоз: 20 еды, 10 дерева, 5 руды",
+    "en": "Deliver supplies: 20 food, 10 wood, 5 ore"
+  },
+  "ui.report": {
+    "ru": "Подтвердить клятву и открыть следующую дорогу",
+    "en": "Confirm the oath and open the next road"
+  },
+  "ui.buy": {
+    "ru": "Купить",
+    "en": "Buy"
+  },
+  "ui.sell": {
+    "ru": "Продать",
+    "en": "Sell"
+  },
+  "ui.stone": {
+    "ru": "камня",
+    "en": "stone"
+  },
+  "ui.assault": {
+    "ru": "Объявить войну и атаковать гарнизон",
+    "en": "Declare war and assault the garrison"
+  },
+  "ui.town_help": {
+    "ru": "Помогите общине обозом и очистите лагерь в 85 метрах к востоку. Святилище на западе укрепит доверие. Союз доступен в Совете [F] при отношении 60 и за 100 золота. После союза вернитесь за дорожной грамотой. Военный путь: объявите войну и победите трёх защитников гарнизона.",
+    "en": "Deliver supplies and clear the camp 85 metres east. The western shrine earns trust. Propose an alliance in the Council [F] at 60 trust for 100 gold. Return after the alliance to receive a road charter. Military route: declare war and defeat all three garrison defenders."
+  },
+  "ui.home": {
+    "ru": "Очаг Пограничья",
+    "en": "Hearth of the March"
+  },
+  "ui.travel": {
+    "ru": "Отправиться по открытой дороге",
+    "en": "Travel along the open road"
+  },
+  "ui.travel_home": {
+    "ru": "Вернуться к своему очагу",
+    "en": "Return to your hearth"
+  },
+  "ui.travel_cost": {
+    "ru": "Путь: 1 день, 3 еды, 5 золота. Во время боя недоступно.",
+    "en": "Journey: 1 day, 3 food, 5 gold. Unavailable in combat."
+  },
+  "ui.map": {
+    "ru": "Карта [M]",
+    "en": "Map [M]"
+  },
+  "ui.workshop": {
+    "ru": "Строительство и кузница",
+    "en": "Building and forge"
+  },
+  "ui.craft": {
+    "ru": "Выковать (требуется кузница)",
+    "en": "Craft (requires forge)"
+  },
+  "ui.danger": {
+    "ru": "Опасность",
+    "en": "Danger"
+  },
+  "ui.campaign_progress": {
+    "ru": "Клятвы: {regions}/8 · Задания: {quests}/60",
+    "en": "Oaths: {regions}/8 · Quests: {quests}/60"
+  },
+  "ui.companions": {
+    "ru": "Спутники",
+    "en": "Companions"
+  },
+  "ui.continue_world": {
+    "ru": "Продолжить исследование",
+    "en": "Continue exploring"
+  },
+  "ending.military": {
+    "ru": "Пограничье под одним знаменем",
+    "en": "The March Under One Banner"
+  },
+  "ending.diplomatic": {
+    "ru": "Пограничье связано клятвами",
+    "en": "The March United by Oaths"
+  },
+  "ending.mixed": {
+    "ru": "Совет стали и доверия",
+    "en": "A Council of Steel and Trust"
+  },
+  "ending.body": {
+    "ru": "Все восемь общин признали общий совет.\nВыполнено заданий: {quests}/60. Прошло дней: {days}.\nЛичные клятвы спутников и неразведанные земли ещё ждут вас.",
+    "en": "All eight communities recognize the common council.\nQuests completed: {quests}/60. Days elapsed: {days}.\nYour companions' personal oaths and unexplored lands still await."
+  },
+  "poi.shrine": {
+    "ru": "Старое святилище",
+    "en": "Old Shrine"
+  },
+  "poi.cache": {
+    "ru": "Тайник перевозчиков",
+    "en": "Carriers' Cache"
+  },
+  "poi.ruins": {
+    "ru": "Забытые руины",
+    "en": "Forgotten Ruins"
+  },
+  "poi.mine": {
+    "ru": "Заброшенная шахта",
+    "en": "Abandoned Mine"
+  },
+  "ui.new_campaign": {
+    "ru": "Новая кампания",
+    "en": "New campaign"
+  },
+  "ui.continue": {
+    "ru": "Продолжить кампанию",
+    "en": "Continue campaign"
+  },
+  "ui.difficulty": {
+    "ru": "Сложность",
+    "en": "Difficulty"
+  },
+  "difficulty.story": {
+    "ru": "История",
+    "en": "Story"
+  },
+  "difficulty.normal": {
+    "ru": "Обычная",
+    "en": "Normal"
+  },
+  "difficulty.hard": {
+    "ru": "Тяжёлая",
+    "en": "Hard"
+  },
+  "difficulty.expert": {
+    "ru": "Ветеран",
+    "en": "Veteran"
+  },
+  "ui.iron_mode": {
+    "ru": "Железный режим: одна жизнь и одно сохранение",
+    "en": "Iron mode: one life and one save"
+  },
+  "ui.campaign_intro": {
+    "ru": "Вы — новый хранитель пограничного очага. Накормите жителей, помогите общинам и объедините восемь фракций клятвами или силой. Начните с меча [I], полей [R → строительство] и старосты Тихой Сечи на севере. Карта [M] и журнал [J] всегда под рукой.",
+    "en": "You are the new keeper of a frontier hearth. Feed your people, aid the communities and unite eight factions through oaths or force. Start with your sword [I], farms [R → building] and Greenhaven's reeve to the north. The map [M] and journal [J] are always available."
+  },
+  "ui.preview": {
+    "ru": "Кампания • версия для проверки",
+    "en": "Campaign • preview build"
+  },
+  "ui.iron_dead": {
+    "ru": "Клятва оборвалась. Начните новую кампанию.",
+    "en": "Your oath has ended. Start a new campaign."
+  },
+  "ui.to_menu": {
+    "ru": "В главное меню",
+    "en": "Main menu"
+  },
+  "item.ember_bloom.name": {
+    "ru": "Жароцвет",
+    "en": "Ember Bloom"
+  },
+  "item.ember_bloom.desc": {
+    "ru": "Сырьё для местных алхимических настоев.",
+    "en": "An ingredient for local alchemical infusions."
+  },
+  "item.river_mint.name": {
+    "ru": "Речная мята",
+    "en": "River Mint"
+  },
+  "item.river_mint.desc": {
+    "ru": "Сырьё для местных алхимических настоев.",
+    "en": "An ingredient for local alchemical infusions."
+  },
+  "item.stone_moss.name": {
+    "ru": "Каменный мох",
+    "en": "Stone Moss"
+  },
+  "item.stone_moss.desc": {
+    "ru": "Сырьё для местных алхимических настоев.",
+    "en": "An ingredient for local alchemical infusions."
+  },
+  "item.marsh_root.name": {
+    "ru": "Болотный корень",
+    "en": "Marsh Root"
+  },
+  "item.marsh_root.desc": {
+    "ru": "Сырьё для местных алхимических настоев.",
+    "en": "An ingredient for local alchemical infusions."
+  },
+  "item.vitality_1.name": {
+    "ru": "Слабый настой здоровья",
+    "en": "Weak Vitality"
+  },
+  "item.vitality_1.desc": {
+    "ru": "Эффект: здоровья. Сила 25; длительность 30 сек. Усиления одного типа заменяют друг друга.",
+    "en": "Vitality effect. Potency 25; duration 30 seconds. Effects of the same type replace one another."
+  },
+  "item.vitality_2.name": {
+    "ru": "Настой здоровья",
+    "en": "Brewed Vitality"
+  },
+  "item.vitality_2.desc": {
+    "ru": "Эффект: здоровья. Сила 50; длительность 40 сек. Усиления одного типа заменяют друг друга.",
+    "en": "Vitality effect. Potency 50; duration 40 seconds. Effects of the same type replace one another."
+  },
+  "item.vitality_3.name": {
+    "ru": "Концентрат здоровья",
+    "en": "Concentrated Vitality"
+  },
+  "item.vitality_3.desc": {
+    "ru": "Эффект: здоровья. Сила 75; длительность 50 сек. Усиления одного типа заменяют друг друга.",
+    "en": "Vitality effect. Potency 75; duration 50 seconds. Effects of the same type replace one another."
+  },
+  "item.vitality_4.name": {
+    "ru": "Эликсир здоровья",
+    "en": "Grand Vitality"
+  },
+  "item.vitality_4.desc": {
+    "ru": "Эффект: здоровья. Сила 100; длительность 60 сек. Усиления одного типа заменяют друг друга.",
+    "en": "Vitality effect. Potency 100; duration 60 seconds. Effects of the same type replace one another."
+  },
+  "item.vigor_1.name": {
+    "ru": "Слабый настой бодрости",
+    "en": "Weak Vigor"
+  },
+  "item.vigor_1.desc": {
+    "ru": "Эффект: бодрости. Сила 25; длительность 30 сек. Усиления одного типа заменяют друг друга.",
+    "en": "Vigor effect. Potency 25; duration 30 seconds. Effects of the same type replace one another."
+  },
+  "item.vigor_2.name": {
+    "ru": "Настой бодрости",
+    "en": "Brewed Vigor"
+  },
+  "item.vigor_2.desc": {
+    "ru": "Эффект: бодрости. Сила 50; длительность 40 сек. Усиления одного типа заменяют друг друга.",
+    "en": "Vigor effect. Potency 50; duration 40 seconds. Effects of the same type replace one another."
+  },
+  "item.vigor_3.name": {
+    "ru": "Концентрат бодрости",
+    "en": "Concentrated Vigor"
+  },
+  "item.vigor_3.desc": {
+    "ru": "Эффект: бодрости. Сила 75; длительность 50 сек. Усиления одного типа заменяют друг друга.",
+    "en": "Vigor effect. Potency 75; duration 50 seconds. Effects of the same type replace one another."
+  },
+  "item.vigor_4.name": {
+    "ru": "Эликсир бодрости",
+    "en": "Grand Vigor"
+  },
+  "item.vigor_4.desc": {
+    "ru": "Эффект: бодрости. Сила 100; длительность 60 сек. Усиления одного типа заменяют друг друга.",
+    "en": "Vigor effect. Potency 100; duration 60 seconds. Effects of the same type replace one another."
+  },
+  "item.might_1.name": {
+    "ru": "Слабый настой силы",
+    "en": "Weak Might"
+  },
+  "item.might_1.desc": {
+    "ru": "Эффект: силы. Сила 1.12; длительность 30 сек. Усиления одного типа заменяют друг друга.",
+    "en": "Might effect. Potency 1.12; duration 30 seconds. Effects of the same type replace one another."
+  },
+  "item.might_2.name": {
+    "ru": "Настой силы",
+    "en": "Brewed Might"
+  },
+  "item.might_2.desc": {
+    "ru": "Эффект: силы. Сила 1.24; длительность 40 сек. Усиления одного типа заменяют друг друга.",
+    "en": "Might effect. Potency 1.24; duration 40 seconds. Effects of the same type replace one another."
+  },
+  "item.might_3.name": {
+    "ru": "Концентрат силы",
+    "en": "Concentrated Might"
+  },
+  "item.might_3.desc": {
+    "ru": "Эффект: силы. Сила 1.36; длительность 50 сек. Усиления одного типа заменяют друг друга.",
+    "en": "Might effect. Potency 1.36; duration 50 seconds. Effects of the same type replace one another."
+  },
+  "item.might_4.name": {
+    "ru": "Эликсир силы",
+    "en": "Grand Might"
+  },
+  "item.might_4.desc": {
+    "ru": "Эффект: силы. Сила 1.48; длительность 60 сек. Усиления одного типа заменяют друг друга.",
+    "en": "Might effect. Potency 1.48; duration 60 seconds. Effects of the same type replace one another."
+  },
+  "item.barkskin_1.name": {
+    "ru": "Слабый настой каменной кожи",
+    "en": "Weak Barkskin"
+  },
+  "item.barkskin_1.desc": {
+    "ru": "Эффект: каменной кожи. Сила 12; длительность 30 сек. Усиления одного типа заменяют друг друга.",
+    "en": "Barkskin effect. Potency 12; duration 30 seconds. Effects of the same type replace one another."
+  },
+  "item.barkskin_2.name": {
+    "ru": "Настой каменной кожи",
+    "en": "Brewed Barkskin"
+  },
+  "item.barkskin_2.desc": {
+    "ru": "Эффект: каменной кожи. Сила 24; длительность 40 сек. Усиления одного типа заменяют друг друга.",
+    "en": "Barkskin effect. Potency 24; duration 40 seconds. Effects of the same type replace one another."
+  },
+  "item.barkskin_3.name": {
+    "ru": "Концентрат каменной кожи",
+    "en": "Concentrated Barkskin"
+  },
+  "item.barkskin_3.desc": {
+    "ru": "Эффект: каменной кожи. Сила 36; длительность 50 сек. Усиления одного типа заменяют друг друга.",
+    "en": "Barkskin effect. Potency 36; duration 50 seconds. Effects of the same type replace one another."
+  },
+  "item.barkskin_4.name": {
+    "ru": "Эликсир каменной кожи",
+    "en": "Grand Barkskin"
+  },
+  "item.barkskin_4.desc": {
+    "ru": "Эффект: каменной кожи. Сила 48; длительность 60 сек. Усиления одного типа заменяют друг друга.",
+    "en": "Barkskin effect. Potency 48; duration 60 seconds. Effects of the same type replace one another."
+  },
+  "item.swift_1.name": {
+    "ru": "Слабый настой попутного ветра",
+    "en": "Weak Tailwind"
+  },
+  "item.swift_1.desc": {
+    "ru": "Эффект: попутного ветра. Сила 1.08; длительность 30 сек. Усиления одного типа заменяют друг друга.",
+    "en": "Tailwind effect. Potency 1.08; duration 30 seconds. Effects of the same type replace one another."
+  },
+  "item.swift_2.name": {
+    "ru": "Настой попутного ветра",
+    "en": "Brewed Tailwind"
+  },
+  "item.swift_2.desc": {
+    "ru": "Эффект: попутного ветра. Сила 1.16; длительность 40 сек. Усиления одного типа заменяют друг друга.",
+    "en": "Tailwind effect. Potency 1.16; duration 40 seconds. Effects of the same type replace one another."
+  },
+  "item.swift_3.name": {
+    "ru": "Концентрат попутного ветра",
+    "en": "Concentrated Tailwind"
+  },
+  "item.swift_3.desc": {
+    "ru": "Эффект: попутного ветра. Сила 1.24; длительность 50 сек. Усиления одного типа заменяют друг друга.",
+    "en": "Tailwind effect. Potency 1.24; duration 50 seconds. Effects of the same type replace one another."
+  },
+  "item.swift_4.name": {
+    "ru": "Эликсир попутного ветра",
+    "en": "Grand Tailwind"
+  },
+  "item.swift_4.desc": {
+    "ru": "Эффект: попутного ветра. Сила 1.32; длительность 60 сек. Усиления одного типа заменяют друг друга.",
+    "en": "Tailwind effect. Potency 1.32; duration 60 seconds. Effects of the same type replace one another."
+  },
+  "ui.slot": {
+    "ru": "Сохранение",
+    "en": "Save slot"
+  },
+  "ui.autosave": {
+    "ru": "Автосохранение",
+    "en": "Autosave"
+  },
+  "ui.iron_save": {
+    "ru": "Железный режим",
+    "en": "Iron mode save"
+  },
+  "tutorial.campaign_title": {
+    "ru": "ПЕРВЫЕ ШАГИ",
+    "en": "FIRST STEPS"
+  },
+  "tutorial.basics_complete": {
+    "ru": "Основы освоены. Впереди восемь клятв. Журнал [J], карта [M].",
+    "en": "Basics complete. Eight oaths await. Journal [J], map [M]."
+  }
+}

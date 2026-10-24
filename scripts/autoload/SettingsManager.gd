@@ -3,7 +3,7 @@ extends Node
 const SETTINGS_FILE = "user://settings.cfg"
 
 var master_volume: float = 1.0
-var music_volume: float = 0.8
+var music_volume: float = 0.3
 var sfx_volume: float = 0.8
 var ui_volume: float = 0.8
 var mouse_sensitivity: float = 0.003
@@ -43,7 +43,7 @@ func load_settings() -> void:
 	var err = config.load(SETTINGS_FILE)
 	if err == OK:
 		master_volume = config.get_value("audio", "master_volume", 1.0)
-		music_volume = config.get_value("audio", "music_volume", 0.8)
+		music_volume = config.get_value("audio", "music_volume", 0.3)
 		sfx_volume = config.get_value("audio", "sfx_volume", 0.8)
 		ui_volume = config.get_value("audio", "ui_volume", 0.8)
 		mouse_sensitivity = config.get_value("controls", "mouse_sensitivity", 0.003)
