@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PotionData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/autoload/PotionData.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = "strength_potion"
+name_key = "item.strength_potion.name"
+desc_key = "item.strength_potion.desc"
+weight = 0.5
+rarity = "rare"
+type = "potion"
+heal_amount = 0.0

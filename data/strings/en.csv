@@ -125,3 +125,119 @@ You have mastered the available gameplay loop.
 The full campaign is still in development."
 ui.close,Закрыть,Close
 ui.repair,Ремонт экипировки — {cost} золота,Repair equipment — {cost} gold
+ui.encumbered,Перегруз!,Encumbered!
+ui.total_load,Загрузка,Total Load
+msg.stamina_full,Выносливость уже полная!,Stamina is already full!
+msg.strength_potion_used,Зелье силы использовано! Урон увеличен.,Strength potion used! Damage increased.
+msg.repaired,Отремонтировано: {item},Repaired: {item}
+msg.encumbered_warning,Вы перегружены! Скорость снижена.,You are encumbered! Speed is reduced.
+msg.law_updated,Закон изменён: {law} на {val},Law updated: {law} set to {val}
+msg.squad_order_issued,Приказ отряду: {order},Squad order issued: {order}
+msg.squad_selected,Выбран {unit} (Приказ: {order}),Selected {unit} (Order: {order})
+msg.desertion_warning,ВНИМАНИЕ: Мораль отряда критически низкая!,WARNING: Squad morale is critically low!
+msg.treaty_signed,Подписан договор с фракцией {faction}: {treaty},Treaty signed with {faction}: {treaty}
+msg.escalation_warning,ВНИМАНИЕ: Рост тревоги фракции {faction}! Уровень: {level},WARNING: Threat escalated for {faction}! Level: {level}
+msg.vertical_slice_completed,Поздравляем! Вертикальный срез 30-60 минут успешно пройден!,Congratulations! 30-60 min vertical slice successfully completed!
+msg.quest_completed,Квест выполнен: {title} (+{gold} золота, +{exp} опыта),Quest completed: {title} (+{gold} gold, +{exp} exp)
+msg.boss_enraged,ВНИМАНИЕ: Босс вошёл в фазу ярости!,WARNING: Boss entered enraged phase!
+msg.boss_defeated,Босс повержен: {boss},Boss defeated: {boss}
+msg.current_objective,Текущая цель: {objective},Current Objective: {objective}
+objective.defeat_enemy,Зачистите окрестности от разбойника,Clear the surroundings of the bandit
+objective.brew_potion,Сварите зелье здоровья,Brew a health potion
+objective.manage_settlement,Откройте меню поселения (B) и проверьте запасы,Open settlement menu (B) and inspect supplies
+objective.command_army,Выберите отряд (1-5) и отдайте приказ,Select squad (1-5) and issue an order
+objective.diplomacy_treaty,Подпишите договор с соседней фракцией,Sign a treaty with a neighboring faction
+quest.main_01.title,Угроза Пограничью,Threat to the March
+quest.main_01.desc,Разгромите главаря бандитов на старом перевале.,Defeat the bandit leader at the old pass.
+quest.side_clear_camp.title,Зачистка лагеря,Clear the Camp
+quest.side_clear_camp.desc,Очистите лесной лагерь от разбойников.,Clear the forest camp of bandits.
+quest.companion_01.title,Клятва Щита,Oath of the Shield
+quest.companion_01.desc,Помогите соратнику вернуть фамильное оружие.,Help your companion recover family heirloom weapon.
+companion.warrior_shield.name,Борн Щитоносец,Born the Shieldbearer
+companion.warrior_shield.role,Защитник,Protector
+companion.archer_scout.name,Лира Следопыт,Lyra the Scout
+companion.archer_scout.role,Разведчица,Scout
+companion.healer_alchemist.name,Мира Алхимик,Mira the Alchemist
+companion.healer_alchemist.role,Лекарь,Healer
+companion.mercenary_commander.name,Капитан Варан,Captain Varan
+companion.mercenary_commander.role,Командир,Commander
+boss.army_commander.name,Командир вражеской армии,Enemy Army Commander
+boss.bandit_leader.name,Главарь банды,Bandit Chieftain
+boss.pass_master.name,Хозяин Перевала,Master of the Pass
+item.iron_spear.name,Железное копьё,Iron Spear
+item.iron_spear.desc,Длинное копьё с острым наконечником.,A long spear with a sharp tip.
+item.war_axe.name,Боевой топор,War Axe
+item.war_axe.desc,Тяжёлый боевой топор с высоким уроном.,A heavy war axe with high damage.
+item.wooden_shield.name,Деревянный щит,Wooden Shield
+item.wooden_shield.desc,Простой дубовый щит.,A simple oak shield.
+item.iron_greaves.name,Железные поножи,Iron Greaves
+item.iron_greaves.desc,Защитные пластины для ног.,Protective leg plates.
+item.dagger.name,Острый кинжал,Sharp Dagger
+item.dagger.desc,Быстрое и лёгкое оружие ближнего боя.,A fast and lightweight melee weapon.
+item.mace.name,Тяжёлая булава,Heavy Mace
+item.mace.desc,Дробящее оружие против бронированных целей.,A crushing weapon effective against armored targets.
+item.plate_armor.name,Латы,Plate Armor
+item.plate_armor.desc,Тяжёлая стальная броня высочайшего качества.,Heavy steel armor of exquisite craftsmanship.
+item.leather_boots.name,Кожаные сапоги,Leather Boots
+item.leather_boots.desc,Удобная обувь для дальних походов.,Comfortable footwear for long marches.
+item.health_potion_large.name,Большое зелье здоровья,Large Health Potion
+item.health_potion_large.desc,Восстанавливает 75 единиц здоровья.,Restores 75 health points.
+item.antidote_potion.name,Противоядие,Antidote Potion
+item.antidote_potion.desc,Снимает отравление и немного лечит.,Cures poison and heals slightly.
+item.strength_potion.name,Зелье силы,Strength Potion
+item.strength_potion.desc,Временно повышает силу в бою.,Temporarily increases combat strength.
+unit.militia_spear.name,Ополчение с копьями,Spear Militia
+unit.militia_spear.desc,Недорогие ополченцы с длинными копьями.,Inexpensive militia with long spears.
+unit.shield_swordsmen.name,Мечники со щитами,Shield Swordsmen
+unit.shield_swordsmen.desc,Универсальные пехотинцы для держи строя.,Versatile infantry trained for wall defense.
+unit.archers.name,Лучники,Archers
+unit.archers.desc,Стрелки для поддержки на дистанции.,Ranged support marksmen.
+unit.heavy_infantry.name,Тяжёлая пехота,Heavy Infantry
+unit.heavy_infantry.desc,Закованные в броню элитные воины.,Armored elite warriors for heavy impact.
+faction.woodland_freeholders.name,Вольные Земледельцы,Woodland Freeholders
+faction.woodland_freeholders.desc,Мирные общины лесных хуторов и ферм.,Peaceful communities of forest hamlets and farms.
+faction.borderland_watch.name,Стража Пограничья,Borderland Watch
+faction.borderland_watch.desc,Организованные гарнизоны старых застав.,Organized garrisons of old border outposts.
+faction.iron_guild.name,Гильдия Рудокопов,Iron Guild
+faction.iron_guild.desc,Богатая гильдия шахтёров и кузнецов.,Rich guild of miners and smiths.
+recipe.health.name,Рецепт зелья здоровья,Health Potion Recipe
+recipe.antidote.name,Рецепт противоядия,Antidote Recipe
+ui.food,Еда,Food
+ui.wood,Древесина,Wood
+ui.ore,Руда,Ore
+ui.gold,Золото,Gold
+ui.army,Армия,Army
+ui.squad,Отряд,Squad
+ui.morale,Мораль,Morale
+ui.formation,Строй,Formation
+ui.order,Приказ,Order
+ui.diplomacy,Дипломатия,Diplomacy
+ui.factions,Фракции,Factions
+ui.threat,Угроза,Threat
+ui.escalation,Эскалация,Escalation
+order.follow,Следуй за мной,Follow Me
+order.hold_position,Удерживать позицию,Hold Position
+order.attack,Атаковать врага,Attack Enemy
+order.retreat,Отступать,Retreat
+treaty.peace,Мирный договор,Peace Treaty
+treaty.trade,Торговый договор,Trade Agreement
+treaty.non_aggression,Пакт о ненападении,Non-Aggression Pact
+treaty.alliance,Союзный договор,Alliance Pact
+msg.weather_changed,Погода изменилась: ,Weather changed:
+weather.clear,Ясно,Clear
+weather.rain,Дождь,Rain
+weather.fog,Туман,Fog
+weather.storm,Гроза,Storm
+weather.snow,Снег,Snow
+tutorial.movement.title,Основы движения,Movement Basics
+tutorial.movement.desc,Используйте WASD для движения и Shift для бега.,Use WASD to move and Shift to sprint.
+tutorial.combat.title,Боевая система,Combat System
+tutorial.combat.desc,Нажимайте ЛКМ для атаки и ПКМ для блока.,Click LMB to attack and RMB to block.
+tutorial.inventory.title,Инвентарь,Inventory
+tutorial.inventory.desc,Нажмите Tab или I для управления предметами и снаряжением.,Press Tab or I to manage items and equipment.
+tutorial.potion.title,Быстрое лечение,Quick Healing
+tutorial.potion.desc,Нажмите Q для быстрого использования зелья здоровья.,Press Q to quickly drink a health potion.
+tutorial.settlement.title,Управление поселением,Settlement Management
+tutorial.settlement.desc,Нажмите B для управления ресурсами законами и населением.,Press B to manage settlement resources laws and population.
+tutorial.army.title,Командование отрядами,Squad Command
+tutorial.army.desc,Нажимайте 1-5 для выбора отрядов и отдачи приказов.,Press 1-5 to select squads and issue tactical commands.

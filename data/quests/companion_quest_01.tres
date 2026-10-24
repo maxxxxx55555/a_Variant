@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="QuestData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/autoload/QuestData.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = "companion_quest_01"
+title_key = "quest.companion_01.title"
+desc_key = "quest.companion_01.desc"
+is_main_quest = false
+reward_gold = 150.0
+reward_exp = 100.0
+target_enemy_id = "pass_boss"
+is_completed = false

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="QuestData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/autoload/QuestData.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = "side_quest_clear_camp"
+title_key = "quest.side_clear_camp.title"
+desc_key = "quest.side_clear_camp.desc"
+is_main_quest = false
+reward_gold = 100.0
+reward_exp = 75.0
+target_enemy_id = "bandit"
+is_completed = false

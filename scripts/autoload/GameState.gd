@@ -5,6 +5,9 @@ var max_hp: float = 100.0
 var player_stamina: float = 100.0
 var max_stamina: float = 100.0
 
+var max_carry_weight: float = 40.0
+var strength_buff_timer: float = 0.0
+
 var inventory: Array = []
 var equipment: Dictionary = {
 	"head": null,
@@ -17,6 +20,13 @@ var current_defense: float = 0.0
 
 func _ready() -> void:
 	recalculate_stats()
+
+func _process(delta: float) -> void:
+	if strength_buff_timer > 0:
+		strength_buff_timer -= delta
+
+func get_damage_modifier() -> float:
+	return 1.35 if strength_buff_timer > 0 else 1.0
 
 func clamp_values() -> void:
 	max_hp = max(10.0, max_hp)
@@ -34,18 +44,45 @@ func recalculate_stats() -> void:
 				total_def += res.get("defense") * (0.5 if armor.get("durability", res.get("durability")) <= 0 else 1.0)
 	current_defense = max(0.0, total_def)
 
+func get_total_weight() -> float:
+	var total: float = 0.0
+	for item in inventory:
+		var w = item.get("weight")
+		if w == null:
+			w = 0.0
+		var cnt = item.get("count", 1)
+		total += float(w) * cnt
+	for slot in equipment.keys():
+		var item = equipment[slot]
+		if item:
+			var w = item.get("weight")
+			if w == null:
+				w = 0.0
+			total += float(w)
+	return total
+
+func is_encumbered() -> bool:
+	return get_total_weight() > max_carry_weight
+
+func get_speed_modifier() -> float:
+	return 0.6 if is_encumbered() else 1.0
+
 func add_item(item_resource: Resource, count: int = 1) -> bool:
 	if not item_resource or not item_resource.resource_path:
 		IntegrityLogger.log_anomaly("GameState", "Attempted to add invalid item resource")
 		return false
+	var w = item_resource.get("weight")
+	if w == null:
+		w = 0.0
 	var item_dict = {
 		"id": item_resource.resource_path.get_file().get_basename(),
 		"resource_path": item_resource.resource_path,
 		"name_key": item_resource.get("name_key"),
 		"desc_key": item_resource.get("desc_key"),
-		"weight": item_resource.get("weight"),
+		"weight": float(w),
 		"rarity": item_resource.get("rarity"),
 		"type": item_resource.get("type"),
+		"durability": item_resource.get("durability") if item_resource.get("durability") != null else 100.0,
 		"count": count
 	}
 	if item_resource is WeaponData or item_resource is ArmorData:
@@ -55,6 +92,10 @@ func add_item(item_resource: Resource, count: int = 1) -> bool:
 	if AudioManager:
 		AudioManager.play_sound("pickup")
 	EventBus.notification_posted.emit(LocalizationManager.get_string("msg.picked_up", {"item": LocalizationManager.get_string(item_resource.get("name_key"))}), false)
+
+	if is_encumbered():
+		EventBus.notification_posted.emit(LocalizationManager.get_string("msg.encumbered_warning"), true)
+
 	return true
 
 func equip_item(item_index: int) -> bool:
@@ -103,6 +144,18 @@ func unequip_item(slot: String) -> bool:
 		EventBus.notification_posted.emit(LocalizationManager.get_string("msg.unequipped", {"item": LocalizationManager.get_string(res.get("name_key"))}), false)
 	return true
 
+func repair_item(item_index: int) -> bool:
+	if item_index < 0 or item_index >= inventory.size():
+		return false
+	var item = inventory[item_index]
+	item["durability"] = 100.0
+	EventBus.inventory_updated.emit()
+	if AudioManager:
+		AudioManager.play_sound("ui_click")
+	var name_key = item.get("name_key", "")
+	EventBus.notification_posted.emit(LocalizationManager.get_string("msg.repaired", {"item": LocalizationManager.get_string(name_key)}), false)
+	return true
+
 func use_potion(item_index: int) -> bool:
 	if item_index < 0 or item_index >= inventory.size():
 		return false
@@ -112,12 +165,15 @@ func use_potion(item_index: int) -> bool:
 		return false
 
 	var heal = res.get("heal_amount")
-	if res.id == "stamina_potion" or heal == 0.0:
+	if res.id == "stamina_potion":
 		if player_stamina >= max_stamina:
-			EventBus.notification_posted.emit("Stamina is already full!", true)
+			EventBus.notification_posted.emit(LocalizationManager.get_string("msg.stamina_full"), true)
 			return false
 		player_stamina = min(max_stamina, player_stamina + 50.0)
 		EventBus.player_stamina_changed.emit(player_stamina, max_stamina)
+	elif res.id == "strength_potion" or heal == 0.0:
+		strength_buff_timer = 30.0
+		EventBus.notification_posted.emit(LocalizationManager.get_string("msg.strength_potion_used"), false)
 	else:
 		if player_hp >= max_hp:
 			EventBus.notification_posted.emit(LocalizationManager.get_string("msg.hp_full"), true)

@@ -47,7 +47,8 @@ func _physics_process(delta: float) -> void:
 
 	# Movement & Sprinting
 	var is_sprinting = Input.is_action_pressed("sprint") and GameState.player_stamina > 5.0
-	var current_speed = sprint_speed if is_sprinting else speed
+	var speed_mod = GameState.get_speed_modifier()
+	var current_speed = (sprint_speed if is_sprinting else speed) * speed_mod
 
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
@@ -145,6 +146,8 @@ func perform_attack() -> void:
 			attacks_per_second = w_res.get("speed")
 			if weapon.get("durability", w_res.durability) <= 0:
 				dmg *= 0.5
+
+	dmg *= GameState.get_damage_modifier()
 
 	if GameState.consume_stamina(stamina_cost):
 		GameState.wear_equipment("weapon", 1.0)

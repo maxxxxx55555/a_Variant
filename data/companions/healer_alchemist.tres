@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CompanionData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/autoload/CompanionData.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = "healer_alchemist"
+name_key = "companion.healer_alchemist.name"
+role_key = "companion.healer_alchemist.role"
+health = 90.0
+damage = 14.0
+defense = 10.0
+relationship = 65.0
+personal_quest_id = "side_quest_clear_camp"
