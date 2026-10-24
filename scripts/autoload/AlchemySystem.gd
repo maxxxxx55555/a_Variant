@@ -30,6 +30,7 @@ func brew_potion(recipe: RecipeData) -> bool:
 		consume_ingredient(ing, req_cnt)
 
 	GameState.add_item(recipe.result_item, recipe.result_count)
+	EventBus.potion_brewed.emit(recipe)
 	if AudioManager: AudioManager.play_sound("potion")
 	return true
 

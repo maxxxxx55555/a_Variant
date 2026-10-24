@@ -30,7 +30,7 @@ func _on_day_passed(_day: int) -> void:
 	var ore_prod = miners * 1.5
 
 	# Daily consumption (1 food per citizen)
-	var food_cons = PopulationSystem.total_population * 1.0
+	var food_cons = PopulationSystem.total_population * (0.5 if SettlementSystem.current_laws.rations == "half" else 1.0)
 
 	daily_net["food"] = food_prod - food_cons
 	daily_net["wood"] = wood_prod
@@ -39,9 +39,17 @@ func _on_day_passed(_day: int) -> void:
 	stockpiles["food"] = max(0.0, stockpiles["food"] + daily_net["food"])
 	stockpiles["wood"] = max(0.0, stockpiles["wood"] + daily_net["wood"])
 	stockpiles["ore"] = max(0.0, stockpiles["ore"] + daily_net["ore"])
+	var tax_rates := {"low": 0.25, "normal": 0.5, "high": 1.0}
+	stockpiles["gold"] += PopulationSystem.total_population * tax_rates[SettlementSystem.current_laws.taxes]
+	if food_prod < food_cons and stockpiles["food"] <= 0:
+		PopulationSystem.health = maxf(0, PopulationSystem.health - 5)
+		PopulationSystem.happiness = maxf(0, PopulationSystem.happiness - 8)
+		EventBus.notification_posted.emit(LocalizationManager.get_string("msg.starvation"), true)
+	EventBus.settlement_updated.emit()
 
 func get_food_days_remaining() -> int:
-	var food_cons = PopulationSystem.total_population * 1.0
-	if food_cons <= 0:
+	var food_cons = PopulationSystem.total_population * (0.5 if SettlementSystem.current_laws.rations == "half" else 1.0)
+	var net_consumption: float = food_cons - PopulationSystem.jobs.get("farmers", 0) * 2.5
+	if net_consumption <= 0:
 		return 999
-	return int(stockpiles["food"] / food_cons)
+	return int(stockpiles["food"] / net_consumption)

@@ -50,4 +50,4 @@ func load_settings() -> void:
 		camera_bobbing = config.get_value("gameplay", "camera_bobbing", true)
 		camera_shake = config.get_value("gameplay", "camera_shake", true)
 		language = config.get_value("language", "lang", "ru")
-	apply_settings()
+	call_deferred("apply_settings")

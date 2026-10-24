@@ -77,3 +77,51 @@ ui.health,Здоровье,Health
 ui.food_forecast,Запас еды (дней),Food forecast (days)
 ui.resources,Ресурсы,Resources
 ui.laws,Законы,Laws
+ui.restart,Начать заново,Restart
+ui.ingredients,Ингредиенты,Ingredients
+ui.attack,Атака,Attack
+ui.interact,Подобрать,Pick up
+ui.potion,Зелье,Potion
+ui.controls,"WASD — движение · Мышь — обзор · ЛКМ — удар · ПКМ — блок
+E — подбор · I/Tab — инвентарь · C — алхимия · B — поселение · Esc — пауза","WASD — move · Mouse — look · LMB — attack · RMB — block
+E — pick up · I/Tab — inventory · C — alchemy · B — settlement · Esc — pause"
+ui.empty,Пусто,Empty
+msg.law_changed,Закон поселения изменён,Settlement law changed
+msg.starvation,Голод! Еда закончилась — здоровье и счастье жителей падают.,Starvation! Food is exhausted — health and happiness decline.
+msg.low_happiness,Критически низкое счастье: жители могут покинуть поселение!,Critical happiness: citizens may leave the settlement!
+msg.emigration,Поселение покинули жители: {count},Citizens emigrated: {count}
+ui.respawn,Возродиться (−20% золота),Respawn (−20% gold)
+ui.free_workers,свободно,unassigned
+ui.resource_summary,Еда: {food} | Дерево: {wood} | Руда: {ore} | Золото: {gold},Food: {food} | Wood: {wood} | Ore: {ore} | Gold: {gold}
+ui.apply_jobs,Назначить работников,Assign workers
+ui.wait_day,Отдыхать до следующего дня,Rest until next day
+ui.day,День,Day
+job.farmers,Фермеры,Farmers
+job.woodcutters,Дровосеки,Woodcutters
+job.miners,Шахтёры,Miners
+job.guards,Стража,Guards
+job.blacksmiths,Кузнецы,Blacksmiths
+law.taxes,Налоги,Taxes
+law.rations,Пайки,Rations
+law.conscription,Призыв,Conscription
+law.low,Низкие,Low
+law.normal,Обычные,Normal
+law.high,Высокие,High
+law.half,Половинные,Half
+law.full,Полные,Full
+law.voluntary,Добровольный,Voluntary
+law.forced,Принудительный,Forced
+msg.workers_invalid,Не хватает свободных жителей для назначения,Not enough citizens for these assignments
+tutorial.title,ЦЕЛИ ТЕСТОВОЙ ВЫЛАЗКИ,TEST EXPEDITION OBJECTIVES
+tutorial.weapon,Экипируйте меч в инвентаре (I),Equip a sword in the inventory (I)
+tutorial.armor,Подберите и наденьте доспех (E / I),Pick up and equip armor (E / I)
+tutorial.combat,Победите разбойника впереди (ЛКМ / ПКМ),Defeat the bandit ahead (LMB / RMB)
+tutorial.alchemy,Сварите зелье из трав (C),Brew a potion from herbs (C)
+tutorial.settlement,Обеспечьте поселение едой (B),Make food production sustainable (B)
+tutorial.completed,"ВЫЛАЗКА ЗАВЕРШЕНА!
+Вы освоили доступный игровой цикл.
+Полная кампания ещё в разработке.","EXPEDITION COMPLETE!
+You have mastered the available gameplay loop.
+The full campaign is still in development."
+ui.close,Закрыть,Close
+ui.repair,Ремонт экипировки — {cost} золота,Repair equipment — {cost} gold

@@ -9,7 +9,35 @@ extends Node3D
 @onready var enemy: Node3D = $Enemy
 @onready var armor_pickup: Node3D = $ArmorPickup
 
+const ENEMY_SCENE = preload("res://scenes/enemies/enemy.tscn")
+const PICKUP_SCENE = preload("res://scenes/items/world_item.tscn")
+const TUTORIAL_SCRIPT = preload("res://scripts/systems/TutorialSystem.gd")
+var tutorial: Node
+
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	player.process_mode = Node.PROCESS_MODE_PAUSABLE
+	enemy.process_mode = Node.PROCESS_MODE_PAUSABLE
+	EventBus.player_died.connect(_on_player_died)
+	tutorial = TUTORIAL_SCRIPT.new()
+	add_child(tutorial)
+	var menu_theme := Theme.new()
+	menu_theme.default_font_size = 24
+	for menu in [inventory_ui, alchemy_ui, settlement_ui, pause_menu]:
+		menu.theme = menu_theme
+		if menu == pause_menu:
+			continue
+		var close_button := Button.new()
+		close_button.name = "CloseButton"
+		close_button.set_anchors_and_offsets_preset(Control.PRESET_TOP_RIGHT)
+		menu.add_child(close_button)
+		close_button.offset_left = -230
+		close_button.offset_right = -30
+		close_button.offset_top = 20
+		close_button.offset_bottom = 68
+		close_button.text = LocalizationManager.get_string("ui.close") + " (Esc)"
+		EventBus.language_changed.connect(func(_lang): close_button.text = LocalizationManager.get_string("ui.close") + " (Esc)")
+		close_button.pressed.connect(toggle_pause)
 	inventory_ui.visible = false
 	pause_menu.visible = false
 	if alchemy_ui: alchemy_ui.visible = false
@@ -27,14 +55,20 @@ func _ready() -> void:
 		var herb_res = load("res://data/potions/healing_herb.tres")
 		if herb_res:
 			GameState.add_item(herb_res, 4)
+	_sync_menu_state()
+
+func get_objective_state() -> Dictionary:
+	return tutorial.get_state()
 
 func _unhandled_input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("inventory"):
+	if event.is_action_pressed("inventory"):
 		toggle_inventory()
-	elif Input.is_action_just_pressed("pause"):
+	elif event.is_action_pressed("pause"):
 		toggle_pause()
 	elif event is InputEventKey and event.pressed and event.keycode == KEY_B:
 		toggle_settlement()
+	elif event is InputEventKey and event.pressed and event.keycode == KEY_C:
+		toggle_alchemy()
 
 func toggle_inventory() -> void:
 	if pause_menu.visible:
@@ -47,6 +81,7 @@ func toggle_inventory() -> void:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	else:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	_sync_menu_state()
 
 func toggle_settlement() -> void:
 	if pause_menu.visible:
@@ -60,13 +95,33 @@ func toggle_settlement() -> void:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		else:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	_sync_menu_state()
+	settlement_ui.refresh_ui()
+
+func toggle_alchemy() -> void:
+	if pause_menu.visible or GameState.player_hp <= 0:
+		return
+	alchemy_ui.visible = not alchemy_ui.visible
+	inventory_ui.visible = false
+	settlement_ui.visible = false
+	alchemy_ui.update_info()
+	_sync_menu_state()
+
+func _sync_menu_state() -> void:
+	var menu_open := inventory_ui.visible or pause_menu.visible or alchemy_ui.visible or settlement_ui.visible
+	get_tree().paused = menu_open
+	hud.visible = not menu_open
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE if menu_open else Input.MOUSE_MODE_CAPTURED
 
 func toggle_pause() -> void:
+	if GameState.player_hp <= 0:
+		return
 	if inventory_ui.visible or (alchemy_ui and alchemy_ui.visible) or (settlement_ui and settlement_ui.visible):
 		inventory_ui.visible = false
 		if alchemy_ui: alchemy_ui.visible = false
 		if settlement_ui: settlement_ui.visible = false
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		_sync_menu_state()
 		return
 
 	get_tree().paused = not get_tree().paused
@@ -76,27 +131,98 @@ func toggle_pause() -> void:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	else:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	_sync_menu_state()
+
+func _on_player_died() -> void:
+	inventory_ui.hide()
+	alchemy_ui.hide()
+	settlement_ui.hide()
+	pause_menu.show()
+	pause_menu.resume_btn.text = LocalizationManager.get_string("ui.respawn")
+	pause_menu.save_btn.disabled = true
+	_sync_menu_state()
+
+func restart_run() -> void:
+	GameState.player_hp = GameState.max_hp
+	GameState.player_stamina = GameState.max_stamina
+	EconomySystem.stockpiles.gold *= 0.8
+	for item in GameState.equipment.values():
+		if item:
+			var resource = load(item.resource_path)
+			item["durability"] = item.get("durability", resource.durability) * 0.8
+	GameState.recalculate_stats()
+	EventBus.equipment_updated.emit()
+	player.global_position = Vector3(0, 1, 5)
+	player.velocity = Vector3.ZERO
+	pause_menu.hide()
+	pause_menu.save_btn.disabled = false
+	pause_menu.localize()
+	get_tree().paused = false
+	_sync_menu_state()
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	EventBus.player_hp_changed.emit(GameState.player_hp, GameState.max_hp)
+	EventBus.player_stamina_changed.emit(GameState.player_stamina, GameState.max_stamina)
 
 func get_world_state() -> Dictionary:
+	var pickups: Array = []
+	for item in get_tree().get_nodes_in_group("world_items"):
+		if is_instance_valid(item) and not item.is_queued_for_deletion():
+			pickups.append({"path": item.item_resource.resource_path, "count": item.item_count,
+				"pos": [item.position.x, item.position.y, item.position.z]})
 	var state = {
 		"player_pos": [player.global_position.x, player.global_position.y, player.global_position.z] if is_instance_valid(player) else [0, 0, 0],
 		"enemy_alive": is_instance_valid(enemy) and not enemy.is_dead,
 		"enemy_hp": enemy.current_hp if is_instance_valid(enemy) else 0.0,
 		"enemy_pos": [enemy.global_position.x, enemy.global_position.y, enemy.global_position.z] if is_instance_valid(enemy) else [0, 0, 0],
-		"armor_pickup_exists": is_instance_valid(armor_pickup)
+		"armor_pickup_exists": is_instance_valid(armor_pickup) and not armor_pickup.is_queued_for_deletion(),
+		"pickups": pickups,
+		"player_rotation": [player.rotation.y, player.camera.rotation.x],
+		"tutorial": tutorial.get_state()
 	}
 	return state
 
 func load_world_state(state: Dictionary) -> void:
+	tutorial.restore_state(state.get("tutorial", {"enemy_defeated": not state.get("enemy_alive", true)}))
 	if state.has("player_pos") and is_instance_valid(player):
 		var p = state["player_pos"]
 		player.global_position = Vector3(p[0], p[1], p[2])
+		player.velocity = Vector3.ZERO
+	if state.has("player_rotation"):
+		player.rotation.y = state["player_rotation"][0]
+		player.camera.rotation.x = state["player_rotation"][1]
 	if state.has("enemy_alive"):
 		if not state["enemy_alive"] and is_instance_valid(enemy):
+			remove_child(enemy)
 			enemy.queue_free()
-		elif state["enemy_alive"] and is_instance_valid(enemy):
+			enemy = null
+		elif state["enemy_alive"]:
+			if not is_instance_valid(enemy) or enemy.is_queued_for_deletion():
+				enemy = ENEMY_SCENE.instantiate()
+				enemy.process_mode = Node.PROCESS_MODE_PAUSABLE
+				add_child(enemy)
+			enemy.is_dead = false
 			enemy.current_hp = state.get("enemy_hp", 80.0)
 			var ep = state.get("enemy_pos", [0, 0.5, -8])
 			enemy.global_position = Vector3(ep[0], ep[1], ep[2])
-	if state.has("armor_pickup_exists") and not state["armor_pickup_exists"] and is_instance_valid(armor_pickup):
-		armor_pickup.queue_free()
+	if state.has("pickups"):
+		for item in get_tree().get_nodes_in_group("world_items"):
+			item.get_parent().remove_child(item)
+			item.queue_free()
+		armor_pickup = null
+		for item in state["pickups"]:
+			var pickup = PICKUP_SCENE.instantiate()
+			pickup.item_resource = load(item["path"])
+			pickup.item_count = int(item.get("count", 1))
+			add_child(pickup)
+			var pos = item["pos"]
+			pickup.position = Vector3(pos[0], pos[1], pos[2])
+			if pickup.item_resource.resource_path.ends_with("leather_armor.tres"):
+				armor_pickup = pickup
+	elif state.has("armor_pickup_exists"):
+		if not state["armor_pickup_exists"] and is_instance_valid(armor_pickup):
+			armor_pickup.queue_free()
+		elif state["armor_pickup_exists"] and not is_instance_valid(armor_pickup):
+			armor_pickup = PICKUP_SCENE.instantiate()
+			armor_pickup.item_resource = load("res://data/armors/leather_armor.tres")
+			add_child(armor_pickup)
+			armor_pickup.position = Vector3(2, 0.5, 3)

@@ -53,7 +53,7 @@ func _physics_process(delta: float) -> void:
 func attack_player() -> void:
 	attack_cooldown = 1.5
 	if target_player and target_player.has_method("take_damage"):
-		GameState.take_damage(damage)
+		target_player.take_damage(damage)
 		if AudioManager: AudioManager.play_sound("attack")
 
 func take_damage(amount: float) -> void:

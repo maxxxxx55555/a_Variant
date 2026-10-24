@@ -31,7 +31,7 @@ func recalculate_stats() -> void:
 		if armor and armor.has("resource_path"):
 			var res = load(armor["resource_path"])
 			if res and res.get("defense"):
-				total_def += res.get("defense")
+				total_def += res.get("defense") * (0.5 if armor.get("durability", res.get("durability")) <= 0 else 1.0)
 	current_defense = max(0.0, total_def)
 
 func add_item(item_resource: Resource, count: int = 1) -> bool:
@@ -48,6 +48,8 @@ func add_item(item_resource: Resource, count: int = 1) -> bool:
 		"type": item_resource.get("type"),
 		"count": count
 	}
+	if item_resource is WeaponData or item_resource is ArmorData:
+		item_dict["durability"] = item_resource.durability
 	inventory.append(item_dict)
 	EventBus.inventory_updated.emit()
 	if AudioManager:
@@ -138,6 +140,8 @@ func take_damage(raw_damage: float) -> void:
 	var effective_mitigation = current_defense / (current_defense + 100.0)
 	var final_damage = max(1.0, raw_damage * (1.0 - effective_mitigation))
 	player_hp -= final_damage
+	for slot in ["head", "torso", "legs"]:
+		wear_equipment(slot, 1.0)
 	clamp_values()
 	EventBus.player_hp_changed.emit(player_hp, max_hp)
 	if player_hp <= 0:
@@ -155,3 +159,32 @@ func consume_stamina(amount: float) -> bool:
 		EventBus.player_stamina_changed.emit(player_stamina, max_stamina)
 		return true
 	return false
+
+func wear_equipment(slot: String, amount: float) -> void:
+	var item = equipment.get(slot)
+	if item:
+		var resource = load(item.resource_path)
+		item["durability"] = maxf(0, item.get("durability", resource.durability) - amount)
+		recalculate_stats()
+		EventBus.equipment_updated.emit()
+
+func get_repair_cost() -> float:
+	var cost := 0.0
+	for item in equipment.values():
+		if item:
+			var resource = load(item.resource_path)
+			cost += maxf(0, resource.durability - item.get("durability", resource.durability)) * resource.repair_cost_per_point
+	return ceilf(cost)
+
+func repair_equipment() -> bool:
+	var cost := get_repair_cost()
+	if cost <= 0 or EconomySystem.stockpiles.gold < cost:
+		return false
+	EconomySystem.stockpiles.gold -= cost
+	for item in equipment.values():
+		if item:
+			item["durability"] = load(item.resource_path).durability
+	recalculate_stats()
+	EventBus.equipment_updated.emit()
+	EventBus.settlement_updated.emit()
+	return true

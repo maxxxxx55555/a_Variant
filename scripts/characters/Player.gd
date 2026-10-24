@@ -12,6 +12,7 @@ var bob_time: float = 0.0
 var original_cam_y: float = 0.0
 var last_prompt: String = ""
 var shake_offset: Vector3 = Vector3.ZERO
+var attack_cooldown: float = 0.0
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -28,8 +29,12 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	# Pause handling
-	if get_tree().paused:
+	if get_tree().paused or GameState.player_hp <= 0 or Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
 		return
+	attack_cooldown = maxf(0, attack_cooldown - delta)
+	if global_position.y < -15:
+		global_position = Vector3(0, 1, 5)
+		velocity = Vector3.ZERO
 
 	# Gravity
 	if not is_on_floor():
@@ -85,6 +90,8 @@ func _physics_process(delta: float) -> void:
 		perform_attack()
 
 func take_damage(amount: float) -> void:
+	if Input.is_action_pressed("block") and GameState.consume_stamina(8.0):
+		amount *= 0.3
 	GameState.take_damage(amount)
 
 func check_interaction() -> void:
@@ -96,10 +103,19 @@ func check_interaction() -> void:
 				EventBus.notification_posted.emit(prompt, false)
 				last_prompt = prompt
 			if Input.is_action_just_pressed("interact"):
-				collider.interact(self)
-				last_prompt = ""
+				interact()
 	else:
 		last_prompt = ""
+
+func interact() -> void:
+	if get_tree().paused or GameState.player_hp <= 0:
+		return
+	interact_ray.force_raycast_update()
+	if interact_ray.is_colliding():
+		var collider = interact_ray.get_collider()
+		if collider and collider.has_method("interact"):
+			collider.interact(self)
+			last_prompt = ""
 
 func use_quick_potion() -> void:
 	for i in range(GameState.inventory.size()):
@@ -108,14 +124,17 @@ func use_quick_potion() -> void:
 		if not path.is_empty():
 			var res = load(path)
 			if res and res.get("type") == "potion":
-				GameState.use_potion(i)
-				return
+				if GameState.use_potion(i):
+					return
 
 func perform_attack() -> void:
+	if attack_cooldown > 0 or GameState.player_hp <= 0 or get_tree().paused:
+		return
 	var weapon = GameState.equipment.get("weapon")
 	var stamina_cost = 12.0
 	var dmg = 15.0
 	var reach = 2.0
+	var attacks_per_second: float = 1.5
 
 	if weapon and weapon.get("resource_path"):
 		var w_res = load(weapon.get("resource_path"))
@@ -123,8 +142,13 @@ func perform_attack() -> void:
 			stamina_cost = w_res.get("stamina_cost")
 			dmg = w_res.get("damage")
 			reach = w_res.get("reach")
+			attacks_per_second = w_res.get("speed")
+			if weapon.get("durability", w_res.durability) <= 0:
+				dmg *= 0.5
 
 	if GameState.consume_stamina(stamina_cost):
+		GameState.wear_equipment("weapon", 1.0)
+		attack_cooldown = 1.0 / maxf(0.1, attacks_per_second)
 		apply_camera_shake(0.05)
 		if AudioManager: AudioManager.play_sound("attack")
 		# Melee raycast

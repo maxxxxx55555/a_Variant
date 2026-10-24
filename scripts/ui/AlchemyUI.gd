@@ -9,6 +9,8 @@ var selected_recipe: RecipeData = null
 func _ready() -> void:
 	brew_button.pressed.connect(_on_brew_pressed)
 	recipe_list.item_selected.connect(_on_recipe_selected)
+	EventBus.inventory_updated.connect(update_info)
+	EventBus.language_changed.connect(func(_lang): refresh_recipes())
 	refresh_recipes()
 
 func refresh_recipes() -> void:
@@ -18,8 +20,8 @@ func refresh_recipes() -> void:
 	sample_recipe.name_key = "item.health_potion.name"
 	sample_recipe.result_item = load("res://data/potions/health_potion.tres")
 	sample_recipe.result_count = 1
-	sample_recipe.required_ingredients = [load("res://data/potions/healing_herb.tres")]
-	sample_recipe.required_counts = [2]
+	sample_recipe.required_ingredients.append(load("res://data/potions/healing_herb.tres"))
+	sample_recipe.required_counts.append(2)
 
 	if AlchemySystem.known_recipes.is_empty():
 		AlchemySystem.known_recipes.append(sample_recipe)
@@ -27,6 +29,10 @@ func refresh_recipes() -> void:
 	for r in AlchemySystem.known_recipes:
 		var name_str = LocalizationManager.get_string(r.result_item.get("name_key"))
 		recipe_list.add_item(name_str)
+	brew_button.text = LocalizationManager.get_string("ui.brew")
+	if not AlchemySystem.known_recipes.is_empty():
+		recipe_list.select(0)
+		_on_recipe_selected(0)
 
 func _on_recipe_selected(idx: int) -> void:
 	if idx >= 0 and idx < AlchemySystem.known_recipes.size():
@@ -41,7 +47,7 @@ func update_info() -> void:
 
 	var name_str = LocalizationManager.get_string(selected_recipe.result_item.get("name_key"))
 	var text = "[b]" + name_str + "[/b]\n\n"
-	text += "Required Ingredients:\n"
+	text += LocalizationManager.get_string("ui.ingredients") + ":\n"
 	for i in range(selected_recipe.required_ingredients.size()):
 		var ing = selected_recipe.required_ingredients[i]
 		var cnt = selected_recipe.required_counts[i]

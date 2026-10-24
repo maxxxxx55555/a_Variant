@@ -16,6 +16,7 @@ extends Control
 @onready var shake_check: CheckBox = $MarginContainer/SettingsPanel/ShakeCheck
 
 func _ready() -> void:
+	EventBus.language_changed.connect(func(_lang): localize())
 	resume_btn.pressed.connect(_on_resume)
 	save_btn.pressed.connect(_on_save)
 	load_btn.pressed.connect(_on_load)
@@ -31,6 +32,17 @@ func _ready() -> void:
 	shake_check.toggled.connect(func(v): SettingsManager.camera_shake = v)
 
 	init_settings_ui()
+	localize()
+
+func localize() -> void:
+	resume_btn.text = LocalizationManager.get_string("ui.respawn" if GameState.player_hp <= 0 else "ui.resume")
+	save_btn.text = LocalizationManager.get_string("ui.save")
+	load_btn.text = LocalizationManager.get_string("ui.load")
+	settings_btn.text = LocalizationManager.get_string("ui.settings")
+	exit_btn.text = LocalizationManager.get_string("ui.exit")
+	var labels := {"LangLabel": "ui.language", "MasterLabel": "ui.volume_master", "MusicLabel": "ui.volume_music", "SFXLabel": "ui.volume_sfx", "UILabel": "ui.volume_ui", "BobbingCheck": "ui.camera_bobbing", "ShakeCheck": "ui.camera_shake"}
+	for node_name in labels:
+		settings_panel.get_node(node_name).text = LocalizationManager.get_string(labels[node_name])
 
 func init_settings_ui() -> void:
 	lang_option.clear()
@@ -46,11 +58,18 @@ func init_settings_ui() -> void:
 	shake_check.button_pressed = SettingsManager.camera_shake
 
 func _on_resume() -> void:
+	SettingsManager.save_settings()
+	if GameState.player_hp <= 0:
+		get_tree().current_scene.restart_run()
+		return
 	get_tree().paused = false
 	visible = false
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	get_tree().current_scene._sync_menu_state()
 
 func _on_save() -> void:
+	if GameState.player_hp <= 0:
+		return
 	var world_node = get_tree().current_scene
 	var world_data = {}
 	if world_node and world_node.has_method("get_world_state"):
@@ -61,7 +80,8 @@ func _on_save() -> void:
 		"stamina": GameState.player_stamina,
 		"inventory": GameState.inventory,
 		"equipment": GameState.equipment,
-		"world": world_data
+		"world": world_data,
+		"simulation": capture_simulation()
 	}
 	SaveSystem.save_game(state_data)
 
@@ -71,8 +91,13 @@ func _on_load() -> void:
 		GameState.player_hp = loaded.get("hp", 100.0)
 		GameState.player_stamina = loaded.get("stamina", 100.0)
 		GameState.inventory = loaded.get("inventory", [])
-		GameState.equipment = loaded.get("equipment", {})
+		GameState.equipment = loaded.get("equipment", {"head": null, "torso": null, "legs": null, "weapon": null})
+		for slot in ["head", "torso", "legs", "weapon"]:
+			if not GameState.equipment.has(slot):
+				GameState.equipment[slot] = null
+		GameState.clamp_values()
 		GameState.recalculate_stats()
+		restore_simulation(loaded.get("simulation", {}))
 
 		var world_node = get_tree().current_scene
 		if world_node and world_node.has_method("load_world_state") and loaded.has("world"):
@@ -81,10 +106,27 @@ func _on_load() -> void:
 		EventBus.inventory_updated.emit()
 		EventBus.equipment_updated.emit()
 		EventBus.player_hp_changed.emit(GameState.player_hp, GameState.max_hp)
+		EventBus.player_stamina_changed.emit(GameState.player_stamina, GameState.max_stamina)
+		save_btn.disabled = false
+		localize()
 		_on_resume()
+	else:
+		EventBus.notification_posted.emit(LocalizationManager.get_string("msg.save_error"), true)
 
 func _on_toggle_settings() -> void:
 	settings_panel.visible = not settings_panel.visible
+	$MarginContainer/VBoxContainer.visible = not settings_panel.visible
+	if settings_panel.visible:
+		init_settings_ui()
+		var back_button := settings_panel.get_node_or_null("BackButton")
+		if not back_button:
+			back_button = Button.new()
+			back_button.name = "BackButton"
+			settings_panel.add_child(back_button)
+			back_button.pressed.connect(_on_toggle_settings)
+		back_button.text = LocalizationManager.get_string("ui.resume")
+	else:
+		SettingsManager.save_settings()
 
 func _on_lang_selected(idx: int) -> void:
 	var lang = "ru" if idx == 0 else "en"
@@ -93,4 +135,30 @@ func _on_lang_selected(idx: int) -> void:
 	SettingsManager.save_settings()
 
 func _on_exit() -> void:
+	SettingsManager.save_settings()
 	get_tree().quit()
+
+func capture_simulation() -> Dictionary:
+	return {
+		"day": TimeSystem.current_day, "week": TimeSystem.current_week,
+		"season": TimeSystem.current_season_idx, "seconds": TimeSystem.game_time_seconds,
+		"population": PopulationSystem.total_population, "sick": PopulationSystem.sick_citizens,
+		"jobs": PopulationSystem.jobs.duplicate(), "happiness": PopulationSystem.happiness,
+		"health": PopulationSystem.health, "crisis_days": PopulationSystem.low_happiness_days,
+		"stockpiles": EconomySystem.stockpiles.duplicate(), "laws": SettlementSystem.current_laws.duplicate()
+	}
+
+func restore_simulation(data: Dictionary) -> void:
+	TimeSystem.current_day = int(data.get("day", 1))
+	TimeSystem.current_week = int(data.get("week", 1))
+	TimeSystem.current_season_idx = int(data.get("season", 0)) % 4
+	TimeSystem.game_time_seconds = float(data.get("seconds", 0))
+	PopulationSystem.total_population = int(data.get("population", 25))
+	PopulationSystem.sick_citizens = int(data.get("sick", 0))
+	PopulationSystem.jobs = data.get("jobs", {"farmers": 8, "woodcutters": 5, "miners": 3, "guards": 2, "blacksmiths": 2})
+	PopulationSystem.happiness = float(data.get("happiness", 70))
+	PopulationSystem.health = float(data.get("health", 85))
+	PopulationSystem.low_happiness_days = int(data.get("crisis_days", 0))
+	PopulationSystem.reconcile_workers()
+	EconomySystem.stockpiles = data.get("stockpiles", {"food": 150.0, "wood": 80.0, "ore": 40.0, "stone": 50.0, "gold": 200.0})
+	SettlementSystem.current_laws = data.get("laws", {"taxes": "normal", "rations": "full", "conscription": "voluntary"})

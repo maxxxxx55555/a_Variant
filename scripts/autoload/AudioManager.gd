@@ -3,6 +3,12 @@ extends Node
 var audio_players: Dictionary = {}
 
 func _ready() -> void:
+	for bus_name in ["Music", "SFX", "UI"]:
+		if AudioServer.get_bus_index(bus_name) < 0:
+			AudioServer.add_bus()
+			var index := AudioServer.bus_count - 1
+			AudioServer.set_bus_name(index, bus_name)
+			AudioServer.set_bus_send(index, "Master")
 	setup_audio_players()
 
 func setup_audio_players() -> void:
@@ -12,11 +18,11 @@ func setup_audio_players() -> void:
 		add_child(p)
 		audio_players[s_name] = p
 
-func play_sound(sound_name: String, bus_name: String = "Master") -> void:
+func play_sound(sound_name: String, bus_name: String = "") -> void:
 	if not audio_players.has(sound_name):
 		return
 	var player: AudioStreamPlayer = audio_players[sound_name]
-	player.bus = bus_name
+	player.bus = bus_name if not bus_name.is_empty() else ("UI" if sound_name in ["ui_click", "inventory_open"] else "SFX")
 
 	# Procedurally generated audio tone for Stage 1 feedback if wav files absent
 	var stream = AudioStreamGenerator.new()
