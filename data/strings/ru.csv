@@ -541,7 +541,7 @@ ui.continue_world,Продолжить исследование,Continue explori
 ending.military,Пограничье под одним знаменем,The March Under One Banner
 ending.diplomatic,Пограничье связано клятвами,The March United by Oaths
 ending.mixed,Совет стали и доверия,A Council of Steel and Trust
-ending.body,Все восемь общин признали общий совет.Выполнено заданий: {quests}/60. Прошло дней: {days}.Личные клятвы спутников и неразведанные земли ещё ждут вас.,All eight communities recognize the common council.Quests completed: {quests}/60. Days elapsed: {days}.Your companions' personal oaths and unexplored lands still await.
+ending.body,Все восемь общин признали общий совет. Выполнено заданий: {quests}/60. Прошло дней: {days}. Личные клятвы спутников и неразведанные земли ещё ждут вас.,All eight communities recognize the common council. Quests completed: {quests}/60. Days elapsed: {days}. Your companions' personal oaths and unexplored lands still await.
 poi.shrine,Старое святилище,Old Shrine
 poi.cache,Тайник перевозчиков,Carriers' Cache
 poi.ruins,Забытые руины,Forgotten Ruins

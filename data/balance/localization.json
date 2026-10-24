@@ -2168,8 +2168,8 @@
     "en": "A Council of Steel and Trust"
   },
   "ending.body": {
-    "ru": "Все восемь общин признали общий совет.Выполнено заданий: {quests}/60. Прошло дней: {days}.Личные клятвы спутников и неразведанные земли ещё ждут вас.",
-    "en": "All eight communities recognize the common council.Quests completed: {quests}/60. Days elapsed: {days}.Your companions' personal oaths and unexplored lands still await."
+    "ru": "Все восемь общин признали общий совет. Выполнено заданий: {quests}/60. Прошло дней: {days}. Личные клятвы спутников и неразведанные земли ещё ждут вас.",
+    "en": "All eight communities recognize the common council. Quests completed: {quests}/60. Days elapsed: {days}. Your companions' personal oaths and unexplored lands still await."
   },
   "poi.shrine": {
     "ru": "Старое святилище",
