@@ -36,7 +36,7 @@ def main():
             ('playthrough', ([] if args.rendered else ['--headless']) + ['--resolution', '540x960' if portrait else '1280x720', '--script', 'res://tests/test_gameplay.gd', '--', '--playthrough']),
         ]
         cases.append(('presentation', ([] if args.rendered else ['--headless']) + ['--resolution', '540x960' if portrait else '1280x720', '--script', 'res://tests/test_presentation.gd']))
-        for case in ['identity', 'siege', 'civilians', 'combat_cover', 'terrain_sampling', 'weapon_view', 'house_cache']:
+        for case in ['identity', 'siege', 'civilians', 'combat_cover', 'terrain_sampling', 'weapon_view', 'house_cache', 'art_assets', 'movement_comfort']:
             if (project / ('tests/test_' + case + '.gd')).exists():
                 cases.append((case, ['--headless', '--script', 'res://tests/test_' + case + '.gd']))
         cases.insert(2, ('audio', ['--headless', '--script', 'res://tests/test_audio.gd']))

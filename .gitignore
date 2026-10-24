@@ -2,5 +2,6 @@
 builds/
 *.translation
 *.import
+!assets/art/meadow_painted.png.import
 .test-profile/
 __pycache__/

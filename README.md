@@ -20,7 +20,7 @@ WASD move; mouse look; Shift sprint; Space jump; left mouse attack; right mouse 
 
 ## Contents
 
-A connected 4×4 km terrain, eight factions, fourteen settlements, forty marked locations, sixty objectives, four companions, three bosses, seventy equipment items, twenty-five potions/recipes, twelve crafting blueprints and ten building types. Jobs, population, laws, food, salary, morale, equipment wear/repair, seasons and weather influence progression. Forty-two cosmetic civilians follow daytime routines and flee nearby combat without blocking required quest access. The terrain, sky, animated meadow cover, timber buildings, fields, carts, markets and wells use original procedural art. The regional objective structure is deliberately repeated across the frontier.
+A connected 4×4 km terrain, eight factions, fourteen settlements, forty marked locations, sixty objectives, four companions, three bosses, seventy equipment items, twenty-five potions/recipes, twelve crafting blueprints and ten building types. Jobs, population, laws, food, salary, morale, equipment wear/repair, seasons and weather influence progression. Forty-two cosmetic civilians follow daytime routines and flee nearby combat without blocking required quest access. The terrain, sky, animated meadow cover and fields combine procedural scenery with textured creator models for buildings, characters, trees, shops and props. The regional objective structure is deliberately repeated across the frontier.
 
 ## Build and test
 
@@ -33,12 +33,18 @@ python tests/run_tests.py --godot /path/to/godot --rendered --full-campaign --ar
 
 The suite covers 45 core regressions, 15 introductory playthrough checks, strategy, 624 RU/EN keys, sieges, civilians, cover, weapon models, triangle-exact cached terrain sampling, audio and saves. Complete diplomatic and military routes use actual movement, attacks, interactions and ordinary UI payments. The native verifier accepts `--military` for the conquest route. Normal difficulty is the full-route test baseline; other hardware and long unscripted play sessions require further independent QA.
 
-Identical houses share baked meshes and preserve their individual physical colliders. On the tested AMD integrated GPU at1280×720, this reduced the measured world load from20.50s to8.46s; the180-frame sample averaged57.56FPS with729draw calls. These are measurements from one machine, not minimum-spec guarantees.
+Identical static assets share normalized meshes and preserve gameplay colliders. The 1.1 scene measured 2.44 seconds to load and 59.94 FPS over 180 rendered frames, with 333 draw calls at 1280×720 on this AMD integrated GPU. These are measurements from one machine.
 
 ## Release scope and verification
 
-Version 1.0.0 is the initial portable Windows desktop edition, built with Godot 4.7 Stable. It is a small standalone game with original stylized/procedural visuals. Earlier design documents include broader ideas for future development; they are not a list of promised features in this edition.
+Version 1.1.0 is the art and economy update to the portable Windows desktop edition, built with Godot 4.7 Stable. It is a small standalone game with stylized licensed 3D assets, original illustrations and procedural scenery. Earlier design documents include broader ideas for future development; they are not a list of promised features in this edition.
 
 The test runner imports the real project in Godot, exercises gameplay, save/load, audio controls and rendered UI. Packaged executables also contain an opt-in complete-playthrough verifier: `-- --verify-build`. It starts a new QA game, so use isolated APPDATA/LOCALAPPDATA folders. QA is silent through `GAME_AUDIO_MUTED=1`; this does not remove the player's music/effects controls. Folders and formats from the previous game names remain compatible.
 
-The release report records the exact tested files, hashes, routes, screenshots and platform limits. Tests are automated in the actual engine; they do not constitute a long independent human playtest or testing on every graphics card. Portable Windows executables are not Authenticode signed. Keep third_party/Godot/LICENSE.txt, COPYRIGHT.txt and assets/audio/LICENSE.md when redistributing. The soundtrack “Where the Fog Rests” has its own generation/provenance record; procedural sound effects are covered separately.
+The release report records the exact tested files, hashes, routes, screenshots and platform limits. Tests are automated in the actual engine; they do not constitute a long independent human playtest or testing on every graphics card. Portable Windows executables are not Authenticode signed. Keep third_party/Godot/LICENSE.txt, COPYRIGHT.txt and assets/audio/LICENSE.md when redistributing. The soundtrack “Stone Path to Dusk” has its own generation/provenance record; procedural sound effects are covered separately.
+
+## 1.1.0 update
+
+Textured KayKit houses, shops, foliage, props and animated characters replace primitive stand-ins. The title uses an original painted frontier illustration and the terrain uses a painted meadow surface. Help is compact by default; F1 expands the complete controls and tutorial. Camera bob/shake default to off for new profiles and remain configurable. Braking uses elapsed time.
+
+Both games have different newly generated music. See assets/CREDITS.md for creator licenses, font notices and generation records.

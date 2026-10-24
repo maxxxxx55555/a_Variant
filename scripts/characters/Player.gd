@@ -65,8 +65,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			GameState.restore_stamina(15.0 * delta)
 	else:
-		velocity.x = move_toward(velocity.x, 0, current_speed)
-		velocity.z = move_toward(velocity.z, 0, current_speed)
+		brake_horizontal(delta, current_speed)
 		GameState.restore_stamina(20.0 * delta)
 
 	var previous_position := global_position
@@ -104,6 +103,11 @@ func _physics_process(delta: float) -> void:
 	# Attack
 	if Input.is_action_just_pressed("attack"):
 		perform_attack()
+
+func brake_horizontal(delta: float, current_speed: float) -> void:
+	var amount := maxf(24.0, current_speed * 8.0) * delta
+	velocity.x = move_toward(velocity.x, 0, amount)
+	velocity.z = move_toward(velocity.z, 0, amount)
 
 func take_damage(amount: float) -> void:
 	if Input.is_action_pressed("block") and GameState.consume_stamina(8.0):

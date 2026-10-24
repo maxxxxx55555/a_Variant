@@ -109,21 +109,15 @@ func forest() -> void:
 		var size := rng.randf_range(0.7, 1.65)
 		var basis := Basis(Vector3.UP, rng.randf() * TAU).scaled(Vector3.ONE * size)
 		transforms.append(Transform3D(basis, Vector3(x, ground_at(x, z), z)))
-	var trunk := CylinderMesh.new()
-	trunk.top_radius = 0.19
-	trunk.bottom_radius = 0.32
-	trunk.height = 4.5
-	trunk.radial_segments = 5
-	instances(trunk, transforms, Vector3(0, 2.25, 0), Color("574631"))
-	for layer in 3:
-		var crown := CylinderMesh.new()
-		crown.top_radius = 0
-		crown.bottom_radius = 2.7 - layer * 0.6
-		crown.height = 4.2 - layer * 0.5
-		crown.radial_segments = 6
-		instances(crown, transforms, Vector3(0, 4.5 + layer * 1.5, 0), Color("3d5746").lightened(layer * 0.035))
+	var variants: Array[Array] = [[], []]
+	for index in transforms.size(): variants[index % 2].append(transforms[index])
+	for index in 2:
+		var mesh := MarchAssets.mesh("medieval/decoration/nature/tree_single_" + ("A" if index == 0 else "B") + ".gltf", Vector3(5,8,5))
+		var typed: Array[Transform3D] = []
+		typed.assign(variants[index])
+		instances(mesh, typed, Vector3.ZERO, Color.WHITE, true)
 
-func instances(mesh: Mesh, transforms: Array[Transform3D], offset: Vector3, color: Color) -> void:
+func instances(mesh: Mesh, transforms: Array[Transform3D], offset: Vector3, color: Color, authored: bool = false) -> void:
 	# A single map-wide MultiMesh is always visible and submits the entire
 	# forest to every shadow pass. Spatial batches let the renderer cull it.
 	var buckets: Dictionary = {}
@@ -146,7 +140,7 @@ func instances(mesh: Mesh, transforms: Array[Transform3D], offset: Vector3, colo
 		var node := MultiMeshInstance3D.new()
 		node.position = center
 		node.multimesh = batch
-		node.material_override = shared_material
+		if not authored: node.material_override = shared_material
 		node.visibility_range_end = 600
 		node.visibility_range_end_margin = 80
 		if offset.y > 6: node.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF

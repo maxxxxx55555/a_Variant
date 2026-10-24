@@ -8,10 +8,10 @@
       "combat",
       "war"
     ],
-    "prompt": "Спокойный инструментальный фон, мягкое пианино и тёплые струнные, 65 BPM; без колокольчиков, резких синтезаторов, ударных и навязчивой мелодии; две минуты, ровная тихая динамика.",
-    "source_filename": "where_the_fog_rests.mp4",
-    "source_sha256": "6f8dd774f9731d8fe707e6794e933a88e1fc654d2cba120486efc0fbe615908d",
-    "wav_sha256": "17c7908081b7930406d684d96bd05c5551b86aa748f30fe8a05b6618edc351f0",
+    "prompt": "Создай новую инструментальную композицию на 2 минуты: тихая акустическая фолк-музыка, мягкая нейлоновая гитара, лютня и виолончель, 70 BPM. Тёплое чувство путешествия по лесам и старинным деревням. Просторная спокойная аранжировка без вокала, хора, колокольчиков и резкой перкуссии. Ровная негромкая динамика, мягкие края для фонового зацикливания.",
+    "source_filename": "stone_path_to_dusk.mp4",
+    "source_sha256": "645bea695661fb36cf0e6e132134187a415d6a1974838461418cd2fd41a37243",
+    "wav_sha256": "928d3e830ab86c2ef9a170658fd5405a7b883e1d5c90e3481ef93afdd21d5813",
     "processing": "32 kHz stereo PCM, quiet gain, two-second overlap crossfade, 2 ms edge taper",
     "terms": "https://policies.google.com/terms",
     "policy": "https://policies.google.com/terms/generative-ai/use-policy"

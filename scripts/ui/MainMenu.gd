@@ -9,9 +9,18 @@ func _ready() -> void:
 	get_tree().paused = false
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	AudioManager.play_music("settlement")
-	var backdrop := preload("res://scripts/ui/MarchBackdrop.gd").new()
+	var backdrop := TextureRect.new()
+	backdrop.texture = load("res://assets/art/title_painting.png")
+	backdrop.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	backdrop.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+	backdrop.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	backdrop.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(backdrop)
+	var shade := Panel.new()
+	shade.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	shade.offset_right = -1200
+	shade.add_theme_stylebox_override("panel", preload("res://scripts/ui/MarchTheme.gd").panel(Color(0.04,0.10,0.10,0.92),Color(0.7,0.6,0.4,0.4)))
+	add_child(shade)
 	var margin := MarginContainer.new()
 	margin.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	margin.add_theme_constant_override("margin_left", 65)
@@ -25,7 +34,8 @@ func _ready() -> void:
 	theme = preload("res://scripts/ui/MarchTheme.gd").create()
 	var title := Label.new()
 	title.text = LocalizationManager.get_string("ui.title")
-	title.add_theme_font_size_override("font_size", 49)
+	title.add_theme_font_size_override("font_size", 56)
+	title.add_theme_font_override("font", load("res://assets/fonts/Alegreya.ttf"))
 	title.add_theme_color_override("font_color", Color("dfc692"))
 	column.add_child(title)
 	var subtitle := Label.new()

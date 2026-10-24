@@ -15,6 +15,10 @@ static func panel(color: Color, edge: Color = Color("5b6655")) -> StyleBoxFlat:
 static func create() -> Theme:
 	var theme := Theme.new()
 	theme.default_font_size = 24
+	var body := FontVariation.new()
+	body.base_font = load("res://assets/fonts/Manrope.ttf")
+	body.variation_opentype = {0x77676874:500.0}
+	theme.default_font = body
 	theme.set_color("font_color", "Label", Color("efe5cd"))
 	theme.set_stylebox("panel", "PanelContainer", panel(Color("142a28")))
 	theme.set_stylebox("panel", "Panel", panel(Color("142a28")))

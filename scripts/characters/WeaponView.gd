@@ -25,6 +25,11 @@ func refresh() -> void:
 	for kind in ["bow", "axe", "spear", "mace", "dagger"]:
 		if kind in path: weapon_kind = kind
 	for child in blade.get_children(): child.free()
+	var authored: Dictionary = {"sword":"sword_1handed", "axe":"axe_1handed", "dagger":"dagger"}
+	if authored.has(weapon_kind):
+		var length := 0.64 if weapon_kind == "dagger" else 1.15
+		MarchAssets.place(blade, "weapons/" + authored[weapon_kind] + ".gltf", Vector3(0,-0.35,0), Vector3(0.45,length,0.18))
+		return
 	var steel := Color("b6c2c5")
 	var wood := Color("6d4c31")
 	var brass := Color("a68d55")
