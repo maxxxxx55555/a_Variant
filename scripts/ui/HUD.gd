@@ -96,6 +96,19 @@ func _ready() -> void:
 	controls_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	controls_label.add_theme_stylebox_override("normal", preload("res://scripts/ui/MarchTheme.gd").panel(Color(0.06, 0.14, 0.12, 0.8)))
 	stamina_bar.add_theme_stylebox_override("fill", preload("res://scripts/ui/MarchTheme.gd").panel(Color("789977"), Color("a6b889")))
+	for bar in [hp_bar,stamina_bar]:
+		var background:=StyleBoxFlat.new()
+		background.bg_color=Color(0.04,0.08,0.09,0.86)
+		background.border_color=Color("746347")
+		background.set_border_width_all(1)
+		background.set_corner_radius_all(2)
+		bar.add_theme_stylebox_override("background",background)
+		var fill:=StyleBoxFlat.new()
+		fill.bg_color=Color("9c6653") if bar==hp_bar else Color("6a886e")
+		fill.set_corner_radius_all(2)
+		bar.add_theme_stylebox_override("fill",fill)
+		bar.add_theme_font_size_override("font_size",16)
+		bar.custom_minimum_size.y=22
 	add_child(controls_label)
 	for control in [attack_btn, interact_btn, potion_btn]:
 		control.visible = DisplayServer.is_touchscreen_available()

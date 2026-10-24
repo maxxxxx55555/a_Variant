@@ -27,9 +27,8 @@ static func dress_town(parent: Node3D, terrain: Node3D, data: Dictionary) -> voi
 	var crops := MultiMeshInstance3D.new()
 	crops.position = origin
 	crops.multimesh = plants
-	var mat := MarchArt.material(Color("a6a266") if data.faction != "marsh_keepers" else Color("758f70"))
+	var mat := MarchArt.material(Color("6f7951") if data.faction != "marsh_keepers" else Color("58684e"))
 	mat.cull_mode = BaseMaterial3D.CULL_DISABLED
-	mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
 	crops.material_override = mat
 	crops.visibility_range_end = 140
 	crops.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF

@@ -1,6 +1,7 @@
 extends Node
 
 const SETTINGS_FILE = "user://settings.cfg"
+const Guard = preload("res://scripts/security/SaveGuard.gd")
 
 var master_volume: float = 1.0
 var music_volume: float = 0.3
@@ -34,14 +35,27 @@ func save_settings() -> void:
 	config.set_value("gameplay", "camera_shake", camera_shake)
 	config.set_value("language", "lang", language)
 
-	var err = config.save(SETTINGS_FILE)
-	if err != OK:
-		IntegrityLogger.log_anomaly("SettingsManager", "Failed to save settings: " + str(err))
+	if not valid_settings(config) or not Guard.atomic_text(SETTINGS_FILE,config.encode_to_text()):
+		IntegrityLogger.log_anomaly("SettingsManager", "Failed to save valid settings")
+
+func valid_settings(config: ConfigFile) -> bool:
+	for field in ["master_volume","music_volume","sfx_volume","ui_volume"]:
+		if not Guard.numeric(config.get_value("audio",field,0.5),0,1): return false
+	if not Guard.numeric(config.get_value("controls","mouse_sensitivity",0.003),0.0001,0.1): return false
+	for field in ["camera_bobbing","camera_shake"]:
+		if not config.get_value("gameplay",field,false) is bool: return false
+	if config.get_value("language","lang","ru") not in ["ru","en"]: return false
+	for section in config.get_sections():
+		for field in config.get_section_keys(section):
+			if not Guard.pure(config.get_value(section,field)): return false
+	return true
 
 func load_settings() -> void:
 	var config = ConfigFile.new()
-	var err = config.load(SETTINGS_FILE)
-	if err == OK:
+	var text:=Guard.bounded_text(SETTINGS_FILE)
+	var valid: bool=not text.is_empty() and text.length()<=65536 and Guard.safe_text(text)
+	if valid: valid=config.parse(text)==OK and valid_settings(config)
+	if valid:
 		master_volume = config.get_value("audio", "master_volume", 1.0)
 		music_volume = config.get_value("audio", "music_volume", 0.3)
 		sfx_volume = config.get_value("audio", "sfx_volume", 0.8)

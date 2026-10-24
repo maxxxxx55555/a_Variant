@@ -2,116 +2,110 @@ extends Node
 
 const SAVE_PATH = "user://savegame.json"
 const BACKUP_PATH = "user://savegame.bak"
-const SCHEMA_VERSION = 3
+const SCHEMA_VERSION = 4
 const SECRET_SALT = "OathsOfTheMarch_v1_Salt"
+const Guard = preload("res://scripts/security/SaveGuard.gd")
+const Policy = preload("res://scripts/security/MarchSavePolicy.gd")
 var selected_slot: int = 0
 
 func slot_path(index: int) -> String:
 	if index == 5: return "user://autosave.json"
 	if index == 6: return "user://iron_save.json"
-	return SAVE_PATH if index == 0 else "user://savegame_%d.json" % clampi(index, 1, 4)
+	return SAVE_PATH if index == 0 else "user://savegame_%d.json" % clampi(index,1,4)
+
+func backup_path(path: String) -> String:
+	return BACKUP_PATH if path == SAVE_PATH else path + ".bak"
+
+func purpose(path: String) -> String:
+	if path == BACKUP_PATH: return "march/savegame.json"
+	return "march/" + path.get_file().trim_suffix(".bak")
 
 func newest_slot() -> int:
-	var newest: int = 0
-	var timestamp: int = 0
+	var newest := 0
+	var stamp := 0
 	for index in 7:
 		var path := slot_path(index)
-		if FileAccess.file_exists(path) and FileAccess.get_modified_time(path) >= timestamp and not _read_valid_save(path).is_empty():
-			timestamp = FileAccess.get_modified_time(path)
+		var data := _read_valid_save(path)
+		var valid_path := path
+		if data.is_empty():
+			valid_path = backup_path(path)
+			data = _read_valid_save(valid_path)
+		if not data.is_empty() and FileAccess.get_modified_time(valid_path) >= stamp:
+			stamp = FileAccess.get_modified_time(valid_path)
 			newest = index
 	return newest
 
 func load_slot(index: int) -> Dictionary:
-	var path := slot_path(index)
-	var data := _read_valid_save(path)
-	return _read_valid_save(path + ".bak") if data.is_empty() else data
+	if index < 0 or index > 6: return {}
+	return _load_path(slot_path(index))
+
+func _encoded(data: Dictionary, context: String) -> String:
+	var body := JSON.stringify(data,"",true,true)
+	var auth := Guard.signature(body,context)
+	if auth.is_empty(): return ""
+	return JSON.stringify({"version":SCHEMA_VERSION,"timestamp":Time.get_unix_time_from_system(),"checksum":calculate_checksum(body),"data":body,"auth":auth},"",true,true)
+
+func _store(path: String, data: Dictionary) -> bool:
+	if not Policy.valid(data): return false
+	var encoded := _encoded(data,purpose(path))
+	if encoded.is_empty(): return false
+	var previous := _read_valid_save(path)
+	if previous.is_empty(): previous = _read_valid_save(backup_path(path))
+	if not previous.is_empty() and path != slot_path(6):
+		if not Guard.atomic_text(backup_path(path),_encoded(previous,purpose(path))): return false
+	elif FileAccess.file_exists(path) and previous.is_empty():
+		if DirAccess.copy_absolute(path,path+".rejected") != OK: return false
+	if not Guard.atomic_text(path,encoded): return false
+	return Guard.lock(purpose(path))
 
 func save_game(game_data: Dictionary, autosave: bool = false) -> bool:
 	var path := slot_path(6 if CampaignSystem.active and CampaignSystem.iron_mode else 5 if autosave else selected_slot)
-	var backup := BACKUP_PATH if path == SAVE_PATH else path + ".bak"
-	# Hash the exact serialized bytes. Parsing floats and serializing them again
-	# can change the last decimal digit, even with full-precision JSON enabled.
-	var data_str = JSON.stringify(game_data, "", true, true)
-	var checksum = calculate_checksum(data_str)
-
-	var payload = {
-		"version": SCHEMA_VERSION,
-		"timestamp": Time.get_unix_time_from_system(),
-		"checksum": checksum,
-		"data": data_str
-	}
-
-	var final_json = JSON.stringify(payload, "", true, true)
-
-	if not _read_valid_save(path).is_empty() and not (CampaignSystem.active and CampaignSystem.iron_mode):
-		if DirAccess.copy_absolute(path, backup) != OK:
-			return false
-
-	var file = FileAccess.open(path + ".tmp", FileAccess.WRITE)
-	if not file:
-		IntegrityLogger.log_anomaly("SaveSystem", "Failed to open save file for writing")
-		return false
-
-	file.store_string(final_json)
-	file.close()
-	if DirAccess.rename_absolute(path + ".tmp", path) != OK:
-		return false
-	EventBus.notification_posted.emit(LocalizationManager.get_string("msg.game_saved"), false)
+	if not _store(path,game_data): return false
+	EventBus.notification_posted.emit(LocalizationManager.get_string("msg.game_saved"),false)
 	return true
 
-func load_game() -> Dictionary:
-	var path := slot_path(selected_slot)
+func _load_path(path: String) -> Dictionary:
 	var data := _read_valid_save(path)
-	if data.is_empty():
-		data = try_load_backup() if selected_slot == 0 else _read_valid_save(path + ".bak")
-	if not data.is_empty():
-		EventBus.notification_posted.emit(LocalizationManager.get_string("msg.game_loaded"), false)
+	var recovered := false
+	if data.is_empty() and path != slot_path(6):
+		data = _read_valid_save(backup_path(path))
+		recovered = true
+	if not data.is_empty() and (recovered or not Guard.locked(purpose(path))): _store(path,data)
+	return data
+
+func load_game() -> Dictionary:
+	var data := _load_path(slot_path(selected_slot))
+	if not data.is_empty(): EventBus.notification_posted.emit(LocalizationManager.get_string("msg.game_loaded"),false)
 	return data
 
 func _read_valid_save(path: String) -> Dictionary:
-	if not FileAccess.file_exists(path):
-		return {}
-	var file = FileAccess.open(path, FileAccess.READ)
-	if not file:
-		return {}
-
-	var json_str = file.get_as_text()
-	file.close()
-
-	var json = JSON.new()
-	var parse_result = json.parse(json_str)
-	if parse_result != OK:
-		return {}
-
-	var payload = json.data
-	if not payload is Dictionary or not payload.has("checksum") or not payload.has("data"):
-		return {}
-	if payload.get("version", 0) < 1 or payload.get("version", 0) > SCHEMA_VERSION:
-		return {}
-	if payload.get("version") == 3:
-		if not payload.data is String or calculate_checksum(payload.data) != payload.checksum:
-			IntegrityLogger.log_anomaly("SaveSystem", "Invalid save checksum: " + path)
-			return {}
-		var decoded = JSON.parse_string(payload.data)
-		return decoded if decoded is Dictionary else {}
-	if not payload.data is Dictionary:
-		return {}
-
-	var recorded_checksum = payload["checksum"]
-	var data_dict = payload["data"]
-	var data_str = JSON.stringify(_normalize_numbers(data_dict))
-
-	if calculate_checksum(data_str) != recorded_checksum:
-		# Legacy files used the engine's original JSON numeric representation.
-		if payload.get("version") != 1 or calculate_checksum(JSON.stringify(data_dict)) != recorded_checksum:
-			IntegrityLogger.log_anomaly("SaveSystem", "Invalid save checksum: " + path)
-			return {}
-	return data_dict
+	var text := Guard.bounded_text(path)
+	if text.is_empty() or not Guard.safe_text(text): return {}
+	var payload: Variant = JSON.parse_string(text)
+	if not payload is Dictionary: return {}
+	var version: Variant = payload.get("version",0)
+	if not Guard.numeric(version,1,SCHEMA_VERSION,true): return {}
+	var decoded: Variant
+	if int(version) == SCHEMA_VERSION:
+		if not payload.get("data") is String or not Guard.authentic(payload.data,purpose(path),payload.get("auth")): return {}
+		if not Guard.safe_text(payload.data): return {}
+		decoded = JSON.parse_string(payload.data)
+	else:
+		if Guard.locked(purpose(path)): return {}
+		if int(version) == 3:
+			if not payload.get("data") is String or calculate_checksum(payload.data) != payload.get("checksum"): return {}
+			if not Guard.safe_text(payload.data): return {}
+			decoded = JSON.parse_string(payload.data)
+		else:
+			if not payload.get("data") is Dictionary: return {}
+			decoded = payload.data
+			if calculate_checksum(JSON.stringify(_normalize_numbers(decoded))) != payload.get("checksum"):
+				if int(version)!=1 or calculate_checksum(JSON.stringify(decoded)) != payload.get("checksum"): return {}
+	return decoded if Policy.valid(decoded) else {}
 
 func try_load_backup() -> Dictionary:
 	var data := _read_valid_save(BACKUP_PATH)
-	if not data.is_empty():
-		DirAccess.copy_absolute(BACKUP_PATH, SAVE_PATH)
+	if not data.is_empty(): _store(SAVE_PATH,data)
 	return data
 
 func _normalize_numbers(value: Variant) -> Variant:

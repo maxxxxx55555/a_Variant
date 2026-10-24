@@ -82,6 +82,7 @@ func get_speed_modifier() -> float:
 	return (0.6 if is_encumbered() else 1.0) * timed_effects.get("movement", {}).get("value", 1.0) * WeatherSystem.movement_speed_modifier
 
 func add_item(item_resource: Resource, count: int = 1) -> bool:
+	if count <= 0 or count > 10000: return false
 	if not item_resource or not item_resource.resource_path:
 		IntegrityLogger.log_anomaly("GameState", "Attempted to add invalid item resource")
 		return false
@@ -231,11 +232,13 @@ func take_damage(raw_damage: float) -> void:
 		EventBus.player_died.emit()
 
 func restore_stamina(amount: float) -> void:
+	if not is_finite(amount) or amount < 0: return
 	player_stamina = min(max_stamina, player_stamina + amount)
 	clamp_values()
 	EventBus.player_stamina_changed.emit(player_stamina, max_stamina)
 
 func consume_stamina(amount: float) -> bool:
+	if not is_finite(amount) or amount < 0: return false
 	if player_stamina >= amount:
 		player_stamina -= amount
 		clamp_values()

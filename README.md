@@ -33,11 +33,11 @@ python tests/run_tests.py --godot /path/to/godot --rendered --full-campaign --ar
 
 The suite covers 45 core regressions, 15 introductory playthrough checks, strategy, 624 RU/EN keys, sieges, civilians, cover, weapon models, triangle-exact cached terrain sampling, audio and saves. Complete diplomatic and military routes use actual movement, attacks, interactions and ordinary UI payments. The native verifier accepts `--military` for the conquest route. Normal difficulty is the full-route test baseline; other hardware and long unscripted play sessions require further independent QA.
 
-Identical static assets share normalized meshes and preserve gameplay colliders. The 1.1 scene measured 2.44 seconds to load and 59.94 FPS over 180 rendered frames, with 333 draw calls at 1280×720 on this AMD integrated GPU. These are measurements from one machine.
+Identical static assets share normalized meshes and preserve gameplay colliders. The 1.2 rainy village measured 5.07 seconds to load and 49.66 FPS over 180 rendered frames, with 337 draw calls at 1280×720 on this AMD integrated GPU. These are measurements from one machine.
 
 ## Release scope and verification
 
-Version 1.1.0 is the art and economy update to the portable Windows desktop edition, built with Godot 4.7 Stable. It is a small standalone game with stylized licensed 3D assets, original illustrations and procedural scenery. Earlier design documents include broader ideas for future development; they are not a list of promised features in this edition.
+Version 1.2.0 is the finale, integrity and visual update to the portable Windows desktop edition, built with Godot 4.7 Stable. It remains a small standalone game with original illustrations and licensed assets. Earlier design documents include broader ideas for future development; they are not a list of promised features in this edition.
 
 The test runner imports the real project in Godot, exercises gameplay, save/load, audio controls and rendered UI. Packaged executables also contain an opt-in complete-playthrough verifier: `-- --verify-build`. It starts a new QA game, so use isolated APPDATA/LOCALAPPDATA folders. QA is silent through `GAME_AUDIO_MUTED=1`; this does not remove the player's music/effects controls. Folders and formats from the previous game names remain compatible.
 
@@ -48,3 +48,9 @@ The release report records the exact tested files, hashes, routes, screenshots a
 Textured KayKit houses, shops, foliage, props and animated characters replace primitive stand-ins. The title uses an original painted frontier illustration and the terrain uses a painted meadow surface. Help is compact by default; F1 expands the complete controls and tutorial. Camera bob/shake default to off for new profiles and remain configurable. Braking uses elapsed time.
 
 Both games have different newly generated music. See assets/CREDITS.md for creator licenses, font notices and generation records.
+
+## 1.2.0 update
+
+The playable 3D world now uses PBR stone, plaster, timber and slate, detailed original house geometry, scanned rocks/barrels, a real sunset sky, wet surfaces, local rain, woven heraldic banners and optimized textured birch foliage. Characters retain the licensed animation with restrained colors and adjusted proportions. This is reference-inspired real-time scenery, not the pixel-identical photorealism of a pre-rendered illustration; characters and some props remain stylized.
+
+Offline tamper evidence, schema/resource validation and atomic saves protect normal play and recover known-good backups. Valid legacy saves migrate once. Keep the whole user-data folder, including its installation key, when backing up protected saves. See SAVE-INTEGRITY.md for the precise guarantees and limitations.
