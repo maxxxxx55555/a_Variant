@@ -176,6 +176,8 @@ func _process(delta: float) -> void:
 		player.position.y = terrain.ground_at(player.position.x, player.position.z) + 1
 
 func _unhandled_input(event: InputEvent) -> void:
+	if is_instance_valid(ending_panel):
+		return
 	if event is InputEventKey and event.pressed and event.keycode == KEY_M:
 		toggle_strategy(3)
 	else:
@@ -205,12 +207,14 @@ func open_town(id: String) -> void:
 
 func _sync_menu_state() -> void:
 	super._sync_menu_state()
-	if is_instance_valid(town_ui) and town_ui.visible:
+	if (is_instance_valid(town_ui) and town_ui.visible) or is_instance_valid(ending_panel):
 		get_tree().paused = true
 		hud.hide()
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func toggle_pause() -> void:
+	if is_instance_valid(ending_panel):
+		return
 	if is_instance_valid(town_ui) and town_ui.visible:
 		town_ui.hide()
 		_sync_menu_state()
@@ -316,26 +320,59 @@ func apply_snapshot(data: Dictionary) -> void:
 
 func show_ending(route: String) -> void:
 	if is_instance_valid(ending_panel): return
+	for menu in [inventory_ui, settlement_ui, alchemy_ui, strategy_ui, town_ui, pause_menu]:
+		menu.hide()
 	ending_panel = PanelContainer.new()
-	ending_panel.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+	ending_panel.name = "CampaignEnding"
 	$CanvasLayer.add_child(ending_panel)
-	ending_panel.position = Vector2(400, 250)
-	ending_panel.custom_minimum_size = Vector2(1000, 430)
+	ending_panel.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	ending_panel.z_index = 80
+	var backdrop := StyleBoxFlat.new()
+	backdrop.bg_color = Color("122024")
+	ending_panel.add_theme_stylebox_override("panel", backdrop)
+	var center := CenterContainer.new()
+	ending_panel.add_child(center)
+	var card := PanelContainer.new()
+	card.custom_minimum_size = Vector2(1050, 480)
+	center.add_child(card)
+	var card_style := StyleBoxFlat.new()
+	card_style.bg_color = Color("203237")
+	card_style.border_color = Color("9e895e")
+	card_style.set_border_width_all(2)
+	card.add_theme_stylebox_override("panel", card_style)
+	var margin := MarginContainer.new()
+	for side in ["left", "right", "top", "bottom"]:
+		margin.add_theme_constant_override("margin_" + side, 44)
+	card.add_child(margin)
 	var column := VBoxContainer.new()
-	ending_panel.add_child(column)
+	column.add_theme_constant_override("separation", 24)
+	margin.add_child(column)
 	var title := Label.new()
 	title.text = LocalizationManager.get_string("ending." + route)
 	title.add_theme_font_size_override("font_size", 40)
+	title.add_theme_color_override("font_color", Color("dfc692"))
+	title.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	column.add_child(title)
 	var body := Label.new()
 	body.text = LocalizationManager.get_string("ending.body", {"quests": completed_count(), "days": TimeSystem.current_day})
+	body.add_theme_font_size_override("font_size", 28)
+	body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	body.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	column.add_child(body)
 	var continue_button := Button.new()
+	continue_button.name = "ContinueEnding"
 	continue_button.text = LocalizationManager.get_string("ui.continue_world")
+	continue_button.custom_minimum_size.y = 64
+	continue_button.add_theme_font_size_override("font_size", 26)
 	column.add_child(continue_button)
-	continue_button.pressed.connect(func(): ending_panel.queue_free(); get_tree().paused = false; Input.mouse_mode = Input.MOUSE_MODE_CAPTURED)
-	get_tree().paused = true
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	continue_button.pressed.connect(close_ending)
+	_sync_menu_state()
+	continue_button.grab_focus()
+
+func close_ending() -> void:
+	ending_panel.queue_free()
+	ending_panel = null
+	_sync_menu_state()
 
 func completed_count() -> int:
 	return CampaignSystem.completed.size()

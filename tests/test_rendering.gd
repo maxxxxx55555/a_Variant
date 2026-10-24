@@ -10,7 +10,7 @@ func shot(suffix: String) -> void:
 
 func run() -> void:
 	await process_frame
-	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
+	print("DEFAULT DISPLAY: vsync=", DisplayServer.window_get_vsync_mode(), " max_fps=", Engine.max_fps)
 	var menu: Control = load("res://scenes/ui/main_menu.tscn").instantiate()
 	root.add_child(menu)
 	current_scene = menu

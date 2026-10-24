@@ -35,6 +35,7 @@ def main():
             ('regressions', ['--headless', '--script', 'res://tests/test_gameplay.gd']),
             ('playthrough', ([] if args.rendered else ['--headless']) + ['--resolution', '540x960' if portrait else '1280x720', '--script', 'res://tests/test_gameplay.gd', '--', '--playthrough']),
         ]
+        cases.append(('presentation', ([] if args.rendered else ['--headless']) + ['--resolution', '540x960' if portrait else '1280x720', '--script', 'res://tests/test_presentation.gd']))
         cases.insert(2, ('audio', ['--headless', '--script', 'res://tests/test_audio.gd']))
         if portrait:
             cases.append(('balance', ['--headless', '--script', 'res://tests/test_gameplay.gd', '--', '--balance']))
