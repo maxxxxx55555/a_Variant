@@ -14,6 +14,8 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
+config/version="1.0.0"
+
 run/max_fps=60
 config/name="Marchland Oaths"
 config/use_custom_user_dir=true

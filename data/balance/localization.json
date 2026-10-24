@@ -332,8 +332,8 @@
     "en": "Potion"
   },
   "ui.controls": {
-    "ru": "WASD — движение · Shift — бег · Пробел — прыжокЛКМ — атака · ПКМ — блок · E — действие · Q — зельеI — вещи · C — алхимия · B — поселение · R/F/J — совет · M — карта · Esc — пауза",
-    "en": "WASD move · Shift sprint · Space jumpLMB attack · RMB block · E interact · Q potionI inventory · C alchemy · B settlement · R/F/J council · M map · Esc pause"
+    "ru": "WASD — движение · Shift — бег · Пробел — прыжок · ЛКМ — атака · ПКМ — блок · E — действие · Q — зелье · I — вещи · C — алхимия · B — поселение · R/F/J — совет · M — карта · Esc — пауза",
+    "en": "WASD move · Shift sprint · Space jump · LMB attack · RMB block · E interact · Q potion · I inventory · C alchemy · B settlement · R/F/J council · M map · Esc pause"
   },
   "ui.empty": {
     "ru": "Пусто",

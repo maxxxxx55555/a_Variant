@@ -5,6 +5,7 @@ var width: float = 4000
 var step: float
 var noise := FastNoiseLite.new()
 var flat_points: Array = []
+var surface_heights := PackedFloat32Array()
 
 func generate() -> void:
 	width = CampaignSystem.definition.world_size
@@ -24,7 +25,7 @@ func generate() -> void:
 			var h := height_at(px, pz)
 			heights.append(h)
 			vertices.append(Vector3(px, h, pz))
-			var color := Color("687252")
+			var color := Color("738b48")
 			if pz > 500: color = Color("77715c")
 			if px > 700 and pz > 0: color = Color("546357")
 			if h > 70: color = Color("858679")
@@ -32,6 +33,7 @@ func generate() -> void:
 			if x < GRID - 1 and z < GRID - 1:
 				var index := z * GRID + x
 				indices.append_array(PackedInt32Array([index, index + 1, index + GRID, index + 1, index + GRID + 1, index + GRID]))
+	surface_heights = heights
 	var arrays := []
 	arrays.resize(Mesh.ARRAY_MAX)
 	arrays[Mesh.ARRAY_VERTEX] = vertices
@@ -44,9 +46,7 @@ func generate() -> void:
 	tool.generate_normals()
 	var terrain := MeshInstance3D.new()
 	terrain.mesh = tool.commit()
-	var mat := MarchArt.material(Color.WHITE)
-	mat.vertex_color_use_as_albedo = true
-	terrain.material_override = mat
+	terrain.material_override = preload("res://scripts/world/GroundMaterial.gd").create()
 	add_child(terrain)
 	var body := StaticBody3D.new()
 	body.set_meta("surface", "grass")
@@ -82,10 +82,10 @@ func ground_at(x: float, z: float) -> float:
 	var v: float = gz - iz
 	var px: float = ix * step - width * 0.5
 	var pz: float = iz * step - width * 0.5
-	var a := height_at(px, pz)
-	var b := height_at(px + step, pz)
-	var c := height_at(px, pz + step)
-	var d := height_at(px + step, pz + step)
+	var a: float = surface_heights[iz * GRID + ix] if not surface_heights.is_empty() else height_at(px, pz)
+	var b: float = surface_heights[iz * GRID + ix + 1] if not surface_heights.is_empty() else height_at(px + step, pz)
+	var c: float = surface_heights[(iz + 1) * GRID + ix] if not surface_heights.is_empty() else height_at(px, pz + step)
+	var d: float = surface_heights[(iz + 1) * GRID + ix + 1] if not surface_heights.is_empty() else height_at(px + step, pz + step)
 	return a + (b - a) * u + (c - a) * v if u + v <= 1 else d + (c - d) * (1 - u) + (b - d) * (1 - v)
 
 func forest() -> void:

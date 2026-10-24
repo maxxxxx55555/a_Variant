@@ -136,7 +136,49 @@ static func house(parent: Node3D, position: Vector3, tint: Color) -> Node3D:
 	box(house_root, Vector3(0, 0.22, 0), Vector3(4.35, 0.44, 5.65), Color("7a7e6c"))
 	for height in [0.8, 2.8]: box(house_root, Vector3(0, height, 2.82), Vector3(4.2, 0.12, 0.12), Color("594b36"))
 	box(house_root, Vector3(1.1, 4.9, 0.8), Vector3(0.65, 2, 0.65), Color("777268"))
+	# Joined timber, shutters, stone courses and roof battens give buildings
+	# readable construction detail. Meshes are merged below to keep towns cheap.
+	for front in [-1, 1]:
+		var z: float = front * 2.91
+		for height in [0.8, 2.8, 3.35]:
+			box(house_root, Vector3(0, height, z), Vector3(4.25, 0.13, 0.13), Color("493b2c"))
+		for side in [-1, 1]:
+			for offset in [-0.4, 0.4]:
+				box(house_root, Vector3(side * 1.2 + offset, 2, z), Vector3(0.18, 0.95, 0.12), Color("486256"))
+			box(house_root, Vector3(side * 1.2, 2, z + front * 0.015), Vector3(0.65, 0.07, 0.08), Color("463b2d"))
+			box(house_root, Vector3(side * 1.2, 2, z + front * 0.015), Vector3(0.06, 0.9, 0.08), Color("463b2d"))
+			var beam := box(house_root, Vector3(side * 1.0, 3.94, front * 2.8), Vector3(2.6, 0.13, 0.13), Color("493b2c"))
+			beam.rotation.z = side * -0.61
+		for plank in 5:
+			box(house_root, Vector3(plank * 0.18 - 0.36, 1.0, z + front * 0.025), Vector3(0.025, 1.9, 0.03), Color("382d24"))
+		box(house_root, Vector3(0.29, 1, z + front * 0.09), Vector3(0.09, 0.1, 0.05), Color("d1b276"))
+		box(house_root, Vector3(0, 0.12, front * 3.15), Vector3(1.5, 0.24, 0.6), Color("86847a"))
+		for brick in 7:
+			box(house_root, Vector3(brick * 0.61 - 1.83, 0.24, front * 2.88), Vector3(0.55, 0.27, 0.08), Color("a09b85").darkened((brick % 3) * 0.08))
+	for side in [-1, 1]:
+		for height in [0.8, 2.8]: box(house_root, Vector3(side * 2.14, height, 0), Vector3(0.12, 0.12, 5.5), Color("594b36"))
+		for index in 6:
+			var batten := box(house_root, Vector3(side * 1.25, 4.1, index * 1.1 - 2.75), Vector3(3.0, 0.065, 0.08), Color("76594a"))
+			batten.rotation.z = side * -0.61
+	merge_static_meshes(house_root)
 	return house_root
+
+static func merge_static_meshes(parent: Node3D) -> void:
+	var groups: Dictionary = {}
+	for child in parent.get_children():
+		if child is not MeshInstance3D: continue
+		var mat: StandardMaterial3D = child.material_override
+		var key := mat.albedo_color.to_html() + str(mat.emission_enabled)
+		if not groups.has(key): groups[key] = {"tool": SurfaceTool.new(), "material": mat}
+		groups[key].tool.append_from(child.mesh, 0, child.transform)
+		child.free()
+	for data in groups.values():
+		var combined := MeshInstance3D.new()
+		combined.mesh = data.tool.commit()
+		combined.material_override = data.material
+		combined.visibility_range_end = 280
+		combined.visibility_range_end_margin = 35
+		parent.add_child(combined)
 
 static func label(parent: Node3D, title: String, position: Vector3, color: Color = Color("e7d4a9")) -> Label3D:
 	var label_node := Label3D.new()

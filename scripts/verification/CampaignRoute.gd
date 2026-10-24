@@ -31,6 +31,12 @@ func fail(message: String) -> void:
 	failed = true
 	print("FAIL: ", message)
 
+func capture(suffix: String) -> void:
+	if OS.get_environment("GAME_CAPTURE_GALLERY") != "1" or DisplayServer.get_name() == "headless": return
+	await process_frame
+	await RenderingServer.frame_post_draw
+	root.get_texture().get_image().save_png(OS.get_environment("GAME_SCREENSHOT").replace(".png", "-" + suffix + ".png"))
+
 func frame() -> void:
 	await physics_frame
 	if state.player_hp <= 0 and not failed:
@@ -95,6 +101,7 @@ func talk(id: String) -> void:
 	player.interact()
 	await process_frame
 	if not world.town_ui.visible: fail("The reeve could not be reached through E interaction: " + id)
+	if id == campaign.definition.towns[0].id: await capture("trade")
 
 func equip_best() -> void:
 	world.toggle_inventory()
@@ -191,16 +198,16 @@ func run() -> void:
 		player.interact()
 		await walk_to(Vector3(town.x - 70, 0, town.z + 30))
 		await walk_to(Vector3(town.x, 0, town.z + 30))
+		# Both routes can lose soldiers to a boss. Replace real casualties
+		# through the ordinary recruitment UI, including the five-soldier oath.
+		var replacements: int = maxi(0, 5 - root.get_node("ArmySystem").get_total_soldiers())
+		if replacements > 0:
+			world.toggle_strategy(0)
+			world.strategy_ui.unit_choice.selected = 0
+			world.strategy_ui.recruit_count.value = replacements
+			button("ui.recruit").pressed.emit()
+			world.toggle_pause()
 		if military:
-			# Boss encounters can inflict real casualties; replace losses before
-			# committing the surviving field army to its next blockade.
-			var replacements: int = maxi(0, 5 - root.get_node("ArmySystem").get_total_soldiers())
-			if replacements > 0:
-				world.toggle_strategy(0)
-				world.strategy_ui.unit_choice.selected = 0
-				world.strategy_ui.recruit_count.value = replacements
-				button("ui.recruit").pressed.emit()
-				world.toggle_pause()
 			await talk(town.id)
 			for resource in ["wood", "food"]:
 				var target_stock := 18 if resource == "wood" else 60
@@ -246,6 +253,11 @@ func run() -> void:
 		if failed: break
 		world.town_ui.report_button.pressed.emit()
 		world.toggle_pause()
+		if index == 0: await capture("village")
+		if index == 3 and OS.get_environment("GAME_CAPTURE_GALLERY") == "1":
+			world.toggle_strategy(3)
+			await capture("map")
+			world.toggle_pause()
 		if index < 7 and campaign.definition.towns[index + 1].id not in campaign.roads: fail("Regional work did not open the next campaign road")
 	var expected := "military" if military else "diplomatic"
 	if campaign.ending() != expected: fail("The full route did not reach its expected campaign ending")

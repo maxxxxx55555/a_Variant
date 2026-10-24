@@ -1,48 +1,42 @@
 # Marchland Oaths
 
-Одиночная Action RPG о пограничном поселении, армии и союзах. Версия0.10.0-rc.1, Godot4.7 Stable, Windows64-bit.
+A first-person frontier RPG with settlement management, small armies and diplomacy. Unite eight regions through alliances, conquest or a mixture of both, then continue exploring after the ending.
 
-## Играть
+## Play
 
-Распакуйте архив целиком и откройте MarchlandOaths.exe. В главном меню доступны русский и английский языки, четыре сложности, пять ручных слотов, автосохранение и железный режим с необратимой смертью.
+Extract the whole Windows archive and run `MarchlandOaths.exe`. The illustrated title screen offers Russian/English, four difficulties, five manual saves, autosave and iron mode. Iron mode has permanent death.
 
-Экипируйте меч через I, подберите доспех, победите первого разбойника и настройте питание поселения через B. Первый староста находится к северу, в Гринхейвене. Наведитесь на него и нажмите E. Журнал J показывает текущие цели, карта M — дороги и поселения.
+Equip the starting sword through I, collect armor, defeat the first bandit and make the settlement's food production sustainable through B. Greenhaven's reeve is north of home: aim and press E. The journal J lists objectives; M opens the connected map. Menus pause the simulation.
 
-Для дипломатического объединения регионов доставляйте припасы, очищайте лагеря, исследуйте святилища и повышайте доверие. Союз требует60доверия и100золота. После союза доложите старосте, чтобы открыть следующую дорогу.
+Each region has supply deliveries, a camp, exploration and a report. Alliances require 60 trust and 100 gold. A paid gift improves trust. Report to the reeve after resolving the region to unlock the next road. All eight reports lead to a diplomatic, military or mixed ending. Companion oaths have additional stated requirements, including five surviving soldiers for the commander; replace real casualties through the recruitment menu.
 
-Военный путь требует настоящей армии. Наберите минимум3бойцов через Совет R, купите припасы у старосты и установите блокаду:12еды,8дерева,15золота. Каждый день требует ещё6еды,2золота и обычное содержание армии/поселения. После дня подготовки штурм стоит10дерева и5еды. Пробейте южные ворота оружием и победите гарнизон; одних трёх убитых стражников недостаточно. Через3дня исправно снабжаемой блокады истощённый гарнизон можно склонить к капитуляции. Без бойцов или припасов блокада прекращается. Потери армии требуют нового найма.
+## Sieges
 
-Все восемь региональных отчётов открывают дипломатический, военный или смешанный финал. После финала можно продолжить исследование.
+Recruit at least three soldiers through R. A blockade costs 12 food, 8 wood and 15 gold, followed by 6 food and 2 gold per day plus normal upkeep. After a day, an assault costs another 10 wood and 5 food. Use ordinary attacks to breach the physical gate and defeat the garrison. After three supplied days, an exhausted garrison can surrender. Insufficient soldiers or supplies lift the blockade. Gate damage, army casualties and siege state are saved.
 
-## Управление
+## Controls
 
-WASD — движение, мышь — обзор, Shift — бег, Space — прыжок, ЛКМ — удар, ПКМ — блок, E — действие, Q — зелье, I — инвентарь, C — алхимия, B — поселение, R/F/J — совет/дипломатия/журнал, M — карта, Esc — закрыть меню/пауза. В меню мир остановлен. Кнопка закрытия города остаётся над прокручиваемым содержимым.
+WASD move; mouse look; Shift sprint; Space jump; left mouse attack; right mouse block; E interact; Q potion; I inventory; C alchemy; B settlement; R/F/J army/diplomacy/journal; M map; Esc close/pause. Weapons have six visible silhouettes. Enemy and allied attacks respect solid cover. Nearby damage displays a brief health readout and hit confirmation.
 
-## Содержимое
+## Contents
 
-Связанный мир4×4км,8фракций,14поселений,40отмеченных мест,60заданий,4спутника,3босса,70предметов экипировки,25зелий и рецептов,12чертежей и10типов построек. Найм расходует население и золото; еда и жалование поддерживают мораль, приказы и построения управляют физическими бойцами. Население, законы, сезоны, погода, дипломатия, ремонт и износ влияют на прохождение.
+A connected 4×4 km terrain, eight factions, fourteen settlements, forty marked locations, sixty objectives, four companions, three bosses, seventy equipment items, twenty-five potions/recipes, twelve crafting blueprints and ten building types. Jobs, population, laws, food, salary, morale, equipment wear/repair, seasons and weather influence progression. Forty-two cosmetic civilians follow daytime routines and flee nearby combat without blocking required quest access. The terrain, sky, animated meadow cover, timber buildings, fields, carts, markets and wells use original procedural art. The regional objective structure is deliberately repeated across the frontier.
 
-В поселениях есть рынки, колодцы, поля, повозки и42жителя. Днём жители идут к рабочим местам, вечером собираются, ночью возвращаются домой; при близком бое отступают. Дальние жители не выполняют дорогую визуальную симуляцию. Они не перекрывают проходы и не заменяют обязательных старост. Графика состоит из оригинальных стилизованных low-poly форм, движения рук и ног анимированы.
+## Build and test
 
-Музыка заменена тихой темой Google Gemini/Lyria; эффекты, пространственные звуки и громкости независимы. Происхождение и лицензии находятся в assets/audio/LICENSE.md. Проверки всегда беззвучны.
+Open `project.godot` in Godot 4.7 and press F5, or use:
 
-## Сохранения
-
-Переименование сохраняет прежнюю Windows-папку `%APPDATA%/Godot/app_userdata/Oaths of the March`. Схема3 проверяет хеш точных сериализованных данных и поддерживает миграцию схем1/2. Осады, здоровье ворот, павшие враги, армия и спутники восстанавливаются вместе с кампанией. Старые осады rc.2 сохраняют уже заработанный прогресс без новых требований задним числом.
-
-## Сборка и проверки
-
-Установите Godot4.7 и официальный Windows-шаблон. Исходники запускаются через project.godot/F5.
-
-```powershell
+```text
 godot --headless --path . --export-release "Windows Desktop" builds/windows/MarchlandOaths.exe
 python tests/run_tests.py --godot /path/to/godot --rendered --full-campaign --artifacts /path/to/logs
 ```
 
-45регрессионных и15проверок вводного прохождения, стратегия, локализация624ключей, аудио, осады, жители, сохранения и отображение проходят. Полные маршруты выполняют60/60целей через движение, обычные удары, взаимодействие, торговлю и кнопки интерфейса. Дипломатический путь занимает8игровых дней, военный с блокадами —16.
+The suite covers 45 core regressions, 15 introductory playthrough checks, strategy, 624 RU/EN keys, sieges, civilians, cover, weapon models, triangle-exact cached terrain sampling, audio and saves. Complete diplomatic and military routes use actual movement, attacks, interactions and ordinary UI payments. The native verifier accepts `--military` for the conquest route. Normal difficulty is the full-route test baseline; other hardware and long unscripted play sessions require further independent QA.
 
-Упакованную игру проверяет встроенный сценарий `-- --verify-build` (дипломатия) или `-- --verify-build --military`; он начинает новую тестовую кампанию, поэтому запускайте только с отдельными APPDATA/LOCALAPPDATA.
+## Release scope and verification
 
-После уплотнения леса и оформления поселений: загрузка4.08с и около58FPS при1280×720 на текущей AMD-встройке,703вызова отрисовки. Это замер одного компьютера. Полные маршруты проверяются на обычной сложности; длительного ручного прохождения в оконном редакторе не было. Региональные задания имеют повторяемую структуру, художественная детализация и поведение персонажей проще полной концепции docs/GAME_DESIGN.md. Эта сборка сохраняет обозначение кандидата, а не объявляет выполненной всю спецификацию1.0.
+Version 1.0.0 is the initial portable Windows desktop edition, built with Godot 4.7 Stable. It is a small standalone game with original stylized/procedural visuals. Earlier design documents include broader ideas for future development; they are not a list of promised features in this edition.
 
-При распространении сохраняйте third_party/Godot/LICENSE.txt, COPYRIGHT.txt и сведения об аудио.
+The test runner imports the real project in Godot, exercises gameplay, save/load, audio controls and rendered UI. Packaged executables also contain an opt-in complete-playthrough verifier: `-- --verify-build`. It starts a new QA game, so use isolated APPDATA/LOCALAPPDATA folders. QA is silent through `GAME_AUDIO_MUTED=1`; this does not remove the player's music/effects controls. Folders and formats from the previous game names remain compatible.
+
+The release report records the exact tested files, hashes, routes, screenshots and platform limits. Tests are automated in the actual engine; they do not constitute a long independent human playtest or testing on every graphics card. Portable Windows executables are not Authenticode signed. Keep third_party/Godot/LICENSE.txt, COPYRIGHT.txt and assets/audio/LICENSE.md when redistributing. The soundtrack “Where the Fog Rests” has its own generation/provenance record; procedural sound effects are covered separately.

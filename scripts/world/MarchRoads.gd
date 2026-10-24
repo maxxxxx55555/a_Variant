@@ -44,9 +44,6 @@ static func build(parent: Node3D, terrain: Node3D) -> void:
 	road.mesh = tool.commit()
 	# Junction strips overlap. A single unlit dirt color keeps their shared
 	# surface identical and avoids flickering gradients at intersections.
-	var mat := MarchArt.material(Color("a39470"))
-	mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
-	mat.cull_mode = BaseMaterial3D.CULL_DISABLED
-	road.material_override = mat
+	road.material_override = preload("res://scripts/world/GroundMaterial.gd").create(true)
 	road.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	parent.add_child(road)

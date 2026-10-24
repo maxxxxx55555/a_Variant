@@ -82,7 +82,7 @@ ui.ingredients,Ингредиенты,Ingredients
 ui.attack,Атака,Attack
 ui.interact,Подобрать,Pick up
 ui.potion,Зелье,Potion
-ui.controls,WASD — движение · Shift — бег · Пробел — прыжокЛКМ — атака · ПКМ — блок · E — действие · Q — зельеI — вещи · C — алхимия · B — поселение · R/F/J — совет · M — карта · Esc — пауза,WASD move · Shift sprint · Space jumpLMB attack · RMB block · E interact · Q potionI inventory · C alchemy · B settlement · R/F/J council · M map · Esc pause
+ui.controls,WASD — движение · Shift — бег · Пробел — прыжок · ЛКМ — атака · ПКМ — блок · E — действие · Q — зелье · I — вещи · C — алхимия · B — поселение · R/F/J — совет · M — карта · Esc — пауза,WASD move · Shift sprint · Space jump · LMB attack · RMB block · E interact · Q potion · I inventory · C alchemy · B settlement · R/F/J council · M map · Esc pause
 ui.empty,Пусто,Empty
 msg.law_changed,Закон поселения изменён,Settlement law changed
 msg.starvation,Голод! Еда закончилась — здоровье и счастье жителей падают.,Starvation! Food is exhausted — health and happiness decline.

@@ -41,12 +41,12 @@ func _physics_process(delta: float) -> void:
 		if not is_instance_valid(candidate) or candidate.is_queued_for_deletion():
 			continue
 		var distance := global_position.distance_to(candidate.global_position)
-		if distance < nearest:
+		if distance < nearest and preload("res://scripts/characters/CombatSight.gd").clear(self, candidate):
 			nearest = distance
 			target_player = candidate
 	if windup > 0:
 		windup -= delta
-		if windup <= 0 and is_instance_valid(target_player) and global_position.distance_to(target_player.global_position) <= attack_range + 0.45:
+		if windup <= 0 and is_instance_valid(target_player) and global_position.distance_to(target_player.global_position) <= attack_range + 0.45 and preload("res://scripts/characters/CombatSight.gd").clear(self, target_player):
 			target_player.take_damage(damage)
 			AudioManager.play_at("swing", global_position)
 

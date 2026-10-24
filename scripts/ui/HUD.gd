@@ -16,19 +16,40 @@ var controls_label: Label
 var alchemy_btn: Button
 var council_btn: Button
 var objective_label: Label
+var target_health: Label
+var target_timer: float = 0
+var hit_flash: float = 0
 
 func _ready() -> void:
 	EventBus.player_hp_changed.connect(_on_hp_changed)
 	EventBus.player_stamina_changed.connect(_on_stamina_changed)
 	EventBus.notification_posted.connect(_on_notification_posted)
+	target_health = Label.new()
+	target_health.set_anchors_and_offsets_preset(Control.PRESET_CENTER_TOP)
+	target_health.position = Vector2(-160, 180)
+	target_health.size = Vector2(320, 48)
+	target_health.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	target_health.add_theme_stylebox_override("normal", preload("res://scripts/ui/MarchTheme.gd").panel(Color(0.06, 0.14, 0.12, 0.85)))
+	target_health.hide()
+	add_child(target_health)
+	EventBus.enemy_damaged.connect(func(enemy, amount, hp, max_hp):
+		var players := get_tree().get_nodes_in_group("player")
+		if players.is_empty() or enemy.global_position.distance_to(players[0].global_position) > 24: return
+		target_health.text = "−%d    ·    %d / %d" % [amount, maxf(0, hp), max_hp]
+		target_health.show()
+		target_timer = 2.5
+		hit_flash = 0.16
+	)
 	objective_label = Label.new()
 	objective_label.position = Vector2(24, 140)
-	objective_label.size = Vector2(580, 300)
+	objective_label.size = Vector2(580, 218)
 	objective_label.add_theme_font_size_override("font_size", 21)
 	objective_label.add_theme_color_override("font_shadow_color", Color.BLACK)
 	objective_label.add_theme_constant_override("shadow_offset_x", 2)
 	objective_label.add_theme_constant_override("shadow_offset_y", 2)
 	objective_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	objective_label.add_theme_stylebox_override("normal", preload("res://scripts/ui/MarchTheme.gd").panel(Color(0.06, 0.14, 0.12, 0.85)))
+	objective_label.add_theme_color_override("font_color", Color("eadcba"))
 	add_child(objective_label)
 	EventBus.tutorial_updated.connect(func(text, done):
 		objective_label.text = text
@@ -69,6 +90,8 @@ func _ready() -> void:
 	controls_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	controls_label.add_theme_font_size_override("font_size", 18)
 	controls_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	controls_label.add_theme_stylebox_override("normal", preload("res://scripts/ui/MarchTheme.gd").panel(Color(0.06, 0.14, 0.12, 0.8)))
+	stamina_bar.add_theme_stylebox_override("fill", preload("res://scripts/ui/MarchTheme.gd").panel(Color("789977"), Color("a6b889")))
 	add_child(controls_label)
 	for control in [attack_btn, interact_btn, potion_btn]:
 		control.visible = DisplayServer.is_touchscreen_available()
@@ -90,6 +113,10 @@ func localize() -> void:
 	controls_label.text = LocalizationManager.get_string("ui.controls")
 
 func _process(delta: float) -> void:
+	target_timer = maxf(0, target_timer - delta)
+	if target_health: target_health.visible = target_timer > 0
+	hit_flash = maxf(0, hit_flash - delta)
+	crosshair.color = Color("e6b875") if hit_flash > 0 else Color(1, 1, 1, 0.75)
 	if notification_timer > 0:
 		notification_timer -= delta
 		if notification_timer <= 0:

@@ -25,8 +25,8 @@ func _ready() -> void:
 	EventBus.player_died.connect(_on_player_died)
 	tutorial = TUTORIAL_SCRIPT.new()
 	add_child(tutorial)
-	var menu_theme := Theme.new()
-	menu_theme.default_font_size = 24
+	var menu_theme := preload("res://scripts/ui/MarchTheme.gd").create()
+	hud.theme = menu_theme
 	strategy_ui = preload("res://scripts/ui/StrategyUI.gd").new()
 	$CanvasLayer.add_child(strategy_ui)
 	strategy_ui.theme = menu_theme
