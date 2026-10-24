@@ -14,6 +14,10 @@ func run() -> void:
 	if world.hud.controls_label.autowrap_mode == TextServer.AUTOWRAP_OFF:
 		push_error("Keyboard help must wrap inside its allotted HUD area")
 		failed = true
+	var help_rect: Rect2 = world.hud.controls_label.get_global_rect()
+	if help_rect.position.y < 0 or help_rect.end.y > root.get_visible_rect().size.y + 1:
+		push_error("Compact keyboard help must stay inside the viewport")
+		failed = true
 	if not DisplayServer.is_touchscreen_available() and world.hud.attack_btn.visible:
 		push_error("Desktop keyboard help must not overlap unnecessary touch action buttons")
 		failed = true

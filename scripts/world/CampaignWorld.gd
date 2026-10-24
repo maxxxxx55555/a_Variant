@@ -31,6 +31,9 @@ func _ready() -> void:
 	environment.ambient_light_color = Color("c2c5bb")
 	environment.ambient_light_energy = 0.43
 	environment.tonemap_mode = Environment.TONE_MAPPER_LINEAR
+	environment.adjustment_enabled = true
+	environment.adjustment_contrast = 1.08
+	environment.adjustment_saturation = 0.86
 	$DirectionalLight3D.light_color = Color("ffe0af")
 	$DirectionalLight3D.light_energy = 0.85
 	$DirectionalLight3D.rotation_degrees = Vector3(-33, -28, 0)
@@ -82,7 +85,7 @@ func build_town(data: Dictionary) -> void:
 		var offset := Vector3(-12 if index % 2 == 0 else 12, 0, int(index / 2) * 14 - 10)
 		var pos := origin + offset
 		pos.y = terrain.ground_at(pos.x, pos.z)
-		MarchArt.house(self, pos, Color("9d9276").lerp(Color(faction.color), 0.25))
+		MarchArt.house(self, pos, Color("9d9276").lerp(Color(faction.color), 0.25), "tavern" if index == 2 else ("blacksmith" if index == 3 else ""))
 	var marker := MARKER_SCRIPT.new()
 	marker.data = data
 	marker.is_town = true
@@ -109,9 +112,7 @@ func build_point(data: Dictionary) -> void:
 	var origin := Vector3(data.x, terrain.ground_at(data.x, data.z), data.z)
 	if data.kind == "camp":
 		for index in 3:
-			var tent := PrismMesh.new()
-			tent.size = Vector3(3.5, 2.8, 4.5)
-			MarchArt.shape(self, tent, origin + Vector3(index * 5 - 5, 1.4, 4), Color("81795e"))
+			MarchAssets.place(self, "medieval/decoration/props/tent.gltf", origin + Vector3(index * 5 - 5, 0, 4), Vector3(3.5,2.8,4.5))
 		spawn_camp(data)
 	else:
 		var marker := MARKER_SCRIPT.new()

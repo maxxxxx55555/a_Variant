@@ -19,6 +19,8 @@ var objective_label: Label
 var target_health: Label
 var target_timer: float = 0
 var hit_flash: float = 0
+var expanded_help := false
+var tutorial_text := ""
 
 func _ready() -> void:
 	EventBus.player_hp_changed.connect(_on_hp_changed)
@@ -42,7 +44,8 @@ func _ready() -> void:
 	)
 	objective_label = Label.new()
 	objective_label.position = Vector2(24, 140)
-	objective_label.size = Vector2(580, 218)
+	objective_label.size = Vector2(580, 74)
+	objective_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	objective_label.add_theme_font_size_override("font_size", 21)
 	objective_label.add_theme_color_override("font_shadow_color", Color.BLACK)
 	objective_label.add_theme_constant_override("shadow_offset_x", 2)
@@ -52,7 +55,8 @@ func _ready() -> void:
 	objective_label.add_theme_color_override("font_color", Color("eadcba"))
 	add_child(objective_label)
 	EventBus.tutorial_updated.connect(func(text, done):
-		objective_label.text = text
+		tutorial_text = text
+		refresh_help()
 		objective_label.modulate = Color(0.65, 1.0, 0.7) if done else Color.WHITE
 	)
 
@@ -110,7 +114,28 @@ func localize() -> void:
 	town_btn.text = LocalizationManager.get_string("ui.settlement") + " (B)"
 	alchemy_btn.text = LocalizationManager.get_string("ui.alchemy") + " (C)"
 	council_btn.text = LocalizationManager.get_string("ui.strategy") + " (R)"
-	controls_label.text = LocalizationManager.get_string("ui.controls")
+	refresh_help()
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_F1:
+		expanded_help = not expanded_help
+		refresh_help()
+		get_viewport().set_input_as_handled()
+
+func refresh_help() -> void:
+	controls_label.text = LocalizationManager.get_string("ui.controls") if expanded_help else ("WASD · E взаимодействие · M карта · F1 помощь" if LocalizationManager.current_language == "ru" else "WASD · E interact · M map · F1 help")
+	controls_label.offset_top = -110 if expanded_help else -65
+	controls_label.offset_bottom = -20
+	objective_label.size.y = 218 if expanded_help else 74
+	if expanded_help:
+		objective_label.text = tutorial_text
+	else:
+		objective_label.text = ""
+		for line in tutorial_text.split("\n"):
+			if "□" in line:
+				objective_label.text = line.replace("□", "→")
+				break
+	objective_label.visible = not objective_label.text.is_empty()
 
 func _process(delta: float) -> void:
 	target_timer = maxf(0, target_timer - delta)

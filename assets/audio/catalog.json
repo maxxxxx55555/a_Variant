@@ -4,7 +4,7 @@
   "music": {
     "exploration": {
       "path": "calm_theme.wav",
-      "seconds": 116.5843,
+      "seconds": 117.3042,
       "loop": true,
       "channels": 2,
       "source": "Google Gemini / Lyria",
@@ -12,7 +12,7 @@
     },
     "settlement": {
       "path": "calm_theme.wav",
-      "seconds": 116.5843,
+      "seconds": 117.3042,
       "loop": true,
       "channels": 2,
       "source": "Google Gemini / Lyria",
@@ -20,7 +20,7 @@
     },
     "combat": {
       "path": "calm_theme.wav",
-      "seconds": 116.5843,
+      "seconds": 117.3042,
       "loop": true,
       "channels": 2,
       "source": "Google Gemini / Lyria",
@@ -28,7 +28,7 @@
     },
     "war": {
       "path": "calm_theme.wav",
-      "seconds": 116.5843,
+      "seconds": 117.3042,
       "loop": true,
       "channels": 2,
       "source": "Google Gemini / Lyria",

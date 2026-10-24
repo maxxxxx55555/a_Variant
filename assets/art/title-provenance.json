@@ -1,0 +1,14 @@
+{
+  "title_painting.png": {
+    "provider": "OpenAI image generation",
+    "date": "2026-10-24",
+    "sha256": "264a72702c3c5de935ee613f4bda331b2a9d3edde04cc6b7f1e5e81c23c078c4",
+    "prompt": "Original landscape 16:9 title painting for Marchland Oaths. No text, UI or logos. Golden-hour medieval frontier village with blue slate roofs, river and stone bridge, birch trees, mossy rocks, wildflowers, pine forest, small stone keep, distant mountains and chimney smoke. Detailed stylized painterly world. Most focal detail in right two thirds, dark woodland at left for menu."
+  },
+  "meadow_painted.png": {
+    "provider": "OpenAI image generation",
+    "date": "2026-10-24",
+    "sha256": "a1782de25305643107f2f7aa9e88ea1ea61378173f9a04256e1be296ae706c5e",
+    "prompt": "Seamless tileable square hand-painted grass ground texture for stylized medieval 3D RPG. Orthographic top-down evenly lit, no shadows/text/borders/objects. Fine varied meadow grass in muted olive, sage, moss green and straw, small brushstroke blades and earth flecks. Low contrast organic non-directional distribution. No trees, large leaves, rocks, flowers or paths. Matching opposite edges."
+  }
+}

@@ -7,8 +7,8 @@ var music_volume: float = 0.3
 var sfx_volume: float = 0.8
 var ui_volume: float = 0.8
 var mouse_sensitivity: float = 0.003
-var camera_bobbing: bool = true
-var camera_shake: bool = true
+var camera_bobbing: bool = false
+var camera_shake: bool = false
 var language: String = "ru"
 
 func _ready() -> void:
@@ -47,7 +47,7 @@ func load_settings() -> void:
 		sfx_volume = config.get_value("audio", "sfx_volume", 0.8)
 		ui_volume = config.get_value("audio", "ui_volume", 0.8)
 		mouse_sensitivity = config.get_value("controls", "mouse_sensitivity", 0.003)
-		camera_bobbing = config.get_value("gameplay", "camera_bobbing", true)
-		camera_shake = config.get_value("gameplay", "camera_shake", true)
+		camera_bobbing = config.get_value("gameplay", "camera_bobbing", false)
+		camera_shake = config.get_value("gameplay", "camera_shake", false)
 		language = config.get_value("language", "lang", "ru")
 	call_deferred("apply_settings")
