@@ -37,13 +37,13 @@ void fragment() {
 	batch.transform_format = MultiMesh.TRANSFORM_3D
 	batch.mesh = mesh
 	var transforms: Array[Transform3D] = []
-	for i in 1700:
+	for i in 18000:
 		var x := center.x + rng.randf_range(-70, 70)
 		var z := center.y + rng.randf_range(-70, 70)
 		# Keep the central settlement street, houses and courtyard open.
 		if absf(x - center.x) < 5: continue
 		if absf(x - center.x) < 18 and absf(z - center.y) < 20: continue
-		var scale := rng.randf_range(0.5, 1.3)
+		var scale := rng.randf_range(0.7, 1.7)
 		transforms.append(Transform3D(Basis(Vector3.UP, rng.randf() * TAU).scaled(Vector3.ONE * scale), Vector3(x, terrain.ground_at(x, z), z)))
 	batch.instance_count = transforms.size()
 	for i in transforms.size(): batch.set_instance_transform(i, transforms[i])

@@ -28,7 +28,13 @@ func refresh() -> void:
 	var authored: Dictionary = {"sword":"sword_1handed", "axe":"axe_1handed", "dagger":"dagger"}
 	if authored.has(weapon_kind):
 		var length := 0.64 if weapon_kind == "dagger" else 1.15
-		MarchAssets.place(blade, "weapons/" + authored[weapon_kind] + ".gltf", Vector3(0,-0.35,0), Vector3(0.45,length,0.18))
+		var model := MarchAssets.place(blade, "weapons/" + authored[weapon_kind] + ".gltf", Vector3(0,-0.35,0), Vector3(0.32,length,0.12))
+		var steel := StandardMaterial3D.new()
+		steel.albedo_color = Color("85949b")
+		steel.metallic = 0.88
+		steel.roughness = 0.28
+		model.material_override = steel
+		RealWorldArt.box(blade,Vector3(0,-0.24,0),Vector3(0.055,0.22,0.06),"wood")
 		return
 	var steel := Color("b6c2c5")
 	var wood := Color("6d4c31")

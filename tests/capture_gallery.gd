@@ -33,6 +33,10 @@ func run() -> void:
 	world.player.camera.rotation.x = -0.03
 	for i in 20: await physics_frame
 	await shot("village")
+	root.get_node("WeatherSystem").set_weather(1)
+	for i in 15: await physics_frame
+	await shot("village-rain")
+	root.get_node("WeatherSystem").set_weather(0)
 	world.open_town(town.id)
 	await shot("trade")
 	world.toggle_pause()

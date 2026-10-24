@@ -24,32 +24,27 @@ func _ready() -> void:
 	var environment: Environment = $WorldEnvironment.environment
 	environment.volumetric_fog_enabled = false
 	environment.fog_enabled = true
-	environment.fog_sky_affect = 0.12
-	environment.fog_light_color = Color("8b9c9d")
-	environment.fog_density = 0.00085
-	environment.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
-	environment.ambient_light_color = Color("c2c5bb")
-	environment.ambient_light_energy = 0.43
-	environment.tonemap_mode = Environment.TONE_MAPPER_LINEAR
+	environment.fog_sky_affect = 0.18
+	environment.fog_light_color = Color("829095")
+	environment.fog_density = 0.0018
+	environment.ambient_light_source = Environment.AMBIENT_SOURCE_SKY
+	environment.ambient_light_energy = 0.38
+	environment.tonemap_mode = Environment.TONE_MAPPER_FILMIC
 	environment.adjustment_enabled = true
-	environment.adjustment_contrast = 1.08
-	environment.adjustment_saturation = 0.86
-	$DirectionalLight3D.light_color = Color("ffe0af")
-	$DirectionalLight3D.light_energy = 0.85
-	$DirectionalLight3D.rotation_degrees = Vector3(-33, -28, 0)
-	$DirectionalLight3D.light_color = Color("fff0d6")
-	var sky_material := ProceduralSkyMaterial.new()
-	sky_material.sky_top_color = Color("397baa")
-	sky_material.sky_horizon_color = Color("c2d4cf")
-	sky_material.sky_curve = 0.6
-	sky_material.ground_bottom_color = Color("43533d")
-	sky_material.ground_horizon_color = Color("e8dcc1")
-	sky_material.sun_angle_max = 2.0
+	environment.adjustment_contrast = 1.06
+	environment.adjustment_saturation = 0.84
+	$DirectionalLight3D.light_color = Color("ffd0a1")
+	$DirectionalLight3D.light_energy = 0.72
+	$DirectionalLight3D.rotation_degrees = Vector3(-19,-32,0)
+	$DirectionalLight3D.directional_shadow_max_distance = 100
+	$DirectionalLight3D.directional_shadow_mode = DirectionalLight3D.SHADOW_PARALLEL_2_SPLITS
+	var sky_material := PanoramaSkyMaterial.new()
+	sky_material.panorama = load("res://assets/art/realistic/sky/dusk.hdr")
+	sky_material.energy_multiplier = 0.38
 	var sky := Sky.new()
 	sky.sky_material = sky_material
 	environment.sky = sky
 	environment.background_mode = Environment.BG_SKY
-	environment.fog_light_color = Color("cbd3bf")
 	preload("res://scripts/world/Meadow.gd").build(self, terrain, Vector2(0, 12))
 	MarchArt.house(self, Vector3(-9, terrain.ground_at(-9, 12), 12), Color("a49878"))
 	MarchArt.house(self, Vector3(9, terrain.ground_at(9, 12), 12), Color("8b8d76"))
@@ -62,6 +57,12 @@ func _ready() -> void:
 	$CanvasLayer.add_child(town_ui)
 	town_ui.theme = strategy_ui.theme
 	town_ui.hide()
+	var weather := preload("res://scripts/world/CinematicWeather.gd").new()
+	weather.environment = environment
+	weather.sunlight = $DirectionalLight3D
+	weather.player = player
+	weather.terrain = terrain
+	add_child(weather)
 	CampaignSystem.campaign_finished.connect(show_ending)
 	SiegeSystem.changed.connect(sync_siege_gates)
 	sync_siege_gates()
@@ -91,12 +92,11 @@ func build_town(data: Dictionary) -> void:
 	marker.is_town = true
 	add_child(marker)
 	marker.position = origin + Vector3(0, 0, 5)
-	var flag := MarchArt.box(self, origin + Vector3(5, 4, 4), Vector3(2.0, 1.3, 0.08), Color(faction.color))
-	MarchArt.box(self, origin + Vector3(4, 2.5, 4), Vector3(0.12, 5, 0.12), Color("514533"))
-	flag.rotation.y = 0.2
+	RealWorldArt.banner(self,origin+Vector3(4,0,4),Color(faction.color))
 	preload("res://scripts/world/MarchScenery.gd").dress_town(self, terrain, data)
 	MarchArt.market(self, origin + Vector3(-6, 0, -6), Color(faction.color).darkened(0.15))
 	MarchArt.well(self, origin + Vector3(6, 0, -4))
+	MarchAssets.place(self,"realistic/models/rock_moss_set_01/rock_moss_set_01.gltf",origin+Vector3(24,0,14),Vector3(5,2.1,5))
 	for index in 3:
 		var civilian := preload("res://scripts/ai/CivilianActor.gd").new()
 		civilian.town_id = data.id
@@ -279,7 +279,7 @@ func get_world_state() -> Dictionary:
 	var data := super.get_world_state()
 	var actors := []
 	for actor in get_tree().get_nodes_in_group("enemies"):
-		if actor.has_meta("campaign_id"):
+		if actor.has_meta("campaign_id") and not actor.is_dead and not actor.is_queued_for_deletion():
 			actors.append({"id": actor.get_meta("campaign_id"), "hp": actor.current_hp, "max_hp": actor.max_hp, "damage": actor.damage, "speed": actor.move_speed, "cooldown": actor.attack_cooldown, "enraged": actor.is_enraged if actor.get_meta("boss", false) else false, "pos": [actor.position.x, actor.position.y, actor.position.z]})
 	data["campaign_actors"] = actors
 	var allies := []

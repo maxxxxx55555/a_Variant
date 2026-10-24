@@ -1,0 +1,250 @@
+[
+  {
+    "file": "assets/art/realistic/models/tree_small_02/tree_small_02.gltf",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/tree_small_02/tree_small_02_1k.gltf",
+    "sha256": "3062a709614c05b80fdc1e56583998bc3cb1027b0d52f956c8ecfb882ff8ca6d",
+    "license": "CC0-1.0 / Poly Haven",
+    "shipping": false,
+    "note": "Offline original retained by art pipeline; optimized geometry and rendered canopy atlases ship instead."
+  },
+  {
+    "file": "assets/art/realistic/models/tree_small_02/textures/tree_small_02_branch_nor_gl_1k.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/tree_small_02/tree_small_02_branch_nor_gl_1k.jpg",
+    "sha256": "a2efae9e7fede259601188cd5cb7e561fc502bd87e04d862a9532b2d8e647a62",
+    "license": "CC0-1.0 / Poly Haven"
+  },
+  {
+    "file": "assets/art/realistic/models/tree_small_02/textures/tree_small_02_branch_diff_1k.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/tree_small_02/tree_small_02_branch_diff_1k.jpg",
+    "sha256": "a71b768e330c0c6cca097e30314f6b4e842ef724a1370f6aab14b4434eec64cb",
+    "license": "CC0-1.0 / Poly Haven"
+  },
+  {
+    "file": "assets/art/realistic/models/tree_small_02/textures/tree_small_02_branch_arm_1k.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/tree_small_02/tree_small_02_branch_arm_1k.jpg",
+    "sha256": "8968b46d76c67da09ebbf4eed04b8123c9e0ddf5b55d123968b35b32aa76d27a",
+    "license": "CC0-1.0 / Poly Haven"
+  },
+  {
+    "file": "assets/art/realistic/models/tree_small_02/textures/tree_small_02_leaves_nor_gl_1k.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/tree_small_02/tree_small_02_leaves_nor_gl_1k.jpg",
+    "sha256": "8c72e04fb23e16ae1df79c01385a638473d1dd4dede3d51e83d70153c129f09b",
+    "license": "CC0-1.0 / Poly Haven"
+  },
+  {
+    "file": "assets/art/realistic/models/tree_small_02/textures/tree_small_02_leaves_diff_1k.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/tree_small_02/tree_small_02_leaves_diff_1k.jpg",
+    "sha256": "261e7d7a5ac7d2e16ea8823ff8510be8f3f615999724232994039ad2885e5c36",
+    "license": "CC0-1.0 / Poly Haven"
+  },
+  {
+    "file": "assets/art/realistic/models/tree_small_02/textures/tree_small_02_leaves_arm_1k.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/tree_small_02/tree_small_02_leaves_arm_1k.jpg",
+    "sha256": "71f81374daf5a8f3e6eb2c694264a1769fdb0bea508178e4105618eecea83c3e",
+    "license": "CC0-1.0 / Poly Haven"
+  },
+  {
+    "file": "assets/art/realistic/models/tree_small_02/textures/tree_small_02_nor_gl_1k.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/tree_small_02/tree_small_02_nor_gl_1k.jpg",
+    "sha256": "9c83be074c950ea1b94c732c0c0291b53b9ba357f932d378bafe3ca3b4418871",
+    "license": "CC0-1.0 / Poly Haven"
+  },
+  {
+    "file": "assets/art/realistic/models/tree_small_02/textures/tree_small_02_diff_1k.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/tree_small_02/tree_small_02_diff_1k.jpg",
+    "sha256": "4e0093f407b3a1120a36de49a48ebe5a465a9a9b77e361c7a3e66866e115e404",
+    "license": "CC0-1.0 / Poly Haven"
+  },
+  {
+    "file": "assets/art/realistic/models/tree_small_02/textures/tree_small_02_arm_1k.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/tree_small_02/tree_small_02_arm_1k.jpg",
+    "sha256": "891c5a1bb124292984b01558e9f2b0302d27d2fa3ccf9dfc6c34f9ea4ca24e6c",
+    "license": "CC0-1.0 / Poly Haven"
+  },
+  {
+    "file": "assets/art/realistic/models/tree_small_02/tree_small_02.bin",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/tree_small_02/tree_small_02.bin",
+    "sha256": "8da6c3c389ad8748286d1b7488cd827f75ebdad9d8f59ef7dfb0916df5edc634",
+    "license": "CC0-1.0 / Poly Haven",
+    "shipping": false,
+    "note": "Offline original retained by art pipeline; optimized geometry and rendered canopy atlases ship instead."
+  },
+  {
+    "file": "assets/art/realistic/models/rock_moss_set_01/rock_moss_set_01.gltf",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/rock_moss_set_01/rock_moss_set_01_1k.gltf",
+    "sha256": "c36675aca9c6b2be7785c2534cf413b03ec82a5a2a5407a2b1c0cdb0346c9727",
+    "license": "CC0-1.0 / Poly Haven"
+  },
+  {
+    "file": "assets/art/realistic/models/rock_moss_set_01/textures/rock_moss_set_01_nor_gl_1k.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/rock_moss_set_01/rock_moss_set_01_nor_gl_1k.jpg",
+    "sha256": "eb4aad3f207f1dc5b624d74ae240372171626a66912bd71adf7bd3e518181d6e",
+    "license": "CC0-1.0 / Poly Haven"
+  },
+  {
+    "file": "assets/art/realistic/models/rock_moss_set_01/rock_moss_set_01.bin",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/rock_moss_set_01/rock_moss_set_01.bin",
+    "sha256": "de8360e6175879aaf02c171911069cf5f1852547f9ca7f10e440085dbcc3315e",
+    "license": "CC0-1.0 / Poly Haven"
+  },
+  {
+    "file": "assets/art/realistic/models/rock_moss_set_01/textures/rock_moss_set_01_rough_1k.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/rock_moss_set_01/rock_moss_set_01_rough_1k.jpg",
+    "sha256": "4d6ec46623abd8e2cdb855f59c7ce31873ad61b36b60e4de579e9e776a497c6b",
+    "license": "CC0-1.0 / Poly Haven"
+  },
+  {
+    "file": "assets/art/realistic/models/rock_moss_set_01/textures/rock_moss_set_01_diff_1k.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/rock_moss_set_01/rock_moss_set_01_diff_1k.jpg",
+    "sha256": "40cea65d8aa4ee73a93b04af19963834d061eee9779c3fc2c1cba76eef812ccc",
+    "license": "CC0-1.0 / Poly Haven"
+  },
+  {
+    "file": "assets/art/realistic/models/wine_barrel_01/wine_barrel_01.gltf",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/wine_barrel_01/wine_barrel_01_1k.gltf",
+    "sha256": "503d3339677217c3241a3cdbc1c803ed1eb82d1a48f51436d1545ec5745ae8d8",
+    "license": "CC0-1.0 / Poly Haven"
+  },
+  {
+    "file": "assets/art/realistic/models/wine_barrel_01/wine_barrel_01.bin",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/wine_barrel_01/wine_barrel_01.bin",
+    "sha256": "d827c31afed824b923ea9168462c93ab3ad3a88c4a68b155bd35efb1a02cbf00",
+    "license": "CC0-1.0 / Poly Haven"
+  },
+  {
+    "file": "assets/art/realistic/models/wine_barrel_01/textures/wine_barrel_01_diff_1k.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wine_barrel_01/wine_barrel_01_diff_1k.jpg",
+    "sha256": "6bea25b4fadda0636b6b7e46e0cc15153eda21ef62c823d5ee2e06a5a7589214",
+    "license": "CC0-1.0 / Poly Haven"
+  },
+  {
+    "file": "assets/art/realistic/models/wine_barrel_01/textures/wine_barrel_01_arm_1k.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wine_barrel_01/wine_barrel_01_arm_1k.jpg",
+    "sha256": "be658e1389dbe8669e847b8fc7df8affdce46d6582f01ac701555b6446a40b9d",
+    "license": "CC0-1.0 / Poly Haven"
+  },
+  {
+    "file": "assets/art/realistic/models/wine_barrel_01/textures/wine_barrel_01_nor_gl_1k.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wine_barrel_01/wine_barrel_01_nor_gl_1k.jpg",
+    "sha256": "86cdb0729b44d1687c75d895e6d0ef650f7580d70f3bcb52bce6fedc5fd79b6f",
+    "license": "CC0-1.0 / Poly Haven"
+  },
+  {
+    "file": "assets/art/realistic/materials/forest_ground_04/forest_ground_04_diff_1k.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/forest_ground_04/forest_ground_04_diff_1k.jpg",
+    "sha256": "50a4dda30875020c64385261aa7e00e2155b592302fa6794165f58fae73cbd2c",
+    "license": "CC0-1.0 / Poly Haven"
+  },
+  {
+    "file": "assets/art/realistic/materials/forest_ground_04/forest_ground_04_nor_gl_1k.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/forest_ground_04/forest_ground_04_nor_gl_1k.jpg",
+    "sha256": "9c3a0200e02ce40edffbbf9f5f623ef08ea9b1b7812b556182ec978f88887151",
+    "license": "CC0-1.0 / Poly Haven"
+  },
+  {
+    "file": "assets/art/realistic/materials/forest_ground_04/forest_ground_04_rough_1k.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/forest_ground_04/forest_ground_04_rough_1k.jpg",
+    "sha256": "89d4d50395eb92824a64132c4bc8a5a09009071e0b325ab66dc3104c7a3090ed",
+    "license": "CC0-1.0 / Poly Haven"
+  },
+  {
+    "file": "assets/art/realistic/materials/cobblestone_floor_08/cobblestone_floor_08_nor_gl_1k.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/cobblestone_floor_08/cobblestone_floor_08_nor_gl_1k.jpg",
+    "sha256": "26bfff70b266a4e86983814c7e56a9b48daf93cd34dcdc16a5db13e4fabcfbb6",
+    "license": "CC0-1.0 / Poly Haven"
+  },
+  {
+    "file": "assets/art/realistic/materials/cobblestone_floor_08/cobblestone_floor_08_diff_1k.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/cobblestone_floor_08/cobblestone_floor_08_diff_1k.jpg",
+    "sha256": "ec131f7a99a1e7f9df25d4725609c55a6dad1df487630685e9a66ecbf41ec33a",
+    "license": "CC0-1.0 / Poly Haven"
+  },
+  {
+    "file": "assets/art/realistic/materials/cobblestone_floor_08/cobblestone_floor_08_rough_1k.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/cobblestone_floor_08/cobblestone_floor_08_rough_1k.jpg",
+    "sha256": "f92bcaf897cd98bc3cf11e6409b3e42145e7d0f659eaaad8807dfb0c5d16afc6",
+    "license": "CC0-1.0 / Poly Haven"
+  },
+  {
+    "file": "assets/art/realistic/materials/rough_wood/rough_wood_diff_1k.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/rough_wood/rough_wood_diff_1k.jpg",
+    "sha256": "abc46d8e3163d911220f4ec3a4043b68d2b0c6d750513f80871211acfefb2a98",
+    "license": "CC0-1.0 / Poly Haven"
+  },
+  {
+    "file": "assets/art/realistic/materials/rough_wood/rough_wood_nor_gl_1k.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/rough_wood/rough_wood_nor_gl_1k.jpg",
+    "sha256": "3d1c6f098b66d93e52071b41834dd14a424d8cd2f7c4130c62dc062acfa65011",
+    "license": "CC0-1.0 / Poly Haven"
+  },
+  {
+    "file": "assets/art/realistic/materials/rough_wood/rough_wood_rough_1k.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/rough_wood/rough_wood_rough_1k.jpg",
+    "sha256": "4e9ea9962a7e8b69057937e6723c4b0134b949c1ee5cdb5f3687a54113027b09",
+    "license": "CC0-1.0 / Poly Haven"
+  },
+  {
+    "file": "assets/art/realistic/materials/damaged_plaster/damaged_plaster_nor_gl_1k.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/damaged_plaster/damaged_plaster_nor_gl_1k.jpg",
+    "sha256": "9d2e4c261211c951fc424fe695483596e821f86b13d1d05485551ef0240d6b67",
+    "license": "CC0-1.0 / Poly Haven"
+  },
+  {
+    "file": "assets/art/realistic/materials/damaged_plaster/damaged_plaster_diff_1k.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/damaged_plaster/damaged_plaster_diff_1k.jpg",
+    "sha256": "391649dbb391c978b0d95cdd2351617fe3b7a577e432b94171208e576c9b2c63",
+    "license": "CC0-1.0 / Poly Haven"
+  },
+  {
+    "file": "assets/art/realistic/materials/damaged_plaster/damaged_plaster_arm_1k.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/damaged_plaster/damaged_plaster_arm_1k.jpg",
+    "sha256": "78f228161cc3c37cf4a335d8ea0f2a6b4dd5ff7bef50a8aa9fa0397d7ff4de13",
+    "license": "CC0-1.0 / Poly Haven"
+  },
+  {
+    "file": "assets/art/realistic/materials/roof_slates_02/roof_slates_02_diff_1k.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/roof_slates_02/roof_slates_02_diff_1k.jpg",
+    "sha256": "de3d2729ab385c5f7dd7106d3b435c737f6d2c3ea8883cea37de53cec2a34867",
+    "license": "CC0-1.0 / Poly Haven"
+  },
+  {
+    "file": "assets/art/realistic/materials/roof_slates_02/roof_slates_02_rough_1k.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/roof_slates_02/roof_slates_02_rough_1k.jpg",
+    "sha256": "737f95fdbb09e49670cbce09a78fe75c18bbaed597524db832f0227df0dce2cd",
+    "license": "CC0-1.0 / Poly Haven"
+  },
+  {
+    "file": "assets/art/realistic/materials/roof_slates_02/roof_slates_02_nor_gl_1k.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/roof_slates_02/roof_slates_02_nor_gl_1k.jpg",
+    "sha256": "32be0c0ba1565856156a315dc98a773d72f1a03415930657b8a8ad62bf60c1bf",
+    "license": "CC0-1.0 / Poly Haven"
+  },
+  {
+    "file": "assets/art/realistic/sky/dusk.hdr",
+    "source": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/belfast_sunset_puresky_1k.hdr",
+    "sha256": "cec532d8dd382bcdca98d7010fa951a782f3295f98e8bd72ee453be8d0a64e98",
+    "license": "CC0-1.0 / Poly Haven",
+    "asset": "belfast_sunset_puresky"
+  },
+  {
+    "file": "assets/art/realistic/trees/birch_game.res",
+    "sha256": "e984ab980c4e631796cdaf339c23739539f1b3eed57d8b4ae6126295ba4ece5f",
+    "source_asset": "tree_small_02",
+    "derivation": "Godot mesh simplification and orthographic foliage atlas bake; real 3D trunk and crossed alpha-scissor canopies.",
+    "license": "CC0-1.0 / Poly Haven"
+  },
+  {
+    "file": "assets/art/realistic/trees/birch-canopy-0.png",
+    "sha256": "744a9cf85e4a9c50dba810f90048e47cb6b568b986c8855007730e07f5f48030",
+    "source_asset": "tree_small_02",
+    "derivation": "Godot mesh simplification and orthographic foliage atlas bake; real 3D trunk and crossed alpha-scissor canopies.",
+    "license": "CC0-1.0 / Poly Haven"
+  },
+  {
+    "file": "assets/art/realistic/trees/birch-canopy-1.png",
+    "sha256": "7db1bc470184f48d6d1b4efc09633cdd8f7b3976dfd5c5da72c81cdc7a0d9785",
+    "source_asset": "tree_small_02",
+    "derivation": "Godot mesh simplification and orthographic foliage atlas bake; real 3D trunk and crossed alpha-scissor canopies.",
+    "license": "CC0-1.0 / Poly Haven"
+  }
+]

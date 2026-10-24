@@ -92,7 +92,7 @@ func forest() -> void:
 	var rng := RandomNumberGenerator.new()
 	rng.seed = int(CampaignSystem.definition.seed)
 	var transforms: Array[Transform3D] = []
-	for attempt in 16000:
+	for attempt in 4500:
 		var x := rng.randf_range(-1950, 1950)
 		var z := rng.randf_range(-1950, 1950)
 		# Broad wooded clusters leave natural meadows between forest regions.
@@ -109,25 +109,31 @@ func forest() -> void:
 		var size := rng.randf_range(0.7, 1.65)
 		var basis := Basis(Vector3.UP, rng.randf() * TAU).scaled(Vector3.ONE * size)
 		transforms.append(Transform3D(basis, Vector3(x, ground_at(x, z), z)))
-	var variants: Array[Array] = [[], []]
-	for index in transforms.size(): variants[index % 2].append(transforms[index])
-	for index in 2:
-		var mesh := MarchAssets.mesh("medieval/decoration/nature/tree_single_" + ("A" if index == 0 else "B") + ".gltf", Vector3(5,8,5))
-		var typed: Array[Transform3D] = []
-		typed.assign(variants[index])
-		instances(mesh, typed, Vector3.ZERO, Color.WHITE, true)
+	# Authored groves frame inhabited spaces without entering the street or
+	# the unchanged building/interaction footprints.
+	for point in flat_points:
+		for i in 22:
+			var angle := rng.randf()*TAU
+			var radius := rng.randf_range(32,80)
+			var x: float = point.x+cos(angle)*radius
+			var z: float = point.z+sin(angle)*radius
+			if absf(x-point.x)<7: continue
+			var size := rng.randf_range(0.8,1.5)
+			transforms.append(Transform3D(Basis(Vector3.UP,rng.randf()*TAU).scaled(Vector3.ONE*size),Vector3(x,ground_at(x,z),z)))
+	var mesh: Mesh = load("res://assets/art/realistic/trees/birch_game.res")
+	instances(mesh, transforms, Vector3.ZERO, Color.WHITE, true)
 
 func instances(mesh: Mesh, transforms: Array[Transform3D], offset: Vector3, color: Color, authored: bool = false) -> void:
 	# A single map-wide MultiMesh is always visible and submits the entire
 	# forest to every shadow pass. Spatial batches let the renderer cull it.
 	var buckets: Dictionary = {}
 	for transform in transforms:
-		var key := Vector2i(floori(transform.origin.x / 400), floori(transform.origin.z / 400))
+		var key := Vector2i(floori(transform.origin.x / 100), floori(transform.origin.z / 100))
 		if not buckets.has(key): buckets[key] = []
 		buckets[key].append(transform)
 	var shared_material := MarchArt.material(color)
 	for key in buckets:
-		var center := Vector3(key.x * 400 + 200, 0, key.y * 400 + 200)
+		var center := Vector3(key.x * 100 + 50, 0, key.y * 100 + 50)
 		var group: Array = buckets[key]
 		var batch := MultiMesh.new()
 		batch.transform_format = MultiMesh.TRANSFORM_3D
@@ -141,7 +147,7 @@ func instances(mesh: Mesh, transforms: Array[Transform3D], offset: Vector3, colo
 		node.position = center
 		node.multimesh = batch
 		if not authored: node.material_override = shared_material
-		node.visibility_range_end = 600
-		node.visibility_range_end_margin = 80
+		node.visibility_range_end = 240
+		node.visibility_range_end_margin = 30
 		if offset.y > 6: node.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 		add_child(node)

@@ -14,7 +14,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/version="1.1.0"
+config/version="1.2.0"
 
 run/max_fps=60
 config/name="Marchland Oaths"
@@ -131,6 +131,9 @@ block={
 }
 
 [rendering]
+
+anti_aliasing/quality/msaa_3d=1
+textures/default_filters/use_nearest_mipmap_filter=false
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"

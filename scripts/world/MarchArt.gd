@@ -50,19 +50,18 @@ static func animate_walk(visual: Node3D, _phase: float, strength: float) -> void
 	if player.current_animation != clip: player.play(clip, 0.18)
 
 static func market(parent: Node3D, position: Vector3, _tint: Color) -> void:
-	MarchAssets.place(parent, "medieval/buildings/blue/building_market_blue.gltf", position, Vector3(4.5,4,3.5))
+	RealWorldArt.market(parent,position)
 
 static func well(parent: Node3D, position: Vector3) -> void:
-	MarchAssets.place(parent, "medieval/buildings/blue/building_well_blue.gltf", position, Vector3(2.4,3,2.4))
+	RealWorldArt.well(parent,position)
 
 static func house(parent: Node3D, position: Vector3, tint: Color, building: String = "") -> Node3D:
 	var house_root := Node3D.new()
 	house_root.position = position
 	house_root.set_meta("authored_asset", true)
 	parent.add_child(house_root)
-	var variant := "A" if int(tint.r * 100) % 2 == 0 else "B"
-	var file := "building_home_" + variant + "_blue" if building.is_empty() else "building_" + building + "_blue"
-	MarchAssets.place(house_root, "medieval/buildings/blue/" + file + ".gltf", Vector3.ZERO, Vector3(4.2,5.8,5.5))
+	var variant := ("home_a" if int(tint.r*100)%2==0 else "home_b") if building.is_empty() else building
+	RealWorldArt.house(house_root,variant)
 	var body := StaticBody3D.new()
 	body.position.y = 1.7
 	body.set_meta("surface", "wood")
@@ -78,11 +77,11 @@ static func label(parent: Node3D, title: String, position: Vector3, color: Color
 	var label_node := Label3D.new()
 	label_node.text = title
 	label_node.position = position
-	label_node.font_size = 48
+	label_node.font_size = 36
 	label_node.pixel_size = 0.008
 	label_node.modulate = color
 	label_node.outline_size = 9
 	label_node.billboard = BaseMaterial3D.BILLBOARD_ENABLED
-	label_node.visibility_range_end = 80
+	label_node.visibility_range_end = 45
 	parent.add_child(label_node)
 	return label_node

@@ -1,0 +1,4 @@
+Poly Haven assets — CC0 1.0 Universal. Original creators retain source attribution in individual source pages.
+License: https://polyhaven.com/license
+CC0: https://creativecommons.org/publicdomain/zero/1.0/
+Only actual model/texture/HDRI assets are included, not example renders or logos.

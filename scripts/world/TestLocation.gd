@@ -221,7 +221,7 @@ func get_world_state() -> Dictionary:
 	var state = {
 		"player_pos": [player.global_position.x, player.global_position.y, player.global_position.z] if is_instance_valid(player) else [0, 0, 0],
 		"enemy_alive": is_instance_valid(enemy) and not enemy.is_dead,
-		"enemy_hp": enemy.current_hp if is_instance_valid(enemy) else 0.0,
+		"enemy_hp": maxf(0,enemy.current_hp) if is_instance_valid(enemy) else 0.0,
 		"enemy_pos": [enemy.global_position.x, enemy.global_position.y, enemy.global_position.z] if is_instance_valid(enemy) else [0, 0, 0],
 		"armor_pickup_exists": is_instance_valid(armor_pickup) and not armor_pickup.is_queued_for_deletion(),
 		"pickups": pickups,
