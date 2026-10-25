@@ -149,7 +149,7 @@ def effect(name):
             local_t = t[:n - offset]
             sound[offset:] += np.sin(2 * np.pi * (hz * local_t + 35 * local_t ** 2)) * np.exp(-local_t * 18) * .3
         sound += np.convolve(noise, np.ones(12) / 12, mode='same') * np.sin(np.pi * t / length) ** 2 * .12
-    elif name in ['victory', 'upgrade', 'purchase', 'pickup']:
+    elif name in ['victory', 'upgrade', 'purchase', 'pickup', 'grant']:
         sound = np.zeros(n)
         notes = [72, 76, 79, 84] if name == 'victory' else [72, 79, 84] if name == 'upgrade' else [79, 84]
         for index, note in enumerate(notes):
@@ -197,7 +197,8 @@ def generate(project, profile):
             continue
         track = compose(profile, mood)
         catalog['music'][mood] = write_wave(output / (mood + '.wav'), track, loop=True, peak=.72)
-    effects = ['ui_click', 'inventory_open', 'pickup', 'purchase', 'sale', 'coin', 'upgrade', 'potion', 'victory', 'defeat']
+    effects = ['ui_click', 'purchase', 'sale', 'coin', 'upgrade', 'victory', 'defeat']
+    effects += ['grant'] if profile == 'forbes' else ['inventory_open', 'pickup', 'potion']
     if profile == 'oaths':
         effects += ['swing', 'attack', 'hit', 'hit_metal', 'hit_flesh', 'block', 'enemy_hurt', 'enemy_death', 'ambience_forest', 'ambience_camp']
         effects += [f'footstep_{material}_{index}' for material in ['grass', 'dirt', 'stone', 'wood', 'snow'] for index in range(3)]
