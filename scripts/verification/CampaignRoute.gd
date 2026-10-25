@@ -101,7 +101,11 @@ func talk(id: String) -> void:
 	player.interact()
 	await process_frame
 	if not world.town_ui.visible: fail("The reeve could not be reached through E interaction: " + id)
-	if id == campaign.definition.towns[0].id: await capture("trade")
+	if id == campaign.definition.towns[0].id:
+		await capture("journey")
+		world.town_ui.tabs.current_tab=1
+		await capture("trade")
+		world.town_ui.tabs.current_tab=0
 
 func equip_best() -> void:
 	world.toggle_inventory()
@@ -209,6 +213,7 @@ func run() -> void:
 			world.toggle_pause()
 		if military:
 			await talk(town.id)
+			world.town_ui.tabs.current_tab=1
 			for resource in ["wood", "food"]:
 				var target_stock := 18 if resource == "wood" else 60
 				while root.get_node("EconomySystem").stockpiles[resource] < target_stock and not failed:
@@ -216,10 +221,13 @@ func run() -> void:
 					for control in world.town_ui.find_children("*", "Button", true, false):
 						if control.get_meta("trade_resource", "") == resource and control.get_meta("text_key", "") == "ui.buy": control.pressed.emit()
 					if root.get_node("EconomySystem").stockpiles[resource] <= before: fail("Unable to buy siege provisions: " + resource)
+			world.town_ui.tabs.current_tab=2
+			await process_frame
 			world.town_ui.blockade_button.pressed.emit()
 			if not root.get_node("SiegeSystem").states.has(fid):
 				fail("Blockade setup refused: resources=" + str(root.get_node("EconomySystem").stockpiles) + " troops=" + str(root.get_node("ArmySystem").get_total_soldiers()) + " states=" + str(root.get_node("SiegeSystem").states) + " bound=" + str(campaign.bound(fid)))
 				break
+			if index==0: await capture("siege-active")
 			world.town_ui.wait_button.pressed.emit()
 			world.town_ui.assault_button.pressed.emit()
 			if get_tree().paused:

@@ -51,4 +51,12 @@ static func create() -> Theme:
 	theme.set_stylebox("background","ProgressBar",panel(Color("1c252d")))
 	theme.set_stylebox("fill","ProgressBar",panel(Color("8d5d60"),Color("bd8a87")))
 	theme.set_color("font_color","ProgressBar",Color("e7e9e9"))
+	for type in ["TabBar","TabContainer"]:
+		for state in ["tab_selected","tab_unselected","tab_hovered","tab_disabled"]:
+			var tab:=panel(Color("344b59") if state=="tab_selected" else Color("1b2b35"),Color("69818f"))
+			tab.content_margin_left=30
+			tab.content_margin_right=30
+			tab.content_margin_top=17
+			tab.content_margin_bottom=17
+			theme.set_stylebox(state,type,tab)
 	return theme

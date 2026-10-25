@@ -123,10 +123,12 @@ func localize() -> void:
 	attack_btn.text = LocalizationManager.get_string("ui.attack")
 	interact_btn.text = LocalizationManager.get_string("ui.interact") + " (E)"
 	potion_btn.text = LocalizationManager.get_string("ui.potion") + " (Q)"
-	inventory_btn.text = LocalizationManager.get_string("ui.inventory") + " (I)"
-	town_btn.text = LocalizationManager.get_string("ui.settlement") + " (B)"
-	alchemy_btn.text = LocalizationManager.get_string("ui.alchemy") + " (C)"
-	council_btn.text = LocalizationManager.get_string("ui.strategy") + " (R)"
+	inventory_btn.text = LocalizationManager.get_string("ui.inventory")
+	town_btn.text = LocalizationManager.get_string("ui.settlement")
+	alchemy_btn.text = LocalizationManager.get_string("ui.alchemy")
+	council_btn.text = LocalizationManager.get_string("hud.council")
+	for entry in [[inventory_btn,"I"],[town_btn,"B"],[alchemy_btn,"C"],[council_btn,"R"]]:
+		entry[0].tooltip_text=entry[0].text+" ("+entry[1]+")"
 	refresh_help()
 
 func _unhandled_key_input(event: InputEvent) -> void:
@@ -136,7 +138,8 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 func refresh_help() -> void:
-	controls_label.text = LocalizationManager.get_string("ui.controls") if expanded_help else ("WASD · E взаимодействие · M карта · F1 помощь" if LocalizationManager.current_language == "ru" else "WASD · E interact · M map · F1 help")
+	controls_label.text = LocalizationManager.get_string("ui.controls") if expanded_help else ("F1 · Помощь" if LocalizationManager.current_language == "ru" else "F1 · Help")
+	controls_label.offset_right=1175 if expanded_help else 215
 	controls_label.offset_top = -110 if expanded_help else -65
 	controls_label.offset_bottom = -20
 	objective_label.size.y = 218 if expanded_help else 74

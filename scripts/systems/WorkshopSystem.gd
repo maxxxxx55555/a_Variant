@@ -6,6 +6,10 @@ var definitions: Array = []
 var crafting: Array = []
 var equipment: Array = []
 var levels: Dictionary = {}
+const PRICES={"food":2.0,"wood":3.0,"ore":5.0,"stone":4.0}
+
+func price_for(resource:String,quantity:int,buying:bool) -> float:
+	return float(PRICES.get(resource,0.0))*quantity*(1.0 if buying else 0.65)
 
 func _ready() -> void:
 	definitions = JSON.parse_string(FileAccess.get_file_as_string("res://data/balance/buildings.json"))
@@ -41,10 +45,9 @@ func craft(id: String) -> bool:
 	return false
 
 func trade(resource: String, quantity: int, buying: bool) -> bool:
-	var prices := {"food": 2.0, "wood": 3.0, "ore": 5.0, "stone": 4.0}
-	if not prices.has(resource) or quantity <= 0 or quantity > 1000:
+	if not PRICES.has(resource) or quantity <= 0 or quantity > 1000:
 		return false
-	var price: float = prices[resource] * quantity * (1.0 if buying else 0.65)
+	var price: float = price_for(resource,quantity,buying)
 	if buying:
 		if not CampaignSystem.pay({"gold": price}):
 			return false

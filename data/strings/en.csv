@@ -611,12 +611,18 @@ ui.iron_save,Железный режим,Iron mode save
 tutorial.campaign_title,ПЕРВЫЕ ШАГИ,FIRST STEPS
 tutorial.basics_complete,"Основы освоены. Впереди восемь клятв. Журнал [J], карта [M].","Basics complete. Eight oaths await. Journal [J], map [M]."
 ui.preview,Хранитель очага. Союзы. Война за пограничье.,Keep the hearth. Forge alliances. Unite the March.
-ui.town_help,"Доставьте припасы и очистите лагерь в 85 метрах к востоку. Святилище на западе укрепляет доверие. Союз в Совете [F]: 60 доверия и 100 золота. Затем доложите старосте. Военный путь: блокада с 3 бойцами, прорыв ворот и победа над гарнизоном либо его капитуляция.","Deliver supplies and clear the camp 85 metres east. The western shrine earns trust. Alliance in the Council [F]: 60 trust and 100 gold. Return to report. Military route: blockade with 3 troops, breach the gate and defeat the garrison, or negotiate its surrender."
-siege.begin,Установить блокаду · 3 бойца / 12 еды / 8 дерева / 15 золота,Establish blockade · 3 troops / 12 food / 8 timber / 15 gold
-siege.wait,Держать блокаду 1 день · 6 еды / 2 золота + содержание армии,Maintain blockade 1 day · 6 food / 2 gold + army upkeep
-siege.surrender,Принять капитуляцию истощённого гарнизона,Negotiate the exhausted garrison’s surrender
+ui.town_help,"Доставьте припасы и очистите лагерь в 85 метрах к востоку. Святилище на западе укрепляет доверие. Союз в Совете [R]: 60 доверия и 100 золота. Затем доложите старосте. Военный путь: блокада с 3 бойцами, прорыв ворот и победа над гарнизоном либо его капитуляция.","Deliver supplies and clear the camp 85 metres east. The western shrine earns trust. Alliance in the Council [R]: 60 trust and 100 gold. Return to report. Military route: blockade with 3 troops, breach the gate and defeat the garrison, or negotiate its surrender."
+siege.begin,"Блокада · 3 бойца
+12 еды / 8 дерева / 15 золота","Blockade · 3 troops
+12 food / 8 wood / 15 gold"
+siege.wait,"Держать 1 день
+6 еды / 2 золота + содержание","Hold 1 day
+6 food / 2 gold + upkeep"
+siege.surrender,Принять капитуляцию,Accept surrender
 siege.lift,Снять блокаду,Lift blockade
-siege.assault,Начать штурм · 10 дерева / 5 еды,Launch assault · 10 timber / 5 food
+siege.assault,"Штурм ворот
+10 дерева / 5 еды","Assault gate
+10 wood / 5 food"
 siege.help,Для осады нужны 3 бойца и припасы. Держите блокаду хотя бы день; затем штурмуйте ворота или истощите гарнизон за 3 дня. Содержание жителей и армии оплачивается каждый день.,"Recruit 3 troops and bring supplies. Blockade for at least one day, then breach the gate or exhaust the garrison over 3 days. Each day also pays normal civilian and army upkeep."
 siege.status,Осада: {days} дн. · Припасы гарнизона {supplies}% · Боевой дух {morale}% · Ворота {wall}/180,Siege: {days} days · Defender supplies {supplies}% · Morale {morale}% · Gate {wall}/180
 siege.breach_help,Уничтожьте ворота оружием (ЛКМ) и победите гарнизон. Ворота находятся у южного въезда в город.,Break the gate with your weapon (LMB) and defeat the garrison. The gate stands at the town’s southern entrance.
@@ -625,3 +631,12 @@ siege.unsupplied,Армия сняла блокаду: не хватает бо�
 siege.secured,"Регион под вашим покровительством. Доложите старосте, чтобы открыть следующую дорогу.",This region is secured. Report to the reeve to open the next road.
 msg.inventory_full,В инвентаре нет свободных ячеек. Освободите место.,Inventory is full. Free a slot before collecting more equipment.
 msg.save_write_error,Не удалось сохранить. Проверьте свободное место и повторите сохранение.,Could not save. Check available disk space and try saving again.
+town.journey,Поручение,Journey
+town.trade,Торговля,Trade
+town.siege,Осада,Siege
+town.details,Как играть,How to play
+town.coin,зол.,gold
+town.next,Обоз → лагерь (85 м на восток) → союз или осада → доклад.,Supplies → camp (85m east) → alliance or siege → report.
+town.deliver,Передать припасы · 20 еды / 10 дерева / 5 руды,Deliver · 20 food / 10 wood / 5 ore
+town.report,Доложить старосте,Report to the reeve
+hud.council,Совет,Council
