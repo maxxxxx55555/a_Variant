@@ -1,4 +1,4 @@
-# Art and audio credits — 1.2.0
+# Art and audio credits — 1.5.0
 
 Original in-game illustrations and meadow texture: OpenAI image generation, created for this edition. Generation records and SHA-256 digests are in assets/art/*provenance.json.
 
@@ -23,3 +23,10 @@ Quaternius Universal Base Characters, Modular Character Outfits - Fantasy, Unive
 ## 1.5.0 soundtrack
 
 Four mood recordings and two musical finale cues, generated using Google Lyria RealTime. Track names, prompts, original/mastered hashes and generated-output terms: assets/audio/music-provenance.json and SOUNDTRACK.md. Synthesized interface/game effects retain separate CC0 provenance.
+
+## 1.5.0 application icons
+
+Original project artwork authored for this release, without third-party image sources. The scalable `icon.svg` and raster `assets/ui/app-icon.png` form the application icon family.
+
+- `icon.svg`: SHA256 `c06c567fc0c4375aa0a3dc87b76224d91b71c259f05b2181cc4a4498e1fc7ed5`.
+- `assets/ui/app-icon.png`: SHA256 `adba04819d8eaf4b4aea878d571ab16514e69a8f21f3acb6ea7bfbb342178f39`.
