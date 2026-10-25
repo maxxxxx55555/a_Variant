@@ -109,11 +109,7 @@ func _on_load() -> void:
 	if not loaded.is_empty():
 		GameState.player_hp = loaded.get("hp", 100.0)
 		GameState.player_stamina = loaded.get("stamina", 100.0)
-		GameState.inventory = loaded.get("inventory", [])
-		GameState.equipment = loaded.get("equipment", {"head": null, "torso": null, "legs": null, "weapon": null})
-		for slot in ["head", "torso", "legs", "weapon"]:
-			if not GameState.equipment.has(slot):
-				GameState.equipment[slot] = null
+		GameState.restore_items(loaded.get("inventory",[]),loaded.get("equipment",{}))
 		GameState.clamp_values()
 		GameState.recalculate_stats()
 		restore_simulation(loaded.get("simulation", {}))
@@ -184,6 +180,7 @@ func restore_simulation(data: Dictionary) -> void:
 	PopulationSystem.sick_citizens = int(data.get("sick", 0))
 	PopulationSystem.jobs = data.get("jobs", {"farmers": 8, "woodcutters": 5, "miners": 3, "guards": 2, "blacksmiths": 2})
 	ArmySystem.squads = data.get("army", [])
+	ArmySystem.selected_squad_index = clampi(ArmySystem.selected_squad_index,0,maxi(0,ArmySystem.squads.size()-1))
 	ArmySystem.next_squad_id = int(data.get("army_next_id", 1))
 	PopulationSystem.happiness = float(data.get("happiness", 70))
 	PopulationSystem.health = float(data.get("health", 85))
@@ -202,5 +199,10 @@ func restore_simulation(data: Dictionary) -> void:
 	GameState.poison_timer = data.get("poison", 0.0)
 	GameState.recalculate_stats()
 	CampaignSystem.restore_state(data.get("campaign", {}))
+	# Early profiles may omit factions introduced with the full campaign.
+	if CampaignSystem.active:
+		for faction in CampaignSystem.definition.factions:
+			if not FactionSystem.factions.has(faction.id):
+				FactionSystem.factions[faction.id] = {"res_path":"res://data/factions/"+faction.id+".tres","relationship":faction.relationship,"threat":0.0,"escalation_level":0}
 	WorkshopSystem.levels = data.get("buildings", {})
 	ArmySystem.roster_changed.emit()

@@ -33,7 +33,7 @@ func build(id: String) -> bool:
 
 func craft(id: String) -> bool:
 	for blueprint in crafting:
-		if blueprint.id == id and levels.get("forge", 0) > 0 and CampaignSystem.pay(blueprint.cost):
+		if blueprint.id == id and levels.get("forge", 0) > 0 and GameState.can_add_item(load(blueprint.result)) and CampaignSystem.pay(blueprint.cost):
 			GameState.add_item(load(blueprint.result))
 			AudioManager.play_sfx("hit_metal", "SFX_UI")
 			changed.emit()

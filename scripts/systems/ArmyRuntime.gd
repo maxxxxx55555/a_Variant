@@ -85,6 +85,7 @@ func issue_order_to_selected(order_name: String) -> void:
 
 func set_formation_for_selected(formation: String) -> void:
 	if formation in FORMATIONS and not squads.is_empty():
+		selected_squad_index = clampi(selected_squad_index,0,squads.size()-1)
 		squads[selected_squad_index].formation = formation
 		roster_changed.emit()
 
@@ -95,6 +96,7 @@ func squad_by_id(id: int) -> Dictionary:
 	return {}
 
 func register_casualty(id: int, count: int) -> void:
+	if count <= 0: return
 	var squad := squad_by_id(id)
 	if squad.is_empty():
 		return

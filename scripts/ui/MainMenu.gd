@@ -63,9 +63,11 @@ func _ready() -> void:
 	for index in 7:
 		slot_choice.add_item(LocalizationManager.get_string("ui.slot") + " " + str(index + 1) if index < 5 else LocalizationManager.get_string("ui.autosave" if index == 5 else "ui.iron_save"))
 	slot_choice.selected = SaveSystem.newest_slot()
+	if slot_choice.selected < 5: SaveSystem.selected_slot = slot_choice.selected
 	cached_save = SaveSystem.load_slot(slot_choice.selected)
 	column.add_child(slot_choice)
 	slot_choice.item_selected.connect(func(index):
+		if index < 5: SaveSystem.selected_slot = index
 		cached_save = SaveSystem.load_slot(index)
 		var campaign_data: Dictionary = cached_save.get("simulation", {}).get("campaign", {})
 		continue_button.disabled = cached_save.is_empty() or not campaign_data.get("active", false) or campaign_data.get("iron_dead", false)

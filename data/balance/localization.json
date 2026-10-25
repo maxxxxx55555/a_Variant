@@ -2494,5 +2494,13 @@
   "siege.secured": {
     "ru": "Регион под вашим покровительством. Доложите старосте, чтобы открыть следующую дорогу.",
     "en": "This region is secured. Report to the reeve to open the next road."
+  },
+  "msg.inventory_full": {
+    "ru": "В инвентаре нет свободных ячеек. Освободите место.",
+    "en": "Inventory is full. Free a slot before collecting more equipment."
+  },
+  "msg.save_write_error": {
+    "ru": "Не удалось сохранить. Проверьте свободное место и повторите сохранение.",
+    "en": "Could not save. Check available disk space and try saving again."
   }
 }

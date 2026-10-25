@@ -18,6 +18,7 @@ func _ready() -> void:
 func can_brew(recipe: RecipeData) -> bool:
 	if not recipe or not recipe.result_item or recipe.result_count <= 0 or recipe.required_ingredients.is_empty() or recipe.required_counts.size() != recipe.required_ingredients.size():
 		return false
+	if not GameState.can_add_item(recipe.result_item,recipe.result_count): return false
 	for i in range(recipe.required_ingredients.size()):
 		var ing = recipe.required_ingredients[i]
 		var req_cnt = recipe.required_counts[i] if i < recipe.required_counts.size() else 1

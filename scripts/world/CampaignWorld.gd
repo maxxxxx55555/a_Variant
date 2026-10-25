@@ -357,8 +357,7 @@ func restore_enemy(actor: Node3D, state: Dictionary) -> void:
 	if actor.get_meta("boss", false): actor.is_enraged = state.get("enraged", false)
 
 func apply_snapshot(data: Dictionary) -> void:
-	GameState.inventory = data.get("inventory", [])
-	GameState.equipment = data.get("equipment", {"head": null, "torso": null, "legs": null, "weapon": null})
+	GameState.restore_items(data.get("inventory",[]),data.get("equipment",{}))
 	GameState.player_hp = data.get("hp", 100)
 	GameState.player_stamina = data.get("stamina", 100)
 	GameState.recalculate_stats()

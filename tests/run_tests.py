@@ -39,6 +39,7 @@ def main():
         for case in ['identity', 'siege', 'civilians', 'combat_cover', 'terrain_sampling', 'weapon_view', 'house_cache', 'art_assets', 'movement_comfort', 'save_guard', 'legacy_migration', 'actor_material_lifetime', 'settings_bounds']:
             if (project / ('tests/test_' + case + '.gd')).exists():
                 cases.append((case, ['--headless', '--script', 'res://tests/test_' + case + '.gd']))
+        cases.append(('release-hardening', ['--headless', '--script', 'res://tests/test_release_hardening.gd']))
         cases.insert(2, ('audio', ['--headless', '--script', 'res://tests/test_audio.gd']))
         if portrait:
             cases.append(('balance', ['--headless', '--script', 'res://tests/test_gameplay.gd', '--', '--balance']))

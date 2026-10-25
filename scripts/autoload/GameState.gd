@@ -12,6 +12,7 @@ var poison_timer: float = 0.0
 var poison_tick: float = 0.0
 
 var inventory: Array = []
+const MAX_INVENTORY_ENTRIES := 1000
 var equipment: Dictionary = {
 	"head": null,
 	"torso": null,
@@ -26,7 +27,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if strength_buff_timer > 0:
-		strength_buff_timer -= delta
+		strength_buff_timer = maxf(0,strength_buff_timer-delta)
 	for effect in timed_effects.keys():
 		timed_effects[effect].seconds -= delta
 		if timed_effects[effect].seconds <= 0:
@@ -49,6 +50,9 @@ func clamp_values() -> void:
 	player_stamina = clamp(player_stamina, 0.0, max_stamina)
 
 func recalculate_stats() -> void:
+	# Legacy saves may contain only the equipped slots.
+	for slot in ["head","torso","legs","weapon"]:
+		if not equipment.has(slot): equipment[slot] = null
 	var total_def: float = 0.0
 	for slot in ["head", "torso", "legs"]:
 		var armor = equipment[slot]
@@ -81,11 +85,17 @@ func is_encumbered() -> bool:
 func get_speed_modifier() -> float:
 	return (0.6 if is_encumbered() else 1.0) * timed_effects.get("movement", {}).get("value", 1.0) * WeatherSystem.movement_speed_modifier
 
-func add_item(item_resource: Resource, count: int = 1) -> bool:
-	if count <= 0 or count > 10000: return false
-	if not item_resource or not item_resource.resource_path:
-		IntegrityLogger.log_anomaly("GameState", "Attempted to add invalid item resource")
-		return false
+func stack_index(item_resource: Resource, count: int) -> int:
+	if item_resource is WeaponData or item_resource is ArmorData: return -1
+	for index in inventory.size():
+		if inventory[index].get("resource_path")==item_resource.resource_path and inventory[index].get("count",1)+count<=10000:
+			return index
+	return -1
+
+func can_add_item(item_resource: Resource, count: int = 1) -> bool:
+	return item_resource is ItemData and not item_resource.resource_path.is_empty() and count>0 and count<=10000 and (inventory.size()<MAX_INVENTORY_ENTRIES or stack_index(item_resource,count)>=0)
+
+func item_record(item_resource: Resource, count: int) -> Dictionary:
 	var w = item_resource.get("weight")
 	if w == null:
 		w = 0.0
@@ -102,7 +112,36 @@ func add_item(item_resource: Resource, count: int = 1) -> bool:
 	}
 	if item_resource is WeaponData or item_resource is ArmorData:
 		item_dict["durability"] = item_resource.durability
-	inventory.append(item_dict)
+	return item_dict
+
+func restore_items(saved_inventory: Array, saved_equipment: Dictionary) -> void:
+	inventory = []
+	equipment = {"head":null,"torso":null,"legs":null,"weapon":null}
+	for entry in saved_inventory:
+		var resource: Resource = load(entry.resource_path)
+		var normalized := item_record(resource,int(entry.get("count",1)))
+		if resource is WeaponData or resource is ArmorData:
+			normalized.durability = clampf(entry.get("durability",resource.durability),0,resource.durability)
+		inventory.append(normalized)
+	for slot in equipment:
+		var entry: Variant = saved_equipment.get(slot)
+		if entry == null: continue
+		var resource: Resource = load(entry.resource_path)
+		equipment[slot] = item_record(resource,1)
+		equipment[slot].durability = clampf(entry.get("durability",resource.durability),0,resource.durability)
+
+func add_item(item_resource: Resource, count: int = 1) -> bool:
+	if count <= 0 or count > 10000: return false
+	if not item_resource or not item_resource.resource_path:
+		IntegrityLogger.log_anomaly("GameState", "Attempted to add invalid item resource")
+		return false
+	if not can_add_item(item_resource,count):
+		EventBus.notification_posted.emit(LocalizationManager.get_string("msg.inventory_full"),true)
+		return false
+	var item_dict := item_record(item_resource,count)
+	var stack := stack_index(item_resource,count)
+	if stack >= 0: inventory[stack]["count"] += count
+	else: inventory.append(item_dict)
 	EventBus.inventory_updated.emit()
 	if AudioManager:
 		AudioManager.play_sound("pickup")
@@ -147,6 +186,9 @@ func equip_item(item_index: int) -> bool:
 
 func unequip_item(slot: String) -> bool:
 	if not equipment.has(slot) or equipment[slot] == null:
+		return false
+	if inventory.size()>=MAX_INVENTORY_ENTRIES:
+		EventBus.notification_posted.emit(LocalizationManager.get_string("msg.inventory_full"),true)
 		return false
 	var item = equipment[slot]
 	equipment[slot] = null

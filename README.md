@@ -1,3 +1,7 @@
+# Marchland Oaths — 1.2.1
+
+Nested buffs, buildings, diplomacy, faction escalation, squads, sieges, tutorial and actor snapshots are validated before restoration. Legacy item metadata is rebuilt from the shipped catalog. Manual title-slot selection now controls the save target; new/loaded rosters cannot retain an invalid formation index. Expired strength buffs remain saveable, loot ingredients stack, and inventory capacity prevents unloadable profiles without charging failed crafting. Invalid resource transactions are rejected atomically. Failed saves show a clear localized warning. Existing PBR scenery, stylized characters and separate acoustic music are retained.
+
 # Marchland Oaths
 
 A first-person frontier RPG with settlement management, small armies and diplomacy. Unite eight regions through alliances, conquest or a mixture of both, then continue exploring after the ending.
