@@ -7,6 +7,8 @@ var music_players: Array[AudioStreamPlayer] = []
 var effect_players: Array[AudioStreamPlayer] = []
 var spatial_players: Array[AudioStreamPlayer3D] = []
 var current_music: String = ""
+var finale_player:AudioStreamPlayer
+var current_finale:=""
 var music_index: int = -1
 var crossfade: Tween
 var footstep_index: int = 0
@@ -72,6 +74,8 @@ func _stream(name: String, music: bool = false) -> AudioStreamWAV:
 	return sound
 
 func play_music(mood: String, fade_seconds: float = 1.2) -> void:
+	if is_instance_valid(finale_player):finale_player.stop()
+	current_finale=""
 	if mood == current_music:
 		return
 	# A shared calm theme continues through state changes without repeating its intro.
@@ -181,3 +185,21 @@ func apply_gains() -> void:
 		set_bus_volume("Music", settings.music_volume)
 		set_bus_volume("SFX", settings.sfx_volume)
 		set_enabled(settings.audio_enabled)
+
+func play_finale(victorious:bool) -> void:
+	var cue:="victory" if victorious else "defeat"
+	if is_instance_valid(finale_player) and finale_player.playing and current_finale==cue:return
+	if is_instance_valid(crossfade):crossfade.kill()
+	current_music=""
+	current_finale=cue
+	crossfade=create_tween().set_parallel(true)
+	for player in music_players:
+		crossfade.tween_property(player,"volume_db",-60.0,0.7).set_trans(Tween.TRANS_SINE)
+		crossfade.tween_callback(player.stop).set_delay(0.7)
+	if not is_instance_valid(finale_player):
+		finale_player=AudioStreamPlayer.new()
+		finale_player.bus="Music"
+		add_child(finale_player)
+	finale_player.stream=_stream(cue)
+	finale_player.volume_db=0
+	finale_player.play()

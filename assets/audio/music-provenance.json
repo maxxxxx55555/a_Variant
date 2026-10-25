@@ -1,12 +1,9 @@
 {
-  "calm_theme.wav": {
+  "stone_path_to_dusk.wav": {
     "provider": "Google Gemini / Lyria",
     "date": "2026-10-24",
     "moods": [
-      "exploration",
-      "settlement",
-      "combat",
-      "war"
+      "exploration"
     ],
     "prompt": "Создай новую инструментальную композицию на 2 минуты: тихая акустическая фолк-музыка, мягкая нейлоновая гитара, лютня и виолончель, 70 BPM. Тёплое чувство путешествия по лесам и старинным деревням. Просторная спокойная аранжировка без вокала, хора, колокольчиков и резкой перкуссии. Ровная негромкая динамика, мягкие края для фонового зацикливания.",
     "source_filename": "stone_path_to_dusk.mp4",
@@ -14,6 +11,97 @@
     "wav_sha256": "928d3e830ab86c2ef9a170658fd5405a7b883e1d5c90e3481ef93afdd21d5813",
     "processing": "32 kHz stereo PCM, quiet gain, two-second overlap crossfade, 2 ms edge taper",
     "terms": "https://policies.google.com/terms",
+    "policy": "https://policies.google.com/terms/generative-ai/use-policy",
+    "kind": "background"
+  },
+  "hearths_among_the_hills.wav": {
+    "provider": "Google Gemini / Lyria",
+    "model": "lyria-realtime-exp",
+    "date": "2026-10-25",
+    "moods": [
+      "settlement"
+    ],
+    "kind": "background",
+    "prompt": "Warm medieval village instrumental, 84 BPM, lute, wooden flute, soft acoustic strings, intimate welcoming hearth and quiet market square. Gentle dynamics, no vocals, no modern drums.",
+    "source_filename": "settlement-stream.wav",
+    "source_sha256": "4133991f8f49cac2fee92b0ee1b36d415408975b17abb096a647502c4773a643",
+    "wav_sha256": "78749767a35ed41dcf151579f2a92c3479b90a6672984eef70aac05ff61d0315",
+    "processing": "32 kHz stereo PCM; quiet matched RMS/peak; two-second overlap crossfade; 2 ms edge taper",
+    "requested_bpm": 84,
+    "documentation": "https://ai.google.dev/api/live_music",
+    "terms": "https://ai.google.dev/gemini-api/terms",
+    "policy": "https://policies.google.com/terms/generative-ai/use-policy"
+  },
+  "steel_and_rain.wav": {
+    "provider": "Google Gemini / Lyria",
+    "model": "lyria-realtime-exp",
+    "date": "2026-10-25",
+    "moods": [
+      "combat"
+    ],
+    "kind": "background",
+    "prompt": "Original fantasy skirmish instrumental, 126 BPM, restrained taut low strings, hand drums, short brass phrases, urgent precise rhythmic motif with space for combat sound effects. No vocals, no distortion, no harsh high percussion.",
+    "source_filename": "combat-stream.wav",
+    "source_sha256": "e3e5f2909c5f3ee20268b8a7263e22cf146038fa25cc9b734aae7169864633e2",
+    "wav_sha256": "f43353c344afffd1d4982dfeeb6ed55537cc5feec5ce1e7a623a01edf95ce921",
+    "processing": "32 kHz stereo PCM; quiet matched RMS/peak; two-second overlap crossfade; 2 ms edge taper",
+    "requested_bpm": 126,
+    "documentation": "https://ai.google.dev/api/live_music",
+    "terms": "https://ai.google.dev/gemini-api/terms",
+    "policy": "https://policies.google.com/terms/generative-ai/use-policy"
+  },
+  "standards_at_dawn.wav": {
+    "provider": "Google Gemini / Lyria",
+    "model": "lyria-realtime-exp",
+    "date": "2026-10-25",
+    "moods": [
+      "war"
+    ],
+    "kind": "background",
+    "prompt": "Original orchestral medieval campaign instrumental, 100 BPM, broad low strings, distant horns, deep measured drums and solemn tactical tension, expressive evolving harmony. No vocals, no modern electronic beat.",
+    "source_filename": "war-stream.wav",
+    "source_sha256": "6367d3ff08024e24ad5b88d03c0a710c7417fffb89fd08869e7fca46a636121e",
+    "wav_sha256": "4e52901ed029631e514f0c2994fe2122492f9e428f14e5c1f791e68de6337ed3",
+    "processing": "32 kHz stereo PCM; quiet matched RMS/peak; two-second overlap crossfade; 2 ms edge taper",
+    "requested_bpm": 100,
+    "documentation": "https://ai.google.dev/api/live_music",
+    "terms": "https://ai.google.dev/gemini-api/terms",
+    "policy": "https://policies.google.com/terms/generative-ai/use-policy"
+  },
+  "oaths_remembered.wav": {
+    "provider": "Google Gemini / Lyria",
+    "model": "lyria-realtime-exp",
+    "date": "2026-10-25",
+    "moods": [
+      "victory"
+    ],
+    "kind": "stinger",
+    "prompt": "Original 18-second fantasy victory instrumental stinger, warm horn and string resolution with a delicate lute flourish, hopeful earned peace, conclusive cadence, no vocals.",
+    "source_filename": "victory-stream.wav",
+    "source_sha256": "da2f0d8160dc60383918d937c4bc64a241bdb110afcbc2528c72edb48d4704a4",
+    "wav_sha256": "1ccb20ebe5767031c1699ddf42d2cd7f87d29f8c2c429d6450ffa21b3c7608b2",
+    "processing": "32 kHz stereo PCM; quiet matched RMS/peak; 20-second excerpt, naturalized 2.2-second release; 2 ms edge taper",
+    "requested_bpm": 84,
+    "documentation": "https://ai.google.dev/api/live_music",
+    "terms": "https://ai.google.dev/gemini-api/terms",
+    "policy": "https://policies.google.com/terms/generative-ai/use-policy"
+  },
+  "the_last_watch.wav": {
+    "provider": "Google Gemini / Lyria",
+    "model": "lyria-realtime-exp",
+    "date": "2026-10-25",
+    "moods": [
+      "defeat"
+    ],
+    "kind": "stinger",
+    "prompt": "Original 18-second fantasy defeat instrumental stinger, restrained cello and wooden flute, mournful but dignified, a final sustained minor chord and natural release, no vocals.",
+    "source_filename": "defeat-stream.wav",
+    "source_sha256": "5fdfd3179f3b9fa3d86a2e841ad87227bafdbfc34f80c279a605859bce4c3d69",
+    "wav_sha256": "035c080389e01cf7dd2fb030a6f150e4afa6e41c97850fdfc0785641cdaa34ca",
+    "processing": "32 kHz stereo PCM; quiet matched RMS/peak; 20-second excerpt, naturalized 2.2-second release; 2 ms edge taper",
+    "requested_bpm": 70,
+    "documentation": "https://ai.google.dev/api/live_music",
+    "terms": "https://ai.google.dev/gemini-api/terms",
     "policy": "https://policies.google.com/terms/generative-ai/use-policy"
   }
 }

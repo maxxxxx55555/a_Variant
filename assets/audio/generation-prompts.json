@@ -1,0 +1,42 @@
+[
+  {
+    "mood": "settlement",
+    "title": "Hearths Among the Hills",
+    "prompt": "Warm medieval village instrumental, 84 BPM, lute, wooden flute, soft acoustic strings, intimate welcoming hearth and quiet market square. Gentle dynamics, no vocals, no modern drums.",
+    "bpm": 84,
+    "capture_seconds": 126,
+    "density": 0.35
+  },
+  {
+    "mood": "combat",
+    "title": "Steel and Rain",
+    "prompt": "Original fantasy skirmish instrumental, 126 BPM, restrained taut low strings, hand drums, short brass phrases, urgent precise rhythmic motif with space for combat sound effects. No vocals, no distortion, no harsh high percussion.",
+    "bpm": 126,
+    "capture_seconds": 126,
+    "density": 0.6
+  },
+  {
+    "mood": "war",
+    "title": "Standards at Dawn",
+    "prompt": "Original orchestral medieval campaign instrumental, 100 BPM, broad low strings, distant horns, deep measured drums and solemn tactical tension, expressive evolving harmony. No vocals, no modern electronic beat.",
+    "bpm": 100,
+    "capture_seconds": 126,
+    "density": 0.6
+  },
+  {
+    "mood": "victory",
+    "title": "Oaths Remembered",
+    "prompt": "Original 18-second fantasy victory instrumental stinger, warm horn and string resolution with a delicate lute flourish, hopeful earned peace, conclusive cadence, no vocals.",
+    "bpm": 84,
+    "capture_seconds": 22,
+    "density": 0.6
+  },
+  {
+    "mood": "defeat",
+    "title": "The Last Watch",
+    "prompt": "Original 18-second fantasy defeat instrumental stinger, restrained cello and wooden flute, mournful but dignified, a final sustained minor chord and natural release, no vocals.",
+    "bpm": 70,
+    "capture_seconds": 22,
+    "density": 0.6
+  }
+]

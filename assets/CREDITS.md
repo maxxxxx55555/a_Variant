@@ -19,3 +19,7 @@ Original scalable satin control surfaces. New OFL type families: Golos Text and 
 
 ## 1.3 detailed figures
 Quaternius Universal Base Characters, Modular Character Outfits - Fantasy, Universal Animation Library (CC0). Face/neck triangle crop, typo corrections in creator texture URIs, shared rig binding, rest-pose animation transfer and material variants are project adaptations. Creator URLs, exact shipping asset hashes and CC0 notices accompany assets/art/humans. Original source ZIPs remain in the local art pipeline outside shipping assets.
+
+## 1.5.0 soundtrack
+
+Four mood recordings and two musical finale cues, generated using Google Lyria RealTime. Track names, prompts, original/mastered hashes and generated-output terms: assets/audio/music-provenance.json and SOUNDTRACK.md. Synthesized interface/game effects retain separate CC0 provenance.

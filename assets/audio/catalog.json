@@ -1,55 +1,47 @@
 {
   "sample_rate": 32000,
-  "license": "Mixed: synthesized SFX CC0-1.0; Gemini generated music, see LICENSE.md and music-provenance.json",
+  "license": "Mixed: synthesized effects CC0-1.0; Gemini background music and finale stingers, see LICENSE.md and music-provenance.json",
   "music": {
     "exploration": {
-      "path": "calm_theme.wav",
+      "path": "stone_path_to_dusk.wav",
       "seconds": 117.3042,
       "loop": true,
       "channels": 2,
       "source": "Google Gemini / Lyria",
-      "license": "Generated output; Google Terms of Service"
+      "license": "Generated output; Google Terms of Service",
+      "title": "Stone Path to Dusk"
     },
     "settlement": {
-      "path": "calm_theme.wav",
-      "seconds": 117.3042,
+      "path": "hearths_among_the_hills.wav",
+      "title": "Hearths Among the Hills",
+      "seconds": 124.0,
       "loop": true,
       "channels": 2,
       "source": "Google Gemini / Lyria",
-      "license": "Generated output; Google Terms of Service"
+      "license": "Generated output; applicable Google Gemini API terms"
     },
     "combat": {
-      "path": "calm_theme.wav",
-      "seconds": 117.3042,
+      "path": "steel_and_rain.wav",
+      "title": "Steel and Rain",
+      "seconds": 124.0,
       "loop": true,
       "channels": 2,
       "source": "Google Gemini / Lyria",
-      "license": "Generated output; Google Terms of Service"
+      "license": "Generated output; applicable Google Gemini API terms"
     },
     "war": {
-      "path": "calm_theme.wav",
-      "seconds": 117.3042,
+      "path": "standards_at_dawn.wav",
+      "title": "Standards at Dawn",
+      "seconds": 124.0,
       "loop": true,
       "channels": 2,
       "source": "Google Gemini / Lyria",
-      "license": "Generated output; Google Terms of Service"
+      "license": "Generated output; applicable Google Gemini API terms"
     }
   },
   "sfx": {
     "ui_click": {
       "path": "ui_click.wav",
-      "seconds": 0.38,
-      "loop": false,
-      "channels": 1
-    },
-    "inventory_open": {
-      "path": "inventory_open.wav",
-      "seconds": 0.38,
-      "loop": false,
-      "channels": 1
-    },
-    "pickup": {
-      "path": "pickup.wav",
       "seconds": 0.38,
       "loop": false,
       "channels": 1
@@ -78,21 +70,39 @@
       "loop": false,
       "channels": 1
     },
+    "victory": {
+      "path": "oaths_remembered.wav",
+      "title": "Oaths Remembered",
+      "seconds": 20.0,
+      "loop": false,
+      "channels": 2,
+      "source": "Google Gemini / Lyria",
+      "license": "Generated output; applicable Google Gemini API terms"
+    },
+    "defeat": {
+      "path": "the_last_watch.wav",
+      "title": "The Last Watch",
+      "seconds": 20.0,
+      "loop": false,
+      "channels": 2,
+      "source": "Google Gemini / Lyria",
+      "license": "Generated output; applicable Google Gemini API terms"
+    },
+    "inventory_open": {
+      "path": "inventory_open.wav",
+      "seconds": 0.38,
+      "loop": false,
+      "channels": 1
+    },
+    "pickup": {
+      "path": "pickup.wav",
+      "seconds": 0.38,
+      "loop": false,
+      "channels": 1
+    },
     "potion": {
       "path": "potion.wav",
       "seconds": 0.65,
-      "loop": false,
-      "channels": 1
-    },
-    "victory": {
-      "path": "victory.wav",
-      "seconds": 2.8,
-      "loop": false,
-      "channels": 1
-    },
-    "defeat": {
-      "path": "defeat.wav",
-      "seconds": 2.2,
       "loop": false,
       "channels": 1
     },

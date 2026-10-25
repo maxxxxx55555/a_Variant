@@ -370,6 +370,7 @@ func apply_snapshot(data: Dictionary) -> void:
 
 func show_ending(route: String) -> void:
 	if is_instance_valid(ending_panel): return
+	AudioManager.play_finale(true)
 	for menu in [inventory_ui, settlement_ui, alchemy_ui, strategy_ui, town_ui, pause_menu]:
 		menu.hide()
 	ending_panel = preload("res://scripts/ui/CampaignFinale.gd").new()
@@ -405,6 +406,7 @@ func desired_music() -> String:
 	return mood
 
 func _on_player_died() -> void:
+	AudioManager.play_finale(false)
 	if is_instance_valid(town_ui): town_ui.hide()
 	super._on_player_died()
 	if CampaignSystem.iron_mode:

@@ -225,7 +225,7 @@ func refresh() -> void:
 	var route := ending()
 	if not route.is_empty() and announced_ending.is_empty():
 		announced_ending = route
-		AudioManager.play_sound("victory")
+		AudioManager.play_finale(true)
 		campaign_finished.emit(route)
 	changed.emit()
 

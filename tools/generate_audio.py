@@ -202,7 +202,13 @@ def generate(project, profile):
     if profile == 'oaths':
         effects += ['swing', 'attack', 'hit', 'hit_metal', 'hit_flesh', 'block', 'enemy_hurt', 'enemy_death', 'ambience_forest', 'ambience_camp']
         effects += [f'footstep_{material}_{index}' for material in ['grass', 'dirt', 'stone', 'wood', 'snow'] for index in range(3)]
+    supplied = json.loads((output / 'music-provenance.json').read_text(encoding='utf-8')) if preserve_music else {}
     for name in effects:
+        old = previous.get('sfx', {}).get(name, {})
+        if old.get('path') in supplied:
+            assert (output / old['path']).exists(), 'Supplied finale music is missing'
+            catalog['sfx'][name] = old
+            continue
         catalog['sfx'][name] = write_wave(output / (name + '.wav'), effect(name), loop=name.startswith('ambience_'), peak=.6 if name.startswith('ambience_') else .78)
     (output / 'catalog.json').write_text(json.dumps(catalog, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     if not preserve_music:

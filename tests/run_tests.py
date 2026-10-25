@@ -47,6 +47,7 @@ def main():
         for case in ['detailed_figures','weapon_detail','campaign_finale','archer_presentation']:
             cases.append((case, ['--headless', '--script', 'res://tests/test_' + case + '.gd']))
         cases.append(('release-hardening', ['--headless', '--script', 'res://tests/test_release_hardening.gd']))
+        cases.append(('music-transitions', ['--headless', '--script', 'res://tests/test_music_transitions.gd']))
         cases.insert(2, ('audio', ['--headless', '--script', 'res://tests/test_audio.gd']))
         if portrait:
             cases.append(('balance', ['--headless', '--script', 'res://tests/test_gameplay.gd', '--', '--balance']))
@@ -62,6 +63,8 @@ def main():
             return verification.returncode
         isolation = subprocess.run([sys.executable, str(project / 'tests/test_repo_isolation.py')], timeout=30)
         if isolation.returncode: return isolation.returncode
+        soundtrack = subprocess.run([sys.executable, str(project / 'tests/test_soundtrack.py')], timeout=60)
+        if soundtrack.returncode: return soundtrack.returncode
         assets = subprocess.run([sys.executable, str(project / 'tests/test_audio_assets.py')], timeout=60)
         if assets.returncode:
             return assets.returncode
