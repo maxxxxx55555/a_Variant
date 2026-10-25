@@ -59,62 +59,68 @@ text = "Settings"
 layout_mode = 2
 text = "Exit"
 
-[node name="SettingsPanel" type="VBoxContainer" parent="MarginContainer"]
+[node name="SettingsScroll" type="ScrollContainer" parent="MarginContainer"]
 visible = false
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="SettingsPanel" type="VBoxContainer" parent="MarginContainer/SettingsScroll"]
+visible = false
+size_flags_horizontal = 3
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="LangLabel" type="Label" parent="MarginContainer/SettingsPanel"]
+[node name="LangLabel" type="Label" parent="MarginContainer/SettingsScroll/SettingsPanel"]
 layout_mode = 2
 text = "Language"
 
-[node name="LangOption" type="OptionButton" parent="MarginContainer/SettingsPanel"]
+[node name="LangOption" type="OptionButton" parent="MarginContainer/SettingsScroll/SettingsPanel"]
 layout_mode = 2
 
-[node name="MasterLabel" type="Label" parent="MarginContainer/SettingsPanel"]
+[node name="MasterLabel" type="Label" parent="MarginContainer/SettingsScroll/SettingsPanel"]
 layout_mode = 2
 text = "Master Volume"
 
-[node name="MasterSlider" type="HSlider" parent="MarginContainer/SettingsPanel"]
+[node name="MasterSlider" type="HSlider" parent="MarginContainer/SettingsScroll/SettingsPanel"]
 layout_mode = 2
 max_value = 1.0
 step = 0.05
 value = 1.0
 
-[node name="MusicLabel" type="Label" parent="MarginContainer/SettingsPanel"]
+[node name="MusicLabel" type="Label" parent="MarginContainer/SettingsScroll/SettingsPanel"]
 layout_mode = 2
 text = "Music Volume"
 
-[node name="MusicSlider" type="HSlider" parent="MarginContainer/SettingsPanel"]
+[node name="MusicSlider" type="HSlider" parent="MarginContainer/SettingsScroll/SettingsPanel"]
 layout_mode = 2
 max_value = 1.0
 step = 0.05
 value = 0.8
 
-[node name="SFXLabel" type="Label" parent="MarginContainer/SettingsPanel"]
+[node name="SFXLabel" type="Label" parent="MarginContainer/SettingsScroll/SettingsPanel"]
 layout_mode = 2
 text = "SFX Volume"
 
-[node name="SFXSlider" type="HSlider" parent="MarginContainer/SettingsPanel"]
+[node name="SFXSlider" type="HSlider" parent="MarginContainer/SettingsScroll/SettingsPanel"]
 layout_mode = 2
 max_value = 1.0
 step = 0.05
 value = 0.8
 
-[node name="UILabel" type="Label" parent="MarginContainer/SettingsPanel"]
+[node name="UILabel" type="Label" parent="MarginContainer/SettingsScroll/SettingsPanel"]
 layout_mode = 2
 text = "UI Volume"
 
-[node name="UISlider" type="HSlider" parent="MarginContainer/SettingsPanel"]
+[node name="UISlider" type="HSlider" parent="MarginContainer/SettingsScroll/SettingsPanel"]
 layout_mode = 2
 max_value = 1.0
 step = 0.05
 value = 0.8
 
-[node name="BobbingCheck" type="CheckBox" parent="MarginContainer/SettingsPanel"]
+[node name="BobbingCheck" type="CheckBox" parent="MarginContainer/SettingsScroll/SettingsPanel"]
 layout_mode = 2
 text = "Camera Bobbing"
 
-[node name="ShakeCheck" type="CheckBox" parent="MarginContainer/SettingsPanel"]
+[node name="ShakeCheck" type="CheckBox" parent="MarginContainer/SettingsScroll/SettingsPanel"]
 layout_mode = 2
 text = "Camera Shake"

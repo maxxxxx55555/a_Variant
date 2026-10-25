@@ -43,6 +43,7 @@ func update_info() -> void:
 	if not selected_recipe:
 		info_label.text = ""
 		brew_button.disabled = true
+		brew_button.tooltip_text=LocalizationManager.get_string("ui.select_recipe")
 		return
 
 	var name_str = LocalizationManager.get_string(selected_recipe.result_item.get("name_key"))
@@ -58,6 +59,7 @@ func update_info() -> void:
 
 	info_label.text = text
 	brew_button.disabled = not AlchemySystem.can_brew(selected_recipe)
+	brew_button.tooltip_text=LocalizationManager.get_string("ui.brew_requirements") if brew_button.disabled else ""
 
 func _on_brew_pressed() -> void:
 	if selected_recipe:

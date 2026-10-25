@@ -7,6 +7,7 @@ var master_volume: float = 1.0
 var music_volume: float = 0.3
 var sfx_volume: float = 0.8
 var ui_volume: float = 0.8
+var msaa_quality:int=2
 var mouse_sensitivity: float = 0.003
 var camera_bobbing: bool = false
 var camera_shake: bool = false
@@ -18,6 +19,7 @@ func _ready() -> void:
 	load_settings()
 
 func apply_settings() -> void:
+	get_viewport().msaa_3d=clampi(msaa_quality,0,3)
 	if AudioManager:
 		AudioManager.set_bus_volume("Master", master_volume)
 		AudioManager.set_bus_volume("Music", music_volume)
@@ -33,6 +35,7 @@ func save_settings() -> void:
 	config.set_value("audio", "sfx_volume", sfx_volume)
 	config.set_value("audio", "ui_volume", ui_volume)
 	config.set_value("controls", "mouse_sensitivity", mouse_sensitivity)
+	config.set_value("graphics","msaa_quality",msaa_quality)
 	config.set_value("gameplay", "camera_bobbing", camera_bobbing)
 	config.set_value("gameplay", "camera_shake", camera_shake)
 	config.set_value("gameplay", "reduced_motion", reduced_motion)
@@ -43,6 +46,7 @@ func save_settings() -> void:
 		IntegrityLogger.log_anomaly("SettingsManager", "Failed to save valid settings")
 
 func valid_settings(config: ConfigFile) -> bool:
+	if not Guard.numeric(config.get_value("graphics","msaa_quality",2),0,3,true):return false
 	for field in ["master_volume","music_volume","sfx_volume","ui_volume"]:
 		if not Guard.numeric(config.get_value("audio",field,0.5),0,1): return false
 	if not Guard.numeric(config.get_value("controls","mouse_sensitivity",0.003),0.0001,0.1): return false
@@ -66,6 +70,7 @@ func load_settings() -> void:
 		sfx_volume = config.get_value("audio", "sfx_volume", 0.8)
 		ui_volume = config.get_value("audio", "ui_volume", 0.8)
 		mouse_sensitivity = config.get_value("controls", "mouse_sensitivity", 0.003)
+		msaa_quality=config.get_value("graphics","msaa_quality",2)
 		camera_bobbing = config.get_value("gameplay", "camera_bobbing", false)
 		camera_shake = config.get_value("gameplay", "camera_shake", false)
 		reduced_motion = config.get_value("gameplay", "reduced_motion", false)

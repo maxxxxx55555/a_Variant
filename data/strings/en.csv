@@ -660,3 +660,33 @@ Synthesized sound effects: CC0.
 Complete license texts, authors and hashes are included with the game."
 ui.reduced_motion,Меньше анимации,Reduced motion
 ui.no_campaign_save,В этом слоте нет активной кампании.,This slot has no living campaign to continue.
+flow.loading,Готовим путешествие,Preparing your journey
+flow.tip.0,Сохраняйтесь у поселений. В железном режиме гибель окончательна.,"Save near settlements. In iron mode, death is permanent."
+flow.tip.1,Договоры открывают дороги. Армия требует еды и жалования.,Treaties open roads. Your army needs food and wages.
+flow.tip.2,Блокируйте вовремя и следите за выносливостью.,Time your blocks and keep an eye on stamina.
+flow.error,Не удалось загрузить сцену. Вернитесь в главное меню.,This scene could not be loaded. Return to the title.
+ui.msaa_quality,Сглаживание,Anti-aliasing
+ui.msaa_off,Выключено,Off
+ui.mouse_hint,Скорость поворота камеры. Изменение применяется сразу.,Camera turn speed. Changes apply immediately.
+ui.msaa_hint,Более высокое сглаживание смягчает края и требует больше ресурсов GPU.,Higher anti-aliasing smooths edges and uses more GPU power.
+ui.unsaved_title,Сохранение не удалось,Progress could not be saved
+ui.unsaved_body,Прогресс ещё не записан. Повторите сохранение или оставайтесь в игре.,Your progress is still unsaved. Retry the save or stay in the game.
+ui.retry_save,Повторить сохранение,Retry save
+ui.discard_exit,Выйти без сохранения,Exit without saving
+ui.stay,Остаться,Stay
+ui.iron_no_load,В железном режиме доступно только продолжение единственного сохранения.,Iron mode uses a single continuous save; manual loading is disabled.
+ui.select_recipe,Выберите рецепт.,Choose a recipe.
+ui.brew_requirements,Нужны все ингредиенты и свободное место в инвентаре.,Requires every ingredient and free inventory space.
+ui.travel_requirements,"Откройте дорогу, завершите бой и соберите припасы для пути.","Unlock the road, finish combat and afford the displayed travel supplies."
+ui.max_level,Достигнут максимальный уровень.,Maximum level reached.
+ui.resources_required,Недостаточно указанных ресурсов.,You need the displayed resources.
+ui.craft_requirements,"Выберите чертёж. Нужны кузница, ресурсы и свободное место.","Choose a blueprint. Requires a forge, materials and free inventory space."
+ui.repair_requirements,Нужна повреждённая экипировка и золото на ремонт.,Requires damaged equipped gear and enough repair gold.
+ui.delivery_requirements,Поставка уже выполнена либо не хватает указанных припасов.,"The delivery is complete, or its displayed supplies are missing."
+ui.report_requirements,Сначала заключите союз или завоюйте этот регион.,First ally with or conquer this region.
+ui.recruit_first,Сначала наберите отряд.,Recruit a squad first.
+siege.begin_requirements,"Нужны свободная армия из 3 бойцов и припасы: еда 12, дерево 8, золото 15. Регион должен быть независим.","Requires an available army of3, food12, wood8 and gold15; the region must be independent."
+siege.wait_requirements,Нужна действующая блокада. В бою ожидание недоступно.,Requires an active blockade; waiting is unavailable during combat.
+siege.surrender_requirements,Истощите припасы до 0 и мораль до 30 или ниже.,Reduce supplies to0 and morale to30 or lower.
+siege.lift_requirements,Сначала начните блокаду.,Start a blockade first.
+siege.assault_requirements,"Нужны день блокады, 3 бойца, дерево 10 и еда 5.","Requires a day of blockade,3 soldiers, wood10 and food5."

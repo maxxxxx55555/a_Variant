@@ -203,3 +203,7 @@ func play_finale(victorious:bool) -> void:
 	finale_player.stream=_stream(cue)
 	finale_player.volume_db=0
 	finale_player.play()
+
+func set_scene_paused(paused:bool) -> void:
+	# Menus freeze the background bed; ending stingers keep their natural release.
+	for player in music_players:player.stream_paused=paused

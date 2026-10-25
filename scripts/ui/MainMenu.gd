@@ -78,11 +78,12 @@ func _ready() -> void:
 		cached_save = SaveSystem.load_slot(index)
 		var campaign_data: Dictionary = cached_save.get("simulation", {}).get("campaign", {})
 		continue_button.disabled = cached_save.is_empty() or not campaign_data.get("active", false) or campaign_data.get("iron_dead", false)
+		continue_button.tooltip_text=LocalizationManager.get_string("ui.no_campaign_save") if continue_button.disabled else ""
 	)
 	continue_button = action(column, "ui.continue", func():
 		CampaignSystem.pending_load = cached_save
 		CampaignSystem.restore_state(cached_save.get("simulation", {}).get("campaign", {}))
-		get_tree().change_scene_to_file("res://scenes/world/march.tscn")
+		MarchTransition.go_to("res://scenes/world/march.tscn")
 	)
 	var campaign: Dictionary = cached_save.get("simulation", {}).get("campaign", {})
 	continue_button.disabled = cached_save.is_empty() or not campaign.get("active", false) or campaign.get("iron_dead", false)
@@ -100,7 +101,7 @@ func _ready() -> void:
 		SettingsManager.language_confirmed=true
 		SettingsManager.save_settings()
 		CampaignSystem.new_campaign(difficulty_choice.selected, iron_choice.button_pressed)
-		get_tree().change_scene_to_file("res://scenes/world/march.tscn")
+		MarchTransition.go_to("res://scenes/world/march.tscn")
 	)
 	var credits_button:=action(column,"ui.credits",open_credits)
 	credits_button.name="CreditsButton"
@@ -141,3 +142,6 @@ func open_credits() -> void:
 	panel.closed.connect(func():
 		if is_instance_valid(previous_focus):previous_focus.grab_focus()
 	)
+
+func _notification(what:int) -> void:
+	if what==NOTIFICATION_WM_CLOSE_REQUEST:get_tree().quit()

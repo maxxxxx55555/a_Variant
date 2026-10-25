@@ -6,14 +6,14 @@ extends Control
 @onready var settings_btn: Button = $MarginContainer/VBoxContainer/SettingsBtn
 @onready var exit_btn: Button = $MarginContainer/VBoxContainer/ExitBtn
 
-@onready var settings_panel: VBoxContainer = $MarginContainer/SettingsPanel
-@onready var lang_option: OptionButton = $MarginContainer/SettingsPanel/LangOption
-@onready var master_slider: HSlider = $MarginContainer/SettingsPanel/MasterSlider
-@onready var music_slider: HSlider = $MarginContainer/SettingsPanel/MusicSlider
-@onready var sfx_slider: HSlider = $MarginContainer/SettingsPanel/SFXSlider
-@onready var ui_slider: HSlider = $MarginContainer/SettingsPanel/UISlider
-@onready var bobbing_check: CheckBox = $MarginContainer/SettingsPanel/BobbingCheck
-@onready var shake_check: CheckBox = $MarginContainer/SettingsPanel/ShakeCheck
+@onready var settings_panel: VBoxContainer = $MarginContainer/SettingsScroll/SettingsPanel
+@onready var lang_option: OptionButton = $MarginContainer/SettingsScroll/SettingsPanel/LangOption
+@onready var master_slider: HSlider = $MarginContainer/SettingsScroll/SettingsPanel/MasterSlider
+@onready var music_slider: HSlider = $MarginContainer/SettingsScroll/SettingsPanel/MusicSlider
+@onready var sfx_slider: HSlider = $MarginContainer/SettingsScroll/SettingsPanel/SFXSlider
+@onready var ui_slider: HSlider = $MarginContainer/SettingsScroll/SettingsPanel/UISlider
+@onready var bobbing_check: CheckBox = $MarginContainer/SettingsScroll/SettingsPanel/BobbingCheck
+@onready var shake_check: CheckBox = $MarginContainer/SettingsScroll/SettingsPanel/ShakeCheck
 
 func _ready() -> void:
 	EventBus.language_changed.connect(func(_lang): localize())
@@ -36,6 +36,26 @@ func _ready() -> void:
 	motion.button_pressed=SettingsManager.reduced_motion
 	settings_panel.add_child(motion)
 	motion.toggled.connect(func(enabled):SettingsManager.reduced_motion=enabled)
+	var sensitivity_label:=Label.new()
+	sensitivity_label.name="SensitivityLabel"
+	settings_panel.add_child(sensitivity_label)
+	var sensitivity:=HSlider.new()
+	sensitivity.name="MouseSensitivity"
+	sensitivity.min_value=0.0005
+	sensitivity.max_value=0.01
+	sensitivity.step=0.0001
+	sensitivity.value=SettingsManager.mouse_sensitivity
+	settings_panel.add_child(sensitivity)
+	sensitivity.value_changed.connect(func(value):SettingsManager.mouse_sensitivity=value)
+	var quality_label:=Label.new()
+	quality_label.name="QualityLabel"
+	settings_panel.add_child(quality_label)
+	var quality:=OptionButton.new()
+	quality.name="MSAAQuality"
+	for level in ["", "2×", "4×", "8×"]:quality.add_item(level)
+	quality.selected=SettingsManager.msaa_quality
+	settings_panel.add_child(quality)
+	quality.item_selected.connect(func(index):SettingsManager.msaa_quality=index;SettingsManager.apply_settings())
 	init_settings_ui()
 	localize()
 	var slot_choice := OptionButton.new()
@@ -49,14 +69,12 @@ func _ready() -> void:
 		menu_button.name="ToMenuButton"
 		menu_button.text = LocalizationManager.get_string("ui.to_menu")
 		$MarginContainer/VBoxContainer.add_child(menu_button)
-		menu_button.pressed.connect(func():
-			_on_save(true)
-			get_tree().paused = false
-			get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
-		)
+		menu_button.pressed.connect(_return_to_menu)
 		if CampaignSystem.iron_mode:
 			slot_choice.disabled = true
 			load_btn.disabled = true
+			slot_choice.tooltip_text=LocalizationManager.get_string("ui.iron_no_load")
+			load_btn.tooltip_text=slot_choice.tooltip_text
 
 func localize() -> void:
 	resume_btn.text = LocalizationManager.get_string("ui.respawn" if GameState.player_hp <= 0 else "ui.resume")
@@ -64,10 +82,15 @@ func localize() -> void:
 	load_btn.text = LocalizationManager.get_string("ui.load")
 	settings_btn.text = LocalizationManager.get_string("ui.settings")
 	exit_btn.text = LocalizationManager.get_string("ui.exit")
-	var labels := {"LangLabel": "ui.language", "MasterLabel": "ui.volume_master", "MusicLabel": "ui.volume_music", "SFXLabel": "ui.volume_sfx", "UILabel": "ui.volume_ui", "BobbingCheck": "ui.camera_bobbing", "ShakeCheck": "ui.camera_shake", "ReducedMotionCheck":"ui.reduced_motion"}
+	var labels := {"LangLabel": "ui.language", "MasterLabel": "ui.volume_master", "MusicLabel": "ui.volume_music", "SFXLabel": "ui.volume_sfx", "UILabel": "ui.volume_ui", "BobbingCheck": "ui.camera_bobbing", "ShakeCheck": "ui.camera_shake", "ReducedMotionCheck":"ui.reduced_motion", "SensitivityLabel":"ui.mouse_sensitivity", "QualityLabel":"ui.msaa_quality"}
 	for node_name in labels:
 		settings_panel.get_node(node_name).text = LocalizationManager.get_string(labels[node_name])
 
+	settings_panel.get_node("MouseSensitivity").tooltip_text=LocalizationManager.get_string("ui.mouse_hint")
+	settings_panel.get_node("MSAAQuality").tooltip_text=LocalizationManager.get_string("ui.msaa_hint")
+	settings_panel.get_node("MSAAQuality").set_item_text(0,LocalizationManager.get_string("ui.msaa_off"))
+	var back:Button=settings_panel.get_node_or_null("BackButton")
+	if back:back.text=LocalizationManager.get_string("ui.resume")
 	var slots:OptionButton=find_child("SaveSlotChoice",true,false)
 	if slots:
 		for i in 5:slots.set_item_text(i,LocalizationManager.get_string("ui.slot")+" "+str(i+1))
@@ -86,6 +109,8 @@ func init_settings_ui() -> void:
 	ui_slider.set_value_no_signal(SettingsManager.ui_volume)
 	bobbing_check.set_pressed_no_signal(SettingsManager.camera_bobbing)
 	shake_check.set_pressed_no_signal(SettingsManager.camera_shake)
+	settings_panel.get_node("MouseSensitivity").set_value_no_signal(SettingsManager.mouse_sensitivity)
+	settings_panel.get_node("MSAAQuality").select(SettingsManager.msaa_quality)
 
 func _on_resume() -> void:
 	SettingsManager.save_settings()
@@ -97,9 +122,9 @@ func _on_resume() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	get_tree().current_scene._sync_menu_state()
 
-func _on_save(autosave: bool = false) -> void:
+func _on_save(autosave: bool = false) -> bool:
 	if GameState.player_hp <= 0:
-		return
+		return false
 	var world_node = get_tree().current_scene
 	var world_data = {}
 	if world_node and world_node.has_method("get_world_state"):
@@ -113,7 +138,7 @@ func _on_save(autosave: bool = false) -> void:
 		"world": world_data,
 		"simulation": capture_simulation()
 	}
-	SaveSystem.save_game(state_data, autosave)
+	return SaveSystem.save_game(state_data, autosave)
 
 func _on_load() -> void:
 	if CampaignSystem.active and CampaignSystem.iron_mode:
@@ -143,6 +168,7 @@ func _on_load() -> void:
 
 func _on_toggle_settings() -> void:
 	settings_panel.visible = not settings_panel.visible
+	$MarginContainer/SettingsScroll.visible=settings_panel.visible
 	$MarginContainer/VBoxContainer.visible = not settings_panel.visible
 	if settings_panel.visible:
 		init_settings_ui()
@@ -164,8 +190,17 @@ func _on_lang_selected(idx: int) -> void:
 
 func _on_exit() -> void:
 	SettingsManager.save_settings()
-	if CampaignSystem.active: _on_save(true)
+	if CampaignSystem.active and GameState.player_hp>0 and not _on_save(true):
+		MarchTransition.confirm_unsaved(func():return _on_save(true),get_tree().quit)
+		return
 	get_tree().quit()
+
+func _return_to_menu() -> void:
+	SettingsManager.save_settings()
+	if GameState.player_hp>0 and not _on_save(true):
+		MarchTransition.confirm_unsaved(func():return _on_save(true),func():MarchTransition.go_to("res://scenes/ui/main_menu.tscn"))
+		return
+	MarchTransition.go_to("res://scenes/ui/main_menu.tscn")
 
 func capture_simulation() -> Dictionary:
 	return {

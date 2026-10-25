@@ -148,6 +148,11 @@ func localize() -> void:
 func refresh() -> void:
 	if not is_instance_valid(roster):
 		return
+	for control in find_children("*","Button",true,false):
+		var key:String=control.get_meta("text_key","")
+		if key.begins_with("order.") or key.begins_with("formation.") or key=="ui.disband":
+			control.disabled=ArmySystem.squads.is_empty()
+			control.tooltip_text=LocalizationManager.get_string("ui.recruit_first") if control.disabled else ""
 	roster.clear()
 	for squad in ArmySystem.squads:
 		var data = load(squad.unit_res_path)

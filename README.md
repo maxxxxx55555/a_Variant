@@ -1,3 +1,9 @@
+## Current edition scope — v2 integration in progress
+
+The compact campaign has60 dependency-linked objectives across eight regions,14 towns and40 points of interest, four recruitable companions, four squad types,25 potion recipes and12 forge blueprints. Its endings resolve alliances, conquest or a mixture. Boot/loading tips, persistent camera/MSAA controls and explicit failed-save exit handling are part of the v2 work; a new public release remains locked until the full gate passes.
+
+The older GAME_DESIGN/FULL_BOOK are a broader archived roadmap, not additional advertised features. **Not in this edition:** enterable cave/cellar networks, physical caravan robbery/escort economy, individual age/sex/water/epidemic simulation, player skill trees, timed parry/dodge invulnerability or player bow combat, extra equipment slots/grid/filter UI, command-wheel/RTS selection, cavalry, full branching narrative investigations, six reverb zones, advanced accessibility/render presets, and separate economic/liberation/political-collapse endings. Individual differences and all original promises are indexed in [the edition matrix](docs/PROMISE_MATRIX.md); its complete inventory retains the original words and line references. Compatibility rendering uses non-volumetric fog and does not provide SDFGI/SSR/SSAO. Performance figures describe the tested host, not every hardware target.
+
 # Marchland Oaths — 1.5.0
 
 Live Russian/English menu updates and 639 catalog keys, preserving the current save/difficulty selection. Four distinct Gemini/Lyria mood compositions, two 20-second musical finales, independent Master/Music/SFX/UI levels, reduced motion, functional credits and coherent application icons. Existing protected profiles and legacy user-data directories remain compatible.

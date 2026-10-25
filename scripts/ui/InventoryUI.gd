@@ -49,6 +49,9 @@ func refresh_equipment() -> void:
 	torso_btn.text = get_slot_text("torso")
 	legs_btn.text = get_slot_text("legs")
 	weapon_btn.text = get_slot_text("weapon")
+	for pair in [[head_btn,"head"],[torso_btn,"torso"],[legs_btn,"legs"],[weapon_btn,"weapon"]]:
+		pair[0].disabled=GameState.equipment.get(pair[1])==null
+		pair[0].tooltip_text=LocalizationManager.get_string("ui.empty" if pair[0].disabled else "ui.unequip")
 
 func get_slot_text(slot_name: String) -> String:
 	var slot_title = LocalizationManager.get_string("ui.slot_" + slot_name)

@@ -80,7 +80,7 @@ func _ready() -> void:
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST and is_instance_valid(pause_menu):
-		pause_menu._on_save(true)
+		pause_menu._on_exit()
 
 func build_town(data: Dictionary) -> void:
 	var origin := Vector3(data.x, terrain.ground_at(data.x, data.z), data.z)
@@ -265,6 +265,7 @@ func _sync_menu_state() -> void:
 		get_tree().paused = true
 		hud.hide()
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	AudioManager.set_scene_paused(get_tree().paused)
 
 func toggle_pause() -> void:
 	if is_instance_valid(ending_panel):
@@ -374,6 +375,7 @@ func apply_snapshot(data: Dictionary) -> void:
 
 func show_ending(route: String) -> void:
 	if is_instance_valid(ending_panel): return
+	pause_menu._on_save(true)
 	AudioManager.play_finale(true)
 	for menu in [inventory_ui, settlement_ui, alchemy_ui, strategy_ui, town_ui, pause_menu]:
 		menu.hide()

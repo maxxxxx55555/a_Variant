@@ -2554,5 +2554,125 @@
   "ui.no_campaign_save": {
     "ru": "В этом слоте нет активной кампании.",
     "en": "This slot has no living campaign to continue."
+  },
+  "flow.loading": {
+    "ru": "Готовим путешествие",
+    "en": "Preparing your journey"
+  },
+  "flow.tip.0": {
+    "ru": "Сохраняйтесь у поселений. В железном режиме гибель окончательна.",
+    "en": "Save near settlements. In iron mode, death is permanent."
+  },
+  "flow.tip.1": {
+    "ru": "Договоры открывают дороги. Армия требует еды и жалования.",
+    "en": "Treaties open roads. Your army needs food and wages."
+  },
+  "flow.tip.2": {
+    "ru": "Блокируйте вовремя и следите за выносливостью.",
+    "en": "Time your blocks and keep an eye on stamina."
+  },
+  "flow.error": {
+    "ru": "Не удалось загрузить сцену. Вернитесь в главное меню.",
+    "en": "This scene could not be loaded. Return to the title."
+  },
+  "ui.msaa_quality": {
+    "ru": "Сглаживание",
+    "en": "Anti-aliasing"
+  },
+  "ui.msaa_off": {
+    "ru": "Выключено",
+    "en": "Off"
+  },
+  "ui.mouse_hint": {
+    "ru": "Скорость поворота камеры. Изменение применяется сразу.",
+    "en": "Camera turn speed. Changes apply immediately."
+  },
+  "ui.msaa_hint": {
+    "ru": "Более высокое сглаживание смягчает края и требует больше ресурсов GPU.",
+    "en": "Higher anti-aliasing smooths edges and uses more GPU power."
+  },
+  "ui.unsaved_title": {
+    "ru": "Сохранение не удалось",
+    "en": "Progress could not be saved"
+  },
+  "ui.unsaved_body": {
+    "ru": "Прогресс ещё не записан. Повторите сохранение или оставайтесь в игре.",
+    "en": "Your progress is still unsaved. Retry the save or stay in the game."
+  },
+  "ui.retry_save": {
+    "ru": "Повторить сохранение",
+    "en": "Retry save"
+  },
+  "ui.discard_exit": {
+    "ru": "Выйти без сохранения",
+    "en": "Exit without saving"
+  },
+  "ui.stay": {
+    "ru": "Остаться",
+    "en": "Stay"
+  },
+  "ui.iron_no_load": {
+    "ru": "В железном режиме доступно только продолжение единственного сохранения.",
+    "en": "Iron mode uses a single continuous save; manual loading is disabled."
+  },
+  "ui.select_recipe": {
+    "ru": "Выберите рецепт.",
+    "en": "Choose a recipe."
+  },
+  "ui.brew_requirements": {
+    "ru": "Нужны все ингредиенты и свободное место в инвентаре.",
+    "en": "Requires every ingredient and free inventory space."
+  },
+  "ui.travel_requirements": {
+    "ru": "Откройте дорогу, завершите бой и соберите припасы для пути.",
+    "en": "Unlock the road, finish combat and afford the displayed travel supplies."
+  },
+  "ui.max_level": {
+    "ru": "Достигнут максимальный уровень.",
+    "en": "Maximum level reached."
+  },
+  "ui.resources_required": {
+    "ru": "Недостаточно указанных ресурсов.",
+    "en": "You need the displayed resources."
+  },
+  "ui.craft_requirements": {
+    "ru": "Выберите чертёж. Нужны кузница, ресурсы и свободное место.",
+    "en": "Choose a blueprint. Requires a forge, materials and free inventory space."
+  },
+  "ui.repair_requirements": {
+    "ru": "Нужна повреждённая экипировка и золото на ремонт.",
+    "en": "Requires damaged equipped gear and enough repair gold."
+  },
+  "ui.delivery_requirements": {
+    "ru": "Поставка уже выполнена либо не хватает указанных припасов.",
+    "en": "The delivery is complete, or its displayed supplies are missing."
+  },
+  "ui.report_requirements": {
+    "ru": "Сначала заключите союз или завоюйте этот регион.",
+    "en": "First ally with or conquer this region."
+  },
+  "ui.recruit_first": {
+    "ru": "Сначала наберите отряд.",
+    "en": "Recruit a squad first."
+  },
+  "siege.begin_requirements": {
+    "ru": "Нужны свободная армия из 3 бойцов и припасы: еда 12, дерево 8, золото 15. Регион должен быть независим.",
+    "en": "Requires an available army of3, food12, wood8 and gold15; the region must be independent."
+  },
+  "siege.wait_requirements": {
+    "ru": "Нужна действующая блокада. В бою ожидание недоступно.",
+    "en": "Requires an active blockade; waiting is unavailable during combat."
+  },
+  "siege.surrender_requirements": {
+    "ru": "Истощите припасы до 0 и мораль до 30 или ниже.",
+    "en": "Reduce supplies to0 and morale to30 or lower."
+  },
+  "siege.lift_requirements": {
+    "ru": "Сначала начните блокаду.",
+    "en": "Start a blockade first."
+  },
+  "siege.assault_requirements": {
+    "ru": "Нужны день блокады, 3 бойца, дерево 10 и еда 5.",
+    "en": "Requires a day of blockade,3 soldiers, wood10 and food5."
   }
 }

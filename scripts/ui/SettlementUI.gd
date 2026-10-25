@@ -104,6 +104,7 @@ func refresh_ui() -> void:
 	var repair_cost := GameState.get_repair_cost()
 	repair_button.text = LocalizationManager.get_string("ui.repair", {"cost": int(repair_cost)})
 	repair_button.disabled = repair_cost <= 0 or EconomySystem.stockpiles.gold < repair_cost
+	repair_button.tooltip_text=LocalizationManager.get_string("ui.repair_requirements") if repair_button.disabled else ""
 	var values := {"taxes": ["low", "normal", "high"], "rations": ["half", "full"], "conscription": ["voluntary", "forced"]}
 	for law in law_options:
 		law_labels[law].text = LocalizationManager.get_string("law." + law)

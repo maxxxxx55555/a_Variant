@@ -167,7 +167,7 @@ func trade_caption(control:Button) -> void:
 	var price:float=WorkshopSystem.price_for(control.get_meta("trade_resource"),10,buying)
 	control.disabled=not CampaignSystem.can_pay({"gold":price} if buying else {control.get_meta("trade_resource"):10})
 	control.text=LocalizationManager.get_string(control.get_meta("text_key"))+" 10 · "+str(snappedf(price,0.1))+" "+LocalizationManager.get_string("town.coin")
-	control.tooltip_text=control.text+" · "+LocalizationManager.get_string("ui."+control.get_meta("trade_resource"))
+	control.tooltip_text=(LocalizationManager.get_string("ui.resources_required")+" · " if control.disabled else "")+control.text+" · "+LocalizationManager.get_string("ui."+control.get_meta("trade_resource"))
 
 func open(id: String) -> void:
 	town_id = id
@@ -195,6 +195,10 @@ func refresh() -> void:
 	assault_button.disabled = not blockading or siege.get("days", 0) < 1 or ArmySystem.get_total_soldiers() < 3 or not CampaignSystem.can_pay(SiegeSystem.ASSAULT)
 	siege_status.text = LocalizationManager.get_string("siege.help") if siege.is_empty() else LocalizationManager.get_string("siege.status", {"days": siege.days, "supplies": int(siege.supplies), "morale": int(siege.morale), "wall": int(siege.wall_hp)})
 	report_button.disabled = not CampaignSystem.bound(town.faction)
+	delivery_button.tooltip_text=LocalizationManager.get_string("ui.delivery_requirements") if delivery_button.disabled else ""
+	report_button.tooltip_text=LocalizationManager.get_string("ui.report_requirements") if report_button.disabled else ""
+	for pair in [[blockade_button,"siege.begin_requirements"],[wait_button,"siege.wait_requirements"],[surrender_button,"siege.surrender_requirements"],[retreat_button,"siege.lift_requirements"],[assault_button,"siege.assault_requirements"]]:
+		pair[0].tooltip_text=LocalizationManager.get_string(pair[1]) if pair[0].disabled else ""
 	if siege.get("phase", "") == "assault": siege_status.text += "\n" + LocalizationManager.get_string("siege.breach_help")
 	if CampaignSystem.bound(town.faction): siege_status.text = LocalizationManager.get_string("siege.secured")
 	for label in find_children("*","Label",true,false):

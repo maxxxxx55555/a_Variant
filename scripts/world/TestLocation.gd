@@ -145,11 +145,16 @@ func toggle_alchemy() -> void:
 func _sync_menu_state() -> void:
 	var menu_open := inventory_ui.visible or pause_menu.visible or alchemy_ui.visible or settlement_ui.visible or (is_instance_valid(strategy_ui) and strategy_ui.visible)
 	get_tree().paused = menu_open
+	AudioManager.set_scene_paused(menu_open)
 	hud.visible = not menu_open
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE if menu_open else Input.MOUSE_MODE_CAPTURED
 
 func toggle_pause() -> void:
 	if GameState.player_hp <= 0:
+		return
+	if pause_menu.visible:
+		if pause_menu.settings_panel.visible:pause_menu._on_toggle_settings()
+		else:pause_menu._on_resume()
 		return
 	if inventory_ui.visible or (alchemy_ui and alchemy_ui.visible) or (settlement_ui and settlement_ui.visible) or strategy_ui.visible:
 		inventory_ui.visible = false
