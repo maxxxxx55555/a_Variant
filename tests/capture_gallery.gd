@@ -10,7 +10,7 @@ func shot(suffix: String) -> void:
 
 func run() -> void:
 	await process_frame
-	root.get_node("LocalizationManager").set_language("en")
+	root.get_node("LocalizationManager").set_language(OS.get_environment("GAME_LANGUAGE") if OS.get_environment("GAME_LANGUAGE") in ["ru","en"] else "en")
 	var menu: Control = load("res://scenes/ui/main_menu.tscn").instantiate()
 	root.add_child(menu)
 	current_scene = menu

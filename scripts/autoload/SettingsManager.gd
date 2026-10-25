@@ -11,6 +11,7 @@ var mouse_sensitivity: float = 0.003
 var camera_bobbing: bool = false
 var camera_shake: bool = false
 var language: String = "ru"
+var language_confirmed: bool = false
 
 func _ready() -> void:
 	load_settings()
@@ -34,6 +35,7 @@ func save_settings() -> void:
 	config.set_value("gameplay", "camera_bobbing", camera_bobbing)
 	config.set_value("gameplay", "camera_shake", camera_shake)
 	config.set_value("language", "lang", language)
+	config.set_value("language", "confirmed", language_confirmed)
 
 	if not valid_settings(config) or not Guard.atomic_text(SETTINGS_FILE,config.encode_to_text()):
 		IntegrityLogger.log_anomaly("SettingsManager", "Failed to save valid settings")
@@ -52,6 +54,7 @@ func valid_settings(config: ConfigFile) -> bool:
 
 func load_settings() -> void:
 	var config = ConfigFile.new()
+	language="ru" if OS.get_locale_language()=="ru" else "en"
 	var text:=Guard.bounded_text(SETTINGS_FILE)
 	var valid: bool=not text.is_empty() and text.length()<=65536 and Guard.safe_text(text)
 	if valid: valid=config.parse(text)==OK and valid_settings(config)
@@ -64,4 +67,6 @@ func load_settings() -> void:
 		camera_bobbing = config.get_value("gameplay", "camera_bobbing", false)
 		camera_shake = config.get_value("gameplay", "camera_shake", false)
 		language = config.get_value("language", "lang", "ru")
+		language_confirmed = config.get_value("language", "confirmed", true)==true
+	if OS.get_environment("GAME_LANGUAGE") in ["ru","en"]:language=OS.get_environment("GAME_LANGUAGE")
 	call_deferred("apply_settings")
