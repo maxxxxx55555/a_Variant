@@ -6,7 +6,7 @@ var terrain: Node3D
 var town_ui: Control
 var scan_time: float = 0
 var autosave_time: float = 0
-var ending_panel: PanelContainer
+var ending_panel: Control
 var companion_actors: Dictionary = {}
 var current_ambience: String = "forest"
 var siege_gates: Dictionary = {}
@@ -372,52 +372,16 @@ func show_ending(route: String) -> void:
 	if is_instance_valid(ending_panel): return
 	for menu in [inventory_ui, settlement_ui, alchemy_ui, strategy_ui, town_ui, pause_menu]:
 		menu.hide()
-	ending_panel = PanelContainer.new()
+	ending_panel = preload("res://scripts/ui/CampaignFinale.gd").new()
 	ending_panel.name = "CampaignEnding"
+	ending_panel.route = route
+	ending_panel.quests = completed_count()
+	ending_panel.days = TimeSystem.current_day
 	$CanvasLayer.add_child(ending_panel)
 	ending_panel.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	ending_panel.z_index = 80
-	var backdrop := StyleBoxFlat.new()
-	backdrop.bg_color = Color("122024")
-	ending_panel.add_theme_stylebox_override("panel", backdrop)
-	var center := CenterContainer.new()
-	ending_panel.add_child(center)
-	var card := PanelContainer.new()
-	card.custom_minimum_size = Vector2(1050, 480)
-	center.add_child(card)
-	var card_style := StyleBoxFlat.new()
-	card_style.bg_color = Color("203237")
-	card_style.border_color = Color("9e895e")
-	card_style.set_border_width_all(2)
-	card.add_theme_stylebox_override("panel", card_style)
-	var margin := MarginContainer.new()
-	for side in ["left", "right", "top", "bottom"]:
-		margin.add_theme_constant_override("margin_" + side, 44)
-	card.add_child(margin)
-	var column := VBoxContainer.new()
-	column.add_theme_constant_override("separation", 24)
-	margin.add_child(column)
-	var title := Label.new()
-	title.text = LocalizationManager.get_string("ending." + route)
-	title.add_theme_font_size_override("font_size", 40)
-	title.add_theme_color_override("font_color", Color("dfc692"))
-	title.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	column.add_child(title)
-	var body := Label.new()
-	body.text = LocalizationManager.get_string("ending.body", {"quests": completed_count(), "days": TimeSystem.current_day})
-	body.add_theme_font_size_override("font_size", 28)
-	body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	body.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	column.add_child(body)
-	var continue_button := Button.new()
-	continue_button.name = "ContinueEnding"
-	continue_button.text = LocalizationManager.get_string("ui.continue_world")
-	continue_button.custom_minimum_size.y = 64
-	continue_button.add_theme_font_size_override("font_size", 26)
-	column.add_child(continue_button)
-	continue_button.pressed.connect(close_ending)
+	ending_panel.continued.connect(close_ending)
 	_sync_menu_state()
-	continue_button.grab_focus()
 
 func close_ending() -> void:
 	ending_panel.queue_free()

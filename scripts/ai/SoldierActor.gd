@@ -67,6 +67,7 @@ func _physics_process(delta: float) -> void:
 		var reach: float = data.range_distance * (WeatherSystem.archery_range_modifier if "archers" in squad.unit_res_path else 1.0)
 		if best_distance <= reach and attack_cooldown <= 0 and preload("res://scripts/characters/CombatSight.gd").clear(self, target_enemy):
 			attack_cooldown = 1.1
+			MarchArt.animate_attack(visual)
 			target_enemy.take_damage(data.damage * represented_count * (0.5 + squad.morale / 200.0))
 			AudioManager.play_at("swing", global_position)
 			destination = global_position

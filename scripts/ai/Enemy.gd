@@ -91,6 +91,7 @@ func _physics_process(delta: float) -> void:
 		visual.rotation.x = -0.22 if windup > 0 else 0.0
 
 func attack_player() -> void:
+	MarchArt.animate_attack(visual)
 	attack_cooldown = 1.5
 	windup = 0.35
 

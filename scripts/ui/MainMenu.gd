@@ -35,7 +35,7 @@ func _ready() -> void:
 	var title := Label.new()
 	title.text = LocalizationManager.get_string("ui.title")
 	title.add_theme_font_size_override("font_size", 56)
-	title.add_theme_font_override("font", load("res://assets/fonts/Alegreya.ttf"))
+	title.add_theme_font_override("font", load("res://assets/fonts/Literata.ttf"))
 	title.add_theme_color_override("font_color", Color("dfc692"))
 	column.add_child(title)
 	var subtitle := Label.new()

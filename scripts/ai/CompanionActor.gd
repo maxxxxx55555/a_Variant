@@ -59,6 +59,7 @@ func _physics_process(delta: float) -> void:
 		var reach: float = 14 if companion_id == "archer_scout" else 2.2
 		if nearest <= reach and cooldown <= 0 and preload("res://scripts/characters/CombatSight.gd").clear(self, enemy_target):
 			cooldown = 1.25
+			MarchArt.animate_attack(visual)
 			enemy_target.take_damage(data.damage)
 			AudioManager.play_at("swing", global_position)
 			destination = global_position
