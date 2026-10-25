@@ -41,9 +41,13 @@ func _ready() -> void:
 	var sky_material := PanoramaSkyMaterial.new()
 	sky_material.panorama = load("res://assets/art/realistic/sky/dusk.hdr")
 	sky_material.energy_multiplier = 0.38
-	var sky := Sky.new()
+	# Keep the scene-owned Sky alive: replacing a newly dirtied Sky can orphan
+	# its queued GLES radiance allocation before the first renderer update.
+	var sky: Sky = environment.sky
+	if sky == null:
+		sky = Sky.new()
+		environment.sky = sky
 	sky.sky_material = sky_material
-	environment.sky = sky
 	environment.background_mode = Environment.BG_SKY
 	preload("res://scripts/world/Meadow.gd").build(self, terrain, Vector2(0, 12))
 	MarchArt.house(self, Vector3(-9, terrain.ground_at(-9, 12), 12), Color("a49878"))

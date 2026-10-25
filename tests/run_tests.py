@@ -44,6 +44,7 @@ def main():
         for case in ['identity', 'siege', 'civilians', 'combat_cover', 'terrain_sampling', 'weapon_view', 'house_cache', 'art_assets', 'movement_comfort', 'save_guard', 'legacy_migration', 'actor_material_lifetime', 'settings_bounds']:
             if (project / ('tests/test_' + case + '.gd')).exists():
                 cases.append((case, ['--headless', '--script', 'res://tests/test_' + case + '.gd']))
+        cases.append(('world-sky-lifetime', ([] if args.rendered else ['--headless']) + ['--resolution', '1280x720', '--script', 'res://tests/test_world_sky_lifetime.gd']))
         cases.append(('clear-play', ([] if args.rendered else ['--headless']) + ['--resolution', '540x960' if portrait else '1280x720', '--script', 'res://tests/test_clear_play.gd']))
         cases.append(('premium-ui', ([] if args.rendered else ['--headless']) + ['--resolution', '540x960' if portrait else '1280x720', '--script', 'res://tests/test_premium_ui.gd']))
         for case in ['detailed_figures','weapon_detail','campaign_finale','archer_presentation']:
@@ -75,8 +76,11 @@ def main():
         for name, switches in cases:
             log_path = artifacts / (name + '.log')
             command = [args.godot, '--rendering-method', 'gl_compatibility', '--path', str(project), '--log-file', str(log_path), *switches]
-            result = subprocess.run(command, env=environment, timeout=600 if name.startswith('campaign-route-') else 180)
+            result = subprocess.run(command, env=environment, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=600 if name.startswith('campaign-route-') else 180)
             log = log_path.read_text(encoding='utf-8', errors='replace') if log_path.exists() else 'ERROR: Missing Godot log'
+            console = result.stdout + result.stderr
+            (artifacts / (name + '-console.log')).write_text(console, encoding='utf-8')
+            log += '\n' + console
             errors = [line for line in log.splitlines() if ('ERROR:' in line or 'FAIL:' in line or 'SCRIPT ERROR' in line) and 'Failed to read the root certificate store' not in line]
             print(f'{name}: ' + ('PASS' if result.returncode == 0 and not errors else 'FAIL'))
             for line in log.splitlines():
