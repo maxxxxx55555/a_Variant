@@ -27,7 +27,7 @@ func newest_slot() -> int:
 		var path := slot_path(index)
 		var data := _read_valid_save(path)
 		var valid_path := path
-		if data.is_empty():
+		if data.is_empty() and index != 6:
 			valid_path = backup_path(path)
 			data = _read_valid_save(valid_path)
 		if not data.is_empty() and FileAccess.get_modified_time(valid_path) >= stamp:
@@ -60,7 +60,9 @@ func _store(path: String, data: Dictionary) -> bool:
 
 func save_game(game_data: Dictionary, autosave: bool = false) -> bool:
 	var path := slot_path(6 if CampaignSystem.active and CampaignSystem.iron_mode else 5 if autosave else selected_slot)
-	if not _store(path,game_data): return false
+	if not _store(path,game_data):
+		EventBus.notification_posted.emit(LocalizationManager.get_string("msg.save_write_error"),true)
+		return false
 	EventBus.notification_posted.emit(LocalizationManager.get_string("msg.game_saved"),false)
 	return true
 
@@ -70,7 +72,8 @@ func _load_path(path: String) -> Dictionary:
 	if data.is_empty() and path != slot_path(6):
 		data = _read_valid_save(backup_path(path))
 		recovered = true
-	if not data.is_empty() and (recovered or not Guard.locked(purpose(path))): _store(path,data)
+	if not data.is_empty() and (recovered or not Guard.locked(purpose(path))):
+		if not _store(path,data): EventBus.notification_posted.emit(LocalizationManager.get_string("msg.save_write_error"),true)
 	return data
 
 func load_game() -> Dictionary:

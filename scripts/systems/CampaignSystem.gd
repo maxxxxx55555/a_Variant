@@ -71,6 +71,7 @@ func new_campaign(level: int, iron: bool) -> void:
 	PopulationSystem.jobs = {"farmers": 8, "woodcutters": 5, "miners": 3, "guards": 2, "blacksmiths": 2}
 	EconomySystem.stockpiles = {"food": 150.0, "wood": 80.0, "ore": 40.0, "stone": 50.0, "gold": 200.0}
 	ArmySystem.squads.clear()
+	ArmySystem.selected_squad_index = 0
 	ArmySystem.next_squad_id = 1
 	PopulationSystem.reconcile_workers()
 	SettlementSystem.current_laws = {"taxes": "normal", "rations": "full", "conscription": "voluntary"}
@@ -111,7 +112,9 @@ func talk(id: String) -> void:
 
 func can_pay(cost: Dictionary) -> bool:
 	for resource in cost:
-		if cost[resource] < 0 or EconomySystem.stockpiles.get(resource, 0) < cost[resource]:
+		if not EconomySystem.stockpiles.has(resource) or not (cost[resource] is int or cost[resource] is float):
+			return false
+		if not is_finite(float(cost[resource])) or cost[resource] < 0 or EconomySystem.stockpiles[resource] < cost[resource]:
 			return false
 	return true
 

@@ -5,6 +5,7 @@ const MAX_BYTES := 8 * 1024 * 1024
 const KEY_PATH := "user://save_integrity.key"
 const FOOTER := "\n[save_guard]\n"
 static var cached_key := PackedByteArray()
+static var last_repair_failed := false
 
 static func bounded_text(path: String) -> String:
 	var file := FileAccess.open(path, FileAccess.READ)
@@ -22,7 +23,9 @@ static func atomic_text(path: String, text: String) -> bool:
 	if not file: return false
 	file.store_string(text)
 	file.flush()
+	var status := file.get_error()
 	file.close()
+	if status != OK: return false
 	return DirAccess.rename_absolute(path + ".tmp", path) == OK
 
 static func key() -> PackedByteArray:
@@ -74,8 +77,8 @@ static func safe_text(text: String) -> bool:
 			elif ch == "\"": quoted = false
 			continue
 		if ch == "\"": quoted = true
-		if ch in ["{", "["]: depth += 1
-		if ch in ["}", "]"]: depth -= 1
+		if ch in ["{", "[", "("]: depth += 1
+		if ch in ["}", "]", ")"]: depth -= 1
 		if depth > 32 or depth < 0: return false
 		if ch.to_lower() != ch.to_upper() or ch == "_":
 			word += ch
@@ -145,11 +148,12 @@ static func write_config(path: String, cfg: ConfigFile, purpose: String, validat
 	return lock(purpose)
 
 static func read_config(path: String, purpose: String, validate: Callable) -> ConfigFile:
+	last_repair_failed = false
 	var cfg := config_candidate(path, purpose)
 	var recovered := false
 	if cfg == null or not validate.call(cfg):
 		cfg = config_candidate(path + ".bak", purpose)
 		recovered = true
 	if cfg == null or not validate.call(cfg): return null
-	if recovered or not locked(purpose): write_config(path, cfg, purpose, validate)
+	if recovered or not locked(purpose): last_repair_failed = not write_config(path, cfg, purpose, validate)
 	return cfg

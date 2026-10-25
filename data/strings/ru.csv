@@ -623,3 +623,5 @@ siege.breach_help,Уничтожьте ворота оружием (ЛКМ) и �
 siege.gate,Осадные ворота · {hp}/180 · ЛКМ: удар,Siege gate · {hp}/180 · LMB: strike
 siege.unsupplied,Армия сняла блокаду: не хватает бойцов или припасов.,Your army lifted the blockade: insufficient troops or provisions.
 siege.secured,"Регион под вашим покровительством. Доложите старосте, чтобы открыть следующую дорогу.",This region is secured. Report to the reeve to open the next road.
+msg.inventory_full,В инвентаре нет свободных ячеек. Освободите место.,Inventory is full. Free a slot before collecting more equipment.
+msg.save_write_error,Не удалось сохранить. Проверьте свободное место и повторите сохранение.,Could not save. Check available disk space and try saving again.
