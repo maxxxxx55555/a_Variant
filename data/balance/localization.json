@@ -2448,28 +2448,28 @@
     "en": "Keep the hearth. Forge alliances. Unite the March."
   },
   "ui.town_help": {
-    "ru": "Доставьте припасы и очистите лагерь в 85 метрах к востоку. Святилище на западе укрепляет доверие. Союз в Совете [F]: 60 доверия и 100 золота. Затем доложите старосте. Военный путь: блокада с 3 бойцами, прорыв ворот и победа над гарнизоном либо его капитуляция.",
-    "en": "Deliver supplies and clear the camp 85 metres east. The western shrine earns trust. Alliance in the Council [F]: 60 trust and 100 gold. Return to report. Military route: blockade with 3 troops, breach the gate and defeat the garrison, or negotiate its surrender."
+    "ru": "Доставьте припасы и очистите лагерь в 85 метрах к востоку. Святилище на западе укрепляет доверие. Союз в Совете [R]: 60 доверия и 100 золота. Затем доложите старосте. Военный путь: блокада с 3 бойцами, прорыв ворот и победа над гарнизоном либо его капитуляция.",
+    "en": "Deliver supplies and clear the camp 85 metres east. The western shrine earns trust. Alliance in the Council [R]: 60 trust and 100 gold. Return to report. Military route: blockade with 3 troops, breach the gate and defeat the garrison, or negotiate its surrender."
   },
   "siege.begin": {
-    "ru": "Установить блокаду · 3 бойца / 12 еды / 8 дерева / 15 золота",
-    "en": "Establish blockade · 3 troops / 12 food / 8 timber / 15 gold"
+    "ru": "Блокада · 3 бойца\n12 еды / 8 дерева / 15 золота",
+    "en": "Blockade · 3 troops\n12 food / 8 wood / 15 gold"
   },
   "siege.wait": {
-    "ru": "Держать блокаду 1 день · 6 еды / 2 золота + содержание армии",
-    "en": "Maintain blockade 1 day · 6 food / 2 gold + army upkeep"
+    "ru": "Держать 1 день\n6 еды / 2 золота + содержание",
+    "en": "Hold 1 day\n6 food / 2 gold + upkeep"
   },
   "siege.surrender": {
-    "ru": "Принять капитуляцию истощённого гарнизона",
-    "en": "Negotiate the exhausted garrison’s surrender"
+    "ru": "Принять капитуляцию",
+    "en": "Accept surrender"
   },
   "siege.lift": {
     "ru": "Снять блокаду",
     "en": "Lift blockade"
   },
   "siege.assault": {
-    "ru": "Начать штурм · 10 дерева / 5 еды",
-    "en": "Launch assault · 10 timber / 5 food"
+    "ru": "Штурм ворот\n10 дерева / 5 еды",
+    "en": "Assault gate\n10 wood / 5 food"
   },
   "siege.help": {
     "ru": "Для осады нужны 3 бойца и припасы. Держите блокаду хотя бы день; затем штурмуйте ворота или истощите гарнизон за 3 дня. Содержание жителей и армии оплачивается каждый день.",
@@ -2502,5 +2502,41 @@
   "msg.save_write_error": {
     "ru": "Не удалось сохранить. Проверьте свободное место и повторите сохранение.",
     "en": "Could not save. Check available disk space and try saving again."
+  },
+  "town.journey": {
+    "ru": "Поручение",
+    "en": "Journey"
+  },
+  "town.trade": {
+    "ru": "Торговля",
+    "en": "Trade"
+  },
+  "town.siege": {
+    "ru": "Осада",
+    "en": "Siege"
+  },
+  "town.details": {
+    "ru": "Как играть",
+    "en": "How to play"
+  },
+  "town.coin": {
+    "ru": "зол.",
+    "en": "gold"
+  },
+  "town.next": {
+    "ru": "Обоз → лагерь (85 м на восток) → союз или осада → доклад.",
+    "en": "Supplies → camp (85m east) → alliance or siege → report."
+  },
+  "town.deliver": {
+    "ru": "Передать припасы · 20 еды / 10 дерева / 5 руды",
+    "en": "Deliver · 20 food / 10 wood / 5 ore"
+  },
+  "town.report": {
+    "ru": "Доложить старосте",
+    "en": "Report to the reeve"
+  },
+  "hud.council": {
+    "ru": "Совет",
+    "en": "Council"
   }
 }

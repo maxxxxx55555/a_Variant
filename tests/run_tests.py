@@ -39,6 +39,7 @@ def main():
         for case in ['identity', 'siege', 'civilians', 'combat_cover', 'terrain_sampling', 'weapon_view', 'house_cache', 'art_assets', 'movement_comfort', 'save_guard', 'legacy_migration', 'actor_material_lifetime', 'settings_bounds']:
             if (project / ('tests/test_' + case + '.gd')).exists():
                 cases.append((case, ['--headless', '--script', 'res://tests/test_' + case + '.gd']))
+        cases.append(('clear-play', ([] if args.rendered else ['--headless']) + ['--resolution', '540x960' if portrait else '1280x720', '--script', 'res://tests/test_clear_play.gd']))
         cases.append(('premium-ui', ([] if args.rendered else ['--headless']) + ['--resolution', '540x960' if portrait else '1280x720', '--script', 'res://tests/test_premium_ui.gd']))
         for case in ['detailed_figures','weapon_detail','campaign_finale','archer_presentation']:
             cases.append((case, ['--headless', '--script', 'res://tests/test_' + case + '.gd']))

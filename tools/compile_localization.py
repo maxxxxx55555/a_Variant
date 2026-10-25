@@ -14,7 +14,7 @@ def compile_catalog(root):
                 assert None not in row, f'Malformed CSV: {row}'
                 key = row['key']
                 assert row[language].strip(), f'Empty {language} translation: {key}'
-                result.setdefault(key, {})[language] = row[language].strip()
+                result.setdefault(key, {})[language] = row[language].replace('\r\n','\n').replace('\r','\n').strip()
     for key, value in result.items():
         assert set(value) == {'ru', 'en'}, f'Missing language for {key}'
         assert set(re.findall(r'\{\w+\}', value['ru'])) == set(re.findall(r'\{\w+\}', value['en'])), f'Parameter mismatch: {key}'

@@ -1,3 +1,7 @@
+# Marchland Oaths —1.4.0
+
+The town menu now opens on Journey, with Trade and Siege on separate focused tabs. Trade quotes come from the actual transaction price function, and unaffordable actions are disabled before a failing click. Costs stay visible; full route instructions expand on demand. The HUD uses shorter captions with shortcut tooltips and F1 help. Smooth rounded controls and4xMSAA refine the presentation while keeping the existing detailed animated figures, PBR world, soundtrack and protected profiles.
+
 # Marchland Oaths — 1.3.0
 
 Golos Text body typography, Literata headings and authored slate/pewter controls refresh the interface. Licensed CC0 Quaternius modular human characters add anatomically proportioned heads, clothing, hair and surface maps, retargeted idle/walk/attack animations and hand-attached weapons. Authored steel/leather/brass swords and crossbows distinguish melee and ranged units. A focused illustrated epilogue presents the actual campaign result. Existing PBR scenery, distinct acoustic music and protected saves are retained.

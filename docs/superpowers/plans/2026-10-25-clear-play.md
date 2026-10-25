@@ -1,7 +1,7 @@
 # Clear Play Implementation Plan
 
 **Goal:** Reduce interface reading and improve actual action/control presentation in both playable games.
-**Architecture:** Finance ChoiceCopy/ChoiceCard own presentation only; Main owns real events and short notices. RPG TownMenu owns three tab pages while existing action callbacks and fields remain stable. Shared native themes own rounded scalable surfaces; project viewport owns2xMSAA.
+**Architecture:** Finance ChoiceCopy/ChoiceCard own presentation only; Main owns real events and short notices. RPG TownMenu owns three tab pages while existing action callbacks and fields remain stable. Shared native themes own rounded scalable surfaces; project viewport owns4xMSAA.
 **Tech Stack:** Godot4.7, GDScript, original SVG, existing licensed fonts/figures/PBR; Python build/QA orchestration.
 
 ## Global constraints
@@ -26,7 +26,7 @@ Files: scripts/ui/TownMenu.gd, HUD.gd; data/strings/ru.csv,en.csv; scripts/verif
 ## Task3 — Surfaces and real-time visual clarity
 Files: assets/ui/button-*.svg, scripts/ui/*Theme.gd, a_Variant/project.godot.
 - [ ] Replace only authored SVG surface geometry with smooth rounded surfaces, consistent margins/states/focus; keep existing font families.
-- [ ] Set viewport2xMSAA using engine setting `rendering/anti_aliasing/quality/msaa_3d=1`; render the real rainy world and compare load/FPS/edges. Retain only with acceptable measured play (~45FPS or better on current fixture).
+- [ ] Set viewport4xMSAA using engine setting `rendering/anti_aliasing/quality/msaa_3d=2`; render the real rainy world and compare load/FPS/edges. Retain only with acceptable measured play (~45FPS or better on current fixture).
 - [ ] Complete both source suites after final production changes; fix only reproduced failures and rerun affected checks.
 
 ## Task4 — New release
