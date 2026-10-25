@@ -17,6 +17,10 @@ FOREIGN={
  'a_Variant':re.compile(r'Heirs[ _]?of[ _]?Fortune|HeirsOfFortune|Forbes|ForbesLadder|\bdynasty\b|\bFortune\b|["\x27](?:welcome|study|career|tycoon)["\x27]\s*:',re.I),
  'game_for_day':re.compile(r'Marchland|Oaths of the March|Клятвы Пограничья|march\.tscn|["\x27](?:exploration|settlement|combat|war)["\x27]\s*:|\b(?:siege|faction)\b',re.I)
 }
+FOREIGN_DESIGN={
+ 'a_Variant':re.compile(r'Finance identity|finance (?:portrait|character)|FortuneDashboard',re.I),
+ 'game_for_day':re.compile(r'RPG identity|modular RPG figure|CampaignRoute|60-objective',re.I)
+}
 SECRETS=[re.compile(r'AIza[0-9A-Za-z_-]{30,}'),re.compile(r'gh[pousr]_[0-9A-Za-z]{20,}'),
  re.compile(r'-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----'),
  re.compile(r'(?i)(?:api[_-]?key|access[_-]?token|auth[_-]?token)\s*[=:]\s*["\x27][A-Za-z0-9_/-]{20,}["\x27]')]
@@ -25,7 +29,7 @@ def inspect_text(path,text):
     if any(p.search(text) for p in SECRETS): errors.append(path+': credential material detected')
     # Third-party notices retain their authors' original bytes and names.
     shared=path in EXCEPTIONS or path.startswith('third_party/Godot/')
-    if not shared and FOREIGN[PROFILE].search(text): errors.append(path+': foreign project marker detected')
+    if not shared and (FOREIGN[PROFILE].search(text) or FOREIGN_DESIGN[PROFILE].search(text)): errors.append(path+': foreign project marker detected')
     return errors
 def run_git(*args):
     exe=shutil.which('git')

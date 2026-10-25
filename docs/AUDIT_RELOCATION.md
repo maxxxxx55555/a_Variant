@@ -21,3 +21,6 @@ Two historical1.4 planning documents contained a joint project plan. They now re
 
 ## v2 reconciliation (2026-10-26)
 C11/C12 describe a different architecture and require no content transfer here. The current localization catalog remains authoritative. New v2 work is tracked in RELEASE_V2_PLAN.md; earlier audit rows are historical baseline observations, not final gate claims.
+
+## C13: historical design-copy contamination found by v2
+Three archived design/plan files still mixed unrelated runtime architecture and validation scope despite lacking an exact foreign game title. Each now contains only this game's own design. The canonical design content already exists in its proper repository; no new asset transfer or license edit was necessary. Two new negative tests reproduce the old guard's failure. The guard now rejects copied design labels and foreign runtime paths as well as game names. Full tracked-tree scanning catches the old text before cleanup and passes afterward.

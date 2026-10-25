@@ -17,6 +17,12 @@ class IsolationTests(unittest.TestCase):
     def test_shared_tooling_is_explained(self):
         self.assertEqual([],guard.inspect_text('tools/generate_audio.py','Marchland Oaths Heirs of Fortune'))
         self.assertIn('shared tooling by design',guard.EXCEPTIONS['tools/generate_audio.py'])
+    def test_foreign_design_copy_is_blocked(self):
+        other='Finance identity: private-bank portrait UI' if guard.PROFILE=='a_Variant' else 'RPG identity: frontier chronicle'
+        self.assertTrue(guard.inspect_text('docs/design.md',other))
+    def test_foreign_runtime_path_is_blocked(self):
+        other='res://scripts/ui/FortuneDashboard.gd' if guard.PROFILE=='a_Variant' else 'res://scripts/verification/CampaignRoute.gd'
+        self.assertTrue(guard.inspect_text('docs/plan.md',other))
     def test_normal_text_is_allowed(self):
         self.assertEqual([],guard.inspect_text('scripts/Shipping.gd','var amount=1.0 # no credential'))
 if __name__=='__main__': unittest.main()
