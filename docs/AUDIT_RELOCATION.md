@@ -18,3 +18,6 @@
 
 ## Final tracked-tree audit
 Two historical1.4 planning documents contained a joint project plan. They now retain only this project's own design and validation scope; the other project already has its own originals, so no content transfer was needed. The full tracked-tree isolation check covers historical documents as well as shipping sources.
+
+## v2 reconciliation (2026-10-26)
+C11/C12 describe a different architecture and require no content transfer here. The current localization catalog remains authoritative. New v2 work is tracked in RELEASE_V2_PLAN.md; earlier audit rows are historical baseline observations, not final gate claims.
