@@ -102,8 +102,14 @@ func _ready() -> void:
 		CampaignSystem.new_campaign(difficulty_choice.selected, iron_choice.button_pressed)
 		get_tree().change_scene_to_file("res://scenes/world/march.tscn")
 	)
+	var credits_button:=action(column,"ui.credits",open_credits)
+	credits_button.name="CreditsButton"
 	action(column, "ui.exit", func(): get_tree().quit())
 	EventBus.language_changed.connect(func(_language):localize())
+	localize()
+	if not SettingsManager.reduced_motion:
+		modulate.a=0.9
+		create_tween().tween_property(self,"modulate:a",1.0,0.18)
 	if OS.get_cmdline_user_args().has("--verify-build"):
 		var verification := preload("res://scripts/verification/CampaignRoute.gd").new()
 		get_tree().root.add_child.call_deferred(verification)
@@ -120,8 +126,18 @@ func action(parent: Node, key: String, callback: Callable) -> Button:
 func localize() -> void:
 	for node in find_children("*","Control",true,false):
 		if node.has_meta("locale_key"):node.text=LocalizationManager.get_string(node.get_meta("locale_key"))
+	if continue_button:continue_button.tooltip_text=LocalizationManager.get_string("ui.no_campaign_save") if continue_button.disabled else ""
 	if difficulty_choice:
 		for i in 4:difficulty_choice.set_item_text(i,LocalizationManager.get_string("difficulty."+["story","normal","hard","expert"][i]))
 	var slots:OptionButton=find_child("SlotChoice",true,false)
 	if slots:
 		for i in 7:slots.set_item_text(i,LocalizationManager.get_string("ui.slot")+" "+str(i+1) if i<5 else LocalizationManager.get_string("ui.autosave" if i==5 else "ui.iron_save"))
+
+func open_credits() -> void:
+	if find_child("CreditsPanel",true,false):return
+	var previous_focus:=get_viewport().gui_get_focus_owner()
+	var panel:=preload("res://scripts/ui/MarchCredits.gd").new()
+	add_child(panel)
+	panel.closed.connect(func():
+		if is_instance_valid(previous_focus):previous_focus.grab_focus()
+	)

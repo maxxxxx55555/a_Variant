@@ -2538,5 +2538,21 @@
   "hud.council": {
     "ru": "Совет",
     "en": "Council"
+  },
+  "ui.credits": {
+    "ru": "Авторы и лицензии",
+    "en": "Credits and licenses"
+  },
+  "ui.credits_body": {
+    "ru": "Движок: Godot 4.7 — MIT и сторонние уведомления.\nШрифты: Golos Text, Literata и дополнительные семейства — SIL OFL.\nПерсонажи и анимации: Quaternius — CC0.\nПрирода, здания и предметы: KayKit / Kay Lousberg — CC0.\nPBR-поверхности, небо и сканированные предметы: Poly Haven — CC0.\nИллюстрации и адаптации: оригинальные материалы с указанным происхождением.\nМузыка: Google Gemini / Lyria; исходная тема и новые композиции Lyria RealTime.\nСинтезированные звуковые эффекты: CC0.\nПолные тексты лицензий, авторы и хеши включены в комплект игры.",
+    "en": "Engine: Godot 4.7 — MIT and third-party notices.\nFonts: Golos Text, Literata and supporting families — SIL OFL.\nCharacters and animation: Quaternius — CC0.\nNature, buildings and props: KayKit / Kay Lousberg — CC0.\nPBR surfaces, sky and scanned props: Poly Haven — CC0.\nIllustrations and adaptations: original materials with recorded provenance.\nMusic: Google Gemini / Lyria; the original theme and new Lyria RealTime compositions.\nSynthesized sound effects: CC0.\nComplete license texts, authors and hashes are included with the game."
+  },
+  "ui.reduced_motion": {
+    "ru": "Меньше анимации",
+    "en": "Reduced motion"
+  },
+  "ui.no_campaign_save": {
+    "ru": "В этом слоте нет активной кампании.",
+    "en": "This slot has no living campaign to continue."
   }
 }

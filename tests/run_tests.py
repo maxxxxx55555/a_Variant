@@ -37,6 +37,8 @@ def main():
             ('regressions', ['--headless', '--script', 'res://tests/test_gameplay.gd']),
             ('playthrough', ([] if args.rendered else ['--headless']) + ['--resolution', '540x960' if portrait else '1280x720', '--script', 'res://tests/test_gameplay.gd', '--', '--playthrough']),
         ]
+        cases.append(('credits', ['--headless', '--script', 'res://tests/test_credits.gd']))
+        cases.append(('comfort-preferences', ['--headless', '--script', 'res://tests/test_comfort_preferences.gd']))
         cases.append(('localization', ['--headless', '--script', 'res://tests/test_localization.gd']))
         cases.append(('presentation', ([] if args.rendered else ['--headless']) + ['--resolution', '540x960' if portrait else '1280x720', '--script', 'res://tests/test_presentation.gd']))
         for case in ['identity', 'siege', 'civilians', 'combat_cover', 'terrain_sampling', 'weapon_view', 'house_cache', 'art_assets', 'movement_comfort', 'save_guard', 'legacy_migration', 'actor_material_lifetime', 'settings_bounds']:
@@ -61,6 +63,8 @@ def main():
         verification = subprocess.run([sys.executable, str(project / 'tests/test_verification.py')], timeout=30)
         if verification.returncode:
             return verification.returncode
+        contract = subprocess.run([sys.executable, str(project / 'tests/test_export_contract.py')], timeout=30)
+        if contract.returncode: return contract.returncode
         isolation = subprocess.run([sys.executable, str(project / 'tests/test_repo_isolation.py')], timeout=30)
         if isolation.returncode: return isolation.returncode
         soundtrack = subprocess.run([sys.executable, str(project / 'tests/test_soundtrack.py')], timeout=60)

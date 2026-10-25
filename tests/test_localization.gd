@@ -26,5 +26,8 @@ func run() -> void:
 		check(locale.current_language=="en","Initial selector applies English immediately")
 	var font:Font=load("res://assets/fonts/GolosText.ttf")
 	for letter in "ёЁ«»—":check(font.has_char(letter.unicode_at(0)),"Body font covers "+letter)
+
+	var heading_font:Font=load("res://assets/fonts/Literata.ttf")
+	for letter in "ёЁ«»—":check(heading_font.has_char(letter.unicode_at(0)),"Heading font covers "+letter)
 	print("LOCALIZATION RESULT: ","PASS" if failures==0 else "FAIL"," keys=",locale.translations.size())
 	quit(0 if failures==0 else 1)

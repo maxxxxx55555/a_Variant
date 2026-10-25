@@ -1,3 +1,15 @@
+# Marchland Oaths — 1.5.0
+
+Live Russian/English menu updates and639 catalog keys, preserving the current save/difficulty selection. Four distinct Gemini/Lyria mood compositions, two20-second musical finales, independent Master/Music/SFX/UI levels, reduced motion, functional credits and coherent application icons. Existing protected profiles and legacy user-data directories remain compatible.
+
+## Русский
+
+Живое переключение русского и английского языков без перезагрузки меню. Разные композиции для четырёх настроений, музыкальные финалы, четыре уровня звука, настройка анимации и экран авторов. Каталоги старых сохранений сохранены.
+
+Current release: v1.5.0. Detailed provenance: assets/audio/SOUNDTRACK.md. Localization: docs/LOCALIZATION.md. Scope remains stylized indie art and does not claim GTA V scale. Portable Windows executables are not Authenticode-signed; offline save tamper evidence is not unbreakable DRM.
+
+---
+
 # Marchland Oaths —1.4.0
 
 The town menu now opens on Journey, with Trade and Siege on separate focused tabs. Trade quotes come from the actual transaction price function, and unaffordable actions are disabled before a failing click. Costs stay visible; full route instructions expand on demand. The HUD uses shorter captions with shortcut tooltips and F1 help. Smooth rounded controls and4xMSAA refine the presentation while keeping the existing detailed animated figures, PBR world, soundtrack and protected profiles.

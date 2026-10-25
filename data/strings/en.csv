@@ -640,3 +640,23 @@ town.next,Обоз → лагерь (85 м на восток) → союз ил�
 town.deliver,Передать припасы · 20 еды / 10 дерева / 5 руды,Deliver · 20 food / 10 wood / 5 ore
 town.report,Доложить старосте,Report to the reeve
 hud.council,Совет,Council
+ui.credits,Авторы и лицензии,Credits and licenses
+ui.credits_body,"Движок: Godot 4.7 — MIT и сторонние уведомления.
+Шрифты: Golos Text, Literata и дополнительные семейства — SIL OFL.
+Персонажи и анимации: Quaternius — CC0.
+Природа, здания и предметы: KayKit / Kay Lousberg — CC0.
+PBR-поверхности, небо и сканированные предметы: Poly Haven — CC0.
+Иллюстрации и адаптации: оригинальные материалы с указанным происхождением.
+Музыка: Google Gemini / Lyria; исходная тема и новые композиции Lyria RealTime.
+Синтезированные звуковые эффекты: CC0.
+Полные тексты лицензий, авторы и хеши включены в комплект игры.","Engine: Godot 4.7 — MIT and third-party notices.
+Fonts: Golos Text, Literata and supporting families — SIL OFL.
+Characters and animation: Quaternius — CC0.
+Nature, buildings and props: KayKit / Kay Lousberg — CC0.
+PBR surfaces, sky and scanned props: Poly Haven — CC0.
+Illustrations and adaptations: original materials with recorded provenance.
+Music: Google Gemini / Lyria; the original theme and new Lyria RealTime compositions.
+Synthesized sound effects: CC0.
+Complete license texts, authors and hashes are included with the game."
+ui.reduced_motion,Меньше анимации,Reduced motion
+ui.no_campaign_save,В этом слоте нет активной кампании.,This slot has no living campaign to continue.

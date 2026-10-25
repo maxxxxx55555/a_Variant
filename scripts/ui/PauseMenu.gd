@@ -31,15 +31,22 @@ func _ready() -> void:
 	bobbing_check.toggled.connect(func(v): SettingsManager.camera_bobbing = v)
 	shake_check.toggled.connect(func(v): SettingsManager.camera_shake = v)
 
+	var motion:=CheckBox.new()
+	motion.name="ReducedMotionCheck"
+	motion.button_pressed=SettingsManager.reduced_motion
+	settings_panel.add_child(motion)
+	motion.toggled.connect(func(enabled):SettingsManager.reduced_motion=enabled)
 	init_settings_ui()
 	localize()
 	var slot_choice := OptionButton.new()
+	slot_choice.name="SaveSlotChoice"
 	for index in 5: slot_choice.add_item(LocalizationManager.get_string("ui.slot") + " " + str(index + 1))
 	slot_choice.selected = SaveSystem.selected_slot
 	slot_choice.item_selected.connect(func(index): SaveSystem.selected_slot = index)
 	$MarginContainer/VBoxContainer.add_child(slot_choice)
 	if CampaignSystem.active:
 		var menu_button := Button.new()
+		menu_button.name="ToMenuButton"
 		menu_button.text = LocalizationManager.get_string("ui.to_menu")
 		$MarginContainer/VBoxContainer.add_child(menu_button)
 		menu_button.pressed.connect(func():
@@ -57,9 +64,15 @@ func localize() -> void:
 	load_btn.text = LocalizationManager.get_string("ui.load")
 	settings_btn.text = LocalizationManager.get_string("ui.settings")
 	exit_btn.text = LocalizationManager.get_string("ui.exit")
-	var labels := {"LangLabel": "ui.language", "MasterLabel": "ui.volume_master", "MusicLabel": "ui.volume_music", "SFXLabel": "ui.volume_sfx", "UILabel": "ui.volume_ui", "BobbingCheck": "ui.camera_bobbing", "ShakeCheck": "ui.camera_shake"}
+	var labels := {"LangLabel": "ui.language", "MasterLabel": "ui.volume_master", "MusicLabel": "ui.volume_music", "SFXLabel": "ui.volume_sfx", "UILabel": "ui.volume_ui", "BobbingCheck": "ui.camera_bobbing", "ShakeCheck": "ui.camera_shake", "ReducedMotionCheck":"ui.reduced_motion"}
 	for node_name in labels:
 		settings_panel.get_node(node_name).text = LocalizationManager.get_string(labels[node_name])
+
+	var slots:OptionButton=find_child("SaveSlotChoice",true,false)
+	if slots:
+		for i in 5:slots.set_item_text(i,LocalizationManager.get_string("ui.slot")+" "+str(i+1))
+	var to_menu:Button=find_child("ToMenuButton",true,false)
+	if to_menu:to_menu.text=LocalizationManager.get_string("ui.to_menu")
 
 func init_settings_ui() -> void:
 	lang_option.clear()

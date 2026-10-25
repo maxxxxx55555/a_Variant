@@ -15,6 +15,10 @@ func run() -> void:
 	root.add_child(menu)
 	current_scene = menu
 	await shot("title")
+	menu.open_credits()
+	await shot("credits")
+	menu.find_child("CreditsPanel",true,false).close()
+	await process_frame
 	menu.queue_free()
 	await process_frame
 	root.get_node("CampaignSystem").new_campaign(1, false)
