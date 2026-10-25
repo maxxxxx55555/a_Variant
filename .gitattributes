@@ -1,0 +1,2 @@
+# Preserve creator license downloads byte-for-byte for provenance verification.
+assets/art/humans/*LICENSE.txt -text
