@@ -1,0 +1,13 @@
+# Clear play 1.4 design
+
+The user renews the request after1.3: less text, beautiful normal buttons, better graphics and pleasant complete play. Their previous autonomous execution and approved detailed-stylization direction persist. Inline execution without subagents or approval pauses; keep final two concise English lines. This is a new immutable release, not a replacement of1.3.
+
+Considered: cosmetic recolor alone would leave the text walls; deleting mechanics/help would remove informed decisions; focused action cards and progressive disclosure preserve information with less default clutter. Select the third approach.
+
+Finance: native choice buttons retain their real full action text, hitboxes/focus/signals and original effects. A dedicated view shows a short authored verb label above a quieter effects line; cost, chance and requirements remain available visibly, original full copy remains in the tooltip/accessibility text. The current event stands alone; the last outcome appears as a compact temporary notice instead of another permanent paragraph. Shorten introductory/business/market instructions while retaining goal, costs and transaction semantics. No changes to RNG, money, turns or protected saves. Current Onest/Unbounded/navy/champagne identity stays.
+
+RPG: split the town menu into Journey, Trade and Siege tabs. Keep existing real action Buttons/callbacks and resource summaries; concise labels, readable costs and original explanations on demand. Default to the journey goal, reveal siege-only actions in Siege. Update actual campaign verification to navigate the relevant tab before interacting. Compact top HUD labels and default help to F1; tutorial and contextual interaction remain visible. Preserve Golos/Literata/slate/pewter identity and existing figures/PBR assets. Add bounded 2x MSAA for smoother real 3D edges; compare real captures and benchmark before retaining it.
+
+Both: new smooth rounded satin controls replace busy chamfered edges; content margins, focus, disabled contrast and actual target sizes remain measured. No click animations that move hitboxes. Short copy never hides irreversible costs or risk. RU/EN parity for RPG. Saved sessions from1.3 keep the same directory/key/schema. Distinct soundtracks unchanged and QA muted.
+
+Acceptance: RED->GREEN meaningful tests on actual Main/town tabs and transactions; real GPU screenshots at360/540 portrait and1280 landscape; full source suites; exact Heirs native win/loss and both60-objective RPG routes; Android protected upgrade, actual touch/currency/lifecycle/recovery and endings. New source/build/QA archives, hashes/public release/merged-tree audit. No claim of perfect gameplay, zero bugs, photorealism or AAA production.
