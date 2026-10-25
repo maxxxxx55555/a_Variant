@@ -873,5 +873,29 @@
     "source": "https://raw.githubusercontent.com/KayKit-Game-Assets/KayKit-Character-Pack-Adventures-1.0/672074b73ba276876a19e8816ecdc5241817ab47/addons/kaykit_character_pack_adventures/Assets/gltf/dagger.bin",
     "file": "assets/art/weapons/dagger.bin",
     "sha256": "2ef02dbdc53839cd2506f9dea40dcc401cdda830ae6a887f499333cce0d11be3"
+  },
+  {
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/golostext/GolosText%5Bwght%5D.ttf",
+    "file": "assets/fonts/GolosText.ttf",
+    "sha256": "17bb58fb69aec2dfb047a2ebf52534023e9b688c97a6b7ac795b0a72912c2063",
+    "license": "SIL Open Font License 1.1"
+  },
+  {
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/golostext/OFL.txt",
+    "file": "assets/fonts/GolosText-OFL.txt",
+    "sha256": "ff532f9e8789f09a9fdffc3c0954eedfb0a48be77b2e2eb90f5f82e4f347f50c",
+    "license": "SIL Open Font License 1.1"
+  },
+  {
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/literata/Literata%5Bopsz%2Cwght%5D.ttf",
+    "file": "assets/fonts/Literata.ttf",
+    "sha256": "b41138c9373112f32abb589cc22e8674b06ed4048b0c513be922bdd26f274440",
+    "license": "SIL Open Font License 1.1"
+  },
+  {
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/literata/OFL.txt",
+    "file": "assets/fonts/Literata-OFL.txt",
+    "sha256": "8742963604cd89dc81437811a850018fc03b2bfad686d7422c8235967c87614e",
+    "license": "SIL Open Font License 1.1"
   }
 ]

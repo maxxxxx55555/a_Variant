@@ -1,3 +1,9 @@
+# Marchland Oaths — 1.3.0
+
+Golos Text body typography, Literata headings and authored slate/pewter controls refresh the interface. Licensed CC0 Quaternius modular human characters add anatomically proportioned heads, clothing, hair and surface maps, retargeted idle/walk/attack animations and hand-attached weapons. Authored steel/leather/brass swords and crossbows distinguish melee and ranged units. A focused illustrated epilogue presents the actual campaign result. Existing PBR scenery, distinct acoustic music and protected saves are retained.
+
+Presentation remains stylized indie art; this update does not claim GTA V scale. Existing save directories and gameplay rules are preserved.
+
 # Marchland Oaths — 1.2.1
 
 Nested buffs, buildings, diplomacy, faction escalation, squads, sieges, tutorial and actor snapshots are validated before restoration. Legacy item metadata is rebuilt from the shipped catalog. Manual title-slot selection now controls the save target; new/loaded rosters cannot retain an invalid formation index. Expired strength buffs remain saveable, loot ingredients stack, and inventory capacity prevents unloadable profiles without charging failed crafting. Invalid resource transactions are rejected atomically. Failed saves show a clear localized warning. Existing PBR scenery, stylized characters and separate acoustic music are retained.

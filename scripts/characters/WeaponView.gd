@@ -33,8 +33,9 @@ func refresh() -> void:
 		steel.albedo_color = Color("85949b")
 		steel.metallic = 0.88
 		steel.roughness = 0.28
-		model.material_override = steel
-		RealWorldArt.box(blade,Vector3(0,-0.24,0),Vector3(0.055,0.22,0.06),"wood")
+		if weapon_kind!="sword":
+			model.material_override = steel
+			RealWorldArt.box(blade,Vector3(0,-0.24,0),Vector3(0.055,0.22,0.06),"wood")
 		return
 	var steel := Color("b6c2c5")
 	var wood := Color("6d4c31")

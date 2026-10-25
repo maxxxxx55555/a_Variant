@@ -41,13 +41,17 @@ static func box(parent: Node3D, position: Vector3, size: Vector3, color: Color, 
 	return result
 
 static func humanoid(parent: Node3D, _color: Color, armored: bool = false, armed: bool = true) -> Node3D:
-	return MarchAssets.character(parent, armored, armed)
+	return MarchAssets.character(parent, armored, armed, _color)
 
 static func animate_walk(visual: Node3D, _phase: float, strength: float) -> void:
 	var player: AnimationPlayer = visual.get_meta("animation_player", null)
 	if not is_instance_valid(player): return
+	if player.current_animation=="Attack" and player.is_playing(): return
 	var clip := "Walking_A" if strength > 0.03 else "Idle"
 	if player.current_animation != clip: player.play(clip, 0.18)
+
+static func animate_attack(visual: Node3D) -> void:
+	if is_instance_valid(visual) and visual.has_method("attack"): visual.attack()
 
 static func market(parent: Node3D, position: Vector3, _tint: Color) -> void:
 	RealWorldArt.market(parent,position)
@@ -76,6 +80,7 @@ static func house(parent: Node3D, position: Vector3, tint: Color, building: Stri
 static func label(parent: Node3D, title: String, position: Vector3, color: Color = Color("e7d4a9")) -> Label3D:
 	var label_node := Label3D.new()
 	label_node.text = title
+	label_node.font = load("res://assets/fonts/GolosText.ttf")
 	label_node.position = position
 	label_node.font_size = 36
 	label_node.pixel_size = 0.008

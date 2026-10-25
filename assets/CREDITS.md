@@ -13,3 +13,9 @@ Creator license texts are in assets/art/medieval/LICENSE.txt and assets/art/char
 PBR surfaces, scanned moss rocks, barrel, birch and Belfast sunset sky: Poly Haven, CC0 1.0 Universal. https://polyhaven.com/license — individual download URLs, original digests and derived foliage records: assets/art/realistic/sources.json. Original high-poly tree sources are excluded from the runtime; simplified 3D branches and orthographically rendered transparent canopy atlases form the game mesh. Buildings are original procedural architecture using these licensed surfaces, rather than scans of complete buildings.
 
 Asset research used the Poly Haven public API. Powered by Poly Haven: https://polyhaven.com/our-api — the shipped game has no live API dependency.
+
+## 1.3 interface
+Original scalable satin control surfaces. New OFL type families: Golos Text and Literata. Font notices and exact source digests accompany the assets.
+
+## 1.3 detailed figures
+Quaternius Universal Base Characters, Modular Character Outfits - Fantasy, Universal Animation Library (CC0). Face/neck triangle crop, typo corrections in creator texture URIs, shared rig binding, rest-pose animation transfer and material variants are project adaptations. Creator URLs, exact shipping asset hashes and CC0 notices accompany assets/art/humans. Original source ZIPs remain in the local art pipeline outside shipping assets.

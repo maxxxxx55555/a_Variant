@@ -1,6 +1,6 @@
 extends RefCounted
-
-static func panel(color: Color, edge: Color = Color("5b6655")) -> StyleBoxFlat:
+static var surfaces := {}
+static func panel(color: Color, edge: Color = Color("61717a")) -> StyleBoxFlat:
 	var box := StyleBoxFlat.new()
 	box.bg_color = color
 	box.border_color = edge
@@ -12,23 +12,43 @@ static func panel(color: Color, edge: Color = Color("5b6655")) -> StyleBoxFlat:
 	box.content_margin_bottom = 10
 	return box
 
+static func style(color: Color, border: Color = Color.TRANSPARENT) -> StyleBoxFlat:
+	return panel(color,border)
+
+static func surface(state: String) -> StyleBoxTexture:
+	if surfaces.has(state): return surfaces[state]
+	var box := StyleBoxTexture.new()
+	box.texture = load("res://assets/ui/button-"+state+".svg")
+	box.set_texture_margin_all(12)
+	box.content_margin_left = 20
+	box.content_margin_right = 20
+	box.content_margin_top = 12
+	box.content_margin_bottom = 14
+	surfaces[state] = box
+	return box
+
 static func create() -> Theme:
 	var theme := Theme.new()
-	theme.default_font_size = 24
+	theme.default_font_size = 23
 	var body := FontVariation.new()
-	body.base_font = load("res://assets/fonts/Manrope.ttf")
+	body.base_font = load("res://assets/fonts/GolosText.ttf")
 	body.variation_opentype = {0x77676874:500.0}
 	theme.default_font = body
-	theme.set_color("font_color", "Label", Color("efe5cd"))
-	theme.set_stylebox("panel", "PanelContainer", panel(Color("142a28")))
-	theme.set_stylebox("panel", "Panel", panel(Color("142a28")))
-	for type in ["Button", "OptionButton", "CheckBox"]:
-		for state in ["normal", "hover", "pressed", "disabled", "focus"]:
-			var color: Color = {"normal": Color("203d36"), "hover": Color("3d5745"), "pressed": Color("4b6247"), "disabled": Color("172c29"), "focus": Color.TRANSPARENT}[state]
-			theme.set_stylebox(state, type, panel(color, Color("c3a674") if state == "focus" else Color("61745c")))
-		theme.set_color("font_color", type, Color("efe5cd"))
-		theme.set_color("font_disabled_color", type, Color("6f8171"))
-	theme.set_stylebox("background", "ProgressBar", panel(Color("152822")))
-	theme.set_stylebox("fill", "ProgressBar", panel(Color("ac7459"), Color("c59a7b")))
-	theme.set_color("font_color", "ProgressBar", Color("fff1d4"))
+	for type in ["Label","RichTextLabel"]: theme.set_color("font_color",type,Color("dce3e9"))
+	for type in ["PanelContainer","Panel"]: theme.set_stylebox("panel",type,panel(Color("1c2932")))
+	for type in ["Button","OptionButton","CheckBox"]:
+		for state in ["normal","hover","pressed","disabled"]: theme.set_stylebox(state,type,surface(state))
+		var focus := panel(Color.TRANSPARENT,Color("b6c2c5"))
+		focus.set_border_width_all(2)
+		theme.set_stylebox("focus",type,focus)
+		theme.set_color("font_color",type,Color("e7e9e9"))
+		theme.set_color("font_hover_color",type,Color.WHITE)
+		theme.set_color("font_pressed_color",type,Color("efe1ce"))
+		theme.set_color("font_disabled_color",type,Color("91a0a7"))
+	for type in ["ItemList","Tree","PopupMenu","TabContainer"]:
+		theme.set_stylebox("panel",type,panel(Color("1c2932")))
+		theme.set_color("font_color",type,Color("e7e9e9"))
+	theme.set_stylebox("background","ProgressBar",panel(Color("1c252d")))
+	theme.set_stylebox("fill","ProgressBar",panel(Color("8d5d60"),Color("bd8a87")))
+	theme.set_color("font_color","ProgressBar",Color("e7e9e9"))
 	return theme
