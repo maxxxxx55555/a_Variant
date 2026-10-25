@@ -1,6 +1,6 @@
 # Marchland Oaths — 1.5.0
 
-Live Russian/English menu updates and639 catalog keys, preserving the current save/difficulty selection. Four distinct Gemini/Lyria mood compositions, two20-second musical finales, independent Master/Music/SFX/UI levels, reduced motion, functional credits and coherent application icons. Existing protected profiles and legacy user-data directories remain compatible.
+Live Russian/English menu updates and 639 catalog keys, preserving the current save/difficulty selection. Four distinct Gemini/Lyria mood compositions, two 20-second musical finales, independent Master/Music/SFX/UI levels, reduced motion, functional credits and coherent application icons. Existing protected profiles and legacy user-data directories remain compatible.
 
 ## Русский
 
@@ -57,13 +57,13 @@ godot --headless --path . --export-release "Windows Desktop" builds/windows/Marc
 python tests/run_tests.py --godot /path/to/godot --rendered --full-campaign --artifacts /path/to/logs
 ```
 
-The suite covers 45 core regressions, 15 introductory playthrough checks, strategy, 624 RU/EN keys, sieges, civilians, cover, weapon models, triangle-exact cached terrain sampling, audio and saves. Complete diplomatic and military routes use actual movement, attacks, interactions and ordinary UI payments. The native verifier accepts `--military` for the conquest route. Normal difficulty is the full-route test baseline; other hardware and long unscripted play sessions require further independent QA.
+The runner executes 38 Godot cases per locale, plus Python verification, export, isolation, soundtrack and audio-asset checks. These cover 45 core regressions, 15 introductory playthrough checks, strategy, 639 RU/EN keys, sieges, civilians, cover, weapon models, triangle-exact cached terrain sampling, audio and saves. Complete diplomatic and military routes use actual movement, attacks, interactions and ordinary UI payments. The native verifier accepts `--military` for the conquest route. Normal difficulty is the full-route test baseline; other hardware and long unscripted play sessions require further independent QA.
 
 Identical static assets share normalized meshes and preserve gameplay colliders. The 1.2 rainy village measured 5.07 seconds to load and 49.66 FPS over 180 rendered frames, with 337 draw calls at 1280×720 on this AMD integrated GPU. These are measurements from one machine.
 
 ## Release scope and verification
 
-Version 1.2.0 is the finale, integrity and visual update to the portable Windows desktop edition, built with Godot 4.7 Stable. It remains a small standalone game with original illustrations and licensed assets. Earlier design documents include broader ideas for future development; they are not a list of promised features in this edition.
+Version 1.5.0 is the localization, soundtrack and presentation update to the portable Windows desktop edition, built with Godot 4.7 Stable. It remains a small standalone game with original illustrations and licensed assets. Earlier design documents include broader ideas for future development; they are not a list of promised features in this edition.
 
 The test runner imports the real project in Godot, exercises gameplay, save/load, audio controls and rendered UI. Packaged executables also contain an opt-in complete-playthrough verifier: `-- --verify-build`. It starts a new QA game, so use isolated APPDATA/LOCALAPPDATA folders. QA is silent through `GAME_AUDIO_MUTED=1`; this does not remove the player's music/effects controls. Folders and formats from the previous game names remain compatible.
 
@@ -73,7 +73,7 @@ The release report records the exact tested files, hashes, routes, screenshots a
 
 Textured KayKit houses, shops, foliage, props and animated characters replace primitive stand-ins. The title uses an original painted frontier illustration and the terrain uses a painted meadow surface. Help is compact by default; F1 expands the complete controls and tutorial. Camera bob/shake default to off for new profiles and remain configurable. Braking uses elapsed time.
 
-Both games have different newly generated music. See assets/CREDITS.md for creator licenses, font notices and generation records.
+Distinct folk compositions accompany exploration, settlements, combat, war and both endings. See assets/CREDITS.md for creator licenses, font notices and generation records.
 
 ## 1.2.0 update
 
