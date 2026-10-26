@@ -64,6 +64,8 @@ func update_info() -> void:
 	brew_button.tooltip_text=LocalizationManager.get_string("ui.brew_requirements") if brew_button.disabled else ""
 
 func _on_brew_pressed() -> void:
-	if selected_recipe:
-		if AlchemySystem.brew_potion(selected_recipe):
-			update_info()
+	if selected_recipe and AlchemySystem.brew_potion(selected_recipe):
+		update_info()
+	else:
+		AudioManager.play_sfx("ui_error")
+		update_info()

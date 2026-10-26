@@ -58,6 +58,7 @@ func _ready() -> void:
 	enlistment.add_child(recruit_count)
 	button(enlistment, "ui.recruit", func():
 		var ok: bool = ArmySystem.recruit(ArmySystem.UNIT_IDS[unit_choice.selected], int(recruit_count.value))
+		AudioManager.play_sfx("purchase" if ok else "ui_error")
 		result_label.text = LocalizationManager.get_string("ui.action_done" if ok else "ui.recruit_failed")
 		refresh()
 	)
@@ -88,6 +89,7 @@ func _ready() -> void:
 	button(relations, "ui.sign_treaty", func():
 		var id: String = DiplomacySystem.terms.keys()[treaty_choice.selected]
 		var ok: bool = DiplomacySystem.propose_treaty(selected_faction, id)
+		AudioManager.play_sfx("upgrade" if ok else "ui_error")
 		result_label.text = LocalizationManager.get_string("ui.action_done" if ok else "ui.treaty_failed")
 		refresh()
 	)
@@ -100,6 +102,7 @@ func _ready() -> void:
 	gifts.add_child(gift_amount)
 	button(gifts, "ui.gift", func():
 		var ok: bool = DiplomacySystem.give_gift(selected_faction, int(gift_amount.value))
+		AudioManager.play_sfx("coin" if ok else "ui_error")
 		result_label.text = LocalizationManager.get_string("ui.action_done" if ok else "ui.recruit_failed")
 		refresh()
 	)
@@ -125,7 +128,7 @@ func button(parent: Node, key: String, callback: Callable) -> Button:
 	control.text = LocalizationManager.get_string(key)
 	control.set_meta("text_key", key)
 	parent.add_child(control)
-	control.pressed.connect(func(): AudioManager.play_sound("ui_click"); callback.call())
+	control.pressed.connect(callback)
 	return control
 
 func localize() -> void:

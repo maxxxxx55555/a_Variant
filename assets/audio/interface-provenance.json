@@ -1,0 +1,24 @@
+{
+  "ui_focus.wav": {
+    "source": "synthesized CC0",
+    "license": "CC0-1.0",
+    "date": "2026-10-26",
+    "profile": "oaths",
+    "description": "Original decaying harmonic interface cue; no third-party samples, vocals or generated-music attribution.",
+    "generator": "tools/generate_audio.py",
+    "generator_sha256": "c992ac3b883ec9380324123f4c4ff2f90ceb7fce73e94c2d6fa82fb6cb691e5a",
+    "wav_sha256": "3feb96de111c9736a8ad6cc9385e98d370e4235fc563596d57a20629705c6fd4",
+    "processing": "32000Hz mono16-bit PCM; zero-mean, restrained peak, tapered edges"
+  },
+  "ui_error.wav": {
+    "source": "synthesized CC0",
+    "license": "CC0-1.0",
+    "date": "2026-10-26",
+    "profile": "oaths",
+    "description": "Original decaying harmonic interface cue; no third-party samples, vocals or generated-music attribution.",
+    "generator": "tools/generate_audio.py",
+    "generator_sha256": "c992ac3b883ec9380324123f4c4ff2f90ceb7fce73e94c2d6fa82fb6cb691e5a",
+    "wav_sha256": "1b83c710b9a4ff26edee6af8e659f17922f6c44d28f0987ae6243e9622e5bf18",
+    "processing": "32000Hz mono16-bit PCM; zero-mean, restrained peak, tapered edges"
+  }
+}

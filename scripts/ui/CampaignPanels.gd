@@ -43,7 +43,10 @@ func attach(parent: Control) -> void:
 		var control := Button.new()
 		buildings.add_child(control)
 		building_buttons[data.id] = control
-		control.pressed.connect(func(): WorkshopSystem.build(data.id); refresh())
+		control.pressed.connect(func():
+			if not WorkshopSystem.build(data.id):AudioManager.play_sfx("ui_error")
+			refresh()
+		)
 	var crafting := VBoxContainer.new()
 	crafting.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	split.add_child(crafting)
@@ -53,7 +56,7 @@ func attach(parent: Control) -> void:
 	craft_list.item_selected.connect(func(_index): refresh())
 	craft_button = council.button(crafting, "ui.craft", func():
 		var selection := craft_list.get_selected_items()
-		if not selection.is_empty(): WorkshopSystem.craft(WorkshopSystem.crafting[selection[0]].id)
+		if selection.is_empty() or not WorkshopSystem.craft(WorkshopSystem.crafting[selection[0]].id):AudioManager.play_sfx("ui_error")
 		refresh()
 	)
 	CampaignSystem.changed.connect(refresh)

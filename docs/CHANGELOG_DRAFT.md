@@ -18,3 +18,5 @@ Rendered F3 review reproduced a first-frame T-pose when distant characters were 
 F3 settings review found that the old Back action started clipped below the scroll content and did not restore focus. A permanent header/back action and larger token-aligned settings card now preserve escape at either scroll end; test_settings_navigation.gd reproduces the original behavior and checks the fix. Ground uses the retained curated meadow texture with restrained cobble tint; map text has a backing outline against route lines.
 
 The gait review found that fleeing residents and fast followers reused an unscaled walk. Existing licensed jog/sprint clips now match actual horizontal motion, idle resets its pace and attack timing is independent of the previous gait. test_locomotion_gait.gd reproduces the resident issue through its real movement path.
+
+V2 F4: preserve the four distinct recorded mood tracks and two finales; add quiet focus/unavailable synthesis with honest CC0 hashes, one contextual acknowledgment per action, restrained cosmetic pitch variation and real rejected-action regressions. QA remains muted.

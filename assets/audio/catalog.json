@@ -255,6 +255,22 @@
       "seconds": 0.38,
       "loop": false,
       "channels": 1
+    },
+    "ui_focus": {
+      "path": "ui_focus.wav",
+      "seconds": 0.08,
+      "loop": false,
+      "channels": 1,
+      "source": "synthesized CC0",
+      "license": "CC0-1.0"
+    },
+    "ui_error": {
+      "path": "ui_error.wav",
+      "seconds": 0.22,
+      "loop": false,
+      "channels": 1,
+      "source": "synthesized CC0",
+      "license": "CC0-1.0"
     }
   }
 }

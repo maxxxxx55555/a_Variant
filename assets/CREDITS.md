@@ -32,3 +32,5 @@ Original project artwork authored for this release, without third-party image so
 - `assets/ui/app-icon.png`: SHA256 `adba04819d8eaf4b4aea878d571ab16514e69a8f21f3acb6ea7bfbb342178f39`.
 
 V2 art curation: docs/ART_DIRECTION.md and docs/ASSET_REVIEW.json. Roadside landmarks and meadow blade refinement are code-built repository geometry using the existing licensed surfaces. The crest background clipping repair and derived executable-icon hashes are recorded in assets/ui/icon-provenance.json. Inherited third-party license files are retained unchanged.
+
+Interface focus/unavailable cues: original profile-specific synthesis using tools/generate_audio.py, CC0-1.0; exact provenance is in audio/interface-provenance.json.

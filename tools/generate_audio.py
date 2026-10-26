@@ -167,6 +167,34 @@ def effect(name):
     return sound * envelope(n, .004, .045)
 
 
+def interface_effect(name, profile):
+    """Original short interface cues, deliberately distinct for each game."""
+    duration = .08 if name == 'ui_focus' else .22
+    t = np.arange(round(duration * RATE)) / RATE
+    base = 330 if profile == 'oaths' else 620
+    if name == 'ui_focus':
+        signal = (np.sin(2 * np.pi * base * t) + .18 * np.sin(2 * np.pi * base * 2.03 * t)) * np.exp(-t * 62)
+    else:
+        signal = (np.sin(2 * np.pi * base * .6 * t) + .32 * np.sin(2 * np.pi * base * .79 * t)) * np.exp(-t * 19)
+    return signal * envelope(len(t), .003, .022)
+
+
+def write_interface_provenance(output, profile):
+    import hashlib
+    records = {}
+    for name in ['ui_focus', 'ui_error']:
+        records[name + '.wav'] = {
+            'source': 'synthesized CC0', 'license': 'CC0-1.0',
+            'date': '2026-10-26', 'profile': profile,
+            'description': 'Original decaying harmonic interface cue; no third-party samples, vocals or generated-music attribution.',
+            'generator': 'tools/generate_audio.py',
+            'generator_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+            'wav_sha256': hashlib.sha256((output / (name + '.wav')).read_bytes()).hexdigest(),
+            'processing': '32000Hz mono16-bit PCM; zero-mean, restrained peak, tapered edges'
+        }
+    (output / 'interface-provenance.json').write_text(json.dumps(records, indent=2) + '\n', encoding='utf-8')
+
+
 def write_wave(path, signal, loop=False, peak=.76):
     signal = np.asarray(signal)
     signal = signal - signal.mean(axis=0)
@@ -197,7 +225,7 @@ def generate(project, profile):
             continue
         track = compose(profile, mood)
         catalog['music'][mood] = write_wave(output / (mood + '.wav'), track, loop=True, peak=.72)
-    effects = ['ui_click', 'purchase', 'sale', 'coin', 'upgrade', 'victory', 'defeat']
+    effects = ['ui_focus', 'ui_error', 'ui_click', 'purchase', 'sale', 'coin', 'upgrade', 'victory', 'defeat']
     effects += ['grant'] if profile == 'forbes' else ['inventory_open', 'pickup', 'potion']
     if profile == 'oaths':
         effects += ['swing', 'attack', 'hit', 'hit_metal', 'hit_flesh', 'block', 'enemy_hurt', 'enemy_death', 'ambience_forest', 'ambience_camp']
@@ -209,7 +237,11 @@ def generate(project, profile):
             assert (output / old['path']).exists(), 'Supplied finale music is missing'
             catalog['sfx'][name] = old
             continue
-        catalog['sfx'][name] = write_wave(output / (name + '.wav'), effect(name), loop=name.startswith('ambience_'), peak=.6 if name.startswith('ambience_') else .78)
+        signal = interface_effect(name, profile) if name in ['ui_focus', 'ui_error'] else effect(name)
+        catalog['sfx'][name] = write_wave(output / (name + '.wav'), signal, loop=name.startswith('ambience_'), peak=.24 if name == 'ui_focus' else .38 if name == 'ui_error' else .6 if name.startswith('ambience_') else .78)
+        if name in ['ui_focus', 'ui_error']:
+            catalog['sfx'][name].update(source='synthesized CC0', license='CC0-1.0')
+    write_interface_provenance(output, profile)
     (output / 'catalog.json').write_text(json.dumps(catalog, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     if not preserve_music:
         (output / 'LICENSE.md').write_text('# Original game audio\n\nThe compositions and synthesized sound effects in this directory were generated specifically for this project using tools/generate_audio.py. No third-party samples were used. The generated audio is dedicated to the public domain under CC0 1.0.\n\nGenerator dependency: NumPy (BSD-3-Clause). NumPy is used only to generate WAV files; it is not distributed with or needed by the game.\n', encoding='utf-8')

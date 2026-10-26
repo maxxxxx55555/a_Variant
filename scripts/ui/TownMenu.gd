@@ -72,6 +72,7 @@ func _ready() -> void:
 	journey.add_child(summary)
 	delivery_button = action(journey, "town.deliver", func():
 		var ok := CampaignSystem.deliver_supplies(CampaignSystem.town(town_id).faction)
+		if not ok:AudioManager.play_sfx("ui_error")
 		message.text = LocalizationManager.get_string("ui.action_done" if ok else "ui.treaty_failed")
 		refresh()
 	)
@@ -101,6 +102,7 @@ func _ready() -> void:
 			trade_column.add_child(control)
 			control.pressed.connect(func():
 				var ok := WorkshopSystem.trade(resource, 10, buying)
+				if not ok:AudioManager.play_sfx("ui_error")
 				message.text = LocalizationManager.get_string("ui.action_done" if ok else "ui.recruit_failed")
 				refresh()
 			)
@@ -130,6 +132,7 @@ func _ready() -> void:
 	)
 	assault_button = action(siege_grid, "siege.assault", func():
 		var ok := CampaignSystem.start_assault(CampaignSystem.town(town_id).faction)
+		if not ok:AudioManager.play_sfx("ui_error")
 		if ok: get_tree().current_scene.toggle_pause()
 	)
 	message = Label.new()
@@ -149,7 +152,7 @@ func action(parent: Node, key: String, callback: Callable) -> Button:
 		control.autowrap_mode=TextServer.AUTOWRAP_OFF
 		control.custom_minimum_size.x=140
 	parent.add_child(control)
-	control.pressed.connect(func(): AudioManager.play_sound("ui_click"); callback.call())
+	control.pressed.connect(callback)
 	return control
 
 func localize() -> void:

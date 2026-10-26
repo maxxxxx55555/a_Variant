@@ -13,3 +13,5 @@ Found and fixed: unavailable alchemy ingredients were labelled red “OK”. tes
 A further real-world live-switch regression exposed stale 3D labels and cleared inventory/recipe selection. MarchWorldLabel binds localization to node lifetime; the existing rendered world and inventory stay intact. test_live_world_locale.gd checks the actual labels, selected controls and unchanged gameplay state.
 
 F3 adds 5 keyed labels/briefing entries; current catalog count is680 per language. The rendered suite now has41 cases (headless has40; full campaign adds2). F2 historical evidence above is unchanged.
+
+F4 adds two non-copy audio regression cases; current runner count is43 rendered /42 headless; full campaign adds2. Localization keys remain unchanged from F3.
