@@ -1,5 +1,6 @@
 extends Node
 
+const Guard=preload("res://scripts/security/SaveGuard.gd")
 signal changed()
 
 var definitions: Array = []
@@ -12,9 +13,9 @@ func price_for(resource:String,quantity:int,buying:bool) -> float:
 	return float(PRICES.get(resource,0.0))*quantity*(1.0 if buying else 0.65)
 
 func _ready() -> void:
-	definitions = JSON.parse_string(FileAccess.get_file_as_string("res://data/balance/buildings.json"))
-	crafting = JSON.parse_string(FileAccess.get_file_as_string("res://data/balance/crafting.json"))
-	equipment = JSON.parse_string(FileAccess.get_file_as_string("res://data/balance/equipment.json"))
+	definitions = BuildIntegrity.read_json("res://data/balance/buildings.json")
+	crafting = BuildIntegrity.read_json("res://data/balance/crafting.json")
+	equipment = BuildIntegrity.read_json("res://data/balance/equipment.json")
 	TimeSystem.day_passed.connect(_on_day)
 
 func build(id: String) -> bool:
@@ -26,36 +27,46 @@ func build(id: String) -> bool:
 			var cost: Dictionary = definition.cost.duplicate()
 			for resource in cost:
 				cost[resource] *= level + 1
+			if not Guard.begin_transaction():return false
 			if not CampaignSystem.pay(cost):
+				Guard.end_transaction()
 				return false
 			levels[id] = level + 1
+			Guard.end_transaction()
 			AudioManager.play_sound("upgrade")
 			changed.emit()
 			EventBus.settlement_updated.emit()
 			return true
 	return false
 
-func craft(id: String) -> bool:
+func craft(id:String) -> bool:
 	for blueprint in crafting:
-		if blueprint.id == id and levels.get("forge", 0) > 0 and GameState.can_add_item(load(blueprint.result)) and CampaignSystem.pay(blueprint.cost):
-			GameState.add_item(load(blueprint.result))
-			AudioManager.play_sfx("hit_metal", "SFX_UI")
-			changed.emit()
-			return true
+		if blueprint.id!=id or levels.get("forge",0)<=0:continue
+		var result:Resource=load(blueprint.result)
+		if not GameState.can_add_item(result) or not Guard.begin_transaction():return false
+		if not CampaignSystem.pay(blueprint.cost):
+			Guard.end_transaction()
+			return false
+		GameState.add_item(result)
+		Guard.end_transaction()
+		AudioManager.play_sfx("hit_metal","SFX_UI")
+		changed.emit()
+		return true
 	return false
 
-func trade(resource: String, quantity: int, buying: bool) -> bool:
-	if not PRICES.has(resource) or quantity <= 0 or quantity > 1000:
+func trade(resource:String,quantity:int,buying:bool) -> bool:
+	if not PRICES.has(resource) or quantity<=0 or quantity>1000:return false
+	var price:float=price_for(resource,quantity,buying)
+	var credit:String=resource if buying else "gold"
+	var credited:float=float(quantity) if buying else price
+	var balance:float=EconomySystem.stockpiles.get(credit,NAN)
+	if not is_finite(balance) or balance<0 or balance>1.0e12-credited:return false
+	if not Guard.begin_transaction():return false
+	if not CampaignSystem.pay({"gold":price} if buying else {resource:quantity}):
+		Guard.end_transaction()
 		return false
-	var price: float = price_for(resource,quantity,buying)
-	if buying:
-		if not CampaignSystem.pay({"gold": price}):
-			return false
-		EconomySystem.stockpiles[resource] += quantity
-	else:
-		if not CampaignSystem.pay({resource: quantity}):
-			return false
-		EconomySystem.stockpiles.gold += price
+	EconomySystem.stockpiles[credit]+=credited
+	Guard.end_transaction()
 	changed.emit()
 	EventBus.settlement_updated.emit()
 	AudioManager.play_sound("coin" if buying else "sale")

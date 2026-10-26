@@ -6,7 +6,7 @@ The older GAME_DESIGN/FULL_BOOK are a broader archived roadmap, not additional a
 
 # Marchland Oaths — 1.5.1 preparation (publication locked)
 
-Live Russian/English menu updates and 680 catalog keys, preserving the current save/difficulty selection. Four distinct Gemini/Lyria mood compositions, two 20-second musical finales, independent Master/Music/SFX/UI levels, reduced motion, functional credits and coherent application icons. Existing protected profiles and legacy user-data directories remain compatible.
+Live Russian/English menu updates and 685 catalog keys, preserving the current save/difficulty selection. Four distinct Gemini/Lyria mood compositions, two 20-second musical finales, independent Master/Music/SFX/UI levels, reduced motion, functional credits and coherent application icons. Existing protected profiles and legacy user-data directories remain compatible.
 
 ## Русский
 
@@ -59,11 +59,13 @@ A connected 4×4 km terrain, eight factions, fourteen settlements, forty marked 
 Open `project.godot` in Godot 4.7 and press F5, or use:
 
 ```text
-godot --headless --path . --export-release "Windows Desktop" builds/windows/MarchlandOaths.exe
+python tools/build_manifest.py
+# Set GODOT_SCRIPT_ENCRYPTION_KEY and GODOT_WINDOWS_RELEASE_TEMPLATE privately in the build environment.
+python tools/export_release.py --godot /path/to/godot --output /fresh/staging/MarchlandOaths.exe
 python tests/run_tests.py --godot /path/to/godot --rendered --full-campaign --artifacts /path/to/logs
 ```
 
-The current source runner executes43 rendered Godot cases per locale (42 headless); --full-campaign adds two complete route cases (45 rendered total). Python checks cover resources, export, copy/edition contracts, isolation, soundtrack and audio assets. These cover 45 core regressions, 15 introductory playthrough checks, strategy, 680 RU/EN keys, sieges, civilians, cover, weapon models, triangle-exact cached terrain sampling, audio and saves. Complete diplomatic and military routes use actual movement, attacks, interactions and ordinary UI payments. The native verifier accepts `--military` for the conquest route. Normal difficulty is the full-route test baseline; other hardware and long unscripted play sessions require further independent QA.
+The current source runner executes49 rendered Godot cases per locale (48 headless); --full-campaign adds two complete route cases (51 rendered total). Python checks cover resources, export, copy/edition contracts, isolation, soundtrack and audio assets. These cover 45 core regressions, 15 introductory playthrough checks, strategy, 685 RU/EN keys, sieges, civilians, cover, weapon models, triangle-exact cached terrain sampling, audio and saves. Complete diplomatic and military routes use actual movement, attacks, interactions and ordinary UI payments. The native verifier accepts `--military` for the conquest route. Normal difficulty is the full-route test baseline; other hardware and long unscripted play sessions require further independent QA.
 
 Identical static assets share normalized meshes and preserve gameplay colliders. The 1.2 rainy village measured 5.07 seconds to load and 49.66 FPS over 180 rendered frames, with 337 draw calls at 1280×720 on this AMD integrated GPU. These are measurements from one machine.
 
@@ -88,3 +90,7 @@ The playable 3D world now uses PBR stone, plaster, timber and slate, detailed or
 Offline tamper evidence, schema/resource validation and atomic saves protect normal play and recover known-good backups. Valid legacy saves migrate once. Keep the whole user-data folder, including its installation key, when backing up protected saves. See SAVE-INTEGRITY.md for the precise guarantees and limitations.
 
 V2 visual pass: eight-point design tokens, curated source-asset review, corrected crest, tapered meadow, batched roadside landmarks and an actual-road atlas with keyboard navigation and a translated legend. See docs/ART_DIRECTION.md and docs/ASSET_REVIEW.json; final release acceptance remains gated.
+
+## V2 integrity integration (release gate remains locked)
+
+Public Windows packs omit the private verifier; the separate Windows QA preset additionally requires GAME_QA=1. All pack entries and the directory are encrypted using a matching custom Godot template and an environment-only build key. Encryption makes modification harder; it is not DRM. The compiled critical-data trust root rejects a replacement manifest and starts changed installations with trusted fallback data, a localized warning and no progress/settings writes. Authenticated save recovery records a local integrity log and shows a localized message. See SAVE-INTEGRITY.md for exact boundaries.

@@ -113,9 +113,7 @@ func _ready() -> void:
 	if not SettingsManager.reduced_motion:
 		modulate.a=0.9
 		create_tween().tween_property(self,"modulate:a",1.0,0.18)
-	if OS.get_cmdline_user_args().has("--verify-build"):
-		var verification := preload("res://scripts/verification/CampaignRoute.gd").new()
-		get_tree().root.add_child.call_deferred(verification)
+	preload("res://scripts/security/QARouter.gd").request(self)
 
 func action(parent: Node, key: String, callback: Callable) -> Button:
 	var control := Button.new()

@@ -15,3 +15,5 @@ A further real-world live-switch regression exposed stale 3D labels and cleared 
 F3 adds 5 keyed labels/briefing entries; current catalog count is680 per language. The rendered suite now has41 cases (headless has40; full campaign adds2). F2 historical evidence above is unchanged.
 
 F4 adds two non-copy audio regression cases; current runner count is43 rendered /42 headless; full campaign adds2. Localization keys remain unchanged from F3.
+
+F5 adds five keyed integrity/recovery captions: 685 keys and49 rendered /48 headless cases (full campaign adds2) in the current source. Earlier phase counts above are historical. Full F5 bilingual logs and native pack checks are recorded separately from final F7 acceptance.

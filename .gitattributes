@@ -1,2 +1,8 @@
 # Preserve creator license downloads byte-for-byte for provenance verification.
 assets/art/humans/*LICENSE.txt -text
+
+# Critical-data hashes and generated trust source must survive Windows checkout.
+data/**/*.json text eol=lf
+assets/audio/catalog.json text eol=lf
+scripts/security/TrustedData.gd text eol=lf
+*.py text eol=lf

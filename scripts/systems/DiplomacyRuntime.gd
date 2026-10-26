@@ -6,8 +6,7 @@ var treaty_expiry: Dictionary = {}
 var terms: Dictionary = {}
 
 func _ready() -> void:
-	var file := FileAccess.open("res://data/balance/diplomacy.json", FileAccess.READ)
-	terms = JSON.parse_string(file.get_as_text())
+	terms = BuildIntegrity.read_json("res://data/balance/diplomacy.json")
 	TimeSystem.day_passed.connect(_on_day_passed)
 
 func propose_treaty(faction_id: String, treaty_type: String) -> bool:

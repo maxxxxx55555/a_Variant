@@ -1,0 +1,13 @@
+{
+  "files": {
+    "res://assets/audio/catalog.json": "e430a4cd11299c2eee5b6384d2815b39a99dc9e007525ff7697ee99410536bda",
+    "res://data/balance/alchemy.json": "2ada2868c9b3f77ed01f10e16fed7c895588c37c5e5e35acc88d730361379776",
+    "res://data/balance/buildings.json": "febfea72c844aab815fa046d0882b0cec622855d309d8fab954d0d0caafb550d",
+    "res://data/balance/campaign.json": "f61783f80e27c1c76130b3984b04ad723f0000bb7bb9d36321842ae67c9776e8",
+    "res://data/balance/crafting.json": "34600efe06fd76b78f415d1c39a8deb5d2fe6fe4afd46f675a75c115f980f5e5",
+    "res://data/balance/diplomacy.json": "6f8277d7c06f04c925598475581e5591cef59ea8b4b81fc0e4b40007181b5042",
+    "res://data/balance/equipment.json": "1196526425f05bb0af960686df68c80ce1c973ad3edba6d1b70b40d15d4f51bb",
+    "res://data/balance/localization.json": "ba3754f2b776838775b2310fc2c229e52789f564cda84e132d744efc79fa8a30"
+  },
+  "version": 1
+}

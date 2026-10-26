@@ -10,12 +10,10 @@ func load_translations() -> void:
 	translations.clear()
 	# CSV is an imported resource in release packs, so its source bytes are
 	# unavailable there. Keep the editable CSV and ship the compiled catalog.
-	var catalog := FileAccess.open("res://data/balance/localization.json", FileAccess.READ)
-	if catalog:
-		var decoded = JSON.parse_string(catalog.get_as_text())
-		if decoded is Dictionary:
-			translations = decoded
-			return
+	var decoded:Variant=BuildIntegrity.read_json("res://data/balance/localization.json")
+	if decoded is Dictionary:
+		translations=decoded
+		return
 	push_error("Compiled localization catalog is missing or invalid")
 	var ru_file = FileAccess.open("res://data/strings/ru.csv", FileAccess.READ)
 	if ru_file:

@@ -701,3 +701,8 @@ map.town,Город,Town
 map.road,Дорога,Road
 map.explored,Открыто,Explored
 map.player,Вы,You
+integrity.title,Проверка целостности,Integrity check
+integrity.files_changed,Файлы игры изменены. Включён безопасный режим: прогресс и настройки не записываются. Для сохранения прогресса восстановите оригинальные файлы и перезапустите игру.,Game files have changed. Safe mode is active: progress and settings will not be saved. Restore the original files and restart to save progress.
+integrity.save_recovered,Повреждённое сохранение отклонено. Загружена последняя исправная резервная копия.,The damaged save was rejected. Your last valid backup has been restored.
+integrity.save_rejected,Сохранение повреждено или изменено и не может быть загружено. Исправная резервная копия не найдена.,The save is damaged or modified and cannot be loaded. No valid backup was found.
+integrity.continue,Продолжить,Continue

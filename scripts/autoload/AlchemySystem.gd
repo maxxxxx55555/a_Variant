@@ -1,9 +1,10 @@
 extends Node
+const Guard=preload("res://scripts/security/SaveGuard.gd")
 
 var known_recipes: Array[Resource] = []
 
 func _ready() -> void:
-	var catalog: Array = JSON.parse_string(FileAccess.get_file_as_string("res://data/balance/alchemy.json"))
+	var catalog: Array = BuildIntegrity.read_json("res://data/balance/alchemy.json")
 	for entry in catalog:
 		var recipe := RecipeData.new()
 		recipe.id = entry.id
@@ -36,7 +37,7 @@ func has_ingredient(ingredient: Resource, count: int) -> bool:
 	return found >= count
 
 func brew_potion(recipe: RecipeData) -> bool:
-	if not can_brew(recipe):
+	if not can_brew(recipe) or not Guard.begin_transaction():
 		return false
 	for i in range(recipe.required_ingredients.size()):
 		var ing = recipe.required_ingredients[i]
@@ -44,6 +45,7 @@ func brew_potion(recipe: RecipeData) -> bool:
 		consume_ingredient(ing, req_cnt)
 
 	GameState.add_item(recipe.result_item, recipe.result_count)
+	Guard.end_transaction()
 	EventBus.potion_brewed.emit(recipe)
 	if AudioManager: AudioManager.play_sound("potion")
 	return true

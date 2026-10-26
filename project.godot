@@ -33,6 +33,8 @@ config/features=PackedStringArray("4.7", "GL Compatibility")
 
 [autoload]
 
+BuildIntegrity="*res://scripts/security/BuildIntegrity.gd"
+
 MarchTransition="*res://scripts/ui/MarchTransition.gd"
 
 GameState="*res://scripts/autoload/GameState.gd"

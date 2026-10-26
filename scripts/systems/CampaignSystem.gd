@@ -24,7 +24,7 @@ var check_timer: float = 0
 var pending_load: Dictionary = {}
 
 func _ready() -> void:
-	definition = JSON.parse_string(FileAccess.get_file_as_string("res://data/balance/campaign.json"))
+	definition = BuildIntegrity.read_json("res://data/balance/campaign.json")
 	for faction in definition.factions:
 		if not FactionSystem.factions.has(faction.id):
 			FactionSystem.factions[faction.id] = {"res_path": "res://data/factions/" + faction.id + ".tres", "relationship": faction.relationship, "threat": 0.0, "escalation_level": 0}
@@ -114,7 +114,9 @@ func can_pay(cost: Dictionary) -> bool:
 	for resource in cost:
 		if not EconomySystem.stockpiles.has(resource) or not (cost[resource] is int or cost[resource] is float):
 			return false
-		if not is_finite(float(cost[resource])) or cost[resource] < 0 or EconomySystem.stockpiles[resource] < cost[resource]:
+		var balance:Variant=EconomySystem.stockpiles[resource]
+		if not (balance is int or balance is float) or not is_finite(float(balance)) or balance<0 or balance>1.0e12:return false
+		if not is_finite(float(cost[resource])) or cost[resource] < 0 or balance < cost[resource]:
 			return false
 	return true
 

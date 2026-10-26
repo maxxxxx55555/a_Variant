@@ -20,3 +20,8 @@ F3 settings review found that the old Back action started clipped below the scro
 The gait review found that fleeing residents and fast followers reused an unscaled walk. Existing licensed jog/sprint clips now match actual horizontal motion, idle resets its pace and attack timing is independent of the previous gait. test_locomotion_gait.gd reproduces the resident issue through its real movement path.
 
 V2 F4: preserve the four distinct recorded mood tracks and two finales; add quiet focus/unavailable synthesis with honest CC0 hashes, one contextual acknowledgment per action, restrained cosmetic pitch variation and real rejected-action regressions. QA remains muted.
+
+## F5 — integrity integration, awaiting final gate
+
+Separate encrypted public/private QA exports and environment-only keys; physically excluded public verifier. Compiled critical-data manifest/trusted fallback and localized read-only safe mode. Localized authenticated-save recovery and stable unchanged round trips. New regression tests cover replacement manifests, safe-mode write/deletion boundaries, key preflight, public flags and save recovery.
+Resource credit bounds and transaction/save-load reentry protection, with negative/nonfinite/cap/stack and craft/trade round-trip regressions.

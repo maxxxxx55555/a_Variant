@@ -40,16 +40,23 @@ func load_slot(index: int) -> Dictionary:
 	return _load_path(slot_path(index))
 
 func _encoded(data: Dictionary, context: String) -> String:
-	var body := JSON.stringify(data,"",true,true)
+	var body := JSON.stringify(_normalize_numbers(data),"",true,true)
 	var auth := Guard.signature(body,context)
 	if auth.is_empty(): return ""
 	return JSON.stringify({"version":SCHEMA_VERSION,"timestamp":Time.get_unix_time_from_system(),"checksum":calculate_checksum(body),"data":body,"auth":auth},"",true,true)
 
 func _store(path: String, data: Dictionary) -> bool:
+	if not Guard.can_write(): return false
 	if not Policy.valid(data): return false
+	var previous := _read_valid_save(path)
+	# Preserve the authenticated envelope and timestamp for an unchanged state.
+	# Legacy files still migrate; invalid primaries still recover from their backup.
+	if not previous.is_empty() and Guard.locked(purpose(path)):
+		var envelope:Variant=JSON.parse_string(Guard.bounded_text(path))
+		if envelope is Dictionary and envelope.get("version")==SCHEMA_VERSION:
+			if JSON.stringify(_normalize_numbers(previous),"",true,true)==JSON.stringify(_normalize_numbers(data),"",true,true):return true
 	var encoded := _encoded(data,purpose(path))
 	if encoded.is_empty(): return false
-	var previous := _read_valid_save(path)
 	if previous.is_empty(): previous = _read_valid_save(backup_path(path))
 	if not previous.is_empty() and path != slot_path(6):
 		if not Guard.atomic_text(backup_path(path),_encoded(previous,purpose(path))): return false
@@ -67,12 +74,15 @@ func save_game(game_data: Dictionary, autosave: bool = false) -> bool:
 	return true
 
 func _load_path(path: String) -> Dictionary:
+	if Guard.transaction_depth!=0:return {}
 	var data := _read_valid_save(path)
 	var recovered := false
 	if data.is_empty() and path != slot_path(6):
 		data = _read_valid_save(backup_path(path))
 		recovered = true
-	if not data.is_empty() and (recovered or not Guard.locked(purpose(path))):
+	if not data.is_empty() and recovered: Guard.report_recovery("integrity.save_recovered",path)
+	if data.is_empty() and (FileAccess.file_exists(path) or FileAccess.file_exists(backup_path(path))): Guard.report_recovery("integrity.save_rejected",path)
+	if Guard.can_write() and not data.is_empty() and (recovered or not Guard.locked(purpose(path))):
 		if not _store(path,data): EventBus.notification_posted.emit(LocalizationManager.get_string("msg.save_write_error"),true)
 	return data
 
@@ -107,6 +117,7 @@ func _read_valid_save(path: String) -> Dictionary:
 	return decoded if Policy.valid(decoded) else {}
 
 func try_load_backup() -> Dictionary:
+	if Guard.transaction_depth!=0:return {}
 	var data := _read_valid_save(BACKUP_PATH)
 	if not data.is_empty(): _store(SAVE_PATH,data)
 	return data

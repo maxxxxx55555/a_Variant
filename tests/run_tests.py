@@ -62,6 +62,8 @@ def main():
         cases.append(('music-transitions', ['--headless', '--script', 'res://tests/test_music_transitions.gd']))
         for case in ['ui_audio_feedback','context_audio']:
             cases.append((case, ['--headless', '--script', 'res://tests/test_' + case + '.gd']))
+        for case in ['qa_router','build_integrity','critical_read_bounds','integrity_notice','save_recovery','atomic_economy']:
+            cases.append((case, ['--headless','--script','res://tests/test_'+case+'.gd']))
         cases.insert(2, ('audio', ['--headless', '--script', 'res://tests/test_audio.gd']))
         if portrait:
             cases.append(('balance', ['--headless', '--script', 'res://tests/test_gameplay.gd', '--', '--balance']))
@@ -88,6 +90,9 @@ def main():
         assets = subprocess.run([sys.executable, str(project / 'tests/test_audio_assets.py')], timeout=60)
         if assets.returncode:
             return assets.returncode
+        for source_contract in ['test_public_qa_contract.py','test_release_export_tool.py','test_critical_manifest.py']:
+            result=subprocess.run([sys.executable,str(project/'tests'/source_contract)],timeout=60)
+            if result.returncode:return result.returncode
         for name, switches in cases:
             log_path = artifacts / (name + '.log')
             command = [args.godot, '--rendering-method', 'gl_compatibility', '--path', str(project), '--log-file', str(log_path), *switches]

@@ -2718,5 +2718,25 @@
   "map.player": {
     "ru": "Вы",
     "en": "You"
+  },
+  "integrity.title": {
+    "ru": "Проверка целостности",
+    "en": "Integrity check"
+  },
+  "integrity.files_changed": {
+    "ru": "Файлы игры изменены. Включён безопасный режим: прогресс и настройки не записываются. Для сохранения прогресса восстановите оригинальные файлы и перезапустите игру.",
+    "en": "Game files have changed. Safe mode is active: progress and settings will not be saved. Restore the original files and restart to save progress."
+  },
+  "integrity.save_recovered": {
+    "ru": "Повреждённое сохранение отклонено. Загружена последняя исправная резервная копия.",
+    "en": "The damaged save was rejected. Your last valid backup has been restored."
+  },
+  "integrity.save_rejected": {
+    "ru": "Сохранение повреждено или изменено и не может быть загружено. Исправная резервная копия не найдена.",
+    "en": "The save is damaged or modified and cannot be loaded. No valid backup was found."
+  },
+  "integrity.continue": {
+    "ru": "Продолжить",
+    "en": "Continue"
   }
 }
