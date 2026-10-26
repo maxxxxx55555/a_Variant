@@ -7,6 +7,8 @@ var terms: Dictionary = {}
 
 func _ready() -> void:
 	terms = BuildIntegrity.read_json("res://data/balance/diplomacy.json")
+	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
+	@warning_ignore("return_value_discarded")
 	TimeSystem.day_passed.connect(_on_day_passed)
 
 func propose_treaty(faction_id: String, treaty_type: String) -> bool:
@@ -23,23 +25,28 @@ func propose_treaty(faction_id: String, treaty_type: String) -> bool:
 	EconomySystem.stockpiles.gold -= price.gold
 	if not active_treaties.has(faction_id):
 		active_treaties[faction_id] = []
-	active_treaties[faction_id].append(treaty_type)
-	treaty_expiry[faction_id + ":" + treaty_type] = TimeSystem.current_day + int(price.days)
+	var treaties:Array=active_treaties[faction_id]
+	treaties.append(treaty_type)
+	var duration:int=price.days
+	treaty_expiry[faction_id + ":" + treaty_type] = TimeSystem.current_day+duration
 	if treaty_type == "peace":
 		faction.escalation_level = 0
-		faction.relationship = maxf(-10, faction.relationship)
+		var relationship:float=faction.relationship
+		faction.relationship=maxf(-10,relationship)
 	else:
 		FactionSystem.update_relationship(faction_id, 5)
 	treaty_signed.emit(faction_id, treaty_type)
 	EventBus.settlement_updated.emit()
-	var data = load(faction.res_path)
+	var faction_path:String=faction.res_path
+	var data:FactionData=load(faction_path) as FactionData
 	EventBus.notification_posted.emit(LocalizationManager.get_string("msg.treaty_signed", {"faction": LocalizationManager.get_string(data.name_key), "treaty": LocalizationManager.get_string("treaty." + treaty_type)}), false)
 	return true
 
 func has_treaty(faction_id: String, treaty_type: String) -> bool:
 	if not active_treaties.has(faction_id) or treaty_type not in active_treaties[faction_id]:
 		return false
-	return TimeSystem.current_day < int(treaty_expiry.get(faction_id + ":" + treaty_type, 0))
+	var expires:int=treaty_expiry.get(faction_id+":"+treaty_type,0)
+	return TimeSystem.current_day<expires
 
 func give_gift(faction_id: String, gold: int) -> bool:
 	if not FactionSystem.factions.has(faction_id) or gold <= 0 or EconomySystem.stockpiles.gold < gold:
@@ -50,9 +57,9 @@ func give_gift(faction_id: String, gold: int) -> bool:
 	return true
 
 func _on_day_passed(_day: int) -> void:
-	for faction in active_treaties:
+	for faction:String in active_treaties:
 		var valid: Array = []
-		for treaty in active_treaties[faction]:
+		for treaty:String in active_treaties[faction]:
 			if has_treaty(faction, treaty):
 				valid.append(treaty)
 		active_treaties[faction] = valid

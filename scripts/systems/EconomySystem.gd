@@ -17,22 +17,24 @@ var daily_net: Dictionary = {
 
 func _ready() -> void:
 	if TimeSystem:
+		# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
+		@warning_ignore("return_value_discarded")
 		TimeSystem.day_passed.connect(_on_day_passed)
 
 func _on_day_passed(_day: int) -> void:
 	# Calculate production based on population jobs
-	var farmers = PopulationSystem.jobs.get("farmers", 0)
-	var woodcutters = PopulationSystem.jobs.get("woodcutters", 0)
-	var miners = PopulationSystem.jobs.get("miners", 0)
+	var farmers:int= PopulationSystem.jobs.get("farmers", 0)
+	var woodcutters:int= PopulationSystem.jobs.get("woodcutters", 0)
+	var miners:int= PopulationSystem.jobs.get("miners", 0)
 
 	var seasonal_yield: float = [1.0, 1.1, 0.9, 0.6][TimeSystem.current_season_idx]
-	var food_prod = farmers * 2.5 * seasonal_yield
-	var wood_prod = woodcutters * 2.0
-	var ore_prod = miners * 1.5
+	var food_prod:float= farmers * 2.5 * seasonal_yield
+	var wood_prod:float= woodcutters * 2.0
+	var ore_prod:float= miners * 1.5
 
 	# Daily consumption (1 food per citizen)
 	var civilians: int = maxi(0, PopulationSystem.total_population - ArmySystem.get_total_soldiers())
-	var food_cons = civilians * (0.5 if SettlementSystem.current_laws.rations == "half" else 1.0)
+	var food_cons:float= civilians * (0.5 if SettlementSystem.current_laws.rations == "half" else 1.0)
 
 	daily_net["food"] = food_prod - food_cons
 	daily_net["wood"] = wood_prod
@@ -41,7 +43,7 @@ func _on_day_passed(_day: int) -> void:
 	stockpiles["food"] = max(0.0, stockpiles["food"] + daily_net["food"])
 	stockpiles["wood"] = max(0.0, stockpiles["wood"] + daily_net["wood"])
 	stockpiles["ore"] = max(0.0, stockpiles["ore"] + daily_net["ore"])
-	var tax_rates := {"low": 0.25, "normal": 0.5, "high": 1.0}
+	var tax_rates:Dictionary= {"low": 0.25, "normal": 0.5, "high": 1.0}
 	stockpiles["gold"] += PopulationSystem.total_population * tax_rates[SettlementSystem.current_laws.taxes]
 	if food_prod < food_cons and stockpiles["food"] <= 0:
 		PopulationSystem.health = maxf(0, PopulationSystem.health - 5)
@@ -56,4 +58,5 @@ func get_food_days_remaining() -> int:
 	var net_consumption: float = food_cons - PopulationSystem.jobs.get("farmers", 0) * 2.5 * seasonal_yield - WorkshopSystem.levels.get("farm", 0) * 8 * seasonal_yield
 	if net_consumption <= 0:
 		return 999
-	return int(stockpiles["food"] / net_consumption)
+	var food:float=stockpiles.food
+	return int(food / net_consumption)

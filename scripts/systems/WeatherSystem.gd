@@ -11,16 +11,18 @@ var movement_speed_modifier: float = 1.0
 
 func _ready() -> void:
 	if TimeSystem:
+		# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
+		@warning_ignore("return_value_discarded")
 		TimeSystem.day_passed.connect(_on_day_changed)
 
-func _on_day_changed(day_number: int) -> void:
+func _on_day_changed(_day_number: int) -> void:
 	# Randomize weather on new day based on season
-	var current_season = TimeSystem.current_season_idx if TimeSystem else 0
+	var current_season:int= TimeSystem.current_season_idx if TimeSystem else 0
 	_determine_weather_for_season(current_season)
 
 func _determine_weather_for_season(season: int) -> void:
-	var roll = randf()
-	var new_weather = WeatherType.CLEAR
+	var roll:float= randf()
+	var new_weather:WeatherType= WeatherType.CLEAR
 
 	match season:
 		0: # SPRING
@@ -44,6 +46,7 @@ func _determine_weather_for_season(season: int) -> void:
 	set_weather(new_weather)
 
 func set_weather(weather: WeatherType) -> void:
+	if weather<WeatherType.CLEAR or weather>WeatherType.SNOW:return
 	current_weather = weather
 	match weather:
 		WeatherType.CLEAR:
@@ -67,9 +70,9 @@ func set_weather(weather: WeatherType) -> void:
 			stealth_modifier = 1.2
 			movement_speed_modifier = 0.85
 
-	var weather_name = get_weather_string_key(weather)
+	var weather_name:String= get_weather_string_key(weather)
 	if LocalizationManager:
-		var localized_name = LocalizationManager.get_string(weather_name)
+		var localized_name:String= LocalizationManager.get_string(weather_name)
 		EventBus.notification_posted.emit(LocalizationManager.get_string("msg.weather_changed") + " " + localized_name, false)
 
 func get_weather_string_key(weather: WeatherType) -> String:

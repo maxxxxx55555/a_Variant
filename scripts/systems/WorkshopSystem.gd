@@ -7,25 +7,30 @@ var definitions: Array = []
 var crafting: Array = []
 var equipment: Array = []
 var levels: Dictionary = {}
-const PRICES={"food":2.0,"wood":3.0,"ore":5.0,"stone":4.0}
+const PRICES:Dictionary[String,float]={"food":2.0,"wood":3.0,"ore":5.0,"stone":4.0}
 
 func price_for(resource:String,quantity:int,buying:bool) -> float:
-	return float(PRICES.get(resource,0.0))*quantity*(1.0 if buying else 0.65)
+	var unit_price:float=PRICES.get(resource,0.0)
+	return unit_price*quantity*(1.0 if buying else 0.65)
 
 func _ready() -> void:
 	definitions = BuildIntegrity.read_json("res://data/balance/buildings.json")
 	crafting = BuildIntegrity.read_json("res://data/balance/crafting.json")
 	equipment = BuildIntegrity.read_json("res://data/balance/equipment.json")
+	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
+	@warning_ignore("return_value_discarded")
 	TimeSystem.day_passed.connect(_on_day)
 
 func build(id: String) -> bool:
-	for definition in definitions:
+	for definition:Dictionary in definitions:
 		if definition.id == id:
 			var level: int = levels.get(id, 0)
-			if level >= int(definition.max_level):
+			var max_level:int=definition.max_level
+			if level>=max_level:
 				return false
-			var cost: Dictionary = definition.cost.duplicate()
-			for resource in cost:
+			var base_cost:Dictionary=definition.cost
+			var cost:Dictionary=base_cost.duplicate()
+			for resource:Variant in cost:
 				cost[resource] *= level + 1
 			if not Guard.begin_transaction():return false
 			if not CampaignSystem.pay(cost):
@@ -40,15 +45,21 @@ func build(id: String) -> bool:
 	return false
 
 func craft(id:String) -> bool:
-	for blueprint in crafting:
+	for blueprint:Dictionary in crafting:
 		if blueprint.id!=id or levels.get("forge",0)<=0:continue
-		var result:Resource=load(blueprint.result)
+		var result_path:String=blueprint.result
+		var result:Resource=load(result_path)
+		var cost:Dictionary=blueprint.cost
 		if not GameState.can_add_item(result) or not Guard.begin_transaction():return false
-		if not CampaignSystem.pay(blueprint.cost):
+		if not CampaignSystem.pay(cost):
 			Guard.end_transaction()
 			return false
+		# can_add_item passed before this synchronous, guarded crafting transaction.
+		@warning_ignore("return_value_discarded")
 		GameState.add_item(result)
 		Guard.end_transaction()
+		# AudioManager owns the voice and records the feedback acknowledgment.
+		@warning_ignore("return_value_discarded")
 		AudioManager.play_sfx("hit_metal","SFX_UI")
 		changed.emit()
 		return true
@@ -74,9 +85,9 @@ func trade(resource:String,quantity:int,buying:bool) -> bool:
 
 func _on_day(_day: int) -> void:
 	var housing: int = 25
-	for definition in definitions:
+	for definition:Dictionary in definitions:
 		var level: int = levels.get(definition.id, 0)
-		for resource in definition.daily:
+		for resource:Variant in definition.daily:
 			var bonus: float = definition.daily[resource] * level
 			if resource == "food": bonus *= [1.0, 1.1, 0.9, 0.6][TimeSystem.current_season_idx]
 			if resource == "housing": housing += int(bonus)

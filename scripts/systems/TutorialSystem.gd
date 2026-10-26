@@ -7,11 +7,21 @@ var potion_brewed: bool = false
 var completed: bool = false
 
 func _ready() -> void:
-	EventBus.enemy_died.connect(func(_enemy): enemy_defeated = true; refresh())
-	EventBus.potion_brewed.connect(func(_recipe): potion_brewed = true; refresh())
+	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
+	@warning_ignore("return_value_discarded")
+	EventBus.enemy_died.connect(func(_enemy:Variant)->void: enemy_defeated = true; refresh())
+	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
+	@warning_ignore("return_value_discarded")
+	EventBus.potion_brewed.connect(func(_recipe:Variant)->void: potion_brewed = true; refresh())
+	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
+	@warning_ignore("return_value_discarded")
 	EventBus.equipment_updated.connect(refresh)
+	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
+	@warning_ignore("return_value_discarded")
 	EventBus.settlement_updated.connect(refresh)
-	EventBus.language_changed.connect(func(_lang): refresh())
+	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
+	@warning_ignore("return_value_discarded")
+	EventBus.language_changed.connect(func(_lang:Variant)->void: refresh())
 	refresh()
 
 func get_progress() -> Dictionary:
@@ -24,10 +34,10 @@ func get_progress() -> Dictionary:
 	}
 
 func refresh() -> void:
-	var progress := get_progress()
-	var all_done := true
-	var text := LocalizationManager.get_string("tutorial.campaign_title" if CampaignSystem.active else "tutorial.title") + "\n"
-	for goal in progress:
+	var progress:Dictionary= get_progress()
+	var all_done:bool= true
+	var text:String= LocalizationManager.get_string("tutorial.campaign_title" if CampaignSystem.active else "tutorial.title") + "\n"
+	for goal:String in progress:
 		all_done = all_done and progress[goal]
 		text += ("✓ " if progress[goal] else "□ ") + LocalizationManager.get_string("tutorial." + goal) + "\n"
 	completed = completed or all_done

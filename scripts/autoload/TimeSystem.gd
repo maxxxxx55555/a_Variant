@@ -20,6 +20,8 @@ func _process(delta: float) -> void:
 func advance_day() -> void:
 	current_day += 1
 
+	# Whole weeks intentionally discard the fractional remainder.
+	@warning_ignore("integer_division")
 	current_week = int((current_day - 1) / 7) + 1
 
 	if (current_day - 1) % 28 == 0:
@@ -27,5 +29,3 @@ func advance_day() -> void:
 		season_changed.emit(seasons[current_season_idx])
 	day_passed.emit(current_day)
 
-func get_current_season() -> String:
-	return seasons[current_season_idx]

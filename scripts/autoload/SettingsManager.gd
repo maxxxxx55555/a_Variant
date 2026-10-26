@@ -1,6 +1,6 @@
 extends Node
 
-const SETTINGS_FILE = "user://settings.cfg"
+const SETTINGS_FILE:String= "user://settings.cfg"
 const Guard = preload("res://scripts/security/SaveGuard.gd")
 
 var master_volume: float = 1.0
@@ -19,7 +19,7 @@ func _ready() -> void:
 	load_settings()
 
 func apply_settings() -> void:
-	get_viewport().msaa_3d=clampi(msaa_quality,0,3)
+	get_viewport().msaa_3d=clampi(msaa_quality,0,3) as Viewport.MSAA
 	if AudioManager:
 		AudioManager.set_bus_volume("Master", master_volume)
 		AudioManager.set_bus_volume("Music", music_volume)
@@ -29,7 +29,7 @@ func apply_settings() -> void:
 		LocalizationManager.set_language(language)
 
 func save_settings() -> void:
-	var config = ConfigFile.new()
+	var config:ConfigFile= ConfigFile.new()
 	config.set_value("audio", "master_volume", master_volume)
 	config.set_value("audio", "music_volume", music_volume)
 	config.set_value("audio", "sfx_volume", sfx_volume)
@@ -47,21 +47,21 @@ func save_settings() -> void:
 
 func valid_settings(config: ConfigFile) -> bool:
 	if not Guard.numeric(config.get_value("graphics","msaa_quality",2),0,3,true):return false
-	for field in ["master_volume","music_volume","sfx_volume","ui_volume"]:
+	for field:String in ["master_volume","music_volume","sfx_volume","ui_volume"]:
 		if not Guard.numeric(config.get_value("audio",field,0.5),0,1): return false
 	if not Guard.numeric(config.get_value("controls","mouse_sensitivity",0.003),0.0001,0.1): return false
-	for field in ["camera_bobbing","camera_shake","reduced_motion"]:
+	for field:String in ["camera_bobbing","camera_shake","reduced_motion"]:
 		if not config.get_value("gameplay",field,false) is bool: return false
 	if config.get_value("language","lang","ru") not in ["ru","en"]: return false
-	for section in config.get_sections():
-		for field in config.get_section_keys(section):
+	for section:String in config.get_sections():
+		for field:String in config.get_section_keys(section):
 			if not Guard.pure(config.get_value(section,field)): return false
 	return true
 
 func load_settings() -> void:
-	var config = ConfigFile.new()
+	var config:ConfigFile= ConfigFile.new()
 	language="ru" if OS.get_locale_language()=="ru" else "en"
-	var text:=Guard.bounded_text(SETTINGS_FILE)
+	var text:String=Guard.bounded_text(SETTINGS_FILE)
 	var valid: bool=not text.is_empty() and text.length()<=65536 and Guard.safe_text(text)
 	if valid: valid=config.parse(text)==OK and valid_settings(config)
 	if valid:
