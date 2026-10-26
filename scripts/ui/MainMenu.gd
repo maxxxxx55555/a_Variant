@@ -23,13 +23,13 @@ func _ready() -> void:
 	add_child(shade)
 	var margin := MarginContainer.new()
 	margin.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	margin.add_theme_constant_override("margin_left", 65)
-	margin.add_theme_constant_override("margin_right", 1220)
-	margin.add_theme_constant_override("margin_top", 45)
-	margin.add_theme_constant_override("margin_bottom", 45)
+	margin.add_theme_constant_override("margin_left", 64)
+	margin.add_theme_constant_override("margin_right", 1216)
+	margin.add_theme_constant_override("margin_top", 48)
+	margin.add_theme_constant_override("margin_bottom", 48)
 	add_child(margin)
 	var column := VBoxContainer.new()
-	column.add_theme_constant_override("separation", 12)
+	column.add_theme_constant_override("separation", 16)
 	margin.add_child(column)
 	theme = preload("res://scripts/ui/MarchTheme.gd").create()
 	var title := Label.new()
@@ -60,10 +60,12 @@ func _ready() -> void:
 		localize()
 	)
 	var intro := Label.new()
-	intro.text = LocalizationManager.get_string("ui.campaign_intro")
-	intro.set_meta("locale_key","ui.campaign_intro")
+	intro.text = LocalizationManager.get_string("ui.campaign_summary")
+	intro.tooltip_text=LocalizationManager.get_string("ui.campaign_intro")
+	intro.set_meta("locale_tooltip","ui.campaign_intro")
+	intro.set_meta("locale_key","ui.campaign_summary")
 	intro.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	intro.custom_minimum_size.y = 130
+	intro.custom_minimum_size.y = 96
 	column.add_child(intro)
 	var slot_choice := OptionButton.new()
 	slot_choice.name="SlotChoice"
@@ -119,7 +121,7 @@ func action(parent: Node, key: String, callback: Callable) -> Button:
 	var control := Button.new()
 	control.text = LocalizationManager.get_string(key)
 	control.set_meta("locale_key",key)
-	control.custom_minimum_size.y = 55
+	control.custom_minimum_size.y = 56
 	parent.add_child(control)
 	control.pressed.connect(callback)
 	return control
@@ -127,6 +129,7 @@ func action(parent: Node, key: String, callback: Callable) -> Button:
 func localize() -> void:
 	for node in find_children("*","Control",true,false):
 		if node.has_meta("locale_key"):node.text=LocalizationManager.get_string(node.get_meta("locale_key"))
+		if node.has_meta("locale_tooltip"):node.tooltip_text=LocalizationManager.get_string(node.get_meta("locale_tooltip"))
 	if continue_button:continue_button.tooltip_text=LocalizationManager.get_string("ui.no_campaign_save") if continue_button.disabled else ""
 	if difficulty_choice:
 		for i in 4:difficulty_choice.set_item_text(i,LocalizationManager.get_string("difficulty."+["story","normal","hard","expert"][i]))

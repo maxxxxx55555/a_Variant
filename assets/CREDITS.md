@@ -30,3 +30,5 @@ Original project artwork authored for this release, without third-party image so
 
 - `icon.svg`: SHA256 `c06c567fc0c4375aa0a3dc87b76224d91b71c259f05b2181cc4a4498e1fc7ed5`.
 - `assets/ui/app-icon.png`: SHA256 `adba04819d8eaf4b4aea878d571ab16514e69a8f21f3acb6ea7bfbb342178f39`.
+
+V2 art curation: docs/ART_DIRECTION.md and docs/ASSET_REVIEW.json. Roadside landmarks and meadow blade refinement are code-built repository geometry using the existing licensed surfaces. The crest background clipping repair and derived executable-icon hashes are recorded in assets/ui/icon-provenance.json. Inherited third-party license files are retained unchanged.

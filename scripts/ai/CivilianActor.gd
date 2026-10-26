@@ -54,6 +54,7 @@ func _physics_process(delta: float) -> void:
 	direction.y = 0
 	var distance := direction.length()
 	if distance > 0.25:
+		var previous:Vector3=global_position
 		var speed := 3.8 if fleeing else 1.4
 		var next := global_position + direction.normalized() * minf(distance, speed * delta)
 		# Probe physical architecture without making residents block the player.
@@ -71,6 +72,8 @@ func _physics_process(delta: float) -> void:
 		if world and world.get("terrain") != null:
 			global_position.y = world.terrain.ground_at(global_position.x, global_position.z)
 		walk_phase += delta * speed * 3
-		MarchArt.animate_walk(visual, walk_phase, 0.55)
+		var moved:Vector3=global_position-previous
+		var actual_speed:float=Vector2(moved.x,moved.z).length()/maxf(delta,0.0001)
+		MarchArt.animate_walk(visual,walk_phase,actual_speed,actual_speed)
 	else:
 		MarchArt.animate_walk(visual, 0, 0)

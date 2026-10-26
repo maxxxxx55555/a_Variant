@@ -6,6 +6,7 @@ static func create(road: bool = false) -> ShaderMaterial:
 render_mode cull_disabled;
 uniform bool road = false;
 uniform float wetness : hint_range(0.0,1.0) = 0.28;
+uniform sampler2D meadow_color : source_color,filter_linear_mipmap_anisotropic,repeat_enable;
 uniform sampler2D ground_color : source_color,filter_linear_mipmap_anisotropic,repeat_enable;
 uniform sampler2D ground_normal : hint_normal,filter_linear_mipmap_anisotropic,repeat_enable;
 uniform sampler2D ground_rough : filter_linear_mipmap_anisotropic,repeat_enable;
@@ -23,9 +24,10 @@ void fragment(){
  float rough=road?texture(road_rough,uv).r:texture(ground_rough,uv).r;
  float patches=noise(world.xz*0.25);
  float puddle=wetness*smoothstep(0.60,0.78,patches);
- vec3 meadow=base*vec3(0.50,0.70,0.34);
+ vec3 meadow=texture(meadow_color,world.xz*0.19).rgb*vec3(0.70,0.82,0.64);
  float clearing=smoothstep(0.2,0.8,noise(world.xz*0.022));
- if(!road){base=mix(meadow,base,clearing*0.62);}
+ if(!road){base=mix(meadow,base,clearing*0.42);}
+ else{base*=vec3(0.65,0.69,0.66);}
  ALBEDO=base*mix(0.86,0.98,patches)*mix(1.0,0.60,puddle);
  ROUGHNESS=mix(max(0.65,rough),0.15,puddle);
  SPECULAR=0.45;
@@ -37,6 +39,7 @@ void fragment(){
 	var material := ShaderMaterial.new()
 	material.shader = shader
 	material.set_shader_parameter("road",road)
+	material.set_shader_parameter("meadow_color",load("res://assets/art/meadow_painted.png"))
 	var root := "res://assets/art/realistic/materials/"
 	for pair in [["ground","forest_ground_04"],["road","cobblestone_floor_08"]]:
 		for maps in [["color","diff"],["normal","nor_gl"],["rough","rough"]]:

@@ -43,6 +43,11 @@ def main():
         cases.append(('comfort-preferences', ['--headless', '--script', 'res://tests/test_comfort_preferences.gd']))
         cases.append(('live-world-locale', ['--headless', '--script', 'res://tests/test_live_world_locale.gd']))
         cases.append(('localized-feedback', ['--headless', '--script', 'res://tests/test_localized_feedback.gd']))
+        cases.append(('locomotion-gait', ['--headless','--script','res://tests/test_locomotion_gait.gd']))
+        cases.append(('settings-navigation', ['--headless','--script','res://tests/test_settings_navigation.gd']))
+        cases.append(('initial-idle-pose', ['--headless','--script','res://tests/test_initial_idle_pose.gd']))
+        cases.append(('map-navigation', ['--headless', '--script', 'res://tests/test_map_navigation.gd']))
+        if args.rendered: cases.append(('road-landmarks', ['--resolution','1280x720','--script','res://tests/test_road_landmarks.gd']))
         cases.append(('localization', ['--headless', '--script', 'res://tests/test_localization.gd']))
         cases.append(('presentation', ([] if args.rendered else ['--headless']) + ['--resolution', '540x960' if portrait else '1280x720', '--script', 'res://tests/test_presentation.gd']))
         for case in ['identity', 'siege', 'civilians', 'combat_cover', 'terrain_sampling', 'weapon_view', 'house_cache', 'art_assets', 'movement_comfort', 'save_guard', 'legacy_migration', 'actor_material_lifetime', 'settings_bounds']:

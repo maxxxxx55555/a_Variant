@@ -696,3 +696,8 @@ ui.ingredient_ready,готово,ready
 ui.unit.weight,кг,kg
 ui.unit.reach,м,m
 ui.unit.health,ОЗ,HP
+ui.campaign_summary,Отстройте поселение. Объедините пограничье — словом или мечом.,Build your settlement. Unite the March through diplomacy or war.
+map.town,Город,Town
+map.road,Дорога,Road
+map.explored,Открыто,Explored
+map.player,Вы,You

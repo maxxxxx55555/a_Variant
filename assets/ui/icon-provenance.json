@@ -1,0 +1,9 @@
+{
+  "provider": "Repository-authored vector; Godot SVG rasterizer",
+  "date": "2026-10-26",
+  "change": "Background rect matched to256\u00d7256 viewBox; restore all rounded corners without changing the crest",
+  "source": "icon.svg",
+  "tool": "tools/render_icon.gd",
+  "source_sha256": "3630a17e91a9f12c7d69aaedf4925387e14435a0ec27d8ef689cac2d78a780bb",
+  "app_icon_sha256": "7f796289f279e3fc7f524a5076994b087cb7d896026d7ab75e5f7ace8c924333"
+}

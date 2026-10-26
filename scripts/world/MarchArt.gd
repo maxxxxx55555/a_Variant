@@ -43,12 +43,18 @@ static func box(parent: Node3D, position: Vector3, size: Vector3, color: Color, 
 static func humanoid(parent: Node3D, _color: Color, armored: bool = false, armed: bool = true) -> Node3D:
 	return MarchAssets.character(parent, armored, armed, _color)
 
-static func animate_walk(visual: Node3D, _phase: float, strength: float) -> void:
-	var player: AnimationPlayer = visual.get_meta("animation_player", null)
-	if not is_instance_valid(player): return
-	if player.current_animation=="Attack" and player.is_playing(): return
-	var clip := "Walking_A" if strength > 0.03 else "Idle"
-	if player.current_animation != clip: player.play(clip, 0.18)
+static func animate_walk(visual:Node3D,_phase:float,strength:float,movement_speed:float=-1.0) -> void:
+	var player:AnimationPlayer=visual.get_meta("animation_player",null)
+	if not is_instance_valid(player):return
+	if player.current_animation=="Attack" and player.is_playing():return
+	var speed:float=0.96 if movement_speed<0 else movement_speed
+	var clip:="Idle"
+	if strength>0.03 and speed>0.03:
+		clip="Running_A" if speed>4.2 else "Jogging_A" if speed>2.2 else "Walking_A"
+	if player.current_animation!=clip:player.play(clip,0.18)
+	# Reference speeds from the licensed source's in-place foot excursion.
+	var reference:float={"Walking_A":0.96,"Jogging_A":2.51,"Running_A":3.29}.get(clip,1.0)
+	player.speed_scale=clampf(speed/reference,0.1,2.5) if clip!="Idle" else 1.0
 
 static func animate_attack(visual: Node3D) -> void:
 	if is_instance_valid(visual) and visual.has_method("attack"): visual.attack()

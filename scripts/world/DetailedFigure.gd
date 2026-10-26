@@ -28,7 +28,7 @@ static func clips(sex: String, armed: bool, target: Skeleton3D, ranged: bool = f
 	var source_skeleton := source.find_child("Skeleton3D",true,false) as Skeleton3D
 	var player := source.find_child("AnimationPlayer",true,false) as AnimationPlayer
 	var library := AnimationLibrary.new()
-	var aliases := {"Idle":"Sword_Idle" if armed else "Idle","Walking_A":"Walk","Attack":"Sword_Attack"}
+	var aliases := {"Idle":"Sword_Idle" if armed else "Idle","Walking_A":"Walk","Jogging_A":"Jog_Fwd","Running_A":"Sprint","Attack":"Sword_Attack"}
 	if ranged:
 		aliases.Idle="Pistol_Idle"
 		aliases.Attack="Pistol_Shoot"
@@ -104,6 +104,8 @@ static func build(parent: Node3D, armored: bool, armed: bool, tint: Color) -> No
 	model.add_child(animation)
 	animation.add_animation_library("",clips(sex,armed,skeleton,ranged))
 	animation.play("Idle")
+	# Establish the pose before distance culling or a paused first frame.
+	animation.advance(0.0)
 	wrapper.animator = animation
 	wrapper.set_meta("animation_player",animation)
 	if armed:
@@ -124,7 +126,9 @@ static func build(parent: Node3D, armored: bool, armed: bool, tint: Color) -> No
 	return wrapper
 
 func attack() -> void:
-	if is_instance_valid(animator): animator.play("Attack",0.08,1.7)
+	if is_instance_valid(animator):
+		animator.speed_scale=1.0
+		animator.play("Attack",0.08,1.7)
 
 func _process(delta: float) -> void:
 	scan_time -= delta

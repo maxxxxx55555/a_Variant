@@ -4,15 +4,15 @@ The compact campaign has60 dependency-linked objectives across eight regions,14 
 
 The older GAME_DESIGN/FULL_BOOK are a broader archived roadmap, not additional advertised features. **Not in this edition:** enterable cave/cellar networks, physical caravan robbery/escort economy, individual age/sex/water/epidemic simulation, player skill trees, timed parry/dodge invulnerability or player bow combat, extra equipment slots/grid/filter UI, command-wheel/RTS selection, cavalry, full branching narrative investigations, six reverb zones, advanced accessibility/render presets, and separate economic/liberation/political-collapse endings. Individual differences and all original promises are indexed in [the edition matrix](docs/PROMISE_MATRIX.md); its complete inventory retains the original words and line references. Compatibility rendering uses non-volumetric fog and does not provide SDFGI/SSR/SSAO. Performance figures describe the tested host, not every hardware target.
 
-# Marchland Oaths — 1.5.0
+# Marchland Oaths — 1.5.1 preparation (publication locked)
 
-Live Russian/English menu updates and 675 catalog keys, preserving the current save/difficulty selection. Four distinct Gemini/Lyria mood compositions, two 20-second musical finales, independent Master/Music/SFX/UI levels, reduced motion, functional credits and coherent application icons. Existing protected profiles and legacy user-data directories remain compatible.
+Live Russian/English menu updates and 680 catalog keys, preserving the current save/difficulty selection. Four distinct Gemini/Lyria mood compositions, two 20-second musical finales, independent Master/Music/SFX/UI levels, reduced motion, functional credits and coherent application icons. Existing protected profiles and legacy user-data directories remain compatible.
 
 ## Русский
 
 Живое переключение русского и английского языков без перезагрузки меню. Разные композиции для четырёх настроений, музыкальные финалы, четыре уровня звука, настройка анимации и экран авторов. Каталоги старых сохранений сохранены.
 
-Current release: v1.5.0. Detailed provenance: assets/audio/SOUNDTRACK.md. Localization: docs/LOCALIZATION.md. Scope remains stylized indie art and does not claim GTA V scale. Portable Windows executables are not Authenticode-signed; offline save tamper evidence is not unbreakable DRM.
+Published baseline: v1.5.0. The v2 successor is1.5.1 because the existing1.5.0 tag and release are immutable. Detailed provenance: assets/audio/SOUNDTRACK.md. Localization: docs/LOCALIZATION.md. Scope remains stylized indie art and does not claim GTA V scale. Portable Windows executables are not Authenticode-signed; offline save tamper evidence is not unbreakable DRM.
 
 ---
 
@@ -63,7 +63,7 @@ godot --headless --path . --export-release "Windows Desktop" builds/windows/Marc
 python tests/run_tests.py --godot /path/to/godot --rendered --full-campaign --artifacts /path/to/logs
 ```
 
-The current source runner executes36 Godot cases per locale; --full-campaign adds two complete route cases (38 total). Python checks cover resources, export, copy/edition contracts, isolation, soundtrack and audio assets. These cover 45 core regressions, 15 introductory playthrough checks, strategy, 675 RU/EN keys, sieges, civilians, cover, weapon models, triangle-exact cached terrain sampling, audio and saves. Complete diplomatic and military routes use actual movement, attacks, interactions and ordinary UI payments. The native verifier accepts `--military` for the conquest route. Normal difficulty is the full-route test baseline; other hardware and long unscripted play sessions require further independent QA.
+The current source runner executes41 rendered Godot cases per locale (40 headless); --full-campaign adds two complete route cases (43 rendered total). Python checks cover resources, export, copy/edition contracts, isolation, soundtrack and audio assets. These cover 45 core regressions, 15 introductory playthrough checks, strategy, 680 RU/EN keys, sieges, civilians, cover, weapon models, triangle-exact cached terrain sampling, audio and saves. Complete diplomatic and military routes use actual movement, attacks, interactions and ordinary UI payments. The native verifier accepts `--military` for the conquest route. Normal difficulty is the full-route test baseline; other hardware and long unscripted play sessions require further independent QA.
 
 Identical static assets share normalized meshes and preserve gameplay colliders. The 1.2 rainy village measured 5.07 seconds to load and 49.66 FPS over 180 rendered frames, with 337 draw calls at 1280×720 on this AMD integrated GPU. These are measurements from one machine.
 
@@ -86,3 +86,5 @@ Distinct folk compositions accompany exploration, settlements, combat, war and b
 The playable 3D world now uses PBR stone, plaster, timber and slate, detailed original house geometry, scanned rocks/barrels, a real sunset sky, wet surfaces, local rain, woven heraldic banners and optimized textured birch foliage. Characters retain the licensed animation with restrained colors and adjusted proportions. This is reference-inspired real-time scenery, not the pixel-identical photorealism of a pre-rendered illustration; characters and some props remain stylized.
 
 Offline tamper evidence, schema/resource validation and atomic saves protect normal play and recover known-good backups. Valid legacy saves migrate once. Keep the whole user-data folder, including its installation key, when backing up protected saves. See SAVE-INTEGRITY.md for the precise guarantees and limitations.
+
+V2 visual pass: eight-point design tokens, curated source-asset review, corrected crest, tapered meadow, batched roadside landmarks and an actual-road atlas with keyboard navigation and a translated legend. See docs/ART_DIRECTION.md and docs/ASSET_REVIEW.json; final release acceptance remains gated.

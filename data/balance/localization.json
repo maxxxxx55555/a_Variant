@@ -2698,5 +2698,25 @@
   "ui.unit.health": {
     "ru": "ОЗ",
     "en": "HP"
+  },
+  "ui.campaign_summary": {
+    "ru": "Отстройте поселение. Объедините пограничье — словом или мечом.",
+    "en": "Build your settlement. Unite the March through diplomacy or war."
+  },
+  "map.town": {
+    "ru": "Город",
+    "en": "Town"
+  },
+  "map.road": {
+    "ru": "Дорога",
+    "en": "Road"
+  },
+  "map.explored": {
+    "ru": "Открыто",
+    "en": "Explored"
+  },
+  "map.player": {
+    "ru": "Вы",
+    "en": "You"
   }
 }

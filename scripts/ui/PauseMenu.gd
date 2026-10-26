@@ -15,6 +15,10 @@ extends Control
 @onready var bobbing_check: CheckBox = $MarginContainer/SettingsScroll/SettingsPanel/BobbingCheck
 @onready var shake_check: CheckBox = $MarginContainer/SettingsScroll/SettingsPanel/ShakeCheck
 
+var settings_back:Button
+var settings_header:HBoxContainer
+var settings_backdrop:Panel
+
 func _ready() -> void:
 	EventBus.language_changed.connect(func(_lang): localize())
 	resume_btn.pressed.connect(_on_resume)
@@ -56,6 +60,7 @@ func _ready() -> void:
 	quality.selected=SettingsManager.msaa_quality
 	settings_panel.add_child(quality)
 	quality.item_selected.connect(func(index):SettingsManager.msaa_quality=index;SettingsManager.apply_settings())
+	build_settings_frame()
 	init_settings_ui()
 	localize()
 	var slot_choice := OptionButton.new()
@@ -89,8 +94,9 @@ func localize() -> void:
 	settings_panel.get_node("MouseSensitivity").tooltip_text=LocalizationManager.get_string("ui.mouse_hint")
 	settings_panel.get_node("MSAAQuality").tooltip_text=LocalizationManager.get_string("ui.msaa_hint")
 	settings_panel.get_node("MSAAQuality").set_item_text(0,LocalizationManager.get_string("ui.msaa_off"))
-	var back:Button=settings_panel.get_node_or_null("BackButton")
-	if back:back.text=LocalizationManager.get_string("ui.resume")
+	if is_instance_valid(settings_back):
+		settings_back.text=LocalizationManager.get_string("ui.close")
+		settings_header.get_child(0).text=LocalizationManager.get_string("ui.settings")
 	var slots:OptionButton=find_child("SaveSlotChoice",true,false)
 	if slots:
 		for i in 5:slots.set_item_text(i,LocalizationManager.get_string("ui.slot")+" "+str(i+1))
@@ -166,21 +172,49 @@ func _on_load() -> void:
 	else:
 		EventBus.notification_posted.emit(LocalizationManager.get_string("msg.save_error"), true)
 
+func build_settings_frame() -> void:
+	settings_backdrop=Panel.new()
+	settings_backdrop.mouse_filter=Control.MOUSE_FILTER_IGNORE
+	settings_backdrop.add_theme_stylebox_override("panel",preload("res://scripts/ui/MarchTheme.gd").panel(Color("1c2932"),Color("61717a")))
+	add_child(settings_backdrop);move_child(settings_backdrop,1)
+	centered_frame(settings_backdrop,Rect2(-344,-488,688,928))
+	settings_backdrop.hide()
+	settings_header=HBoxContainer.new()
+	settings_header.add_theme_constant_override("separation",24)
+	add_child(settings_header)
+	centered_frame(settings_header,Rect2(-320,-464,640,56))
+	var heading:=Label.new()
+	heading.add_theme_font_override("font",load("res://assets/fonts/Literata.ttf"))
+	heading.add_theme_font_size_override("font_size",32)
+	heading.size_flags_horizontal=Control.SIZE_EXPAND_FILL
+	settings_header.add_child(heading)
+	settings_back=Button.new()
+	settings_back.name="BackButton"
+	settings_back.custom_minimum_size=Vector2(136,56)
+	settings_header.add_child(settings_back)
+	settings_back.pressed.connect(_on_toggle_settings)
+	settings_header.hide()
+	$MarginContainer/SettingsScroll.follow_focus=true
+	settings_panel.add_theme_constant_override("separation",16)
+func centered_frame(control:Control,rectangle:Rect2) -> void:
+	control.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+	control.offset_left=rectangle.position.x
+	control.offset_top=rectangle.position.y
+	control.offset_right=rectangle.end.x
+	control.offset_bottom=rectangle.end.y
 func _on_toggle_settings() -> void:
-	settings_panel.visible = not settings_panel.visible
+	settings_panel.visible=not settings_panel.visible
 	$MarginContainer/SettingsScroll.visible=settings_panel.visible
-	$MarginContainer/VBoxContainer.visible = not settings_panel.visible
+	$MarginContainer/VBoxContainer.visible=not settings_panel.visible
+	settings_backdrop.visible=settings_panel.visible
+	settings_header.visible=settings_panel.visible
+	centered_frame($MarginContainer,Rect2(-320,-392,640,800) if settings_panel.visible else Rect2(-200,-250,400,500))
 	if settings_panel.visible:
 		init_settings_ui()
-		var back_button := settings_panel.get_node_or_null("BackButton")
-		if not back_button:
-			back_button = Button.new()
-			back_button.name = "BackButton"
-			settings_panel.add_child(back_button)
-			back_button.pressed.connect(_on_toggle_settings)
-		back_button.text = LocalizationManager.get_string("ui.resume")
+		lang_option.grab_focus()
 	else:
 		SettingsManager.save_settings()
+		settings_btn.grab_focus()
 
 func _on_lang_selected(idx: int) -> void:
 	var lang = "ru" if idx == 0 else "en"

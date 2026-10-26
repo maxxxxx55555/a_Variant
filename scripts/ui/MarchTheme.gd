@@ -5,11 +5,11 @@ static func panel(color: Color, edge: Color = Color("61717a")) -> StyleBoxFlat:
 	box.bg_color = color
 	box.border_color = edge
 	box.set_border_width_all(1)
-	box.set_corner_radius_all(5)
-	box.content_margin_left = 18
-	box.content_margin_right = 18
-	box.content_margin_top = 10
-	box.content_margin_bottom = 10
+	box.set_corner_radius_all(8)
+	box.content_margin_left = 16
+	box.content_margin_right = 16
+	box.content_margin_top = 8
+	box.content_margin_bottom = 8
 	return box
 
 static func style(color: Color, border: Color = Color.TRANSPARENT) -> StyleBoxFlat:
@@ -20,10 +20,10 @@ static func surface(state: String) -> StyleBoxTexture:
 	var box := StyleBoxTexture.new()
 	box.texture = load("res://assets/ui/button-"+state+".svg")
 	box.set_texture_margin_all(12)
-	box.content_margin_left = 20
-	box.content_margin_right = 20
+	box.content_margin_left = 24
+	box.content_margin_right = 24
 	box.content_margin_top = 12
-	box.content_margin_bottom = 14
+	box.content_margin_bottom = 12
 	surfaces[state] = box
 	return box
 

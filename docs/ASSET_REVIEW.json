@@ -1,0 +1,648 @@
+{
+  "review_date": "2026-10-26",
+  "game": "Marchland Oaths",
+  "method": "Visual contact-sheet inspection of every listed raster/vector, full narrative-image inspection,16px icon check; integrated gallery acceptance is recorded separately after capture review.",
+  "scope": "Source curation; does not claim human playtesting or final release acceptance",
+  "count": 79,
+  "files": [
+    {
+      "path": "assets/art/characters/Barbarian_barbarian_texture.png",
+      "sha256": "7329b2ff9709e8d54c886d5ef49c08bd42b12be3bbb2facb1488a6b48b1e8a80",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/asset-sources.json"
+    },
+    {
+      "path": "assets/art/characters/barbarian_texture.png",
+      "sha256": "7329b2ff9709e8d54c886d5ef49c08bd42b12be3bbb2facb1488a6b48b1e8a80",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/asset-sources.json"
+    },
+    {
+      "path": "assets/art/characters/Knight_knight_texture.png",
+      "sha256": "5d250ccc5da020e6126bfa3839f83bd9a465a951ed223e4d13c08b1925e154d4",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/asset-sources.json"
+    },
+    {
+      "path": "assets/art/characters/knight_texture.png",
+      "sha256": "5d250ccc5da020e6126bfa3839f83bd9a465a951ed223e4d13c08b1925e154d4",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/asset-sources.json"
+    },
+    {
+      "path": "assets/art/characters/Mage_mage_texture.png",
+      "sha256": "ea49f094b960402635fe51db9f1864960c97271b17f2e3554e5aca1b2bbba144",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/asset-sources.json"
+    },
+    {
+      "path": "assets/art/characters/mage_texture.png",
+      "sha256": "ea49f094b960402635fe51db9f1864960c97271b17f2e3554e5aca1b2bbba144",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/asset-sources.json"
+    },
+    {
+      "path": "assets/art/characters/Rogue_rogue_texture.png",
+      "sha256": "a4032e877c3b91939f5cdbb630349c1998fdbc3211bbd587c111125500fe4cc5",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/asset-sources.json"
+    },
+    {
+      "path": "assets/art/characters/rogue_texture.png",
+      "sha256": "a4032e877c3b91939f5cdbb630349c1998fdbc3211bbd587c111125500fe4cc5",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/asset-sources.json"
+    },
+    {
+      "path": "assets/art/humans/T_Eye_Brown.png",
+      "sha256": "d08e3356a83211bc6ca21fe3a8e39f4b5c1a3b8f85457fc2c0fb57be09935025",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/humans/sources.json"
+    },
+    {
+      "path": "assets/art/humans/T_Eye_Normal.png",
+      "sha256": "9ed61f7726a54fe346a78b9e5a18905d8e2b88f86235d97f53cd207a26f3f8c7",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/humans/sources.json"
+    },
+    {
+      "path": "assets/art/humans/T_Hair_1_BaseColor.png",
+      "sha256": "bc7aa863bd22ab0a995cd838cceb4d3a5186ee54ee2fb0108fad85d20c057e6e",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/humans/sources.json"
+    },
+    {
+      "path": "assets/art/humans/T_Hair_1_Normal.png",
+      "sha256": "57fd0ad8c96a4d01b38769637e066cecaa285b456f6e48ce00863754a457affb",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/humans/sources.json"
+    },
+    {
+      "path": "assets/art/humans/T_Hair_2_BaseColor.png",
+      "sha256": "f9f4f2fb3eeeefb0b6f0fdef38b0770fd6607640c1c680b8139dd76697e9f9b3",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/humans/sources.json"
+    },
+    {
+      "path": "assets/art/humans/T_Hair_2_Normal.png",
+      "sha256": "172f230aae0d4366c3cfc0402b2e6d1811b11f8487344bff28605eeacac1558d",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/humans/sources.json"
+    },
+    {
+      "path": "assets/art/humans/T_Peasant_BaseColor.png",
+      "sha256": "a43635628d95571cd62fd4db0cc3a6ea32778b2bc02f242dda224c89d07f1ade",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/humans/sources.json"
+    },
+    {
+      "path": "assets/art/humans/T_Peasant_Normal.png",
+      "sha256": "7598fa7b63e46fd4dac29708bf5a81e05eb9a67280f7b13c61e28a9110eeb679",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/humans/sources.json"
+    },
+    {
+      "path": "assets/art/humans/T_Peasant_ORM.png",
+      "sha256": "e1932f5f91104afca89c501416a5fec09069b8552734237fc09045fabc4ca9b4",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/humans/sources.json"
+    },
+    {
+      "path": "assets/art/humans/T_Ranger_BaseColor.png",
+      "sha256": "846ef2170b04ee584ad83bb8a1e86dab57a9a43b1193204505912c274d949925",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/humans/sources.json"
+    },
+    {
+      "path": "assets/art/humans/T_Ranger_Normal.png",
+      "sha256": "dd64da2af3180f0c8f0b721cfc5f0d2720c351b97da8285c6cf49e7717c84147",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/humans/sources.json"
+    },
+    {
+      "path": "assets/art/humans/T_Ranger_ORM.png",
+      "sha256": "aca03d2fba12508ef07d5968ca22267fb207ea26ae898b6b2def8a296bd44f1c",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/humans/sources.json"
+    },
+    {
+      "path": "assets/art/humans/T_Regular_Female_Dark_BaseColor.png",
+      "sha256": "3b6ab973f9f3d6f8961226a0dbd99cf6d1b72df3795a8a5c1620a55754c161c2",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/humans/sources.json"
+    },
+    {
+      "path": "assets/art/humans/T_Regular_Female_Normal.png",
+      "sha256": "e1051d3d56df9cf061bc14c769c37253aecd595f8275f9d4c0d6e0e953c00e18",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/humans/sources.json"
+    },
+    {
+      "path": "assets/art/humans/T_Regular_Female_Roughness.png",
+      "sha256": "da541fbd4b3bffe754fada5c29f8a0d8f836bf20ce7df8273607af4729a3a5ae",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/humans/sources.json"
+    },
+    {
+      "path": "assets/art/humans/T_Regular_Male_Dark_BaseColor.png",
+      "sha256": "b4dcc0f4139aab548d7c070c4655bd2080ef16caeaaabee6c4aeb693c524e802",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/humans/sources.json"
+    },
+    {
+      "path": "assets/art/humans/T_Regular_Male_Normal.png",
+      "sha256": "10cd71e2453e577fdd43e912b6016a99baf64964f0593e524bdd304855e15e2a",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/humans/sources.json"
+    },
+    {
+      "path": "assets/art/humans/T_Regular_Male_Roughness.png",
+      "sha256": "086c2eb25bddfdb77d8e639ccbffb8df723ef4a1910d8e1b217e852f8668bfe5",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/humans/sources.json"
+    },
+    {
+      "path": "assets/art/humans/T_Superhero_Female_Dark_BaseColor.png",
+      "sha256": "d366843ee7d9e9f37ec87a0e1c98c7f2e45573c08eeb80a51a6d9344e68cf288",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/humans/sources.json"
+    },
+    {
+      "path": "assets/art/humans/T_Superhero_Female_Normal.png",
+      "sha256": "cf922460b43ccd31e983e34db05514c9d451dd2f9cdd01a843978e797719f859",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/humans/sources.json"
+    },
+    {
+      "path": "assets/art/humans/T_Superhero_Female_Roughness.png",
+      "sha256": "d2beabf2bd0313e32c68dcdbb80dca371a6e994fabf96efa97128bf9f14fa57b",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/humans/sources.json"
+    },
+    {
+      "path": "assets/art/humans/T_Superhero_Male_Dark.png",
+      "sha256": "df680cbc1967a61e85998bfafb8f7bc0a36dd604bb3266486c4b06b1a184bb45",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/humans/sources.json"
+    },
+    {
+      "path": "assets/art/humans/T_Superhero_Male_Normal.png",
+      "sha256": "9b25cf9200216eb754b79cf4c63b5380c419780788322f3c57cdd2b3e02679a6",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/humans/sources.json"
+    },
+    {
+      "path": "assets/art/humans/T_Superhero_Male_Roughness.png",
+      "sha256": "c70dabf48574cda55644d556beae1ee7cf1bdcf68a50d259d20f2f2358f27991",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/humans/sources.json"
+    },
+    {
+      "path": "assets/art/meadow_painted.png",
+      "sha256": "a1782de25305643107f2f7aa9e88ea1ea61378173f9a04256e1be296ae706c5e",
+      "role": "ground albedo",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Muted low-contrast grass texture, no baked object/text artifacts. Integrated meadow geometry refined separately into narrow curved blades; streets remain clear.",
+      "provenance": "assets/art/title-provenance.json"
+    },
+    {
+      "path": "assets/art/medieval/buildings/blue/hexagons_medieval.png",
+      "sha256": "5301a06866ba3be68dcc14cc429bd6d0f69004b72884283715d7e233f2e9782e",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/asset-sources.json"
+    },
+    {
+      "path": "assets/art/medieval/decoration/nature/hexagons_medieval.png",
+      "sha256": "5301a06866ba3be68dcc14cc429bd6d0f69004b72884283715d7e233f2e9782e",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/asset-sources.json"
+    },
+    {
+      "path": "assets/art/medieval/decoration/props/hexagons_medieval.png",
+      "sha256": "5301a06866ba3be68dcc14cc429bd6d0f69004b72884283715d7e233f2e9782e",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/asset-sources.json"
+    },
+    {
+      "path": "assets/art/realistic/materials/cobblestone_floor_08/cobblestone_floor_08_diff_1k.jpg",
+      "sha256": "ec131f7a99a1e7f9df25d4725609c55a6dad1df487630685e9a66ecbf41ec33a",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/realistic/sources.json"
+    },
+    {
+      "path": "assets/art/realistic/materials/cobblestone_floor_08/cobblestone_floor_08_nor_gl_1k.jpg",
+      "sha256": "26bfff70b266a4e86983814c7e56a9b48daf93cd34dcdc16a5db13e4fabcfbb6",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/realistic/sources.json"
+    },
+    {
+      "path": "assets/art/realistic/materials/cobblestone_floor_08/cobblestone_floor_08_rough_1k.jpg",
+      "sha256": "f92bcaf897cd98bc3cf11e6409b3e42145e7d0f659eaaad8807dfb0c5d16afc6",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/realistic/sources.json"
+    },
+    {
+      "path": "assets/art/realistic/materials/damaged_plaster/damaged_plaster_arm_1k.jpg",
+      "sha256": "78f228161cc3c37cf4a335d8ea0f2a6b4dd5ff7bef50a8aa9fa0397d7ff4de13",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/realistic/sources.json"
+    },
+    {
+      "path": "assets/art/realistic/materials/damaged_plaster/damaged_plaster_diff_1k.jpg",
+      "sha256": "391649dbb391c978b0d95cdd2351617fe3b7a577e432b94171208e576c9b2c63",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/realistic/sources.json"
+    },
+    {
+      "path": "assets/art/realistic/materials/damaged_plaster/damaged_plaster_nor_gl_1k.jpg",
+      "sha256": "9d2e4c261211c951fc424fe695483596e821f86b13d1d05485551ef0240d6b67",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/realistic/sources.json"
+    },
+    {
+      "path": "assets/art/realistic/materials/forest_ground_04/forest_ground_04_diff_1k.jpg",
+      "sha256": "50a4dda30875020c64385261aa7e00e2155b592302fa6794165f58fae73cbd2c",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/realistic/sources.json"
+    },
+    {
+      "path": "assets/art/realistic/materials/forest_ground_04/forest_ground_04_nor_gl_1k.jpg",
+      "sha256": "9c3a0200e02ce40edffbbf9f5f623ef08ea9b1b7812b556182ec978f88887151",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/realistic/sources.json"
+    },
+    {
+      "path": "assets/art/realistic/materials/forest_ground_04/forest_ground_04_rough_1k.jpg",
+      "sha256": "89d4d50395eb92824a64132c4bc8a5a09009071e0b325ab66dc3104c7a3090ed",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/realistic/sources.json"
+    },
+    {
+      "path": "assets/art/realistic/materials/roof_slates_02/roof_slates_02_diff_1k.jpg",
+      "sha256": "de3d2729ab385c5f7dd7106d3b435c737f6d2c3ea8883cea37de53cec2a34867",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/realistic/sources.json"
+    },
+    {
+      "path": "assets/art/realistic/materials/roof_slates_02/roof_slates_02_nor_gl_1k.jpg",
+      "sha256": "32be0c0ba1565856156a315dc98a773d72f1a03415930657b8a8ad62bf60c1bf",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/realistic/sources.json"
+    },
+    {
+      "path": "assets/art/realistic/materials/roof_slates_02/roof_slates_02_rough_1k.jpg",
+      "sha256": "737f95fdbb09e49670cbce09a78fe75c18bbaed597524db832f0227df0dce2cd",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/realistic/sources.json"
+    },
+    {
+      "path": "assets/art/realistic/materials/rough_wood/rough_wood_diff_1k.jpg",
+      "sha256": "abc46d8e3163d911220f4ec3a4043b68d2b0c6d750513f80871211acfefb2a98",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/realistic/sources.json"
+    },
+    {
+      "path": "assets/art/realistic/materials/rough_wood/rough_wood_nor_gl_1k.jpg",
+      "sha256": "3d1c6f098b66d93e52071b41834dd14a424d8cd2f7c4130c62dc062acfa65011",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/realistic/sources.json"
+    },
+    {
+      "path": "assets/art/realistic/materials/rough_wood/rough_wood_rough_1k.jpg",
+      "sha256": "4e9ea9962a7e8b69057937e6723c4b0134b949c1ee5cdb5f3687a54113027b09",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/realistic/sources.json"
+    },
+    {
+      "path": "assets/art/realistic/models/rock_moss_set_01/textures/rock_moss_set_01_diff_1k.jpg",
+      "sha256": "40cea65d8aa4ee73a93b04af19963834d061eee9779c3fc2c1cba76eef812ccc",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/realistic/sources.json"
+    },
+    {
+      "path": "assets/art/realistic/models/rock_moss_set_01/textures/rock_moss_set_01_nor_gl_1k.jpg",
+      "sha256": "eb4aad3f207f1dc5b624d74ae240372171626a66912bd71adf7bd3e518181d6e",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/realistic/sources.json"
+    },
+    {
+      "path": "assets/art/realistic/models/rock_moss_set_01/textures/rock_moss_set_01_rough_1k.jpg",
+      "sha256": "4d6ec46623abd8e2cdb855f59c7ce31873ad61b36b60e4de579e9e776a497c6b",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/realistic/sources.json"
+    },
+    {
+      "path": "assets/art/realistic/models/tree_small_02/textures/tree_small_02_arm_1k.jpg",
+      "sha256": "891c5a1bb124292984b01558e9f2b0302d27d2fa3ccf9dfc6c34f9ea4ca24e6c",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/realistic/sources.json"
+    },
+    {
+      "path": "assets/art/realistic/models/tree_small_02/textures/tree_small_02_branch_arm_1k.jpg",
+      "sha256": "8968b46d76c67da09ebbf4eed04b8123c9e0ddf5b55d123968b35b32aa76d27a",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/realistic/sources.json"
+    },
+    {
+      "path": "assets/art/realistic/models/tree_small_02/textures/tree_small_02_branch_diff_1k.jpg",
+      "sha256": "a71b768e330c0c6cca097e30314f6b4e842ef724a1370f6aab14b4434eec64cb",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/realistic/sources.json"
+    },
+    {
+      "path": "assets/art/realistic/models/tree_small_02/textures/tree_small_02_branch_nor_gl_1k.jpg",
+      "sha256": "a2efae9e7fede259601188cd5cb7e561fc502bd87e04d862a9532b2d8e647a62",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/realistic/sources.json"
+    },
+    {
+      "path": "assets/art/realistic/models/tree_small_02/textures/tree_small_02_diff_1k.jpg",
+      "sha256": "4e0093f407b3a1120a36de49a48ebe5a465a9a9b77e361c7a3e66866e115e404",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/realistic/sources.json"
+    },
+    {
+      "path": "assets/art/realistic/models/tree_small_02/textures/tree_small_02_leaves_arm_1k.jpg",
+      "sha256": "71f81374daf5a8f3e6eb2c694264a1769fdb0bea508178e4105618eecea83c3e",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/realistic/sources.json"
+    },
+    {
+      "path": "assets/art/realistic/models/tree_small_02/textures/tree_small_02_leaves_diff_1k.jpg",
+      "sha256": "261e7d7a5ac7d2e16ea8823ff8510be8f3f615999724232994039ad2885e5c36",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/realistic/sources.json"
+    },
+    {
+      "path": "assets/art/realistic/models/tree_small_02/textures/tree_small_02_leaves_nor_gl_1k.jpg",
+      "sha256": "8c72e04fb23e16ae1df79c01385a638473d1dd4dede3d51e83d70153c129f09b",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/realistic/sources.json"
+    },
+    {
+      "path": "assets/art/realistic/models/tree_small_02/textures/tree_small_02_nor_gl_1k.jpg",
+      "sha256": "9c83be074c950ea1b94c732c0c0291b53b9ba357f932d378bafe3ca3b4418871",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/realistic/sources.json"
+    },
+    {
+      "path": "assets/art/realistic/models/wine_barrel_01/textures/wine_barrel_01_arm_1k.jpg",
+      "sha256": "be658e1389dbe8669e847b8fc7df8affdce46d6582f01ac701555b6446a40b9d",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/realistic/sources.json"
+    },
+    {
+      "path": "assets/art/realistic/models/wine_barrel_01/textures/wine_barrel_01_diff_1k.jpg",
+      "sha256": "6bea25b4fadda0636b6b7e46e0cc15153eda21ef62c823d5ee2e06a5a7589214",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/realistic/sources.json"
+    },
+    {
+      "path": "assets/art/realistic/models/wine_barrel_01/textures/wine_barrel_01_nor_gl_1k.jpg",
+      "sha256": "86cdb0729b44d1687c75d895e6d0ef650f7580d70f3bcb52bce6fedc5fd79b6f",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/art/realistic/sources.json"
+    },
+    {
+      "path": "assets/art/realistic/sky/dusk.hdr",
+      "sha256": "cec532d8dd382bcdca98d7010fa951a782f3295f98e8bd72ee453be8d0a64e98",
+      "role": "lighting environment",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Licensed dusk HDR panorama; horizon and exposure remain coherent with muted warm/cool world treatment. Technical source retained with attribution.",
+      "provenance": "assets/art/realistic/sources.json"
+    },
+    {
+      "path": "assets/art/realistic/trees/birch-canopy-0.png",
+      "sha256": "744a9cf85e4a9c50dba810f90048e47cb6b568b986c8855007730e07f5f48030",
+      "role": "derived canopy atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Licensed geometry bake with transparent edge; silhouette and palette coherent with trunk, no narrative lettering. Distance culling and alpha clipping retained.",
+      "provenance": "assets/art/realistic/sources.json"
+    },
+    {
+      "path": "assets/art/realistic/trees/birch-canopy-1.png",
+      "sha256": "7db1bc470184f48d6d1b4efc09633cdd8f7b3976dfd5c5da72c81cdc7a0d9785",
+      "role": "derived canopy atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Licensed geometry bake with transparent edge; silhouette and palette coherent with trunk, no narrative lettering. Distance culling and alpha clipping retained.",
+      "provenance": "assets/art/realistic/sources.json"
+    },
+    {
+      "path": "assets/art/title_painting.png",
+      "sha256": "264a72702c3c5de935ee613f4bda331b2a9d3edde04cc6b7f1e5e81c23c078c4",
+      "role": "narrative title",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Inspected full image and title overlay: coherent warm sun/cool shadow, readable architecture and clear dark menu region; no baked text or visible face/hand artifacts.",
+      "provenance": "assets/art/title-provenance.json"
+    },
+    {
+      "path": "assets/art/weapons/barbarian_texture.png",
+      "sha256": "7329b2ff9709e8d54c886d5ef49c08bd42b12be3bbb2facb1488a6b48b1e8a80",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/asset-sources.json"
+    },
+    {
+      "path": "assets/art/weapons/knight_texture.png",
+      "sha256": "5d250ccc5da020e6126bfa3839f83bd9a465a951ed223e4d13c08b1925e154d4",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/asset-sources.json"
+    },
+    {
+      "path": "assets/art/weapons/rogue_texture.png",
+      "sha256": "a4032e877c3b91939f5cdbb630349c1998fdbc3211bbd587c111125500fe4cc5",
+      "role": "material/atlas",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Consistent technical material/UV role; no narrative lettering or facial content. Retain licensed palette and inspect integrated mesh under scene lighting.",
+      "provenance": "assets/asset-sources.json"
+    },
+    {
+      "path": "assets/ui/app-icon.png",
+      "sha256": "7f796289f279e3fc7f524a5076994b087cb7d896026d7ab75e5f7ace8c924333",
+      "role": "application icon",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Crest/monogram remains distinguishable at16×16. Source geometry and executable raster match. Fixed original oversized background rect that clipped three rounded corners; retained original crest.",
+      "provenance": "assets/ui/icon-provenance.json"
+    },
+    {
+      "path": "assets/ui/button-disabled.svg",
+      "sha256": "5da7a4bb5dbc922d76fe2d89e31a6c288aebb575b77ff49304eb59c144fe983b",
+      "role": "control vector",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Authored scalable surface. Distinct state contrast, restrained slate/gold treatment, no baked lettering; focus is separately drawn by the theme.",
+      "provenance": "assets/asset-sources.json"
+    },
+    {
+      "path": "assets/ui/button-hover.svg",
+      "sha256": "e8025618bd7c2b156d5f398dd5694d5f50619e173db7f0d399f87e5ae2c68f33",
+      "role": "control vector",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Authored scalable surface. Distinct state contrast, restrained slate/gold treatment, no baked lettering; focus is separately drawn by the theme.",
+      "provenance": "assets/asset-sources.json"
+    },
+    {
+      "path": "assets/ui/button-normal.svg",
+      "sha256": "64f52ae0672c00bf0f3af5fb6887ea634f858a3381c98691741a9dff4cd928a7",
+      "role": "control vector",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Authored scalable surface. Distinct state contrast, restrained slate/gold treatment, no baked lettering; focus is separately drawn by the theme.",
+      "provenance": "assets/asset-sources.json"
+    },
+    {
+      "path": "assets/ui/button-pressed.svg",
+      "sha256": "20ec70b2d1bef6b8d4970ed219d6b441d34f11a0473ace9d4bb7ef82f497bcb4",
+      "role": "control vector",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Authored scalable surface. Distinct state contrast, restrained slate/gold treatment, no baked lettering; focus is separately drawn by the theme.",
+      "provenance": "assets/asset-sources.json"
+    },
+    {
+      "path": "icon.svg",
+      "sha256": "3630a17e91a9f12c7d69aaedf4925387e14435a0ec27d8ef689cac2d78a780bb",
+      "role": "application icon",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Crest/monogram remains distinguishable at16×16. Source geometry and executable raster match. Fixed original oversized background rect that clipped three rounded corners; retained original crest.",
+      "provenance": "assets/ui/icon-provenance.json"
+    }
+  ],
+  "integrated_gallery": "pending F3 acceptance and final F7 exact-build recapture",
+  "integrated_review": {
+    "decision": "ACCEPT_INTEGRATED_SOURCE",
+    "evidence": "External v2 release evidence: ArtReview/integrated-acceptance.json",
+    "raw_screen_count": 66,
+    "final_release_acceptance": "Pending F7 after remaining phases"
+  }
+}
