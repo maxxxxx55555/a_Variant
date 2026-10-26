@@ -17,3 +17,5 @@ F3 adds 5 keyed labels/briefing entries; current catalog count is680 per languag
 F4 adds two non-copy audio regression cases; current runner count is43 rendered /42 headless; full campaign adds2. Localization keys remain unchanged from F3.
 
 F5 adds five keyed integrity/recovery captions: 685 keys and49 rendered /48 headless cases (full campaign adds2) in the current source. Earlier phase counts above are historical. Full F5 bilingual logs and native pack checks are recorded separately from final F7 acceptance.
+
+F6 adds two terminal recovery explanations:687 keys per language. Iron death keeps a short terminal label and its full translated reason during live language changes; normal death retains paid recovery. Current source runner inventory:62 rendered invocations including import; optional complete campaign pair adds2. These are inventory counts; final execution hashes remain in the release evidence.

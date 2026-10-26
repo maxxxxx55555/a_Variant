@@ -1661,7 +1661,8 @@
       }
     }
   ],
-  "coverage_status": "MAPPED_EXECUTION_PENDING",
+  "coverage_status": "EXECUTED_PASS",
   "platform": "Windows. OS background/Back is simulated on Windows; Android artifact omitted under section16.",
-  "scope": "Current edition, bounded explicitly by PROMISE_MATRIX.md. Shared whole-model contracts cover pause/background, live locale and exact save restoration. Passive simulation uses contextual music rather than a discrete sound on every tick. References map coverage; they do not approve a release."
+  "scope": "Current edition, bounded explicitly by PROMISE_MATRIX.md. Shared whole-model contracts cover pause/background, live locale and exact save restoration. Passive simulation uses contextual music rather than a discrete sound on every tick. The mapped finite cases passed. F7 and the final publication gate remain pending.",
+  "execution_evidence": "QA/F6-mechanics-execution.json"
 }

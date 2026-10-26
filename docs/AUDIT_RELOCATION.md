@@ -9,7 +9,7 @@
 | C4 | Existing RU/EN catalog is retained and audited. |
 | C5–C6 | Release work is directly on main as requested. Ancestry is recorded before deleting only fully merged branches; unique branches are preserved. |
 | C7 | No unsafe root push helper found. |
-| C8 | Published history is immutable. New commit titles begin with this game name. |
+| C8 | Published history is immutable. Local commit titles begin with this game name; the published CI-title exception below is recorded without rewriting history. |
 | C9 | Legacy user-data directory deliberately unchanged for authenticated-save compatibility. |
 | C10 | Baseline counts verified against executed suite logs; final counts must include the new suites. |
 
@@ -27,3 +27,7 @@ Three archived design/plan files still mixed unrelated runtime architecture and 
 
 ## F2 closure evidence
 See LOCALIZATION_AUDIT.md for the keyed-copy contract, localized ingredient-feedback regression and actual executed suite inventory. The inherited runner count was corrected; optional campaign route cases are counted separately.
+
+## Published workflow title exception — preserved history
+
+GitHub asynchronously inserted its generated subject before the intended title was appended. Commit `fadde7735e41658432007fee5dedc636050a095c` therefore reads `Add GitHub Actions workflow for GDScript warningsMarchland Oaths: enforce all shipping warnings in CI`, rather than beginning with the required game prefix. Its reviewed26-line workflow is correct and strict hosted CI passed. This is a process error, not a cross-game content transfer or gameplay defect. The public commit is preserved under the no-history-rewrite rule. The exact-prefix exception remains visible in the historical audit; no claim is made that this title follows the prefix rule. The human-adopted continuation uses its section6 release gate, based on current software acceptance, repository isolation and clean saved trees. Keep proper prefixes for all further commits and retain this history rather than rewriting it.

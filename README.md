@@ -6,7 +6,7 @@ The older GAME_DESIGN/FULL_BOOK are a broader archived roadmap, not additional a
 
 # Marchland Oaths — 1.5.1 preparation (publication locked)
 
-Live Russian/English menu updates and 685 catalog keys, preserving the current save/difficulty selection. Four distinct Gemini/Lyria mood compositions, two 20-second musical finales, independent Master/Music/SFX/UI levels, reduced motion, functional credits and coherent application icons. Existing protected profiles and legacy user-data directories remain compatible.
+Live Russian/English menu updates and 687 catalog keys, preserving the current save/difficulty selection. Four distinct Gemini/Lyria mood compositions, two 20-second musical finales, independent Master/Music/SFX/UI levels, reduced motion, functional credits and coherent application icons. Existing protected profiles and legacy user-data directories remain compatible.
 
 ## Русский
 
@@ -65,15 +65,15 @@ python tools/export_release.py --godot /path/to/godot --output /fresh/staging/Ma
 python tests/run_tests.py --godot /path/to/godot --rendered --full-campaign --artifacts /path/to/logs
 ```
 
-The current source runner executes49 rendered Godot cases per locale (48 headless); --full-campaign adds two complete route cases (51 rendered total). Python checks cover resources, export, copy/edition contracts, isolation, soundtrack and audio assets. These cover 45 core regressions, 15 introductory playthrough checks, strategy, 685 RU/EN keys, sieges, civilians, cover, weapon models, triangle-exact cached terrain sampling, audio and saves. Complete diplomatic and military routes use actual movement, attacks, interactions and ordinary UI payments. The native verifier accepts `--military` for the conquest route. Normal difficulty is the full-route test baseline; other hardware and long unscripted play sessions require further independent QA.
+The current source runner contains62 rendered Godot invocations per locale (61 headless), including import; --full-campaign adds two complete route cases (64 rendered total). Final executed counts are recorded in the gated release evidence. Python checks cover resources, export, copy/edition contracts, isolation, soundtrack and audio assets. These include46 core gameplay assertions,15 introductory playthrough checks, strategy, 687 RU/EN keys, sieges, civilians, cover, weapon models, triangle-exact cached terrain sampling, audio and saves. Complete diplomatic and military routes use actual movement, attacks, interactions and ordinary UI payments. The native verifier accepts `--military` for the conquest route. Normal difficulty is the full-route test baseline; other hardware and long unscripted play sessions require further independent QA.
 
 Identical static assets share normalized meshes and preserve gameplay colliders. The 1.2 rainy village measured 5.07 seconds to load and 49.66 FPS over 180 rendered frames, with 337 draw calls at 1280×720 on this AMD integrated GPU. These are measurements from one machine.
 
 ## Release scope and verification
 
-Version 1.5.0 is the localization, soundtrack and presentation update to the portable Windows desktop edition, built with Godot 4.7 Stable. It remains a small standalone game with original illustrations and licensed assets. Earlier design documents include broader ideas for future development; they are not a list of promised features in this edition.
+Version 1.5.1 is the v2 localization, soundtrack, presentation and integrity successor to the portable Windows desktop edition, built with Godot 4.7 Stable. It remains a small standalone game with original illustrations and licensed assets. Earlier design documents include broader ideas for future development; they are not a list of promised features in this edition.
 
-The test runner imports the real project in Godot, exercises gameplay, save/load, audio controls and rendered UI. Packaged executables also contain an opt-in complete-playthrough verifier: `-- --verify-build`. It starts a new QA game, so use isolated APPDATA/LOCALAPPDATA folders. QA is silent through `GAME_AUDIO_MUTED=1`; this does not remove the player's music/effects controls. Folders and formats from the previous game names remain compatible.
+The test runner imports the real project in Godot, exercises gameplay, save/load, audio controls and rendered UI. Public executables physically omit the complete-playthrough verifier and reject QA arguments. Only the separate, unpublished QA preset supports `-- --verify-build` with `GAME_QA=1`; it starts a fresh QA game in isolated APPDATA/LOCALAPPDATA folders. QA is silent through `GAME_AUDIO_MUTED=1`; this does not remove the player's music/effects controls. Folders and formats from the previous game names remain compatible.
 
 The release report records the exact tested files, hashes, routes, screenshots and platform limits. Tests are automated in the actual engine; they do not constitute a long independent human playtest or testing on every graphics card. Portable Windows executables are not Authenticode signed. Keep third_party/Godot/LICENSE.txt, COPYRIGHT.txt and assets/audio/LICENSE.md when redistributing. The soundtrack “Stone Path to Dusk” has its own generation/provenance record; procedural sound effects are covered separately.
 
