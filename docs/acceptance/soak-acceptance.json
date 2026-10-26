@@ -1,0 +1,62 @@
+{
+  "result": "FAIL_ACCEPTANCE",
+  "raw_gameplay_result": "FAIL",
+  "elapsed_seconds": 121.651,
+  "cycles": 1,
+  "checkpoints": 1,
+  "structural_counts": {
+    "nodes": {
+      "first": 65,
+      "last": 65,
+      "delta": 0,
+      "all_constant": true
+    },
+    "resources": {
+      "first": 294,
+      "last": 294,
+      "delta": 0,
+      "all_constant": true
+    },
+    "objects": {
+      "first": 2113,
+      "last": 2113,
+      "delta": 0,
+      "all_constant": true
+    },
+    "orphans": {
+      "first": 0,
+      "last": 0,
+      "delta": 0,
+      "all_constant": true
+    }
+  },
+  "process_memory": {
+    "working_set_bytes": {
+      "quarter_medians": [
+        1684480000,
+        1684570112,
+        1684570112,
+        1684598784
+      ],
+      "median_delta": 118784
+    },
+    "private_bytes": {
+      "quarter_medians": [
+        1690050560,
+        1690185728,
+        1690185728,
+        1690222592
+      ],
+      "median_delta": 172032
+    }
+  },
+  "integrity_anomalies": [
+    "2026-10-26T19:56:23 integrity.files_changed [\"res://assets/audio/catalog.json\",\"res://data/balance/alchemy.json\",\"res://data/balance/buildings.json\",\"res://data/balance/campaign.json\",\"res://data/balance/crafting.json\",\"res://data/balance/equipment.json\",\"res://data/balance/localization.json\"]",
+    "[2026-10-26T19:58:24] [SettingsManager] Failed to save valid settings ",
+    "[2026-10-26T19:58:24] [SettingsManager] Failed to save valid settings "
+  ],
+  "reason": "Read-only safe mode activated from stale tag critical hashes; not an accepted ordinary persistence soak, even if loop/counters pass",
+  "metrics_sha256": "0a43bec27c4ab57a79d419c871146d4b12cb34eb33ab25eb17658377f89b751f",
+  "console_sha256": "8e497b5af65aa349cba9556725c853960aa6533821b7b7be1808afebb4de604c",
+  "scratch_import_metadata": "A36 newline-only .import changes rejected the collector raw-byte freeze; original main untouched"
+}

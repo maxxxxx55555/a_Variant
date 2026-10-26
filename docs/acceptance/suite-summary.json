@@ -1,0 +1,26 @@
+{
+  "ru": {
+    "result": "FAIL",
+    "exit": 1,
+    "language": "ru",
+    "source_tag": "1.5.1",
+    "source_commit": "006c164895d8d70fc2a72a61610b2ad27bb9e97e",
+    "godot_invocations": 0,
+    "seconds": 5.25,
+    "errors": [],
+    "console_sha256": "575f849b5ca51cd8beb8e34e849eeb01b1767fe3dcd95c0fa865f3d76bcd332d",
+    "audio_driver": "Dummy",
+    "rendered": true
+  },
+  "en": {
+    "result": "FAIL",
+    "exit": 1,
+    "language": "en",
+    "source_commit": "006c164895d8d70fc2a72a61610b2ad27bb9e97e",
+    "godot_invocations": 0,
+    "seconds": 4.875,
+    "console_sha256": "575f849b5ca51cd8beb8e34e849eeb01b1767fe3dcd95c0fa865f3d76bcd332d",
+    "rendered_requested": true,
+    "actual_failure": "SFX generator provenance SHA256 mismatch before first Godot invocation"
+  }
+}

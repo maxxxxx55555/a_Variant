@@ -1,0 +1,11 @@
+{
+  "result": "NOT_ACCEPTED",
+  "review_method": "24new source frames reviewed in two EN/RU contact sheets against this repository ART_DIRECTION.md",
+  "issues": [
+    "Integrity modal visibly obstructs screens in both locales",
+    "Source safe mode disables progress/settings writes; visual sign-off cannot be issued",
+    "Fresh terminal-iron capture is blocked by disabled save writes; atlas supplied only as a rejected diagnostic replacement"
+  ],
+  "empty_remarks_list": false,
+  "press_publishable": false
+}

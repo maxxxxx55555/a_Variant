@@ -1,0 +1,34 @@
+{
+  "result": "PASS",
+  "scope": {
+    "repository": "a_Variant",
+    "files": "Guarded git ls-files tracked working-copy files plus every existing docs/ file at this scan snapshot, deduplicated; both existing private build keys compared against each repository",
+    "compared_representations": [
+      "raw32bytes",
+      "lowercase64hex",
+      "uppercase64hex",
+      "standard base64 padded/unpadded",
+      "URL-safe base64 padded/unpadded"
+    ]
+  },
+  "counts": {
+    "private_build_keys_checked": 2,
+    "tracked_files": 908,
+    "existing_docs_files": 68,
+    "new_untracked_docs_files": 40,
+    "unique_files_selected": 948,
+    "bytes_scanned": 249905257,
+    "matching_paths": 0,
+    "unreadable_or_missing_files": 0,
+    "unstable_file_reads": 0,
+    "escaped_repository_paths_not_followed": 0
+  },
+  "match_paths": [],
+  "disclaimer": [
+    "Only literal occurrences in the selected working-copy files and listed encodings were checked. No key or key-derived digest/value is recorded.",
+    "This is a finite file snapshot, not a Git-history or all-files audit; untracked files outside docs/, ignored caches, external artifacts and later additions/changes are excluded.",
+    "Compressed, encrypted, split, transformed or otherwise obfuscated representations beyond the listed encodings are not established absent.",
+    "Native exported engines necessarily contain the pack key. This source/docs scan is not evidence of binary-key absence, key secrecy, unextractability or invulnerable protection.",
+    "Rerun after final documentation generation/staging if any selected file or new docs file changes before publication."
+  ]
+}

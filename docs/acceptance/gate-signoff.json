@@ -1,0 +1,126 @@
+{
+  "verdict": "NOT_ACCEPTED",
+  "historical_gate_sha256": "f1c89509c002c05e3e586079970a0a00192bb858c649316e1f3141ee7806b652",
+  "items": {
+    "F1 completed and retained": {
+      "status": "HISTORICAL ONLY",
+      "evidence": "Historical gate `f1c89509c002c05e3e586079970a0a00192bb858c649316e1f3141ee7806b652`; not counted as a new pass."
+    },
+    "F2 completed and retained": {
+      "status": "PARTIAL / FAIL",
+      "evidence": "Fresh copy/key evidence; Key/copy prechecks pass; no complete rendered sweep."
+    },
+    "F3 completed and retained": {
+      "status": "FAIL",
+      "evidence": "New gallery cases and visual-review.json; integrity modal visible."
+    },
+    "F4 completed and retained": {
+      "status": "PARTIAL FAIL",
+      "evidence": "6WAV hashes valid; SFX generator-source SHA256 does not match provenance."
+    },
+    "F5 complete": {
+      "status": "BLOCKED",
+      "evidence": "Both fresh tag export preflights exit2; no new artifact created."
+    },
+    "F6 complete": {
+      "status": "FAIL / NOT REACCEPTED",
+      "evidence": "Fresh suites fail; source integrity activates read-only mode; soak not accepted."
+    },
+    "F7 complete": {
+      "status": "FAIL / NOT REACCEPTED",
+      "evidence": "Fresh suites fail; source integrity activates read-only mode; soak not accepted."
+    },
+    "test_promise_matrix.py": {
+      "status": "PASS",
+      "evidence": "Fresh supplemental-contracts receipt and inherited license checks."
+    },
+    "test_license_bytes.py": {
+      "status": "PASS",
+      "evidence": "Fresh supplemental-contracts receipt and inherited license checks."
+    },
+    "every original promise indexed with tested scoped resolution": {
+      "status": "PASS inventory",
+      "evidence": "Fresh promise matrix contract; edition exclusions retained."
+    },
+    "every mechanics cell executed": {
+      "status": "HISTORICAL ONLY",
+      "evidence": "Historical gate `f1c89509c002c05e3e586079970a0a00192bb858c649316e1f3141ee7806b652`; not counted as a new pass."
+    },
+    "EN/RU final full source sweeps": {
+      "status": "FAIL / NOT REACCEPTED",
+      "evidence": "Fresh suites fail; source integrity activates read-only mode; soak not accepted."
+    },
+    "per-mood music provenance and audio acceptance": {
+      "status": "PARTIAL FAIL",
+      "evidence": "6WAV hashes valid; SFX generator-source SHA256 does not match provenance."
+    },
+    "art direction and accepted real-engine galleries": {
+      "status": "FAIL",
+      "evidence": "New gallery cases and visual-review.json; integrity modal visible."
+    },
+    "hardening parity and exact native exports": {
+      "status": "BLOCKED",
+      "evidence": "Both fresh tag export preflights exit2; no new artifact created."
+    },
+    "legacy profiles preserved in source and actual public native": {
+      "status": "PARTIAL",
+      "evidence": "Fresh read-only legacy load passes; new writes/round-trip and rebuilt native acceptance blocked."
+    },
+    "50 unique full cycles plus measured soak and 3 stability runs": {
+      "status": "FAIL / NOT REACCEPTED",
+      "evidence": "Fresh suites fail; source integrity activates read-only mode; soak not accepted."
+    },
+    "accepted logs clean and no known unresolved edition bugs": {
+      "status": "FAIL / NOT REACCEPTED",
+      "evidence": "Fresh suites fail; source integrity activates read-only mode; soak not accepted."
+    },
+    "exact-head hosted strict compilation": {
+      "status": "PASS compiler only",
+      "evidence": "Baseline main CI40371193240 success; warning-only CI does not check these runtime-byte contracts."
+    },
+    "Linux importer environmental failure investigated with 3 retries": {
+      "status": "HISTORICAL ONLY",
+      "evidence": "Historical gate `f1c89509c002c05e3e586079970a0a00192bb858c649316e1f3141ee7806b652`; not counted as a new pass."
+    },
+    "post-push repository tree identity and isolation": {
+      "status": "BASELINE PASS; final receipt pending",
+      "evidence": "Initial docs-only metadata/isolation proof; final pushed documentation commit attested by accompanying SESSION_RECEIPT.json."
+    },
+    "inherited license bytes and provenance": {
+      "status": "PARTIAL",
+      "evidence": "14 inherited license bytes pass; interface generator source provenance does not."
+    },
+    "real committed checkout byte contracts": {
+      "status": "FAIL",
+      "evidence": "Critical-data hashes and generator provenance fail; see source-blockers.json/audio-verification.json."
+    },
+    "tracked tree credential/generated/foreign-content audit": {
+      "status": "PASS scoped audit",
+      "evidence": "Fresh tag guard0disallowed markers; final docs-only diff/source and release immutability receipt."
+    },
+    "actual private export keys absent from all tracked content": {
+      "status": "PASS scoped literal scan",
+      "evidence": "literal-key-absence.json: raw/hex/Base64 key representations absent in tracked source plus new docs. Snapshot only; no exported-engine secrecy claim. Final HEAD scan is in the package receipt."
+    },
+    "versions match and target tag is free": {
+      "status": "N/A new tag",
+      "evidence": "Existing immutable version verified; tag creation is forbidden in this cycle."
+    },
+    "exact final archives and delivery-name native boot": {
+      "status": "PASS published binary only",
+      "evidence": "Current-cycle download SHA256/sha256sum-c and ordinary boot/public QA rejection pass."
+    },
+    "default main; obsolete branches ancestry-reviewed": {
+      "status": "PASS",
+      "evidence": "Baseline/final API branches and documented unique-content exception."
+    },
+    "Android fallback explicit": {
+      "status": "N/A omitted",
+      "evidence": "No Android artifact/runtime/store acceptance; no emulator available."
+    },
+    "clean committed main": {
+      "status": "BASELINE PASS; final receipt pending",
+      "evidence": "Final source/game delta0 and clean docs-only commit are attested after push in accompanying SESSION_RECEIPT.json."
+    }
+  }
+}

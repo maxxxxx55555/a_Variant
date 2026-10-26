@@ -1,0 +1,82 @@
+{
+  "result": "BLOCKED",
+  "source_tag": "v1.5.1",
+  "source_commit": "006c164895d8d70fc2a72a61610b2ad27bb9e97e",
+  "root_cause": "Manifest records CRLF working-copy bytes; immutable Git tag has LF blobs under eol=lf attributes. Fresh tag sources detect seven changed critical files and correctly enter read-only safe mode. The accepted old working copy/public artifact do not establish fresh-source reproducibility.",
+  "differences": [
+    {
+      "path": "assets/audio/catalog.json",
+      "expected_manifest_sha256": "e430a4cd11299c2eee5b6384d2815b39a99dc9e007525ff7697ee99410536bda",
+      "actual_tag_file_sha256": "edeb723c24fb0ddaa81607178aa39a6f1f130ccf50fe2e824dfa2090e6202cf5",
+      "tag_bytes": 6359,
+      "tag_crlf": 0,
+      "original_working_sha256": "e430a4cd11299c2eee5b6384d2815b39a99dc9e007525ff7697ee99410536bda",
+      "original_working_crlf": 276,
+      "only_line_endings_differ": true
+    },
+    {
+      "path": "data/balance/alchemy.json",
+      "expected_manifest_sha256": "2ada2868c9b3f77ed01f10e16fed7c895588c37c5e5e35acc88d730361379776",
+      "actual_tag_file_sha256": "b9919d6d62a48c6f603fb6b62c01ca0fad82dbb395f16a37e119f6b314225cdb",
+      "tag_bytes": 4118,
+      "tag_crlf": 0,
+      "original_working_sha256": "2ada2868c9b3f77ed01f10e16fed7c895588c37c5e5e35acc88d730361379776",
+      "original_working_crlf": 201,
+      "only_line_endings_differ": true
+    },
+    {
+      "path": "data/balance/buildings.json",
+      "expected_manifest_sha256": "febfea72c844aab815fa046d0882b0cec622855d309d8fab954d0d0caafb550d",
+      "actual_tag_file_sha256": "dd01ee5c72460426ea85184c570ebb7dec7bc854981494cceb2409c9249471e4",
+      "tag_bytes": 1920,
+      "tag_crlf": 0,
+      "original_working_sha256": "febfea72c844aab815fa046d0882b0cec622855d309d8fab954d0d0caafb550d",
+      "original_working_crlf": 131,
+      "only_line_endings_differ": true
+    },
+    {
+      "path": "data/balance/campaign.json",
+      "expected_manifest_sha256": "f61783f80e27c1c76130b3984b04ad723f0000bb7bb9d36321842ae67c9776e8",
+      "actual_tag_file_sha256": "28232f520fb2e9398a15415febbf3d690f6bfc7a94c6e089e2fe063ec3d75516",
+      "tag_bytes": 27796,
+      "tag_crlf": 0,
+      "original_working_sha256": "f61783f80e27c1c76130b3984b04ad723f0000bb7bb9d36321842ae67c9776e8",
+      "original_working_crlf": 1243,
+      "only_line_endings_differ": true
+    },
+    {
+      "path": "data/balance/crafting.json",
+      "expected_manifest_sha256": "34600efe06fd76b78f415d1c39a8deb5d2fe6fe4afd46f675a75c115f980f5e5",
+      "actual_tag_file_sha256": "67bc45bff3fb9d8145f47e7927a2b7a93c5bca088da17e3b0ff59f6bb4ad6028",
+      "tag_bytes": 2083,
+      "tag_crlf": 0,
+      "original_working_sha256": "34600efe06fd76b78f415d1c39a8deb5d2fe6fe4afd46f675a75c115f980f5e5",
+      "original_working_crlf": 110,
+      "only_line_endings_differ": true
+    },
+    {
+      "path": "data/balance/equipment.json",
+      "expected_manifest_sha256": "1196526425f05bb0af960686df68c80ce1c973ad3edba6d1b70b40d15d4f51bb",
+      "actual_tag_file_sha256": "ad180d92426e5b2a25be074a8d1c326fb1063bb0b6fdd798ad463431acdcc62e",
+      "tag_bytes": 7269,
+      "tag_crlf": 0,
+      "original_working_sha256": "1196526425f05bb0af960686df68c80ce1c973ad3edba6d1b70b40d15d4f51bb",
+      "original_working_crlf": 338,
+      "only_line_endings_differ": true
+    },
+    {
+      "path": "data/balance/localization.json",
+      "expected_manifest_sha256": "7136fe0c7d92f411ec8e5a329c0b5b516e92917f40ae898ddac446821146efac",
+      "actual_tag_file_sha256": "57477a064d302aaf23af2fce84772aeb19aee9494919e96c4859e775210a2cc2",
+      "tag_bytes": 109137,
+      "tag_crlf": 0,
+      "original_working_sha256": "7136fe0c7d92f411ec8e5a329c0b5b516e92917f40ae898ddac446821146efac",
+      "original_working_crlf": 2750,
+      "only_line_endings_differ": true
+    }
+  ],
+  "actual_effect": "Settings writes and ordinary manual save rejected; normal campaign soak exits FAIL at8quests/121.651seconds",
+  "source_and_release_changed": false,
+  "correction_scope": "Would require a game-data/trust correction and a new accepted source/export cycle; forbidden by current docs-only/no-tag/no-asset-change instruction",
+  "failed_log_sha256": "8e497b5af65aa349cba9556725c853960aa6533821b7b7be1808afebb4de604c"
+}

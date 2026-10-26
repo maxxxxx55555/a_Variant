@@ -1,0 +1,79 @@
+{
+  "status": "REJECTED_DIAGNOSTIC_DRAFT",
+  "publishable": false,
+  "source_commit": "006c164895d8d70fc2a72a61610b2ad27bb9e97e",
+  "images": [
+    {
+      "file": "01-en-gallery-title.png",
+      "locale": "en",
+      "caption": "Title / Титул — Rejected diagnostic capture, not approved for publication / Непринятый диагностический кадр, не для публикации",
+      "sha256": "9b1e30b104b186a52f883170538734ff7dda8fc00bc8cb6e2046e64bf67a4beb",
+      "publishable": false,
+      "staged": false,
+      "source_commit": "006c164895d8d70fc2a72a61610b2ad27bb9e97e"
+    },
+    {
+      "file": "02-en-gallery-village-rain.png",
+      "locale": "en",
+      "caption": "Rainy settlement / Поселение под дождём — Rejected diagnostic capture, not approved for publication / Непринятый диагностический кадр, не для публикации",
+      "sha256": "1c81f51bf17b8f2b307a34e7381fabe129b9ccf743bc8b98dda0f51e36e566d2",
+      "publishable": false,
+      "staged": false,
+      "source_commit": "006c164895d8d70fc2a72a61610b2ad27bb9e97e"
+    },
+    {
+      "file": "03-ru-gallery-trade.png",
+      "locale": "ru",
+      "caption": "Trading / Торговля — Rejected diagnostic capture, not approved for publication / Непринятый диагностический кадр, не для публикации",
+      "sha256": "76c07e8a1068590820d148c7fe8538e8a58e3f40d32807a19ec60e6d95986e48",
+      "publishable": false,
+      "staged": false,
+      "source_commit": "006c164895d8d70fc2a72a61610b2ad27bb9e97e"
+    },
+    {
+      "file": "04-ru-gallery-homestead.png",
+      "locale": "ru",
+      "caption": "Homestead / Хозяйство — Rejected diagnostic capture, not approved for publication / Непринятый диагностический кадр, не для публикации",
+      "sha256": "b6e4a0f06be0344c15f88d2767eb46856215b77653750ce2ecf9c327d13e14aa",
+      "publishable": false,
+      "staged": false,
+      "source_commit": "006c164895d8d70fc2a72a61610b2ad27bb9e97e"
+    },
+    {
+      "file": "05-en-gallery-ending-staged.png",
+      "locale": "en",
+      "caption": "Staged victory layout / Постановочный макет победы — Rejected diagnostic capture, not approved for publication / Непринятый диагностический кадр, не для публикации",
+      "sha256": "b36104ef009c798cd986c30ee15cb0a5e1a07e2e2899f8a347e3cd8bd76d5e59",
+      "publishable": false,
+      "staged": true,
+      "source_commit": "006c164895d8d70fc2a72a61610b2ad27bb9e97e"
+    },
+    {
+      "file": "06-ru-gallery-world-map.png",
+      "locale": "ru",
+      "caption": "Atlas; defeat capture blocked / Атлас; кадр поражения заблокирован — Rejected diagnostic capture, not approved for publication / Непринятый диагностический кадр, не для публикации",
+      "sha256": "c918f9f61d136d5760ce91a9ddb2926a840c78b72b59e961bfee78c38bfdb0e5",
+      "publishable": false,
+      "staged": false,
+      "source_commit": "006c164895d8d70fc2a72a61610b2ad27bb9e97e"
+    },
+    {
+      "file": "07-en-gallery-credits.png",
+      "locale": "en",
+      "caption": "Credits / Авторы — Rejected diagnostic capture, not approved for publication / Непринятый диагностический кадр, не для публикации",
+      "sha256": "73ba44de0f87ed47b45e68ada72646c2ec3cc239af4e8353f30a2578209761d5",
+      "publishable": false,
+      "staged": false,
+      "source_commit": "006c164895d8d70fc2a72a61610b2ad27bb9e97e"
+    },
+    {
+      "file": "08-ru-gallery-settings.png",
+      "locale": "ru",
+      "caption": "Settings / Настройки — Rejected diagnostic capture, not approved for publication / Непринятый диагностический кадр, не для публикации",
+      "sha256": "72dcde914268a0774b4ba4168476de0ec6943015b25a914dc31c8417cae7a667",
+      "publishable": false,
+      "staged": false,
+      "source_commit": "006c164895d8d70fc2a72a61610b2ad27bb9e97e"
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+usage: export_release.py [-h] --output OUTPUT [--qa] [--pack] [--godot GODOT]
+                         [--template TEMPLATE]
+export_release.py: error: Critical-data manifest is stale; regenerate and review before export

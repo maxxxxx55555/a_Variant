@@ -1,0 +1,36 @@
+[
+  {
+    "case": "gallery",
+    "locale": "en",
+    "result": "FAIL",
+    "exit": 0,
+    "timed_out": false,
+    "errors": [
+      "\u001b[91m[INTEGRITY ANOMALY]\u001b[39m [2026-10-26T20:23:50] [SettingsManager] Failed to save valid settings\u001b[0m",
+      "\u001b[91m[INTEGRITY ANOMALY]\u001b[39m [2026-10-26T20:23:50] [SettingsManager] Failed to save valid settings\u001b[0m"
+    ],
+    "integrity_log": [
+      "2026-10-26T20:23:23 integrity.files_changed [\"res://assets/audio/catalog.json\",\"res://data/balance/alchemy.json\",\"res://data/balance/buildings.json\",\"res://data/balance/campaign.json\",\"res://data/balance/crafting.json\",\"res://data/balance/equipment.json\",\"res://data/balance/localization.json\"]",
+      "[2026-10-26T20:23:50] [SettingsManager] Failed to save valid settings ",
+      "[2026-10-26T20:23:50] [SettingsManager] Failed to save valid settings "
+    ],
+    "log_sha256": "9e40720b3b9305a5ad62017ae41802a98720bc179d88bb5062f35991147b858c"
+  },
+  {
+    "case": "gallery",
+    "locale": "ru",
+    "result": "FAIL",
+    "exit": 0,
+    "timed_out": false,
+    "errors": [
+      "\u001b[91m[INTEGRITY ANOMALY]\u001b[39m [2026-10-26T20:24:22] [SettingsManager] Failed to save valid settings\u001b[0m",
+      "\u001b[91m[INTEGRITY ANOMALY]\u001b[39m [2026-10-26T20:24:22] [SettingsManager] Failed to save valid settings\u001b[0m"
+    ],
+    "integrity_log": [
+      "2026-10-26T20:24:01 integrity.files_changed [\"res://assets/audio/catalog.json\",\"res://data/balance/alchemy.json\",\"res://data/balance/buildings.json\",\"res://data/balance/campaign.json\",\"res://data/balance/crafting.json\",\"res://data/balance/equipment.json\",\"res://data/balance/localization.json\"]",
+      "[2026-10-26T20:24:22] [SettingsManager] Failed to save valid settings ",
+      "[2026-10-26T20:24:22] [SettingsManager] Failed to save valid settings "
+    ],
+    "log_sha256": "c37ee0bd60deeb99b068d4aa567390f701e29ed6200c1d525a0977193ad69d64"
+  }
+]

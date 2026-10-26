@@ -1,0 +1,6 @@
+{
+  "result": "PASS",
+  "commit": "006c164895d8d70fc2a72a61610b2ad27bb9e97e",
+  "stdout": "REPO ISOLATION PASS: a_Variant\n",
+  "disallowed_matches": 0
+}

@@ -1,0 +1,9 @@
+# Preserve acceptance evidence hashes and original diagnostic PNG bytes.
+acceptance/** -text
+# Console evidence is an opaque verbatim artifact, inspect via its linked file.
+acceptance/*.log -diff
+press/** -text
+ACCEPTANCE_CERTIFICATE.md text eol=lf
+ANNOUNCE_KIT.md text eol=lf
+FINAL_REPORT.md text eol=lf
+HANDOFF.md text eol=lf

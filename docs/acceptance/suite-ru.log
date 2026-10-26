@@ -1,0 +1,23 @@
+✓ Localization key parity test passed (687 keys verified)
+✓ Data resources check passed (119 resources verified in data/)
+✓ Project structure verification passed (22 critical files present)
+
+ALL VERIFICATION TESTS PASSED SUCCESSFULLY!
+INHERITED LICENSE BYTE CONTRACT PASS: 14 files from published1.4.0
+EXPORT CONTRACT PASS: 2 presets with compiled data and notices
+COPY CONTRACT PASS: 687 keys, scene/model source audit and canonical copy
+PROMISE MATRIX PASS: 3278 original entries, explicit scope and existing test references
+MECHANICS MAPPING PASS: 24 mechanics, 192 cells; EXECUTED_PASS
+.......
+----------------------------------------------------------------------
+Ran 7 tests in 0.000s
+
+OK
+SOUNDTRACK PASS: 4 unique mood compositions and two musical finales
+Traceback (most recent call last):
+  File "C:\Users\Maxsim\Documents\Codex\2026-10-24\new-chat\outputs\acceptance-2026-10-26\runner-clones\a_Variant\tests\test_audio_assets.py", line 59, in <module>
+    verify(Path(sys.argv[1]) if len(sys.argv) > 1 else Path(__file__).resolve().parents[1])
+  File "C:\Users\Maxsim\Documents\Codex\2026-10-24\new-chat\outputs\acceptance-2026-10-26\runner-clones\a_Variant\tests\test_audio_assets.py", line 44, in verify
+    assert hashlib.sha256((project / record['generator']).read_bytes()).hexdigest() == record['generator_sha256']
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

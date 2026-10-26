@@ -1,0 +1,16 @@
+{
+  "public.exe": {
+    "result": "BLOCKED",
+    "exit": 2,
+    "reason": "Unchanged tag source preflight rejects stale critical-data trust",
+    "log_sha256": "c67754177b3999d829852411663141278a538f4d956b4153e1747dd7e76bd2be",
+    "artifact_created": false
+  },
+  "private-qa.exe": {
+    "result": "BLOCKED",
+    "exit": 2,
+    "reason": "Unchanged tag source preflight rejects stale critical-data trust",
+    "log_sha256": "c67754177b3999d829852411663141278a538f4d956b4153e1747dd7e76bd2be",
+    "artifact_created": false
+  }
+}

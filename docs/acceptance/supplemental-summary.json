@@ -1,0 +1,32 @@
+[
+  {
+    "case": "test_promise_matrix.py",
+    "result": "PASS",
+    "exit": 0,
+    "console_sha256": "24a9c640d1177be57b36884d161b82fff3f53fa545c9386eede046ca54a1fc30"
+  },
+  {
+    "case": "test_license_bytes.py",
+    "result": "PASS",
+    "exit": 0,
+    "console_sha256": "ad535e27f9d9c1f40a32fdff85f0d53e4526de5c90cf2a546cade7985dd44637"
+  },
+  {
+    "case": "test_mechanics_matrix.py",
+    "result": "PASS",
+    "exit": 0,
+    "console_sha256": "51da5efc89af63daba584dbae73c9197a3a85092008c1a1816011adb9433bd28"
+  },
+  {
+    "case": "test_public_qa_contract.py",
+    "result": "PASS",
+    "exit": 0,
+    "console_sha256": "4cc62cbe95d7c7330ba797c1e0b793f228a0a1516d2b7ef0360e3c315d255879"
+  },
+  {
+    "case": "test_critical_manifest.py",
+    "result": "FAIL",
+    "exit": 1,
+    "console_sha256": "dbd97ffa3a083d2c9df192cb33269f485d3d12cef37477f932235b420ceed1cd"
+  }
+]

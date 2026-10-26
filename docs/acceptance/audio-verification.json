@@ -1,0 +1,112 @@
+{
+  "result": "PARTIAL_FAIL",
+  "music_wav_hashes": "PASS",
+  "music": [
+    {
+      "file": "stone_path_to_dusk.wav",
+      "moods": [
+        "exploration"
+      ],
+      "sha256": "928d3e830ab86c2ef9a170658fd5405a7b883e1d5c90e3481ef93afdd21d5813",
+      "channels": 2,
+      "sample_rate": 32000,
+      "sample_width": 2,
+      "seconds": 117.30415625
+    },
+    {
+      "file": "hearths_among_the_hills.wav",
+      "moods": [
+        "settlement"
+      ],
+      "sha256": "78749767a35ed41dcf151579f2a92c3479b90a6672984eef70aac05ff61d0315",
+      "channels": 2,
+      "sample_rate": 32000,
+      "sample_width": 2,
+      "seconds": 124.0
+    },
+    {
+      "file": "steel_and_rain.wav",
+      "moods": [
+        "combat"
+      ],
+      "sha256": "f43353c344afffd1d4982dfeeb6ed55537cc5feec5ce1e7a623a01edf95ce921",
+      "channels": 2,
+      "sample_rate": 32000,
+      "sample_width": 2,
+      "seconds": 124.0
+    },
+    {
+      "file": "standards_at_dawn.wav",
+      "moods": [
+        "war"
+      ],
+      "sha256": "4e52901ed029631e514f0c2994fe2122492f9e428f14e5c1f791e68de6337ed3",
+      "channels": 2,
+      "sample_rate": 32000,
+      "sample_width": 2,
+      "seconds": 124.0
+    },
+    {
+      "file": "oaths_remembered.wav",
+      "moods": [
+        "victory"
+      ],
+      "sha256": "1ccb20ebe5767031c1699ddf42d2cd7f87d29f8c2c429d6450ffa21b3c7608b2",
+      "channels": 2,
+      "sample_rate": 32000,
+      "sample_width": 2,
+      "seconds": 20.0
+    },
+    {
+      "file": "the_last_watch.wav",
+      "moods": [
+        "defeat"
+      ],
+      "sha256": "035c080389e01cf7dd2fb030a6f150e4afa6e41c97850fdfc0785641cdaa34ca",
+      "channels": 2,
+      "sample_rate": 32000,
+      "sample_width": 2,
+      "seconds": 20.0
+    }
+  ],
+  "unique_recordings": 6,
+  "contracts": [
+    {
+      "case": "test_soundtrack.py",
+      "result": "PASS",
+      "exit": 0,
+      "log_sha256": "dfcc8dd0c18ec2164d5ee3e17fe8d6f2b029886e6c04307069d7866b58d9d4df"
+    },
+    {
+      "case": "test_audio_assets.py",
+      "result": "FAIL",
+      "exit": 1,
+      "log_sha256": "2f119b0167a3b08c5ea20b4910e3557ceb45307d5775d42cf3455d1d24566800"
+    },
+    {
+      "case": "test_public_qa_contract.py",
+      "result": "PASS",
+      "exit": 0,
+      "log_sha256": "4cc62cbe95d7c7330ba797c1e0b793f228a0a1516d2b7ef0360e3c315d255879"
+    }
+  ],
+  "sfx_generator_provenance": [
+    {
+      "file": "ui_focus.wav",
+      "generator": "tools/generate_audio.py",
+      "expected": "c992ac3b883ec9380324123f4c4ff2f90ceb7fce73e94c2d6fa82fb6cb691e5a",
+      "actual_tag_source_sha256": "25ca7de4f8b0e458c7170580ffb1ba344188fe4c9092108df06f9919458a30dc",
+      "original_working_sha256": "c992ac3b883ec9380324123f4c4ff2f90ceb7fce73e94c2d6fa82fb6cb691e5a",
+      "newline_only": true
+    },
+    {
+      "file": "ui_error.wav",
+      "generator": "tools/generate_audio.py",
+      "expected": "c992ac3b883ec9380324123f4c4ff2f90ceb7fce73e94c2d6fa82fb6cb691e5a",
+      "actual_tag_source_sha256": "25ca7de4f8b0e458c7170580ffb1ba344188fe4c9092108df06f9919458a30dc",
+      "original_working_sha256": "c992ac3b883ec9380324123f4c4ff2f90ceb7fce73e94c2d6fa82fb6cb691e5a",
+      "newline_only": true
+    }
+  ],
+  "audible_human_review": "NOT_PERFORMED; owner action"
+}

@@ -1,5 +1,7 @@
 # Marchland Oaths — final release report
 
+> Announcement hold: the newer [ACCEPTANCE_CERTIFICATE.md](ACCEPTANCE_CERTIFICATE.md) records failed clean-tag source contracts. Earlier finite results below remain historical. The five manual checks cannot waive these mandatory blockers.
+
 Closeout date: 2026-10-26. The accepted Windows release is handed to its owner. The new closeout commit contains documentation only; `main` is a docs-only descendant of the immutable release tag. Game files, source version, tag and distributed game bytes are unchanged by this closeout.
 
 ## Release identity and artifacts

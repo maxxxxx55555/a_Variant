@@ -1,5 +1,7 @@
 # Marchland Oaths — owner handoff
 
+> Announcement hold: the newer [ACCEPTANCE_CERTIFICATE.md](ACCEPTANCE_CERTIFICATE.md) records failed clean-tag source contracts. Earlier finite results below remain historical. The five manual checks cannot waive these mandatory blockers.
+
 Accepted Windows release: [v1.5.1](https://github.com/maxxxxx55555/a_Variant/releases/tag/v1.5.1). Immutable game source: `006c164895d8d70fc2a72a61610b2ad27bb9e97e`. Post-tag closeout commits add documentation only; use the versioned release ZIP for play. [FINAL_REPORT.md](FINAL_REPORT.md) contains full hashes, F1–F8 acceptance, native guard output, soundtrack provenance and limitations.
 
 ## Five checks before announcement

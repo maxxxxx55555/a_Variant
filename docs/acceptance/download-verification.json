@@ -1,0 +1,27 @@
+{
+  "result": "PASS",
+  "assets": [
+    {
+      "name": "MarchlandOaths-Windows-1.5.1.zip",
+      "sha256": "8e392c3708d907790906d7c0b7a4794a3c987b507456f74b87831eae553a3b7d",
+      "bytes": 318466595,
+      "url": "https://github.com/maxxxxx55555/a_Variant/releases/download/v1.5.1/MarchlandOaths-Windows-1.5.1.zip"
+    },
+    {
+      "name": "MarchlandOaths-SHA256SUMS-1.5.1.txt",
+      "sha256": "fdd5675109e86824586cfe05eb690f47b5da061e6f0727305eaea47ea938ed81",
+      "bytes": 99,
+      "url": "https://github.com/maxxxxx55555/a_Variant/releases/download/v1.5.1/MarchlandOaths-SHA256SUMS-1.5.1.txt"
+    }
+  ],
+  "method": "Fresh acceptance-cycle download: retained fresh-cycle interrupted-prefix bytes, completed remaining bytes through individually validated HTTP206 ranges, then independently checked complete SHA256 and native sha256sum -c; no previous-cycle archive reused",
+  "prefix_source": "C:\\Users\\Maxsim\\Documents\\Codex\\2026-10-24\\new-chat\\outputs\\acceptance-2026-10-26\\a_Variant\\fresh-downloads\\MarchlandOaths-Windows-1.5.1.zip",
+  "prefix_bytes": 41943040,
+  "range_count": 264,
+  "all_range_headers_validated": true,
+  "sha256sum_command": "sha256sum -c MarchlandOaths-SHA256SUMS-1.5.1.txt",
+  "stdout": "MarchlandOaths-Windows-1.5.1.zip: OK\n",
+  "exit": 0,
+  "exact_checksum_filename": true,
+  "folder": "C:\\Users\\Maxsim\\Documents\\Codex\\2026-10-24\\new-chat\\outputs\\acceptance-2026-10-26\\a_Variant\\range-downloads"
+}

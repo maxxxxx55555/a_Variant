@@ -1,0 +1,27 @@
+{
+  "cases": [
+    {
+      "result": "PASS_READ_ONLY",
+      "version": "1.4.0",
+      "exit": 0,
+      "fixture_sha256": "b8d89b6b0123ea26964d4c08ce90c027f97b23356d6598f62beccf1de050c1d8",
+      "protected_bytes_unchanged": true,
+      "installation_key_preserved": true,
+      "original_untouched": true,
+      "console_sha256": "d1d484fc0bad212f5f3b0f643d202ad681aff3c6948da0053a8eaa21ad078a6d",
+      "limitation": "Only read compatibility established; new profile writes/round-trip and source migration acceptance remain blocked by stale critical-data trust."
+    },
+    {
+      "result": "PASS_READ_ONLY",
+      "version": "1.5.0",
+      "exit": 0,
+      "fixture_sha256": "07ce9ba555abe2e1dd0841e8c94a34541c79fecd22ac4c88a1bd452cbc57fe55",
+      "protected_bytes_unchanged": true,
+      "installation_key_preserved": true,
+      "original_untouched": true,
+      "console_sha256": "d1d484fc0bad212f5f3b0f643d202ad681aff3c6948da0053a8eaa21ad078a6d",
+      "limitation": "Only read compatibility established; new profile writes/round-trip and source migration acceptance remain blocked by stale critical-data trust."
+    }
+  ],
+  "result": "PASS_READ_ONLY"
+}

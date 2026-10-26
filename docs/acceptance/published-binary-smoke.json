@@ -1,0 +1,31 @@
+{
+  "result": "PASS",
+  "method": "Unchanged published public executable and matching PCK from fresh acceptance-cycle download; not a newly rebuilt tag export",
+  "public_exe_sha256": "822a8e199af4579e51928dc770a48300a9f739d3930b956f7ff5d31d56db6334",
+  "cases": {
+    "ordinary-boot": {
+      "result": "PASS",
+      "exit": 0,
+      "expected_exit": 0,
+      "console_sha256": "2aac7a0453453cabb1e1ba3a899e766258965439109add93cc7e22156eda6c60",
+      "integrity_logs": [],
+      "seconds": 2.891
+    },
+    "public-rejects-verifier": {
+      "result": "PASS",
+      "exit": 64,
+      "expected_exit": 64,
+      "console_sha256": "2c21d3cdf5762f471a8f9ef46096cd98d3de0143074bce2f534ffe4c3e1a0985",
+      "integrity_logs": [],
+      "seconds": 0.89
+    },
+    "public-rejects-route": {
+      "result": "PASS",
+      "exit": 64,
+      "expected_exit": 64,
+      "console_sha256": "2c21d3cdf5762f471a8f9ef46096cd98d3de0143074bce2f534ffe4c3e1a0985",
+      "integrity_logs": [],
+      "seconds": 0.891
+    }
+  }
+}
