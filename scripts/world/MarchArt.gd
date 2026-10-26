@@ -4,7 +4,7 @@ extends RefCounted
 static var house_templates: Dictionary = {}
 
 static func material(color: Color, glow: float = 0.0) -> StandardMaterial3D:
-	var result := StandardMaterial3D.new()
+	var result:StandardMaterial3D= StandardMaterial3D.new()
 	result.albedo_color = color
 	result.roughness = 0.92
 	if glow > 0:
@@ -14,7 +14,7 @@ static func material(color: Color, glow: float = 0.0) -> StandardMaterial3D:
 	return result
 
 static func shape(parent: Node3D, mesh: Mesh, position: Vector3, color: Color, rotation: Vector3 = Vector3.ZERO) -> MeshInstance3D:
-	var instance := MeshInstance3D.new()
+	var instance:MeshInstance3D= MeshInstance3D.new()
 	instance.mesh = mesh
 	instance.material_override = material(color)
 	instance.position = position
@@ -25,16 +25,16 @@ static func shape(parent: Node3D, mesh: Mesh, position: Vector3, color: Color, r
 	return instance
 
 static func box(parent: Node3D, position: Vector3, size: Vector3, color: Color, solid: bool = false) -> Node3D:
-	var mesh := BoxMesh.new()
+	var mesh:BoxMesh= BoxMesh.new()
 	mesh.size = size
-	var result := shape(parent, mesh, position, color)
+	var result:MeshInstance3D= shape(parent, mesh, position, color)
 	if solid:
-		var body := StaticBody3D.new()
+		var body:StaticBody3D= StaticBody3D.new()
 		body.position = position
 		body.set_meta("surface", "wood" if color.r > color.g else "stone")
 		parent.add_child(body)
-		var collider := CollisionShape3D.new()
-		var collision := BoxShape3D.new()
+		var collider:CollisionShape3D= CollisionShape3D.new()
+		var collision:BoxShape3D= BoxShape3D.new()
 		collision.size = size
 		collider.shape = collision
 		body.add_child(collider)
@@ -48,16 +48,18 @@ static func animate_walk(visual:Node3D,_phase:float,strength:float,movement_spee
 	if not is_instance_valid(player):return
 	if player.current_animation=="Attack" and player.is_playing():return
 	var speed:float=0.96 if movement_speed<0 else movement_speed
-	var clip:="Idle"
+	var clip:String="Idle"
 	if strength>0.03 and speed>0.03:
 		clip="Running_A" if speed>4.2 else "Jogging_A" if speed>2.2 else "Walking_A"
 	if player.current_animation!=clip:player.play(clip,0.18)
 	# Reference speeds from the licensed source's in-place foot excursion.
-	var reference:float={"Walking_A":0.96,"Jogging_A":2.51,"Running_A":3.29}.get(clip,1.0)
-	player.speed_scale=clampf(speed/reference,0.1,2.5) if clip!="Idle" else 1.0
+	var reference_speed:float={"Walking_A":0.96,"Jogging_A":2.51,"Running_A":3.29}.get(clip,1.0)
+	player.speed_scale=clampf(speed/reference_speed,0.1,2.5) if clip!="Idle" else 1.0
 
 static func animate_attack(visual: Node3D) -> void:
-	if is_instance_valid(visual) and visual.has_method("attack"): visual.attack()
+	# DetailedFigure is loaded on demand to avoid the mutually dependent asset factories.
+	@warning_ignore("unsafe_method_access")
+	if is_instance_valid(visual) and visual.has_method("attack"):visual.attack()
 
 static func market(parent: Node3D, position: Vector3, _tint: Color) -> void:
 	RealWorldArt.market(parent,position)
@@ -66,25 +68,26 @@ static func well(parent: Node3D, position: Vector3) -> void:
 	RealWorldArt.well(parent,position)
 
 static func house(parent: Node3D, position: Vector3, tint: Color, building: String = "") -> Node3D:
-	var house_root := Node3D.new()
+	var house_root:Node3D= Node3D.new()
 	house_root.position = position
 	house_root.set_meta("authored_asset", true)
 	parent.add_child(house_root)
-	var variant := ("home_a" if int(tint.r*100)%2==0 else "home_b") if building.is_empty() else building
+	var variant:String= ("home_a" if int(tint.r*100)%2==0 else "home_b") if building.is_empty() else building
 	RealWorldArt.house(house_root,variant)
-	var body := StaticBody3D.new()
+	var body:StaticBody3D= StaticBody3D.new()
 	body.position.y = 1.7
 	body.set_meta("surface", "wood")
 	house_root.add_child(body)
-	var collision := CollisionShape3D.new()
-	var collision_shape := BoxShape3D.new()
+	var collision:CollisionShape3D= CollisionShape3D.new()
+	var collision_shape:BoxShape3D= BoxShape3D.new()
 	collision_shape.size = Vector3(4.2,3.4,5.5)
 	collision.shape = collision_shape
 	body.add_child(collision)
 	return house_root
 
 static func label(parent: Node3D, title: String, position: Vector3, color: Color = Color("e7d4a9")) -> Label3D:
-	var label_node:Label3D=load("res://scripts/world/MarchWorldLabel.gd").new()
+	var label_script:GDScript=load("res://scripts/world/MarchWorldLabel.gd")
+	var label_node:Label3D=label_script.new()
 	label_node.text = title
 	label_node.font = load("res://assets/fonts/GolosText.ttf")
 	label_node.position = position
@@ -98,8 +101,8 @@ static func label(parent: Node3D, title: String, position: Vector3, color: Color
 	return label_node
 
 static func localized_label(parent:Node3D,key:String,position:Vector3,suffix:String="") -> Label3D:
-	var sign:Label3D=label(parent,"",position)
-	sign.set_meta("locale_key",key)
-	sign.set_meta("locale_suffix",suffix)
-	sign.call("refresh_copy")
-	return sign
+	var world_label:Label3D=label(parent,"",position)
+	world_label.set_meta("locale_key",key)
+	world_label.set_meta("locale_suffix",suffix)
+	world_label.call("refresh_copy")
+	return world_label

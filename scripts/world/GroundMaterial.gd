@@ -1,7 +1,7 @@
 extends RefCounted
 
 static func create(road: bool = false) -> ShaderMaterial:
-	var shader := Shader.new()
+	var shader:Shader= Shader.new()
 	shader.code = """shader_type spatial;
 render_mode cull_disabled;
 uniform bool road = false;
@@ -36,12 +36,14 @@ void fragment(){
  NORMAL=normalize(surface_normal+mat3(VIEW_MATRIX)*perturb);
 }
 """
-	var material := ShaderMaterial.new()
+	var material:ShaderMaterial= ShaderMaterial.new()
 	material.shader = shader
 	material.set_shader_parameter("road",road)
 	material.set_shader_parameter("meadow_color",load("res://assets/art/meadow_painted.png"))
-	var root := "res://assets/art/realistic/materials/"
-	for pair in [["ground","forest_ground_04"],["road","cobblestone_floor_08"]]:
-		for maps in [["color","diff"],["normal","nor_gl"],["rough","rough"]]:
-			material.set_shader_parameter(pair[0]+"_"+maps[0],load(root+pair[1]+"/"+pair[1]+"_"+maps[1]+"_1k.jpg"))
+	var root:String= "res://assets/art/realistic/materials/"
+	for pair:Array in [["ground","forest_ground_04"],["road","cobblestone_floor_08"]]:
+		for maps:Array in [["color","diff"],["normal","nor_gl"],["rough","rough"]]:
+			var uniform:String=str(pair[0])+"_"+str(maps[0])
+			var texture_path:String=root+str(pair[1])+"/"+str(pair[1])+"_"+str(maps[1])+"_1k.jpg"
+			material.set_shader_parameter(uniform,load(texture_path))
 	return material

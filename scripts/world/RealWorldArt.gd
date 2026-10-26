@@ -5,15 +5,17 @@ static var materials: Dictionary = {}
 static var houses: Dictionary = {}
 
 static func banner(parent: Node3D, position: Vector3, tint: Color) -> void:
+	# The generated mesh is attached to its parent; no separate handle is needed here.
+	@warning_ignore("return_value_discarded")
 	box(parent,position+Vector3(0,2.5,0),Vector3(0.10,5.0,0.10),"wood")
-	var mesh:=QuadMesh.new()
+	var mesh:QuadMesh=QuadMesh.new()
 	mesh.size=Vector2(2.0,1.3)
 	mesh.subdivide_width=20
 	mesh.subdivide_depth=8
-	var flag:=MeshInstance3D.new()
+	var flag:MeshInstance3D=MeshInstance3D.new()
 	flag.mesh=mesh
 	flag.position=position+Vector3(1,4,0)
-	var shader:=Shader.new()
+	var shader:Shader=Shader.new()
 	shader.code="""shader_type spatial;
 render_mode cull_disabled;
 uniform vec4 heraldry : source_color;
@@ -28,7 +30,7 @@ void fragment(){
  ROUGHNESS=0.98;
 }
 """
-	var mat:=ShaderMaterial.new()
+	var mat:ShaderMaterial=ShaderMaterial.new()
 	mat.shader=shader
 	mat.set_shader_parameter("heraldry",tint.lerp(Color("65634e"),0.50).darkened(0.18))
 	flag.material_override=mat
@@ -36,13 +38,13 @@ void fragment(){
 
 static func material(kind: String) -> StandardMaterial3D:
 	if materials.has(kind): return materials[kind]
-	var names := {"wood":"rough_wood","plaster":"damaged_plaster","roof":"roof_slates_02","stone":"cobblestone_floor_08"}
-	var mat := StandardMaterial3D.new()
+	var names:Dictionary= {"wood":"rough_wood","plaster":"damaged_plaster","roof":"roof_slates_02","stone":"cobblestone_floor_08"}
+	var mat:StandardMaterial3D= StandardMaterial3D.new()
 	mat.texture_filter = BaseMaterial3D.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS_ANISOTROPIC
 	mat.roughness = 0.88
 	if names.has(kind):
 		var id: String = names[kind]
-		var base := "res://assets/art/realistic/materials/"+id+"/"+id
+		var base:String= "res://assets/art/realistic/materials/"+id+"/"+id
 		mat.albedo_texture = load(base+"_diff_1k.jpg")
 		mat.normal_enabled = true
 		mat.normal_texture = load(base+"_nor_gl_1k.jpg")
@@ -78,7 +80,7 @@ static func material(kind: String) -> StandardMaterial3D:
 	return mat
 
 static func part(parent: Node3D, mesh: Mesh, pos: Vector3, kind: String, rotation: Vector3 = Vector3.ZERO) -> MeshInstance3D:
-	var instance := MeshInstance3D.new()
+	var instance:MeshInstance3D= MeshInstance3D.new()
 	instance.mesh = mesh
 	instance.layers = 3
 	instance.material_override = material(kind)
@@ -90,29 +92,33 @@ static func part(parent: Node3D, mesh: Mesh, pos: Vector3, kind: String, rotatio
 	return instance
 
 static func box(parent: Node3D, pos: Vector3, size: Vector3, kind: String, rotation: Vector3 = Vector3.ZERO) -> MeshInstance3D:
-	var mesh := BoxMesh.new()
+	var mesh:BoxMesh= BoxMesh.new()
 	mesh.size = size
 	return part(parent,mesh,pos,kind,rotation)
 
 static func bake(parent: Node3D) -> void:
 	var groups: Dictionary = {}
-	for child in parent.get_children():
-		if not child is MeshInstance3D: continue
-		var key: int = child.material_override.get_instance_id()
-		if not groups.has(key): groups[key] = {"tool":SurfaceTool.new(),"material":child.material_override}
-		groups[key].tool.append_from(child.mesh,0,child.transform)
+	for child:Node in parent.get_children():
+		if not child is MeshInstance3D:continue
+		var part_mesh:MeshInstance3D=child
+		var key: int = part_mesh.material_override.get_instance_id()
+		if not groups.has(key): groups[key] = {"tool":SurfaceTool.new(),"material":part_mesh.material_override}
+		var group:Dictionary=groups[key]
+		var tool:SurfaceTool=group.tool
+		tool.append_from(part_mesh.mesh,0,part_mesh.transform)
 		child.free()
-	for group in groups.values():
-		var mesh := MeshInstance3D.new()
+	for group:Dictionary in groups.values():
+		var tool:SurfaceTool=group.tool
+		var mesh:MeshInstance3D= MeshInstance3D.new()
 		mesh.layers = 3
-		mesh.mesh = group.tool.commit()
+		mesh.mesh = tool.commit()
 		mesh.material_override = group.material
 		mesh.visibility_range_end = 280
 		mesh.visibility_range_end_margin = 35
 		parent.add_child(mesh)
 
 static func house(root: Node3D, variant: String) -> void:
-	var lamp := OmniLight3D.new()
+	var lamp:OmniLight3D= OmniLight3D.new()
 	lamp.position = Vector3(0,2.3,3.1)
 	lamp.light_color = Color("ffb96f")
 	lamp.light_energy = 0.6
@@ -123,8 +129,8 @@ static func house(root: Node3D, variant: String) -> void:
 	lamp.distance_fade_length = 15
 	root.add_child(lamp)
 	if houses.has(variant):
-		for template in houses[variant]:
-			var node := MeshInstance3D.new()
+		for template:Variant in houses[variant]:
+			var node:MeshInstance3D= MeshInstance3D.new()
 			node.layers = 3
 			node.mesh = template.mesh
 			node.material_override = template.material
@@ -132,70 +138,136 @@ static func house(root: Node3D, variant: String) -> void:
 			node.visibility_range_end_margin = 35
 			root.add_child(node)
 		return
+	# The generated mesh is attached to its parent; no separate handle is needed here.
+	@warning_ignore("return_value_discarded")
 	box(root,Vector3(0,0.23,0),Vector3(4.35,0.46,5.65),"stone")
+	# The generated mesh is attached to its parent; no separate handle is needed here.
+	@warning_ignore("return_value_discarded")
 	box(root,Vector3(0,1.9,0),Vector3(4.18,3.1,5.48),"stone" if variant=="blacksmith" else "plaster")
-	var roof := PrismMesh.new()
+	var roof:PrismMesh= PrismMesh.new()
 	roof.size = Vector3(5.15,2.15,6.15)
+	# The figure owner retains this attached mesh part.
+	@warning_ignore("return_value_discarded")
 	part(root,roof,Vector3(0,4.36,0),"roof")
-	for side in [-1,1]:
-		for front in [-1,1]:
+	for side:int in [-1,1]:
+		for front:int in [-1,1]:
+			# The generated mesh is attached to its parent; no separate handle is needed here.
+			@warning_ignore("return_value_discarded")
 			box(root,Vector3(side*2.03,1.88,front*2.71),Vector3(0.18,3.2,0.18),"wood")
-		for height in [0.68,2.95,3.43]: box(root,Vector3(side*2.13,height,0),Vector3(0.15,0.15,5.6),"wood")
+		# The generated mesh is attached to its parent; no separate handle is needed here.
+		@warning_ignore("return_value_discarded")
+		for height:float in [0.68,2.95,3.43]: box(root,Vector3(side*2.13,height,0),Vector3(0.15,0.15,5.6),"wood")
+		# The generated mesh is attached to its parent; no separate handle is needed here.
+		@warning_ignore("return_value_discarded")
 		box(root,Vector3(side*2.62,3.28,0),Vector3(0.09,0.11,6.3),"metal")
-	for front in [-1,1]:
+	for front:int in [-1,1]:
 		var z: float = front*2.8
-		for height in [0.68,2.95,3.43]: box(root,Vector3(0,height,z),Vector3(4.28,0.15,0.16),"wood")
+		# The generated mesh is attached to its parent; no separate handle is needed here.
+		@warning_ignore("return_value_discarded")
+		for height:float in [0.68,2.95,3.43]: box(root,Vector3(0,height,z),Vector3(4.28,0.15,0.16),"wood")
+		# The generated mesh is attached to its parent; no separate handle is needed here.
+		@warning_ignore("return_value_discarded")
 		box(root,Vector3(0,1.35,z+front*0.04),Vector3(1.0,2.15,0.09),"wood")
-		for side in [-1,1]:
+		for side:int in [-1,1]:
+			# The generated mesh is attached to its parent; no separate handle is needed here.
+			@warning_ignore("return_value_discarded")
 			box(root,Vector3(side*0.57,1.37,z+front*0.08),Vector3(0.12,2.3,0.16),"stone")
+			# The generated mesh is attached to its parent; no separate handle is needed here.
+			@warning_ignore("return_value_discarded")
 			box(root,Vector3(side*1.25,2.0,z+front*0.07),Vector3(0.68,0.9,0.06),"glass")
+			# The generated mesh is attached to its parent; no separate handle is needed here.
+			@warning_ignore("return_value_discarded")
 			box(root,Vector3(side*1.25,1.48,z+front*0.12),Vector3(0.94,0.1,0.2),"stone")
-			for shutter in [-1,1]:
+			for shutter:int in [-1,1]:
+				# The generated mesh is attached to its parent; no separate handle is needed here.
+				@warning_ignore("return_value_discarded")
 				box(root,Vector3(side*1.25+shutter*0.44,2.0,z+front*0.12),Vector3(0.18,1.0,0.08),"wood")
+			# The generated mesh is attached to its parent; no separate handle is needed here.
+			@warning_ignore("return_value_discarded")
 			box(root,Vector3(side*1.25,2.0,z+front*0.13),Vector3(0.7,0.055,0.05),"wood")
+			# The generated mesh is attached to its parent; no separate handle is needed here.
+			@warning_ignore("return_value_discarded")
 			box(root,Vector3(side*1.25,2.0,z+front*0.13),Vector3(0.055,0.9,0.05),"wood")
+			# The generated mesh is attached to its parent; no separate handle is needed here.
+			@warning_ignore("return_value_discarded")
 			box(root,Vector3(side*1.02,4.18,front*3.09),Vector3(2.85,0.13,0.13),"wood",Vector3(0,0,-side*0.69))
+		# The generated mesh is attached to its parent; no separate handle is needed here.
+		@warning_ignore("return_value_discarded")
 		box(root,Vector3(0,2.51,z+front*0.06),Vector3(1.25,0.14,0.16),"stone")
+		# The generated mesh is attached to its parent; no separate handle is needed here.
+		@warning_ignore("return_value_discarded")
 		box(root,Vector3(0.33,1.32,z+front*0.14),Vector3(0.09,0.13,0.07),"metal")
+		# The generated mesh is attached to its parent; no separate handle is needed here.
+		@warning_ignore("return_value_discarded")
 		box(root,Vector3(0,0.28,front*3.04),Vector3(1.5,0.2,0.48),"stone")
+	# The generated mesh is attached to its parent; no separate handle is needed here.
+	@warning_ignore("return_value_discarded")
 	box(root,Vector3(1.12,4.7,0.9),Vector3(0.58,2.25,0.62),"stone")
+	# The generated mesh is attached to its parent; no separate handle is needed here.
+	@warning_ignore("return_value_discarded")
 	box(root,Vector3(1.12,5.83,0.9),Vector3(0.78,0.13,0.82),"stone")
 	if variant=="tavern":
+		# The generated mesh is attached to its parent; no separate handle is needed here.
+		@warning_ignore("return_value_discarded")
 		box(root,Vector3(-1.65,2.55,-3.13),Vector3(0.8,0.62,0.13),"wood")
+		# The generated mesh is attached to its parent; no separate handle is needed here.
+		@warning_ignore("return_value_discarded")
 		box(root,Vector3(-1.65,2.95,-3.13),Vector3(1.1,0.06,0.06),"metal")
 	bake(root)
 	var templates: Array = []
-	for child in root.get_children():
-		if child is MeshInstance3D: templates.append({"mesh":child.mesh,"material":child.material_override})
+	for child:Node in root.get_children():
+		if child is MeshInstance3D:
+			var part_mesh:MeshInstance3D=child
+			templates.append({"mesh":part_mesh.mesh,"material":part_mesh.material_override})
 	houses[variant] = templates
 
 static func market(parent: Node3D, position: Vector3) -> void:
-	var root := Node3D.new()
+	var root:Node3D= Node3D.new()
 	root.position = position
 	parent.add_child(root)
+	# The generated mesh is attached to its parent; no separate handle is needed here.
+	@warning_ignore("return_value_discarded")
 	box(root,Vector3(0,0.9,0),Vector3(3.4,0.16,1.25),"wood")
-	for side in [-1,1]:
+	for side:int in [-1,1]:
+		# The generated mesh is attached to its parent; no separate handle is needed here.
+		@warning_ignore("return_value_discarded")
 		box(root,Vector3(side*1.5,1.35,0.4),Vector3(0.12,2.7,0.12),"wood")
+		# The generated mesh is attached to its parent; no separate handle is needed here.
+		@warning_ignore("return_value_discarded")
 		box(root,Vector3(side*1.35,0.46,0),Vector3(0.16,0.92,0.16),"wood")
+	# The generated mesh is attached to its parent; no separate handle is needed here.
+	@warning_ignore("return_value_discarded")
 	box(root,Vector3(0,2.65,0.0),Vector3(3.9,0.055,1.85),"canvas",Vector3(-0.12,0,0))
-	for index in 4: box(root,Vector3(index*0.76-1.14,1.12,0),Vector3(0.65,0.3,0.65),"wood")
+	# The generated mesh is attached to its parent; no separate handle is needed here.
+	@warning_ignore("return_value_discarded")
+	for index:int in 4: box(root,Vector3(index*0.76-1.14,1.12,0),Vector3(0.65,0.3,0.65),"wood")
 	bake(root)
+	# The scene owner retains this placed asset.
+	@warning_ignore("return_value_discarded")
 	MarchAssets.place(root,"realistic/models/wine_barrel_01/wine_barrel_01.gltf",Vector3(2.4,0,0.4),Vector3(1.4,1.5,1.4))
 
 static func well(parent: Node3D, position: Vector3) -> void:
-	var root := Node3D.new()
+	var root:Node3D= Node3D.new()
 	root.position = position
 	parent.add_child(root)
-	for index in 12:
-		var angle := index*TAU/12
+	for index:int in 12:
+		var angle:float= index*TAU/12
+		# The generated mesh is attached to its parent; no separate handle is needed here.
+		@warning_ignore("return_value_discarded")
 		box(root,Vector3(cos(angle)*0.88,0.4,sin(angle)*0.88),Vector3(0.28,0.8,0.48),"stone",Vector3(0,-angle,0))
-	var water := CylinderMesh.new()
+	var water:CylinderMesh= CylinderMesh.new()
 	water.top_radius = 0.73
 	water.bottom_radius = 0.73
 	water.height = 0.025
+	# The figure owner retains this attached mesh part.
+	@warning_ignore("return_value_discarded")
 	part(root,water,Vector3(0,0.34,0),"water")
-	for side in [-1,1]: box(root,Vector3(side*1.0,1.4,0),Vector3(0.16,2.8,0.16),"wood")
-	var roof := PrismMesh.new()
+	# The generated mesh is attached to its parent; no separate handle is needed here.
+	@warning_ignore("return_value_discarded")
+	for side:int in [-1,1]: box(root,Vector3(side*1.0,1.4,0),Vector3(0.16,2.8,0.16),"wood")
+	var roof:PrismMesh= PrismMesh.new()
 	roof.size = Vector3(2.55,0.8,1.7)
+	# The figure owner retains this attached mesh part.
+	@warning_ignore("return_value_discarded")
 	part(root,roof,Vector3(0,2.8,0),"roof")
 	bake(root)
