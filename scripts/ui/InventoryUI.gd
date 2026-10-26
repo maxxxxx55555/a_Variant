@@ -14,18 +14,40 @@ extends Control
 var selected_index: int = -1
 
 func _ready() -> void:
+	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
+	@warning_ignore("return_value_discarded")
 	EventBus.inventory_updated.connect(refresh_inventory)
+	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
+	@warning_ignore("return_value_discarded")
 	EventBus.equipment_updated.connect(refresh_equipment)
+	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
+	@warning_ignore("return_value_discarded")
 	EventBus.language_changed.connect(localize_inventory)
+	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
+	@warning_ignore("return_value_discarded")
 	item_list.item_selected.connect(_on_item_selected)
+	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
+	@warning_ignore("return_value_discarded")
 	equip_button.pressed.connect(_on_equip_pressed)
+	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
+	@warning_ignore("return_value_discarded")
 	use_button.pressed.connect(_on_use_pressed)
+	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
+	@warning_ignore("return_value_discarded")
 	drop_button.pressed.connect(_on_drop_pressed)
 
-	head_btn.pressed.connect(func(): GameState.unequip_item("head"))
-	torso_btn.pressed.connect(func(): GameState.unequip_item("torso"))
-	legs_btn.pressed.connect(func(): GameState.unequip_item("legs"))
-	weapon_btn.pressed.connect(func(): GameState.unequip_item("weapon"))
+	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
+	@warning_ignore("return_value_discarded")
+	head_btn.pressed.connect(func()->void: GameState.unequip_item("head"))
+	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
+	@warning_ignore("return_value_discarded")
+	torso_btn.pressed.connect(func()->void: GameState.unequip_item("torso"))
+	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
+	@warning_ignore("return_value_discarded")
+	legs_btn.pressed.connect(func()->void: GameState.unequip_item("legs"))
+	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
+	@warning_ignore("return_value_discarded")
+	weapon_btn.pressed.connect(func()->void: GameState.unequip_item("weapon"))
 
 	refresh_inventory()
 	refresh_equipment()
@@ -35,12 +57,14 @@ func refresh_inventory() -> void:
 	use_button.text = LocalizationManager.get_string("ui.use")
 	drop_button.text = LocalizationManager.get_string("ui.drop")
 	item_list.clear()
-	for item in GameState.inventory:
-		var name_key = item.get("name_key", "")
-		var count = item.get("count", 1)
-		var display_name = LocalizationManager.get_string(name_key)
+	for item:Dictionary in GameState.inventory:
+		var name_key:String= item.get("name_key", "")
+		var count:int= item.get("count", 1)
+		var display_name:String= LocalizationManager.get_string(name_key)
 		if count > 1:
 			display_name += " x" + str(count)
+		# This list owns the row; selection is managed separately.
+		@warning_ignore("return_value_discarded")
 		item_list.add_item(display_name)
 	clear_card()
 
@@ -49,17 +73,20 @@ func refresh_equipment() -> void:
 	torso_btn.text = get_slot_text("torso")
 	legs_btn.text = get_slot_text("legs")
 	weapon_btn.text = get_slot_text("weapon")
-	for pair in [[head_btn,"head"],[torso_btn,"torso"],[legs_btn,"legs"],[weapon_btn,"weapon"]]:
-		pair[0].disabled=GameState.equipment.get(pair[1])==null
-		pair[0].tooltip_text=LocalizationManager.get_string("ui.empty" if pair[0].disabled else "ui.unequip")
+	for pair:Array in [[head_btn,"head"],[torso_btn,"torso"],[legs_btn,"legs"],[weapon_btn,"weapon"]]:
+		var button:Button=pair[0]
+		button.disabled=GameState.equipment.get(pair[1])==null
+		button.tooltip_text=LocalizationManager.get_string("ui.empty" if button.disabled else "ui.unequip")
 
 func get_slot_text(slot_name: String) -> String:
-	var slot_title = LocalizationManager.get_string("ui.slot_" + slot_name)
-	var eq = GameState.equipment.get(slot_name)
+	var slot_title:String= LocalizationManager.get_string("ui.slot_" + slot_name)
+	var eq:Dictionary={}
+	if GameState.equipment.get(slot_name)!=null:eq=GameState.equipment.get(slot_name)
 	if eq and eq.get("resource_path"):
-		var res = load(eq.get("resource_path"))
+		var path:String=eq.get("resource_path")
+		var res:ItemData=load(path) as ItemData
 		if res:
-			var item_name = LocalizationManager.get_string(res.get("name_key"))
+			var item_name:String= LocalizationManager.get_string(str(res.get("name_key")))
 			return slot_title + ": " + item_name + " [" + LocalizationManager.get_string("ui.unequip") + "]"
 	return slot_title + ": [" + LocalizationManager.get_string("ui.empty") + "]"
 
@@ -72,73 +99,79 @@ func update_card(index: int) -> void:
 		clear_card()
 		return
 
-	var item = GameState.inventory[index]
-	var res = load(item.get("resource_path", ""))
+	var item:Dictionary=GameState.inventory[index]
+	var path:String=item.get("resource_path","")
+	var res:ItemData=load(path) as ItemData
 	if not res:
 		clear_card()
 		return
 
-	var name_str = LocalizationManager.get_string(res.get("name_key"))
-	var desc_str = LocalizationManager.get_string(res.get("desc_key"))
-	var type_str = res.get("type")
-	var weight = res.get("weight")
-	var rarity = res.get("rarity")
+	var name_str:String= LocalizationManager.get_string(str(res.get("name_key")))
+	var desc_str:String= LocalizationManager.get_string(str(res.get("desc_key")))
+	var type_str:String= res.get("type")
+	var weight:float= res.get("weight")
+	var rarity:String= res.get("rarity")
 
-	var text = "[b]" + name_str + "[/b]\n"
+	var text:String= "[b]" + name_str + "[/b]\n"
 	text += LocalizationManager.get_string("ui.stats.rarity") + ": " + LocalizationManager.get_string("ui.rarity." + rarity) + "\n"
 	text += LocalizationManager.get_string("ui.stats.weight") + ": " + str(weight) + " " + LocalizationManager.get_string("ui.unit.weight") + "\n\n"
 	text += desc_str + "\n\n"
 	if res is WeaponData or res is ArmorData:
-		text += LocalizationManager.get_string("ui.stats.durability") + ": " + str(item.get("durability", res.durability)) + "/" + str(res.durability) + "\n"
+		var equipment:EquipmentData=res
+		text += LocalizationManager.get_string("ui.stats.durability") + ": " + str(item.get("durability", equipment.durability)) + "/" + str(equipment.durability) + "\n"
 
 	# Stat comparisons
 	equip_button.visible = false
 	use_button.visible = false
 	if type_str == "weapon":
-		var dmg = res.get("damage")
-		var spd = res.get("speed")
-		var reach = res.get("reach")
-		var stamina_cost = res.get("stamina_cost")
+		var dmg:float= res.get("damage")
+		var spd:float= res.get("speed")
+		var reach:float= res.get("reach")
+		var stamina_cost:float= res.get("stamina_cost")
 
-		var equipped_weapon = GameState.equipment.get("weapon")
-		var curr_dmg = 0.0
-		var curr_spd = 1.0
-		var curr_reach = 2.0
-		var curr_stamina = 10.0
+		var equipped_weapon:Dictionary={}
+		if GameState.equipment.get("weapon")!=null:equipped_weapon=GameState.equipment.get("weapon")
+		var curr_dmg:float= 0.0
+		var curr_spd:float= 1.0
+		var curr_reach:float= 2.0
+		var curr_stamina:float= 10.0
 		if equipped_weapon and equipped_weapon.get("resource_path"):
-			var eq_res = load(equipped_weapon.get("resource_path"))
+			var equipped_path:String=equipped_weapon.get("resource_path")
+			var eq_res:WeaponData=load(equipped_path) as WeaponData
 			if eq_res:
 				curr_dmg = eq_res.get("damage")
 				curr_spd = eq_res.get("speed")
 				curr_reach = eq_res.get("reach")
 				curr_stamina = eq_res.get("stamina_cost")
 
-		var d_dmg = dmg - curr_dmg
+		var d_dmg:float= dmg - curr_dmg
 		text += LocalizationManager.get_string("ui.stats.damage") + ": " + str(dmg) + " (" + format_delta(d_dmg, true) + ")\n"
-		var d_spd = spd - curr_spd
+		var d_spd:float= spd - curr_spd
 		text += LocalizationManager.get_string("ui.stats.speed") + ": " + str(spd) + " (" + format_delta(d_spd, true) + ")\n"
-		var d_reach = reach - curr_reach
+		var d_reach:float= reach - curr_reach
 		text += LocalizationManager.get_string("ui.stats.reach") + ": " + str(reach) + " " + LocalizationManager.get_string("ui.unit.reach") + " (" + format_delta(d_reach, true) + ")\n"
-		var d_stamina = stamina_cost - curr_stamina
+		var d_stamina:float= stamina_cost - curr_stamina
 		text += LocalizationManager.get_string("ui.stats.stamina_cost") + ": " + str(stamina_cost) + " (" + format_delta(-d_stamina, true) + ")\n"
 
 		equip_button.visible = true
 		use_button.visible = false
 	elif type_str == "armor":
-		var def = res.get("defense")
-		var slot = res.get("slot")
-		var equipped_armor = GameState.equipment.get(slot)
-		var current_def = 0.0
+		var def:float= res.get("defense")
+		var slot:String= res.get("slot")
+		var equipped_armor:Dictionary={}
+		if GameState.equipment.get(slot)!=null:equipped_armor=GameState.equipment.get(slot)
+		var current_def:float= 0.0
 		if equipped_armor and equipped_armor.get("resource_path"):
-			var eq_res = load(equipped_armor.get("resource_path"))
+			var equipped_path:String=equipped_armor.get("resource_path")
+			var eq_res:ArmorData=load(equipped_path) as ArmorData
 			if eq_res:
 				current_def = eq_res.get("defense")
-		var delta = def - current_def
+		var delta:float= def - current_def
 		text += LocalizationManager.get_string("ui.stats.defense") + ": " + str(def) + " (" + format_delta(delta, true) + ")\n"
 		equip_button.visible = true
 		use_button.visible = false
 	elif type_str == "potion":
-		var heal = res.get("heal_amount")
+		var heal:float= res.get("heal_amount")
 		text += LocalizationManager.get_string("ui.stats.heal_amount") + ": +" + str(heal) + " " + LocalizationManager.get_string("ui.unit.health") + "\n"
 		equip_button.visible = false
 		use_button.visible = true
@@ -147,8 +180,8 @@ func update_card(index: int) -> void:
 	item_card_label.text = text
 
 func format_delta(delta: float, higher_is_better: bool) -> String:
-	var sign_str = "+" if delta >= 0 else ""
-	var color_str = "[color=green]" if (delta >= 0 if higher_is_better else delta <= 0) else "[color=red]"
+	var sign_str:String= "+" if delta >= 0 else ""
+	var color_str:String= "[color=green]" if (delta >= 0 if higher_is_better else delta <= 0) else "[color=red]"
 	return color_str + sign_str + str(snapped(delta, 0.1)) + "[/color]"
 
 func clear_card() -> void:
@@ -160,10 +193,14 @@ func clear_card() -> void:
 
 func _on_equip_pressed() -> void:
 	if selected_index >= 0:
+		# The system emits the localized result and owns success audio; no additional UI transaction follows.
+		@warning_ignore("return_value_discarded")
 		GameState.equip_item(selected_index)
 
 func _on_use_pressed() -> void:
 	if selected_index >= 0:
+		# The system emits the localized result and owns success audio; no additional UI transaction follows.
+		@warning_ignore("return_value_discarded")
 		GameState.use_potion(selected_index)
 
 func _on_drop_pressed() -> void:

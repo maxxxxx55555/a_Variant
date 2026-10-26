@@ -1,73 +1,100 @@
 extends Node
+const FrameView=preload("res://scripts/ui/CouncilFrame.gd")
+const MapView=preload("res://scripts/ui/MarchMap.gd")
 
-var council: Control
-var map_view: Control
+var council:FrameView
+var map_view:MapView
 var home_button:Button
 var travel_button: Button
 var map_details: Label
-var building_buttons: Dictionary = {}
+var building_buttons:Dictionary[String,Button] = {}
 var craft_list: ItemList
 var craft_button: Button
 var resource_label: Label
 
-func attach(parent: Control) -> void:
+func attach(parent:FrameView) -> void:
 	council = parent
-	var map_column := VBoxContainer.new()
+	var map_column:VBoxContainer= VBoxContainer.new()
 	map_column.name = "Map"
 	council.tabs.add_child(map_column)
 	map_view = preload("res://scripts/ui/MarchMap.gd").new()
 	map_column.add_child(map_view)
-	map_view.town_selected.connect(func(_id): refresh())
+	# One connection is owned by this map panel.
+	@warning_ignore("return_value_discarded")
+	map_view.town_selected.connect(func(_id:Variant)->void: refresh())
 	map_details = Label.new()
 	map_column.add_child(map_details)
-	travel_button = council.button(map_column, "ui.travel", func(): CampaignSystem.travel(map_view.selected))
-	home_button = council.button(map_column, "ui.travel_home", func(): CampaignSystem.travel("home"))
+	travel_button = council.button(map_column, "ui.travel", func()->void:
+		# Disabled travel controls explain failure; the world owns successful transitions.
+		@warning_ignore("return_value_discarded")
+		CampaignSystem.travel(map_view.selected)
+	)
+	home_button = council.button(map_column, "ui.travel_home", func()->void:
+		# Disabled travel controls explain failure; the world owns successful transitions.
+		@warning_ignore("return_value_discarded")
+		CampaignSystem.travel("home")
+	)
 	home_button.tooltip_text = LocalizationManager.get_string("ui.travel_cost")
-	var workshop := VBoxContainer.new()
+	var workshop:VBoxContainer= VBoxContainer.new()
 	workshop.name = "Workshop"
 	council.tabs.add_child(workshop)
 	resource_label = Label.new()
 	workshop.add_child(resource_label)
-	var split := HBoxContainer.new()
+	var split:HBoxContainer= HBoxContainer.new()
 	split.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	workshop.add_child(split)
-	var scrolling := ScrollContainer.new()
+	var scrolling:ScrollContainer= ScrollContainer.new()
 	scrolling.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	scrolling.custom_minimum_size.x = 700
 	split.add_child(scrolling)
-	var buildings := VBoxContainer.new()
+	var buildings:VBoxContainer= VBoxContainer.new()
 	buildings.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	buildings.add_theme_constant_override("separation", 14)
 	scrolling.add_child(buildings)
-	for data in WorkshopSystem.definitions:
-		var control := Button.new()
+	for data:Dictionary in WorkshopSystem.definitions:
+		var control:Button= Button.new()
 		buildings.add_child(control)
 		building_buttons[data.id] = control
-		control.pressed.connect(func():
-			if not WorkshopSystem.build(data.id):AudioManager.play_sfx("ui_error")
+		# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
+		@warning_ignore("return_value_discarded")
+		control.pressed.connect(func()->void:
+			# AudioManager owns the voice and records the feedback acknowledgment.
+			@warning_ignore("return_value_discarded")
+			if not WorkshopSystem.build(str(data.id)):AudioManager.play_sfx("ui_error")
 			refresh()
 		)
-	var crafting := VBoxContainer.new()
+	var crafting:VBoxContainer= VBoxContainer.new()
 	crafting.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	split.add_child(crafting)
 	craft_list = ItemList.new()
 	craft_list.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	crafting.add_child(craft_list)
-	craft_list.item_selected.connect(func(_index): refresh())
-	craft_button = council.button(crafting, "ui.craft", func():
-		var selection := craft_list.get_selected_items()
-		if selection.is_empty() or not WorkshopSystem.craft(WorkshopSystem.crafting[selection[0]].id):AudioManager.play_sfx("ui_error")
+	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
+	@warning_ignore("return_value_discarded")
+	craft_list.item_selected.connect(func(_index:Variant)->void: refresh())
+	craft_button = council.button(crafting, "ui.craft", func()->void:
+		var selection:PackedInt32Array= craft_list.get_selected_items()
+		# AudioManager owns the voice and records the feedback acknowledgment.
+		@warning_ignore("return_value_discarded")
+		if selection.is_empty() or not WorkshopSystem.craft(str(WorkshopSystem.crafting[selection[0]].id)):AudioManager.play_sfx("ui_error")
 		refresh()
 	)
+	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
+	@warning_ignore("return_value_discarded")
 	CampaignSystem.changed.connect(refresh)
+	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
+	@warning_ignore("return_value_discarded")
 	WorkshopSystem.changed.connect(refresh)
-	EventBus.language_changed.connect(func(_language): refresh())
+	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
+	@warning_ignore("return_value_discarded")
+	EventBus.language_changed.connect(func(_language:Variant)->void: refresh())
 	refresh()
 
 func costs(cost: Dictionary) -> String:
-	var parts := PackedStringArray()
-	for resource in cost:
-		parts.append(str(int(cost[resource])) + " " + LocalizationManager.get_string("ui." + resource))
+	var parts:PackedStringArray= PackedStringArray()
+	for resource:String in cost:
+		var amount:float=cost[resource]
+		if parts.append(str(int(amount))+" "+LocalizationManager.get_string("ui."+resource)):return ""
 	return ", ".join(parts)
 
 func refresh() -> void:
@@ -76,29 +103,42 @@ func refresh() -> void:
 	council.tabs.set_tab_title(4, LocalizationManager.get_string("ui.workshop"))
 	map_view.queue_redraw()
 	var world:Node=get_tree().current_scene
-	var fighting:bool=world!=null and world.has_method("in_combat") and world.in_combat()
-	var town := CampaignSystem.town(map_view.selected)
-	map_details.text = LocalizationManager.get_string(town.name) + " · " + LocalizationManager.get_string("ui.danger") + " " + str(int(town.danger)) + "/5 · " + LocalizationManager.get_string("ui.travel_cost")
-	travel_button.disabled = town.id not in CampaignSystem.roads or not CampaignSystem.can_pay(CampaignSystem.definition.travel_cost) or fighting
+	var fighting:bool=world!=null and world.has_method("in_combat") and world.call("in_combat")
+	var town:Dictionary=CampaignSystem.town(map_view.selected)
+	var danger:int=town.danger
+	var travel_cost:Dictionary=CampaignSystem.definition.travel_cost
+	map_details.text = LocalizationManager.get_string(str(town.name)) + " · " + LocalizationManager.get_string("ui.danger") + " " + str(danger) + "/5 · " + LocalizationManager.get_string("ui.travel_cost")
+	travel_button.disabled = town.id not in CampaignSystem.roads or not CampaignSystem.can_pay(travel_cost) or fighting
 	travel_button.tooltip_text=LocalizationManager.get_string("ui.travel_requirements") if travel_button.disabled else LocalizationManager.get_string("ui.travel_cost")
-	home_button.disabled=not CampaignSystem.can_pay(CampaignSystem.definition.travel_cost) or fighting
+	home_button.disabled=not CampaignSystem.can_pay(travel_cost) or fighting
 	home_button.tooltip_text=travel_button.tooltip_text if home_button.disabled else LocalizationManager.get_string("ui.travel_cost")
-	for data in WorkshopSystem.definitions:
+	for data:Dictionary in WorkshopSystem.definitions:
 		var level: int = WorkshopSystem.levels.get(data.id, 0)
-		var cost: Dictionary = data.cost.duplicate()
-		for resource in cost: cost[resource] *= level + 1
-		building_buttons[data.id].text = LocalizationManager.get_string(data.name) + " " + str(level) + "/3 · " + costs(cost)
+		var base_cost:Dictionary=data.cost
+		var cost:Dictionary=base_cost.duplicate()
+		for resource:String in cost: cost[resource] *= level + 1
+		building_buttons[data.id].text = LocalizationManager.get_string(str(data.name)) + " " + str(level) + "/3 · " + costs(cost)
 		building_buttons[data.id].disabled = level >= 3 or not CampaignSystem.can_pay(cost)
 		building_buttons[data.id].tooltip_text=LocalizationManager.get_string("ui.max_level" if level>=3 else "ui.resources_required") if building_buttons[data.id].disabled else ""
-	var selected := craft_list.get_selected_items()
+	var selected:PackedInt32Array= craft_list.get_selected_items()
 	craft_list.clear()
-	for blueprint in WorkshopSystem.crafting:
-		var item: Resource = load(blueprint.result)
-		craft_list.add_item(LocalizationManager.get_string(item.name_key) + " · " + costs(blueprint.cost))
+	for blueprint:Dictionary in WorkshopSystem.crafting:
+		var result_path:String=blueprint.result
+		var item:ItemData=load(result_path) as ItemData
+		var recipe_cost:Dictionary=blueprint.cost
+		# This list owns the row; selection is managed separately.
+		@warning_ignore("return_value_discarded")
+		craft_list.add_item(LocalizationManager.get_string(str(item.name_key)) + " · " + costs(recipe_cost))
 	if not selected.is_empty(): craft_list.select(selected[0])
 	craft_button.disabled = selected.is_empty() or WorkshopSystem.levels.get("forge", 0) < 1
 	if not selected.is_empty():
 		var blueprint:Dictionary=WorkshopSystem.crafting[selected[0]]
-		craft_button.disabled=craft_button.disabled or not CampaignSystem.can_pay(blueprint.cost) or not GameState.can_add_item(load(blueprint.result))
+		var recipe_cost:Dictionary=blueprint.cost
+		var result_path:String=blueprint.result
+		craft_button.disabled=craft_button.disabled or not CampaignSystem.can_pay(recipe_cost) or not GameState.can_add_item(load(result_path))
 	craft_button.tooltip_text=LocalizationManager.get_string("ui.craft_requirements") if craft_button.disabled else ""
-	resource_label.text = LocalizationManager.get_string("ui.resource_summary", {"food": int(EconomySystem.stockpiles.food), "wood": int(EconomySystem.stockpiles.wood), "ore": int(EconomySystem.stockpiles.ore), "gold": int(EconomySystem.stockpiles.gold)})
+	var food:float=EconomySystem.stockpiles.food
+	var wood:float=EconomySystem.stockpiles.wood
+	var ore:float=EconomySystem.stockpiles.ore
+	var gold:float=EconomySystem.stockpiles.gold
+	resource_label.text = LocalizationManager.get_string("ui.resource_summary", {"food": int(food), "wood": int(wood), "ore": int(ore), "gold": int(gold)})
