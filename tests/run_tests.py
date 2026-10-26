@@ -64,6 +64,8 @@ def main():
             cases.append((case, ['--headless', '--script', 'res://tests/test_' + case + '.gd']))
         for case in ['qa_router','build_integrity','critical_read_bounds','integrity_notice','save_recovery','atomic_economy']:
             cases.append((case, ['--headless','--script','res://tests/test_'+case+'.gd']))
+        cases.append(('navigation-matrix', ([] if args.rendered else ['--headless'])+['--resolution', '1280x720' if not portrait else '540x960','--script','res://tests/test_navigation_matrix.gd']))
+        cases.append(('qa-seed', ['--headless','--script','res://tests/test_qa_seed.gd']))
         cases.insert(2, ('audio', ['--headless', '--script', 'res://tests/test_audio.gd']))
         if portrait:
             cases.append(('balance', ['--headless', '--script', 'res://tests/test_gameplay.gd', '--', '--balance']))

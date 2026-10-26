@@ -23,6 +23,9 @@ var state: Node
 var campaign: Node
 var failed: bool = false
 var military: bool = false
+var qa_trace:Array=[]
+var qa_seed:int=7401
+var started_ms:int=0
 
 func _ready() -> void:
 	call_deferred("run")
@@ -135,11 +138,16 @@ func button(key: String) -> Button:
 	return null
 
 func run() -> void:
+	started_ms=Time.get_ticks_msec()
+	qa_seed=parse_seed(OS.get_environment("GAME_QA_SEED"))
+	if qa_seed<0:quit(64);return
+	seed(qa_seed)
 	await process_frame
+	if OS.get_environment("GAME_QA_FAST")=="1":Engine.max_fps=0
 	if OS.get_cmdline_user_args().has("--verify-build"):
 		Engine.time_scale = 8
 		Engine.physics_ticks_per_second = 480
-		Engine.max_physics_steps_per_frame = 64
+		Engine.max_physics_steps_per_frame = 256
 	if is_instance_valid(current_scene): current_scene.queue_free()
 	state = root.get_node("GameState")
 	campaign = root.get_node("CampaignSystem")
@@ -169,6 +177,7 @@ func run() -> void:
 		if needed > 0: army.recruit("militia_spear", needed)
 		var town: Dictionary = campaign.definition.towns[index]
 		var fid: String = town.faction
+		qa_trace.append({"region":index,"weather":root.get_node("WeatherSystem").current_weather,"hp":state.player_hp,"gold":root.get_node("EconomySystem").stockpiles.gold})
 		print("CAMPAIGN ROUTE: ", "military" if military else "diplomatic", " region ", index + 1, " hp=", state.player_hp, " gold=", root.get_node("EconomySystem").stockpiles.gold, " army=", root.get_node("ArmySystem").get_total_soldiers())
 		if index > 0:
 			if not campaign.travel(town.id):
@@ -267,6 +276,7 @@ func run() -> void:
 			await capture("map")
 			world.toggle_pause()
 		if index < 7 and campaign.definition.towns[index + 1].id not in campaign.roads: fail("Regional work did not open the next campaign road")
+		await region_checkpoint()
 	var expected := "military" if military else "diplomatic"
 	if campaign.ending() != expected: fail("The full route did not reach its expected campaign ending")
 	if campaign.completed.size() != 60:
@@ -278,4 +288,41 @@ func run() -> void:
 		await process_frame
 		await RenderingServer.frame_post_draw
 		root.get_texture().get_image().save_png(OS.get_environment("GAME_SCREENSHOT"))
+	var snapshot:Dictionary={"campaign":campaign.capture_state(),"simulation":world.pause_menu.capture_simulation(),"world":world.get_world_state(),"inventory":state.inventory,"equipment":state.equipment,"hp":state.player_hp}
+	write_qa_result({"seed":qa_seed,"result":"FAIL" if failed else "PASS","route":expected,"quests":campaign.completed.size(),"days":root.get_node("TimeSystem").current_day,"trace":qa_trace,"state_sha256":JSON.stringify(snapshot,"",true,true).sha256_text(),"elapsed_ms":Time.get_ticks_msec()-started_ms})
+	get_tree().paused=false
+	world.queue_free()
+	await process_frame
+	await settle_audio()
 	quit(1 if failed else 0)
+
+# Private QA only: explicit seeds vary simulation; art/audio keep their own RNG.
+static func parse_seed(raw:String)->int:
+	if raw.is_empty():return 7401
+	if not raw.is_valid_int():return -1
+	var value:int=raw.to_int()
+	return value if value>0 and value<=2147483647 else -1
+
+func write_qa_result(record:Dictionary)->void:
+	print("QA CYCLE: ",JSON.stringify(record,"",true,true))
+	var path:String=OS.get_environment("GAME_QA_RESULT_PATH")
+	if not path.is_empty():
+		var file:FileAccess=FileAccess.open(path,FileAccess.WRITE)
+		if file:file.store_string(JSON.stringify(record,"",true,true)+"\n")
+
+func settle_audio()->void:
+	var audio:Node=get_tree().root.get_node("AudioManager")
+	if audio.crossfade:audio.crossfade.kill()
+	for voice in audio.get_children():
+		if voice is AudioStreamPlayer or voice is AudioStreamPlayer3D:
+			voice.stop()
+			voice.stream=null
+	audio.streams.clear()
+	audio.current_music=""
+	audio.current_finale=""
+	audio.music_index=-1
+	await get_tree().create_timer(0.3,true,false,true).timeout
+	for index in 10:await get_tree().process_frame
+
+func region_checkpoint()->void:
+	await process_frame
