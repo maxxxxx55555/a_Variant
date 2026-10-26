@@ -34,9 +34,13 @@ func run() -> void:
 	var fixture: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://tests/fixtures/legacy-MarchlandOaths.json"))
 	var original: Dictionary = JSON.parse_string(fixture.data)
 	check(Policy.valid(original),"Real shipped profile remains valid")
+	print("HARDENING PHASE: original-field mutations")
 	check_mutations(original)
+	print("HARDENING PHASE: original mutations complete")
 	var military_fixture: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://tests/fixtures/legacy-MarchlandOaths-military.json"))
+	print("HARDENING PHASE: military-field mutations")
 	check_mutations(JSON.parse_string(military_fixture.data))
+	print("HARDENING PHASE: military mutations complete")
 	var cases := [
 		["timed_effects",{"damage":{"seconds":"bad","value":{}}}],
 		["buildings",{"forge":{}}], ["buildings",{"forge":4}],
@@ -100,6 +104,7 @@ func run() -> void:
 	check(army.get_total_soldiers()==count,"Negative casualties cannot create soldiers")
 	state.inventory.clear()
 	var herb: Resource = load("res://data/potions/healing_herb.tres")
+	print("HARDENING PHASE: stack-cap input")
 	for index in 1001: state.add_item(herb)
 	check(Policy.valid({"inventory":state.inventory}),"Legitimate repeated loot remains saveable")
 	state.strength_buff_timer = 0.01
@@ -115,6 +120,7 @@ func run() -> void:
 		check(state.use_potion(0) and state.inventory.is_empty(),"A minimal legacy potion can be consumed without missing-field errors")
 	var sword: Resource = load("res://data/weapons/iron_sword.tres")
 	state.inventory.clear()
+	print("HARDENING PHASE: equipment-cap input")
 	for index in 1000: state.add_item(sword)
 	state.equipment.weapon = state.inventory[0].duplicate()
 	var gold: float = economy.stockpiles.gold

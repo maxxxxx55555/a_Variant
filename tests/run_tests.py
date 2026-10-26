@@ -66,6 +66,16 @@ def main():
             cases.append((case, ['--headless','--script','res://tests/test_'+case+'.gd']))
         cases.append(('navigation-matrix', ([] if args.rendered else ['--headless'])+['--resolution', '1280x720' if not portrait else '540x960','--script','res://tests/test_navigation_matrix.gd']))
         cases.append(('qa-seed', ['--headless','--script','res://tests/test_qa_seed.gd']))
+        cases.append(('mechanics-inputs', ['--headless','--script','res://tests/test_mechanics_inputs.gd']))
+        cases.append(('profile-contract', ['--headless','--script','res://tests/test_profile_contract.gd']))
+        cases.append(('army-pause-regression', ['--headless','--script','res://tests/test_army_pause_regression.gd']))
+        cases.append(('army-casualty-lifetime', ['--headless','--script','res://tests/test_army_casualty_lifetime.gd']))
+        cases.append(('companion-scan-regression', ['--headless','--script','res://tests/test_companion_scan_regression.gd']))
+        cases.append(('exact-float-limits', ['--headless','--script','res://tests/test_exact_float_limits.gd']))
+        cases.append(('save-float-precision', ['--headless','--script','res://tests/test_save_float_precision.gd']))
+        cases.append(('invalid-combat-inputs', ['--headless','--script','res://tests/test_invalid_combat_inputs.gd']))
+        cases.append(('untrusted-exploration', ['--headless','--script','res://tests/test_untrusted_exploration.gd']))
+        cases.append(('packed-append-regression', ['--headless','--script','res://tests/test_packed_append_regression.gd']))
         cases.insert(2, ('audio', ['--headless', '--script', 'res://tests/test_audio.gd']))
         if portrait:
             cases.append(('balance', ['--headless', '--script', 'res://tests/test_gameplay.gd', '--', '--balance']))
@@ -85,6 +95,8 @@ def main():
         if copy_contract.returncode: return copy_contract.returncode
         promises = subprocess.run([sys.executable, str(project / 'tests/test_promise_matrix.py')], timeout=30)
         if promises.returncode: return promises.returncode
+        mechanics = subprocess.run([sys.executable, str(project / 'tests/test_mechanics_matrix.py')], timeout=30)
+        if mechanics.returncode: return mechanics.returncode
         isolation = subprocess.run([sys.executable, str(project / 'tests/test_repo_isolation.py')], timeout=30)
         if isolation.returncode: return isolation.returncode
         soundtrack = subprocess.run([sys.executable, str(project / 'tests/test_soundtrack.py')], timeout=60)
@@ -96,9 +108,12 @@ def main():
             result=subprocess.run([sys.executable,str(project/'tests'/source_contract)],timeout=60)
             if result.returncode:return result.returncode
         for name, switches in cases:
+            if name == 'regressions':
+                strict = subprocess.run([sys.executable, str(project / 'tools/check_gdscript_warnings.py'), '--godot', args.godot, '--artifacts', str(artifacts / 'strict')], env=environment, timeout=300)
+                if strict.returncode: return strict.returncode
             log_path = artifacts / (name + '.log')
             command = [args.godot, '--rendering-method', 'gl_compatibility', '--path', str(project), '--log-file', str(log_path), *switches]
-            result = subprocess.run(command, env=environment, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=600 if name.startswith('campaign-route-') else 180)
+            result = subprocess.run(command, env=environment, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=600 if name.startswith('campaign-route-') or name=='release-hardening' else 180)
             log = log_path.read_text(encoding='utf-8', errors='replace') if log_path.exists() else 'ERROR: Missing Godot log'
             console = result.stdout + result.stderr
             (artifacts / (name + '-console.log')).write_text(console, encoding='utf-8')

@@ -1,0 +1,1643 @@
+{
+  "schema": 1,
+  "repository": "a_Variant",
+  "columns": [
+    "happy",
+    "bounds",
+    "rapid_input",
+    "pause_background",
+    "save_load_hash",
+    "en_ru",
+    "audio",
+    "ui_escape"
+  ],
+  "rows": [
+    {
+      "mechanic": "Movement, camera, sprint and jump",
+      "cells": {
+        "happy": [
+          {
+            "path": "tests/test_gameplay.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "bounds": [
+          {
+            "path": "tests/test_movement_comfort.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "rapid_input": [
+          {
+            "path": "tests/test_gameplay.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "pause_background": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_army_pause_regression.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "save_load_hash": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "en_ru": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_localization.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "audio": [
+          {
+            "path": "tests/test_audio.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_ui_audio_feedback.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "ui_escape": [
+          {
+            "path": "tests/test_navigation_matrix.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ]
+      }
+    },
+    {
+      "mechanic": "Melee, blocking, stamina and cover",
+      "cells": {
+        "happy": [
+          {
+            "path": "tests/test_gameplay.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "bounds": [
+          {
+            "path": "tests/test_invalid_combat_inputs.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "rapid_input": [
+          {
+            "path": "tests/test_gameplay.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "pause_background": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_army_pause_regression.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "save_load_hash": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "en_ru": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_localization.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "audio": [
+          {
+            "path": "tests/test_audio.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_ui_audio_feedback.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "ui_escape": [
+          {
+            "path": "tests/test_navigation_matrix.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ]
+      }
+    },
+    {
+      "mechanic": "Enemy AI, ranged opponents and bosses",
+      "cells": {
+        "happy": [
+          {
+            "path": "tests/test_combat_cover.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "bounds": [
+          {
+            "path": "tests/test_invalid_combat_inputs.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "rapid_input": [
+          {
+            "path": "tests/test_invalid_combat_inputs.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "pause_background": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_army_pause_regression.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "save_load_hash": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "en_ru": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_localization.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "audio": [
+          {
+            "path": "tests/test_audio.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_ui_audio_feedback.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "ui_escape": [
+          {
+            "path": "tests/test_navigation_matrix.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ]
+      }
+    },
+    {
+      "mechanic": "Inventory, pickup, drop and weight",
+      "cells": {
+        "happy": [
+          {
+            "path": "tests/test_gameplay.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "bounds": [
+          {
+            "path": "tests/test_release_hardening.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "rapid_input": [
+          {
+            "path": "tests/test_mechanics_inputs.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "pause_background": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_army_pause_regression.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "save_load_hash": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "en_ru": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_localization.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "audio": [
+          {
+            "path": "tests/test_audio.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_ui_audio_feedback.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "ui_escape": [
+          {
+            "path": "tests/test_navigation_matrix.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ]
+      }
+    },
+    {
+      "mechanic": "Equipment, durability and paid repair",
+      "cells": {
+        "happy": [
+          {
+            "path": "tests/test_gameplay.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "bounds": [
+          {
+            "path": "tests/test_invalid_combat_inputs.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "rapid_input": [
+          {
+            "path": "tests/test_mechanics_inputs.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "pause_background": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_army_pause_regression.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "save_load_hash": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "en_ru": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_localization.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "audio": [
+          {
+            "path": "tests/test_audio.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_ui_audio_feedback.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "ui_escape": [
+          {
+            "path": "tests/test_navigation_matrix.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ]
+      }
+    },
+    {
+      "mechanic": "Healing, buffs, antidote and poison",
+      "cells": {
+        "happy": [
+          {
+            "path": "tests/test_gameplay.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "bounds": [
+          {
+            "path": "tests/test_release_hardening.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "rapid_input": [
+          {
+            "path": "tests/test_mechanics_inputs.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "pause_background": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_army_pause_regression.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "save_load_hash": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "en_ru": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_localization.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "audio": [
+          {
+            "path": "tests/test_audio.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_ui_audio_feedback.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "ui_escape": [
+          {
+            "path": "tests/test_navigation_matrix.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ]
+      }
+    },
+    {
+      "mechanic": "Alchemy and ingredient consumption",
+      "cells": {
+        "happy": [
+          {
+            "path": "tests/test_gameplay.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "bounds": [
+          {
+            "path": "tests/test_atomic_economy.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "rapid_input": [
+          {
+            "path": "tests/test_mechanics_inputs.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "pause_background": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_army_pause_regression.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "save_load_hash": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "en_ru": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_localization.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "audio": [
+          {
+            "path": "tests/test_audio.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_ui_audio_feedback.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_context_audio.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "ui_escape": [
+          {
+            "path": "tests/test_navigation_matrix.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ]
+      }
+    },
+    {
+      "mechanic": "Calendar, seasons and weather modifiers",
+      "cells": {
+        "happy": [
+          {
+            "path": "tests/test_civilians.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "bounds": [
+          {
+            "path": "tests/test_invalid_combat_inputs.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "rapid_input": [
+          {
+            "path": "tests/test_mechanics_inputs.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "pause_background": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_army_pause_regression.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "save_load_hash": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "en_ru": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_localization.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "audio": [
+          {
+            "path": "tests/test_audio.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_ui_audio_feedback.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "ui_escape": [
+          {
+            "path": "tests/test_navigation_matrix.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ]
+      }
+    },
+    {
+      "mechanic": "Workforce, population, health and hunger",
+      "cells": {
+        "happy": [
+          {
+            "path": "tests/test_gameplay.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "bounds": [
+          {
+            "path": "tests/test_gameplay.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "rapid_input": [
+          {
+            "path": "tests/test_mechanics_inputs.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "pause_background": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_army_pause_regression.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "save_load_hash": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "en_ru": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_localization.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "audio": [
+          {
+            "path": "tests/test_audio.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_ui_audio_feedback.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "ui_escape": [
+          {
+            "path": "tests/test_navigation_matrix.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ]
+      }
+    },
+    {
+      "mechanic": "Settlement laws and production",
+      "cells": {
+        "happy": [
+          {
+            "path": "tests/test_gameplay.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "bounds": [
+          {
+            "path": "tests/test_gameplay.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "rapid_input": [
+          {
+            "path": "tests/test_mechanics_inputs.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "pause_background": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_army_pause_regression.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "save_load_hash": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "en_ru": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_localization.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "audio": [
+          {
+            "path": "tests/test_audio.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_ui_audio_feedback.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "ui_escape": [
+          {
+            "path": "tests/test_navigation_matrix.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ]
+      }
+    },
+    {
+      "mechanic": "Resource trading and treasury",
+      "cells": {
+        "happy": [
+          {
+            "path": "tests/test_atomic_economy.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "bounds": [
+          {
+            "path": "tests/test_atomic_economy.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "rapid_input": [
+          {
+            "path": "tests/test_mechanics_inputs.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "pause_background": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_army_pause_regression.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "save_load_hash": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "en_ru": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_localization.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "audio": [
+          {
+            "path": "tests/test_audio.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_ui_audio_feedback.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_context_audio.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "ui_escape": [
+          {
+            "path": "tests/test_navigation_matrix.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ]
+      }
+    },
+    {
+      "mechanic": "Buildings and forge crafting",
+      "cells": {
+        "happy": [
+          {
+            "path": "tests/test_campaign.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "bounds": [
+          {
+            "path": "tests/test_atomic_economy.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "rapid_input": [
+          {
+            "path": "tests/test_mechanics_inputs.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "pause_background": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_army_pause_regression.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "save_load_hash": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "en_ru": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_localization.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "audio": [
+          {
+            "path": "tests/test_audio.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_ui_audio_feedback.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_context_audio.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "ui_escape": [
+          {
+            "path": "tests/test_navigation_matrix.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ]
+      }
+    },
+    {
+      "mechanic": "Army recruitment and disband",
+      "cells": {
+        "happy": [
+          {
+            "path": "tests/test_strategy.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_army_casualty_lifetime.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "bounds": [
+          {
+            "path": "tests/test_strategy.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "rapid_input": [
+          {
+            "path": "tests/test_mechanics_inputs.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "pause_background": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_army_pause_regression.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "save_load_hash": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "en_ru": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_localization.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "audio": [
+          {
+            "path": "tests/test_audio.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_ui_audio_feedback.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_context_audio.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "ui_escape": [
+          {
+            "path": "tests/test_navigation_matrix.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ]
+      }
+    },
+    {
+      "mechanic": "Army orders, formations and upkeep",
+      "cells": {
+        "happy": [
+          {
+            "path": "tests/test_strategy.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_army_casualty_lifetime.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "bounds": [
+          {
+            "path": "tests/test_release_hardening.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "rapid_input": [
+          {
+            "path": "tests/test_mechanics_inputs.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "pause_background": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_army_pause_regression.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "save_load_hash": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "en_ru": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_localization.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "audio": [
+          {
+            "path": "tests/test_audio.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_ui_audio_feedback.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_context_audio.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "ui_escape": [
+          {
+            "path": "tests/test_navigation_matrix.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ]
+      }
+    },
+    {
+      "mechanic": "Faction relations, gifts, threat and treaties",
+      "cells": {
+        "happy": [
+          {
+            "path": "tests/test_strategy.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "bounds": [
+          {
+            "path": "tests/test_strategy.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "rapid_input": [
+          {
+            "path": "tests/test_mechanics_inputs.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "pause_background": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_army_pause_regression.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "save_load_hash": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "en_ru": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_localization.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "audio": [
+          {
+            "path": "tests/test_audio.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_ui_audio_feedback.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_context_audio.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "ui_escape": [
+          {
+            "path": "tests/test_navigation_matrix.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ]
+      }
+    },
+    {
+      "mechanic": "Exploration and landmark rewards",
+      "cells": {
+        "happy": [
+          {
+            "path": "tests/test_untrusted_exploration.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "bounds": [
+          {
+            "path": "tests/test_untrusted_exploration.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "rapid_input": [
+          {
+            "path": "tests/test_untrusted_exploration.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "pause_background": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_army_pause_regression.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "save_load_hash": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "en_ru": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_localization.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "audio": [
+          {
+            "path": "tests/test_audio.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_ui_audio_feedback.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "ui_escape": [
+          {
+            "path": "tests/test_navigation_matrix.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ]
+      }
+    },
+    {
+      "mechanic": "Road discovery, towns, travel and map",
+      "cells": {
+        "happy": [
+          {
+            "path": "tests/test_campaign.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "bounds": [
+          {
+            "path": "tests/test_campaign.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "rapid_input": [
+          {
+            "path": "tests/test_navigation_matrix.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "pause_background": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_army_pause_regression.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "save_load_hash": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "en_ru": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_localization.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "audio": [
+          {
+            "path": "tests/test_audio.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_ui_audio_feedback.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "ui_escape": [
+          {
+            "path": "tests/test_navigation_matrix.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ]
+      }
+    },
+    {
+      "mechanic": "Quest dependencies and unique rewards",
+      "cells": {
+        "happy": [
+          {
+            "path": "tests/test_campaign.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "bounds": [
+          {
+            "path": "tests/test_campaign.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "rapid_input": [
+          {
+            "path": "tests/MechanicsRoute.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "pause_background": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_army_pause_regression.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "save_load_hash": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/MechanicsRoute.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "en_ru": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_localization.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "audio": [
+          {
+            "path": "tests/test_audio.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_ui_audio_feedback.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "ui_escape": [
+          {
+            "path": "tests/test_navigation_matrix.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ]
+      }
+    },
+    {
+      "mechanic": "Companion recruitment and world actors",
+      "cells": {
+        "happy": [
+          {
+            "path": "tests/test_companion_scan_regression.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "bounds": [
+          {
+            "path": "tests/test_release_hardening.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "rapid_input": [
+          {
+            "path": "tests/test_companion_scan_regression.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "pause_background": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_army_pause_regression.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_companion_scan_regression.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "save_load_hash": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_companion_scan_regression.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/MechanicsRoute.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "en_ru": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_localization.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_companion_scan_regression.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "audio": [
+          {
+            "path": "tests/test_audio.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_ui_audio_feedback.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "ui_escape": [
+          {
+            "path": "tests/test_navigation_matrix.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ]
+      }
+    },
+    {
+      "mechanic": "Blockade, assault, gate, surrender and conquest",
+      "cells": {
+        "happy": [
+          {
+            "path": "tests/test_siege.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "bounds": [
+          {
+            "path": "tests/test_siege.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "rapid_input": [
+          {
+            "path": "tests/test_siege.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "pause_background": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_army_pause_regression.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "save_load_hash": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "en_ru": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_localization.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "audio": [
+          {
+            "path": "tests/test_audio.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_ui_audio_feedback.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "ui_escape": [
+          {
+            "path": "tests/test_navigation_matrix.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ]
+      }
+    },
+    {
+      "mechanic": "Ordinary death, recovery and iron tombstone",
+      "cells": {
+        "happy": [
+          {
+            "path": "tests/test_gameplay.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "bounds": [
+          {
+            "path": "tests/test_campaign.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "rapid_input": [
+          {
+            "path": "tests/test_invalid_combat_inputs.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "pause_background": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_army_pause_regression.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "save_load_hash": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "en_ru": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_localization.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "audio": [
+          {
+            "path": "tests/test_audio.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_ui_audio_feedback.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "ui_escape": [
+          {
+            "path": "tests/test_navigation_matrix.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_campaign_finale.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ]
+      }
+    },
+    {
+      "mechanic": "Campaign endings and continued exploration",
+      "cells": {
+        "happy": [
+          {
+            "path": "tests/MechanicsRoute.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "bounds": [
+          {
+            "path": "tests/test_campaign.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "rapid_input": [
+          {
+            "path": "tests/MechanicsRoute.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "pause_background": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_army_pause_regression.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "save_load_hash": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/MechanicsRoute.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "en_ru": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_localization.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "audio": [
+          {
+            "path": "tests/test_audio.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_ui_audio_feedback.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "ui_escape": [
+          {
+            "path": "tests/test_navigation_matrix.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_campaign_finale.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ]
+      }
+    },
+    {
+      "mechanic": "Manual slots, autosave, recovery and legacy profiles",
+      "cells": {
+        "happy": [
+          {
+            "path": "tests/test_campaign.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "bounds": [
+          {
+            "path": "tests/test_save_recovery.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "rapid_input": [
+          {
+            "path": "tests/test_save_float_precision.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "pause_background": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_army_pause_regression.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "save_load_hash": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "en_ru": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_localization.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "audio": [
+          {
+            "path": "tests/test_audio.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_ui_audio_feedback.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "ui_escape": [
+          {
+            "path": "tests/test_navigation_matrix.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ]
+      }
+    },
+    {
+      "mechanic": "Language, comfort, audio and display settings",
+      "cells": {
+        "happy": [
+          {
+            "path": "tests/test_comfort_preferences.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "bounds": [
+          {
+            "path": "tests/test_settings_bounds.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "rapid_input": [
+          {
+            "path": "tests/test_navigation_matrix.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "pause_background": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_army_pause_regression.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "save_load_hash": [
+          {
+            "path": "tests/test_comfort_preferences.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "en_ru": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_localization.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "audio": [
+          {
+            "path": "tests/test_audio.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_ui_audio_feedback.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "ui_escape": [
+          {
+            "path": "tests/test_navigation_matrix.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ]
+      }
+    }
+  ],
+  "coverage_status": "MAPPED_EXECUTION_PENDING",
+  "platform": "Windows. OS background/Back is simulated on Windows; Android artifact omitted under section16.",
+  "scope": "Current edition, bounded explicitly by PROMISE_MATRIX.md. Shared whole-model contracts cover pause/background, live locale and exact save restoration. Passive simulation uses contextual music rather than a discrete sound on every tick. References map coverage; they do not approve a release."
+}
