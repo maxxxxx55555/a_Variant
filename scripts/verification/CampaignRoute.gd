@@ -44,6 +44,18 @@ var qa_seed:int=7401
 var started_ms:int=0
 
 func _ready() -> void:
+	if OS.get_cmdline_user_args().has("--defeat"):
+		if root.has_meta("qa_iron_defeat_active"):
+			queue_free()
+			return
+		root.set_meta("qa_iron_defeat_active",true)
+		var ending_script:GDScript=load("res://scripts/verification/NativeIronDeath.gd")
+		if ending_script==null:quit(65);return
+		var ending:Node=ending_script.new()
+		ending.process_mode=Node.PROCESS_MODE_ALWAYS
+		root.add_child.call_deferred(ending)
+		queue_free()
+		return
 	call_deferred("run")
 
 func fail(message: String) -> void:

@@ -1,0 +1,9 @@
+{
+  "origin_version": "1.5.0",
+  "original_release_revision": "bfae9d780a6d7dca85b8767b35636ca4179aa8b1",
+  "original_windows_exe_sha256": "3e13e406c0e3e1f7eb45d2ba204f51096bc57fd5864d5eef9d93483943f3c60a",
+  "fixture_sha256": "07ce9ba555abe2e1dd0841e8c94a34541c79fecd22ac4c88a1bd452cbc57fe55",
+  "fixture_bytes": 11822,
+  "original_complete_campaign_result": "PASS",
+  "method": "Byte-identical autosave from the original published1.5.0 native verification profile; installation key retained privately"
+}

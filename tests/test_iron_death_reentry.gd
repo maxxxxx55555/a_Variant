@@ -42,6 +42,10 @@ func run()->void:
         check(world.pause_menu.resume_btn.text==root.get_node("LocalizationManager").get_string("ui.iron_end_label"),"Iron death retains its short terminal label after live locale changes")
         check(world.pause_menu.resume_btn.tooltip_text==root.get_node("LocalizationManager").get_string("ui.iron_dead"),"Disabled revival explains the final death in the active locale")
         check(world.pause_menu.save_btn.tooltip_text==root.get_node("LocalizationManager").get_string("ui.iron_dead"),"Disabled terminal save explains its reason")
+        if DisplayServer.get_name()!="headless" and OS.get_environment("GAME_CAPTURE_GALLERY")=="1":
+            await process_frame
+            await RenderingServer.frame_post_draw
+            check(root.get_texture().get_image().save_png(OS.get_environment("GAME_SCREENSHOT").replace(".png","-"+language+".png"))==OK,"Terminal gallery capture saves its real framebuffer")
     var escape:InputEventKey=InputEventKey.new();escape.keycode=KEY_ESCAPE;escape.physical_keycode=KEY_ESCAPE;escape.pressed=true
     Input.parse_input_event(escape);await process_frame
     escape=InputEventKey.new();escape.keycode=KEY_ESCAPE;escape.physical_keycode=KEY_ESCAPE;escape.pressed=false
