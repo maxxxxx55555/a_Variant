@@ -1,10 +1,12 @@
-## Current edition scope — v2 integration in progress
+# Marchland Oaths — 1.5.1
 
-The compact campaign has60 dependency-linked objectives across eight regions,14 towns and40 points of interest, four recruitable companions, four squad types,25 potion recipes and12 forge blueprints. Its endings resolve alliances, conquest or a mixture. Boot/loading tips, persistent camera/MSAA controls and explicit failed-save exit handling are part of the v2 work; a new public release remains locked until the full gate passes.
+## Current edition scope
+
+The compact campaign has60 dependency-linked objectives across eight regions,14 towns and40 points of interest, four recruitable companions, four squad types,25 potion recipes and12 forge blueprints. Its endings resolve alliances, conquest or a mixture. Boot/loading tips, persistent camera/MSAA controls and explicit failed-save exit handling are included in this edition.
 
 The older GAME_DESIGN/FULL_BOOK are a broader archived roadmap, not additional advertised features. **Not in this edition:** enterable cave/cellar networks, physical caravan robbery/escort economy, individual age/sex/water/epidemic simulation, player skill trees, timed parry/dodge invulnerability or player bow combat, extra equipment slots/grid/filter UI, command-wheel/RTS selection, cavalry, full branching narrative investigations, six reverb zones, advanced accessibility/render presets, and separate economic/liberation/political-collapse endings. Individual differences and all original promises are indexed in [the edition matrix](docs/PROMISE_MATRIX.md); its complete inventory retains the original words and line references. Compatibility rendering uses non-volumetric fog and does not provide SDFGI/SSR/SSAO. Performance figures describe the tested host, not every hardware target.
 
-# Marchland Oaths — 1.5.1 preparation (publication locked)
+## 1.5.1 changes
 
 Live Russian/English menu updates and 687 catalog keys, preserving the current save/difficulty selection. Four distinct Gemini/Lyria mood compositions, two 20-second musical finales, independent Master/Music/SFX/UI levels, reduced motion, functional credits and coherent application icons. Existing protected profiles and legacy user-data directories remain compatible.
 
@@ -13,6 +15,12 @@ Live Russian/English menu updates and 687 catalog keys, preserving the current s
 Живое переключение русского и английского языков без перезагрузки меню. Разные композиции для четырёх настроений, музыкальные финалы, четыре уровня звука, настройка анимации и экран авторов. Каталоги старых сохранений сохранены.
 
 Published baseline: v1.5.0. The v2 successor is1.5.1 because the existing1.5.0 tag and release are immutable. Detailed provenance: assets/audio/SOUNDTRACK.md. Localization: docs/LOCALIZATION.md. Scope remains stylized indie art and does not claim GTA V scale. Portable Windows executables are not Authenticode-signed; offline save tamper evidence is not unbreakable DRM.
+
+## Current acceptance
+
+Terminal iron-mode death rejects repeated callbacks, loading and recovery; normal death retains paid recovery. Protected1.4.0 and1.5.0 profiles preserve progress and installation keys. All49 GDScript warning categories are enforced on90 shipping/private-QA scripts. 62 rendered Godot invocations passed in each locale, plus Python byte/export/isolation/audio contracts. 50 complete seeded campaigns, a2628.797-second normal rendered soak and three exact native complete campaigns passed. The measured rainy scene ran at59.98 FPS (60 cap),5522ms load,340 draw calls at1280×720 on the tested AMD integrated GPU.
+
+See [release notes](docs/RELEASE_1.5.1.md), [mechanics coverage](docs/MECHANICS_MATRIX.md), [save integrity](SAVE-INTEGRITY.md) and [the scoped promise inventory](docs/PROMISE_MATRIX.md). Tests cover stated cases; they do not prove absence of every possible defect. Public builds reject QA arguments and physically exclude verification resources.
 
 ---
 
@@ -89,8 +97,8 @@ The playable 3D world now uses PBR stone, plaster, timber and slate, detailed or
 
 Offline tamper evidence, schema/resource validation and atomic saves protect normal play and recover known-good backups. Valid legacy saves migrate once. Keep the whole user-data folder, including its installation key, when backing up protected saves. See SAVE-INTEGRITY.md for the precise guarantees and limitations.
 
-V2 visual pass: eight-point design tokens, curated source-asset review, corrected crest, tapered meadow, batched roadside landmarks and an actual-road atlas with keyboard navigation and a translated legend. See docs/ART_DIRECTION.md and docs/ASSET_REVIEW.json; final release acceptance remains gated.
+V2 visual pass: eight-point design tokens, curated source-asset review, corrected crest, tapered meadow, batched roadside landmarks and an actual-road atlas with keyboard navigation and a translated legend. See docs/ART_DIRECTION.md and docs/ASSET_REVIEW.json; acceptance is documented in docs/RELEASE_1.5.1.md.
 
-## V2 integrity integration (release gate remains locked)
+## Release integrity
 
 Public Windows packs omit the private verifier; the separate Windows QA preset additionally requires GAME_QA=1. All pack entries and the directory are encrypted using a matching custom Godot template and an environment-only build key. Encryption makes modification harder; it is not DRM. The compiled critical-data trust root rejects a replacement manifest and starts changed installations with trusted fallback data, a localized warning and no progress/settings writes. Authenticated save recovery records a local integrity log and shows a localized message. See SAVE-INTEGRITY.md for exact boundaries.

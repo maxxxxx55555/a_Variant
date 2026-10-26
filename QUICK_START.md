@@ -1,52 +1,9 @@
-Marchland Oaths 1.5.0
+# Marchland Oaths1.5.1 — quick start
 
-Язык выбирается в стартовом меню и настройках. Четыре уровня звука и режим уменьшенной анимации сохраняются. Кнопка авторов открывает лицензии и происхождение ресурсов.
+Download the Windows1.5.1 release, verify its ZIP SHA256, extract the entire archive and launch MarchlandOaths.exe. Keep the supplied data pack and licenses alongside it. This edition targets Windows x86_64.
 
-# ⚡ QUICK START & TESTING GUIDE
-## Oaths of the March / «Клятвы Пограничья»
+Choose English or Russian, a save slot and difficulty in the title menu. Continue resumes the selected campaign; New campaign starts it. Iron mode makes death permanent. Move with WASD, look with the mouse; the in-game help lists combat, interaction and menu bindings. Settings offer separate audio levels, camera options, MSAA and reduced motion. Credits list asset origins.
 
-### English & Russian Quick Instructions
+Back up the entire closed-game profile before upgrading from1.4.0/1.5.0, including save_integrity.key and guard files. Existing profile folder names are unchanged. Ordinary death has paid recovery; an iron tombstone cannot be resumed.
 
----
-
-### 📥 1. Downloading the Project
-- Click the green **`Code`** button at the top of the GitHub repository.
-- Select **`Download ZIP`**.
-- Unzip the downloaded file.
-
----
-
-### 📲 2. Sending Files to Mobile via Telegram
-1. Open **Telegram Desktop** on your PC.
-2. Go to **Saved Messages**.
-3. Drag & drop `Oaths_of_the_March_FULL_BOOK.md` or the game ZIP file.
-4. On your mobile phone, open **Saved Messages** in Telegram and tap to download.
-
----
-
-### 🎮 3. Testing the Game
-
-#### On PC (Godot Engine 4.x):
-1. Download Godot 4 from [godotengine.org](https://godotengine.org/).
-2. Click **Import** $\rightarrow$ Select `project.godot`.
-3. Click **Import & Edit** $\rightarrow$ Press **Play (F5)**.
-
-#### On Mobile (Android):
-1. Install **Godot Engine 4** from Google Play Store.
-2. Open Godot $\rightarrow$ **Import** $\rightarrow$ Select `project.godot`.
-3. Tap **Import & Edit** $\rightarrow$ Tap **Play**.
-
----
-
-### ⌨️ Controls
-- **WASD** - Move
-- **Shift** - Sprint
-- **Space** - Jump
-- **LMB** - Attack
-- **RMB** - Block
-- **E** - Interact / Pick Up
-- **Q** - Quick Potion
-- **Tab / I** - Inventory
-- **B** - Settlement Management
-- **1-5** - Squad Commands
-- **Esc** - Pause Menu
+For source play, open project.godot in Godot4.7 Stable and press F5. For automated checks use python tests/run_tests.py --godot <path> --rendered --language en --artifacts <new-log-folder>; repeat with ru. Encrypted export additionally requires a private matching template/key. No Android artifact is supplied in this edition. See docs/RELEASE_1.5.1.md and SAVE-INTEGRITY.md for scope and limits.
