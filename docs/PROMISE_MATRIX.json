@@ -4,11 +4,15 @@
   "sources": [
     {
       "path": "docs/GAME_DESIGN.md",
-      "sha256": "85161b293b4102a7a9b4dab55472c23aec8ea85b8817cf7bf82c1afc59139a16"
+      "sha256": "ab86e42fc1f9bd05522d498a361c5bb0916d74cd545ba740ae9ed639ee02b557",
+      "previous_working_bytes_sha256": "85161b293b4102a7a9b4dab55472c23aec8ea85b8817cf7bf82c1afc59139a16",
+      "canonicalization": "LF only; every verbatim line and its index is unchanged"
     },
     {
       "path": "Oaths_of_the_March_FULL_BOOK.md",
-      "sha256": "5d15349cd90f5a09b7d4964504d8c7f777c656fc73c1503d0b4a7e27a78c2d02"
+      "sha256": "a161c576e0b5c1d2757aed5bfa7c774bec1574c9932303e96ed58d775417a855",
+      "previous_working_bytes_sha256": "5d15349cd90f5a09b7d4964504d8c7f777c656fc73c1503d0b4a7e27a78c2d02",
+      "canonicalization": "LF only; every verbatim line and its index is unchanged"
     }
   ],
   "rule": "Historical partial promises are closed by explicit current-edition inclusion and documented exclusions; v2 mandatory security/test work remains separately gated, never excluded. Status is implementation/scope reconciliation, not a claim that future F7 evidence already passed.",
@@ -36289,5 +36293,9 @@
       "excluded": "",
       "test": "tests/test_repo_isolation.py"
     }
-  ]
+  ],
+  "checkout_contract": {
+    "rule": "Promise sources use explicit LF attributes; original line content and complete inventory are retained. README is archived before release documentation advances.",
+    "original_claims_retained": 3278
+  }
 }
