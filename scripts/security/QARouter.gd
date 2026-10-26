@@ -4,7 +4,7 @@ static func authorized() -> bool:
 	return OS.has_feature("qa_verifier") and OS.get_environment("GAME_QA")=="1"
 
 static func request(host:Node) -> bool:
-	var arguments:=OS.get_cmdline_user_args()
+	var arguments:PackedStringArray=OS.get_cmdline_user_args()
 	var requested:bool=arguments.has("--verify-build") or arguments.has("--military")
 	if not requested:return false
 	if not authorized() or not arguments.has("--verify-build"):
@@ -12,7 +12,7 @@ static func request(host:Node) -> bool:
 		host.get_tree().quit(64)
 		return true
 	# Dynamic path avoids an export dependency in the physically filtered public pack.
-	var script:Script=load("res://scripts/verification/CampaignRoute.gd")
+	var script:GDScript=load("res://scripts/verification/CampaignRoute.gd")
 	if not script:
 		host.get_tree().quit(65)
 		return true

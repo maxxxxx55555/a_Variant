@@ -25,3 +25,11 @@ Crafting, potion brewing, building and trade protect their synchronous debit/cre
 Critical JSON, generated trust source and Python tooling have explicit LF checkout rules in .gitattributes. Fresh Windows checkouts therefore preserve the reviewed trust bytes with core.autocrlf enabled; creator-license byte rules are retained. test_critical_manifest.py rejects a missing checkout policy.
 
 Startup caps the manifest at64KiB and each critical data file at8MiB before reading content; SHA256 uses64KiB streaming chunks. Oversized or unreadable content enters the same read-only safe mode instead of allocating arbitrary input size. Integrity dialogs use this game's own theme and update immediately with a language change.
+
+## Exact finite float metadata (v2 release candidate)
+
+The authenticated schema4 body may include an exact-float supplement. Decimal text parsing can otherwise move a valid native double by a few ULPs. Each supplement names an existing numeric leaf and its eight IEEE754 bytes in lowercase hexadecimal. This is plain bounded data, never executable Variant/object deserialization. The body signature covers the supplement.
+
+Only finite values, unique canonical routes and parser-sized numerical differences are accepted. Invalid routes, duplicates, nonfinite bits or oversized supplements fail atomically. Restoration occurs on a temporary deep copy. Reserved metadata is removed before the domain policy runs; original schema4 profiles without metadata still use their original path. No save ID, installation key, purpose alias, signing algorithm or original license bytes changed.
+
+Regression evidence: `tests/test_exact_float_limits.gd`, `tests/test_profile_contract.gd` and the game-specific float-precision test. Full-precision JSON state hashes are used; approximate float equality alone is insufficient. Original1.4 protected fixture bytes and their private installation keys remain unchanged during compatibility checks.

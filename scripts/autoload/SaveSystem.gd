@@ -1,9 +1,11 @@
 extends Node
 
-const SAVE_PATH = "user://savegame.json"
-const BACKUP_PATH = "user://savegame.bak"
-const SCHEMA_VERSION = 4
-const SECRET_SALT = "OathsOfTheMarch_v1_Salt"
+const SAVE_PATH:String= "user://savegame.json"
+const BACKUP_PATH:String= "user://savegame.bak"
+const Exact=preload("res://scripts/security/ExactFloats.gd")
+const EXACT_FIELD:String="_exact_floats"
+const SCHEMA_VERSION:int= 4
+const SECRET_SALT:String= "OathsOfTheMarch_v1_Salt"
 const Guard = preload("res://scripts/security/SaveGuard.gd")
 const Policy = preload("res://scripts/security/MarchSavePolicy.gd")
 var selected_slot: int = 0
@@ -21,12 +23,12 @@ func purpose(path: String) -> String:
 	return "march/" + path.get_file().trim_suffix(".bak")
 
 func newest_slot() -> int:
-	var newest := 0
-	var stamp := 0
-	for index in 7:
-		var path := slot_path(index)
-		var data := _read_valid_save(path)
-		var valid_path := path
+	var newest:int= 0
+	var stamp:int= 0
+	for index:int in 7:
+		var path:String= slot_path(index)
+		var data:Dictionary= _read_valid_save(path)
+		var valid_path:String= path
 		if data.is_empty() and index != 6:
 			valid_path = backup_path(path)
 			data = _read_valid_save(valid_path)
@@ -40,22 +42,28 @@ func load_slot(index: int) -> Dictionary:
 	return _load_path(slot_path(index))
 
 func _encoded(data: Dictionary, context: String) -> String:
-	var body := JSON.stringify(_normalize_numbers(data),"",true,true)
-	var auth := Guard.signature(body,context)
+	if data.has(EXACT_FIELD):return ""
+	var normalized:Dictionary=_normalize_numbers(data)
+	var precision:Dictionary=Exact.capture(normalized)
+	if not precision.ok:return ""
+	normalized[EXACT_FIELD]=precision.patches
+	var body:String=JSON.stringify(normalized,"",true,true)
+	var auth:String= Guard.signature(body,context)
 	if auth.is_empty(): return ""
 	return JSON.stringify({"version":SCHEMA_VERSION,"timestamp":Time.get_unix_time_from_system(),"checksum":calculate_checksum(body),"data":body,"auth":auth},"",true,true)
 
 func _store(path: String, data: Dictionary) -> bool:
 	if not Guard.can_write(): return false
 	if not Policy.valid(data): return false
-	var previous := _read_valid_save(path)
+	var previous:Dictionary= _read_valid_save(path)
 	# Preserve the authenticated envelope and timestamp for an unchanged state.
 	# Legacy files still migrate; invalid primaries still recover from their backup.
 	if not previous.is_empty() and Guard.locked(purpose(path)):
 		var envelope:Variant=JSON.parse_string(Guard.bounded_text(path))
-		if envelope is Dictionary and envelope.get("version")==SCHEMA_VERSION:
-			if JSON.stringify(_normalize_numbers(previous),"",true,true)==JSON.stringify(_normalize_numbers(data),"",true,true):return true
-	var encoded := _encoded(data,purpose(path))
+		if envelope is Dictionary:
+			var record:Dictionary=envelope
+			if record.get("version")==SCHEMA_VERSION and JSON.stringify(_normalize_numbers(previous),"",true,true)==JSON.stringify(_normalize_numbers(data),"",true,true):return true
+	var encoded:String= _encoded(data,purpose(path))
 	if encoded.is_empty(): return false
 	if previous.is_empty(): previous = _read_valid_save(backup_path(path))
 	if not previous.is_empty() and path != slot_path(6):
@@ -66,7 +74,7 @@ func _store(path: String, data: Dictionary) -> bool:
 	return Guard.lock(purpose(path))
 
 func save_game(game_data: Dictionary, autosave: bool = false) -> bool:
-	var path := slot_path(6 if CampaignSystem.active and CampaignSystem.iron_mode else 5 if autosave else selected_slot)
+	var path:String= slot_path(6 if CampaignSystem.active and CampaignSystem.iron_mode else 5 if autosave else selected_slot)
 	if not _store(path,game_data):
 		EventBus.notification_posted.emit(LocalizationManager.get_string("msg.save_write_error"),true)
 		return false
@@ -75,8 +83,8 @@ func save_game(game_data: Dictionary, autosave: bool = false) -> bool:
 
 func _load_path(path: String) -> Dictionary:
 	if Guard.transaction_depth!=0:return {}
-	var data := _read_valid_save(path)
-	var recovered := false
+	var data:Dictionary= _read_valid_save(path)
+	var recovered:bool= false
 	if data.is_empty() and path != slot_path(6):
 		data = _read_valid_save(backup_path(path))
 		recovered = true
@@ -87,59 +95,63 @@ func _load_path(path: String) -> Dictionary:
 	return data
 
 func load_game() -> Dictionary:
-	var data := _load_path(slot_path(selected_slot))
+	var data:Dictionary= _load_path(slot_path(selected_slot))
 	if not data.is_empty(): EventBus.notification_posted.emit(LocalizationManager.get_string("msg.game_loaded"),false)
 	return data
 
 func _read_valid_save(path: String) -> Dictionary:
-	var text := Guard.bounded_text(path)
+	var text:String= Guard.bounded_text(path)
 	if text.is_empty() or not Guard.safe_text(text): return {}
-	var payload: Variant = JSON.parse_string(text)
-	if not payload is Dictionary: return {}
+	var payload_value:Variant=JSON.parse_string(text)
+	if not payload_value is Dictionary:return {}
+	var payload:Dictionary=payload_value
 	var version: Variant = payload.get("version",0)
 	if not Guard.numeric(version,1,SCHEMA_VERSION,true): return {}
-	var decoded: Variant
-	if int(version) == SCHEMA_VERSION:
-		if not payload.get("data") is String or not Guard.authentic(payload.data,purpose(path),payload.get("auth")): return {}
-		if not Guard.safe_text(payload.data): return {}
-		decoded = JSON.parse_string(payload.data)
+	var decoded:Variant
+	var schema:int=version
+	if schema == SCHEMA_VERSION:
+		if not payload.get("data") is String:return {}
+		var body:String=payload.data
+		if not Guard.authentic(body,purpose(path),payload.get("auth")) or not Guard.safe_text(body):return {}
+		decoded=JSON.parse_string(body)
 	else:
 		if Guard.locked(purpose(path)): return {}
-		if int(version) == 3:
-			if not payload.get("data") is String or calculate_checksum(payload.data) != payload.get("checksum"): return {}
-			if not Guard.safe_text(payload.data): return {}
-			decoded = JSON.parse_string(payload.data)
+		if schema == 3:
+			if not payload.get("data") is String:return {}
+			var body:String=payload.data
+			if calculate_checksum(body)!=payload.get("checksum") or not Guard.safe_text(body):return {}
+			decoded=JSON.parse_string(body)
 		else:
 			if not payload.get("data") is Dictionary: return {}
 			decoded = payload.data
 			if calculate_checksum(JSON.stringify(_normalize_numbers(decoded))) != payload.get("checksum"):
-				if int(version)!=1 or calculate_checksum(JSON.stringify(decoded)) != payload.get("checksum"): return {}
+				if schema!=1 or calculate_checksum(JSON.stringify(decoded)) != payload.get("checksum"): return {}
+	if decoded is Dictionary:
+		var restored:Dictionary=decoded
+		if restored.has(EXACT_FIELD):
+			if schema!=SCHEMA_VERSION or not Exact.restore(restored,restored[EXACT_FIELD]):return {}
+			if not restored.erase(EXACT_FIELD):return {}
 	return decoded if Policy.valid(decoded) else {}
-
-func try_load_backup() -> Dictionary:
-	if Guard.transaction_depth!=0:return {}
-	var data := _read_valid_save(BACKUP_PATH)
-	if not data.is_empty(): _store(SAVE_PATH,data)
-	return data
 
 func _normalize_numbers(value: Variant) -> Variant:
 	if value is Dictionary:
-		var result := {}
-		for key in value:
+		var result:Dictionary= {}
+		for key:Variant in value:
 			result[key] = _normalize_numbers(value[key])
 		return result
 	if value is Array:
 		var result: Array = []
-		for item in value:
+		for item:Variant in value:
 			result.append(_normalize_numbers(item))
 		return result
 	if value is int or value is float:
-		return float(value)
+		var number:float=value
+		return number
 	return value
 
 func calculate_checksum(data: String) -> String:
-	var ctx = HashingContext.new()
-	ctx.start(HashingContext.HASH_SHA256)
-	ctx.update((data + SECRET_SALT).to_utf8_buffer())
-	var res = ctx.finish()
+	var ctx:HashingContext= HashingContext.new()
+	if ctx.start(HashingContext.HASH_SHA256)!=OK:return ""
+	if ctx.update((data + SECRET_SALT).to_utf8_buffer())!=OK:return ""
+	var res:PackedByteArray= ctx.finish()
 	return res.hex_encode()
