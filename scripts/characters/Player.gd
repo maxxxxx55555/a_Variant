@@ -1,4 +1,5 @@
 extends CharacterBody3D
+const WeaponView=preload("res://scripts/characters/WeaponView.gd")
 
 @export var speed: float = 5.0
 @export var sprint_speed: float = 8.0
@@ -14,7 +15,7 @@ var last_prompt: String = ""
 var shake_offset: Vector3 = Vector3.ZERO
 var attack_cooldown: float = 0.0
 var footstep_distance: float = 0.0
-var weapon_view: Node3D
+var weapon_view:WeaponView
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -25,10 +26,10 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and event is InputEventMouseMotion:
-		var sens = SettingsManager.mouse_sensitivity
-		rotate_y(-event.relative.x * sens)
+		var sens:float= SettingsManager.mouse_sensitivity
+		rotate_y(-(event as InputEventMouseMotion).relative.x * sens)
 		if camera:
-			camera.rotate_x(-event.relative.y * sens)
+			camera.rotate_x(-(event as InputEventMouseMotion).relative.y * sens)
 			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-85), deg_to_rad(85))
 
 func _physics_process(delta: float) -> void:
@@ -50,33 +51,37 @@ func _physics_process(delta: float) -> void:
 			velocity.y = jump_velocity
 
 	# Movement & Sprinting
-	var is_sprinting = Input.is_action_pressed("sprint") and GameState.player_stamina > 5.0
-	var speed_mod = GameState.get_speed_modifier()
-	var current_speed = (sprint_speed if is_sprinting else speed) * speed_mod
+	var is_sprinting:bool= Input.is_action_pressed("sprint") and GameState.player_stamina > 5.0
+	var speed_mod:float= GameState.get_speed_modifier()
+	var current_speed:float= (sprint_speed if is_sprinting else speed) * speed_mod
 
-	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
-	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var input_dir:Vector2= Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
+	var direction:Vector3= (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
 	if direction:
 		velocity.x = direction.x * current_speed
 		velocity.z = direction.z * current_speed
 		if is_sprinting:
-			GameState.consume_stamina(10.0 * delta)
+			# Sprint input is re-evaluated each frame against the remaining stamina.
+			@warning_ignore("return_value_discarded")
+			GameState.consume_stamina(10.0*delta)
 		else:
 			GameState.restore_stamina(15.0 * delta)
 	else:
 		brake_horizontal(delta, current_speed)
 		GameState.restore_stamina(20.0 * delta)
 
-	var previous_position := global_position
+	var previous_position:Vector3= global_position
+	# Collision state is read through the body API; this caller does not branch on the summary bool.
+	@warning_ignore("return_value_discarded")
 	move_and_slide()
 	if is_on_floor() and direction.length() > 0.1:
 		footstep_distance += Vector2(global_position.x - previous_position.x, global_position.z - previous_position.z).length()
 		if footstep_distance >= (1.8 if is_sprinting else 1.45):
 			footstep_distance = 0
-			var surface := "grass"
+			var surface:String= "grass"
 			if get_slide_collision_count() > 0:
-				var floor_body = get_slide_collision(0).get_collider()
+				var floor_body:Object= get_slide_collision(0).get_collider()
 				if floor_body:
 					surface = str(floor_body.get_meta("surface", "grass"))
 			AudioManager.play_footstep(surface, global_position)
@@ -84,7 +89,7 @@ func _physics_process(delta: float) -> void:
 	# Camera Bobbing & Shake Recovery
 	shake_offset = shake_offset.move_toward(Vector3.ZERO, delta * 2.0)
 
-	var target_y = original_cam_y
+	var target_y:float= original_cam_y
 	if SettingsManager.camera_bobbing and is_on_floor() and direction:
 		bob_time += delta * (12.0 if is_sprinting else 8.0)
 		target_y += sin(bob_time) * (0.08 if is_sprinting else 0.04)
@@ -105,23 +110,28 @@ func _physics_process(delta: float) -> void:
 		perform_attack()
 
 func brake_horizontal(delta: float, current_speed: float) -> void:
-	var amount := maxf(24.0, current_speed * 8.0) * delta
+	var amount:float= maxf(24.0, current_speed * 8.0) * delta
 	velocity.x = move_toward(velocity.x, 0, amount)
 	velocity.z = move_toward(velocity.z, 0, amount)
 
 func take_damage(amount: float) -> void:
+	if not is_finite(amount) or amount<=0:return
 	if Input.is_action_pressed("block") and GameState.consume_stamina(8.0):
 		amount *= 0.3
+		# AudioManager owns and recycles the spatial voice.
+		@warning_ignore("return_value_discarded")
 		AudioManager.play_at("block", global_position)
 	else:
+		# AudioManager owns and recycles the spatial voice.
+		@warning_ignore("return_value_discarded")
 		AudioManager.play_at("hit", global_position)
 	GameState.take_damage(amount)
 
 func check_interaction() -> void:
 	if interact_ray and interact_ray.is_colliding():
-		var collider = interact_ray.get_collider()
+		var collider:Object= interact_ray.get_collider()
 		if collider and collider.has_method("get_interaction_prompt"):
-			var prompt = collider.get_interaction_prompt()
+			var prompt:String=collider.call("get_interaction_prompt")
 			if prompt != last_prompt:
 				EventBus.notification_posted.emit(prompt, false)
 				last_prompt = prompt
@@ -135,32 +145,36 @@ func interact() -> void:
 		return
 	interact_ray.force_raycast_update()
 	if interact_ray.is_colliding():
-		var collider = interact_ray.get_collider()
+		var collider:Object= interact_ray.get_collider()
 		if collider and collider.has_method("interact"):
-			collider.interact(self)
+			# WorldItem/MarchMarker interaction is guarded by has_method above.
+			@warning_ignore("return_value_discarded")
+			collider.call("interact",self)
 			last_prompt = ""
 
 func use_quick_potion() -> void:
-	for i in range(GameState.inventory.size()):
-		var item = GameState.inventory[i]
-		var path = item.get("resource_path", "")
+	for i:int in range(GameState.inventory.size()):
+		var item:Dictionary=GameState.inventory[i]
+		var path:String=item.get("resource_path", "")
 		if not path.is_empty():
-			var res = load(path)
-			if res is PotionData and (res.heal_amount > 0 or res.stamina_amount > 0 or res.id == "stamina_potion"):
+			var res:PotionData=load(path) as PotionData
+			if res and (res.heal_amount > 0 or res.stamina_amount > 0 or res.id == "stamina_potion"):
 				if GameState.use_potion(i):
 					return
 
 func perform_attack() -> void:
 	if attack_cooldown > 0 or GameState.player_hp <= 0 or get_tree().paused:
 		return
-	var weapon = GameState.equipment.get("weapon")
-	var stamina_cost = 12.0
-	var dmg = 15.0
-	var reach = 2.0
+	var weapon:Dictionary={}
+	if GameState.equipment.weapon!=null:weapon=GameState.equipment.weapon
+	var stamina_cost:float= 12.0
+	var dmg:float= 15.0
+	var reach:float= 2.0
 	var attacks_per_second: float = 1.5
 
 	if weapon and weapon.get("resource_path"):
-		var w_res = load(weapon.get("resource_path"))
+		var weapon_path:String=weapon.get("resource_path")
+		var w_res:WeaponData=load(weapon_path) as WeaponData
 		if w_res:
 			stamina_cost = w_res.get("stamina_cost")
 			dmg = w_res.get("damage")
@@ -177,17 +191,25 @@ func perform_attack() -> void:
 		GameState.wear_equipment("weapon", 1.0)
 		attack_cooldown = 1.0 / maxf(0.1, attacks_per_second)
 		apply_camera_shake(0.05)
+		# AudioManager owns and recycles the spatial voice.
+		@warning_ignore("return_value_discarded")
 		AudioManager.play_at("swing", global_position)
 		# Melee raycast
-		var space_state = get_world_3d().direct_space_state
-		var origin = camera.global_position
-		var end = origin - camera.global_transform.basis.z * reach
-		var query = PhysicsRayQueryParameters3D.create(origin, end, 0xFFFFFFFF, [self.get_rid()])
-		var result = space_state.intersect_ray(query)
+		var space_state:PhysicsDirectSpaceState3D= get_world_3d().direct_space_state
+		var origin:Vector3= camera.global_position
+		var end:Vector3= origin - camera.global_transform.basis.z * reach
+		var query:PhysicsRayQueryParameters3D= PhysicsRayQueryParameters3D.create(origin, end, 0xFFFFFFFF, [self.get_rid()])
+		var result:Dictionary= space_state.intersect_ray(query)
 		if result and result.collider:
-			if result.collider.has_method("take_damage"):
-				AudioManager.play_at("hit_flesh", result.position)
-				result.collider.take_damage(dmg)
+			var collider:Object=result.collider
+			var hit_position:Vector3=result.position
+			if collider.has_method("take_damage"):
+				# AudioManager owns and recycles the spatial voice.
+				@warning_ignore("return_value_discarded")
+				AudioManager.play_at("hit_flesh",hit_position)
+				# Combat actors and siege gates share the raycast damage contract.
+				@warning_ignore("return_value_discarded")
+				collider.call("take_damage",dmg)
 
 func apply_camera_shake(intensity: float) -> void:
 	if SettingsManager.camera_shake:

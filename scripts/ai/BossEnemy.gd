@@ -9,6 +9,8 @@ func take_damage(amount: float) -> void:
 	if is_dead:
 		return
 	current_hp -= amount
+	# AudioManager owns and recycles the spatial voice.
+	@warning_ignore("return_value_discarded")
 	AudioManager.play_at("enemy_hurt", global_position)
 
 	if not is_enraged and current_hp <= (max_hp * 0.5):
@@ -23,10 +25,12 @@ func take_damage(amount: float) -> void:
 
 func die() -> void:
 	is_dead = true
+	# AudioManager owns and recycles the spatial voice.
+	@warning_ignore("return_value_discarded")
 	AudioManager.play_at("enemy_death", global_position)
 	EventBus.enemy_died.emit(self)
 
-	var boss_title = LocalizationManager.get_string(boss_name_key)
-	var msg_template = LocalizationManager.get_string("msg.boss_defeated")
+	var boss_title:String= LocalizationManager.get_string(boss_name_key)
+	var msg_template:String= LocalizationManager.get_string("msg.boss_defeated")
 	EventBus.notification_posted.emit(msg_template.replace("{boss}", boss_title), false)
 	queue_free()
