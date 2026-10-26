@@ -1371,17 +1371,29 @@
           {
             "path": "tests/test_gameplay.gd",
             "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_iron_death_reentry.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
           }
         ],
         "bounds": [
           {
             "path": "tests/test_campaign.gd",
             "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_iron_death_reentry.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
           }
         ],
         "rapid_input": [
           {
             "path": "tests/test_invalid_combat_inputs.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_iron_death_reentry.gd",
             "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
           }
         ],
@@ -1399,6 +1411,10 @@
           {
             "path": "tests/test_profile_contract.gd",
             "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_iron_death_reentry.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
           }
         ],
         "en_ru": [
@@ -1408,6 +1424,10 @@
           },
           {
             "path": "tests/test_localization.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_iron_death_reentry.gd",
             "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
           }
         ],
@@ -1424,6 +1444,10 @@
         "ui_escape": [
           {
             "path": "tests/test_navigation_matrix.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_iron_death_reentry.gd",
             "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
           },
           {

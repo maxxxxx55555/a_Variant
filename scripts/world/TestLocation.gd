@@ -215,9 +215,11 @@ func _on_player_died() -> void:
 	pause_menu.show()
 	pause_menu.resume_btn.text = LocalizationManager.get_string("ui.respawn")
 	pause_menu.save_btn.disabled = true
+	pause_menu.localize()
 	_sync_menu_state()
 
 func restart_run() -> void:
+	if CampaignSystem.active and CampaignSystem.iron_mode:return
 	GameState.player_hp = GameState.max_hp
 	GameState.player_stamina = GameState.max_stamina
 	EconomySystem.stockpiles.gold *= 0.8

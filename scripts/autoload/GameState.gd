@@ -253,7 +253,7 @@ func use_potion(item_index: int) -> bool:
 	return true
 
 func take_damage(raw_damage: float) -> void:
-	if not is_finite(raw_damage) or raw_damage<=0:return
+	if player_hp<=0 or not is_finite(raw_damage) or raw_damage<=0:return
 	var effective_mitigation:float= current_defense / (current_defense + 100.0)
 	var final_damage:float=maxf(1.0, raw_damage * (1.0 - effective_mitigation))
 	player_hp -= final_damage

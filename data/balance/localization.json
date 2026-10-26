@@ -2738,5 +2738,13 @@
   "integrity.continue": {
     "ru": "Продолжить",
     "en": "Continue"
+  },
+  "ui.iron_end_label": {
+    "ru": "Клятва завершена",
+    "en": "Journey ended"
+  },
+  "ui.save_after_respawn": {
+    "ru": "Возродитесь, чтобы сохранить",
+    "en": "Respawn before saving"
   }
 }

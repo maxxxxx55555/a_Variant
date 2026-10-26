@@ -145,8 +145,10 @@ func run() -> void:
 	check(time.current_season_idx == 0, "Spring contains all 28 days")
 	time.advance_day()
 	check(time.current_season_idx == 1, "Day 29 starts summer")
-	state.player_hp = 0
-	state.take_damage(1)
+	# Start alive: a lethal hit must dispatch death; later terminal hits are idempotent.
+	state.player_hp = 1
+	state.take_damage(1000)
+	check(state.player_hp == 0, "A lethal hit reaches terminal health")
 	await process_frame
 	check(get_tree_paused_or_dead_panel(), "Death presents a recovery screen and stops play")
 	var gold_before_respawn: float = economy.stockpiles.gold

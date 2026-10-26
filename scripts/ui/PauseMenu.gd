@@ -118,7 +118,15 @@ func _ready() -> void:
 			load_btn.tooltip_text=slot_choice.tooltip_text
 
 func localize() -> void:
-	resume_btn.text = LocalizationManager.get_string("ui.respawn" if GameState.player_hp <= 0 else "ui.resume")
+	var terminal_iron:bool=CampaignSystem.active and CampaignSystem.iron_mode and (CampaignSystem.iron_dead or GameState.player_hp<=0)
+	resume_btn.text=LocalizationManager.get_string("ui.iron_end_label" if terminal_iron else "ui.respawn" if GameState.player_hp<=0 else "ui.resume")
+	resume_btn.disabled=terminal_iron
+	resume_btn.tooltip_text=LocalizationManager.get_string("ui.iron_dead") if terminal_iron else ""
+	save_btn.tooltip_text=LocalizationManager.get_string("ui.iron_dead" if terminal_iron else "ui.save_after_respawn") if GameState.player_hp<=0 else ""
+	if CampaignSystem.active and CampaignSystem.iron_mode:
+		load_btn.tooltip_text=LocalizationManager.get_string("ui.iron_no_load")
+		var iron_slots:OptionButton=find_child("SaveSlotChoice",true,false)
+		if iron_slots:iron_slots.tooltip_text=load_btn.tooltip_text
 	save_btn.text = LocalizationManager.get_string("ui.save")
 	load_btn.text = LocalizationManager.get_string("ui.load")
 	settings_btn.text = LocalizationManager.get_string("ui.settings")
@@ -155,6 +163,7 @@ func init_settings_ui() -> void:
 	(settings_panel.get_node("MSAAQuality") as OptionButton).select(SettingsManager.msaa_quality)
 
 func _on_resume() -> void:
+	if CampaignSystem.active and CampaignSystem.iron_mode and (CampaignSystem.iron_dead or GameState.player_hp<=0):return
 	SettingsManager.save_settings()
 	if GameState.player_hp <= 0:
 		# The active world implements this guarded scene lifecycle contract.

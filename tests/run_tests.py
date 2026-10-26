@@ -70,6 +70,7 @@ def main():
         cases.append(('profile-contract', ['--headless','--script','res://tests/test_profile_contract.gd']))
         cases.append(('army-pause-regression', ['--headless','--script','res://tests/test_army_pause_regression.gd']))
         cases.append(('army-casualty-lifetime', ['--headless','--script','res://tests/test_army_casualty_lifetime.gd']))
+        cases.append(('iron-death-reentry', ['--headless','--script','res://tests/test_iron_death_reentry.gd']))
         cases.append(('companion-scan-regression', ['--headless','--script','res://tests/test_companion_scan_regression.gd']))
         cases.append(('exact-float-limits', ['--headless','--script','res://tests/test_exact_float_limits.gd']))
         cases.append(('save-float-precision', ['--headless','--script','res://tests/test_save_float_precision.gd']))

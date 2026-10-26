@@ -505,7 +505,7 @@ func _on_player_died() -> void:
 	super._on_player_died()
 	if CampaignSystem.iron_mode:
 		CampaignSystem.iron_dead = true
-		pause_menu.resume_btn.text = LocalizationManager.get_string("ui.iron_dead")
+		pause_menu.localize()
 		pause_menu.resume_btn.disabled = true
 		pause_menu.load_btn.disabled = true
 		# SaveSystem reports persistence failure through the shared localized notification channel.

@@ -706,3 +706,5 @@ integrity.files_changed,Файлы игры изменены. Включён б�
 integrity.save_recovered,Повреждённое сохранение отклонено. Загружена последняя исправная резервная копия.,The damaged save was rejected. Your last valid backup has been restored.
 integrity.save_rejected,Сохранение повреждено или изменено и не может быть загружено. Исправная резервная копия не найдена.,The save is damaged or modified and cannot be loaded. No valid backup was found.
 integrity.continue,Продолжить,Continue
+ui.iron_end_label,Клятва завершена,Journey ended
+ui.save_after_respawn,"Возродитесь, чтобы сохранить",Respawn before saving

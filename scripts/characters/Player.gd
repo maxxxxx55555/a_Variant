@@ -115,7 +115,7 @@ func brake_horizontal(delta: float, current_speed: float) -> void:
 	velocity.z = move_toward(velocity.z, 0, amount)
 
 func take_damage(amount: float) -> void:
-	if not is_finite(amount) or amount<=0:return
+	if GameState.player_hp<=0 or not is_finite(amount) or amount<=0:return
 	if Input.is_action_pressed("block") and GameState.consume_stamina(8.0):
 		amount *= 0.3
 		# AudioManager owns and recycles the spatial voice.
