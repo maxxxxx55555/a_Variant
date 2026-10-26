@@ -28,4 +28,3 @@ func advance_day() -> void:
 		current_season_idx = (current_season_idx + 1) % seasons.size()
 		season_changed.emit(seasons[current_season_idx])
 	day_passed.emit(current_day)
-

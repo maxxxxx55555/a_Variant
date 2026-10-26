@@ -13,4 +13,3 @@ func log_anomaly(system_name: String, message: String, details: Dictionary = {})
 		if not file.store_string(log_entry):
 			printerr("Integrity log write failed: ", file.get_error())
 		file.close()
-
