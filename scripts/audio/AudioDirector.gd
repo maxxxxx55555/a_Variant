@@ -1,6 +1,7 @@
 extends Node
+const TypeRefUIFeedback=preload("res://scripts/audio/UIFeedback.gd")
 
-const CATALOG_PATH := "res://assets/audio/catalog.json"
+const CATALOG_PATH:String= "res://assets/audio/catalog.json"
 var catalog: Dictionary = {}
 var streams: Dictionary = {}
 var music_players: Array[AudioStreamPlayer] = []
@@ -8,7 +9,7 @@ var effect_players: Array[AudioStreamPlayer] = []
 var spatial_players: Array[AudioStreamPlayer3D] = []
 var current_music: String = ""
 var finale_player:AudioStreamPlayer
-var current_finale:=""
+var current_finale:String=""
 var music_index: int = -1
 var crossfade: Tween
 var footstep_index: int = 0
@@ -16,7 +17,7 @@ var spatial_cursor: int = 0
 var effect_cursor: int = 0
 var ambience: AudioStreamPlayer3D
 var feedback_serial:int=0
-var audio_rng := RandomNumberGenerator.new()
+var audio_rng:RandomNumberGenerator= RandomNumberGenerator.new()
 var force_mute: bool = OS.get_environment("GAME_AUDIO_MUTED") == "1"
 
 func _ready() -> void:
@@ -24,24 +25,25 @@ func _ready() -> void:
 	audio_rng.randomize()
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	catalog = BuildIntegrity.read_json(CATALOG_PATH)
-	var oaths: bool = catalog.music.has("exploration")
-	var routes := {"Music": "Master", "SFX": "Master", "UI": "Master" if oaths else "SFX", "SFX_Combat": "SFX", "SFX_Environment": "SFX", "SFX_UI": "UI", "Voice": "Master"}
-	for bus_name in routes:
+	var music_catalog:Dictionary=catalog.music
+	var oaths:bool=music_catalog.has("exploration")
+	var routes:Dictionary[String,String]= {"Music": "Master", "SFX": "Master", "UI": "Master" if oaths else "SFX", "SFX_Combat": "SFX", "SFX_Environment": "SFX", "SFX_UI": "UI", "Voice": "Master"}
+	for bus_name:String in routes:
 		if AudioServer.get_bus_index(bus_name) < 0:
 			AudioServer.add_bus()
 			AudioServer.set_bus_name(AudioServer.bus_count - 1, bus_name)
 		AudioServer.set_bus_send(AudioServer.get_bus_index(bus_name), routes[bus_name])
-	for i in range(2):
-		var player := AudioStreamPlayer.new()
+	for i:int in range(2):
+		var player:AudioStreamPlayer= AudioStreamPlayer.new()
 		player.bus = "Music"
 		add_child(player)
 		music_players.append(player)
-	for i in range(8):
-		var player := AudioStreamPlayer.new()
+	for i:int in range(8):
+		var player:AudioStreamPlayer= AudioStreamPlayer.new()
 		add_child(player)
 		effect_players.append(player)
-	for i in range(20):
-		var player := AudioStreamPlayer3D.new()
+	for i:int in range(20):
+		var player:AudioStreamPlayer3D= AudioStreamPlayer3D.new()
 		player.process_mode = Node.PROCESS_MODE_PAUSABLE
 		player.max_distance = 38
 		player.unit_size = 3.0
@@ -49,23 +51,24 @@ func _ready() -> void:
 		add_child(player)
 		spatial_players.append(player)
 	apply_gains()
-	var feedback:=preload("res://scripts/audio/UIFeedback.gd").new()
+	var feedback:TypeRefUIFeedback=preload("res://scripts/audio/UIFeedback.gd").new()
 	add_child(feedback)
 	feedback.start(self)
 
-func _stream(name: String, music: bool = false) -> AudioStreamWAV:
-	var key := ("music/" if music else "sfx/") + name
+func _stream(sound_id: String, music: bool = false) -> AudioStreamWAV:
+	var key:String= ("music/" if music else "sfx/") + sound_id
 	if streams.has(key):
 		return streams[key]
 	var group: Dictionary = catalog.get("music" if music else "sfx", {})
-	if not group.has(name):
+	if not group.has(sound_id):
 		return null
-	var entry: Dictionary = group[name]
-	var source = load("res://assets/audio/" + entry.path)
+	var entry: Dictionary = group[sound_id]
+	var asset_path:String=entry.path
+	var source:Resource=load("res://assets/audio/"+asset_path)
 	if not source is AudioStreamWAV:
 		push_error("Invalid audio asset: " + entry.path)
 		return null
-	var sound: AudioStreamWAV = source.duplicate()
+	var sound: AudioStreamWAV = (source as AudioStreamWAV).duplicate()
 	if entry.get("loop", false):
 		sound.loop_mode = AudioStreamWAV.LOOP_FORWARD
 		sound.loop_begin = 0
@@ -79,15 +82,18 @@ func play_music(mood: String, fade_seconds: float = 1.2) -> void:
 	if mood == current_music:
 		return
 	# A shared calm theme continues through state changes without repeating its intro.
-	if catalog.get("music", {}).get(mood, {}).get("path", "") == catalog.get("music", {}).get(current_music, {}).get("path", "missing"):
+	var music_catalog:Dictionary=catalog.get("music",{})
+	var incoming:Dictionary=music_catalog.get(mood,{})
+	var existing:Dictionary=music_catalog.get(current_music,{})
+	if incoming.get("path","")==existing.get("path","missing"):
 		current_music = mood
 		return
-	var sound := _stream(mood, true)
+	var sound:AudioStreamWAV= _stream(mood, true)
 	if not sound:
 		return
 	if is_instance_valid(crossfade):
 		crossfade.kill()
-	var previous := music_index
+	var previous:int= music_index
 	music_index = 0 if music_index < 0 else 1 - music_index
 	var next: AudioStreamPlayer = music_players[music_index]
 	next.stream = sound
@@ -99,19 +105,25 @@ func play_music(mood: String, fade_seconds: float = 1.2) -> void:
 			music_players[previous].stop()
 		return
 	crossfade = create_tween().set_parallel(true)
+	# Tween retains this fluent configuration.
+	@warning_ignore("return_value_discarded")
 	crossfade.tween_property(next, "volume_db", 0.0, fade_seconds).set_trans(Tween.TRANS_SINE)
 	if previous >= 0:
 		var old: AudioStreamPlayer = music_players[previous]
+		# Tween retains this fluent configuration.
+		@warning_ignore("return_value_discarded")
 		crossfade.tween_property(old, "volume_db", -60.0, fade_seconds).set_trans(Tween.TRANS_SINE)
+		# Tween retains this fluent configuration.
+		@warning_ignore("return_value_discarded")
 		crossfade.tween_callback(old.stop).set_delay(fade_seconds)
 
 func play_sfx(sound_name: String, bus_name: String = "") -> AudioStreamPlayer:
-	var sound := _stream(sound_name)
+	var sound:AudioStreamWAV= _stream(sound_name)
 	if not sound:
 		return null
 	feedback_serial+=1
 	var player: AudioStreamPlayer
-	for candidate in effect_players:
+	for candidate:AudioStreamPlayer in effect_players:
 		if not candidate.playing:
 			player = candidate
 			break
@@ -121,25 +133,31 @@ func play_sfx(sound_name: String, bus_name: String = "") -> AudioStreamPlayer:
 	player.stream = sound
 	player.bus = bus_name if not bus_name.is_empty() else "SFX_UI"
 	player.volume_db = -24 if sound_name=="ui_focus" else -10 if sound_name=="ui_error" else -5
-	player.pitch_scale = audio_rng.randf_range(0.97, 1.03) if not catalog.sfx[sound_name].get("loop",false) and sound_name not in ["victory","defeat"] else 1.0
+	var effects:Dictionary=catalog.sfx
+	var effect:Dictionary=effects[sound_name]
+	player.pitch_scale = audio_rng.randf_range(0.97, 1.03) if not effect.get("loop",false) and sound_name not in ["victory","defeat"] else 1.0
 	player.play()
 	return player
 
 func play_sound(sound_name: String, bus_name: String = "") -> void:
 	if sound_name in ["potion", "hit", "enemy_hurt", "enemy_death"]:
-		var players := get_tree().get_nodes_in_group("player")
+		var players:Array[Node]= get_tree().get_nodes_in_group("player")
 		if not players.is_empty():
-			play_at(sound_name, players[0].global_position, bus_name)
+			# AudioManager owns and recycles the spatial voice.
+			@warning_ignore("return_value_discarded")
+			play_at(sound_name, (players[0] as Node3D).global_position, bus_name)
 			return
+	# AudioManager owns the voice and records the feedback acknowledgment.
+	@warning_ignore("return_value_discarded")
 	play_sfx(sound_name, bus_name)
 
 func play_at(sound_name: String, position: Vector3, bus_name: String = "") -> AudioStreamPlayer3D:
-	var sound := _stream(sound_name)
+	var sound:AudioStreamWAV= _stream(sound_name)
 	if not sound:
 		return null
 	feedback_serial+=1
 	var player: AudioStreamPlayer3D
-	for candidate in spatial_players:
+	for candidate:AudioStreamPlayer3D in spatial_players:
 		if not candidate.playing:
 			player = candidate
 			break
@@ -157,6 +175,8 @@ func play_footstep(surface: String, position: Vector3) -> void:
 	if surface not in ["grass", "dirt", "stone", "wood", "snow"]:
 		surface = "grass"
 	footstep_index = (footstep_index + 1) % 3
+	# AudioManager owns and recycles the spatial voice.
+	@warning_ignore("return_value_discarded")
 	play_at("footstep_%s_%d" % [surface, footstep_index], position)
 
 func start_ambience(kind: String, position: Vector3) -> void:
@@ -173,30 +193,30 @@ func start_ambience(kind: String, position: Vector3) -> void:
 	ambience.play()
 
 func set_bus_volume(bus_name: String, value: float) -> void:
-	var index := AudioServer.get_bus_index(bus_name)
+	var index:int= AudioServer.get_bus_index(bus_name)
 	if index >= 0:
 		AudioServer.set_bus_mute(index, value <= 0 or (bus_name == "Master" and force_mute))
 		AudioServer.set_bus_volume_linear(index, clampf(value, 0.0001, 1))
 
-func set_enabled(enabled: bool) -> void:
-	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), force_mute or not enabled)
-
 func apply_gains() -> void:
-	var settings := get_node_or_null("/root/GameManager")
-	if settings:
-		set_bus_volume("Music", settings.music_volume)
-		set_bus_volume("SFX", settings.sfx_volume)
-		set_enabled(settings.audio_enabled)
+	set_bus_volume("Master", SettingsManager.master_volume)
+	set_bus_volume("Music", SettingsManager.music_volume)
+	set_bus_volume("SFX", SettingsManager.sfx_volume)
+	set_bus_volume("UI", SettingsManager.ui_volume)
 
 func play_finale(victorious:bool) -> void:
-	var cue:="victory" if victorious else "defeat"
+	var cue:String="victory" if victorious else "defeat"
 	if is_instance_valid(finale_player) and finale_player.playing and current_finale==cue:return
 	if is_instance_valid(crossfade):crossfade.kill()
 	current_music=""
 	current_finale=cue
 	crossfade=create_tween().set_parallel(true)
-	for player in music_players:
+	for player:AudioStreamPlayer in music_players:
+		# Tween retains this fluent configuration.
+		@warning_ignore("return_value_discarded")
 		crossfade.tween_property(player,"volume_db",-60.0,0.7).set_trans(Tween.TRANS_SINE)
+		# Tween retains this fluent configuration.
+		@warning_ignore("return_value_discarded")
 		crossfade.tween_callback(player.stop).set_delay(0.7)
 	if not is_instance_valid(finale_player):
 		finale_player=AudioStreamPlayer.new()
@@ -208,4 +228,4 @@ func play_finale(victorious:bool) -> void:
 
 func set_scene_paused(paused:bool) -> void:
 	# Menus freeze the background bed; ending stingers keep their natural release.
-	for player in music_players:player.stream_paused=paused
+	for player:AudioStreamPlayer in music_players:player.stream_paused=paused
