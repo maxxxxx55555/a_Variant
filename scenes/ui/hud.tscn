@@ -80,7 +80,7 @@ offset_right = -60.0
 offset_bottom = -60.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "ATTACK"
+text = ""
 
 [node name="InteractBtn" type="Button" parent="MobileControls"]
 layout_mode = 1
@@ -95,7 +95,7 @@ offset_right = -180.0
 offset_bottom = -60.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "E"
+text = ""
 
 [node name="PotionBtn" type="Button" parent="MobileControls"]
 layout_mode = 1
@@ -110,7 +110,7 @@ offset_right = -60.0
 offset_bottom = -180.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "POTION (Q)"
+text = ""
 
 [node name="InventoryBtn" type="Button" parent="MobileControls"]
 layout_mode = 1
@@ -122,7 +122,7 @@ offset_top = 20.0
 offset_right = -20.0
 offset_bottom = 80.0
 grow_horizontal = 0
-text = "BAG (I)"
+text = ""
 
 [node name="TownBtn" type="Button" parent="MobileControls"]
 layout_mode = 1
@@ -134,4 +134,4 @@ offset_top = 20.0
 offset_right = -130.0
 offset_bottom = 80.0
 grow_horizontal = 0
-text = "TOWN (B)"
+text = ""

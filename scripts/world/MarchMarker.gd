@@ -19,7 +19,7 @@ func _ready() -> void:
 	else:
 		MarchArt.box(self, Vector3(0, 0.7, 0), Vector3(0.8, 1.4, 0.8), Color("989887"), false)
 	var key: String = data.name if is_town else "poi." + data.kind
-	MarchArt.label(self, LocalizationManager.get_string(key) + " [E]", Vector3(0, 2.7, 0))
+	MarchArt.localized_label(self, key, Vector3(0, 2.7, 0), " [E]")
 
 func get_interaction_prompt() -> String:
 	return LocalizationManager.get_string("ui.talk" if is_town else "ui.investigate") + " [E]"

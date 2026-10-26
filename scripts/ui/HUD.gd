@@ -138,7 +138,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 func refresh_help() -> void:
-	controls_label.text = LocalizationManager.get_string("ui.controls") if expanded_help else ("F1 · Помощь" if LocalizationManager.current_language == "ru" else "F1 · Help")
+	controls_label.text = LocalizationManager.get_string("ui.controls") if expanded_help else LocalizationManager.get_string("ui.help_compact")
 	controls_label.offset_right=1175 if expanded_help else 215
 	controls_label.offset_top = -110 if expanded_help else -65
 	controls_label.offset_bottom = -20

@@ -41,23 +41,23 @@ theme_override_constants/separation = 15
 
 [node name="ResumeBtn" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Resume"
+text = ""
 
 [node name="SaveBtn" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Save"
+text = ""
 
 [node name="LoadBtn" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Load"
+text = ""
 
 [node name="SettingsBtn" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Settings"
+text = ""
 
 [node name="ExitBtn" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Exit"
+text = ""
 
 [node name="SettingsScroll" type="ScrollContainer" parent="MarginContainer"]
 visible = false
@@ -72,14 +72,14 @@ theme_override_constants/separation = 10
 
 [node name="LangLabel" type="Label" parent="MarginContainer/SettingsScroll/SettingsPanel"]
 layout_mode = 2
-text = "Language"
+text = ""
 
 [node name="LangOption" type="OptionButton" parent="MarginContainer/SettingsScroll/SettingsPanel"]
 layout_mode = 2
 
 [node name="MasterLabel" type="Label" parent="MarginContainer/SettingsScroll/SettingsPanel"]
 layout_mode = 2
-text = "Master Volume"
+text = ""
 
 [node name="MasterSlider" type="HSlider" parent="MarginContainer/SettingsScroll/SettingsPanel"]
 layout_mode = 2
@@ -89,7 +89,7 @@ value = 1.0
 
 [node name="MusicLabel" type="Label" parent="MarginContainer/SettingsScroll/SettingsPanel"]
 layout_mode = 2
-text = "Music Volume"
+text = ""
 
 [node name="MusicSlider" type="HSlider" parent="MarginContainer/SettingsScroll/SettingsPanel"]
 layout_mode = 2
@@ -99,7 +99,7 @@ value = 0.8
 
 [node name="SFXLabel" type="Label" parent="MarginContainer/SettingsScroll/SettingsPanel"]
 layout_mode = 2
-text = "SFX Volume"
+text = ""
 
 [node name="SFXSlider" type="HSlider" parent="MarginContainer/SettingsScroll/SettingsPanel"]
 layout_mode = 2
@@ -109,7 +109,7 @@ value = 0.8
 
 [node name="UILabel" type="Label" parent="MarginContainer/SettingsScroll/SettingsPanel"]
 layout_mode = 2
-text = "UI Volume"
+text = ""
 
 [node name="UISlider" type="HSlider" parent="MarginContainer/SettingsScroll/SettingsPanel"]
 layout_mode = 2
@@ -119,8 +119,8 @@ value = 0.8
 
 [node name="BobbingCheck" type="CheckBox" parent="MarginContainer/SettingsScroll/SettingsPanel"]
 layout_mode = 2
-text = "Camera Bobbing"
+text = ""
 
 [node name="ShakeCheck" type="CheckBox" parent="MarginContainer/SettingsScroll/SettingsPanel"]
 layout_mode = 2
-text = "Camera Shake"
+text = ""

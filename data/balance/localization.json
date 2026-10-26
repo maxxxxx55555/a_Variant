@@ -2674,5 +2674,29 @@
   "siege.assault_requirements": {
     "ru": "Нужны день блокады, 3 бойца, дерево 10 и еда 5.",
     "en": "Requires a day of blockade,3 soldiers, wood10 and food5."
+  },
+  "ui.help_compact": {
+    "ru": "F1 · Помощь",
+    "en": "F1 · Help"
+  },
+  "ui.ingredient_missing": {
+    "ru": "не хватает",
+    "en": "missing"
+  },
+  "ui.ingredient_ready": {
+    "ru": "готово",
+    "en": "ready"
+  },
+  "ui.unit.weight": {
+    "ru": "кг",
+    "en": "kg"
+  },
+  "ui.unit.reach": {
+    "ru": "м",
+    "en": "m"
+  },
+  "ui.unit.health": {
+    "ru": "ОЗ",
+    "en": "HP"
   }
 }

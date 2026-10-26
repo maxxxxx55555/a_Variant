@@ -22,7 +22,7 @@ func _ready() -> void:
 	collider.position.y = 0.85
 	add_child(collider)
 	visual = MarchArt.humanoid(self, Color("7c8163"), companion_id in ["warrior_shield", "mercenary_commander"])
-	MarchArt.label(self, LocalizationManager.get_string("companion." + companion_id + ".name"), Vector3(0, 2.3, 0))
+	MarchArt.localized_label(self, "companion." + companion_id + ".name", Vector3(0, 2.3, 0))
 
 func take_damage(amount: float) -> void:
 	if downed_time > 0: return

@@ -38,11 +38,11 @@ theme_override_constants/separation = 15
 
 [node name="PopLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Population: 25"
+text = ""
 
 [node name="HappyLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Happiness"
+text = ""
 
 [node name="HappyBar" type="ProgressBar" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -50,7 +50,7 @@ value = 70.0
 
 [node name="HealthLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Health"
+text = ""
 
 [node name="HealthBar" type="ProgressBar" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -58,8 +58,8 @@ value = 85.0
 
 [node name="ForecastLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Food forecast: 150 days"
+text = ""
 
 [node name="ResourcesLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Food: 150 | Wood: 80 | Ore: 40 | Gold: 200"
+text = ""

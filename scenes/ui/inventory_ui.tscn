@@ -45,19 +45,19 @@ layout_mode = 2
 
 [node name="HeadBtn" type="Button" parent="MarginContainer/HBoxContainer/LeftPanel/EquipSlots"]
 layout_mode = 2
-text = "Head: [None]"
+text = ""
 
 [node name="TorsoBtn" type="Button" parent="MarginContainer/HBoxContainer/LeftPanel/EquipSlots"]
 layout_mode = 2
-text = "Torso: [None]"
+text = ""
 
 [node name="LegsBtn" type="Button" parent="MarginContainer/HBoxContainer/LeftPanel/EquipSlots"]
 layout_mode = 2
-text = "Legs: [None]"
+text = ""
 
 [node name="WeaponBtn" type="Button" parent="MarginContainer/HBoxContainer/LeftPanel/EquipSlots"]
 layout_mode = 2
-text = "Weapon: [None]"
+text = ""
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/HBoxContainer/LeftPanel"]
 layout_mode = 2
@@ -81,12 +81,12 @@ theme_override_constants/separation = 20
 
 [node name="EquipButton" type="Button" parent="MarginContainer/HBoxContainer/RightPanel/ButtonContainer"]
 layout_mode = 2
-text = "Equip"
+text = ""
 
 [node name="UseButton" type="Button" parent="MarginContainer/HBoxContainer/RightPanel/ButtonContainer"]
 layout_mode = 2
-text = "Use"
+text = ""
 
 [node name="DropButton" type="Button" parent="MarginContainer/HBoxContainer/RightPanel/ButtonContainer"]
 layout_mode = 2
-text = "Drop"
+text = ""

@@ -16,7 +16,7 @@ var selected_index: int = -1
 func _ready() -> void:
 	EventBus.inventory_updated.connect(refresh_inventory)
 	EventBus.equipment_updated.connect(refresh_equipment)
-	EventBus.language_changed.connect(func(_lang): refresh_inventory(); refresh_equipment())
+	EventBus.language_changed.connect(localize_inventory)
 	item_list.item_selected.connect(_on_item_selected)
 	equip_button.pressed.connect(_on_equip_pressed)
 	use_button.pressed.connect(_on_use_pressed)
@@ -86,7 +86,7 @@ func update_card(index: int) -> void:
 
 	var text = "[b]" + name_str + "[/b]\n"
 	text += LocalizationManager.get_string("ui.stats.rarity") + ": " + LocalizationManager.get_string("ui.rarity." + rarity) + "\n"
-	text += LocalizationManager.get_string("ui.stats.weight") + ": " + str(weight) + " kg\n\n"
+	text += LocalizationManager.get_string("ui.stats.weight") + ": " + str(weight) + " " + LocalizationManager.get_string("ui.unit.weight") + "\n\n"
 	text += desc_str + "\n\n"
 	if res is WeaponData or res is ArmorData:
 		text += LocalizationManager.get_string("ui.stats.durability") + ": " + str(item.get("durability", res.durability)) + "/" + str(res.durability) + "\n"
@@ -118,7 +118,7 @@ func update_card(index: int) -> void:
 		var d_spd = spd - curr_spd
 		text += LocalizationManager.get_string("ui.stats.speed") + ": " + str(spd) + " (" + format_delta(d_spd, true) + ")\n"
 		var d_reach = reach - curr_reach
-		text += LocalizationManager.get_string("ui.stats.reach") + ": " + str(reach) + " m (" + format_delta(d_reach, true) + ")\n"
+		text += LocalizationManager.get_string("ui.stats.reach") + ": " + str(reach) + " " + LocalizationManager.get_string("ui.unit.reach") + " (" + format_delta(d_reach, true) + ")\n"
 		var d_stamina = stamina_cost - curr_stamina
 		text += LocalizationManager.get_string("ui.stats.stamina_cost") + ": " + str(stamina_cost) + " (" + format_delta(-d_stamina, true) + ")\n"
 
@@ -139,7 +139,7 @@ func update_card(index: int) -> void:
 		use_button.visible = false
 	elif type_str == "potion":
 		var heal = res.get("heal_amount")
-		text += LocalizationManager.get_string("ui.stats.heal_amount") + ": +" + str(heal) + " HP\n"
+		text += LocalizationManager.get_string("ui.stats.heal_amount") + ": +" + str(heal) + " " + LocalizationManager.get_string("ui.unit.health") + "\n"
 		equip_button.visible = false
 		use_button.visible = true
 
@@ -172,3 +172,11 @@ func _on_drop_pressed() -> void:
 		selected_index = -1
 		clear_card()
 		EventBus.inventory_updated.emit()
+
+func localize_inventory(_language:String) -> void:
+	var selection:int=selected_index
+	refresh_inventory()
+	refresh_equipment()
+	if selection>=0 and selection<GameState.inventory.size():
+		item_list.select(selection)
+		_on_item_selected(selection)

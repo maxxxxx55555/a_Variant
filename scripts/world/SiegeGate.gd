@@ -19,6 +19,7 @@ func _ready() -> void:
 	for height in [0.6, 2.6]: MarchArt.box(self, Vector3(0, height, 0.36), Vector3(5, 0.16, 0.12), Color("303a39"))
 	health_label = MarchArt.label(self, "", Vector3(0, 4.4, 0))
 	SiegeSystem.changed.connect(refresh)
+	EventBus.language_changed.connect(func(_language):refresh())
 	refresh()
 
 func take_damage(amount: float) -> void:

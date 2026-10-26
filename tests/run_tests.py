@@ -41,6 +41,8 @@ def main():
         cases.append(('release-details', ['--headless', '--script', 'res://tests/test_release_details.gd']))
         cases.append(('disabled-explanations', ['--headless', '--script', 'res://tests/test_disabled_explanations.gd']))
         cases.append(('comfort-preferences', ['--headless', '--script', 'res://tests/test_comfort_preferences.gd']))
+        cases.append(('live-world-locale', ['--headless', '--script', 'res://tests/test_live_world_locale.gd']))
+        cases.append(('localized-feedback', ['--headless', '--script', 'res://tests/test_localized_feedback.gd']))
         cases.append(('localization', ['--headless', '--script', 'res://tests/test_localization.gd']))
         cases.append(('presentation', ([] if args.rendered else ['--headless']) + ['--resolution', '540x960' if portrait else '1280x720', '--script', 'res://tests/test_presentation.gd']))
         for case in ['identity', 'siege', 'civilians', 'combat_cover', 'terrain_sampling', 'weapon_view', 'house_cache', 'art_assets', 'movement_comfort', 'save_guard', 'legacy_migration', 'actor_material_lifetime', 'settings_bounds']:
@@ -68,6 +70,8 @@ def main():
             return verification.returncode
         contract = subprocess.run([sys.executable, str(project / 'tests/test_export_contract.py')], timeout=30)
         if contract.returncode: return contract.returncode
+        copy_contract = subprocess.run([sys.executable, str(project / 'tests/test_copy_contract.py')], timeout=30)
+        if copy_contract.returncode: return copy_contract.returncode
         promises = subprocess.run([sys.executable, str(project / 'tests/test_promise_matrix.py')], timeout=30)
         if promises.returncode: return promises.returncode
         isolation = subprocess.run([sys.executable, str(project / 'tests/test_repo_isolation.py')], timeout=30)

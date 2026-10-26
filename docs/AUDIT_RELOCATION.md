@@ -24,3 +24,6 @@ C11/C12 describe a different architecture and require no content transfer here. 
 
 ## C13: historical design-copy contamination found by v2
 Three archived design/plan files still mixed unrelated runtime architecture and validation scope despite lacking an exact foreign game title. Each now contains only this game's own design. The canonical design content already exists in its proper repository; no new asset transfer or license edit was necessary. Two new negative tests reproduce the old guard's failure. The guard now rejects copied design labels and foreign runtime paths as well as game names. Full tracked-tree scanning catches the old text before cleanup and passes afterward.
+
+## F2 closure evidence
+See LOCALIZATION_AUDIT.md for the keyed-copy contract, localized ingredient-feedback regression and actual executed suite inventory. The inherited runner count was corrected; optional campaign route cases are counted separately.

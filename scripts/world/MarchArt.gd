@@ -78,7 +78,7 @@ static func house(parent: Node3D, position: Vector3, tint: Color, building: Stri
 	return house_root
 
 static func label(parent: Node3D, title: String, position: Vector3, color: Color = Color("e7d4a9")) -> Label3D:
-	var label_node := Label3D.new()
+	var label_node:Label3D=load("res://scripts/world/MarchWorldLabel.gd").new()
 	label_node.text = title
 	label_node.font = load("res://assets/fonts/GolosText.ttf")
 	label_node.position = position
@@ -90,3 +90,10 @@ static func label(parent: Node3D, title: String, position: Vector3, color: Color
 	label_node.visibility_range_end = 45
 	parent.add_child(label_node)
 	return label_node
+
+static func localized_label(parent:Node3D,key:String,position:Vector3,suffix:String="") -> Label3D:
+	var sign:Label3D=label(parent,"",position)
+	sign.set_meta("locale_key",key)
+	sign.set_meta("locale_suffix",suffix)
+	sign.call("refresh_copy")
+	return sign

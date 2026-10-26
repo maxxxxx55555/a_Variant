@@ -52,7 +52,7 @@ func _ready() -> void:
 	preload("res://scripts/world/Meadow.gd").build(self, terrain, Vector2(0, 12))
 	MarchArt.house(self, Vector3(-9, terrain.ground_at(-9, 12), 12), Color("a49878"))
 	MarchArt.house(self, Vector3(9, terrain.ground_at(9, 12), 12), Color("8b8d76"))
-	MarchArt.label(self, LocalizationManager.get_string("ui.home"), Vector3(0, 5, 16))
+	MarchArt.localized_label(self, "ui.home", Vector3(0, 5, 16))
 	for data in CampaignSystem.definition.towns:
 		build_town(data)
 	for point in CampaignSystem.definition.points:

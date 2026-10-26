@@ -14,6 +14,7 @@ func _ready() -> void:
 	refresh_recipes()
 
 func refresh_recipes() -> void:
+	var selection:int=AlchemySystem.known_recipes.find(selected_recipe)
 	recipe_list.clear()
 	var sample_recipe = RecipeData.new()
 	sample_recipe.id = "health_potion_recipe"
@@ -31,8 +32,8 @@ func refresh_recipes() -> void:
 		recipe_list.add_item(name_str)
 	brew_button.text = LocalizationManager.get_string("ui.brew")
 	if not AlchemySystem.known_recipes.is_empty():
-		recipe_list.select(0)
-		_on_recipe_selected(0)
+		recipe_list.select(maxi(0,selection))
+		_on_recipe_selected(maxi(0,selection))
 
 func _on_recipe_selected(idx: int) -> void:
 	if idx >= 0 and idx < AlchemySystem.known_recipes.size():
@@ -55,7 +56,8 @@ func update_info() -> void:
 		var ing_name = LocalizationManager.get_string(ing.get("name_key"))
 		var has_cnt = AlchemySystem.has_ingredient(ing, cnt)
 		var col = "[color=green]" if has_cnt else "[color=red]"
-		text += "- " + ing_name + " x" + str(cnt) + " (" + col + "OK[/color])\n"
+		var availability:String=LocalizationManager.get_string("ui.ingredient_ready" if has_cnt else "ui.ingredient_missing")
+		text += "- " + ing_name + " ×" + str(cnt) + " (" + col + availability + "[/color])\n"
 
 	info_label.text = text
 	brew_button.disabled = not AlchemySystem.can_brew(selected_recipe)

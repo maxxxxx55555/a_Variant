@@ -6,7 +6,7 @@ The older GAME_DESIGN/FULL_BOOK are a broader archived roadmap, not additional a
 
 # Marchland Oaths — 1.5.0
 
-Live Russian/English menu updates and 639 catalog keys, preserving the current save/difficulty selection. Four distinct Gemini/Lyria mood compositions, two 20-second musical finales, independent Master/Music/SFX/UI levels, reduced motion, functional credits and coherent application icons. Existing protected profiles and legacy user-data directories remain compatible.
+Live Russian/English menu updates and 675 catalog keys, preserving the current save/difficulty selection. Four distinct Gemini/Lyria mood compositions, two 20-second musical finales, independent Master/Music/SFX/UI levels, reduced motion, functional credits and coherent application icons. Existing protected profiles and legacy user-data directories remain compatible.
 
 ## Русский
 
@@ -63,7 +63,7 @@ godot --headless --path . --export-release "Windows Desktop" builds/windows/Marc
 python tests/run_tests.py --godot /path/to/godot --rendered --full-campaign --artifacts /path/to/logs
 ```
 
-The runner executes 38 Godot cases per locale, plus Python verification, export, isolation, soundtrack and audio-asset checks. These cover 45 core regressions, 15 introductory playthrough checks, strategy, 639 RU/EN keys, sieges, civilians, cover, weapon models, triangle-exact cached terrain sampling, audio and saves. Complete diplomatic and military routes use actual movement, attacks, interactions and ordinary UI payments. The native verifier accepts `--military` for the conquest route. Normal difficulty is the full-route test baseline; other hardware and long unscripted play sessions require further independent QA.
+The current source runner executes36 Godot cases per locale; --full-campaign adds two complete route cases (38 total). Python checks cover resources, export, copy/edition contracts, isolation, soundtrack and audio assets. These cover 45 core regressions, 15 introductory playthrough checks, strategy, 675 RU/EN keys, sieges, civilians, cover, weapon models, triangle-exact cached terrain sampling, audio and saves. Complete diplomatic and military routes use actual movement, attacks, interactions and ordinary UI payments. The native verifier accepts `--military` for the conquest route. Normal difficulty is the full-route test baseline; other hardware and long unscripted play sessions require further independent QA.
 
 Identical static assets share normalized meshes and preserve gameplay colliders. The 1.2 rainy village measured 5.07 seconds to load and 49.66 FPS over 180 rendered frames, with 337 draw calls at 1280×720 on this AMD integrated GPU. These are measurements from one machine.
 

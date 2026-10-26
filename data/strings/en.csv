@@ -690,3 +690,9 @@ siege.wait_requirements,Нужна действующая блокада. В б�
 siege.surrender_requirements,Истощите припасы до 0 и мораль до 30 или ниже.,Reduce supplies to0 and morale to30 or lower.
 siege.lift_requirements,Сначала начните блокаду.,Start a blockade first.
 siege.assault_requirements,"Нужны день блокады, 3 бойца, дерево 10 и еда 5.","Requires a day of blockade,3 soldiers, wood10 and food5."
+ui.help_compact,F1 · Помощь,F1 · Help
+ui.ingredient_missing,не хватает,missing
+ui.ingredient_ready,готово,ready
+ui.unit.weight,кг,kg
+ui.unit.reach,м,m
+ui.unit.health,ОЗ,HP
