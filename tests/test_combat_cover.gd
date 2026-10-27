@@ -1,4 +1,4 @@
-extends SceneTree
+extends "res://tests/AudioCleanTree.gd"
 
 class Target extends CharacterBody3D:
 	var health: float = 100
@@ -47,4 +47,4 @@ func run() -> void:
 	var exposed: bool = target.health < 100
 	if not exposed: print("FAIL: An unobstructed enemy strike must still deal damage")
 	print("COMBAT COVER RESULT: ", "PASS" if blocked and exposed else "FAIL")
-	quit(0 if blocked and exposed else 1)
+	finish_test(0 if blocked and exposed else 1)

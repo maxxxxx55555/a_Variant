@@ -330,8 +330,8 @@ func run() -> void:
 	get_tree().paused=false
 	world.queue_free()
 	await process_frame
-	await settle_audio()
-	quit(1 if failed else 0)
+	var audio_settled:bool=await settle_audio()
+	quit(1 if failed or not audio_settled else 0)
 
 # Private QA only: explicit seeds vary simulation; art/audio keep their own RNG.
 static func parse_seed(raw:String)->int:
@@ -348,8 +348,18 @@ func write_qa_result(record:Dictionary)->void:
 		if file:
 			if not file.store_string(JSON.stringify(record,"",true,true)+"\n"):quit(74)
 
-func settle_audio()->void:
+func audio_refs_released(references:Array[WeakRef])->bool:
+	for reference:WeakRef in references:
+		if reference.get_ref()!=null:return false
+	return true
+
+func settle_audio()->bool:
 	var audio:AudioManagerView=qa_audio_manager
+	var references:Array[WeakRef]=[]
+	for key:String in audio.streams:references.append(weakref(audio.streams[key]))
+	# Submit any same-frame3D play request before stop(); Godot retains an unsubmitted setplayback.
+	await get_tree().physics_frame
+	await get_tree().process_frame
 	if audio.crossfade:audio.crossfade.kill()
 	for voice:Node in audio.get_children():
 		if voice is AudioStreamPlayer:
@@ -362,8 +372,16 @@ func settle_audio()->void:
 	audio.current_music=""
 	audio.current_finale=""
 	audio.music_index=-1
-	await get_tree().create_timer(0.3,true,false,true).timeout
-	for index:int in 10:await get_tree().process_frame
+	# Mixer ownership ends on its real thread, independently of accelerated QA time.
+	# A simulated delay can finish before AudioServer processes a stop request.
+	var deadline:int=Time.get_ticks_msec()+5000
+	while not audio_refs_released(references):
+		if Time.get_ticks_msec()>=deadline:
+			fail("Private QA audio shutdown did not release playback references")
+			return false
+		await get_tree().process_frame
+		OS.delay_msec(1)
+	return true
 
 func region_checkpoint()->void:
 	await process_frame

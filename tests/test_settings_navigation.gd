@@ -1,4 +1,4 @@
-extends SceneTree
+extends "res://tests/AudioCleanTree.gd"
 var failures:=0
 func _initialize() -> void:call_deferred("run")
 func check(ok:bool,label:String) -> void:
@@ -28,4 +28,4 @@ func run() -> void:
 		back.pressed.emit()
 		check(not panel.settings_panel.visible and panel.visible and panel.settings_btn.has_focus(),"Back returns to the pause actions and restores keyboard focus")
 	print("SETTINGS NAVIGATION RESULT: ","PASS" if failures==0 else "FAIL")
-	quit(0 if failures==0 else 1)
+	finish_test(0 if failures==0 else 1)

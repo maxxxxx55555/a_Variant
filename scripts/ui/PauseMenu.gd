@@ -279,13 +279,15 @@ func _on_lang_selected(idx: int) -> void:
 	SettingsManager.save_settings()
 
 func _on_exit() -> void:
+	if MarchTransition.quitting:return
 	SettingsManager.save_settings()
 	if CampaignSystem.active and GameState.player_hp>0 and not _on_save(true):
-		MarchTransition.confirm_unsaved(func()->Variant:return _on_save(true),get_tree().quit)
+		MarchTransition.confirm_unsaved(func()->Variant:return _on_save(true),MarchTransition.quit_game)
 		return
-	get_tree().quit()
+	MarchTransition.quit_game()
 
 func _return_to_menu() -> void:
+	if MarchTransition.quitting:return
 	SettingsManager.save_settings()
 	if GameState.player_hp>0 and not _on_save(true):
 		MarchTransition.confirm_unsaved(func()->Variant:return _on_save(true),func()->void:MarchTransition.go_to.call_deferred("res://scenes/ui/main_menu.tscn"))

@@ -19,6 +19,9 @@ var ambience: AudioStreamPlayer3D
 var feedback_serial:int=0
 var audio_rng:RandomNumberGenerator= RandomNumberGenerator.new()
 var force_mute: bool = OS.get_environment("GAME_AUDIO_MUTED") == "1"
+var closing:bool=false
+var shutdown_complete:bool=false
+var shutdown_ok:bool=false
 
 func _ready() -> void:
 	AudioServer.set_bus_mute(0, force_mute)
@@ -56,6 +59,7 @@ func _ready() -> void:
 	feedback.start(self)
 
 func _stream(sound_id: String, music: bool = false) -> AudioStreamWAV:
+	if closing:return null
 	var key:String= ("music/" if music else "sfx/") + sound_id
 	if streams.has(key):
 		return streams[key]
@@ -77,6 +81,7 @@ func _stream(sound_id: String, music: bool = false) -> AudioStreamWAV:
 	return sound
 
 func play_music(mood: String, fade_seconds: float = 1.2) -> void:
+	if closing:return
 	if is_instance_valid(finale_player):finale_player.stop()
 	current_finale=""
 	if mood == current_music:
@@ -118,6 +123,7 @@ func play_music(mood: String, fade_seconds: float = 1.2) -> void:
 		crossfade.tween_callback(old.stop).set_delay(fade_seconds)
 
 func play_sfx(sound_name: String, bus_name: String = "") -> AudioStreamPlayer:
+	if closing:return null
 	var sound:AudioStreamWAV= _stream(sound_name)
 	if not sound:
 		return null
@@ -152,6 +158,7 @@ func play_sound(sound_name: String, bus_name: String = "") -> void:
 	play_sfx(sound_name, bus_name)
 
 func play_at(sound_name: String, position: Vector3, bus_name: String = "") -> AudioStreamPlayer3D:
+	if closing:return null
 	var sound:AudioStreamWAV= _stream(sound_name)
 	if not sound:
 		return null
@@ -180,6 +187,7 @@ func play_footstep(surface: String, position: Vector3) -> void:
 	play_at("footstep_%s_%d" % [surface, footstep_index], position)
 
 func start_ambience(kind: String, position: Vector3) -> void:
+	if closing:return
 	if not is_instance_valid(ambience):
 		ambience = AudioStreamPlayer3D.new()
 		ambience.bus = "SFX_Environment"
@@ -205,6 +213,7 @@ func apply_gains() -> void:
 	set_bus_volume("UI", SettingsManager.ui_volume)
 
 func play_finale(victorious:bool) -> void:
+	if closing:return
 	var cue:String="victory" if victorious else "defeat"
 	if is_instance_valid(finale_player) and finale_player.playing and current_finale==cue:return
 	if is_instance_valid(crossfade):crossfade.kill()
@@ -229,3 +238,52 @@ func play_finale(victorious:bool) -> void:
 func set_scene_paused(paused:bool) -> void:
 	# Menus freeze the background bed; ending stingers keep their natural release.
 	for player:AudioStreamPlayer in music_players:player.stream_paused=paused
+
+func shutdown_stream_refs()->Array[WeakRef]:
+	var references:Array[WeakRef]=[]
+	for key:String in streams:references.append(weakref(streams[key]))
+	for voice:Node in get_children():
+		if voice is AudioStreamPlayer and (voice as AudioStreamPlayer).stream!=null:references.append(weakref((voice as AudioStreamPlayer).stream))
+		elif voice is AudioStreamPlayer3D and (voice as AudioStreamPlayer3D).stream!=null:references.append(weakref((voice as AudioStreamPlayer3D).stream))
+	return references
+
+func shutdown_refs_released(references:Array[WeakRef])->bool:
+	for reference:WeakRef in references:
+		if reference.get_ref()!=null:return false
+	return true
+
+func shutdown()->bool:
+	if closing:
+		while not shutdown_complete:
+			await get_tree().process_frame
+		return shutdown_ok
+	closing=true
+	var references:Array[WeakRef]=shutdown_stream_refs()
+	if is_instance_valid(crossfade):crossfade.kill()
+	for voice:Node in get_children():
+		if voice is AudioStreamPlayer:
+			(voice as AudioStreamPlayer).stop()
+			(voice as AudioStreamPlayer).stream=null
+		elif voice is AudioStreamPlayer3D:
+			(voice as AudioStreamPlayer3D).stop()
+			(voice as AudioStreamPlayer3D).stream=null
+			# Godot4.7 stop() retains a just-queued3D setplayback until this player is freed.
+			# Exit is terminal, so dispose its spatial voices rather than retaining that hidden reference.
+			voice.queue_free()
+	spatial_players.clear()
+	streams.clear()
+	current_music=""
+	current_finale=""
+	music_index=-1
+	ambience=null
+	# AudioServer drops playback ownership on its mixer thread, not simulated time.
+	var deadline:int=Time.get_ticks_msec()+5000
+	while not shutdown_refs_released(references):
+		if Time.get_ticks_msec()>=deadline:
+			shutdown_complete=true
+			return false
+		await get_tree().process_frame
+		OS.delay_msec(1)
+	shutdown_ok=true
+	shutdown_complete=true
+	return true

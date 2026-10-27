@@ -1,4 +1,4 @@
-extends SceneTree
+extends "res://tests/AudioCleanTree.gd"
 
 func _initialize() -> void: call_deferred("run")
 
@@ -76,4 +76,4 @@ func run() -> void:
 	ending.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	await shot("ending-staged")
 	print("CAMPAIGN GALLERY: PASS")
-	quit(0)
+	finish_test(0)

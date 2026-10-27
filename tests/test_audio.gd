@@ -1,4 +1,4 @@
-extends SceneTree
+extends "res://tests/AudioCleanTree.gd"
 
 var failures := 0
 
@@ -35,4 +35,4 @@ func run() -> void:
 			check(AudioServer.is_bus_mute(0), "Silent QA stays muted when settings reapply master volume")
 		check(is_equal_approx(AudioServer.get_bus_volume_linear(AudioServer.get_bus_index("SFX")), 0.3), "The saved effects slider controls the spatial effect group")
 	print("AUDIO RESULT: ", "PASS" if failures == 0 else "FAIL")
-	quit(0 if failures == 0 else 1)
+	finish_test(0 if failures == 0 else 1)

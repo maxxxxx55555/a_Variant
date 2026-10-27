@@ -1,11 +1,11 @@
-extends SceneTree
+extends "res://tests/AudioCleanTree.gd"
 func _initialize() -> void: call_deferred("run")
 func run() -> void:
 	await process_frame
 	var path:="res://scripts/ui/CampaignFinale.gd"
 	if not ResourceLoader.exists(path):
 		print("FAIL: Campaign ending needs its illustrated, themed presentation")
-		quit(1)
+		finish_test(1)
 		return
 	var before: Dictionary=root.get_node("CampaignSystem").capture_state()
 	var panel: Control=load(path).new()
@@ -23,4 +23,4 @@ func run() -> void:
 	button.pressed.emit()
 	ok=ok and calls[0]==1 and root.get_node("CampaignSystem").capture_state()==before
 	print("CAMPAIGN FINALE RESULT: ","PASS" if ok else "FAIL")
-	quit(0 if ok else 1)
+	finish_test(0 if ok else 1)

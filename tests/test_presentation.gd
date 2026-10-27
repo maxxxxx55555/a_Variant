@@ -1,4 +1,4 @@
-extends SceneTree
+extends "res://tests/AudioCleanTree.gd"
 
 func _initialize() -> void:
 	call_deferred("run")
@@ -39,4 +39,4 @@ func run() -> void:
 		push_error("Continuing after an ending must restore the world and HUD")
 		failed = true
 	print("PRESENTATION RESULT: ", "FAIL" if failed else "PASS")
-	quit(1 if failed else 0)
+	finish_test(1 if failed else 0)

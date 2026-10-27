@@ -1,4 +1,4 @@
-extends SceneTree
+extends "res://tests/AudioCleanTree.gd"
 
 var failures: Array[String] = []
 var state: Node
@@ -178,7 +178,7 @@ func run() -> void:
 
 func finish() -> void:
 	print("RESULT: ", "PASS" if failures.is_empty() else "FAIL", " (", checks, " checks, ", failures.size(), " failures)")
-	quit(0 if failures.is_empty() else 1)
+	finish_test(0 if failures.is_empty() else 1)
 
 func get_tree_paused_or_dead_panel() -> bool:
 	return paused

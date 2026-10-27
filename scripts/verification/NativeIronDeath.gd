@@ -71,6 +71,6 @@ func run()->void:
 	var actual_gold:float=qa_economy_system.stockpiles.gold
 	check(state.player_hp==state.max_hp and not get_tree().paused and is_equal_approx(actual_gold,gold*0.8),"Ordinary native paid recovery remains functional")
 	world.queue_free();await process_frame
-	await settle_audio()
-	print("NATIVE IRON DEATH: ","FAIL" if failed else "PASS")
-	quit(1 if failed else 0)
+	var audio_settled:bool=await settle_audio()
+	print("NATIVE IRON DEATH: ","FAIL" if failed or not audio_settled else "PASS")
+	quit(1 if failed or not audio_settled else 0)

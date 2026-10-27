@@ -1,4 +1,4 @@
-extends SceneTree
+extends "res://tests/AudioCleanTree.gd"
 var failures:=0
 func _initialize() -> void:call_deferred("run")
 func check(ok:bool,message:String) -> void:
@@ -30,4 +30,4 @@ func run() -> void:
 	check(world.alchemy_ui.selected_recipe==recipe,"Live switch keeps the chosen recipe")
 	check(inventory==root.get_node("GameState").inventory and world.player.position==position,"Localization does not mutate inventory or move the player")
 	print("LIVE WORLD LOCALE RESULT: ","PASS" if failures==0 else "FAIL")
-	quit(0 if failures==0 else 1)
+	finish_test(0 if failures==0 else 1)

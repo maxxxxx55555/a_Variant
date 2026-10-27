@@ -1,4 +1,4 @@
-extends SceneTree
+extends "res://tests/AudioCleanTree.gd"
 var failures := 0
 func _initialize() -> void: call_deferred("run")
 func check(ok: bool,label: String) -> void:
@@ -24,4 +24,4 @@ func run() -> void:
 		await RenderingServer.frame_post_draw
 		root.get_texture().get_image().save_png(OS.get_environment("GAME_SCREENSHOT").replace(".png","-premium-menu.png"))
 	print("PREMIUM UI RESULT: ","PASS" if failures==0 else "FAIL")
-	quit(0 if failures==0 else 1)
+	finish_test(0 if failures==0 else 1)

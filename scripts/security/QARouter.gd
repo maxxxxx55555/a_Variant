@@ -9,12 +9,12 @@ static func request(host:Node) -> bool:
 	if not requested:return false
 	if not authorized() or not arguments.has("--verify-build"):
 		printerr("QA arguments require a private QA export and GAME_QA=1")
-		host.get_tree().quit(64)
+		MarchTransition.quit_game(64)
 		return true
 	# Dynamic path avoids an export dependency in the physically filtered public pack.
 	var script:GDScript=load("res://scripts/verification/CampaignRoute.gd")
 	if not script:
-		host.get_tree().quit(65)
+		MarchTransition.quit_game(65)
 		return true
 	var route:Node=script.new()
 	host.get_tree().root.add_child.call_deferred(route)

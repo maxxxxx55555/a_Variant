@@ -2,6 +2,8 @@
 
 ## English
 
+Normal Exit, window close and guarded QA rejection now wait for actual audio playback disposal before terminating. Save failures retain Retry/Stay/Discard, repeated accepted dialog callbacks cannot write twice, and private verifier cleanup remains reusable. Source test drivers drain audio explicitly and the runner rejects resource-leak warnings.
+
 This patch repairs source-build reproducibility. Critical JSON and the compiled integrity manifest now agree with the committed LF files, and interface sound provenance records the canonical generator bytes. Ordinary Git checkout tests cover both autocrlf settings without metadata overrides, and run in CI and the full source suite. Existing trust, tamper, replacement-manifest, protected-save and license checks remain enforced.
 
 Gameplay, illustrations, music WAVs, save schema and edition scope are retained: 60 dependency-linked objectives, eight regions,14 towns,40 points of interest, companions, settlement management and diplomatic/military/mixed endings. Live RU/EN presentation with687 catalog keys, four mood compositions and two musical finales, independent audio levels, reduced motion, credits and protected1.4.0/1.5.0 profiles remain available. No previous public tag or asset was replaced.
@@ -13,6 +15,8 @@ Publication requires full rendered RU/EN source suites, real checkout/tamper/aud
 Limits: Windows x64 offline edition, unsigned portable EXE, no Authenticode or store certification. Android artifacts are omitted under the documented unavailable-emulator fallback. Rendering remains stylized indie art. Finite testing does not guarantee zero possible bugs or prevent a device owner from modifying an offline game. Five owner play/listening/download checks remain a final human sign-off.
 
 ## Русский
+
+Выход через меню и закрытие окна теперь дожидаются освобождения аудио. Повторные сигналы подтверждения не дублируют сохранения; Retry/Stay/Discard и коды отказа QA сохранены. Проверки больше не пропускают предупреждения об утечках ресурсов.
 
 Исправлена воспроизводимая сборка из обычного Git-checkout: манифест данных и происхождение интерфейсных звуков соответствуют исходным LF-байтам. Игровые правила, музыка и защищённые сохранения не меняются. Сохраняются русская и английская локализации и совместимость профилей1.4.0/1.5.0.
 

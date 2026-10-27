@@ -1,4 +1,4 @@
-extends SceneTree
+extends "res://tests/AudioCleanTree.gd"
 
 var failures := 0
 
@@ -73,4 +73,4 @@ func run() -> void:
 		world.queue_free()
 		await process_frame
 	print("STRATEGY RESULT: ", "PASS" if failures == 0 else "FAIL")
-	quit(0 if failures == 0 else 1)
+	finish_test(0 if failures == 0 else 1)

@@ -1,4 +1,4 @@
-extends SceneTree
+extends "res://tests/AudioCleanTree.gd"
 var failures:=0
 func _initialize() -> void:call_deferred("run")
 func check(ok:bool,message:String) -> void:
@@ -10,7 +10,7 @@ func run() -> void:
 	var audio:Node=root.get_node("AudioManager")
 	check(audio.has_method("play_finale"),"Musical finales have dedicated playback")
 	if not audio.has_method("play_finale"):
-		quit(1)
+		finish_test(1)
 		return
 	var moods:Array=audio.catalog.music.keys()
 	audio.play_music(moods[0],0)
@@ -36,4 +36,4 @@ func run() -> void:
 	check(AudioServer.is_bus_mute(AudioServer.get_bus_index("Music")),"Music mute also silences the finale")
 	if OS.get_environment("GAME_AUDIO_MUTED")=="1":check(AudioServer.is_bus_mute(0),"QA remains inaudible through all transitions")
 	print("MUSIC TRANSITIONS RESULT: ","PASS" if failures==0 else "FAIL")
-	quit(0 if failures==0 else 1)
+	finish_test(0 if failures==0 else 1)

@@ -1,4 +1,4 @@
-extends SceneTree
+extends "res://tests/AudioCleanTree.gd"
 var failures:=0
 func _initialize() -> void:call_deferred("run")
 func check(ok:bool,message:String) -> void:
@@ -41,4 +41,4 @@ func run() -> void:
 	panel.queue_free()
 	await process_frame
 	print("RELEASE DETAILS RESULT: ","PASS" if failures==0 else "FAIL")
-	quit(0 if failures==0 else 1)
+	finish_test(0 if failures==0 else 1)

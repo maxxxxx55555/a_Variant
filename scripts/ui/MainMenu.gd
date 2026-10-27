@@ -116,7 +116,7 @@ func _ready() -> void:
 	credits_button.name="CreditsButton"
 	# The container owns this action button and its callback.
 	@warning_ignore("return_value_discarded")
-	action(column, "ui.exit", func()->void: get_tree().quit())
+	action(column, "ui.exit", MarchTransition.quit_game)
 	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
 	@warning_ignore("return_value_discarded")
 	EventBus.language_changed.connect(func(_language:Variant)->void:localize())
@@ -164,7 +164,7 @@ func open_credits() -> void:
 	)
 
 func _notification(what:int) -> void:
-	if what==NOTIFICATION_WM_CLOSE_REQUEST:get_tree().quit()
+	if what==NOTIFICATION_WM_CLOSE_REQUEST:MarchTransition.quit_game()
 
 func saved_campaign()->Dictionary:
 	var simulation:Dictionary=cached_save.get("simulation",{})

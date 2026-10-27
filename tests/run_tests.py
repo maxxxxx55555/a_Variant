@@ -61,6 +61,9 @@ def main():
             cases.append((case, ['--headless', '--script', 'res://tests/test_' + case + '.gd']))
         cases.append(('release-hardening', ['--headless', '--script', 'res://tests/test_release_hardening.gd']))
         cases.append(('music-transitions', ['--headless', '--script', 'res://tests/test_music_transitions.gd']))
+        cases.append(('qa-audio-lifetime', ['--headless', '--fixed-fps', '30', '--script', 'res://tests/test_qa_audio_lifetime.gd']))
+        for exit_case in ['title-exit','title-wm-close','pause-retry','pause-discard']:
+            cases.append(('user-exit-'+exit_case, ['--headless','--fixed-fps','30','--script','res://tests/test_user_exit_audio.gd','--','--case='+exit_case]))
         for case in ['ui_audio_feedback','context_audio']:
             cases.append((case, ['--headless', '--script', 'res://tests/test_' + case + '.gd']))
         for case in ['qa_router','build_integrity','critical_read_bounds','integrity_notice','save_recovery','atomic_economy']:
@@ -124,7 +127,7 @@ def main():
             console = result.stdout + result.stderr
             (artifacts / (name + '-console.log')).write_text(console, encoding='utf-8')
             log += '\n' + console
-            errors = [line for line in log.splitlines() if ('ERROR:' in line or 'FAIL:' in line or 'SCRIPT ERROR' in line) and 'Failed to read the root certificate store' not in line]
+            errors = [line for line in log.splitlines() if ('ERROR:' in line or 'FAIL:' in line or 'SCRIPT ERROR' in line or any(marker in line.lower() for marker in ['objectdb instances leaked', 'objectdb instances were leaked', 'orphan nodes detected', 'resources still in use at exit', 'were leaked at exit', 'rid allocations were leaked'])) and 'Failed to read the root certificate store' not in line]
             print(f'{name}: ' + ('PASS' if result.returncode == 0 and not errors else 'FAIL'))
             for line in log.splitlines():
                 if line.startswith(('RESULT:', 'PLAYTHROUGH', 'FAIL:', 'CAMPAIGN ROUTE RESULT:', 'CAMPAIGN RESULT:', 'STRATEGY RESULT:', 'AUDIO RESULT:')):

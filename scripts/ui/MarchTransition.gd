@@ -3,6 +3,7 @@ extends CanvasLayer
 var overlay:Control
 var loading_tip:Label
 var busy:bool=false
+var quitting:bool=false
 var unsaved_dialog:ConfirmationDialog
 const TITLE:String="res://scenes/ui/main_menu.tscn"
 func _ready() -> void:
@@ -65,28 +66,33 @@ func show_loading() -> void:
 func hide_loading() -> void:
 	if is_instance_valid(overlay):overlay.hide()
 func go_to(path:String) -> void:
-	if busy:return
+	if busy or quitting:return
 	busy=true
 	get_tree().paused=false
 	show_loading()
 	await get_tree().process_frame
 	await get_tree().process_frame
+	if quitting:return
 	var error:Error=ResourceLoader.load_threaded_request(path,"PackedScene")
 	if error!=OK:
 		loading_failed(path)
 		return
 	while ResourceLoader.load_threaded_get_status(path)==ResourceLoader.THREAD_LOAD_IN_PROGRESS:
 		await get_tree().process_frame
+		if quitting:return
+	if quitting:return
 	if ResourceLoader.load_threaded_get_status(path)==ResourceLoader.THREAD_LOAD_LOADED:
 		var scene:PackedScene=ResourceLoader.load_threaded_get(path)
 		error=get_tree().change_scene_to_packed(scene)
 		await get_tree().process_frame
 		await get_tree().process_frame
+		if quitting:return
 		if error==OK:hide_loading()
 		else:loading_failed(path)
 	else:loading_failed(path)
 	busy=false
 func confirm_unsaved(retry:Callable,leave:Callable) -> void:
+	if quitting:return
 	if is_instance_valid(unsaved_dialog):unsaved_dialog.popup_centered();return
 	unsaved_dialog=ConfirmationDialog.new()
 	unsaved_dialog.theme=preload("res://scripts/ui/MarchTheme.gd").create()
@@ -101,6 +107,7 @@ func confirm_unsaved(retry:Callable,leave:Callable) -> void:
 	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
 	@warning_ignore("return_value_discarded")
 	unsaved_dialog.confirmed.connect(func()->void:
+		if quitting:return
 		if retry.call():
 			close_unsaved()
 			leave.call()
@@ -109,6 +116,7 @@ func confirm_unsaved(retry:Callable,leave:Callable) -> void:
 	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
 	@warning_ignore("return_value_discarded")
 	unsaved_dialog.custom_action.connect(func(action:Variant)->void:
+		if quitting:return
 		if action=="discard":
 			close_unsaved()
 			leave.call()
@@ -125,6 +133,7 @@ func close_unsaved() -> void:
 	unsaved_dialog=null
 
 func loading_failed(path:String) -> void:
+	if quitting:return
 	busy=false
 	loading_tip.text=LocalizationManager.get_string("flow.error")
 	var back:Button=overlay.find_child("LoadingBack",true,false)
@@ -136,7 +145,7 @@ func loading_failed(path:String) -> void:
 		@warning_ignore("return_value_discarded")
 		back.pressed.connect(func()->void:
 			back.queue_free()
-			if path==TITLE:get_tree().quit()
+			if path==TITLE:quit_game()
 			else:go_to.call_deferred(TITLE)
 		)
 	back.text=LocalizationManager.get_string("ui.exit" if path==TITLE else "ui.to_menu")
@@ -145,4 +154,15 @@ func loading_failed(path:String) -> void:
 func _notification(what:int) -> void:
 	if what==NOTIFICATION_WM_CLOSE_REQUEST:
 		var current:Node=get_tree().current_scene
-		if current!=null and current.name=="MarchBoot":get_tree().quit()
+		if current!=null and current.name=="MarchBoot":quit_game()
+
+func quit_game(exit_code:int=0)->void:
+	if quitting:return
+	quitting=true
+	get_tree().paused=true
+	_finish_quit.call_deferred(exit_code)
+
+func _finish_quit(exit_code:int)->void:
+	var audio_ok:bool=await AudioManager.shutdown()
+	if not audio_ok:push_error("Audio shutdown did not release playback before the bounded exit deadline")
+	get_tree().quit(exit_code if audio_ok or exit_code!=0 else 1)

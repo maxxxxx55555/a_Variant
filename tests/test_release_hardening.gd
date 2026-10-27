@@ -1,4 +1,4 @@
-extends SceneTree
+extends "res://tests/AudioCleanTree.gd"
 const Policy = preload("res://scripts/security/MarchSavePolicy.gd")
 const Guard = preload("res://scripts/security/SaveGuard.gd")
 var failures := 0
@@ -140,4 +140,4 @@ func run() -> void:
 	check(not Guard.safe_text("(".repeat(40)+")".repeat(40)),"Constructor nesting is bounded before parsing")
 	print("MUTATED SAVE FIELDS: ",mutation_count)
 	print("RELEASE HARDENING RESULT: ","PASS" if failures==0 else "FAIL")
-	quit(0 if failures==0 else 1)
+	finish_test(0 if failures==0 else 1)

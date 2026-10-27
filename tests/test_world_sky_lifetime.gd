@@ -1,4 +1,4 @@
-extends SceneTree
+extends "res://tests/AudioCleanTree.gd"
 func _initialize() -> void:call_deferred("run")
 func run() -> void:
 	await process_frame
@@ -14,4 +14,4 @@ func run() -> void:
 	original=null
 	for i in 3:await process_frame
 	print("WORLD SKY LIFETIME: ","PASS" if ok else "FAIL: preserve the scene-owned Sky while changing its material")
-	quit(0 if ok else 1)
+	finish_test(0 if ok else 1)
