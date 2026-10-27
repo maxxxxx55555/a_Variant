@@ -1,0 +1,22 @@
+{
+  "result": "PASS",
+  "command": "sha256sum -c MarchlandOaths-SHA256SUMS-1.5.1.txt",
+  "exit": 0,
+  "stdout": "MarchlandOaths-Windows-1.5.1.zip: OK\n",
+  "assets": [
+    {
+      "name": "MarchlandOaths-Windows-1.5.1.zip",
+      "sha256": "8e392c3708d907790906d7c0b7a4794a3c987b507456f74b87831eae553a3b7d",
+      "bytes": 318466595,
+      "url": "https://github.com/maxxxxx55555/a_Variant/releases/download/v1.5.1/MarchlandOaths-Windows-1.5.1.zip"
+    },
+    {
+      "name": "MarchlandOaths-SHA256SUMS-1.5.1.txt",
+      "sha256": "fdd5675109e86824586cfe05eb690f47b5da061e6f0727305eaea47ea938ed81",
+      "bytes": 99,
+      "url": "https://github.com/maxxxxx55555/a_Variant/releases/download/v1.5.1/MarchlandOaths-SHA256SUMS-1.5.1.txt"
+    }
+  ],
+  "download_scope": "Rechecked exact fresh acceptance-cycle downloads; no duplicate transfer; current asset metadata separately verified unchanged",
+  "log_sha256": "374a13525f561ebd3d92ae2685b94a822689f5ff8ccd32dbf55bcf3f4aacaede"
+}

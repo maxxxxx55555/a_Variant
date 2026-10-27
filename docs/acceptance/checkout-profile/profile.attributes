@@ -1,0 +1,9 @@
+# Diagnostic checkout serialization only; immutable blobs and contracts unchanged.
+assets/audio/catalog.json text eol=crlf
+data/balance/alchemy.json text eol=crlf
+data/balance/buildings.json text eol=crlf
+data/balance/campaign.json text eol=crlf
+data/balance/crafting.json text eol=crlf
+data/balance/equipment.json text eol=crlf
+data/balance/localization.json text eol=crlf
+tools/generate_audio.py text eol=crlf

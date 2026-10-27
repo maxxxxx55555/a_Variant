@@ -1,0 +1,12 @@
+{
+  "result": "PASS",
+  "exit": 0,
+  "godot_invocations": 62,
+  "seconds": 457.156,
+  "rendered": true,
+  "locale": "ru",
+  "errors": [],
+  "timed_out": false,
+  "console_sha256": "d3ecce8095c0a9d153351c986a577ed5fb4de0cea1c786f186d50efbe71f6a10",
+  "scope": "Diagnostic checkout-profile run; no replacement of default-checkout failures or acceptance sign-off"
+}

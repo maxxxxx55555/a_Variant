@@ -1,0 +1,13 @@
+{
+  "verdict": "NOT_ACCEPTED",
+  "announcement_approved": false,
+  "review_type": "Two automated read-only reviews; not independent human certification",
+  "findings": [
+    "Scoped info/attributes profile is a legitimate diagnostic reproduction path in disposable copies, not a trust bypass.",
+    "It changes raw working bytes while preserving canonical tag blobs; an empty Git diff does not prove raw-byte equality.",
+    "Overrides contradict explicit committed eol=lf policy. test_critical_manifest only asserts policy text, not effective attributes.",
+    "Default-checkout failures must remain; full diagnostic passes cannot become unqualified acceptance.",
+    "Do not alter expected hashes, fixtures, manifest, TrustedData, licenses, tags or release assets."
+  ],
+  "source": "https://git-scm.com/docs/gitattributes"
+}

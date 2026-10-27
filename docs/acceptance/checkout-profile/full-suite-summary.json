@@ -1,0 +1,26 @@
+{
+  "en": {
+    "result": "PASS",
+    "exit": 0,
+    "godot_invocations": 62,
+    "seconds": 584.171,
+    "rendered": true,
+    "locale": "en",
+    "errors": [],
+    "timed_out": false,
+    "console_sha256": "6c434598ed70c5f057593bfe6c0d98540285b5bbd9e66c9903da0630a9f64d09",
+    "scope": "Diagnostic checkout-profile run; no replacement of default-checkout failures or acceptance sign-off"
+  },
+  "ru": {
+    "result": "PASS",
+    "exit": 0,
+    "godot_invocations": 62,
+    "seconds": 457.156,
+    "rendered": true,
+    "locale": "ru",
+    "errors": [],
+    "timed_out": false,
+    "console_sha256": "d3ecce8095c0a9d153351c986a577ed5fb4de0cea1c786f186d50efbe71f6a10",
+    "scope": "Diagnostic checkout-profile run; no replacement of default-checkout failures or acceptance sign-off"
+  }
+}

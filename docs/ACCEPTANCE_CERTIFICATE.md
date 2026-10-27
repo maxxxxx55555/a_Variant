@@ -156,3 +156,7 @@ The unique branch exception remains documented in FINAL_REPORT where applicable.
 The requested positive acceptance sentence is withheld because issuing it would contradict the observed failures. The announcement copy and eight images in [ANNOUNCE_KIT.md](ANNOUNCE_KIT.md) are rejected drafts.
 
 Редакция не принята по текущему гейту; анонс приостановлен до устранения и повторной проверки обязательных блокеров.
+
+## Supplemental checkout reproduction — 2026-10-27
+
+The separate [diagnostic reproduction report](CHECKOUT_REPRODUCTION.md) records full rendered EN/RU passes after local checkout-serialization overrides. It preserves canonical tag blobs while deliberately changing selected scratch working bytes. Those overrides contradict the tagged LF checkout policy, so they do not clear the default-checkout failures or change this **NOT_ACCEPTED / ANNOUNCEMENT HOLD** verdict. No new export, soak or native acceptance is substituted. Original game files, tags and release assets remain unchanged.

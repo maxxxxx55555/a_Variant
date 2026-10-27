@@ -1,0 +1,224 @@
+{
+  "source_commit": "006c164895d8d70fc2a72a61610b2ad27bb9e97e",
+  "source_tree": "2ddab3608b569c15c373406b440b8a78baec9c5f",
+  "canonical_git_diff": "",
+  "working_changes": [
+    {
+      "path": "assets/art/meadow_painted.png.import",
+      "before_sha256": "31c42c24fa3933409fcd44167c95db3088292e4cdf2336f0a9c63b1db2ba1cc0",
+      "after_sha256": "2e8eee33db1556b34707a48c7c13c22a9a2d9d33255fac4faca2fe706d994371",
+      "newline_only": true
+    },
+    {
+      "path": "assets/art/realistic/materials/cobblestone_floor_08/cobblestone_floor_08_diff_1k.jpg.import",
+      "before_sha256": "908cf25adbbbfb0472a121ff3407f5f7c6ec1230a87965dc4f546224e6a7357d",
+      "after_sha256": "84734881d3068295d1d96cfc8a1a2faee376921cf218d8b879f9098d79b6d723",
+      "newline_only": true
+    },
+    {
+      "path": "assets/art/realistic/materials/cobblestone_floor_08/cobblestone_floor_08_nor_gl_1k.jpg.import",
+      "before_sha256": "ec5fbf81e75a4732492c09dbc2184b5cf0f2b5d8644e6dd39eb4081a77d706ec",
+      "after_sha256": "8a10add0a64840b6bd7cda08c32bfdfaea286c26fbe992d5123a28d2d176a774",
+      "newline_only": true
+    },
+    {
+      "path": "assets/art/realistic/materials/cobblestone_floor_08/cobblestone_floor_08_rough_1k.jpg.import",
+      "before_sha256": "350248266691408fb8e2b277f6ad4772c8f0792aa9acd99025cc1c6a01613d64",
+      "after_sha256": "37e64b24c0623e5fdab150b2449c4334c1c4c5e7ca3cfd4d27c09442fd6e735c",
+      "newline_only": true
+    },
+    {
+      "path": "assets/art/realistic/materials/damaged_plaster/damaged_plaster_arm_1k.jpg.import",
+      "before_sha256": "6ce3395e9054cccd6450cf58d976be9b80cbdc7d43777a0d3d25a5e4ef21ac70",
+      "after_sha256": "2996e8229b6c1fa18b4e8c973dc4cf4688a034161ec7ff37182aeceb9ac7d47f",
+      "newline_only": true
+    },
+    {
+      "path": "assets/art/realistic/materials/damaged_plaster/damaged_plaster_diff_1k.jpg.import",
+      "before_sha256": "c08c8fb4d4333c0127a20cb9a3af1f32ace534459ba5ed4e2590073b6d6e2ba1",
+      "after_sha256": "a10a8065791ec5ebbcc42b1a823f45aae05d1bf9d947f8d2979f73ec3d7265d8",
+      "newline_only": true
+    },
+    {
+      "path": "assets/art/realistic/materials/damaged_plaster/damaged_plaster_nor_gl_1k.jpg.import",
+      "before_sha256": "9c2ddd5a9488a8691277352e757b13eea894b693d8c1ef7013ce7ba6f75fbc1d",
+      "after_sha256": "aaa5f6254948f094e5b0cbc15a92f14919a370d8d8c9a7c6d186ba0df1323aca",
+      "newline_only": true
+    },
+    {
+      "path": "assets/art/realistic/materials/forest_ground_04/forest_ground_04_diff_1k.jpg.import",
+      "before_sha256": "4a224956ac7f0550f1c48a6fe9686604ddcc6f1caf26e70bc302f8d4c9508a6e",
+      "after_sha256": "9b30b65758294f3c91e2b0271dfe9d420ce1db6225f3e642816b54080d4f9424",
+      "newline_only": true
+    },
+    {
+      "path": "assets/art/realistic/materials/forest_ground_04/forest_ground_04_nor_gl_1k.jpg.import",
+      "before_sha256": "5f9981ac83547c4781602bf6d32f9d66ee721528e5e115f2ad7dcb9b733db61f",
+      "after_sha256": "29dba9731941eb13b3215f91c35a1d2f905a9da83ed85110d27fbd18b914b784",
+      "newline_only": true
+    },
+    {
+      "path": "assets/art/realistic/materials/forest_ground_04/forest_ground_04_rough_1k.jpg.import",
+      "before_sha256": "1ec21ef98a0314ae6deac3fc657ee10b255a8a9d0fede2306ab072d2f456c240",
+      "after_sha256": "a36b2e3ddaeb2e92410fc6b563a67db0d9f7ddfd05fbfbb02881079e48229c98",
+      "newline_only": true
+    },
+    {
+      "path": "assets/art/realistic/materials/roof_slates_02/roof_slates_02_diff_1k.jpg.import",
+      "before_sha256": "eff8115a8a6db9220507a002591221edb988eccec5b9f635b24a6cb6b033f2c3",
+      "after_sha256": "46c3cfbabed7c577448198b9ca57801043e23031b626e362ab9f294bb63029ad",
+      "newline_only": true
+    },
+    {
+      "path": "assets/art/realistic/materials/roof_slates_02/roof_slates_02_nor_gl_1k.jpg.import",
+      "before_sha256": "7c9191f83c8cbccf467b547697e93630d8053ec6a67bcf54441fcd71229c8c4a",
+      "after_sha256": "e6b93b4cc8476b4720f5a27edd520b225592605941f65b0f7054895e9fb9f832",
+      "newline_only": true
+    },
+    {
+      "path": "assets/art/realistic/materials/roof_slates_02/roof_slates_02_rough_1k.jpg.import",
+      "before_sha256": "12abd8106cba4c4a42d2bb096e3302fd778330700e92ecf163ebda20caaad55a",
+      "after_sha256": "1786772b822655a2fcb1c20ec974ac8c247abbf2199f234c3b8911f94965c26b",
+      "newline_only": true
+    },
+    {
+      "path": "assets/art/realistic/materials/rough_wood/rough_wood_diff_1k.jpg.import",
+      "before_sha256": "8be7ad1f21c42c8539e73518ba4bc9583feba66884ff8e10dd2bbc0459c50aa3",
+      "after_sha256": "80db4c8aa2c7d279e87bcbda27c103d449936862d503290189b797ef7d3364a2",
+      "newline_only": true
+    },
+    {
+      "path": "assets/art/realistic/materials/rough_wood/rough_wood_nor_gl_1k.jpg.import",
+      "before_sha256": "e7b05025a319e625b64ba933d26a06ff721e2d879a311e89605677de8cf5cfd2",
+      "after_sha256": "2465128812a1b953ae0e353a69dd328dd58d1b199059eaf90a9f84f75b3eb5e4",
+      "newline_only": true
+    },
+    {
+      "path": "assets/art/realistic/materials/rough_wood/rough_wood_rough_1k.jpg.import",
+      "before_sha256": "75e9699491985c0b43280097550309d935fb94abde7f62edac726ea90d01dedf",
+      "after_sha256": "7413764348ed14b3e945bb638fb73f2062305bca2c4d430e10fef9263e1f1db0",
+      "newline_only": true
+    },
+    {
+      "path": "assets/art/realistic/models/rock_moss_set_01/rock_moss_set_01.gltf.import",
+      "before_sha256": "e5fc13b434fd420c4c908e7c24fed5bad64caab8edca86983450ab56aa5de896",
+      "after_sha256": "ab8b3798817133afff0ff0fbbff085578ca66b0b082c176338a4d9897e1aa7db",
+      "newline_only": true
+    },
+    {
+      "path": "assets/art/realistic/models/rock_moss_set_01/textures/rock_moss_set_01_diff_1k.jpg.import",
+      "before_sha256": "6592868c7581aaad20722fe728e588dde1057acb9cf8c8c3cc33c0bcc1a4680a",
+      "after_sha256": "5ceb745fb5c943f3e9c21956b776e4b81a92335d96ae17ed8580cd3671dc9642",
+      "newline_only": true
+    },
+    {
+      "path": "assets/art/realistic/models/rock_moss_set_01/textures/rock_moss_set_01_nor_gl_1k.jpg.import",
+      "before_sha256": "7a3091aeb699b7319d0e7db2051a9de9c64963ced146f41b3fd3412b9927c2f7",
+      "after_sha256": "312014a4adb52e64272a9c145ef64fdce077aed915ae07960d9e1c881bcf7411",
+      "newline_only": true
+    },
+    {
+      "path": "assets/art/realistic/models/rock_moss_set_01/textures/rock_moss_set_01_rough_1k.jpg.import",
+      "before_sha256": "4e42272c362cc387093dde57b72f67ca28ae80e54e66b72622c34d54726f2d2e",
+      "after_sha256": "51ee76fcc06d32ad46767d7e1377aaac38ebc5aea2ae17167de0f04be71ba0d0",
+      "newline_only": true
+    },
+    {
+      "path": "assets/art/realistic/models/tree_small_02/textures/tree_small_02_arm_1k.jpg.import",
+      "before_sha256": "2091a87377999b2bc5fdd96ce1cbfc908fd2de1cede53b343f6ffa3268ead7bc",
+      "after_sha256": "d4b0990c548937585c1631eea7f2277a4746743e3d26f17cea3be0076686f1af",
+      "newline_only": true
+    },
+    {
+      "path": "assets/art/realistic/models/tree_small_02/textures/tree_small_02_branch_arm_1k.jpg.import",
+      "before_sha256": "720fee557b1d7f5f0f1be6ee134cfd7b362cab7bc2fcfcc6c0eae2dabf2a067e",
+      "after_sha256": "7550fdbbc23f8816d51451de6e70b00edbdaacd6aade1885b7e8ad46204d0449",
+      "newline_only": true
+    },
+    {
+      "path": "assets/art/realistic/models/tree_small_02/textures/tree_small_02_branch_diff_1k.jpg.import",
+      "before_sha256": "e39d195ca184571e0789f6bcba3dfbce29dd2bf7a8b48b01dc8e5896ed33d7db",
+      "after_sha256": "cabb73656694d9be10af0088622f19b4ef7da2ee61a492203939609c0ee81a67",
+      "newline_only": true
+    },
+    {
+      "path": "assets/art/realistic/models/tree_small_02/textures/tree_small_02_branch_nor_gl_1k.jpg.import",
+      "before_sha256": "a42d8b2b3f9f6a74a674c3e3fff962c5dc01c820eee3e934bd1275a755101d23",
+      "after_sha256": "6bf9a46114743d305b258df21e8477940cfe4a001787ad895a6ce458d1e039e2",
+      "newline_only": true
+    },
+    {
+      "path": "assets/art/realistic/models/tree_small_02/textures/tree_small_02_diff_1k.jpg.import",
+      "before_sha256": "332a505d7d86140ad62bea964974ae04c459b7eec3ab24d9c6785eb7fbede430",
+      "after_sha256": "0775ee7687e9943a9e3a63197bb93f1ef0e4b281313d33a06097c24d421e5b77",
+      "newline_only": true
+    },
+    {
+      "path": "assets/art/realistic/models/tree_small_02/textures/tree_small_02_leaves_arm_1k.jpg.import",
+      "before_sha256": "b4784d365b793d92d07791f40d3e7a917b0ade5a53aa362ba4a79ec25a9b53cc",
+      "after_sha256": "55dcbd3ce94257a3b016486cc0b44a76c7a512a85c8c6db33d191e3c2bad2889",
+      "newline_only": true
+    },
+    {
+      "path": "assets/art/realistic/models/tree_small_02/textures/tree_small_02_leaves_diff_1k.jpg.import",
+      "before_sha256": "2386b4d9436888e1e35357fbbbf315395faaa2ba56c9d31b0380f32ba0a4510e",
+      "after_sha256": "556d4c74000a77b660ebf7d7967132be8590750a966a02c29bb5ced7a338c67b",
+      "newline_only": true
+    },
+    {
+      "path": "assets/art/realistic/models/tree_small_02/textures/tree_small_02_leaves_nor_gl_1k.jpg.import",
+      "before_sha256": "1f515daa4ad09de7a3e66160807a8cce301eb98a1cac5c1da86bcba1aee325c2",
+      "after_sha256": "0308f454efd48386a0f7535fa8b7906e3da2801c454798d5937cb1c73c7f0739",
+      "newline_only": true
+    },
+    {
+      "path": "assets/art/realistic/models/tree_small_02/textures/tree_small_02_nor_gl_1k.jpg.import",
+      "before_sha256": "e1e38430ff6b3c7ca82b1092327ca37b647e32b61911cc7699ee53c942168b43",
+      "after_sha256": "19161b1cc0d18a3406a0f7e0f51353021a9fe3b4fdc921e1babeca28c015ebd5",
+      "newline_only": true
+    },
+    {
+      "path": "assets/art/realistic/models/wine_barrel_01/textures/wine_barrel_01_arm_1k.jpg.import",
+      "before_sha256": "1c2cde20618c278188b78bae2aed3b1e7591909c762dd06285a86ef19bd4071f",
+      "after_sha256": "6eb112457af1526eeb842d7da2b9d201f603e4f1039ae329e5a2e4faed4f1c60",
+      "newline_only": true
+    },
+    {
+      "path": "assets/art/realistic/models/wine_barrel_01/textures/wine_barrel_01_diff_1k.jpg.import",
+      "before_sha256": "4de10922227902b009cd7c68aaf1ee2751879486a1aedd8156f975b0cbce78f0",
+      "after_sha256": "62ee9a86c59e436759597f1f6b1de08f09e4a4b505d1fe1eff64965fdf2f78b4",
+      "newline_only": true
+    },
+    {
+      "path": "assets/art/realistic/models/wine_barrel_01/textures/wine_barrel_01_nor_gl_1k.jpg.import",
+      "before_sha256": "dcd24fb36646b526fb334822277c410a814a26ca9947ac5cc725bb3f6e918941",
+      "after_sha256": "bec7e460fb49d263147e1d33feacfccfeebd38f4d26380ae41dee7028e6f0a77",
+      "newline_only": true
+    },
+    {
+      "path": "assets/art/realistic/models/wine_barrel_01/wine_barrel_01.gltf.import",
+      "before_sha256": "d02c7377137f5ae4c794fd97bd67c9e8b5355288b8a22ca82355f2511d0ec686",
+      "after_sha256": "e23369b97949fbbe9803630ab9b9140d3c13333a9458588534096d62fac36958",
+      "newline_only": true
+    },
+    {
+      "path": "assets/art/realistic/sky/dusk.hdr.import",
+      "before_sha256": "4ddbc093a379d48bddfb36b23215bfad6e9b2f3b0e184de0a2ec405ac976496c",
+      "after_sha256": "5865769c9d7f33cdc1d5ecd32f02cede9d25b84e129aeabdce34116375584639",
+      "newline_only": true
+    },
+    {
+      "path": "assets/art/realistic/trees/birch-canopy-0.png.import",
+      "before_sha256": "7917fd6b97ec86e3a4a133abdbd48ebca759ce12794e32d4b84f0ce245f81582",
+      "after_sha256": "4d61f5960ec4e7bb593c974229567318cf58ecb1d15b119a7565b8754915df2a",
+      "newline_only": true
+    },
+    {
+      "path": "assets/art/realistic/trees/birch-canopy-1.png.import",
+      "before_sha256": "1f1633c8d75e1a5b6a0bd837b2cf00b810d0fad753e7ce85142311f1972ac888",
+      "after_sha256": "084ad59cc59c9a1f1838c33f342a1a0a6a3042dcb6f071a946b103379a700372",
+      "newline_only": true
+    }
+  ],
+  "scope": "Source derived importer metadata differences retained; actual source byte changes are not ignored"
+}

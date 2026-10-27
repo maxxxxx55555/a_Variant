@@ -1,0 +1,96 @@
+✓ Localization key parity test passed (687 keys verified)
+✓ Data resources check passed (119 resources verified in data/)
+✓ Project structure verification passed (22 critical files present)
+
+ALL VERIFICATION TESTS PASSED SUCCESSFULLY!
+INHERITED LICENSE BYTE CONTRACT PASS: 14 files from published1.4.0
+EXPORT CONTRACT PASS: 2 presets with compiled data and notices
+COPY CONTRACT PASS: 687 keys, scene/model source audit and canonical copy
+PROMISE MATRIX PASS: 3278 original entries, explicit scope and existing test references
+MECHANICS MAPPING PASS: 24 mechanics, 192 cells; EXECUTED_PASS
+.......
+----------------------------------------------------------------------
+Ran 7 tests in 0.001s
+
+OK
+SOUNDTRACK PASS: 4 unique mood compositions and two musical finales
+AUDIO ASSETS PASS: 41 WAV assets; levels, data, loop seams and envelopes verified
+PUBLIC QA CONTRACT PASS: separate feature/env gate, physical exclusion, encrypted presets
+RELEASE EXPORT PREFLIGHT PASS: missing/invalid key rejected, no secret output or mutation
+CRITICAL DATA TRUST ANCHOR VERIFIED
+CRITICAL DATA TRUST ANCHOR GENERATED
+CRITICAL MANIFEST PASS: 8 files, stable generation, tamper and replacement rejection
+STRICT SHIPPING COMPILE PASS 90 scripts 49 categories
+import: PASS
+regressions: PASS
+RESULT: PASS (46 checks, 0 failures)
+RESULT: PASS (46 checks, 0 failures)
+audio: PASS
+AUDIO RESULT: PASS
+AUDIO RESULT: PASS
+playthrough: PASS
+RESULT: PASS (15 checks, 0 failures)
+RESULT: PASS (15 checks, 0 failures)
+credits: PASS
+release-details: PASS
+disabled-explanations: PASS
+comfort-preferences: PASS
+live-world-locale: PASS
+localized-feedback: PASS
+locomotion-gait: PASS
+settings-navigation: PASS
+initial-idle-pose: PASS
+map-navigation: PASS
+road-landmarks: PASS
+localization: PASS
+presentation: PASS
+identity: PASS
+siege: PASS
+civilians: PASS
+combat_cover: PASS
+terrain_sampling: PASS
+weapon_view: PASS
+house_cache: PASS
+art_assets: PASS
+movement_comfort: PASS
+save_guard: PASS
+legacy_migration: PASS
+actor_material_lifetime: PASS
+settings_bounds: PASS
+world-sky-lifetime: PASS
+clear-play: PASS
+premium-ui: PASS
+detailed_figures: PASS
+weapon_detail: PASS
+campaign_finale: PASS
+archer_presentation: PASS
+release-hardening: PASS
+music-transitions: PASS
+ui_audio_feedback: PASS
+context_audio: PASS
+qa_router: PASS
+build_integrity: PASS
+critical_read_bounds: PASS
+integrity_notice: PASS
+save_recovery: PASS
+atomic_economy: PASS
+navigation-matrix: PASS
+qa-seed: PASS
+mechanics-inputs: PASS
+profile-contract: PASS
+army-pause-regression: PASS
+army-casualty-lifetime: PASS
+iron-death-reentry: PASS
+companion-scan-regression: PASS
+exact-float-limits: PASS
+save-float-precision: PASS
+invalid-combat-inputs: PASS
+untrusted-exploration: PASS
+packed-append-regression: PASS
+strategy: PASS
+STRATEGY RESULT: PASS
+STRATEGY RESULT: PASS
+campaign: PASS
+CAMPAIGN RESULT: PASS
+CAMPAIGN RESULT: PASS
+Artifacts: C:\Users\Maxsim\Documents\Codex\2026-10-24\new-chat\outputs\checkout-profile-2026-10-27\a_Variant\full-suites\en
