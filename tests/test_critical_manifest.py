@@ -2,6 +2,9 @@
 import hashlib,json,subprocess,sys,tempfile,shutil
 from pathlib import Path
 root=Path(__file__).resolve().parents[1]
+from test_checkout_bytes import assert_effective_lf
+if (root/'.git').exists():
+    assert_effective_lf(root)
 tool=root/'tools/build_manifest.py'
 assert tool.is_file(),'Missing critical-data manifest generator'
 attributes=root/'.gitattributes'

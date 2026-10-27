@@ -1,4 +1,4 @@
-# Marchland Oaths — 1.5.1
+# Marchland Oaths — 1.5.2
 
 ## Current edition scope
 
@@ -6,21 +6,21 @@ The compact campaign has60 dependency-linked objectives across eight regions,14 
 
 The older GAME_DESIGN/FULL_BOOK are a broader archived roadmap, not additional advertised features. **Not in this edition:** enterable cave/cellar networks, physical caravan robbery/escort economy, individual age/sex/water/epidemic simulation, player skill trees, timed parry/dodge invulnerability or player bow combat, extra equipment slots/grid/filter UI, command-wheel/RTS selection, cavalry, full branching narrative investigations, six reverb zones, advanced accessibility/render presets, and separate economic/liberation/political-collapse endings. Individual differences and all original promises are indexed in [the edition matrix](docs/PROMISE_MATRIX.md); its complete inventory retains the original words and line references. Compatibility rendering uses non-volumetric fog and does not provide SDFGI/SSR/SSAO. Performance figures describe the tested host, not every hardware target.
 
-## 1.5.1 changes
+## 1.5.2 repair
 
-Live Russian/English menu updates and 687 catalog keys, preserving the current save/difficulty selection. Four distinct Gemini/Lyria mood compositions, two 20-second musical finales, independent Master/Music/SFX/UI levels, reduced motion, functional credits and coherent application icons. Existing protected profiles and legacy user-data directories remain compatible.
+Ordinary Git checkouts now use the committed LF bytes consistently: critical-data hashes and the compiled trust anchor match those bytes, and interface SFX provenance identifies the unchanged canonical generator source. Real checkout regressions exercise both `core.autocrlf=true` and `false` without local attribute overrides; CI and the source runner enforce them. Existing public tags and assets remain immutable.
+
+Retained: Live RU/EN presentation with687 catalog keys, four mood compositions and two musical finales, independent audio levels, reduced motion, credits and protected1.4.0/1.5.0 profiles. Current content: 60 dependency-linked objectives, eight regions,14 towns,40 points of interest, companions, settlement management and diplomatic/military/mixed endings.
 
 ## Русский
 
-Живое переключение русского и английского языков без перезагрузки меню. Разные композиции для четырёх настроений, музыкальные финалы, четыре уровня звука, настройка анимации и экран авторов. Каталоги старых сохранений сохранены.
+Исправлена воспроизводимая сборка из обычного Git-checkout: манифест данных и происхождение интерфейсных звуков соответствуют исходным LF-байтам. Игровые правила, музыка и защищённые сохранения не меняются. Сохраняются русская и английская локализации и совместимость профилей1.4.0/1.5.0.
 
-Published baseline: v1.5.0. The v2 successor is1.5.1 because the existing1.5.0 tag and release are immutable. Detailed provenance: assets/audio/SOUNDTRACK.md. Localization: docs/LOCALIZATION.md. Scope remains stylized indie art and does not claim GTA V scale. Portable Windows executables are not Authenticode-signed; offline save tamper evidence is not unbreakable DRM.
+## Validation and limits
 
-## Current acceptance
+Coverage: 62 rendered Godot cases per locale;192 mechanics cells; actual campaign, save, integrity and UI routes, plus Python checkout/provenance/license/copy/export contracts. Fresh complete source/native/soak results and exact artifact hashes are recorded by the release gate and current acceptance certificate. Earlier release measurements are historical and do not establish acceptance of this patch.
 
-Terminal iron-mode death rejects repeated callbacks, loading and recovery; normal death retains paid recovery. Protected1.4.0 and1.5.0 profiles preserve progress and installation keys. All49 GDScript warning categories are enforced on90 shipping/private-QA scripts. 62 rendered Godot invocations passed in each locale, plus Python byte/export/isolation/audio contracts. 50 complete seeded campaigns, a2628.797-second normal rendered soak and three exact native complete campaigns passed. The measured rainy scene ran at59.98 FPS (60 cap),5522ms load,340 draw calls at1280×720 on the tested AMD integrated GPU.
-
-See [release notes](docs/RELEASE_1.5.1.md), [mechanics coverage](docs/MECHANICS_MATRIX.md), [save integrity](SAVE-INTEGRITY.md) and [the scoped promise inventory](docs/PROMISE_MATRIX.md). Tests cover stated cases; they do not prove absence of every possible defect. Public builds reject QA arguments and physically exclude verification resources.
+See [patch notes](docs/RELEASE_1.5.2.md), [acceptance certificate](docs/ACCEPTANCE_CERTIFICATE.md), [mechanics coverage](docs/MECHANICS_MATRIX.md), [save integrity](SAVE-INTEGRITY.md) and [the scoped promise inventory](docs/PROMISE_MATRIX.md). Portable Windows x64; Godot Compatibility/OpenGL-capable GPU; offline. The EXE is not Authenticode signed. Android artifacts are omitted. Finite automated tests do not replace owner play/listening checks or guarantee zero possible bugs, unbreakable offline security or AAA scale.
 
 ---
 
@@ -67,7 +67,7 @@ A connected 4×4 km terrain, eight factions, fourteen settlements, forty marked 
 Open `project.godot` in Godot 4.7 and press F5, or use:
 
 ```text
-python tools/build_manifest.py
+python tools/build_manifest.py --check
 # Set GODOT_SCRIPT_ENCRYPTION_KEY and GODOT_WINDOWS_RELEASE_TEMPLATE privately in the build environment.
 python tools/export_release.py --godot /path/to/godot --output /fresh/staging/MarchlandOaths.exe
 python tests/run_tests.py --godot /path/to/godot --rendered --full-campaign --artifacts /path/to/logs
@@ -79,7 +79,7 @@ Identical static assets share normalized meshes and preserve gameplay colliders.
 
 ## Release scope and verification
 
-Version 1.5.1 is the v2 localization, soundtrack, presentation and integrity successor to the portable Windows desktop edition, built with Godot 4.7 Stable. It remains a small standalone game with original illustrations and licensed assets. Earlier design documents include broader ideas for future development; they are not a list of promised features in this edition.
+Version 1.5.1 was the v2 localization, soundtrack, presentation and integrity successor to the portable Windows desktop edition, built with Godot 4.7 Stable. It remains a small standalone game with original illustrations and licensed assets. Earlier design documents include broader ideas for future development; they are not a list of promised features in this edition.
 
 The test runner imports the real project in Godot, exercises gameplay, save/load, audio controls and rendered UI. Public executables physically omit the complete-playthrough verifier and reject QA arguments. Only the separate, unpublished QA preset supports `-- --verify-build` with `GAME_QA=1`; it starts a fresh QA game in isolated APPDATA/LOCALAPPDATA folders. QA is silent through `GAME_AUDIO_MUTED=1`; this does not remove the player's music/effects controls. Folders and formats from the previous game names remain compatible.
 
@@ -97,7 +97,7 @@ The playable 3D world now uses PBR stone, plaster, timber and slate, detailed or
 
 Offline tamper evidence, schema/resource validation and atomic saves protect normal play and recover known-good backups. Valid legacy saves migrate once. Keep the whole user-data folder, including its installation key, when backing up protected saves. See SAVE-INTEGRITY.md for the precise guarantees and limitations.
 
-V2 visual pass: eight-point design tokens, curated source-asset review, corrected crest, tapered meadow, batched roadside landmarks and an actual-road atlas with keyboard navigation and a translated legend. See docs/ART_DIRECTION.md and docs/ASSET_REVIEW.json; acceptance is documented in docs/RELEASE_1.5.1.md.
+V2 visual pass: eight-point design tokens, curated source-asset review, corrected crest, tapered meadow, batched roadside landmarks and an actual-road atlas with keyboard navigation and a translated legend. See docs/ART_DIRECTION.md and docs/ASSET_REVIEW.json; historical release evidence is documented in docs/RELEASE_1.5.1.md.
 
 ## Release integrity
 

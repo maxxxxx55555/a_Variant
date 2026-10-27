@@ -1,13 +1,13 @@
 {
   "files": {
-    "res://assets/audio/catalog.json": "e430a4cd11299c2eee5b6384d2815b39a99dc9e007525ff7697ee99410536bda",
-    "res://data/balance/alchemy.json": "2ada2868c9b3f77ed01f10e16fed7c895588c37c5e5e35acc88d730361379776",
-    "res://data/balance/buildings.json": "febfea72c844aab815fa046d0882b0cec622855d309d8fab954d0d0caafb550d",
-    "res://data/balance/campaign.json": "f61783f80e27c1c76130b3984b04ad723f0000bb7bb9d36321842ae67c9776e8",
-    "res://data/balance/crafting.json": "34600efe06fd76b78f415d1c39a8deb5d2fe6fe4afd46f675a75c115f980f5e5",
+    "res://assets/audio/catalog.json": "edeb723c24fb0ddaa81607178aa39a6f1f130ccf50fe2e824dfa2090e6202cf5",
+    "res://data/balance/alchemy.json": "b9919d6d62a48c6f603fb6b62c01ca0fad82dbb395f16a37e119f6b314225cdb",
+    "res://data/balance/buildings.json": "dd01ee5c72460426ea85184c570ebb7dec7bc854981494cceb2409c9249471e4",
+    "res://data/balance/campaign.json": "28232f520fb2e9398a15415febbf3d690f6bfc7a94c6e089e2fe063ec3d75516",
+    "res://data/balance/crafting.json": "67bc45bff3fb9d8145f47e7927a2b7a93c5bca088da17e3b0ff59f6bb4ad6028",
     "res://data/balance/diplomacy.json": "6f8277d7c06f04c925598475581e5591cef59ea8b4b81fc0e4b40007181b5042",
-    "res://data/balance/equipment.json": "1196526425f05bb0af960686df68c80ce1c973ad3edba6d1b70b40d15d4f51bb",
-    "res://data/balance/localization.json": "7136fe0c7d92f411ec8e5a329c0b5b516e92917f40ae898ddac446821146efac"
+    "res://data/balance/equipment.json": "ad180d92426e5b2a25be074a8d1c326fb1063bb0b6fdd798ad463431acdcc62e",
+    "res://data/balance/localization.json": "57477a064d302aaf23af2fce84772aeb19aee9494919e96c4859e775210a2cc2"
   },
   "version": 1
 }

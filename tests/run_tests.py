@@ -91,6 +91,8 @@ def main():
         verification = subprocess.run([sys.executable, str(project / 'tests/test_verification.py')], timeout=30)
         if verification.returncode:
             return verification.returncode
+        checkout_bytes = subprocess.run([sys.executable, str(project / 'tests/test_checkout_bytes.py')], timeout=180)
+        if checkout_bytes.returncode: return checkout_bytes.returncode
         inherited_licenses = subprocess.run([sys.executable, str(project / 'tests/test_license_bytes.py')], timeout=30)
         if inherited_licenses.returncode: return inherited_licenses.returncode
         contract = subprocess.run([sys.executable, str(project / 'tests/test_export_contract.py')], timeout=30)
