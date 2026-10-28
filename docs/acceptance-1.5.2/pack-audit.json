@@ -1,0 +1,303 @@
+{
+  "result": "PASS",
+  "source_commit": "6780cad9460a83559f891639f71ddd2672b21575",
+  "source_role": "export-r2",
+  "export_phase": "exports-r2",
+  "artifacts": {
+    "private-qa.exe": {
+      "result": "PASS",
+      "artifact": "private-qa.exe",
+      "source_commit": "6780cad9460a83559f891639f71ddd2672b21575",
+      "artifact_sha256": "22bb814cabebfac4d33d6ea1f16213028e24611ea4092ae6fad9ae63c358761f",
+      "private_qa": true,
+      "directory_encrypted": true,
+      "all_files_encrypted": true,
+      "all_payload_hashes_verified": true,
+      "critical_manifest_matches_frozen_source": true,
+      "every_critical_digest_matches_decrypted_payload": true,
+      "critical_payloads": [
+        {
+          "path": "res://assets/audio/catalog.json",
+          "expected_sha256": "edeb723c24fb0ddaa81607178aa39a6f1f130ccf50fe2e824dfa2090e6202cf5",
+          "actual_decrypted_sha256": "edeb723c24fb0ddaa81607178aa39a6f1f130ccf50fe2e824dfa2090e6202cf5",
+          "result": "PASS"
+        },
+        {
+          "path": "res://data/balance/alchemy.json",
+          "expected_sha256": "b9919d6d62a48c6f603fb6b62c01ca0fad82dbb395f16a37e119f6b314225cdb",
+          "actual_decrypted_sha256": "b9919d6d62a48c6f603fb6b62c01ca0fad82dbb395f16a37e119f6b314225cdb",
+          "result": "PASS"
+        },
+        {
+          "path": "res://data/balance/buildings.json",
+          "expected_sha256": "dd01ee5c72460426ea85184c570ebb7dec7bc854981494cceb2409c9249471e4",
+          "actual_decrypted_sha256": "dd01ee5c72460426ea85184c570ebb7dec7bc854981494cceb2409c9249471e4",
+          "result": "PASS"
+        },
+        {
+          "path": "res://data/balance/campaign.json",
+          "expected_sha256": "28232f520fb2e9398a15415febbf3d690f6bfc7a94c6e089e2fe063ec3d75516",
+          "actual_decrypted_sha256": "28232f520fb2e9398a15415febbf3d690f6bfc7a94c6e089e2fe063ec3d75516",
+          "result": "PASS"
+        },
+        {
+          "path": "res://data/balance/crafting.json",
+          "expected_sha256": "67bc45bff3fb9d8145f47e7927a2b7a93c5bca088da17e3b0ff59f6bb4ad6028",
+          "actual_decrypted_sha256": "67bc45bff3fb9d8145f47e7927a2b7a93c5bca088da17e3b0ff59f6bb4ad6028",
+          "result": "PASS"
+        },
+        {
+          "path": "res://data/balance/diplomacy.json",
+          "expected_sha256": "6f8277d7c06f04c925598475581e5591cef59ea8b4b81fc0e4b40007181b5042",
+          "actual_decrypted_sha256": "6f8277d7c06f04c925598475581e5591cef59ea8b4b81fc0e4b40007181b5042",
+          "result": "PASS"
+        },
+        {
+          "path": "res://data/balance/equipment.json",
+          "expected_sha256": "ad180d92426e5b2a25be074a8d1c326fb1063bb0b6fdd798ad463431acdcc62e",
+          "actual_decrypted_sha256": "ad180d92426e5b2a25be074a8d1c326fb1063bb0b6fdd798ad463431acdcc62e",
+          "result": "PASS"
+        },
+        {
+          "path": "res://data/balance/localization.json",
+          "expected_sha256": "57477a064d302aaf23af2fce84772aeb19aee9494919e96c4859e775210a2cc2",
+          "actual_decrypted_sha256": "57477a064d302aaf23af2fce84772aeb19aee9494919e96c4859e775210a2cc2",
+          "result": "PASS"
+        }
+      ],
+      "compiled_trust_anchor_present": true,
+      "compiled_trust_paths": [
+        "res://scripts/security/TrustedData.gdc"
+      ],
+      "compiled_constant_scope": "Frozen source binds manifest; compiled bytecode presence and encrypted integrity verified; no bytecode decompilation claim",
+      "qa_verifier_physically_present": true,
+      "qa_paths": [
+        "res://scripts/verification/CampaignRoute.gd.remap",
+        "res://scripts/verification/CampaignRoute.gdc",
+        "res://scripts/verification/NativeIronDeath.gd.remap",
+        "res://scripts/verification/NativeIronDeath.gdc"
+      ],
+      "file_count": 929,
+      "keys_or_key_hashes_recorded": false
+    },
+    "private-qa.pck": {
+      "result": "PASS",
+      "artifact": "private-qa.pck",
+      "source_commit": "6780cad9460a83559f891639f71ddd2672b21575",
+      "artifact_sha256": "bf146d015c931c8f7a9bbde445e3a1023a5aa4922102fb3f51ea1dec9b883c4e",
+      "private_qa": true,
+      "directory_encrypted": true,
+      "all_files_encrypted": true,
+      "all_payload_hashes_verified": true,
+      "critical_manifest_matches_frozen_source": true,
+      "every_critical_digest_matches_decrypted_payload": true,
+      "critical_payloads": [
+        {
+          "path": "res://assets/audio/catalog.json",
+          "expected_sha256": "edeb723c24fb0ddaa81607178aa39a6f1f130ccf50fe2e824dfa2090e6202cf5",
+          "actual_decrypted_sha256": "edeb723c24fb0ddaa81607178aa39a6f1f130ccf50fe2e824dfa2090e6202cf5",
+          "result": "PASS"
+        },
+        {
+          "path": "res://data/balance/alchemy.json",
+          "expected_sha256": "b9919d6d62a48c6f603fb6b62c01ca0fad82dbb395f16a37e119f6b314225cdb",
+          "actual_decrypted_sha256": "b9919d6d62a48c6f603fb6b62c01ca0fad82dbb395f16a37e119f6b314225cdb",
+          "result": "PASS"
+        },
+        {
+          "path": "res://data/balance/buildings.json",
+          "expected_sha256": "dd01ee5c72460426ea85184c570ebb7dec7bc854981494cceb2409c9249471e4",
+          "actual_decrypted_sha256": "dd01ee5c72460426ea85184c570ebb7dec7bc854981494cceb2409c9249471e4",
+          "result": "PASS"
+        },
+        {
+          "path": "res://data/balance/campaign.json",
+          "expected_sha256": "28232f520fb2e9398a15415febbf3d690f6bfc7a94c6e089e2fe063ec3d75516",
+          "actual_decrypted_sha256": "28232f520fb2e9398a15415febbf3d690f6bfc7a94c6e089e2fe063ec3d75516",
+          "result": "PASS"
+        },
+        {
+          "path": "res://data/balance/crafting.json",
+          "expected_sha256": "67bc45bff3fb9d8145f47e7927a2b7a93c5bca088da17e3b0ff59f6bb4ad6028",
+          "actual_decrypted_sha256": "67bc45bff3fb9d8145f47e7927a2b7a93c5bca088da17e3b0ff59f6bb4ad6028",
+          "result": "PASS"
+        },
+        {
+          "path": "res://data/balance/diplomacy.json",
+          "expected_sha256": "6f8277d7c06f04c925598475581e5591cef59ea8b4b81fc0e4b40007181b5042",
+          "actual_decrypted_sha256": "6f8277d7c06f04c925598475581e5591cef59ea8b4b81fc0e4b40007181b5042",
+          "result": "PASS"
+        },
+        {
+          "path": "res://data/balance/equipment.json",
+          "expected_sha256": "ad180d92426e5b2a25be074a8d1c326fb1063bb0b6fdd798ad463431acdcc62e",
+          "actual_decrypted_sha256": "ad180d92426e5b2a25be074a8d1c326fb1063bb0b6fdd798ad463431acdcc62e",
+          "result": "PASS"
+        },
+        {
+          "path": "res://data/balance/localization.json",
+          "expected_sha256": "57477a064d302aaf23af2fce84772aeb19aee9494919e96c4859e775210a2cc2",
+          "actual_decrypted_sha256": "57477a064d302aaf23af2fce84772aeb19aee9494919e96c4859e775210a2cc2",
+          "result": "PASS"
+        }
+      ],
+      "compiled_trust_anchor_present": true,
+      "compiled_trust_paths": [
+        "res://scripts/security/TrustedData.gdc"
+      ],
+      "compiled_constant_scope": "Frozen source binds manifest; compiled bytecode presence and encrypted integrity verified; no bytecode decompilation claim",
+      "qa_verifier_physically_present": true,
+      "qa_paths": [
+        "res://scripts/verification/CampaignRoute.gd.remap",
+        "res://scripts/verification/CampaignRoute.gdc",
+        "res://scripts/verification/NativeIronDeath.gd.remap",
+        "res://scripts/verification/NativeIronDeath.gdc"
+      ],
+      "file_count": 929,
+      "keys_or_key_hashes_recorded": false
+    },
+    "public.exe": {
+      "result": "PASS",
+      "artifact": "public.exe",
+      "source_commit": "6780cad9460a83559f891639f71ddd2672b21575",
+      "artifact_sha256": "f2b5a5b4aa70371576b39a4589db45fb2e05a49cdcd9bc4906ab2b6b5a0c5d83",
+      "private_qa": false,
+      "directory_encrypted": true,
+      "all_files_encrypted": true,
+      "all_payload_hashes_verified": true,
+      "critical_manifest_matches_frozen_source": true,
+      "every_critical_digest_matches_decrypted_payload": true,
+      "critical_payloads": [
+        {
+          "path": "res://assets/audio/catalog.json",
+          "expected_sha256": "edeb723c24fb0ddaa81607178aa39a6f1f130ccf50fe2e824dfa2090e6202cf5",
+          "actual_decrypted_sha256": "edeb723c24fb0ddaa81607178aa39a6f1f130ccf50fe2e824dfa2090e6202cf5",
+          "result": "PASS"
+        },
+        {
+          "path": "res://data/balance/alchemy.json",
+          "expected_sha256": "b9919d6d62a48c6f603fb6b62c01ca0fad82dbb395f16a37e119f6b314225cdb",
+          "actual_decrypted_sha256": "b9919d6d62a48c6f603fb6b62c01ca0fad82dbb395f16a37e119f6b314225cdb",
+          "result": "PASS"
+        },
+        {
+          "path": "res://data/balance/buildings.json",
+          "expected_sha256": "dd01ee5c72460426ea85184c570ebb7dec7bc854981494cceb2409c9249471e4",
+          "actual_decrypted_sha256": "dd01ee5c72460426ea85184c570ebb7dec7bc854981494cceb2409c9249471e4",
+          "result": "PASS"
+        },
+        {
+          "path": "res://data/balance/campaign.json",
+          "expected_sha256": "28232f520fb2e9398a15415febbf3d690f6bfc7a94c6e089e2fe063ec3d75516",
+          "actual_decrypted_sha256": "28232f520fb2e9398a15415febbf3d690f6bfc7a94c6e089e2fe063ec3d75516",
+          "result": "PASS"
+        },
+        {
+          "path": "res://data/balance/crafting.json",
+          "expected_sha256": "67bc45bff3fb9d8145f47e7927a2b7a93c5bca088da17e3b0ff59f6bb4ad6028",
+          "actual_decrypted_sha256": "67bc45bff3fb9d8145f47e7927a2b7a93c5bca088da17e3b0ff59f6bb4ad6028",
+          "result": "PASS"
+        },
+        {
+          "path": "res://data/balance/diplomacy.json",
+          "expected_sha256": "6f8277d7c06f04c925598475581e5591cef59ea8b4b81fc0e4b40007181b5042",
+          "actual_decrypted_sha256": "6f8277d7c06f04c925598475581e5591cef59ea8b4b81fc0e4b40007181b5042",
+          "result": "PASS"
+        },
+        {
+          "path": "res://data/balance/equipment.json",
+          "expected_sha256": "ad180d92426e5b2a25be074a8d1c326fb1063bb0b6fdd798ad463431acdcc62e",
+          "actual_decrypted_sha256": "ad180d92426e5b2a25be074a8d1c326fb1063bb0b6fdd798ad463431acdcc62e",
+          "result": "PASS"
+        },
+        {
+          "path": "res://data/balance/localization.json",
+          "expected_sha256": "57477a064d302aaf23af2fce84772aeb19aee9494919e96c4859e775210a2cc2",
+          "actual_decrypted_sha256": "57477a064d302aaf23af2fce84772aeb19aee9494919e96c4859e775210a2cc2",
+          "result": "PASS"
+        }
+      ],
+      "compiled_trust_anchor_present": true,
+      "compiled_trust_paths": [
+        "res://scripts/security/TrustedData.gdc"
+      ],
+      "compiled_constant_scope": "Frozen source binds manifest; compiled bytecode presence and encrypted integrity verified; no bytecode decompilation claim",
+      "qa_verifier_physically_present": false,
+      "qa_paths": [],
+      "file_count": 925,
+      "keys_or_key_hashes_recorded": false
+    },
+    "public.pck": {
+      "result": "PASS",
+      "artifact": "public.pck",
+      "source_commit": "6780cad9460a83559f891639f71ddd2672b21575",
+      "artifact_sha256": "435ae7b80424ebc79c0767d9317038faa38f522460cb8c4a5aef1efc09edda82",
+      "private_qa": false,
+      "directory_encrypted": true,
+      "all_files_encrypted": true,
+      "all_payload_hashes_verified": true,
+      "critical_manifest_matches_frozen_source": true,
+      "every_critical_digest_matches_decrypted_payload": true,
+      "critical_payloads": [
+        {
+          "path": "res://assets/audio/catalog.json",
+          "expected_sha256": "edeb723c24fb0ddaa81607178aa39a6f1f130ccf50fe2e824dfa2090e6202cf5",
+          "actual_decrypted_sha256": "edeb723c24fb0ddaa81607178aa39a6f1f130ccf50fe2e824dfa2090e6202cf5",
+          "result": "PASS"
+        },
+        {
+          "path": "res://data/balance/alchemy.json",
+          "expected_sha256": "b9919d6d62a48c6f603fb6b62c01ca0fad82dbb395f16a37e119f6b314225cdb",
+          "actual_decrypted_sha256": "b9919d6d62a48c6f603fb6b62c01ca0fad82dbb395f16a37e119f6b314225cdb",
+          "result": "PASS"
+        },
+        {
+          "path": "res://data/balance/buildings.json",
+          "expected_sha256": "dd01ee5c72460426ea85184c570ebb7dec7bc854981494cceb2409c9249471e4",
+          "actual_decrypted_sha256": "dd01ee5c72460426ea85184c570ebb7dec7bc854981494cceb2409c9249471e4",
+          "result": "PASS"
+        },
+        {
+          "path": "res://data/balance/campaign.json",
+          "expected_sha256": "28232f520fb2e9398a15415febbf3d690f6bfc7a94c6e089e2fe063ec3d75516",
+          "actual_decrypted_sha256": "28232f520fb2e9398a15415febbf3d690f6bfc7a94c6e089e2fe063ec3d75516",
+          "result": "PASS"
+        },
+        {
+          "path": "res://data/balance/crafting.json",
+          "expected_sha256": "67bc45bff3fb9d8145f47e7927a2b7a93c5bca088da17e3b0ff59f6bb4ad6028",
+          "actual_decrypted_sha256": "67bc45bff3fb9d8145f47e7927a2b7a93c5bca088da17e3b0ff59f6bb4ad6028",
+          "result": "PASS"
+        },
+        {
+          "path": "res://data/balance/diplomacy.json",
+          "expected_sha256": "6f8277d7c06f04c925598475581e5591cef59ea8b4b81fc0e4b40007181b5042",
+          "actual_decrypted_sha256": "6f8277d7c06f04c925598475581e5591cef59ea8b4b81fc0e4b40007181b5042",
+          "result": "PASS"
+        },
+        {
+          "path": "res://data/balance/equipment.json",
+          "expected_sha256": "ad180d92426e5b2a25be074a8d1c326fb1063bb0b6fdd798ad463431acdcc62e",
+          "actual_decrypted_sha256": "ad180d92426e5b2a25be074a8d1c326fb1063bb0b6fdd798ad463431acdcc62e",
+          "result": "PASS"
+        },
+        {
+          "path": "res://data/balance/localization.json",
+          "expected_sha256": "57477a064d302aaf23af2fce84772aeb19aee9494919e96c4859e775210a2cc2",
+          "actual_decrypted_sha256": "57477a064d302aaf23af2fce84772aeb19aee9494919e96c4859e775210a2cc2",
+          "result": "PASS"
+        }
+      ],
+      "compiled_trust_anchor_present": true,
+      "compiled_trust_paths": [
+        "res://scripts/security/TrustedData.gdc"
+      ],
+      "compiled_constant_scope": "Frozen source binds manifest; compiled bytecode presence and encrypted integrity verified; no bytecode decompilation claim",
+      "qa_verifier_physically_present": false,
+      "qa_paths": [],
+      "file_count": 925,
+      "keys_or_key_hashes_recorded": false
+    }
+  },
+  "keys_or_key_hashes_recorded": false
+}

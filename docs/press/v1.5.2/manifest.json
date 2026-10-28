@@ -1,0 +1,119 @@
+{
+  "result": "VISUALLY_REVIEWED",
+  "images": [
+    {
+      "file": "01-en-gallery-title.png",
+      "locale": "en",
+      "caption": "Title and language selection",
+      "sha256": "e40026910420d9dc844336866b3f158ac1c10c5ad04296c03533848803296641",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "source_commit": "6780cad9460a83559f891639f71ddd2672b21575",
+      "staged": false,
+      "controlled_terminal": false,
+      "publishable_after_gate_and_owner_acceptance": true
+    },
+    {
+      "file": "02-en-gallery-village-rain.png",
+      "locale": "en",
+      "caption": "Actual village in rainy weather",
+      "sha256": "cb81d5b6c89b90c558e7f2d3836dd28b53aaee426bd3ec59709ac7eddf9300ec",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "source_commit": "6780cad9460a83559f891639f71ddd2672b21575",
+      "staged": false,
+      "controlled_terminal": false,
+      "publishable_after_gate_and_owner_acceptance": true
+    },
+    {
+      "file": "03-ru-gallery-trade.png",
+      "locale": "ru",
+      "caption": "Settlement decisions in Russian",
+      "sha256": "e32e1c649163267a17e19b58d54acba50224e8ec6f10f15f6ee7d67bcf4fb8af",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "source_commit": "6780cad9460a83559f891639f71ddd2672b21575",
+      "staged": false,
+      "controlled_terminal": false,
+      "publishable_after_gate_and_owner_acceptance": true
+    },
+    {
+      "file": "04-ru-gallery-world-map.png",
+      "locale": "ru",
+      "caption": "Regional atlas in Russian",
+      "sha256": "89175c19516bb727c80bc914b146f778738248437f8d82522dfd6769ae3f3e3d",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "source_commit": "6780cad9460a83559f891639f71ddd2672b21575",
+      "staged": false,
+      "controlled_terminal": false,
+      "publishable_after_gate_and_owner_acceptance": true
+    },
+    {
+      "file": "05-en-gallery-ending-staged.png",
+      "locale": "en",
+      "caption": "Staged diplomatic ending layout; not a complete-playthrough screenshot",
+      "sha256": "80234bceb61cf5cb2899bcc32e041a7ba34a26c34eb2c66aaef6c16be53db4f2",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "source_commit": "6780cad9460a83559f891639f71ddd2672b21575",
+      "staged": true,
+      "controlled_terminal": false,
+      "publishable_after_gate_and_owner_acceptance": true
+    },
+    {
+      "file": "06-ru-iron-death.png",
+      "locale": "ru",
+      "caption": "Controlled permanent-death fixture; resume and load are disabled",
+      "sha256": "c00750aa615ff88c7f2f5f295f3a72ac94265c2ec014003feda28848dc34186c",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "source_commit": "6780cad9460a83559f891639f71ddd2672b21575",
+      "staged": false,
+      "controlled_terminal": true,
+      "publishable_after_gate_and_owner_acceptance": true
+    },
+    {
+      "file": "07-en-gallery-credits.png",
+      "locale": "en",
+      "caption": "Credits and licenses",
+      "sha256": "44279de72af7cb9bc5555eda623b382a86c6735d69ce3573fcbe092ac4a26818",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "source_commit": "6780cad9460a83559f891639f71ddd2672b21575",
+      "staged": false,
+      "controlled_terminal": false,
+      "publishable_after_gate_and_owner_acceptance": true
+    },
+    {
+      "file": "08-ru-gallery-settings.png",
+      "locale": "ru",
+      "caption": "Settings and independent audio controls",
+      "sha256": "e708a92ddffe829b3fa99a03e50ae91615d1afbca9dba5b2ae6e2dff9799344c",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "source_commit": "6780cad9460a83559f891639f71ddd2672b21575",
+      "staged": false,
+      "controlled_terminal": false,
+      "publishable_after_gate_and_owner_acceptance": true
+    }
+  ],
+  "raw_frames_unmodified": true,
+  "publication_condition": "100% release gate followed by five owner checks in HANDOFF"
+}

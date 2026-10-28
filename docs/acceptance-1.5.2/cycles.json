@@ -1,0 +1,20 @@
+{
+  "repository": "a_Variant",
+  "phase": "patch-full-cycles-r2",
+  "source_role": "cycles-r2",
+  "requested_cycles": 50,
+  "result": "PASS",
+  "source_project": "C:\\Users\\Maxsim\\Documents\\Codex\\2026-10-24\\new-chat\\outputs\\release-1.5.2-and-2.0.1\\sources\\cycles-r2\\a_Variant",
+  "source_commit": "6780cad9460a83559f891639f71ddd2672b21575",
+  "source_tree": "6ab2f516ba38a03aa0b228cf24fcce309cf02091",
+  "source_record_sha256": "3a3bd88aaefb95bbcef7877091116c71356b32c6adbe56f71c24c686a969542e",
+  "source_archive_sha256": "ad52b5e0bf79701bb4b732b78bbbc072adbfccb36844d25938abd4cdd7488da8",
+  "driver_sha256": "105f667a0d48eb48c917671d74f5c1d7d2cd2f95e57c18a415b1c86bb77bb54d",
+  "cancelled_before_start": 0,
+  "accepted_for_release": true,
+  "complete_cycles": 50,
+  "distinct_final_states": 50,
+  "driver_unchanged": true,
+  "seconds": 3731.25,
+  "scope": "Each accepted seed reaches60 objectives plus mechanics/save round-trip (campaign) or rank1/250B victory (life simulation). Accelerated headless finite-route coverage; not normal-speed or exhaustive unscripted play."
+}

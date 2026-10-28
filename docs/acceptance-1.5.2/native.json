@@ -1,0 +1,93 @@
+{
+  "public-rejects-verifier": {
+    "result": "PASS",
+    "exit": 64,
+    "expected_exit": 64,
+    "timed_out": false,
+    "marker": "QA arguments require",
+    "language": "en",
+    "seconds": 4.031,
+    "binary_sha256": "f2b5a5b4aa70371576b39a4589db45fb2e05a49cdcd9bc4906ab2b6b5a0c5d83",
+    "console_sha256": "e9adb1d1df4f3d955d298fb8ac2b779df9c5eff98b4c4d7a4961d32ca115fb0f",
+    "errors": [],
+    "integrity_log": []
+  },
+  "public-rejects-route": {
+    "result": "PASS",
+    "exit": 64,
+    "expected_exit": 64,
+    "timed_out": false,
+    "marker": "QA arguments require",
+    "language": "ru",
+    "seconds": 5.563,
+    "binary_sha256": "f2b5a5b4aa70371576b39a4589db45fb2e05a49cdcd9bc4906ab2b6b5a0c5d83",
+    "console_sha256": "e9adb1d1df4f3d955d298fb8ac2b779df9c5eff98b4c4d7a4961d32ca115fb0f",
+    "errors": [],
+    "integrity_log": []
+  },
+  "private-requires-env": {
+    "result": "PASS",
+    "exit": 64,
+    "expected_exit": 64,
+    "timed_out": false,
+    "marker": "QA arguments require",
+    "language": "en",
+    "seconds": 3.235,
+    "binary_sha256": "22bb814cabebfac4d33d6ea1f16213028e24611ea4092ae6fad9ae63c358761f",
+    "console_sha256": "e9adb1d1df4f3d955d298fb8ac2b779df9c5eff98b4c4d7a4961d32ca115fb0f",
+    "errors": [],
+    "integrity_log": []
+  },
+  "stability-1": {
+    "result": "PASS",
+    "exit": 0,
+    "expected_exit": 0,
+    "timed_out": false,
+    "marker": "CAMPAIGN ROUTE RESULT: PASS",
+    "language": "ru",
+    "seconds": 406.079,
+    "binary_sha256": "22bb814cabebfac4d33d6ea1f16213028e24611ea4092ae6fad9ae63c358761f",
+    "console_sha256": "cfa5edfcbd4dd119f4b14931f7abe06c22c58c2862ac98b86d2d03a0772bcac2",
+    "errors": [],
+    "integrity_log": []
+  },
+  "stability-2": {
+    "result": "PASS",
+    "exit": 0,
+    "expected_exit": 0,
+    "timed_out": false,
+    "marker": "CAMPAIGN ROUTE RESULT: PASS",
+    "language": "en",
+    "seconds": 497.094,
+    "binary_sha256": "22bb814cabebfac4d33d6ea1f16213028e24611ea4092ae6fad9ae63c358761f",
+    "console_sha256": "558722ee76d514854b5fb36747d29f5359455b2807a88e5de628bdad4256a5e8",
+    "errors": [],
+    "integrity_log": []
+  },
+  "stability-3": {
+    "result": "PASS",
+    "exit": 0,
+    "expected_exit": 0,
+    "timed_out": false,
+    "marker": "CAMPAIGN ROUTE RESULT: PASS",
+    "language": "ru",
+    "seconds": 294.016,
+    "binary_sha256": "22bb814cabebfac4d33d6ea1f16213028e24611ea4092ae6fad9ae63c358761f",
+    "console_sha256": "539f0a5d1936420da83491a9c945d54dae586fcc3de4ddae6d6f20c1ec29260d",
+    "errors": [],
+    "integrity_log": []
+  },
+  "defeat": {
+    "result": "PASS",
+    "exit": 0,
+    "expected_exit": 0,
+    "timed_out": false,
+    "marker": "NATIVE IRON DEATH: PASS",
+    "language": "en",
+    "seconds": 11.906,
+    "binary_sha256": "22bb814cabebfac4d33d6ea1f16213028e24611ea4092ae6fad9ae63c358761f",
+    "console_sha256": "ce71a49dda940bc11b917578a3663518e4e1985f52ae1ba60fffd06594bff20a",
+    "errors": [],
+    "integrity_log": []
+  }
+}

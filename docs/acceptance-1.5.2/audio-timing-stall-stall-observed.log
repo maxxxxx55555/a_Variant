@@ -1,0 +1,7 @@
+Godot Engine v4.7.stable.official.5b4e0cb0f - https://godotengine.org
+
+TRACE timer expired: voices=2 tween_running=true tween_elapsed=0.022541
+TRACE next frame 0: voices=1 tween_running=false tween_elapsed=0.16794433333333
+TRACE next frame 1: voices=1 tween_running=false tween_elapsed=0.16794433333333
+TRACE next frame 2: voices=1 tween_running=false tween_elapsed=0.16794433333333
+AUDIO RESULT: PASS

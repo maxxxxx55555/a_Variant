@@ -1,0 +1,23 @@
+{
+  "result": "PASS",
+  "source_commit": "6780cad9460a83559f891639f71ddd2672b21575",
+  "manifest_path": "QA/gallery-a-r2/manifest.json",
+  "manifest_sha256": "5a93d517b007ae3e060513603142c13bbed081f98b3e5f8e5daef3a7e2cce6b8",
+  "reviewed_frames": 26,
+  "reviewed_locales": [
+    "en",
+    "ru"
+  ],
+  "reviewed_resolutions": [
+    [
+      1280,
+      720
+    ]
+  ],
+  "method": "Inspected all frames in EN/RU contact sheets, plus original-resolution roadside, atlas and finance settings; checked ART_DIRECTION layout, typography, icons, endings and image continuity",
+  "issues": [],
+  "source_art_inventory_files": 79,
+  "source_art_hashes_unchanged": true,
+  "scope": "Readable controls, no clipping, missing glyphs or integrity warnings in the reviewed frames. Retained stylized low-poly world and generated illustrations; no photorealism/AAA claim. Staged endings and controlled fixtures are labelled, never represented as organic playthrough evidence.",
+  "press_scope": "Selected original framebuffers may be used with accurate captions after release gate and owner acceptance; contact sheets are inspection aids only."
+}

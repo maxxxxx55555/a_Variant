@@ -1,0 +1,26 @@
+{
+  "source_test_commit": "ef48b6a9b953e9aa427c6bb33b7d350da9f59778",
+  "runtime_export_commit": "6780cad9460a83559f891639f71ddd2672b21575",
+  "files": {
+    "audio-timing-green-audio.log": "29b41a36ac6a1477a9c391e2cfd1d021fc34ca9d4e7a63edb7334d40ba964a0a",
+    "audio-timing-green-missing-stop-control.log": "2a378e1d1a623e6927bd049da8cd222aca2c4f63f25e2acfa268d32dec8ea509",
+    "audio-timing-green-transitions.log": "5ee16355db92692b50b3ad107d655b7d7014e988de1356e4cbbd4b3258b12d7e",
+    "audio-timing-stall-stall-observed.log": "2ba6f41964df37b291ca0fecbe5e37352fa06a162155d30c28170f32caddb5a6",
+    "audio-timing-stall-stall-original.log": "2a378e1d1a623e6927bd049da8cd222aca2c4f63f25e2acfa268d32dec8ea509",
+    "contracts.json": "065408bfc21d758c042cf0aef65f6e9c6aae83880b9541e893ba350dd3768a57",
+    "cycles.json": "67729bb7afe11867ae24e5b34ed9af54b2d0ed4bc69962027a2b8ed7b8d9d83e",
+    "exports.json": "76b68093d10b98a491515a67ebd701fca24a3942acab169a9c85b7523bac4446",
+    "legacy.json": "3cee83ff3c59bd4b8fd0db8c78de98e0bbf31e760ad60928c747ab623fbcf10b",
+    "native.json": "450ff1fb79086c2c1cc1a3ae9f095e419b87cea561a80c6ffee17721f4342aad",
+    "pack-audit.json": "218ecde4204294df64f78652558e51101f0da37df73610057779fb9476fe608d",
+    "soak-trend.json": "c7930bd438a9f677221689704ac7a6563bbea8421eafaf50adeb9428597d2142",
+    "soak.json": "96a91eab4fc63b94e07a4c73fbb1d494a7ce1ea8d2239c99427aed47e17f1cfc",
+    "suite-en.log": "aeca2326a92f15690d76d8d9e4bbf971115acd5518d7e2e414c7fc87dd060929",
+    "suite-ru.log": "71899c1482b3c9c40622975c918cdcbf947c64fc3487264272989a7852ca75dc",
+    "suite-source-audit.json": "3a26b0106300944b1c04e92205072188b21fc499a99001ec9db4db3613d91d92",
+    "suites.json": "1fbdaf26949993d715a3e1d85adc4236adfbdf42e1013b1f790f0044688004bb",
+    "test-timing-parity.json": "434ec694f88a4d3891b7439241a57416279fd311004f46c6ec2a6d8712137b08",
+    "visual-review.json": "88d95d7d35a0f59ba74eb33dedbcd60b3b45b27659775d55924ee7364415cfa3"
+  },
+  "scope": "Per-game summaries and raw suite logs. Full isolated execution records remain in the final evidence bundle. No private profile or key material included."
+}

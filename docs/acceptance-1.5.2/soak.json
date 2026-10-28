@@ -1,0 +1,60 @@
+{
+  "repository": "a_Variant",
+  "phase": "patch-normal-soak-r2",
+  "source_role": "soak-r2",
+  "requested_seconds": 1800,
+  "result": "PASS",
+  "audio_driver": "Dummy",
+  "rendered": true,
+  "normal_speed": true,
+  "source_project": "C:\\Users\\Maxsim\\Documents\\Codex\\2026-10-24\\new-chat\\outputs\\release-1.5.2-and-2.0.1\\sources\\soak-r2\\a_Variant",
+  "source_commit": "6780cad9460a83559f891639f71ddd2672b21575",
+  "source_tree": "6ab2f516ba38a03aa0b228cf24fcce309cf02091",
+  "source_record_sha256": "3a3bd88aaefb95bbcef7877091116c71356b32c6adbe56f71c24c686a969542e",
+  "source_archive_sha256": "ad52b5e0bf79701bb4b732b78bbbc072adbfccb36844d25938abd4cdd7488da8",
+  "exit_code": 0,
+  "timed_out": false,
+  "cancelled": false,
+  "actual_seconds": 2683.422,
+  "gameplay": {
+    "checkpoints": 21,
+    "cycles": 3,
+    "elapsed_ms": 2659593,
+    "failures": 0,
+    "object_samples": [
+      {
+        "cycle": 1,
+        "elapsed_ms": 896135,
+        "nodes": 58,
+        "objects": 2063,
+        "orphans": 0,
+        "resources": 295
+      },
+      {
+        "cycle": 2,
+        "elapsed_ms": 1779048,
+        "nodes": 58,
+        "objects": 2063,
+        "orphans": 0,
+        "resources": 295
+      },
+      {
+        "cycle": 3,
+        "elapsed_ms": 2659591,
+        "nodes": 58,
+        "objects": 2063,
+        "orphans": 0,
+        "resources": 295
+      }
+    ],
+    "result": "PASS"
+  },
+  "gameplay_decode_error": null,
+  "errors": [],
+  "integrity_logs": [],
+  "measured_samples": 2661,
+  "measurement_failures": 0,
+  "metrics_sha256": "4b41361290b9f2021c498ec90296a778bd0306680e6998b79c8350a114914cff",
+  "console_sha256": "c5ecefcaeea6f2ece94f23870626683a6b3097f0973ac261a4fde2812c2f082e",
+  "trend_sha256": "c7930bd438a9f677221689704ac7a6563bbea8421eafaf50adeb9428597d2142"
+}

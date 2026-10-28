@@ -1,0 +1,152 @@
+{
+  "result": "PASS",
+  "source_commit": "6780cad9460a83559f891639f71ddd2672b21575",
+  "source_role": "compat-r2",
+  "legacy_phase": "legacy-r2-revalidated",
+  "cases": [
+    {
+      "result": "PASS",
+      "version": "1.4.0",
+      "mode": "roundtrip",
+      "exit": 0,
+      "timed_out": false,
+      "seconds": 20.765,
+      "console_sha256": "cef7e2fa9ee971a1fa8898da0c2e3c4510ececcc064037337fd3cd0f344659ba",
+      "errors": [],
+      "new_integrity_notices": [],
+      "unexpected_integrity_notices": [],
+      "driver": {
+        "checks": {
+          "Authenticated autosave purpose remains locked": true,
+          "Canonical campaign payload hash is stable across second roundtrip": true,
+          "Every original campaign payload field is preserved": true,
+          "Fresh source integrity permits ordinary save writes": true,
+          "Full canonical campaign payload survives first save/load": true,
+          "Legacy driver terminal audio resources release before quit": true,
+          "Ordinary autosave recreates an actual authenticated file": true,
+          "Original protected autosave loads": true,
+          "Original protected baseline contains a complete dictionary": true,
+          "Real autosave write succeeds with original installation key": true,
+          "Remove only isolated copied envelope before a real replacement write": true,
+          "Second ordinary autosave write succeeds": true,
+          "The isolated replacement target is absent before write": true
+        },
+        "hash_scope": "Decoded complete gameplay payload with numeric normalization; excludes timestamp, checksum and authentication envelope",
+        "payload_fields": 6,
+        "payload_sha256_after_first": "8f8ec645d1380409f78774cffff2ac78377fe7eda30abd26971a8d50ff811a18",
+        "payload_sha256_after_second": "8f8ec645d1380409f78774cffff2ac78377fe7eda30abd26971a8d50ff811a18",
+        "payload_sha256_before": "8f8ec645d1380409f78774cffff2ac78377fe7eda30abd26971a8d50ff811a18",
+        "result": "PASS"
+      },
+      "scope": "Actual private protected profile copy; canonical payload hashes only; no envelope/installation-key hash claim",
+      "installation_key_preserved": true,
+      "original_all_profile_bytes_preserved": true,
+      "original_private_files_checked": 27,
+      "source_commit": "6780cad9460a83559f891639f71ddd2672b21575"
+    },
+    {
+      "result": "PASS",
+      "version": "1.4.0",
+      "mode": "tamper",
+      "exit": 0,
+      "timed_out": false,
+      "seconds": 7.672,
+      "console_sha256": "cef7e2fa9ee971a1fa8898da0c2e3c4510ececcc064037337fd3cd0f344659ba",
+      "errors": [],
+      "new_integrity_notices": [
+        "2026-10-27T11:46:16 integrity.save_rejected [\"user://autosave.json\"]"
+      ],
+      "unexpected_integrity_notices": [],
+      "driver": {
+        "checks": {
+          "Authenticated primary rejects modified signed body": true,
+          "Fresh source integrity permits ordinary save writes": true,
+          "Legacy driver terminal audio resources release before quit": true,
+          "Ordinary slot load rejects tampered primary and backup": true,
+          "Tampered envelope remains valid JSON": true
+        },
+        "result": "PASS",
+        "scope": "Tampered disposable copies only; original profile and key are never edited"
+      },
+      "scope": "Actual private protected profile copy; canonical payload hashes only; no envelope/installation-key hash claim",
+      "tampered_primary_and_existing_backups": 1,
+      "installation_key_preserved": true,
+      "original_all_profile_bytes_preserved": true,
+      "source_commit": "6780cad9460a83559f891639f71ddd2672b21575"
+    },
+    {
+      "result": "PASS",
+      "version": "1.5.0",
+      "mode": "roundtrip",
+      "exit": 0,
+      "timed_out": false,
+      "seconds": 12.406,
+      "console_sha256": "cef7e2fa9ee971a1fa8898da0c2e3c4510ececcc064037337fd3cd0f344659ba",
+      "errors": [],
+      "new_integrity_notices": [],
+      "unexpected_integrity_notices": [],
+      "driver": {
+        "checks": {
+          "Authenticated autosave purpose remains locked": true,
+          "Canonical campaign payload hash is stable across second roundtrip": true,
+          "Every original campaign payload field is preserved": true,
+          "Fresh source integrity permits ordinary save writes": true,
+          "Full canonical campaign payload survives first save/load": true,
+          "Legacy driver terminal audio resources release before quit": true,
+          "Ordinary autosave recreates an actual authenticated file": true,
+          "Original protected autosave loads": true,
+          "Original protected baseline contains a complete dictionary": true,
+          "Real autosave write succeeds with original installation key": true,
+          "Remove only isolated copied envelope before a real replacement write": true,
+          "Second ordinary autosave write succeeds": true,
+          "The isolated replacement target is absent before write": true
+        },
+        "hash_scope": "Decoded complete gameplay payload with numeric normalization; excludes timestamp, checksum and authentication envelope",
+        "payload_fields": 6,
+        "payload_sha256_after_first": "69faa0c1f3f68aa89ee5e3ead74d28fc016e40b387a0a3bd87407add964f2db6",
+        "payload_sha256_after_second": "69faa0c1f3f68aa89ee5e3ead74d28fc016e40b387a0a3bd87407add964f2db6",
+        "payload_sha256_before": "69faa0c1f3f68aa89ee5e3ead74d28fc016e40b387a0a3bd87407add964f2db6",
+        "result": "PASS"
+      },
+      "scope": "Actual private protected profile copy; canonical payload hashes only; no envelope/installation-key hash claim",
+      "installation_key_preserved": true,
+      "original_all_profile_bytes_preserved": true,
+      "original_private_files_checked": 27,
+      "source_commit": "6780cad9460a83559f891639f71ddd2672b21575"
+    },
+    {
+      "result": "PASS",
+      "version": "1.5.0",
+      "mode": "tamper",
+      "exit": 0,
+      "timed_out": false,
+      "seconds": 15.141,
+      "console_sha256": "cef7e2fa9ee971a1fa8898da0c2e3c4510ececcc064037337fd3cd0f344659ba",
+      "errors": [],
+      "new_integrity_notices": [
+        "2026-10-27T11:46:46 integrity.save_rejected [\"user://autosave.json\"]"
+      ],
+      "unexpected_integrity_notices": [],
+      "driver": {
+        "checks": {
+          "Authenticated primary rejects modified signed body": true,
+          "Fresh source integrity permits ordinary save writes": true,
+          "Legacy driver terminal audio resources release before quit": true,
+          "Ordinary slot load rejects tampered primary and backup": true,
+          "Tampered envelope remains valid JSON": true
+        },
+        "result": "PASS",
+        "scope": "Tampered disposable copies only; original profile and key are never edited"
+      },
+      "scope": "Actual private protected profile copy; canonical payload hashes only; no envelope/installation-key hash claim",
+      "tampered_primary_and_existing_backups": 1,
+      "installation_key_preserved": true,
+      "original_all_profile_bytes_preserved": true,
+      "source_commit": "6780cad9460a83559f891639f71ddd2672b21575"
+    }
+  ],
+  "source_critical_and_trust_bytes_preserved": true,
+  "actual_original_profiles_and_installation_keys_preserved": true,
+  "private_profiles_excluded_from_public_artifacts": true,
+  "scope": "Fresh isolated source compatibility checks; native public GUI compatibility is validated separately"
+}

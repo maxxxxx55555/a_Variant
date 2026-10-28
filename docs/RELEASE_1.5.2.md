@@ -25,3 +25,9 @@ Limits: Windows x64 offline edition, unsigned portable EXE, no Authenticode or s
 Распакуйте весь `MarchlandOaths-Windows-1.5.2.zip` и запустите `MarchlandOaths.exe`. Сверьте архив с `MarchlandOaths-SHA256SUMS-1.5.2.txt` командой `sha256sum -c`; перед обновлением скопируйте всю папку профиля с ключом установки. QA-сборки и ключи не распространяются.
 
 Релиз публикуется только после полного гейта: RU/EN, маршруты победы/поражения, старые профили,50 полных посевов, измеренная нагрузка, аудит зашифрованных пакетов, галереи и CI. Фактические результаты находятся в отчёте приёмки. Windows x64, офлайн; EXE без Authenticode. Android не выпускается, масштаб AAA и отсутствие любых возможных ошибок не заявляются. Ручные проверки владельца остаются обязательными.
+
+## Verified Windows scope / Проверенный Windows-релиз
+
+EN/RU: 67/67 Godot cases per locale; 50 completed distinct seed routes; 3 consecutive native victories and defeat; legacy save compatibility; measured normal soak 2683.422s. Full acceptance and owner checklist are in docs/ACCEPTANCE_CERTIFICATE.md and docs/HANDOFF.md.
+
+Проверки EN/RU, 50 прохождений, три последовательные нативные победы, поражение и совместимость сохранений пройдены. Android и магазины не входят в релиз. EXE без Authenticode; ручное прослушивание и пять проверок владельца остаются обязательными перед анонсом.

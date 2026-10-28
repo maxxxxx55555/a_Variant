@@ -75,7 +75,7 @@ python tools/export_release.py --godot /path/to/godot --output /fresh/staging/Ma
 python tests/run_tests.py --godot /path/to/godot --rendered --full-campaign --artifacts /path/to/logs
 ```
 
-The current source runner contains67 rendered Godot invocations per locale (66 headless), including import; --full-campaign adds two complete route cases (69 rendered total). Final executed counts are recorded in the gated release evidence. Python checks cover resources, export, copy/edition contracts, isolation, soundtrack and audio assets. These include46 core gameplay assertions,15 introductory playthrough checks, strategy, 687 RU/EN keys, sieges, civilians, cover, weapon models, triangle-exact cached terrain sampling, audio and saves. Complete diplomatic and military routes use actual movement, attacks, interactions and ordinary UI payments. The native verifier accepts `--military` for the conquest route. Normal difficulty is the full-route test baseline; other hardware and long unscripted play sessions require further independent QA.
+The current source runner contains 67 Godot invocations per locale with --rendered, including import; --full-campaign adds two complete route cases (69 rendered total). Final executed counts are recorded in the gated release evidence. Python checks cover resources, export, copy/edition contracts, isolation, soundtrack and audio assets. These include46 core gameplay assertions,15 introductory playthrough checks, strategy, 687 RU/EN keys, sieges, civilians, cover, weapon models, triangle-exact cached terrain sampling, audio and saves. Complete diplomatic and military routes use actual movement, attacks, interactions and ordinary UI payments. The native verifier accepts `--military` for the conquest route. Normal difficulty is the full-route test baseline; other hardware and long unscripted play sessions require further independent QA.
 
 Identical static assets share normalized meshes and preserve gameplay colliders. The 1.2 rainy village measured 5.07 seconds to load and 49.66 FPS over 180 rendered frames, with 337 draw calls at 1280×720 on this AMD integrated GPU. These are measurements from one machine.
 
@@ -104,3 +104,7 @@ V2 visual pass: eight-point design tokens, curated source-asset review, correcte
 ## Release integrity
 
 Public Windows packs omit the private verifier; the separate Windows QA preset additionally requires GAME_QA=1. All pack entries and the directory are encrypted using a matching custom Godot template and an environment-only build key. Encryption makes modification harder; it is not DRM. The compiled critical-data trust root rejects a replacement manifest and starts changed installations with trusted fallback data, a localized warning and no progress/settings writes. Authenticated save recovery records a local integrity log and shows a localized message. See SAVE-INTEGRITY.md for exact boundaries.
+
+## 1.5.2 acceptance and distribution
+
+Current [acceptance certificate](docs/ACCEPTANCE_CERTIFICATE.md), [owner checklist](docs/HANDOFF.md), [final report](docs/FINAL_REPORT.md) and [announcement kit](docs/ANNOUNCE_KIT.md) describe this patch. Older diagnostic documents/images refer to preserved historical attempts. Only the published gated patch ZIP and its exact versioned sums file are distribution artifacts.
