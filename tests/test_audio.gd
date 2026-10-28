@@ -25,7 +25,7 @@ func run() -> void:
 		await process_frame
 		check(audio.current_music == "exploration", "Exploration selects its music theme")
 		audio.play_music("combat", 0.05)
-		await create_timer(0.1).timeout
+		check(await wait_for_music_transition(audio), "Music crossfade finishes within its bounded deadline")
 		check(audio.current_music == "combat", "Combat transitions to the combat theme")
 		check(audio.music_players.filter(func(player): return player.playing).size() == 1, "Finished crossfade stops the previous music voice")
 		var settings: Node = root.get_node("SettingsManager")

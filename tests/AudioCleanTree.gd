@@ -1,6 +1,14 @@
 extends SceneTree
 ## Tests finish their assertions first, then drop coroutine locals before mixer teardown.
 var terminal_cleanup_pending:bool=false
+func wait_for_music_transition(audio:Node, timeout_ms:int=2000)->bool:
+    # SceneTree timers run before tweens. A slow frame can expire a timer
+    # before the fade has received that frame's delta; observe completion.
+    var deadline:int=Time.get_ticks_msec()+timeout_ms
+    while is_instance_valid(audio.crossfade) and audio.crossfade.is_running():
+        if Time.get_ticks_msec()>=deadline:return false
+        await process_frame
+    return true
 func finish_test(code:int=0)->void:
     if terminal_cleanup_pending:return
     terminal_cleanup_pending=true
