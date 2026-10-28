@@ -122,6 +122,15 @@ func _ready() -> void:
 	controls_label.add_theme_font_size_override("font_size", 18)
 	controls_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	controls_label.add_theme_stylebox_override("normal", preload("res://scripts/ui/MarchTheme.gd").panel(Color(0.06, 0.14, 0.12, 0.8)))
+	# A quiet frame keeps both meters legible against snow, fog and bright skies.
+	var meter_frame:Panel=Panel.new()
+	meter_frame.name="MeterFrame"
+	meter_frame.mouse_filter=Control.MOUSE_FILTER_IGNORE
+	meter_frame.position=Vector2(12,12)
+	meter_frame.size=Vector2(296,76)
+	meter_frame.add_theme_stylebox_override("panel",preload("res://scripts/ui/MarchTheme.gd").panel(Color(0.05,0.09,0.11,0.83),Color("61717a")))
+	add_child(meter_frame)
+	move_child(meter_frame,0)
 	stamina_bar.add_theme_stylebox_override("fill", preload("res://scripts/ui/MarchTheme.gd").panel(Color("789977"), Color("a6b889")))
 	for bar:ProgressBar in [hp_bar,stamina_bar]:
 		var background:StyleBoxFlat=StyleBoxFlat.new()

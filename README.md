@@ -1,4 +1,6 @@
-# Marchland Oaths — 1.5.2
+# Marchland Oaths — 1.5.3 candidate
+
+This source is a 1.5.3 release candidate. The published 1.5.2 build remains available; the new build requires fresh release validation.
 
 ## Current edition scope
 
