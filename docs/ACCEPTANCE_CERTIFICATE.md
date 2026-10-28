@@ -1,6 +1,6 @@
 # Marchland Oaths 1.5.2 — acceptance certificate
 
-Date: 2026-10-28 (Europe/Moscow). Automated Windows runtime checks accepted within the recorded scope. Final publication requires the external `release-gate.json` to report 100%; remote download verification is recorded after publication. Owner play/listening acceptance remains outstanding.
+Date: 2026-10-28 (Europe/Moscow). Automated Windows runtime checks accepted within the recorded scope. The external release gate passed 100%; both published assets were freshly downloaded and verified with native `sha256sum -c` (exit 0). Owner play/listening acceptance remains outstanding.
 
 Runtime/export source: `6780cad9460a83559f891639f71ddd2672b21575`. Full-suite source: `ef48b6a9b953e9aa427c6bb33b7d350da9f59778`. Later documentation or test-only changes must retain byte-identical shipping source/assets; the final gate records this comparison. This certificate supersedes the earlier negative certificate for this patch only; old tags, assets and failure records remain unchanged.
 
@@ -13,7 +13,7 @@ Runtime/export source: `6780cad9460a83559f891639f71ddd2672b21575`. Full-suite so
 | F5 Integrity | PASS: signed bounded saves, atomic backup/recovery, critical data anchoring, encrypted public pack and physically excluded private verifier; pack/native/source contracts. |
 | F6 Mechanics | PASS: 50 distinct completed seeded routes; matrix assertions; no unexplained errors or integrity warnings. |
 | F7 Acceptance | PASS: bilingual suites, 3 consecutive native victories plus defeat, legacy read/write round-trips and tamper rejection, 2683.422s measured normal soak with 3 complete loops. |
-| F8 Distribution | Required external gate: clean synchronized main, shipping-byte parity, CI, licenses/secrets, exact ZIP+sums, immutable prior releases; fresh remote `sha256sum -c` after publication. |
+| F8 Distribution | PASS: 100% gate, clean main/CI, exact shipping bytes, licenses/secrets, immutable prior release, published ZIP+sums and fresh remote `sha256sum -c` exit 0; see distribution receipt below. |
 
 ## Exact public binaries
 
@@ -26,3 +26,13 @@ The normal soak has flat unloaded-cycle engine object/resource/node counts and z
 Portable EXEs are not Authenticode signed. Android/emulator and store certification are outside this Windows release. Offline integrity resists ordinary corruption/editing but cannot prevent an owner from patching a local binary. The custom native template necessarily contains the pack-decryption key; encryption is not invulnerable DRM. No secrets or private profiles are distributed as loose files.
 
 After the gated release and the five owner checks in [HANDOFF](HANDOFF.md), this edition may be announced and distributed within these limits.
+
+## Published distribution receipt
+
+[Marchland Oaths 1.5.2](https://github.com/maxxxxx55555/a_Variant/releases/tag/v1.5.2) — tag commit `5246c58e36a6be347a5fb8e0c2704609608b72d4`. Gate: 58/58 (100%). Fresh remote `sha256sum -c`: **OK, exit 0**.
+
+ZIP: `MarchlandOaths-Windows-1.5.2.zip`
+
+SHA256: `9149f4c1c44cda9da19213d0e8e2c760beac02b1093eba567900138a95fe615b`
+
+Evidence: [acceptance-1.5.2/distribution.json](acceptance-1.5.2/distribution.json). This post-publication update changes documentation only; the tagged build and release assets are unchanged. The five owner checks remain outstanding before announcement.

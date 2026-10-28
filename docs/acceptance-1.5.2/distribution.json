@@ -1,0 +1,339 @@
+{
+  "result": "PASS",
+  "release": "https://github.com/maxxxxx55555/a_Variant/releases/tag/v1.5.2",
+  "tag": "v1.5.2",
+  "tag_commit": "5246c58e36a6be347a5fb8e0c2704609608b72d4",
+  "runtime_export_commit": "6780cad9460a83559f891639f71ddd2672b21575",
+  "gate_percent": 100,
+  "global_gate_sha256": "03edb8a4620a1c399c5b87a3abaf61bd0b916b11314772ec104584e2d49ffd19",
+  "checks": [
+    {
+      "repository": "a_Variant",
+      "check": "Full Godot suite en",
+      "result": "PASS",
+      "evidence": {
+        "path": "C:\\Users\\Maxsim\\Documents\\Codex\\2026-10-24\\new-chat\\outputs\\release-1.5.2-and-2.0.1\\a_Variant\\QA\\suites-r3-summary.json",
+        "commit": "ef48b6a9b953e9aa427c6bb33b7d350da9f59778"
+      }
+    },
+    {
+      "repository": "a_Variant",
+      "check": "Full Godot suite ru",
+      "result": "PASS",
+      "evidence": {
+        "path": "C:\\Users\\Maxsim\\Documents\\Codex\\2026-10-24\\new-chat\\outputs\\release-1.5.2-and-2.0.1\\a_Variant\\QA\\suites-r3-summary.json",
+        "commit": "ef48b6a9b953e9aa427c6bb33b7d350da9f59778"
+      }
+    },
+    {
+      "repository": "a_Variant",
+      "check": "Ordinary source checkout audit",
+      "result": "PASS",
+      "evidence": "suites-r3-source-audit.json"
+    },
+    {
+      "repository": "a_Variant",
+      "check": "Final tag source matches full-suite source",
+      "result": "PASS",
+      "evidence": {
+        "tested_commit": "ef48b6a9b953e9aa427c6bb33b7d350da9f59778",
+        "final_commit": "5246c58e36a6be347a5fb8e0c2704609608b72d4",
+        "documentation_delta": [
+          "README.md",
+          "docs/ACCEPTANCE_CERTIFICATE.md",
+          "docs/ANNOUNCE_KIT.md",
+          "docs/FINAL_REPORT.md",
+          "docs/HANDOFF.md",
+          "docs/RELEASE_1.5.2.md",
+          "docs/acceptance-1.5.2/announcement-word-counts.json",
+          "docs/acceptance-1.5.2/audio-timing-green-audio.log",
+          "docs/acceptance-1.5.2/audio-timing-green-missing-stop-control.log",
+          "docs/acceptance-1.5.2/audio-timing-green-transitions.log",
+          "docs/acceptance-1.5.2/audio-timing-stall-stall-observed.log",
+          "docs/acceptance-1.5.2/audio-timing-stall-stall-original.log",
+          "docs/acceptance-1.5.2/contracts.json",
+          "docs/acceptance-1.5.2/cycles.json",
+          "docs/acceptance-1.5.2/evidence-manifest.json",
+          "docs/acceptance-1.5.2/exports.json",
+          "docs/acceptance-1.5.2/legacy.json",
+          "docs/acceptance-1.5.2/native.json",
+          "docs/acceptance-1.5.2/pack-audit.json",
+          "docs/acceptance-1.5.2/soak-trend.json",
+          "docs/acceptance-1.5.2/soak.json",
+          "docs/acceptance-1.5.2/suite-en.log",
+          "docs/acceptance-1.5.2/suite-ru.log",
+          "docs/acceptance-1.5.2/suite-source-audit.json",
+          "docs/acceptance-1.5.2/suites.json",
+          "docs/acceptance-1.5.2/test-timing-parity.json",
+          "docs/acceptance-1.5.2/visual-review.json",
+          "docs/press/v1.5.2/01-en-gallery-title.png",
+          "docs/press/v1.5.2/02-en-gallery-village-rain.png",
+          "docs/press/v1.5.2/03-ru-gallery-trade.png",
+          "docs/press/v1.5.2/04-ru-gallery-world-map.png",
+          "docs/press/v1.5.2/05-en-gallery-ending-staged.png",
+          "docs/press/v1.5.2/06-ru-iron-death.png",
+          "docs/press/v1.5.2/07-en-gallery-credits.png",
+          "docs/press/v1.5.2/08-ru-gallery-settings.png",
+          "docs/press/v1.5.2/CAPTIONS.md",
+          "docs/press/v1.5.2/manifest.json"
+        ]
+      }
+    },
+    {
+      "repository": "a_Variant",
+      "check": "Audio, license, promise/mechanics, export, QA and isolation contracts",
+      "result": "PASS",
+      "evidence": "final-contracts/summary.json"
+    },
+    {
+      "repository": "a_Variant",
+      "check": "Four encrypted exports",
+      "result": "PASS",
+      "evidence": "exports-r2/summary.json"
+    },
+    {
+      "repository": "a_Variant",
+      "check": "Full encrypted pack payload/trust/physical QA exclusion audit",
+      "result": "PASS",
+      "evidence": "exports-r2/pack-audit-summary.json"
+    },
+    {
+      "repository": "a_Variant",
+      "check": "Public guards and three native victories plus defeat",
+      "result": "PASS",
+      "evidence": "native-r2/summary.json"
+    },
+    {
+      "repository": "a_Variant",
+      "check": "Legacy real read/write roundtrip and tamper rejection",
+      "result": "PASS",
+      "evidence": "legacy-r2-revalidated/summary.json"
+    },
+    {
+      "repository": "a_Variant",
+      "check": "Fifty distinct complete seeded routes",
+      "result": "PASS",
+      "evidence": "patch-full-cycles-r2/summary.json"
+    },
+    {
+      "repository": "a_Variant",
+      "check": "Measured normal soak >=1800 seconds",
+      "result": "PASS",
+      "evidence": "patch-normal-soak-r2/"
+    },
+    {
+      "repository": "a_Variant",
+      "check": "Bilingual integrated gallery review",
+      "result": "PASS",
+      "evidence": "visual-review.json"
+    },
+    {
+      "repository": "a_Variant",
+      "check": "All runtime evidence uses the shipped source",
+      "result": "PASS",
+      "evidence": {
+        "legacy": "6780cad9460a83559f891639f71ddd2672b21575",
+        "cycles": "6780cad9460a83559f891639f71ddd2672b21575",
+        "soak": "6780cad9460a83559f891639f71ddd2672b21575",
+        "gallery": "6780cad9460a83559f891639f71ddd2672b21575",
+        "visual": "6780cad9460a83559f891639f71ddd2672b21575",
+        "export-public.exe": "6780cad9460a83559f891639f71ddd2672b21575",
+        "export-public.pck": "6780cad9460a83559f891639f71ddd2672b21575",
+        "export-private-qa.exe": "6780cad9460a83559f891639f71ddd2672b21575",
+        "export-private-qa.pck": "6780cad9460a83559f891639f71ddd2672b21575"
+      }
+    },
+    {
+      "repository": "a_Variant",
+      "check": "Native evidence uses the exact audited binaries",
+      "result": "PASS",
+      "evidence": "native-r2/summary.json"
+    },
+    {
+      "repository": "a_Variant",
+      "check": "Reviewed screenshots retain exact raw bytes",
+      "result": "PASS",
+      "evidence": "gallery-a-r2/manifest.json"
+    },
+    {
+      "repository": "a_Variant",
+      "check": "Exact delivery and license bytes",
+      "result": "PASS",
+      "evidence": "packages.json"
+    },
+    {
+      "repository": "a_Variant",
+      "check": "Final archive hash",
+      "result": "PASS",
+      "evidence": {
+        "name": "MarchlandOaths-Windows-1.5.2.zip",
+        "bytes": 364045200,
+        "sha256": "9149f4c1c44cda9da19213d0e8e2c760beac02b1093eba567900138a95fe615b"
+      }
+    },
+    {
+      "repository": "a_Variant",
+      "check": "Final checksums hash",
+      "result": "PASS",
+      "evidence": {
+        "name": "MarchlandOaths-SHA256SUMS-1.5.2.txt",
+        "bytes": 99,
+        "sha256": "945c77ced6106cf20607340a5b811f327ef5735788d005ac18c42d3f76cac23a"
+      }
+    },
+    {
+      "repository": "a_Variant",
+      "check": "Native checksum verification",
+      "result": "PASS",
+      "evidence": "package-sha256sum.log"
+    },
+    {
+      "repository": "a_Variant",
+      "check": "ZIP delivery filename executable/PCK guard",
+      "result": "PASS",
+      "evidence": "delivery-filename/result.json"
+    },
+    {
+      "repository": "a_Variant",
+      "check": "Actual secret literal absence in loose source/docs",
+      "result": "PASS",
+      "evidence": "final-sources.json; packages.json"
+    },
+    {
+      "repository": "a_Variant",
+      "check": "Shipping source/assets exactly match tested exports",
+      "result": "PASS",
+      "evidence": {
+        "runtime_commit": "6780cad9460a83559f891639f71ddd2672b21575",
+        "final_commit": "5246c58e36a6be347a5fb8e0c2704609608b72d4",
+        "nonshipping_delta": [
+          "README.md",
+          "docs/ACCEPTANCE_CERTIFICATE.md",
+          "docs/ANNOUNCE_KIT.md",
+          "docs/FINAL_REPORT.md",
+          "docs/HANDOFF.md",
+          "docs/RELEASE_1.5.2.md",
+          "docs/acceptance-1.5.2/announcement-word-counts.json",
+          "docs/acceptance-1.5.2/audio-timing-green-audio.log",
+          "docs/acceptance-1.5.2/audio-timing-green-missing-stop-control.log",
+          "docs/acceptance-1.5.2/audio-timing-green-transitions.log",
+          "docs/acceptance-1.5.2/audio-timing-stall-stall-observed.log",
+          "docs/acceptance-1.5.2/audio-timing-stall-stall-original.log",
+          "docs/acceptance-1.5.2/contracts.json",
+          "docs/acceptance-1.5.2/cycles.json",
+          "docs/acceptance-1.5.2/evidence-manifest.json",
+          "docs/acceptance-1.5.2/exports.json",
+          "docs/acceptance-1.5.2/legacy.json",
+          "docs/acceptance-1.5.2/native.json",
+          "docs/acceptance-1.5.2/pack-audit.json",
+          "docs/acceptance-1.5.2/soak-trend.json",
+          "docs/acceptance-1.5.2/soak.json",
+          "docs/acceptance-1.5.2/suite-en.log",
+          "docs/acceptance-1.5.2/suite-ru.log",
+          "docs/acceptance-1.5.2/suite-source-audit.json",
+          "docs/acceptance-1.5.2/suites.json",
+          "docs/acceptance-1.5.2/test-timing-parity.json",
+          "docs/acceptance-1.5.2/visual-review.json",
+          "docs/press/v1.5.2/01-en-gallery-title.png",
+          "docs/press/v1.5.2/02-en-gallery-village-rain.png",
+          "docs/press/v1.5.2/03-ru-gallery-trade.png",
+          "docs/press/v1.5.2/04-ru-gallery-world-map.png",
+          "docs/press/v1.5.2/05-en-gallery-ending-staged.png",
+          "docs/press/v1.5.2/06-ru-iron-death.png",
+          "docs/press/v1.5.2/07-en-gallery-credits.png",
+          "docs/press/v1.5.2/08-ru-gallery-settings.png",
+          "docs/press/v1.5.2/CAPTIONS.md",
+          "docs/press/v1.5.2/manifest.json",
+          "tests/AudioCleanTree.gd",
+          "tests/test_audio.gd",
+          "tests/test_music_transitions.gd"
+        ]
+      }
+    },
+    {
+      "repository": "a_Variant",
+      "check": "Clean synchronized main",
+      "result": "PASS",
+      "evidence": "5246c58e36a6be347a5fb8e0c2704609608b72d4"
+    },
+    {
+      "repository": "a_Variant",
+      "check": "Post-push isolation working",
+      "result": "PASS",
+      "evidence": "REPO ISOLATION PASS: a_Variant\n"
+    },
+    {
+      "repository": "a_Variant",
+      "check": "Post-push isolation tree",
+      "result": "PASS",
+      "evidence": "REPO ISOLATION PASS: a_Variant\n"
+    },
+    {
+      "repository": "a_Variant",
+      "check": "Exact-head hosted CI",
+      "result": "PASS",
+      "evidence": {
+        "id": 40704897780,
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/maxxxxx55555/a_Variant/actions/runs/40704897780"
+      }
+    },
+    {
+      "repository": "a_Variant",
+      "check": "Prior public release/tag immutable",
+      "result": "PASS",
+      "evidence": {
+        "tag": "v1.5.1",
+        "release_id": 424206535
+      }
+    },
+    {
+      "repository": "a_Variant",
+      "check": "Branches and unique-content preservation",
+      "result": "PASS",
+      "evidence": [
+        {
+          "name": "main",
+          "commit": "5246c58e36a6be347a5fb8e0c2704609608b72d4"
+        }
+      ]
+    },
+    {
+      "repository": "a_Variant",
+      "check": "Consistent patch version",
+      "result": "PASS",
+      "evidence": "1.5.2"
+    }
+  ],
+  "download_verification": {
+    "result": "PASS",
+    "release_url": "https://github.com/maxxxxx55555/a_Variant/releases/tag/v1.5.2",
+    "assets": [
+      {
+        "name": "MarchlandOaths-Windows-1.5.2.zip",
+        "bytes": 364045200,
+        "sha256": "9149f4c1c44cda9da19213d0e8e2c760beac02b1093eba567900138a95fe615b",
+        "id": 685420403,
+        "url": "https://github.com/maxxxxx55555/a_Variant/releases/download/v1.5.2/MarchlandOaths-Windows-1.5.2.zip",
+        "server_digest_verified": true
+      },
+      {
+        "name": "MarchlandOaths-SHA256SUMS-1.5.2.txt",
+        "bytes": 99,
+        "sha256": "945c77ced6106cf20607340a5b811f327ef5735788d005ac18c42d3f76cac23a",
+        "id": 685420402,
+        "url": "https://github.com/maxxxxx55555/a_Variant/releases/download/v1.5.2/MarchlandOaths-SHA256SUMS-1.5.2.txt",
+        "server_digest_verified": true
+      }
+    ],
+    "method": "All archive bytes freshly downloaded after publication; validated HTTP206 Content-Range, complete SHA256, exact checksum filename and native sha256sum -c; no old/local prefix reused",
+    "range_count": 348,
+    "command": "sha256sum -c MarchlandOaths-SHA256SUMS-1.5.2.txt",
+    "exit": 0,
+    "stdout": "MarchlandOaths-Windows-1.5.2.zip: OK\n"
+  },
+  "old_release_immutable": true,
+  "owner_five_checks": "OUTSTANDING",
+  "zip_and_release_assets_unchanged_by_this_documentation_update": true
+}

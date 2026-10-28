@@ -20,3 +20,13 @@ A test-only scheduler correction now observes bounded tween completion; a simula
 | defeat | The Last Watch | `035c080389e01cf7dd2fb030a6f150e4afa6e41c97850fdfc0785641cdaa34ca` |
 
 Known limitations: no human/audible final acceptance, Android/store certification or Authenticode; no AAA or universal no-bug/invulnerability claim. See HANDOFF. Final ZIP hashes and remote verification are recorded after publication.
+
+## Published distribution receipt
+
+[Marchland Oaths 1.5.2](https://github.com/maxxxxx55555/a_Variant/releases/tag/v1.5.2) — tag commit `5246c58e36a6be347a5fb8e0c2704609608b72d4`. Gate: 58/58 (100%). Fresh remote `sha256sum -c`: **OK, exit 0**.
+
+ZIP: `MarchlandOaths-Windows-1.5.2.zip`
+
+SHA256: `9149f4c1c44cda9da19213d0e8e2c760beac02b1093eba567900138a95fe615b`
+
+Evidence: [acceptance-1.5.2/distribution.json](acceptance-1.5.2/distribution.json). This post-publication update changes documentation only; the tagged build and release assets are unchanged. The five owner checks remain outstanding before announcement.
