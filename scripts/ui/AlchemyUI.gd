@@ -1,4 +1,5 @@
 extends Control
+const ItemIcons=preload("res://scripts/ui/ItemIcons.gd")
 
 @onready var recipe_list: ItemList = $MarginContainer/HBoxContainer/RecipeList
 @onready var info_label: RichTextLabel = $MarginContainer/HBoxContainer/VBoxContainer/InfoLabel
@@ -23,6 +24,7 @@ func _ready() -> void:
 
 func refresh_recipes() -> void:
 	var selection:int=AlchemySystem.known_recipes.find(selected_recipe)
+	recipe_list.fixed_icon_size=Vector2i(36,36)
 	recipe_list.clear()
 	var sample_recipe:RecipeData= RecipeData.new()
 	sample_recipe.id = "health_potion_recipe"
@@ -39,7 +41,7 @@ func refresh_recipes() -> void:
 		var name_str:String= LocalizationManager.get_string(str(r.result_item.get("name_key")))
 		# This list owns the row; selection is managed separately.
 		@warning_ignore("return_value_discarded")
-		recipe_list.add_item(name_str)
+		recipe_list.add_item(name_str,ItemIcons.for_item(r.result_item as ItemData))
 	brew_button.text = LocalizationManager.get_string("ui.brew")
 	if not AlchemySystem.known_recipes.is_empty():
 		recipe_list.select(maxi(0,selection))

@@ -2,6 +2,10 @@
 
 This source is a 1.5.3 release candidate. The published 1.5.2 build remains available; the new build requires fresh release validation.
 
+## 1.5.3 visual work in progress
+
+Shrines and ruins now use a textured, batched stone landmark with the original collision and interaction. The interaction pedestal has a crafted stone appearance. Original colored vectors distinguish inventory, crafting and alchemy items, and the application crest has been redesigned. Grass is shorter and less harsh in the foreground; these changes do not alter navigation, rewards, saved data or combat rules. The candidate remains gated until the fresh validation cycle is complete.
+
 ## Current edition scope
 
 The compact campaign has60 dependency-linked objectives across eight regions,14 towns and40 points of interest, four recruitable companions, four squad types,25 potion recipes and12 forge blueprints. Its endings resolve alliances, conquest or a mixture. Boot/loading tips, persistent camera/MSAA controls and explicit failed-save exit handling are included in this edition.
@@ -22,7 +26,7 @@ Retained: Live RU/EN presentation with687 catalog keys, four mood compositions a
 
 Normal Exit, window close and guarded QA rejection now wait for actual audio playback disposal before terminating. Save failures retain Retry/Stay/Discard, repeated accepted dialog callbacks cannot write twice, and private verifier cleanup remains reusable. Source test drivers drain audio explicitly and the runner rejects resource-leak warnings.
 
-Coverage: 67 rendered Godot cases per locale;192 mechanics cells; actual campaign, save, integrity and UI routes, plus Python checkout/provenance/license/copy/export contracts. Fresh complete source/native/soak results and exact artifact hashes are recorded by the release gate and current acceptance certificate. Earlier release measurements are historical and do not establish acceptance of this patch.
+Coverage: 69 rendered Godot cases per locale;192 mechanics cells; actual campaign, save, integrity and UI routes, plus Python checkout/provenance/license/copy/export contracts. Fresh complete source/native/soak results and exact artifact hashes are recorded by the release gate and current acceptance certificate. Earlier release measurements are historical and do not establish acceptance of this patch.
 
 See [patch notes](docs/RELEASE_1.5.2.md), [acceptance certificate](docs/ACCEPTANCE_CERTIFICATE.md), [mechanics coverage](docs/MECHANICS_MATRIX.md), [save integrity](SAVE-INTEGRITY.md) and [the scoped promise inventory](docs/PROMISE_MATRIX.md). Portable Windows x64; Godot Compatibility/OpenGL-capable GPU; offline. The EXE is not Authenticode signed. Android artifacts are omitted. Finite automated tests do not replace owner play/listening checks or guarantee zero possible bugs, unbreakable offline security or AAA scale.
 
@@ -77,7 +81,7 @@ python tools/export_release.py --godot /path/to/godot --output /fresh/staging/Ma
 python tests/run_tests.py --godot /path/to/godot --rendered --full-campaign --artifacts /path/to/logs
 ```
 
-The current source runner contains 67 Godot invocations per locale with --rendered, including import; --full-campaign adds two complete route cases (69 rendered total). Final executed counts are recorded in the gated release evidence. Python checks cover resources, export, copy/edition contracts, isolation, soundtrack and audio assets. These include46 core gameplay assertions,15 introductory playthrough checks, strategy, 687 RU/EN keys, sieges, civilians, cover, weapon models, triangle-exact cached terrain sampling, audio and saves. Complete diplomatic and military routes use actual movement, attacks, interactions and ordinary UI payments. The native verifier accepts `--military` for the conquest route. Normal difficulty is the full-route test baseline; other hardware and long unscripted play sessions require further independent QA.
+The current source runner contains 69 Godot invocations per locale with --rendered, including import; --full-campaign adds two complete route cases (71 rendered total). Final executed counts are recorded in the gated release evidence. Python checks cover resources, export, copy/edition contracts, isolation, soundtrack and audio assets. These include46 core gameplay assertions,15 introductory playthrough checks, strategy, 687 RU/EN keys, sieges, civilians, cover, weapon models, triangle-exact cached terrain sampling, audio and saves. Complete diplomatic and military routes use actual movement, attacks, interactions and ordinary UI payments. The native verifier accepts `--military` for the conquest route. Normal difficulty is the full-route test baseline; other hardware and long unscripted play sessions require further independent QA.
 
 Identical static assets share normalized meshes and preserve gameplay colliders. The 1.2 rainy village measured 5.07 seconds to load and 49.66 FPS over 180 rendered frames, with 337 draw calls at 1280×720 on this AMD integrated GPU. These are measurements from one machine.
 
@@ -110,3 +114,5 @@ Public Windows packs omit the private verifier; the separate Windows QA preset a
 ## 1.5.2 acceptance and distribution
 
 Current [acceptance certificate](docs/ACCEPTANCE_CERTIFICATE.md), [owner checklist](docs/HANDOFF.md), [final report](docs/FINAL_REPORT.md) and [announcement kit](docs/ANNOUNCE_KIT.md) describe this patch. Older diagnostic documents/images refer to preserved historical attempts. Only the published gated patch ZIP and its exact versioned sums file are distribution artifacts.
+
+[Полное описание игры на русском](docs/GAME_DESCRIPTION_RU.md).

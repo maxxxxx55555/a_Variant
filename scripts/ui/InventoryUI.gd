@@ -1,4 +1,5 @@
 extends Control
+const ItemIcons=preload("res://scripts/ui/ItemIcons.gd")
 
 @onready var item_list: ItemList = $MarginContainer/HBoxContainer/LeftPanel/ItemList
 @onready var item_card_label: RichTextLabel = $MarginContainer/HBoxContainer/RightPanel/ItemCardLabel
@@ -56,6 +57,7 @@ func refresh_inventory() -> void:
 	equip_button.text = LocalizationManager.get_string("ui.equip")
 	use_button.text = LocalizationManager.get_string("ui.use")
 	drop_button.text = LocalizationManager.get_string("ui.drop")
+	item_list.fixed_icon_size=Vector2i(36,36)
 	item_list.clear()
 	for item:Dictionary in GameState.inventory:
 		var name_key:String= item.get("name_key", "")
@@ -65,7 +67,7 @@ func refresh_inventory() -> void:
 			display_name += " x" + str(count)
 		# This list owns the row; selection is managed separately.
 		@warning_ignore("return_value_discarded")
-		item_list.add_item(display_name)
+		item_list.add_item(display_name,ItemIcons.for_record(item))
 	clear_card()
 
 func refresh_equipment() -> void:

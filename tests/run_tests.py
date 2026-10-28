@@ -59,6 +59,8 @@ def main():
         cases.append(('premium-ui', ([] if args.rendered else ['--headless']) + ['--resolution', '540x960' if portrait else '1280x720', '--script', 'res://tests/test_premium_ui.gd']))
         for case in ['detailed_figures','weapon_detail','campaign_finale','archer_presentation']:
             cases.append((case, ['--headless', '--script', 'res://tests/test_' + case + '.gd']))
+        cases.append(('rpg-icons', ['--headless', '--script', 'res://tests/test_rpg_icons.gd']))
+        cases.append(('landmark-presentation', ['--headless', '--script', 'res://tests/test_landmark_presentation.gd']))
         cases.append(('release-hardening', ['--headless', '--script', 'res://tests/test_release_hardening.gd']))
         cases.append(('music-transitions', ['--headless', '--script', 'res://tests/test_music_transitions.gd']))
         cases.append(('qa-audio-lifetime', ['--headless', '--fixed-fps', '30', '--script', 'res://tests/test_qa_audio_lifetime.gd']))

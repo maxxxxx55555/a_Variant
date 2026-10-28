@@ -159,13 +159,9 @@ func build_point(data: Dictionary) -> void:
 		add_child(marker)
 		marker.position = origin
 		if data.kind == "shrine" or data.kind == "ruins":
-			for side:int in [-1, 1]:
-				# The generated mesh is attached to its parent; no separate handle is needed here.
-				@warning_ignore("return_value_discarded")
-				MarchArt.box(self, origin + Vector3(side * 2, 2, 0), Vector3(0.8, 4, 0.9), Color("898b7c"), true)
-			# The generated mesh is attached to its parent; no separate handle is needed here.
+			# The world owns the landmark; its original collision and marker are preserved.
 			@warning_ignore("return_value_discarded")
-			MarchArt.box(self, origin + Vector3(0, 4, 0), Vector3(5, 0.7, 1), Color("969585"), true)
+			preload("res://scripts/world/LandmarkArt.gd").build(self,origin)
 		elif data.kind == "mine":
 			for index:int in 4:
 				var mesh:SphereMesh= SphereMesh.new()

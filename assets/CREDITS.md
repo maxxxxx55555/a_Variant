@@ -34,3 +34,7 @@ Original project artwork authored for this release, without third-party image so
 V2 art curation: docs/ART_DIRECTION.md and docs/ASSET_REVIEW.json. Roadside landmarks and meadow blade refinement are code-built repository geometry using the existing licensed surfaces. The crest background clipping repair and derived executable-icon hashes are recorded in assets/ui/icon-provenance.json. Inherited third-party license files are retained unchanged.
 
 Interface focus/unavailable cues: original profile-specific synthesis using tools/generate_audio.py, CC0-1.0; exact provenance is in audio/interface-provenance.json.
+
+## Marchland interface illustrations
+
+The colorful SVG item icons in `assets/ui/items/` and the updated frontier crest in `icon.svg` are original repository-authored vectors for this game. `assets/ui/app-icon.png` is rendered from that vector using `tools/render_icon.gd`; its exact source and output hashes are recorded in `assets/ui/icon-provenance.json`.

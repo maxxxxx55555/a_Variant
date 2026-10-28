@@ -1,9 +1,9 @@
 {
-  "provider": "Repository-authored vector; Godot SVG rasterizer",
-  "date": "2026-10-26",
-  "change": "Background rect matched to256\u00d7256 viewBox; restore all rounded corners without changing the crest",
+  "provider": "Repository-authored SVG illustration; Godot SVG rasterizer",
+  "date": "2026-10-28",
+  "change": "Colorful frontier crest with sun, mountains and sword; original vector authored for this update",
   "source": "icon.svg",
   "tool": "tools/render_icon.gd",
-  "source_sha256": "3630a17e91a9f12c7d69aaedf4925387e14435a0ec27d8ef689cac2d78a780bb",
-  "app_icon_sha256": "7f796289f279e3fc7f524a5076994b087cb7d896026d7ab75e5f7ace8c924333"
+  "source_sha256": "3b208b57e087ac07b0645331c31aeafd799c1c00760204eaa455d17255cb299b",
+  "app_icon_sha256": "532ef1a8c5fe833b5367ba6031ff23ada64668040aa86e14c4d287d27b413ca6"
 }

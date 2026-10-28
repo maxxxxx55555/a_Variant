@@ -17,9 +17,9 @@ func _ready() -> void:
 	if is_town:
 		figure = MarchArt.humanoid(self, Color("a6976b"),false,false)
 	else:
-		# The generated mesh is attached to its parent; no separate handle is needed here.
+		# The Area3D retains its original interaction collider; the plinth is visual only.
 		@warning_ignore("return_value_discarded")
-		MarchArt.box(self, Vector3(0, 0.7, 0), Vector3(0.8, 1.4, 0.8), Color("989887"), false)
+		preload("res://scripts/world/LandmarkArt.gd").make_marker(self)
 	var key: String = data.name if is_town else "poi." + data.kind
 	# The label is parent-owned and updates through the locale signal.
 	@warning_ignore("return_value_discarded")

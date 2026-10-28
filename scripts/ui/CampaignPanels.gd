@@ -1,4 +1,5 @@
 extends Node
+const ItemIcons=preload("res://scripts/ui/ItemIcons.gd")
 const FrameView=preload("res://scripts/ui/CouncilFrame.gd")
 const MapView=preload("res://scripts/ui/MarchMap.gd")
 
@@ -121,6 +122,7 @@ func refresh() -> void:
 		building_buttons[data.id].disabled = level >= 3 or not CampaignSystem.can_pay(cost)
 		building_buttons[data.id].tooltip_text=LocalizationManager.get_string("ui.max_level" if level>=3 else "ui.resources_required") if building_buttons[data.id].disabled else ""
 	var selected:PackedInt32Array= craft_list.get_selected_items()
+	craft_list.fixed_icon_size=Vector2i(36,36)
 	craft_list.clear()
 	for blueprint:Dictionary in WorkshopSystem.crafting:
 		var result_path:String=blueprint.result
@@ -128,7 +130,7 @@ func refresh() -> void:
 		var recipe_cost:Dictionary=blueprint.cost
 		# This list owns the row; selection is managed separately.
 		@warning_ignore("return_value_discarded")
-		craft_list.add_item(LocalizationManager.get_string(str(item.name_key)) + " · " + costs(recipe_cost))
+		craft_list.add_item(LocalizationManager.get_string(str(item.name_key)) + " · " + costs(recipe_cost),ItemIcons.for_item(item))
 	if not selected.is_empty(): craft_list.select(selected[0])
 	craft_button.disabled = selected.is_empty() or WorkshopSystem.levels.get("forge", 0) < 1
 	if not selected.is_empty():

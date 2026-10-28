@@ -1,9 +1,9 @@
 {
-  "review_date": "2026-10-26",
+  "review_date": "2026-10-28",
   "game": "Marchland Oaths",
   "method": "Visual contact-sheet inspection of every listed raster/vector, full narrative-image inspection,16px icon check; integrated gallery acceptance is recorded separately after capture review.",
   "scope": "Source curation; does not claim human playtesting or final release acceptance",
-  "count": 79,
+  "count": 95,
   "files": [
     {
       "path": "assets/art/characters/Barbarian_barbarian_texture.png",
@@ -591,10 +591,10 @@
     },
     {
       "path": "assets/ui/app-icon.png",
-      "sha256": "7f796289f279e3fc7f524a5076994b087cb7d896026d7ab75e5f7ace8c924333",
+      "sha256": "532ef1a8c5fe833b5367ba6031ff23ada64668040aa86e14c4d287d27b413ca6",
       "role": "application icon",
       "decision": "ACCEPT_SOURCE",
-      "notes": "Crest/monogram remains distinguishable at16×16. Source geometry and executable raster match. Fixed original oversized background rect that clipped three rounded corners; retained original crest.",
+      "notes": "Redesigned authored colorful frontier crest; inspect small-size legibility in rendered output.",
       "provenance": "assets/ui/icon-provenance.json"
     },
     {
@@ -631,14 +631,142 @@
     },
     {
       "path": "icon.svg",
-      "sha256": "3630a17e91a9f12c7d69aaedf4925387e14435a0ec27d8ef689cac2d78a780bb",
+      "sha256": "3b208b57e087ac07b0645331c31aeafd799c1c00760204eaa455d17255cb299b",
       "role": "application icon",
       "decision": "ACCEPT_SOURCE",
-      "notes": "Crest/monogram remains distinguishable at16×16. Source geometry and executable raster match. Fixed original oversized background rect that clipped three rounded corners; retained original crest.",
+      "notes": "Redesigned authored colorful frontier crest; inspect small-size legibility in rendered output.",
       "provenance": "assets/ui/icon-provenance.json"
+    },
+    {
+      "path": "assets/ui/items/armor.svg",
+      "sha256": "a7520c0dab9837ea2160b763caf0c8c433aa6de550c16351b0493c44e295690a",
+      "role": "item icon",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Original colored vector inspected in a 16-icon contact sheet at 80px and 16px; weapon, armor, herb and potion categories use distinct silhouettes.",
+      "provenance": "assets/CREDITS.md"
+    },
+    {
+      "path": "assets/ui/items/axe.svg",
+      "sha256": "917f796b9ca4759f2e388473689e1e93a91159fff0da90bd5f680191f1a83e71",
+      "role": "item icon",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Original colored vector inspected in a 16-icon contact sheet at 80px and 16px; weapon, armor, herb and potion categories use distinct silhouettes.",
+      "provenance": "assets/CREDITS.md"
+    },
+    {
+      "path": "assets/ui/items/boots.svg",
+      "sha256": "16971cc24443a4622abe82297f601661a2c9bf8373a34426c3585cd357d89c2d",
+      "role": "item icon",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Original colored vector inspected in a 16-icon contact sheet at 80px and 16px; weapon, armor, herb and potion categories use distinct silhouettes.",
+      "provenance": "assets/CREDITS.md"
+    },
+    {
+      "path": "assets/ui/items/bow.svg",
+      "sha256": "cd0c3fdb7117d6cf292bc69025e978e17a915d46d27a6635f937516a72f343b6",
+      "role": "item icon",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Original colored vector inspected in a 16-icon contact sheet at 80px and 16px; weapon, armor, herb and potion categories use distinct silhouettes.",
+      "provenance": "assets/CREDITS.md"
+    },
+    {
+      "path": "assets/ui/items/dagger.svg",
+      "sha256": "1b9820cb8a275df244203ab221927727ab438512a860be12827125ecb1ed877d",
+      "role": "item icon",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Original colored vector inspected in a 16-icon contact sheet at 80px and 16px; weapon, armor, herb and potion categories use distinct silhouettes.",
+      "provenance": "assets/CREDITS.md"
+    },
+    {
+      "path": "assets/ui/items/fallback.svg",
+      "sha256": "2ddb2e7a29f6e7632307ca051031bd5a42953f435700cad495811a21f428da69",
+      "role": "item icon",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Original colored vector inspected in a 16-icon contact sheet at 80px and 16px; weapon, armor, herb and potion categories use distinct silhouettes.",
+      "provenance": "assets/CREDITS.md"
+    },
+    {
+      "path": "assets/ui/items/helmet.svg",
+      "sha256": "9990fb562aca0b4b99d1265f0720be2af52f34b4e031b266599ba69d736eb444",
+      "role": "item icon",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Original colored vector inspected in a 16-icon contact sheet at 80px and 16px; weapon, armor, herb and potion categories use distinct silhouettes.",
+      "provenance": "assets/CREDITS.md"
+    },
+    {
+      "path": "assets/ui/items/herb.svg",
+      "sha256": "87c5bcba08d1c06c347919bbea05f911d1f4e18753bee2dde826a364755ec50f",
+      "role": "item icon",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Original colored vector inspected in a 16-icon contact sheet at 80px and 16px; weapon, armor, herb and potion categories use distinct silhouettes.",
+      "provenance": "assets/CREDITS.md"
+    },
+    {
+      "path": "assets/ui/items/mace.svg",
+      "sha256": "c06ef32321b8ece310bf9b0f8f1a92eb8ad7890aa6573e21923de47121f44f2b",
+      "role": "item icon",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Original colored vector inspected in a 16-icon contact sheet at 80px and 16px; weapon, armor, herb and potion categories use distinct silhouettes.",
+      "provenance": "assets/CREDITS.md"
+    },
+    {
+      "path": "assets/ui/items/potion_blue.svg",
+      "sha256": "f15f1565d867884c6dbced609632f8d17dc17924cae940c61cabfc51f0970ef9",
+      "role": "item icon",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Original colored vector inspected in a 16-icon contact sheet at 80px and 16px; weapon, armor, herb and potion categories use distinct silhouettes.",
+      "provenance": "assets/CREDITS.md"
+    },
+    {
+      "path": "assets/ui/items/potion_gold.svg",
+      "sha256": "802128d16868b8af6bdb431383eea0cf17779ffebf8f438feeeed31c9b1e133e",
+      "role": "item icon",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Original colored vector inspected in a 16-icon contact sheet at 80px and 16px; weapon, armor, herb and potion categories use distinct silhouettes.",
+      "provenance": "assets/CREDITS.md"
+    },
+    {
+      "path": "assets/ui/items/potion_green.svg",
+      "sha256": "2b1498b3486f71e50de51c597ca81f14f8724e0e7c857516ba064dfdbff407c9",
+      "role": "item icon",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Original colored vector inspected in a 16-icon contact sheet at 80px and 16px; weapon, armor, herb and potion categories use distinct silhouettes.",
+      "provenance": "assets/CREDITS.md"
+    },
+    {
+      "path": "assets/ui/items/potion_red.svg",
+      "sha256": "6ec86fa5b526fce47fe231d626ade06fa83bcc8842e8c434adfc875963d4d0c9",
+      "role": "item icon",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Original colored vector inspected in a 16-icon contact sheet at 80px and 16px; weapon, armor, herb and potion categories use distinct silhouettes.",
+      "provenance": "assets/CREDITS.md"
+    },
+    {
+      "path": "assets/ui/items/shield.svg",
+      "sha256": "e48ec2bc7628cf1e5d11dbde53e6fe0d800104d56f7dc068d96019b2d5894b9c",
+      "role": "item icon",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Original colored vector inspected in a 16-icon contact sheet at 80px and 16px; weapon, armor, herb and potion categories use distinct silhouettes.",
+      "provenance": "assets/CREDITS.md"
+    },
+    {
+      "path": "assets/ui/items/spear.svg",
+      "sha256": "1ce9580f4b283790e82f415d01f0be8c4e4f56fb78451ba1965cf9953fca941e",
+      "role": "item icon",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Original colored vector inspected in a 16-icon contact sheet at 80px and 16px; weapon, armor, herb and potion categories use distinct silhouettes.",
+      "provenance": "assets/CREDITS.md"
+    },
+    {
+      "path": "assets/ui/items/sword.svg",
+      "sha256": "2391e56ffd89f06064c3708b364bb3e7aad0f22daba7289d62586e338ac7c489",
+      "role": "item icon",
+      "decision": "ACCEPT_SOURCE",
+      "notes": "Original colored vector inspected in a 16-icon contact sheet at 80px and 16px; weapon, armor, herb and potion categories use distinct silhouettes.",
+      "provenance": "assets/CREDITS.md"
     }
   ],
-  "integrated_gallery": "pending F3 acceptance and final F7 exact-build recapture",
+  "integrated_gallery": "Pending fresh final candidate acceptance; updated landmark and inventory preview captured in actual Godot.",
   "integrated_review": {
     "decision": "ACCEPT_INTEGRATED_SOURCE",
     "evidence": "External v2 release evidence: ArtReview/integrated-acceptance.json",
