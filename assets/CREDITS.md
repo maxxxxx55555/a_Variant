@@ -38,3 +38,15 @@ Interface focus/unavailable cues: original profile-specific synthesis using tool
 ## Marchland interface illustrations
 
 The colorful SVG item icons in `assets/ui/items/` and the updated frontier crest in `icon.svg` are original repository-authored vectors for this game. `assets/ui/app-icon.png` is rendered from that vector using `tools/render_icon.gd`; its exact source and output hashes are recorded in `assets/ui/icon-provenance.json`.
+
+## 1.6.0 interface icon set
+
+The 46 scalable `assets/ui/icons/*.svg` line icons are repository-authored work under CC0-1.0: a 24×24 viewBox, 2 px round-capped parchment strokes in a single group, with no text, embedded raster or filter effects. `assets/ui/icons/provenance.json` records the spec, the per-file SHA-256 digest and the regenerating tool (`tools/generate_ui_icons.py`). They are drawn for this game; no third-party icon pack was imported, and no generated raster was added to the interface.
+
+## 1.6.0 loot rarity chime
+
+`assets/audio/loot_chime.wav` is an original four-voice rising bell arpeggio (MIDI 79, 84, 88, 91) synthesized by `tools/generate_audio.py` and dedicated to the public domain under CC0 1.0. The game transposes the same cue upward by rarity rank at playback time. Its exact WAV digest, generator digest, processing notes and date are recorded in `assets/audio/interface-provenance.json` beside the 1.5.2 focus and unavailable cues; the audio contract refuses to accept a catalog entry marked `synthesized CC0` without a matching provenance record.
+
+## 1.6.0 rendered gallery
+
+`docs/galleries/1.6.0/` holds 56 real frames from `tests/capture_gallery.gd` running the shipping project — 14 screens in RU and EN at 1280×720 and 1920×1080. They are captures of the built game, not mockups or generated illustrations, and inherit no third-party image licensing. Review records: `docs/GALLERY_ACCEPTANCE_1.6.0.md`.

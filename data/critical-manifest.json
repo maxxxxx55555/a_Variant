@@ -1,6 +1,6 @@
 {
   "files": {
-    "res://assets/audio/catalog.json": "e68e4c3849ed654483d96d3a209a5924d4a06acdd4680c22c1bd79a7e580f965",
+    "res://assets/audio/catalog.json": "33baaa3b46fe2c5df09a3c55996a66ce5223d223f4a9d2df0f8e93e45a133623",
     "res://data/balance/alchemy.json": "b9919d6d62a48c6f603fb6b62c01ca0fad82dbb395f16a37e119f6b314225cdb",
     "res://data/balance/buildings.json": "dd01ee5c72460426ea85184c570ebb7dec7bc854981494cceb2409c9249471e4",
     "res://data/balance/campaign.json": "a4222cbe8f6d5a153c994ec021cd3f6800849e66605f8f78d7ba3f2f75b230ed",
@@ -8,7 +8,7 @@
     "res://data/balance/crafting.json": "67bc45bff3fb9d8145f47e7927a2b7a93c5bca088da17e3b0ff59f6bb4ad6028",
     "res://data/balance/diplomacy.json": "6f8277d7c06f04c925598475581e5591cef59ea8b4b81fc0e4b40007181b5042",
     "res://data/balance/equipment.json": "ad180d92426e5b2a25be074a8d1c326fb1063bb0b6fdd798ad463431acdcc62e",
-    "res://data/balance/localization.json": "95045ef23e5dd9aa262e60b4304ce06d4878d7d8b82ba567fab3f0ca7de350cf",
+    "res://data/balance/localization.json": "f5062761c8fc07cd0e94779dba5347d1d22fd56480ffd1edb887823db79fb213",
     "res://data/balance/oaths.json": "2751fc912e28da886777d4ff7084a4b0ffead4aa3f53788c3cf27080f500c5a9"
   },
   "version": 1

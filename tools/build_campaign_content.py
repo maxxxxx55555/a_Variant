@@ -18,7 +18,7 @@ def text(key, ru, en):
 def write_json(name, data):
     path = ROOT / 'data/balance' / name
     path.parent.mkdir(exist_ok=True)
-    path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8', newline='\n')
 
 
 faction_rows = [

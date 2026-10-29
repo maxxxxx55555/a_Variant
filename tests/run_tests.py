@@ -32,6 +32,7 @@ def main():
             path.mkdir()
             environment[variable] = str(path)
         environment['GAME_SCREENSHOT'] = str(artifacts / (project.name + '.png'))
+        environment['GAME_FUZZ_RESULT_PATH'] = str(artifacts / 'fuzz-50-seeds.json')
         portrait = 'GameManager' in (project / 'project.godot').read_text(encoding='utf-8')
         cases = [
             ('import', ['--headless', '--editor', '--import', '--quit']),
@@ -72,6 +73,7 @@ def main():
             cases.append((case, ['--headless','--script','res://tests/test_'+case+'.gd']))
         cases.append(('navigation-matrix', ([] if args.rendered else ['--headless'])+['--resolution', '1280x720' if not portrait else '540x960','--script','res://tests/test_navigation_matrix.gd']))
         cases.append(('qa-seed', ['--headless','--script','res://tests/test_qa_seed.gd']))
+        cases.append(('seeded-fuzz', ['--headless','--fixed-fps','30','--script','res://tests/fuzz_seeded.gd']))
         cases.append(('mechanics-inputs', ['--headless','--script','res://tests/test_mechanics_inputs.gd']))
         cases.append(('profile-contract', ['--headless','--script','res://tests/test_profile_contract.gd']))
         cases.append(('army-pause-regression', ['--headless','--script','res://tests/test_army_pause_regression.gd']))
@@ -83,7 +85,7 @@ def main():
         cases.append(('invalid-combat-inputs', ['--headless','--script','res://tests/test_invalid_combat_inputs.gd']))
         cases.append(('untrusted-exploration', ['--headless','--script','res://tests/test_untrusted_exploration.gd']))
         cases.append(('packed-append-regression', ['--headless','--script','res://tests/test_packed_append_regression.gd']))
-        for case in ['second_oath','codex','quest_tracker','combat_feel','loot_feel','settlement_evolution','stats','design_pass']:
+        for case in ['second_oath','codex','quest_tracker','combat_feel','loot_feel','settlement_evolution','stats','design_pass','oath_migration']:
             cases.append((case, ['--headless','--script','res://tests/test_' + case + '.gd']))
         cases.insert(2, ('audio', ['--headless', '--script', 'res://tests/test_audio.gd']))
         if portrait:
@@ -95,6 +97,7 @@ def main():
         if args.full_campaign:
             for route in ['diplomatic', 'military']:
                 cases.append(('campaign-route-' + route, ['--headless', '--fixed-fps', '30', '--script', 'res://tests/test_campaign_routes.gd', '--'] + (['--military'] if route == 'military' else [])))
+            cases.append(('mechanics-route', ['--headless', '--fixed-fps', '30', '--script', 'res://tests/test_mechanics_route.gd']))
         verification = subprocess.run([sys.executable, str(project / 'tests/test_verification.py')], timeout=30)
         if verification.returncode:
             return verification.returncode
@@ -112,6 +115,8 @@ def main():
         if mechanics.returncode: return mechanics.returncode
         isolation = subprocess.run([sys.executable, str(project / 'tests/test_repo_isolation.py')], timeout=30)
         if isolation.returncode: return isolation.returncode
+        census = subprocess.run([sys.executable, str(project / 'tools/static_census.py')], timeout=120)
+        if census.returncode: return census.returncode
         soundtrack = subprocess.run([sys.executable, str(project / 'tests/test_soundtrack.py')], timeout=60)
         if soundtrack.returncode: return soundtrack.returncode
         assets = subprocess.run([sys.executable, str(project / 'tests/test_audio_assets.py')], timeout=60)
@@ -126,7 +131,7 @@ def main():
                 if strict.returncode: return strict.returncode
             log_path = artifacts / (name + '.log')
             command = [args.godot, *(['--audio-driver',args.audio_driver] if args.audio_driver else []), '--rendering-method', 'gl_compatibility', '--path', str(project), '--log-file', str(log_path), *switches]
-            result = subprocess.run(command, env=environment, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=600 if name.startswith('campaign-route-') or name=='release-hardening' else 180)
+            result = subprocess.run(command, env=environment, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=900 if name in ['seeded-fuzz', 'mechanics-route'] else 600 if name.startswith('campaign-route-') or name=='release-hardening' else 180)
             log = log_path.read_text(encoding='utf-8', errors='replace') if log_path.exists() else 'ERROR: Missing Godot log'
             console = result.stdout + result.stderr
             (artifacts / (name + '-console.log')).write_text(console, encoding='utf-8')

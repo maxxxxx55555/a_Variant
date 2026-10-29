@@ -91,15 +91,20 @@ func run() -> void:
 	campaign.active = false
 	check(map.objective_marker().is_empty(), "The map hides the marker when no campaign objective exists")
 	campaign.active = true
-	var russian: String = hud.quest_label.text
-	localization.set_language("en")
+	var tracked: Dictionary = campaign.tracked_objective()
+	var launch_language: String = str(localization.current_language)
+	var other_language: String = "en" if launch_language == "ru" else "ru"
+	var before_switch: String = hud.quest_label.text
+	localization.set_language(other_language)
 	await process_frame
 	hud.localize()
-	check(hud.quest_label.text != russian and hud.quest_label.text.contains(localization.get_string("quest.arc_01_02.title")), "The tracker relocalizes into English without losing the objective")
-	check(map.legend_label(4).text.contains("Objective"), "The map legend relocalizes with the interface")
-	localization.set_language("ru")
+	check(not tracked.is_empty() and hud.quest_label.text != before_switch
+		and hud.quest_label.text.contains(localization.get_string(str(tracked.get("title", "")))),
+		"The tracker relocalizes into " + other_language + " without losing the objective")
+	check(map.legend_label(4).text.contains(localization.get_string("map.objective")), "The map legend relocalizes with the interface")
+	localization.set_language(launch_language)
 	await process_frame
-	check(hud.quest_label.text == campaign.tracked_objective_text(), "The tracker returns to Russian with the same objective")
+	check(hud.quest_label.text == campaign.tracked_objective_text(), "The tracker returns to " + launch_language + " with the same objective")
 	map.queue_free()
 	world.queue_free()
 	await process_frame

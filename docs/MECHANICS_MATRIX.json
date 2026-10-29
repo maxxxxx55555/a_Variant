@@ -1659,6 +1659,554 @@
           }
         ]
       }
+    },
+    {
+      "mechanic": "Second Oath loop, oath modifiers and inherited roster",
+      "cells": {
+        "happy": [
+          {
+            "path": "tests/test_second_oath.gd",
+            "scope": "A finished campaign starts NG+ with the roster, titles and banner carried forward and enemies scaled by oath data."
+          }
+        ],
+        "bounds": [
+          {
+            "path": "tests/test_second_oath.gd",
+            "scope": "Oath ids, levels and multipliers are sanitized against data/balance/oaths.json."
+          },
+          {
+            "path": "tests/test_oath_migration.gd",
+            "scope": "Forged, foreign-keyed and future-schema envelopes are refused without mutation."
+          }
+        ],
+        "rapid_input": [
+          {
+            "path": "tests/test_mechanics_inputs.gd",
+            "scope": "Repeated and interleaved input floods the same action path."
+          },
+          {
+            "path": "tests/fuzz_seeded.gd",
+            "scope": "25 seeded fuzz cycles drive random actions, menus, live locale switches and pause-menu save/load inside a Second Oath."
+          }
+        ],
+        "pause_background": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_army_pause_regression.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "save_load_hash": [
+          {
+            "path": "tests/test_second_oath.gd",
+            "scope": "NG+ state round-trips through the protected save envelope with an identical hash."
+          },
+          {
+            "path": "tests/test_oath_migration.gd",
+            "scope": "Pre-1.6 profiles migrate additively and round trip unchanged."
+          },
+          {
+            "path": "tests/fuzz_seeded.gd",
+            "scope": "25 seeded fuzz cycles drive random actions, menus, live locale switches and pause-menu save/load inside a Second Oath."
+          }
+        ],
+        "en_ru": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_localization.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "audio": [
+          {
+            "path": "tests/test_audio.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_ui_audio_feedback.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "ui_escape": [
+          {
+            "path": "tests/test_navigation_matrix.gd",
+            "scope": "Every screen in the navigation matrix is opened and exited by keyboard and by mouse."
+          }
+        ]
+      }
+    },
+    {
+      "mechanic": "World Codex entries, categories and unlock progress",
+      "cells": {
+        "happy": [
+          {
+            "path": "tests/test_codex.gd",
+            "scope": "Twenty-five authored entries across four categories unlock from real campaign events."
+          }
+        ],
+        "bounds": [
+          {
+            "path": "tests/test_codex.gd",
+            "scope": "Unknown entry ids are rejected and an unlocked entry cannot be awarded twice."
+          }
+        ],
+        "rapid_input": [
+          {
+            "path": "tests/test_codex.gd",
+            "scope": "Repeated unlock calls leave the catalogue unchanged."
+          }
+        ],
+        "pause_background": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_army_pause_regression.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "save_load_hash": [
+          {
+            "path": "tests/test_codex.gd",
+            "scope": "Codex progress writes an authenticated profile and reloads it, rejecting tampered envelopes."
+          }
+        ],
+        "en_ru": [
+          {
+            "path": "tests/test_codex.gd",
+            "scope": "Every entry carries real Russian and English prose, validated per language."
+          },
+          {
+            "path": "tests/test_localization.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "audio": [
+          {
+            "path": "tests/test_audio.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_ui_audio_feedback.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "ui_escape": [
+          {
+            "path": "tests/test_navigation_matrix.gd",
+            "scope": "Every screen in the navigation matrix is opened and exited by keyboard and by mouse."
+          }
+        ]
+      }
+    },
+    {
+      "mechanic": "Quest tracker, compass, map markers and objective toasts",
+      "cells": {
+        "happy": [
+          {
+            "path": "tests/test_quest_tracker.gd",
+            "scope": "The current objective, distance and compass heading track the real campaign objective."
+          }
+        ],
+        "bounds": [
+          {
+            "path": "tests/test_quest_tracker.gd",
+            "scope": "Completed and unknown objectives cannot be tracked and announce only once."
+          }
+        ],
+        "rapid_input": [
+          {
+            "path": "tests/test_mechanics_inputs.gd",
+            "scope": "Repeated objective changes do not duplicate tracker rows."
+          }
+        ],
+        "pause_background": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_army_pause_regression.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "save_load_hash": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "en_ru": [
+          {
+            "path": "tests/test_quest_tracker.gd",
+            "scope": "Tracker text re-localizes on a live language change."
+          },
+          {
+            "path": "tests/test_localization.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "audio": [
+          {
+            "path": "tests/test_audio.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_ui_audio_feedback.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "ui_escape": [
+          {
+            "path": "tests/test_navigation_matrix.gd",
+            "scope": "Every screen in the navigation matrix is opened and exited by keyboard and by mouse."
+          }
+        ]
+      }
+    },
+    {
+      "mechanic": "Combat feel: hit-stop, hit flashes and damage numbers",
+      "cells": {
+        "happy": [
+          {
+            "path": "tests/test_combat_feel.gd",
+            "scope": "A real melee hit lands, spends stamina and starts the authored swing and flash."
+          }
+        ],
+        "bounds": [
+          {
+            "path": "tests/test_combat_feel.gd",
+            "scope": "Hit-stop length stays inside the authored 60-90 ms window and restores time scale."
+          },
+          {
+            "path": "tests/test_invalid_combat_inputs.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "rapid_input": [
+          {
+            "path": "tests/test_invalid_combat_inputs.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "pause_background": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_army_pause_regression.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "save_load_hash": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "en_ru": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_localization.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "audio": [
+          {
+            "path": "tests/test_audio.gd",
+            "scope": "Combat cues play on the authored buses."
+          },
+          {
+            "path": "tests/test_context_audio.gd",
+            "scope": "Hit feedback does not stack duplicate contextual cues."
+          }
+        ],
+        "ui_escape": [
+          {
+            "path": "tests/test_navigation_matrix.gd",
+            "scope": "Every screen in the navigation matrix is opened and exited by keyboard and by mouse."
+          }
+        ]
+      }
+    },
+    {
+      "mechanic": "Loot feel: rarity styling, pop and pickup chime",
+      "cells": {
+        "happy": [
+          {
+            "path": "tests/test_loot_feel.gd",
+            "scope": "Rare loot carries its authored halo, pop animation and dedicated chime."
+          }
+        ],
+        "bounds": [
+          {
+            "path": "tests/test_loot_feel.gd",
+            "scope": "Unknown or missing rarity falls back to common styling; the five rarity colors stay distinct."
+          },
+          {
+            "path": "tests/test_release_hardening.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "rapid_input": [
+          {
+            "path": "tests/test_mechanics_inputs.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "pause_background": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_army_pause_regression.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "save_load_hash": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "en_ru": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_localization.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "audio": [
+          {
+            "path": "tests/test_loot_feel.gd",
+            "scope": "Common loot uses the ordinary pickup cue; legendary loot rings the highest authored pitch."
+          },
+          {
+            "path": "tests/test_audio.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "ui_escape": [
+          {
+            "path": "tests/test_navigation_matrix.gd",
+            "scope": "Every screen in the navigation matrix is opened and exited by keyboard and by mouse."
+          }
+        ]
+      }
+    },
+    {
+      "mechanic": "Settlement tiers, growth visuals and seasonal tint",
+      "cells": {
+        "happy": [
+          {
+            "path": "tests/test_settlement_evolution.gd",
+            "scope": "Building levels raise the visible tier from homestead to citadel with real structures."
+          }
+        ],
+        "bounds": [
+          {
+            "path": "tests/test_settlement_evolution.gd",
+            "scope": "Tier thresholds are exact and a settlement without buildings has no tier."
+          }
+        ],
+        "rapid_input": [
+          {
+            "path": "tests/test_mechanics_inputs.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "pause_background": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_army_pause_regression.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "save_load_hash": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "en_ru": [
+          {
+            "path": "tests/test_settlement_evolution.gd",
+            "scope": "Tier and season captions re-localize on a live language change."
+          },
+          {
+            "path": "tests/test_localization.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "audio": [
+          {
+            "path": "tests/test_audio.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_ui_audio_feedback.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "ui_escape": [
+          {
+            "path": "tests/test_navigation_matrix.gd",
+            "scope": "Every screen in the navigation matrix is opened and exited by keyboard and by mouse."
+          }
+        ]
+      }
+    },
+    {
+      "mechanic": "Local statistics across campaigns and difficulties",
+      "cells": {
+        "happy": [
+          {
+            "path": "tests/test_stats.gd",
+            "scope": "Victories and defeats accumulate per-difficulty rows from real run data."
+          }
+        ],
+        "bounds": [
+          {
+            "path": "tests/test_stats.gd",
+            "scope": "Non-numeric, negative, oversized and non-finite statistics inputs are clamped or rejected."
+          }
+        ],
+        "rapid_input": [
+          {
+            "path": "tests/test_stats.gd",
+            "scope": "Repeated finish calls keep counters consistent."
+          }
+        ],
+        "pause_background": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_army_pause_regression.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "save_load_hash": [
+          {
+            "path": "tests/test_stats.gd",
+            "scope": "The statistics profile writes an authenticated envelope and survives tampering."
+          }
+        ],
+        "en_ru": [
+          {
+            "path": "tests/test_stats.gd",
+            "scope": "Statistics labels render in the active language."
+          },
+          {
+            "path": "tests/test_localization.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "audio": [
+          {
+            "path": "tests/test_audio.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_ui_audio_feedback.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "ui_escape": [
+          {
+            "path": "tests/test_navigation_matrix.gd",
+            "scope": "Every screen in the navigation matrix is opened and exited by keyboard and by mouse."
+          }
+        ]
+      }
+    },
+    {
+      "mechanic": "Design system: tokens, icons, typography and motion",
+      "cells": {
+        "happy": [
+          {
+            "path": "tests/test_design_pass.gd",
+            "scope": "Rendered screens use the documented palette, tokens, icons and typography."
+          },
+          {
+            "path": "tests/test_design_system.py",
+            "scope": "Static audit of tokens, icon provenance, motion rules and the rendered gallery."
+          }
+        ],
+        "bounds": [
+          {
+            "path": "tests/test_design_pass.gd",
+            "scope": "Faction colors stay CVD-separable and the icon inventory matches the authored set."
+          }
+        ],
+        "rapid_input": [
+          {
+            "path": "tests/test_navigation_matrix.gd",
+            "scope": "Rapid open and close cycles leave no stranded focus or overlays."
+          }
+        ],
+        "pause_background": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_comfort_preferences.gd",
+            "scope": "Reduced motion is a persisted user preference respected by every animation."
+          }
+        ],
+        "save_load_hash": [
+          {
+            "path": "tests/test_profile_contract.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "en_ru": [
+          {
+            "path": "tests/test_design_pass.gd",
+            "scope": "Localized headings and labels stay inside their authored containers in both languages."
+          },
+          {
+            "path": "tests/test_localization.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "audio": [
+          {
+            "path": "tests/test_audio.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          },
+          {
+            "path": "tests/test_ui_audio_feedback.gd",
+            "scope": "Executable engine assertions; full test body defines its preconditions and permitted actions."
+          }
+        ],
+        "ui_escape": [
+          {
+            "path": "tests/test_navigation_matrix.gd",
+            "scope": "Every screen in the navigation matrix is opened and exited by keyboard and by mouse."
+          }
+        ]
+      }
     }
   ],
   "coverage_status": "EXECUTED_PASS",

@@ -43,7 +43,7 @@ The Codex, quest tracker, council, settlement, inventory and statistics screens 
 
 ## Rendered gallery acceptance
 
-The 1.6.0 gallery is stored in `docs/galleries/1.6.0/`. It captures both locales (RU and EN) at both viewports 1280×720 and 1920×1080 for: title, statistics, credits, settings with reduced motion enabled, village in rain, trade, world map, Codex, inventory, settlement, diplomacy, and the campaign finale. `docs/GALLERY_ACCEPTANCE_1.6.0.md` records the capture command, staged state, the reason each screen exists and the human review result. The gallery is produced by `tests/capture_gallery.gd` against the real rendered game, not by mockups. Every image is reviewed for faces/hands/teeth, stray text, perspective, lighting, palette, clipping and UI legibility at both viewports in both languages. Inventory acceptance does not replace final rendered-screen acceptance.
+The 1.6.0 gallery is stored in `docs/galleries/1.6.0/` — 56 images, 14 screens captured in both locales (RU and EN) at both viewports 1280×720 and 1920×1080: title, loading, statistics, credits, settings with reduced motion enabled, village in rain, homestead, trade, world map, Codex, inventory, settlement, diplomacy, and the staged campaign finale. `docs/GALLERY_ACCEPTANCE_1.6.0.md` records the capture command, staged state, the reason each screen exists and the human review result. The gallery is produced by `tests/capture_gallery.gd` against the real rendered game, not by mockups. Every image is reviewed for faces/hands/teeth, stray text, perspective, lighting, palette, clipping and UI legibility at both viewports in both languages. Inventory acceptance does not replace final rendered-screen acceptance.
 
 ## Asset curation and provenance
 

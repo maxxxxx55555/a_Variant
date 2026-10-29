@@ -19,7 +19,7 @@ def compile_catalog(root):
         assert set(value) == {'ru', 'en'}, f'Missing language for {key}'
         assert set(re.findall(r'\{\w+\}', value['ru'])) == set(re.findall(r'\{\w+\}', value['en'])), f'Parameter mismatch: {key}'
     destination = root / 'data/balance/localization.json'
-    destination.write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    destination.write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n', encoding='utf-8', newline='\n')
     print(f'Compiled {len(result)} RU/EN translations')
 
 

@@ -6,7 +6,7 @@
     "profile": "oaths",
     "description": "Original decaying harmonic interface cue; no third-party samples, vocals or generated-music attribution.",
     "generator": "tools/generate_audio.py",
-    "generator_sha256": "398d6c567f51f285ac3caae47972f68649c8a9db72f8f0c1754c18c72f86d475",
+    "generator_sha256": "63d6e727b283fc0f67bf6dfa027750dcd4f328accc8aaa2ba992fa7efa3f188e",
     "wav_sha256": "3feb96de111c9736a8ad6cc9385e98d370e4235fc563596d57a20629705c6fd4",
     "processing": "32000Hz mono16-bit PCM; zero-mean, restrained peak, tapered edges"
   },
@@ -17,8 +17,19 @@
     "profile": "oaths",
     "description": "Original decaying harmonic interface cue; no third-party samples, vocals or generated-music attribution.",
     "generator": "tools/generate_audio.py",
-    "generator_sha256": "398d6c567f51f285ac3caae47972f68649c8a9db72f8f0c1754c18c72f86d475",
+    "generator_sha256": "63d6e727b283fc0f67bf6dfa027750dcd4f328accc8aaa2ba992fa7efa3f188e",
     "wav_sha256": "1b83c710b9a4ff26edee6af8e659f17922f6c44d28f0987ae6243e9622e5bf18",
+    "processing": "32000Hz mono16-bit PCM; zero-mean, restrained peak, tapered edges"
+  },
+  "loot_chime.wav": {
+    "source": "synthesized CC0",
+    "license": "CC0-1.0",
+    "date": "2026-10-29",
+    "profile": "oaths",
+    "description": "Original four-voice rising bell arpeggio (MIDI 79, 84, 88, 91); the game transposes the same cue upward by loot rarity. No third-party samples, vocals or generated-music attribution.",
+    "generator": "tools/generate_audio.py",
+    "generator_sha256": "63d6e727b283fc0f67bf6dfa027750dcd4f328accc8aaa2ba992fa7efa3f188e",
+    "wav_sha256": "343760ac5cec21bee309a31b0253bd65afb33492bf8962875adcf7747ba54404",
     "processing": "32000Hz mono16-bit PCM; zero-mean, restrained peak, tapered edges"
   }
 }

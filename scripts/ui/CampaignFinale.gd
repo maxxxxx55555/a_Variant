@@ -103,7 +103,14 @@ func _ready() -> void:
 	@warning_ignore("return_value_discarded")
 	EventBus.language_changed.connect(func(_language:Variant)->void:localize())
 	localize()
-	oath_button.grab_focus()
+	claim_focus()
+
+## A disabled control cannot hold focus, so the finale must never open with no keyboard route.
+func claim_focus() -> void:
+	if is_instance_valid(oath_button) and not oath_button.disabled:
+		oath_button.grab_focus()
+	elif is_instance_valid(continue_button):
+		continue_button.grab_focus()
 
 func localize() -> void:
 	if is_instance_valid(brand_label):
@@ -125,6 +132,8 @@ func localize() -> void:
 	continue_button.text=LocalizationManager.get_string("ui.continue_world")
 	oath_button.text=LocalizationManager.get_string("oath.second.start")
 	oath_button.disabled=not CampaignSystem.second_oath_available()
+	if oath_button.disabled and oath_button.has_focus():
+		claim_focus()
 
 func open_oath() -> void:
 	if not CampaignSystem.second_oath_available() or is_instance_valid(find_child("SecondOathPanel",true,false)):
@@ -138,10 +147,10 @@ func open_oath() -> void:
 		if CampaignSystem.begin_second_oath(selected):
 			MarchTransition.go_to.call_deferred("res://scenes/world/march.tscn")
 		elif is_instance_valid(oath_button):
-			oath_button.grab_focus()
+			claim_focus()
 	)
 	# This signal is wired once per owning panel; the panel frees itself after cancellation.
 	@warning_ignore("return_value_discarded")
 	panel.closed.connect(func()->void:
-		if is_instance_valid(oath_button):oath_button.grab_focus()
+		if is_instance_valid(oath_button):claim_focus()
 	)

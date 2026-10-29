@@ -186,20 +186,29 @@ def interface_effect(name, profile):
     return signal * envelope(len(t), .003, .022)
 
 
+def synthesized_cues(profile):
+    """Cues this generator writes from scratch, so each can carry its own hash provenance."""
+    cues = {'ui_focus': ('2026-10-26', 'Original decaying harmonic interface cue; no third-party samples, vocals or generated-music attribution.'),
+            'ui_error': ('2026-10-26', 'Original decaying harmonic interface cue; no third-party samples, vocals or generated-music attribution.')}
+    if profile == 'oaths':
+        cues['loot_chime'] = ('2026-10-29', 'Original four-voice rising bell arpeggio (MIDI 79, 84, 88, 91); the game transposes the same cue upward by loot rarity. No third-party samples, vocals or generated-music attribution.')
+    return cues
+
+
 def write_interface_provenance(output, profile):
     import hashlib
     records = {}
-    for name in ['ui_focus', 'ui_error']:
+    for name, (date, description) in synthesized_cues(profile).items():
         records[name + '.wav'] = {
             'source': 'synthesized CC0', 'license': 'CC0-1.0',
-            'date': '2026-10-26', 'profile': profile,
-            'description': 'Original decaying harmonic interface cue; no third-party samples, vocals or generated-music attribution.',
+            'date': date, 'profile': profile,
+            'description': description,
             'generator': 'tools/generate_audio.py',
             'generator_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
             'wav_sha256': hashlib.sha256((output / (name + '.wav')).read_bytes()).hexdigest(),
             'processing': '32000Hz mono16-bit PCM; zero-mean, restrained peak, tapered edges'
         }
-    (output / 'interface-provenance.json').write_text(json.dumps(records, indent=2) + '\n', encoding='utf-8')
+    (output / 'interface-provenance.json').write_text(json.dumps(records, indent=2) + '\n', encoding='utf-8', newline='\n')
 
 
 def write_wave(path, signal, loop=False, peak=.76):
@@ -239,6 +248,7 @@ def generate(project, profile):
         effects += [f'footstep_{material}_{index}' for material in ['grass', 'dirt', 'stone', 'wood', 'snow'] for index in range(3)]
         effects += ['loot_chime']
     supplied = json.loads((output / 'music-provenance.json').read_text(encoding='utf-8')) if preserve_music else {}
+    cues = synthesized_cues(profile)
     for name in effects:
         old = previous.get('sfx', {}).get(name, {})
         if old.get('path') in supplied:
@@ -247,10 +257,10 @@ def generate(project, profile):
             continue
         signal = interface_effect(name, profile) if name in ['ui_focus', 'ui_error'] else effect(name)
         catalog['sfx'][name] = write_wave(output / (name + '.wav'), signal, loop=name.startswith('ambience_'), peak=.24 if name == 'ui_focus' else .38 if name == 'ui_error' else .6 if name.startswith('ambience_') else .78)
-        if name in ['ui_focus', 'ui_error']:
+        if name in cues:
             catalog['sfx'][name].update(source='synthesized CC0', license='CC0-1.0')
     write_interface_provenance(output, profile)
-    (output / 'catalog.json').write_text(json.dumps(catalog, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    (output / 'catalog.json').write_text(json.dumps(catalog, ensure_ascii=False, indent=2) + '\n', encoding='utf-8', newline='\n')
     if not preserve_music:
         (output / 'LICENSE.md').write_text('# Original game audio\n\nThe compositions and synthesized sound effects in this directory were generated specifically for this project using tools/generate_audio.py. No third-party samples were used. The generated audio is dedicated to the public domain under CC0 1.0.\n\nGenerator dependency: NumPy (BSD-3-Clause). NumPy is used only to generate WAV files; it is not distributed with or needed by the game.\n', encoding='utf-8')
     print(f'{profile}: {len(moods)} music loops and {len(effects)} sound effects generated')

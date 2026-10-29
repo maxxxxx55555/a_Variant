@@ -19,3 +19,13 @@ F4 adds two non-copy audio regression cases; current runner count is43 rendered 
 F5 adds five keyed integrity/recovery captions: 685 keys and49 rendered /48 headless cases (full campaign adds2) in the current source. Earlier phase counts above are historical. Full F5 bilingual logs and native pack checks are recorded separately from final F7 acceptance.
 
 F6 adds two terminal recovery explanations:687 keys per language. Iron death keeps a short terminal label and its full translated reason during live language changes; normal death retains paid recovery. Current source runner inventory:62 rendered invocations including import; optional complete campaign pair adds2. These are inventory counts; final execution hashes remain in the release evidence.
+
+## Marchland Oaths 1.6.0 — Second Oath & Polish
+
+Catalog: 806 keys in each of RU and EN. 119 keyed entries were added for this edition and none were removed, so every 1.5.x string still resolves. The additions are grouped as codex 44, oath 28, stats 12, settlement 7, escalation 6, objective 5, ui 4, flow 3, ending 2, menu 2, tutorial 2 and hud, map, siege and credits 1 each.
+
+`tests/test_verification.py` proves the two CSV files hold the identical key set, that each compiled entry in `data/balance/localization.json` equals its RU and EN source row, and that placeholder sets match per key. `tests/test_localization.gd` repeats the same checks against the compiled catalog the shipping build actually reads and rejects duplicate or empty keys. `tools/compile_localization.py` regenerates the compiled catalog; `tools/build_manifest.py` then re-signs it into `scripts/security/TrustedData.gd`, because the runtime reads critical data from the embedded snapshot rather than from disk.
+
+Every new surface was audited in both languages at both viewports rather than inferred from the catalog: `tests/capture_gallery.gd` renders 14 screens per locale and `docs/GALLERY_ACCEPTANCE_1.6.0.md` records the review. The rendered pass caught four real presentation defects — raw node names in Codex tabs, an unlabeled Codex close button, healthy settlement meters painted in danger red and a diplomacy list that clipped two of eight factions — all fixed in shipping code and recaptured.
+
+Feature copy is keyed, not literal: `tests/test_codex.gd` requires real Russian *and* English prose for all 25 lore entries, `tests/test_stats.gd`, `tests/test_quest_tracker.gd` and `tests/test_settlement_evolution.gd` each switch the live language mid-test and re-assert their labels, and `tests/test_oath_migration.gd` shows that a pre-1.6 profile gains the oath fields without losing any translated state. Native oath and title names stay readable in both locales.

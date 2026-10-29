@@ -818,15 +818,15 @@ settlement.tier_badge,{name} · уровень {level},{name} · tier {level}
 
 oath.second.none,Без клятвы,No oath
 map.objective,Цель,Objective
-flow.tip.3,The codex grows as you explore the world and speak with people.,The codex grows as you explore the world and speak with people.
-flow.tip.4,A Second Oath carries your army and gear forward — and makes enemies stronger.,A Second Oath carries your army and gear forward — and makes enemies stronger.
-flow.tip.5,Rare loot glows and rings. Read the color and listen to the sound.,Rare loot glows and rings. Read the color and listen to the sound.
-escalation.0,Peace,Peace
-escalation.1,Tension,Tension
-escalation.2,Threats,Threats
-escalation.3,Border pressure,Border pressure
-escalation.4,Siege,Siege
-escalation.5,War,War
-settlement.buildings,Buildings,Buildings
+flow.tip.3,"Кодекс пополняется, когда вы исследуете мир и говорите с людьми.",The codex grows as you explore the world and speak with people.
+flow.tip.4,Новая клятва сохраняет армию и снаряжение — но враги становятся сильнее.,A Second Oath carries your army and gear forward — and makes enemies stronger.
+flow.tip.5,Редкая добыча светится и звенит. Читайте цвет и слушайте звук.,Rare loot glows and rings. Read the color and listen to the sound.
+escalation.0,Мир,Peace
+escalation.1,Напряжение,Tension
+escalation.2,Угрозы,Threats
+escalation.3,Давление на границе,Border pressure
+escalation.4,Осада,Siege
+escalation.5,Война,War
+settlement.buildings,Постройки,Buildings
 tutorial.done,Готово,Done
 tutorial.pending,Цель,Objective

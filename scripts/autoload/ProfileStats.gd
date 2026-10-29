@@ -85,21 +85,6 @@ func restore_state(saved: Dictionary) -> void:
 	data = _sanitized(saved)
 	changed.emit()
 
-func capture_profile() -> Dictionary:
-	return {"stats": capture_state(), "codex": CodexSystem.capture_state()}
-
-func restore_profile(saved: Dictionary) -> void:
-	var stats: Variant = saved.get("stats", {})
-	if stats is Dictionary:
-		@warning_ignore("unsafe_cast")
-		var record: Dictionary = stats
-		restore_state(record)
-	var codex: Variant = saved.get("codex", {})
-	if codex is Dictionary:
-		@warning_ignore("unsafe_cast")
-		var record: Dictionary = codex
-		CodexSystem.restore_state(record)
-
 func _sanitized(saved: Dictionary) -> Dictionary:
 	var clean: Dictionary = _defaults()
 	clean.runs = _whole(saved.get("runs"), 0, 10000000)

@@ -11,6 +11,7 @@ import wave
 def verify(project):
     folder = project / 'assets/audio'
     catalog = json.loads((folder / 'catalog.json').read_text(encoding='utf-8'))
+    interface = json.loads((folder / 'interface-provenance.json').read_text(encoding='utf-8'))
     count = 0
     for group in ['music', 'sfx']:
         for name, entry in catalog[group].items():
@@ -36,13 +37,15 @@ def verify(project):
                 assert entry.get('source') == 'Google Gemini / Lyria', f'{name}: old soundtrack remains'
                 provenance = json.loads((folder / 'music-provenance.json').read_text(encoding='utf-8'))
                 assert hashlib.sha256((folder / entry['path']).read_bytes()).hexdigest() == provenance[entry['path']]['wav_sha256']
-            if name in ['ui_focus', 'ui_error']:
-                record = json.loads((folder / 'interface-provenance.json').read_text())[entry['path']]
+            if entry['path'] in interface:
+                record = interface[entry['path']]
                 assert record['source'] == 'synthesized CC0' and record['license'] == 'CC0-1.0'
                 assert entry.get('source') == 'synthesized CC0' and entry.get('license') == 'CC0-1.0'
                 assert hashlib.sha256((folder / entry['path']).read_bytes()).hexdigest() == record['wav_sha256']
                 assert hashlib.sha256((project / record['generator']).read_bytes()).hexdigest() == record['generator_sha256']
-                assert .04 <= length / 32000 <= .25 and channels == 1 and not entry['loop']
+                assert name not in catalog['music'] and channels == 1 and not entry['loop']
+                if name in ['ui_focus', 'ui_error']:
+                    assert .04 <= length / 32000 <= .25, f'{name}: interface cue left its authored length window'
             dc = sum(points) / len(points) / 32768
             assert abs(dc) < .012, f'{name}: DC offset ({dc})'
             if entry.get('loop'):
@@ -52,6 +55,11 @@ def verify(project):
                 assert max(abs(samples[channel]) for channel in range(channels)) < 64, f'{name}: abrupt attack'
                 assert max(abs(samples[-channels + channel]) for channel in range(channels)) < 64, f'{name}: abrupt ending'
             count += 1
+    tagged = {entry['path'] for entry in catalog['sfx'].values() if entry.get('source') == 'synthesized CC0'}
+    assert tagged == set(interface), f'catalog tags {sorted(tagged)} but provenance covers {sorted(interface)}'
+    for path, record in interface.items():
+        assert (folder / path).exists(), f'{path}: provenance names a file that is not shipped'
+        assert record['generator'].startswith('tools/'), f'{path}: provenance names no repository generator'
     print(f'AUDIO ASSETS PASS: {count} WAV assets; levels, data, loop seams and envelopes verified')
 
 

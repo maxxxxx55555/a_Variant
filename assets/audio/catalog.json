@@ -276,7 +276,9 @@
       "path": "loot_chime.wav",
       "seconds": 0.46,
       "loop": false,
-      "channels": 1
+      "channels": 1,
+      "source": "synthesized CC0",
+      "license": "CC0-1.0"
     }
   }
 }

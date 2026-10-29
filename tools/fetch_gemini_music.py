@@ -34,7 +34,7 @@ async def fetch(entry,output):
             metadata.update(status='generated',source_filename=path.name,source_sha256=hashlib.sha256(path.read_bytes()).hexdigest())
     except Exception as error:
         metadata.update(status='failed',error_type=type(error).__name__,message=str(error).replace(key,'[REDACTED]')[:1000])
-    record.write_text(json.dumps(metadata,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+    record.write_text(json.dumps(metadata,ensure_ascii=False,indent=2)+'\n',encoding='utf-8',newline='\n')
     print(name,metadata['status'])
     if metadata['status']!='generated':raise RuntimeError('Generation failed; inspect the scrubbed capture record')
 async def main():

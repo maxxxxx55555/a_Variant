@@ -25,3 +25,13 @@ V2 F4: preserve the four distinct recorded mood tracks and two finales; add quie
 
 Separate encrypted public/private QA exports and environment-only keys; physically excluded public verifier. Compiled critical-data manifest/trusted fallback and localized read-only safe mode. Localized authenticated-save recovery and stable unchanged round trips. New regression tests cover replacement manifests, safe-mode write/deletion boundaries, key preflight, public flags and save recovery.
 Resource credit bounds and transaction/save-load reentry protection, with negative/nonfinite/cap/stack and craft/trade round-trip regressions.
+
+## 1.6.0 — Second Oath & Polish
+
+- Second Oath (New Game+): four authored oath modifiers, roster/gear/titles/difficulty carry, per-cycle enemy scaling, and an oath banner stored in the save and printed on the finale, save-slot list and credits.
+- World Codex (25 entries, four categories) unlocking from real campaign events; quest tracker binding HUD objective, measured distance, compass, map marker and toasts to one target; combat and loot game-feel passes; settlement tiers derived from real built levels with a seasonal terrain tint; local per-profile statistics page.
+- Design pass over palette, typography, the 46-icon set, motion and reduced motion, with 56 rendered gallery frames (14 screens × 2 locales × 2 viewports).
+- Reproducible bytes: Windows tool writers now emit the committed LF bytes, so the critical-data manifest, compiled trust anchor and interface SFX provenance agree with a plain Git checkout on any platform.
+- Executed mechanics evidence: `tests/test_mechanics_route.gd` runs `tests/MechanicsRoute.gd`, `tools/collect_mechanics_evidence.py` executes every matrix reference in both locales, and `tools/static_census.py` replaces hand-counted orphan/dead-code claims.
+- Defects found by that execution and fixed before release: the finale left no control focused when the Second Oath was unavailable, the tracker relocalization test assumed the launch locale was Russian, and seeded fuzz reported the authored plain (zero-modifier) Second Oath as lost state.
+- Full notes: [RELEASE_1.6.0.md](RELEASE_1.6.0.md).
