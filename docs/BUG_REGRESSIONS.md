@@ -1,6 +1,6 @@
 # F6 regression work
 
-The source runner passes51 Godot cases in each of English and Russian after the additions below. This is an intermediate source checkpoint; the full v2 release gate remains open.
+The source runner passed 51 Godot cases in each of English and Russian at that F6 checkpoint, with the v2 release gate still open. The live case inventory and gate status for the current edition are recorded in [STATIC_AUDIT.md](STATIC_AUDIT.md) and [ACCEPTANCE_CERTIFICATE.md](ACCEPTANCE_CERTIFICATE.md); the sections below are kept as the original findings.
 
 - `tests/test_navigation_matrix.gd`:26 actual menu/tab states, keyboard focus and Escape including number-editor cancellation, live locale and resize.
 - `tests/test_qa_seed.gd`: private/source route seed parsing rejects empty-invalid, negative, zero and overflowing seeds while retaining the deterministic default.
@@ -56,3 +56,39 @@ The Windows input backend cannot hold movement keys and this release template do
 ## Portable promise and inherited-license byte contracts
 
 A fresh Git checkout normalized the promise documents while their inventory recorded Windows line endings. Explicit LF rules and unchanged verbatim lines now make those digests portable. The pre-release README inventory is retained in its own immutable snapshot where needed. Protected profile fixtures, creator licenses and provenance use opaque Git attributes. The inherited-license test derives its expected bytes from the original published1.4.0 Windows archive. All14 inherited license files were already byte-correct; their Git round-trip is now protected.
+
+## 1.6.0 — defects the executed matrix and the rendered pass actually caught
+
+Executing every matrix reference in both display locales, rather than mapping it on paper, turned up
+real failures. Each one below was reproduced by a named source before the shipping fix, and the same
+source now guards it.
+
+- **Siege teardown leaked audio.** `tests/test_siege.gd` ended its route with a plain `quit()`, so the
+  sample-player bus was still draining at exit and the run intermittently reported leaked ObjectDB
+  instances — a flake that could have been published as either a false pass or a false product failure.
+  The case now uses the shared audio-draining teardown, and six consecutive runs in RU and EN reported
+  no leak warnings. The runner still treats any leak line as failure.
+- **Codex migration baseline assumed a pristine profile.** `tests/test_oath_migration.gd` unlocked
+  `entries[0]` and asserted the Codex held exactly one found entry. Suite cases share one throwaway
+  profile, so routes that ran earlier had already unlocked entries and the assertion failed in the
+  rendered RU suite while passing in isolation. It now unlocks the first *still-locked* entry and requires
+  the found count to rise by exactly one, so a no-op unlock still fails and earlier progress is not an error.
+- **Finale could leave nothing focused.** When the Second Oath was unavailable the staged finale left the
+  player with no keyboard focus at all. `tests/test_campaign_finale.gd` asserts the visible button both
+  exists and holds focus; `tests/test_second_oath.gd` asserts the oath panel opens on a real focus target.
+- **Tracker locale test assumed the launch language was Russian.** The relocalization check compared
+  against a hard-coded second language, so it verified nothing in an English launch. The test now reads
+  the live launch language, switches to the other one, and returns to the launch language with the same
+  objective text still on the HUD.
+- **Seeded fuzz reported the authored plain Second Oath as lost state.** A run may legitimately select no
+  modifier; the fuzzer treated the empty selection as dropped state. `tests/fuzz_seeded.gd` now restores a
+  clean campaign before each oath entry and asserts only that the selected oaths survive intact.
+- **Four rendered-presentation defects.** The bilingual gallery pass found raw node names in the Codex tabs,
+  an unlabeled Codex close control, healthy settlement meters painted in danger red, and a diplomacy list
+  that clipped two of eight factions. All four were fixed in shipping code and recaptured; the review record
+  is `docs/GALLERY_ACCEPTANCE_1.6.0.md`.
+
+The matrix contract itself was tightened in the same pass: `EXECUTED_PASS` now refuses to publish unless the
+evidence file ships in the repository, reports a clean sweep in both locales and still matches the bytes of
+every source it claims to have executed. That check failed on its own evidence the day the migration test
+changed, which is the behaviour it was written to guarantee.
