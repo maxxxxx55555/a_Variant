@@ -55,11 +55,24 @@ func run()->void:
 	var Guard=preload("res://scripts/security/SaveGuard.gd")
 	var entries:Array=codex.entries()
 	check(not entries.is_empty(),"The Codex catalogue is loaded before migration runs")
-	if not entries.is_empty():
+	# Suite cases share one throwaway profile, so earlier routes may already have unlocked entries.
+	# The migration contract is a delta over whatever the profile reached, not a count only a
+	# pristine profile can produce.
+	var baseline:int=int(codex.found())
+	var pending:String=""
+	for candidate:Variant in entries:
+		if not (candidate is Dictionary):
+			continue
 		@warning_ignore("unsafe_cast")
-		codex.unlock(str((entries[0] as Dictionary).get("id","")),false)
+		var identifier:String=str((candidate as Dictionary).get("id",""))
+		if not identifier.is_empty() and not codex.is_unlocked(identifier):
+			pending=identifier
+			break
+	check(not pending.is_empty(),"A still-locked Codex entry exists for the migration baseline")
+	if not pending.is_empty():
+		codex.unlock(pending,false)
 	codex_before=int(codex.found())
-	check(codex_before==1,"One Codex entry is unlocked as the migration baseline")
+	check(codex_before==baseline+1,"Exactly one Codex entry is unlocked as the migration baseline")
 	for name in ["legacy-MarchlandOaths","legacy-MarchlandOaths-military"]:
 		var original:Dictionary=JSON.parse_string(body_of(name))
 		var original_campaign:Dictionary=block(original)
