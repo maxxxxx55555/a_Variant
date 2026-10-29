@@ -16,6 +16,9 @@ var shake_offset: Vector3 = Vector3.ZERO
 var attack_cooldown: float = 0.0
 var footstep_distance: float = 0.0
 var weapon_view:WeaponView
+var _hit_stop_token: int = 0
+var _hit_stop_active: bool = false
+var _hit_stop_restore: float = 1.0
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -23,6 +26,33 @@ func _ready() -> void:
 		original_cam_y = camera.position.y
 		weapon_view = preload("res://scripts/characters/WeaponView.gd").new()
 		camera.add_child(weapon_view)
+
+func _exit_tree() -> void:
+	release_hit_stop()
+
+func apply_hit_stop() -> void:
+	if not SettingsManager.hit_stop_enabled or SettingsManager.reduced_motion or get_tree().paused:
+		return
+	if not _hit_stop_active:
+		_hit_stop_restore = Engine.time_scale
+	_hit_stop_active = true
+	_hit_stop_token += 1
+	var token: int = _hit_stop_token
+	Engine.time_scale = 0.05
+	# The timer ignores Engine.time_scale so the freeze always releases in real time.
+	var timer: SceneTreeTimer = get_tree().create_timer(float(SettingsManager.hit_stop_ms) / 1000.0, true, false, true)
+	@warning_ignore("return_value_discarded")
+	timer.timeout.connect(func() -> void:
+		if token == _hit_stop_token:
+			_hit_stop_active = false
+			Engine.time_scale = _hit_stop_restore
+	)
+
+func release_hit_stop() -> void:
+	_hit_stop_token += 1
+	if _hit_stop_active:
+		_hit_stop_active = false
+		Engine.time_scale = _hit_stop_restore
 
 func _unhandled_input(event: InputEvent) -> void:
 	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and event is InputEventMouseMotion:
@@ -36,6 +66,8 @@ func _physics_process(delta: float) -> void:
 	# Pause handling
 	if get_tree().paused or GameState.player_hp <= 0:
 		return
+	if _hit_stop_active and not SettingsManager.hit_stop_enabled:
+		release_hit_stop()
 	attack_cooldown = maxf(0, attack_cooldown - delta)
 	if global_position.y < -15:
 		global_position = Vector3(0, 1, 5)
@@ -207,9 +239,15 @@ func perform_attack() -> void:
 				# AudioManager owns and recycles the spatial voice.
 				@warning_ignore("return_value_discarded")
 				AudioManager.play_at("hit_flesh",hit_position)
+				if collider.has_method("hit_impact"):
+					# Combat actors publish their own impact spark/flash contract.
+					@warning_ignore("return_value_discarded")
+					collider.call("hit_impact", hit_position)
 				# Combat actors and siege gates share the raycast damage contract.
 				@warning_ignore("return_value_discarded")
 				collider.call("take_damage",dmg)
+				apply_hit_stop()
+				if weapon_view: weapon_view.hit()
 
 func apply_camera_shake(intensity: float) -> void:
 	if SettingsManager.camera_shake:

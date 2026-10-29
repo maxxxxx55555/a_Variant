@@ -2220,8 +2220,8 @@
     "en": "Iron mode: one life and one save"
   },
   "ui.campaign_intro": {
-    "ru": "Вы — новый хранитель пограничного очага. Накормите жителей, помогите общинам и объедините восемь фракций клятвами или силой. Начните с меча [I], полей [R → строительство] и старосты Тихой Сечи на севере. Карта [M] и журнал [J] всегда под рукой.",
-    "en": "You are the new keeper of a frontier hearth. Feed your people, aid the communities and unite eight factions through oaths or force. Start with your sword [I], farms [R → building] and Greenhaven's reeve to the north. The map [M] and journal [J] are always available."
+    "ru": "Вы — новый хранитель пограничного очага. Накормите жителей, помогите общинам и объедините восемь фракций клятвами или силой. Начните с меча [I], полей [R, вкладка «Строительство»] и старосты Тихой Сечи на севере. Карта [M] и журнал [J] всегда под рукой.",
+    "en": "You are the new keeper of a frontier hearth. Feed your people, aid the communities and unite eight factions through oaths or force. Start with your sword [I], farms [R, Building tab] and Greenhaven's reeve to the north. The map [M] and journal [J] are always available."
   },
   "ui.iron_dead": {
     "ru": "Клятва оборвалась. Начните новую кампанию.",
@@ -2524,8 +2524,8 @@
     "en": "gold"
   },
   "town.next": {
-    "ru": "Обоз → лагерь (85 м на восток) → союз или осада → доклад.",
-    "en": "Supplies → camp (85m east) → alliance or siege → report."
+    "ru": "Обоз до лагеря (85 м на восток), затем союз или осада, затем доклад.",
+    "en": "Supplies to the camp (85m east), then alliance or siege, then report."
   },
   "town.deliver": {
     "ru": "Передать припасы · 20 еды / 10 дерева / 5 руды",
@@ -2746,5 +2746,481 @@
   "ui.save_after_respawn": {
     "ru": "Возродитесь, чтобы сохранить",
     "en": "Respawn before saving"
+  },
+  "ui.stats": {
+    "ru": "Статистика",
+    "en": "Statistics"
+  },
+  "ui.back": {
+    "ru": "Назад",
+    "en": "Back"
+  },
+  "ui.hit_stop": {
+    "ru": "Пауза при попадании",
+    "en": "Hit-stop on hit"
+  },
+  "ui.damage_numbers": {
+    "ru": "Числа урона",
+    "en": "Damage numbers"
+  },
+  "hud.codex": {
+    "ru": "Кодекс",
+    "en": "Codex"
+  },
+  "menu.stats_summary": {
+    "ru": "Походов: {runs} · Побед: {wins}",
+    "en": "Campaigns: {runs} · Victories: {wins}"
+  },
+  "menu.ng_status": {
+    "ru": "Вторая Клятва {level} · {banner} · {titles}",
+    "en": "Second Oath {level} · {banner} · {titles}"
+  },
+  "credits.ng_line": {
+    "ru": "Клятва: уровень {level} · {banner}\nТитулы: {titles}",
+    "en": "Oath: level {level} · {banner}\nTitles: {titles}"
+  },
+  "ending.titles": {
+    "ru": "Титулы: {titles}",
+    "en": "Titles: {titles}"
+  },
+  "ending.no_titles": {
+    "ru": "Пока без титулов",
+    "en": "No titles yet"
+  },
+  "siege.peace_forbidden": {
+    "ru": "Клятва мира запрещает осады",
+    "en": "The Oath of Peace forbids sieges"
+  },
+  "objective.tracker": {
+    "ru": "Задача: {title}",
+    "en": "Objective: {title}"
+  },
+  "objective.accepted": {
+    "ru": "Новая задача: {title}",
+    "en": "New objective: {title}"
+  },
+  "objective.completed": {
+    "ru": "Задача выполнена: {title} (+{reward} золота)",
+    "en": "Objective complete: {title} (+{reward} gold)"
+  },
+  "objective.distance": {
+    "ru": "{meters} м",
+    "en": "{meters} m"
+  },
+  "objective.no_position": {
+    "ru": "Цель отмечена на карте",
+    "en": "Objective marked on the map"
+  },
+  "stats.overview": {
+    "ru": "Обзор",
+    "en": "Overview"
+  },
+  "stats.runs": {
+    "ru": "Походы",
+    "en": "Campaigns"
+  },
+  "stats.wins": {
+    "ru": "Победы",
+    "en": "Victories"
+  },
+  "stats.losses": {
+    "ru": "Поражения",
+    "en": "Defeats"
+  },
+  "stats.regions": {
+    "ru": "Регионы",
+    "en": "Regions"
+  },
+  "stats.max_wealth": {
+    "ru": "Богатство",
+    "en": "Wealth"
+  },
+  "stats.playtime": {
+    "ru": "Время в игре",
+    "en": "Playtime"
+  },
+  "stats.hours_minutes": {
+    "ru": "{hours} ч {minutes} мин",
+    "en": "{hours} h {minutes} min"
+  },
+  "stats.by_difficulty": {
+    "ru": "По сложности",
+    "en": "By difficulty"
+  },
+  "stats.row": {
+    "ru": "[b]{difficulty}[/b] — походов: {runs}, побед: {wins}, поражений: {losses}, лучший день: {best_day}, богатство: {best_wealth}",
+    "en": "[b]{difficulty}[/b] — campaigns: {runs}, wins: {wins}, losses: {losses}, best day: {best_day}, wealth: {best_wealth}"
+  },
+  "stats.none": {
+    "ru": "—",
+    "en": "—"
+  },
+  "stats.local_note": {
+    "ru": "Статистика хранится только на этом устройстве.",
+    "en": "Statistics are stored on this device only."
+  },
+  "codex.title": {
+    "ru": "Кодекс",
+    "en": "Codex"
+  },
+  "codex.progress": {
+    "ru": "Найдено: {found} из {total}",
+    "en": "Found: {found} of {total}"
+  },
+  "codex.unlocked": {
+    "ru": "Новая запись кодекса: {title}",
+    "en": "New codex entry: {title}"
+  },
+  "codex.locked_body": {
+    "ru": "Эта запись ещё не открыта. Исследуйте мир, завершайте задачи и слушайте старших.",
+    "en": "This entry is not yet unlocked. Explore the world, finish objectives and listen to the elders."
+  },
+  "codex.category.history": {
+    "ru": "История",
+    "en": "History"
+  },
+  "codex.category.factions": {
+    "ru": "Фракции",
+    "en": "Factions"
+  },
+  "codex.category.places": {
+    "ru": "Места",
+    "en": "Places"
+  },
+  "codex.category.bestiary": {
+    "ru": "Бестиарий",
+    "en": "Bestiary"
+  },
+  "codex.history.founding.title": {
+    "ru": "Клятва у перекрёстка",
+    "en": "The Oath at the Crossroads"
+  },
+  "codex.history.founding.body": {
+    "ru": "Когда Долгая зима отступила, семь общин Марчленда собрались у придорожного камня. Они поклялись делить хлеб, соль и защиту, и с тех пор каждый правитель повторяет эту клятву на рассвете.",
+    "en": "When the Long Winter receded, seven communities of Marchland gathered at the roadside stone. They swore to share bread, salt and protection, and every ruler since has repeated that oath at dawn."
+  },
+  "codex.history.winter.title": {
+    "ru": "Долгая зима",
+    "en": "The Long Winter"
+  },
+  "codex.history.winter.body": {
+    "ru": "Три года мороз держал реки подо льдом, а амбары пустели. Выжили те, кто делился последним; память об этом голоде до сих пор определяет законы Марчленда.",
+    "en": "For three years frost held the rivers under ice and the granaries emptied. Those who shared their last survived; the memory of that famine still shapes the laws of Marchland."
+  },
+  "codex.history.second.title": {
+    "ru": "Вторая клятва",
+    "en": "The Second Oath"
+  },
+  "codex.history.second.body": {
+    "ru": "Говорят, что клятва не заканчивается победой. Тот, кто возвращается на землю после финальной битвы, приносит с собой прежние титулы — и новые обещания, которые ещё тяжелее.",
+    "en": "They say an oath does not end with victory. Whoever returns to the land after the final battle carries old titles — and new promises that weigh even heavier."
+  },
+  "codex.history.finale.title": {
+    "ru": "Пепел и всходы",
+    "en": "Ash and Sprouts"
+  },
+  "codex.history.finale.body": {
+    "ru": "Каждая история Марчленда заканчивается по-своему: договором, мечом или шатким равновесием. Но земля помнит не только победителей — она помнит, что было посеяно после.",
+    "en": "Every Marchland story ends differently: with a treaty, a sword, or a fragile balance. But the land remembers more than victors — it remembers what was sown afterwards."
+  },
+  "codex.faction.woodland_freeholders.body": {
+    "ru": "Вольные держатели живут в лесах северо-запада и не признают над собой никого, кроме общего схода. Они дают убежище беглецам, но требуют взамен труда и молчания.",
+    "en": "The freeholders live in the north-western woods and acknowledge no authority but their common assembly. They shelter runaways, but demand labour and silence in return."
+  },
+  "codex.faction.iron_guild.body": {
+    "ru": "Гильдия железа держит рудники и кузни. Её мастера говорят, что металл честнее людей: он не лжёт о своей прочности.",
+    "en": "The Iron Guild holds the mines and forges. Its masters say metal is more honest than people: it never lies about its strength."
+  },
+  "codex.faction.borderland_watch.body": {
+    "ru": "Стража пограничья выросла из ополчения, которое первым встречало набеги. Её правило простое: чужая армия остаётся за рекой.",
+    "en": "The Borderland Watch grew from the militia that first met the raids. Its rule is simple: a foreign army stays beyond the river."
+  },
+  "codex.faction.river_covenant.body": {
+    "ru": "Ковенант реки объединяет лодочников, мельников и торговцев. Их слово держит цену соли стабильной, а мосты — открытыми.",
+    "en": "The River Covenant unites boatmen, millers and traders. Their word keeps the price of salt steady and the bridges open."
+  },
+  "codex.faction.stone_circle.body": {
+    "ru": "Круг камня — древний союз рудокопов и каменотёсов. Они верят, что под землёй спит первый правитель Марчленда, и не любят тех, кто копает слишком жадно.",
+    "en": "The Stone Circle is an ancient union of miners and masons. They believe the first ruler of Marchland sleeps beneath the earth, and dislike those who dig too greedily."
+  },
+  "codex.faction.marsh_keepers.body": {
+    "ru": "Хранители болот знают тропы, которых нет ни на одной карте. Они пропускают путников, но никогда — армии.",
+    "en": "The Marsh Keepers know paths that appear on no map. They let travellers through, but never armies."
+  },
+  "codex.faction.sunfield_union.body": {
+    "ru": "Союз солнечных полей кормит юг страны. Его амбары — самая надёжная опора любой клятвы, и союз это знает.",
+    "en": "The Sunfield Union feeds the south of the country. Its granaries are the surest support of any oath, and the union knows it."
+  },
+  "codex.faction.pass_clans.body": {
+    "ru": "Кланы перевала держат единственную дорогу через горы. Они берут плату не золотом, а новостями и уважением.",
+    "en": "The Pass Clans hold the only road through the mountains. They take payment not in gold, but in news and respect."
+  },
+  "codex.place.greenhaven.body": {
+    "ru": "Зелёная гавань стоит там, где лесная тропа выходит к реке. Здесь всегда пахнет смолой и свежим хлебом, а стража знает всех по имени.",
+    "en": "Greenhaven stands where the forest path meets the river. It always smells of resin and fresh bread, and the guards know everyone by name."
+  },
+  "codex.place.old_watch.body": {
+    "ru": "Старая стража — крепость, пережившая три осады и ни одного штурма. Её стены сложены из камня, который помнит руки строителей.",
+    "en": "Old Watch is a fortress that survived three sieges and not one assault. Its walls are made of stone that remembers the hands of its builders."
+  },
+  "codex.place.high_pass.body": {
+    "ru": "Верхний перевал — последняя тёплая ночь перед горами. Здесь путники оставляют монету в нише, чтобы вернуться.",
+    "en": "High Pass is the last warm night before the mountains. Travellers leave a coin in the niche here so they may return."
+  },
+  "codex.place.willow_wharf.body": {
+    "ru": "Ивовая пристань живёт рекой: паромы, плоты и слухи. Ночью над водой виден свет с той стороны, куда никто не плавает.",
+    "en": "Willow Wharf lives by the river: ferries, rafts and rumours. At night a light shows over the water from the direction no one sails."
+  },
+  "codex.place.winter_gate.body": {
+    "ru": "Зимние врата закрывают долину, когда приходит холод. Их ворота не откроют даже перед армией, если внизу нет огня.",
+    "en": "Winter Gate closes the valley when the cold comes. Its gates will not open even for an army unless a fire burns below."
+  },
+  "codex.place.moss_hearth.body": {
+    "ru": "Мшистый очаг — деревня, где всегда горит общий костёр. Здесь не спрашивают, откуда ты пришёл, но спрашивают, что ты принёс для огня.",
+    "en": "Moss Hearth is a village where a common fire always burns. No one asks where you came from, but they ask what you brought for the fire."
+  },
+  "codex.landmark.shrine.title": {
+    "ru": "Лесная часовня",
+    "en": "Forest Shrine"
+  },
+  "codex.landmark.shrine.body": {
+    "ru": "Часовня вольных держателей стоит на поляне, где, по преданию, была произнесена первая клятва. Её двери открыты, но голос там принято понижать.",
+    "en": "The freeholders' shrine stands in a clearing where the first oath is said to have been spoken. Its doors are open, but voices are kept low inside."
+  },
+  "codex.landmark.ruins.title": {
+    "ru": "Руины старого моста",
+    "en": "Ruins of the Old Bridge"
+  },
+  "codex.landmark.ruins.body": {
+    "ru": "Каменные опоры уходят в болото — всё, что осталось от моста, соединявшего берега до Долгой зимы. Хранители болот не позволяют его восстанавливать.",
+    "en": "Stone piers sink into the marsh — all that remains of the bridge that joined the banks before the Long Winter. The Marsh Keepers forbid rebuilding it."
+  },
+  "codex.landmark.mine.title": {
+    "ru": "Забытая шахта",
+    "en": "The Forgotten Mine"
+  },
+  "codex.landmark.mine.body": {
+    "ru": "Шахта круга камня была закрыта после обвала. Говорят, что внизу остался инструмент, который всё ещё стучит по ночам.",
+    "en": "The Stone Circle's mine was sealed after a collapse. They say a tool was left below, and it still knocks at night."
+  },
+  "codex.bestiary.raider.title": {
+    "ru": "Налётчик",
+    "en": "Raider"
+  },
+  "codex.bestiary.raider.body": {
+    "ru": "Налётчики приходят из-за реки малыми отрядами. Они быстры, жадны и редко сражаются до конца.",
+    "en": "Raiders come from beyond the river in small bands. They are fast, greedy, and rarely fight to the last."
+  },
+  "codex.bestiary.guard.title": {
+    "ru": "Охранник лагеря",
+    "en": "Camp Guard"
+  },
+  "codex.bestiary.guard.body": {
+    "ru": "Каждый лагерь держит охранников — обычно тех, кому не хватило места в набеге. В строю они опаснее, чем поодиночке.",
+    "en": "Every camp keeps guards — usually those who did not get a place in the raid. In formation they are more dangerous than alone."
+  },
+  "codex.bestiary.oathbreaker.title": {
+    "ru": "Клятвопреступник",
+    "en": "Oathbreaker"
+  },
+  "codex.bestiary.oathbreaker.body": {
+    "ru": "Тот, кто нарушил клятву, но остался жив. В бою он не боится ни богов, ни людей.",
+    "en": "One who broke an oath and lived. In battle he fears neither gods nor people."
+  },
+  "codex.bestiary.warlord.title": {
+    "ru": "Военный вождь",
+    "en": "Warlord"
+  },
+  "codex.bestiary.warlord.body": {
+    "ru": "Вождь, собравший под своим знаменем все отряды юга. Пока он стоит, армия не отступает.",
+    "en": "A chief who gathered all the southern warbands under his banner. While he stands, the army does not retreat."
+  },
+  "oath.iron.name": {
+    "ru": "Клятва железа",
+    "en": "Oath of Iron"
+  },
+  "oath.iron.desc": {
+    "ru": "Железная смерть окончательна: если герой погибнет, поход завершится навсегда.",
+    "en": "Iron death is final: if the hero falls, the campaign ends for good."
+  },
+  "oath.poverty.name": {
+    "ru": "Клятва бедности",
+    "en": "Oath of Poverty"
+  },
+  "oath.poverty.desc": {
+    "ru": "Начать новый поход без припасов — только с тем, что несут с собой.",
+    "en": "Begin the new campaign with no supplies — only what you carry."
+  },
+  "oath.peace.name": {
+    "ru": "Клятва мира",
+    "en": "Oath of Peace"
+  },
+  "oath.peace.desc": {
+    "ru": "Осады запрещены. Победы приходят через договоры и полевые бои.",
+    "en": "Sieges are forbidden. Victories come through treaties and field battles."
+  },
+  "oath.wanderer.name": {
+    "ru": "Клятва странника",
+    "en": "Oath of the Wanderer"
+  },
+  "oath.wanderer.desc": {
+    "ru": "Добыча удвоена, но поселение производит вдвое меньше.",
+    "en": "Loot is doubled, but the settlement produces half as much."
+  },
+  "oath.banner.iron": {
+    "ru": "Знамя железа",
+    "en": "Iron Banner"
+  },
+  "oath.banner.poverty": {
+    "ru": "Знамя бедности",
+    "en": "Banner of Poverty"
+  },
+  "oath.banner.peace": {
+    "ru": "Знамя мира",
+    "en": "Banner of Peace"
+  },
+  "oath.banner.wanderer": {
+    "ru": "Знамя странника",
+    "en": "Wanderer's Banner"
+  },
+  "oath.banner.victory": {
+    "ru": "Знамя победы",
+    "en": "Banner of Victory"
+  },
+  "oath.title.story": {
+    "ru": "Хранитель сказаний",
+    "en": "Tale Keeper"
+  },
+  "oath.title.normal": {
+    "ru": "Верный клятве",
+    "en": "Oathkeeper"
+  },
+  "oath.title.hard": {
+    "ru": "Стойкий в буре",
+    "en": "Stormfast"
+  },
+  "oath.title.expert": {
+    "ru": "Железная воля",
+    "en": "Iron Will"
+  },
+  "oath.title.diplomat": {
+    "ru": "Миротворец",
+    "en": "Peacemaker"
+  },
+  "oath.title.conqueror": {
+    "ru": "Завоеватель",
+    "en": "Conqueror"
+  },
+  "oath.title.arbiter": {
+    "ru": "Арбитр",
+    "en": "Arbiter"
+  },
+  "oath.second.title": {
+    "ru": "Вторая Клятва",
+    "en": "The Second Oath"
+  },
+  "oath.second.subtitle": {
+    "ru": "Поход {level} · сложность: {difficulty}",
+    "en": "Campaign {level} · difficulty: {difficulty}"
+  },
+  "oath.second.carry": {
+    "ru": "С вами: {titles}. Солдаты: {soldiers}.",
+    "en": "Carried over: {titles}. Soldiers: {soldiers}."
+  },
+  "oath.second.hint": {
+    "ru": "Выберите одну или несколько клятв. Их силу нельзя отменить до конца похода.",
+    "en": "Choose one or more oaths. Their weight cannot be lifted until the campaign ends."
+  },
+  "oath.second.start": {
+    "ru": "Принять Вторую Клятву",
+    "en": "Take the Second Oath"
+  },
+  "oath.second.no_titles": {
+    "ru": "без титулов",
+    "en": "no titles"
+  },
+  "oath.second.started": {
+    "ru": "Вторая Клятва {level} принята.",
+    "en": "The Second Oath {level} has begun."
+  },
+  "settlement.tier.0": {
+    "ru": "Лагерь",
+    "en": "Camp"
+  },
+  "settlement.tier.1": {
+    "ru": "Деревня",
+    "en": "Village"
+  },
+  "settlement.tier.2": {
+    "ru": "Укреплённое поселение",
+    "en": "Fortified Settlement"
+  },
+  "settlement.tier.3": {
+    "ru": "Городок",
+    "en": "Town"
+  },
+  "settlement.tier.4": {
+    "ru": "Цитадель",
+    "en": "Citadel"
+  },
+  "settlement.tier_badge": {
+    "ru": "{name} · уровень {level}",
+    "en": "{name} · tier {level}"
+  },
+  "oath.second.none": {
+    "ru": "Без клятвы",
+    "en": "No oath"
+  },
+  "map.objective": {
+    "ru": "Цель",
+    "en": "Objective"
+  },
+  "flow.tip.3": {
+    "ru": "Кодекс пополняется, когда вы исследуете мир и говорите с людьми.",
+    "en": "The codex grows as you explore the world and speak with people."
+  },
+  "flow.tip.4": {
+    "ru": "Новая клятва сохраняет армию и снаряжение — но враги становятся сильнее.",
+    "en": "A Second Oath carries your army and gear forward — and makes enemies stronger."
+  },
+  "flow.tip.5": {
+    "ru": "Редкая добыча светится и звенит. Читайте цвет и слушайте звук.",
+    "en": "Rare loot glows and rings. Read the color and listen to the sound."
+  },
+  "escalation.0": {
+    "ru": "Мир",
+    "en": "Peace"
+  },
+  "escalation.1": {
+    "ru": "Напряжение",
+    "en": "Tension"
+  },
+  "escalation.2": {
+    "ru": "Угрозы",
+    "en": "Threats"
+  },
+  "escalation.3": {
+    "ru": "Давление на границе",
+    "en": "Border pressure"
+  },
+  "escalation.4": {
+    "ru": "Осада",
+    "en": "Siege"
+  },
+  "escalation.5": {
+    "ru": "Война",
+    "en": "War"
+  },
+  "settlement.buildings": {
+    "ru": "Постройки",
+    "en": "Buildings"
+  },
+  "tutorial.done": {
+    "ru": "Готово",
+    "en": "Done"
+  },
+  "tutorial.pending": {
+    "ru": "Цель",
+    "en": "Objective"
   }
 }

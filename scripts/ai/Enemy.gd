@@ -1,4 +1,5 @@
 extends CharacterBody3D
+const HitSparkScene=preload("res://scripts/vfx/HitSpark.gd")
 
 @export var max_hp: float = 80.0
 @export var damage: float = 12.0
@@ -14,6 +15,8 @@ var visual: Node3D
 var windup: float = 0.0
 var walk_phase: float = 0.0
 var home_position: Vector3 = Vector3.INF
+var flash_time: float = 0.0
+var flash_material: StandardMaterial3D
 
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 
@@ -26,6 +29,10 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if is_dead:
 		return
+	if flash_time > 0.0:
+		flash_time = maxf(0.0, flash_time - delta)
+		if flash_time <= 0.0:
+			_set_overlay(null)
 	if home_position == Vector3.INF: home_position = global_position
 
 	if attack_cooldown > 0:
@@ -100,6 +107,37 @@ func attack_player() -> void:
 	MarchArt.animate_attack(visual)
 	attack_cooldown = 1.5
 	windup = 0.35
+
+func hit_impact(source_point: Vector3) -> void:
+	if is_dead:
+		return
+	var center: Vector3 = global_position + Vector3.UP
+	var direction: Vector3 = center - source_point
+	if direction.length_squared() < 0.01:
+		direction = -global_transform.basis.z
+	var spark: Node3D = HitSparkScene.new()
+	var spark_parent: Node = get_parent() if get_parent() else self
+	spark_parent.add_child(spark)
+	spark.global_position = center + direction.normalized() * 0.2
+	# HitSpark owns its burst motion; spawn arguments are passed through one guarded call.
+	@warning_ignore("return_value_discarded")
+	spark.call("setup", direction, Color("ffd9a0"))
+	flash_time = 0.12
+	_set_overlay(_flash_material())
+
+func _flash_material() -> StandardMaterial3D:
+	if flash_material == null:
+		flash_material = StandardMaterial3D.new()
+		flash_material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+		flash_material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+		flash_material.albedo_color = Color(1.0, 0.94, 0.84, 0.38)
+	return flash_material
+
+func _set_overlay(material: Material) -> void:
+	if visual == null:
+		return
+	for node: Node in visual.find_children("*", "MeshInstance3D", true, false):
+		node.set("material_overlay", material)
 
 func take_damage(amount: float) -> void:
 	if is_dead or not is_finite(amount) or amount<=0:

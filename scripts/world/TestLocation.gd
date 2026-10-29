@@ -8,6 +8,7 @@ const AlchemyView=preload("res://scripts/ui/AlchemyUI.gd")
 const SettlementView=preload("res://scripts/ui/SettlementUI.gd")
 const CouncilView=preload("res://scripts/ui/StrategyUI.gd")
 const HUDView=preload("res://scripts/ui/HUD.gd")
+const CodexView=preload("res://scripts/ui/CodexUI.gd")
 
 @onready var hud: HUDView = $CanvasLayer/HUD
 @onready var inventory_ui: InventoryView = $CanvasLayer/InventoryUI
@@ -24,6 +25,7 @@ const TUTORIAL_SCRIPT = preload("res://scripts/systems/TutorialSystem.gd")
 var tutorial: TUTORIAL_SCRIPT
 var music_check_time: float = 0.0
 var strategy_ui: CouncilView
+var codex_ui: CodexView
 
 func _ready() -> void:
 	AudioManager.play_music("exploration")
@@ -42,6 +44,13 @@ func _ready() -> void:
 	$CanvasLayer.add_child(strategy_ui)
 	strategy_ui.theme = menu_theme
 	strategy_ui.hide()
+	codex_ui = CodexView.new()
+	$CanvasLayer.add_child(codex_ui)
+	codex_ui.theme = menu_theme
+	codex_ui.hide()
+	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
+	@warning_ignore("return_value_discarded")
+	codex_ui.closed.connect(toggle_codex)
 	for menu:Control in [inventory_ui, alchemy_ui, settlement_ui, pause_menu]:
 		menu.theme = menu_theme
 		if menu == pause_menu:
@@ -120,6 +129,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		toggle_settlement()
 	elif event is InputEventKey and (event as InputEventKey).pressed and (event as InputEventKey).keycode == KEY_C:
 		toggle_alchemy()
+	elif event is InputEventKey and (event as InputEventKey).pressed and (event as InputEventKey).keycode == KEY_K:
+		toggle_codex()
 	elif event is InputEventKey and (event as InputEventKey).pressed and (event as InputEventKey).keycode in [KEY_R, KEY_F, KEY_J]:
 		toggle_strategy([KEY_R, KEY_F, KEY_J].find((event as InputEventKey).keycode))
 
@@ -128,6 +139,7 @@ func toggle_inventory() -> void:
 		return
 	inventory_ui.visible = not inventory_ui.visible
 	strategy_ui.hide()
+	codex_ui.hide()
 	if alchemy_ui: alchemy_ui.visible = false
 	if settlement_ui: settlement_ui.visible = false
 	if inventory_ui.visible:
@@ -142,6 +154,7 @@ func toggle_settlement() -> void:
 		return
 	if settlement_ui:
 		strategy_ui.hide()
+		codex_ui.hide()
 		settlement_ui.visible = not settlement_ui.visible
 		inventory_ui.visible = false
 		if alchemy_ui: alchemy_ui.visible = false
@@ -158,13 +171,28 @@ func toggle_alchemy() -> void:
 		return
 	alchemy_ui.visible = not alchemy_ui.visible
 	strategy_ui.hide()
+	codex_ui.hide()
 	inventory_ui.visible = false
 	settlement_ui.visible = false
 	alchemy_ui.update_info()
 	_sync_menu_state()
 
+func toggle_codex() -> void:
+	if pause_menu.visible:
+		return
+	codex_ui.visible = not codex_ui.visible
+	if codex_ui.visible:
+		inventory_ui.hide()
+		alchemy_ui.hide()
+		settlement_ui.hide()
+		strategy_ui.hide()
+		codex_ui.refresh()
+		codex_ui.focus_first()
+		if AudioManager: AudioManager.play_sound("ui_focus")
+	_sync_menu_state()
+
 func _sync_menu_state() -> void:
-	var menu_open:bool= inventory_ui.visible or pause_menu.visible or alchemy_ui.visible or settlement_ui.visible or (is_instance_valid(strategy_ui) and strategy_ui.visible)
+	var menu_open:bool= inventory_ui.visible or pause_menu.visible or alchemy_ui.visible or settlement_ui.visible or (is_instance_valid(strategy_ui) and strategy_ui.visible) or (is_instance_valid(codex_ui) and codex_ui.visible)
 	get_tree().paused = menu_open
 	AudioManager.set_scene_paused(menu_open)
 	hud.visible = not menu_open
@@ -177,11 +205,12 @@ func toggle_pause() -> void:
 		if pause_menu.settings_panel.visible:pause_menu._on_toggle_settings()
 		else:pause_menu._on_resume()
 		return
-	if inventory_ui.visible or (alchemy_ui and alchemy_ui.visible) or (settlement_ui and settlement_ui.visible) or strategy_ui.visible:
+	if inventory_ui.visible or (alchemy_ui and alchemy_ui.visible) or (settlement_ui and settlement_ui.visible) or strategy_ui.visible or (codex_ui and codex_ui.visible):
 		inventory_ui.visible = false
 		if alchemy_ui: alchemy_ui.visible = false
 		if settlement_ui: settlement_ui.visible = false
 		strategy_ui.hide()
+		if codex_ui: codex_ui.hide()
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		_sync_menu_state()
 		return
@@ -201,6 +230,8 @@ func toggle_strategy(index: int) -> void:
 	inventory_ui.hide()
 	alchemy_ui.hide()
 	settlement_ui.hide()
+	strategy_ui.hide()
+	codex_ui.hide()
 	if strategy_ui.visible and strategy_ui.tabs.current_tab == index:
 		strategy_ui.hide()
 	else:
@@ -212,6 +243,7 @@ func _on_player_died() -> void:
 	alchemy_ui.hide()
 	settlement_ui.hide()
 	strategy_ui.hide()
+	codex_ui.hide()
 	pause_menu.show()
 	pause_menu.resume_btn.text = LocalizationManager.get_string("ui.respawn")
 	pause_menu.save_btn.disabled = true

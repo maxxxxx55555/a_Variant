@@ -7,6 +7,7 @@ const TypeRefCinematicWeather=preload("res://scripts/world/CinematicWeather.gd")
 const TypeRefCivilianActor=preload("res://scripts/ai/CivilianActor.gd")
 const TypeRefSiegeGate=preload("res://scripts/world/SiegeGate.gd")
 const TypeRefCompanionActor=preload("res://scripts/ai/CompanionActor.gd")
+const TypeRefSettlementGrowth=preload("res://scripts/world/SettlementGrowth.gd")
 
 const TERRAIN_SCRIPT = preload("res://scripts/world/MarchTerrain.gd")
 const MARKER_SCRIPT = preload("res://scripts/world/MarchMarker.gd")
@@ -18,6 +19,7 @@ var ending_panel: EndingView
 var companion_actors: Dictionary[String,TypeRefCompanionActor] = {}
 var current_ambience: String = "forest"
 var siege_gates: Dictionary[String,TypeRefSiegeGate] = {}
+var cinematic_weather: TypeRefCinematicWeather
 
 func _ready() -> void:
 	if not CampaignSystem.active:
@@ -68,6 +70,9 @@ func _ready() -> void:
 	# The label is parent-owned and updates through the locale signal.
 	@warning_ignore("return_value_discarded")
 	MarchArt.localized_label(self, "ui.home", Vector3(0, 5, 16))
+	var growth:TypeRefSettlementGrowth=TypeRefSettlementGrowth.new()
+	add_child(growth)
+	growth.build(Vector3(0, terrain.ground_at(0, 12), 12), func(x:float, z:float)->float:return terrain.ground_at(x, z), Color("9d9276"))
 	for data:Dictionary in CampaignSystem.definition.towns:
 		build_town(data)
 	for point:Dictionary in CampaignSystem.definition.points:
@@ -76,12 +81,12 @@ func _ready() -> void:
 	$CanvasLayer.add_child(town_ui)
 	town_ui.theme = strategy_ui.theme
 	town_ui.hide()
-	var weather:TypeRefCinematicWeather= preload("res://scripts/world/CinematicWeather.gd").new()
-	weather.environment = environment
-	weather.sunlight = sunlight
-	weather.player = player
-	weather.terrain = terrain
-	add_child(weather)
+	cinematic_weather = preload("res://scripts/world/CinematicWeather.gd").new()
+	cinematic_weather.environment = environment
+	cinematic_weather.sunlight = sunlight
+	cinematic_weather.player = player
+	cinematic_weather.terrain = terrain
+	add_child(cinematic_weather)
 	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
 	@warning_ignore("return_value_discarded")
 	CampaignSystem.campaign_finished.connect(show_ending)
@@ -197,8 +202,9 @@ func spawn_enemy(id: String, faction: String, position_hint: Vector3, danger: in
 		actor.set_script(preload("res://scripts/ai/BossEnemy.gd"))
 		(actor as BossView).boss_name_key = {"borderland_watch": "boss.bandit_leader.name", "marsh_keepers": "boss.army_commander.name", "pass_clans": "boss.pass_master.name"}.get(faction, "boss.bandit_leader.name")
 	var level: Dictionary = CampaignSystem.definition.difficulties[CampaignSystem.difficulty]
-	actor.max_hp = (240.0 + danger * 30 if boss else 55.0 + danger * 15) * level.enemy_health
-	actor.damage = (16.0 + danger * 2 if boss else 7.0 + danger * 1.5) * level.enemy_damage
+	var oath_scale: float = CampaignSystem.enemy_scale()
+	actor.max_hp = (240.0 + danger * 30 if boss else 55.0 + danger * 15) * level.enemy_health * oath_scale
+	actor.damage = (16.0 + danger * 2 if boss else 7.0 + danger * 1.5) * level.enemy_damage * oath_scale
 	actor.detection_range = 18
 	actor.set_meta("campaign_id", id)
 	actor.set_meta("faction_id", faction)
@@ -500,6 +506,14 @@ func _on_player_died() -> void:
 	if is_instance_valid(town_ui): town_ui.hide()
 	super._on_player_died()
 	if CampaignSystem.iron_mode:
+		if not CampaignSystem.iron_dead:
+			var wealth_value: Variant = EconomySystem.stockpiles.get("gold", 0.0)
+			var wealth: float = 0.0
+			if wealth_value is int or wealth_value is float:
+				# Stockpile values are numeric by the EconomySystem contract.
+				@warning_ignore("unsafe_call_argument")
+				wealth = float(wealth_value)
+			ProfileStats.finish_defeat(CampaignSystem.difficulty, TimeSystem.current_day, wealth, CampaignSystem.visited.size(), TimeSystem.total_seconds())
 		CampaignSystem.iron_dead = true
 		pause_menu.localize()
 		pause_menu.resume_btn.disabled = true

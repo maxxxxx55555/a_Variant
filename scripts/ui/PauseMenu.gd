@@ -1,4 +1,7 @@
 extends Control
+const IconView=preload("res://scripts/ui/IconSet.gd")
+const ThemeRef=preload("res://scripts/ui/MarchTheme.gd")
+const MotionView=preload("res://scripts/ui/UIMotion.gd")
 
 @onready var resume_btn: Button = $MarginContainer/VBoxContainer/ResumeBtn
 @onready var save_btn: Button = $MarginContainer/VBoxContainer/SaveBtn
@@ -38,6 +41,13 @@ func _ready() -> void:
 	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
 	@warning_ignore("return_value_discarded")
 	exit_btn.pressed.connect(_on_exit)
+	IconView.apply(resume_btn,"continue",20)
+	IconView.apply(save_btn,"save",20)
+	IconView.apply(load_btn,"load",20)
+	IconView.apply(settings_btn,"settings",20)
+	IconView.apply(exit_btn,"exit",20)
+	for button:Button in [resume_btn,save_btn,load_btn,settings_btn,exit_btn]:
+		MotionView.attach(button)
 
 	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
 	@warning_ignore("return_value_discarded")
@@ -61,6 +71,20 @@ func _ready() -> void:
 	@warning_ignore("return_value_discarded")
 	shake_check.toggled.connect(func(v:Variant)->void: SettingsManager.camera_shake = v)
 
+	var hit_stop:CheckBox=CheckBox.new()
+	hit_stop.name="HitStopCheck"
+	hit_stop.button_pressed=SettingsManager.hit_stop_enabled
+	settings_panel.add_child(hit_stop)
+	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
+	@warning_ignore("return_value_discarded")
+	hit_stop.toggled.connect(func(enabled:Variant)->void:SettingsManager.hit_stop_enabled=enabled)
+	var damage_numbers:CheckBox=CheckBox.new()
+	damage_numbers.name="DamageNumbersCheck"
+	damage_numbers.button_pressed=SettingsManager.damage_numbers
+	settings_panel.add_child(damage_numbers)
+	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
+	@warning_ignore("return_value_discarded")
+	damage_numbers.toggled.connect(func(enabled:Variant)->void:SettingsManager.damage_numbers=enabled)
 	var motion:CheckBox=CheckBox.new()
 	motion.name="ReducedMotionCheck"
 	motion.button_pressed=SettingsManager.reduced_motion
@@ -131,7 +155,7 @@ func localize() -> void:
 	load_btn.text = LocalizationManager.get_string("ui.load")
 	settings_btn.text = LocalizationManager.get_string("ui.settings")
 	exit_btn.text = LocalizationManager.get_string("ui.exit")
-	var labels:Dictionary[String,String]= {"LangLabel": "ui.language", "MasterLabel": "ui.volume_master", "MusicLabel": "ui.volume_music", "SFXLabel": "ui.volume_sfx", "UILabel": "ui.volume_ui", "BobbingCheck": "ui.camera_bobbing", "ShakeCheck": "ui.camera_shake", "ReducedMotionCheck":"ui.reduced_motion", "SensitivityLabel":"ui.mouse_sensitivity", "QualityLabel":"ui.msaa_quality"}
+	var labels:Dictionary[String,String]= {"LangLabel": "ui.language", "MasterLabel": "ui.volume_master", "MusicLabel": "ui.volume_music", "SFXLabel": "ui.volume_sfx", "UILabel": "ui.volume_ui", "BobbingCheck": "ui.camera_bobbing", "ShakeCheck": "ui.camera_shake", "HitStopCheck":"ui.hit_stop", "DamageNumbersCheck":"ui.damage_numbers", "ReducedMotionCheck":"ui.reduced_motion", "SensitivityLabel":"ui.mouse_sensitivity", "QualityLabel":"ui.msaa_quality"}
 	for node_name:String in labels:
 		settings_panel.get_node(node_name).set("text",LocalizationManager.get_string(labels[node_name]))
 
@@ -140,7 +164,7 @@ func localize() -> void:
 	(settings_panel.get_node("MSAAQuality") as OptionButton).set_item_text(0,LocalizationManager.get_string("ui.msaa_off"))
 	if is_instance_valid(settings_back):
 		settings_back.text=LocalizationManager.get_string("ui.close")
-		(settings_header.get_child(0) as Label).text=LocalizationManager.get_string("ui.settings")
+		(settings_header.get_child(1) as Label).text=LocalizationManager.get_string("ui.settings")
 	var slots:OptionButton=find_child("SaveSlotChoice",true,false)
 	if slots:
 		for i:int in 5:slots.set_item_text(i,LocalizationManager.get_string("ui.slot")+" "+str(i+1))
@@ -159,6 +183,8 @@ func init_settings_ui() -> void:
 	ui_slider.set_value_no_signal(SettingsManager.ui_volume)
 	bobbing_check.set_pressed_no_signal(SettingsManager.camera_bobbing)
 	shake_check.set_pressed_no_signal(SettingsManager.camera_shake)
+	(settings_panel.get_node("HitStopCheck") as CheckBox).set_pressed_no_signal(SettingsManager.hit_stop_enabled)
+	(settings_panel.get_node("DamageNumbersCheck") as CheckBox).set_pressed_no_signal(SettingsManager.damage_numbers)
 	(settings_panel.get_node("MouseSensitivity") as HSlider).set_value_no_signal(SettingsManager.mouse_sensitivity)
 	(settings_panel.get_node("MSAAQuality") as OptionButton).select(SettingsManager.msaa_quality)
 
@@ -229,7 +255,7 @@ func _on_load() -> void:
 func build_settings_frame() -> void:
 	settings_backdrop=Panel.new()
 	settings_backdrop.mouse_filter=Control.MOUSE_FILTER_IGNORE
-	settings_backdrop.add_theme_stylebox_override("panel",preload("res://scripts/ui/MarchTheme.gd").panel(Color("1c2932"),Color("61717a")))
+	settings_backdrop.add_theme_stylebox_override("panel",ThemeRef.panel(Color(0.09,0.11,0.13,0.98),Color("c9a227")))
 	add_child(settings_backdrop);move_child(settings_backdrop,1)
 	centered_frame(settings_backdrop,Rect2(-344,-488,688,928))
 	settings_backdrop.hide()
@@ -237,15 +263,18 @@ func build_settings_frame() -> void:
 	settings_header.add_theme_constant_override("separation",24)
 	add_child(settings_header)
 	centered_frame(settings_header,Rect2(-320,-464,640,56))
+	settings_header.add_child(IconView.rect("settings",Color("c9a227"),Vector2(28,28),"SettingsIcon"))
 	var heading:Label=Label.new()
-	heading.add_theme_font_override("font",load("res://assets/fonts/Literata.ttf") as Font)
+	heading.add_theme_font_override("font",ThemeRef.heading_font(700))
 	heading.add_theme_font_size_override("font_size",32)
+	heading.add_theme_color_override("font_color",Color("e8dcc3"))
 	heading.size_flags_horizontal=Control.SIZE_EXPAND_FILL
 	settings_header.add_child(heading)
 	settings_back=Button.new()
 	settings_back.name="BackButton"
 	settings_back.custom_minimum_size=Vector2(136,56)
 	settings_header.add_child(settings_back)
+	IconView.apply(settings_back,"close",20)
 	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
 	@warning_ignore("return_value_discarded")
 	settings_back.pressed.connect(_on_toggle_settings)
@@ -308,7 +337,8 @@ func capture_simulation() -> Dictionary:
 		"quests_completed": QuestSystem.completed_quests.duplicate(), "weather": WeatherSystem.current_weather,
 		"strength_buff": GameState.strength_buff_timer,
 		"campaign": CampaignSystem.capture_state(), "buildings": WorkshopSystem.levels.duplicate(),
-		"timed_effects": GameState.timed_effects.duplicate(true), "poison": GameState.poison_timer
+		"timed_effects": GameState.timed_effects.duplicate(true), "poison": GameState.poison_timer,
+		"codex": CodexSystem.capture_state()
 	}
 
 func restore_simulation(data: Dictionary) -> void:
@@ -342,6 +372,11 @@ func restore_simulation(data: Dictionary) -> void:
 	GameState.recalculate_stats()
 	var campaign:Dictionary=data.get("campaign",{})
 	CampaignSystem.restore_state(campaign)
+	var codex:Variant=data.get("codex",{})
+	if codex is Dictionary:
+		@warning_ignore("unsafe_cast")
+		var codex_state:Dictionary=codex
+		CodexSystem.restore_state(codex_state)
 	# Early profiles may omit factions introduced with the full campaign.
 	if CampaignSystem.active:
 		for faction:Variant in CampaignSystem.definition.factions:

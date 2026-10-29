@@ -1,8 +1,11 @@
 extends Control
+const IconView=preload("res://scripts/ui/IconSet.gd")
+const ThemeRef=preload("res://scripts/ui/MarchTheme.gd")
 signal closed
 var title:Label
 var body:Label
 var close_button:Button
+var campaign:Dictionary={}
 func _ready() -> void:
 	name="CreditsPanel"
 	process_mode=Node.PROCESS_MODE_ALWAYS
@@ -17,7 +20,7 @@ func _ready() -> void:
 	add_child(backdrop)
 	var shade:Panel=Panel.new()
 	shade.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	shade.add_theme_stylebox_override("panel",preload("res://scripts/ui/MarchTheme.gd").panel(Color(0.04,0.10,0.10,0.94),Color("c7ab70")))
+	shade.add_theme_stylebox_override("panel",ThemeRef.panel(Color(0.055,0.075,0.09,0.94),Color("c9a227")))
 	add_child(shade)
 	var margin:MarginContainer=MarginContainer.new()
 	margin.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -27,11 +30,15 @@ func _ready() -> void:
 	var column:VBoxContainer=VBoxContainer.new()
 	column.add_theme_constant_override("separation",30)
 	margin.add_child(column)
+	var header:HBoxContainer=HBoxContainer.new()
+	header.add_theme_constant_override("separation",20)
+	column.add_child(header)
+	header.add_child(IconView.rect("credits",Color("c9a227"),Vector2(36,36),"CreditsIcon"))
 	title=Label.new()
-	title.add_theme_font_override("font",load("res://assets/fonts/Literata.ttf") as Font)
+	title.add_theme_font_override("font",ThemeRef.heading_font(700))
 	title.add_theme_font_size_override("font_size",48)
-	title.add_theme_color_override("font_color",Color("ebd9ae"))
-	column.add_child(title)
+	title.add_theme_color_override("font_color",Color("e8dcc3"))
+	header.add_child(title)
 	var scroll:ScrollContainer=ScrollContainer.new()
 	scroll.size_flags_vertical=Control.SIZE_EXPAND_FILL
 	scroll.horizontal_scroll_mode=ScrollContainer.SCROLL_MODE_DISABLED
@@ -47,6 +54,7 @@ func _ready() -> void:
 	close_button.custom_minimum_size=Vector2(200,65)
 	close_button.size_flags_horizontal=Control.SIZE_SHRINK_BEGIN
 	column.add_child(close_button)
+	IconView.apply(close_button,"close",20)
 	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
 	@warning_ignore("return_value_discarded")
 	close_button.pressed.connect(close)
@@ -58,7 +66,23 @@ func _ready() -> void:
 func localize() -> void:
 	title.text=LocalizationManager.get_string("ui.credits")
 	body.text=LocalizationManager.get_string("ui.credits_body")
+	var level:int=_whole(campaign.get("ng_level",0))
+	if level>0:
+		var banner_key:String=str(campaign.get("ng_banner",""))
+		var banner:String=LocalizationManager.get_string(banner_key) if not banner_key.is_empty() else LocalizationManager.get_string("stats.none")
+		var titles_text:String=LocalizationManager.get_string("stats.none")
+		var localized:Array[String]=[]
+		for key:Variant in campaign.get("titles",[]):localized.append(LocalizationManager.get_string(str(key)))
+		if not localized.is_empty():titles_text=" · ".join(localized)
+		body.text+="\n\n"+LocalizationManager.get_string("credits.ng_line",{"level":level,"banner":banner,"titles":titles_text})
 	close_button.text=LocalizationManager.get_string("ui.close")
+
+func _whole(value:Variant)->int:
+	if value is int or value is float:
+		# Campaign snapshots store sanitized numeric levels.
+		@warning_ignore("unsafe_call_argument")
+		return int(value)
+	return 0
 func close() -> void:
 	closed.emit()
 	queue_free()

@@ -1,5 +1,8 @@
 extends Control
 const ItemIcons=preload("res://scripts/ui/ItemIcons.gd")
+const LootStyle=preload("res://scripts/ui/LootStyle.gd")
+const IconView=preload("res://scripts/ui/IconSet.gd")
+const ThemeRef=preload("res://scripts/ui/MarchTheme.gd")
 
 @onready var item_list: ItemList = $MarginContainer/HBoxContainer/LeftPanel/ItemList
 @onready var item_card_label: RichTextLabel = $MarginContainer/HBoxContainer/RightPanel/ItemCardLabel
@@ -50,6 +53,13 @@ func _ready() -> void:
 	@warning_ignore("return_value_discarded")
 	weapon_btn.pressed.connect(func()->void: GameState.unequip_item("weapon"))
 
+	IconView.apply(head_btn,"slot_head",20)
+	IconView.apply(torso_btn,"slot_torso",20)
+	IconView.apply(legs_btn,"slot_legs",20)
+	IconView.apply(weapon_btn,"slot_weapon",20)
+	IconView.apply(equip_button,"inventory",20)
+	IconView.apply(use_button,"potion",20)
+	IconView.apply(drop_button,"close",20)
 	refresh_inventory()
 	refresh_equipment()
 
@@ -68,6 +78,7 @@ func refresh_inventory() -> void:
 		# This list owns the row; selection is managed separately.
 		@warning_ignore("return_value_discarded")
 		item_list.add_item(display_name,ItemIcons.for_record(item))
+		item_list.set_item_custom_fg_color(item_list.item_count - 1, LootStyle.color_for(item))
 	clear_card()
 
 func refresh_equipment() -> void:
@@ -75,10 +86,32 @@ func refresh_equipment() -> void:
 	torso_btn.text = get_slot_text("torso")
 	legs_btn.text = get_slot_text("legs")
 	weapon_btn.text = get_slot_text("weapon")
-	for pair:Array in [[head_btn,"head"],[torso_btn,"torso"],[legs_btn,"legs"],[weapon_btn,"weapon"]]:
-		var button:Button=pair[0]
-		button.disabled=GameState.equipment.get(pair[1])==null
-		button.tooltip_text=LocalizationManager.get_string("ui.empty" if button.disabled else "ui.unequip")
+	_refresh_equipment_slot(head_btn, "head")
+	_refresh_equipment_slot(torso_btn, "torso")
+	_refresh_equipment_slot(legs_btn, "legs")
+	_refresh_equipment_slot(weapon_btn, "weapon")
+
+func _refresh_equipment_slot(button:Button, slot_name:String) -> void:
+	var slot_record:Variant=GameState.equipment.get(slot_name)
+	button.disabled=slot_record==null
+	button.tooltip_text=LocalizationManager.get_string("ui.empty" if button.disabled else "ui.unequip")
+	var slot_color:Color = Color("E8DCC3") if slot_record == null else LootStyle.color_for(slot_record)
+	button.add_theme_color_override("font_color", slot_color)
+	button.add_theme_color_override("font_hover_color", slot_color.lightened(0.2))
+	button.add_theme_color_override("font_focus_color", slot_color)
+	button.add_theme_color_override("icon_normal_color", slot_color)
+	button.add_theme_color_override("icon_hover_color", slot_color.lightened(0.2))
+	button.add_theme_color_override("icon_disabled_color", Color("61717a"))
+	_apply_slot_surface(button, slot_color if slot_record != null else ThemeRef.EDGE)
+
+func _apply_slot_surface(button: Button, accent: Color) -> void:
+	var normal:StyleBoxFlat=ThemeRef.panel(Color(0.09,0.11,0.13,0.94),accent)
+	normal.set_border_width_all(2)
+	var hover:StyleBoxFlat=ThemeRef.panel(Color(0.13,0.16,0.19,0.96),accent.lightened(0.18))
+	hover.set_border_width_all(2)
+	button.add_theme_stylebox_override("normal",normal)
+	button.add_theme_stylebox_override("hover",hover)
+	button.add_theme_stylebox_override("pressed",ThemeRef.panel(Color(0.07,0.09,0.11,0.98),accent))
 
 func get_slot_text(slot_name: String) -> String:
 	var slot_title:String= LocalizationManager.get_string("ui.slot_" + slot_name)
@@ -115,7 +148,7 @@ func update_card(index: int) -> void:
 	var rarity:String= res.get("rarity")
 
 	var text:String= "[b]" + name_str + "[/b]\n"
-	text += LocalizationManager.get_string("ui.stats.rarity") + ": " + LocalizationManager.get_string("ui.rarity." + rarity) + "\n"
+	text += LocalizationManager.get_string("ui.stats.rarity") + ": [color=#" + LootStyle.color_of(rarity).to_html(false) + "]" + LocalizationManager.get_string("ui.rarity." + rarity) + "[/color]\n"
 	text += LocalizationManager.get_string("ui.stats.weight") + ": " + str(weight) + " " + LocalizationManager.get_string("ui.unit.weight") + "\n\n"
 	text += desc_str + "\n\n"
 	if res is WeaponData or res is ArmorData:

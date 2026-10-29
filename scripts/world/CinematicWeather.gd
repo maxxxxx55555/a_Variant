@@ -7,6 +7,10 @@ var rain: MultiMeshInstance3D
 var seeds: Array[Vector3] = []
 var elapsed:float= 0.0
 var last_weather:int= -1
+var last_season:int= -1
+var season_tint:Color= Color("cfe3b8")
+var season_sun_energy:float= 1.0
+var season_saturation:float= 0.9
 
 func _ready() -> void:
 	var rng:RandomNumberGenerator= RandomNumberGenerator.new()
@@ -28,6 +32,16 @@ func _ready() -> void:
 	material.albedo_color = Color(0.62,0.76,0.83,0.22)
 	rain.material_override = material
 	add_child(rain)
+	set_season(TimeSystem.current_season_idx)
+
+func set_season(index: int) -> void:
+	last_season = clampi(index, 0, 3)
+	var tints: Array[Color] = [Color("cfe3b8"), Color("ffe2ae"), Color("e6b17c"), Color("bcd2e4")]
+	var energies: Array[float] = [1.0, 1.06, 0.92, 0.8]
+	var saturations: Array[float] = [0.9, 0.88, 0.8, 0.62]
+	season_tint = tints[last_season]
+	season_sun_energy = energies[last_season]
+	season_saturation = saturations[last_season]
 	apply_weather()
 
 func apply_weather() -> void:
@@ -43,11 +57,15 @@ func apply_weather() -> void:
 	for kind:Variant in RealWorldArt.materials:
 		if kind in ["wood","roof","stone"]: RealWorldArt.materials[kind].roughness = 0.58 if raining else 0.84
 	environment.fog_density = 0.004 if mist else (0.0028 if raining else 0.0018)
-	environment.fog_light_color = Color("536c7d") if raining else Color("829095")
-	sunlight.light_energy = 0.38 if raining else 0.72
+	var weather_fog:Color= Color("536c7d") if raining else Color("829095")
+	environment.fog_light_color = weather_fog.lerp(season_tint, 0.28)
+	environment.adjustment_saturation = 0.7 if mist else season_saturation
+	sunlight.light_energy = (0.38 if raining else 0.72) * season_sun_energy
+	sunlight.light_color = Color("ffd0a1").lerp(season_tint, 0.22)
 
 func _process(delta: float) -> void:
 	if last_weather != int(WeatherSystem.current_weather): apply_weather()
+	if last_season != TimeSystem.current_season_idx: set_season(TimeSystem.current_season_idx)
 	if not rain.visible or not is_instance_valid(player): return
 	elapsed = fmod(elapsed+delta,1000.0)
 	rain.global_position = player.global_position

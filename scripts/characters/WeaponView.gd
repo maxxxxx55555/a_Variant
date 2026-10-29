@@ -1,7 +1,10 @@
 extends Node3D
 
+const SLASH_DURATION: float = 0.32
+
 var blade: Node3D
 var slash: float = 0.0
+var recoil: float = 0.0
 var weapon_kind: String = ""
 var current_path: String = ""
 
@@ -101,16 +104,30 @@ func refresh() -> void:
 	MarchArt.box(blade, Vector3(0.04, -0.29, 0.09), Vector3(0.14, 0.17, 0.2), Color("b38c69"))
 
 func attack() -> void:
-	slash = 0.32
+	slash = SLASH_DURATION
+
+func hit() -> void:
+	recoil = 1.0
 
 func _process(delta: float) -> void:
 	slash = maxf(0, slash - delta)
-	var arc:float= sin(slash / 0.32 * PI)
+	recoil = maxf(0, recoil - delta * 6.0)
+	var progress:float= 1.0 - slash / SLASH_DURATION
+	var arc:float= 0.0
+	if slash > 0.0:
+		if progress < 0.18:
+			arc = -0.3 * (progress / 0.18)
+		else:
+			var strike:float= clampf((progress - 0.18) / 0.62, 0.0, 1.0)
+			arc = lerpf(-0.3, 1.0, ease(strike, -2.6))
+			if progress > 0.8:
+				arc = lerpf(arc, 0.0, (progress - 0.8) / 0.2)
+	arc = maxf(-0.4, arc + recoil * 0.16)
 	blade.rotation = Vector3(-arc * 1.2, arc * -0.8, -arc * 0.7)
 	if weapon_kind == "bow":
 		blade.rotation = Vector3.ZERO
-		blade.position.z = arc * 0.16
+		blade.position.z = maxf(0.0, arc) * 0.16 + recoil * 0.05
 	else:
-		blade.position.z = 0
+		blade.position.z = recoil * 0.035
 	if Input.is_action_pressed("block"):
 		blade.rotation = Vector3(-0.3, 0, 0.9)

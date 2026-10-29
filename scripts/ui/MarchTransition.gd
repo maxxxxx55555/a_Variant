@@ -2,10 +2,12 @@ extends CanvasLayer
 ## Persistent scene handoff: show a real stage before threaded resource loading.
 var overlay:Control
 var loading_tip:Label
+var loading_bar:ProgressBar
 var busy:bool=false
 var quitting:bool=false
 var unsaved_dialog:ConfirmationDialog
 const TITLE:String="res://scenes/ui/main_menu.tscn"
+const TIP_COUNT:int=6
 func _ready() -> void:
 	layer=100
 	process_mode=Node.PROCESS_MODE_ALWAYS
@@ -13,7 +15,8 @@ func _ready() -> void:
 func show_loading() -> void:
 	if is_instance_valid(overlay):
 		overlay.show()
-		loading_tip.text=LocalizationManager.get_string("flow.tip."+str(Time.get_ticks_msec()%3))
+		loading_tip.text=_next_tip()
+		if is_instance_valid(loading_bar):loading_bar.value=0
 		for label:Node in overlay.find_children("*","Label",true,false):
 			if label is Label and label.has_meta("locale_key"):(label as Label).text=LocalizationManager.get_string(str(label.get_meta("locale_key")))
 		return
@@ -23,7 +26,7 @@ func show_loading() -> void:
 	overlay.theme=preload("res://scripts/ui/MarchTheme.gd").create()
 	add_child(overlay)
 	var backdrop:ColorRect=ColorRect.new()
-	backdrop.color=Color("101b24")
+	backdrop.color=Color("171c21")
 	backdrop.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	overlay.add_child(backdrop)
 	var center:CenterContainer=CenterContainer.new()
@@ -43,26 +46,41 @@ func show_loading() -> void:
 	title.text=LocalizationManager.get_string("ui.title")
 	title.set_meta("locale_key","ui.title")
 	title.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
-	title.add_theme_font_override("font",load("res://assets/fonts/Literata.ttf") as Font)
+	title.add_theme_font_override("font",preload("res://scripts/ui/MarchTheme.gd").heading_font(700))
 	title.add_theme_font_size_override("font_size",38)
+	title.add_theme_color_override("font_color",Color("e8dcc3"))
 	column.add_child(title)
 	var status:Label=Label.new()
 	status.text=LocalizationManager.get_string("flow.loading")
 	status.set_meta("locale_key","flow.loading")
 	status.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
-	status.add_theme_color_override("font_color",Color("b7c2c8"))
+	status.add_theme_color_override("font_color",Color("91a0a7"))
 	column.add_child(status)
 	var rule:ColorRect=ColorRect.new()
-	rule.color=Color("b89c72")
+	rule.color=Color("c9a227")
 	rule.custom_minimum_size.y=2
 	column.add_child(rule)
+	loading_bar=ProgressBar.new()
+	loading_bar.name="LoadingProgress"
+	loading_bar.min_value=0
+	loading_bar.max_value=100
+	loading_bar.value=0
+	loading_bar.show_percentage=false
+	loading_bar.custom_minimum_size=Vector2(600,10)
+	loading_bar.mouse_filter=Control.MOUSE_FILTER_IGNORE
+	column.add_child(loading_bar)
 	loading_tip=Label.new()
-	loading_tip.text=LocalizationManager.get_string("flow.tip."+str(Time.get_ticks_msec()%3))
+	loading_tip.name="LoadingTip"
+	loading_tip.text=_next_tip()
 	loading_tip.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
 	loading_tip.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
 	loading_tip.custom_minimum_size.x=600
 	loading_tip.add_theme_font_size_override("font_size",20)
 	column.add_child(loading_tip)
+func _next_tip() -> String:
+	var index:int=absi(floori(Time.get_ticks_msec()/900.0))%TIP_COUNT
+	return LocalizationManager.get_string("flow.tip."+str(index))
+
 func hide_loading() -> void:
 	if is_instance_valid(overlay):overlay.hide()
 func go_to(path:String) -> void:
@@ -77,9 +95,14 @@ func go_to(path:String) -> void:
 	if error!=OK:
 		loading_failed(path)
 		return
-	while ResourceLoader.load_threaded_get_status(path)==ResourceLoader.THREAD_LOAD_IN_PROGRESS:
+	var progress:Array=[]
+	while ResourceLoader.load_threaded_get_status(path,progress)==ResourceLoader.THREAD_LOAD_IN_PROGRESS:
+		if is_instance_valid(loading_bar) and not progress.is_empty():
+			@warning_ignore("unsafe_call_argument")
+			loading_bar.value=clampf(float(progress[0])*100.0,0.0,100.0)
 		await get_tree().process_frame
 		if quitting:return
+	if is_instance_valid(loading_bar):loading_bar.value=100
 	if quitting:return
 	if ResourceLoader.load_threaded_get_status(path)==ResourceLoader.THREAD_LOAD_LOADED:
 		var scene:PackedScene=ResourceLoader.load_threaded_get(path)

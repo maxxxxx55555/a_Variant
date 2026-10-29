@@ -13,6 +13,9 @@ func _ready() -> void:
 	TimeSystem.day_passed.connect(_on_day_passed)
 
 func begin(id: String) -> bool:
+	if not CampaignSystem.sieges_allowed:
+		EventBus.notification_posted.emit(LocalizationManager.get_string("siege.peace_forbidden"), true)
+		return false
 	if not CampaignSystem.faction_exists(id) or CampaignSystem.bound(id) or states.has(id) or ArmySystem.get_total_soldiers() < 3:
 		return false
 	# A single field army cannot blockade several distant cities simultaneously.

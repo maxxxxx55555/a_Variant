@@ -17,6 +17,9 @@ func _process(delta: float) -> void:
 		game_time_seconds -= day_duration_seconds
 		advance_day()
 
+func total_seconds() -> float:
+	return game_time_seconds + float(maxi(0, current_day - 1)) * day_duration_seconds
+
 func advance_day() -> void:
 	current_day += 1
 

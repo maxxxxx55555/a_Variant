@@ -2,6 +2,7 @@ extends Node
 const ItemIcons=preload("res://scripts/ui/ItemIcons.gd")
 const FrameView=preload("res://scripts/ui/CouncilFrame.gd")
 const MapView=preload("res://scripts/ui/MarchMap.gd")
+const IconView=preload("res://scripts/ui/IconSet.gd")
 
 var council:FrameView
 var map_view:MapView
@@ -55,6 +56,7 @@ func attach(parent:FrameView) -> void:
 	for data:Dictionary in WorkshopSystem.definitions:
 		var control:Button= Button.new()
 		buildings.add_child(control)
+		IconView.apply(control,"building_"+str(data.id),22)
 		building_buttons[data.id] = control
 		# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
 		@warning_ignore("return_value_discarded")
@@ -89,6 +91,8 @@ func attach(parent:FrameView) -> void:
 	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
 	@warning_ignore("return_value_discarded")
 	EventBus.language_changed.connect(func(_language:Variant)->void: refresh())
+	council.tabs.set_tab_icon(3,IconView.texture("map"))
+	council.tabs.set_tab_icon(4,IconView.texture("workshop"))
 	refresh()
 
 func costs(cost: Dictionary) -> String:

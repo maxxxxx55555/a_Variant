@@ -1,13 +1,15 @@
 {
   "files": {
-    "res://assets/audio/catalog.json": "edeb723c24fb0ddaa81607178aa39a6f1f130ccf50fe2e824dfa2090e6202cf5",
+    "res://assets/audio/catalog.json": "e68e4c3849ed654483d96d3a209a5924d4a06acdd4680c22c1bd79a7e580f965",
     "res://data/balance/alchemy.json": "b9919d6d62a48c6f603fb6b62c01ca0fad82dbb395f16a37e119f6b314225cdb",
     "res://data/balance/buildings.json": "dd01ee5c72460426ea85184c570ebb7dec7bc854981494cceb2409c9249471e4",
-    "res://data/balance/campaign.json": "28232f520fb2e9398a15415febbf3d690f6bfc7a94c6e089e2fe063ec3d75516",
+    "res://data/balance/campaign.json": "a4222cbe8f6d5a153c994ec021cd3f6800849e66605f8f78d7ba3f2f75b230ed",
+    "res://data/balance/codex.json": "09e17eff0dc34fe2d6ec0fe1523811edaab6804f80f7e318b62cace58c9ca3c9",
     "res://data/balance/crafting.json": "67bc45bff3fb9d8145f47e7927a2b7a93c5bca088da17e3b0ff59f6bb4ad6028",
     "res://data/balance/diplomacy.json": "6f8277d7c06f04c925598475581e5591cef59ea8b4b81fc0e4b40007181b5042",
     "res://data/balance/equipment.json": "ad180d92426e5b2a25be074a8d1c326fb1063bb0b6fdd798ad463431acdcc62e",
-    "res://data/balance/localization.json": "57477a064d302aaf23af2fce84772aeb19aee9494919e96c4859e775210a2cc2"
+    "res://data/balance/localization.json": "95045ef23e5dd9aa262e60b4304ce06d4878d7d8b82ba567fab3f0ca7de350cf",
+    "res://data/balance/oaths.json": "2751fc912e28da886777d4ff7084a4b0ffead4aa3f53788c3cf27080f500c5a9"
   },
   "version": 1
 }

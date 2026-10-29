@@ -85,6 +85,7 @@ func trade(resource:String,quantity:int,buying:bool) -> bool:
 
 func _on_day(_day: int) -> void:
 	var housing: int = 25
+	var output_scale: float = CampaignSystem.production_multiplier
 	for definition:Dictionary in definitions:
 		var level: int = levels.get(definition.id, 0)
 		for resource:Variant in definition.daily:
@@ -93,9 +94,25 @@ func _on_day(_day: int) -> void:
 			if resource == "housing": housing += int(bonus)
 			elif resource == "health": PopulationSystem.health = minf(100, PopulationSystem.health + bonus)
 			elif resource == "happiness": PopulationSystem.happiness = minf(100, PopulationSystem.happiness + bonus)
-			else: EconomySystem.stockpiles[resource] += bonus
+			else: EconomySystem.stockpiles[resource] += bonus * output_scale
 	if PopulationSystem.total_population < housing and PopulationSystem.happiness >= 60 and PopulationSystem.health >= 60 and EconomySystem.stockpiles.food >= 30:
 		PopulationSystem.total_population += 1
 		PopulationSystem.reconcile_workers()
 	changed.emit()
 	EventBus.settlement_updated.emit()
+
+func tier() -> int:
+	var total: int = 0
+	for definition:Dictionary in definitions:
+		# levels only stores integer ranks written by build().
+		@warning_ignore("unsafe_call_argument")
+		total += int(levels.get(definition.id, 0))
+	if total <= 0:
+		return 0
+	if total >= 25:
+		return 4
+	if total >= 15:
+		return 3
+	if total >= 6:
+		return 2
+	return 1

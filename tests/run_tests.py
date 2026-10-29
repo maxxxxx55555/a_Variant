@@ -83,6 +83,8 @@ def main():
         cases.append(('invalid-combat-inputs', ['--headless','--script','res://tests/test_invalid_combat_inputs.gd']))
         cases.append(('untrusted-exploration', ['--headless','--script','res://tests/test_untrusted_exploration.gd']))
         cases.append(('packed-append-regression', ['--headless','--script','res://tests/test_packed_append_regression.gd']))
+        for case in ['second_oath','codex','quest_tracker','combat_feel','loot_feel','settlement_evolution','stats','design_pass']:
+            cases.append((case, ['--headless','--script','res://tests/test_' + case + '.gd']))
         cases.insert(2, ('audio', ['--headless', '--script', 'res://tests/test_audio.gd']))
         if portrait:
             cases.append(('balance', ['--headless', '--script', 'res://tests/test_gameplay.gd', '--', '--balance']))
@@ -115,7 +117,7 @@ def main():
         assets = subprocess.run([sys.executable, str(project / 'tests/test_audio_assets.py')], timeout=60)
         if assets.returncode:
             return assets.returncode
-        for source_contract in ['test_public_qa_contract.py','test_release_export_tool.py','test_critical_manifest.py']:
+        for source_contract in ['test_public_qa_contract.py','test_release_export_tool.py','test_critical_manifest.py','test_design_system.py']:
             result=subprocess.run([sys.executable,str(project/'tests'/source_contract)],timeout=60)
             if result.returncode:return result.returncode
         for name, switches in cases:

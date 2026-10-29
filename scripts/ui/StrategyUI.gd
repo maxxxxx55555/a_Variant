@@ -1,5 +1,7 @@
 extends "res://scripts/ui/CouncilFrame.gd"
 const PanelsView=preload("res://scripts/ui/CampaignPanels.gd")
+const FactionView=preload("res://scripts/ui/FactionStyle.gd")
+const ThemeRef=preload("res://scripts/ui/MarchTheme.gd")
 
 var roster: ItemList
 var unit_choice: OptionButton
@@ -13,11 +15,15 @@ var journal: RichTextLabel
 var selected_faction: String = "iron_guild"
 var title_label: Label
 var campaign_panels:PanelsView
+var faction_strip: ColorRect
+var ladder:HBoxContainer
+var ladder_segments:Array[ColorRect]=[]
+var escalation_label:Label
+var escalation_title_label:Label
 
 func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	var style:StyleBoxFlat= StyleBoxFlat.new()
-	style.bg_color = Color(0.075, 0.07, 0.065, 0.98)
+	var style:StyleBoxFlat= ThemeRef.panel(Color(0.09,0.11,0.13,0.985),Color("c9a227"))
 	style.content_margin_left = 50
 	style.content_margin_right = 50
 	style.content_margin_top = 30
@@ -28,9 +34,12 @@ func _ready() -> void:
 	add_child(column)
 	var header:HBoxContainer= HBoxContainer.new()
 	column.add_child(header)
+	header.add_child(IconView.rect("diplomacy",Color("c9a227"),Vector2(30,30),"CouncilIcon"))
 	title_label = Label.new()
 	title_label.text = LocalizationManager.get_string("ui.strategy")
 	title_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	title_label.add_theme_font_override("font",ThemeRef.heading_font(700))
+	title_label.add_theme_color_override("font_color",Color("e8dcc3"))
 	header.add_child(title_label)
 	# The container owns this action button and its callback.
 	@warning_ignore("return_value_discarded")
@@ -91,9 +100,39 @@ func _ready() -> void:
 	relations.name = "Diplomacy"
 	relations.add_theme_constant_override("separation", 18)
 	tabs.add_child(relations)
+	var relationship_row:HBoxContainer=HBoxContainer.new()
+	relationship_row.add_theme_constant_override("separation",18)
+	relations.add_child(relationship_row)
 	faction_list = ItemList.new()
-	faction_list.custom_minimum_size.y = 220
-	relations.add_child(faction_list)
+	faction_list.custom_minimum_size.y = 360
+	faction_list.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	relationship_row.add_child(faction_list)
+	var standing:VBoxContainer=VBoxContainer.new()
+	standing.custom_minimum_size.x = 240
+	standing.add_theme_constant_override("separation",10)
+	relationship_row.add_child(standing)
+	faction_strip=ColorRect.new()
+	faction_strip.name="FactionStrip"
+	faction_strip.custom_minimum_size=Vector2(0,6)
+	standing.add_child(faction_strip)
+	escalation_title_label=Label.new()
+	escalation_title_label.text=LocalizationManager.get_string("ui.escalation")
+	standing.add_child(escalation_title_label)
+	ladder=HBoxContainer.new()
+	ladder.name="EscalationLadder"
+	ladder.add_theme_constant_override("separation",4)
+	standing.add_child(ladder)
+	for index:int in 5:
+		var segment:ColorRect=ColorRect.new()
+		segment.name="Escalation_"+str(index+1)
+		segment.custom_minimum_size=Vector2(40,10)
+		segment.color=Color("46545d")
+		ladder.add_child(segment)
+		ladder_segments.append(segment)
+	escalation_label=Label.new()
+	escalation_label.name="EscalationLabel"
+	escalation_label.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
+	standing.add_child(escalation_label)
 	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
 	@warning_ignore("return_value_discarded")
 	faction_list.item_selected.connect(func(index:int)->void: selected_faction = FactionSystem.factions.keys()[index]; refresh())
@@ -173,6 +212,10 @@ func localize() -> void:
 	tabs.set_tab_title(0, LocalizationManager.get_string("ui.army"))
 	tabs.set_tab_title(1, LocalizationManager.get_string("ui.diplomacy"))
 	tabs.set_tab_title(2, LocalizationManager.get_string("ui.journal"))
+	tabs.set_tab_icon(0,IconView.texture("army"))
+	tabs.set_tab_icon(1,IconView.texture("diplomacy"))
+	tabs.set_tab_icon(2,IconView.texture("journal"))
+	if is_instance_valid(escalation_title_label):escalation_title_label.text=LocalizationManager.get_string("ui.escalation")
 	refresh()
 
 func refresh() -> void:
@@ -204,12 +247,24 @@ func refresh() -> void:
 		var threat:float=faction.threat
 		var path:String=faction.res_path
 		var data:FactionData=load(path) as FactionData
+		var level:int=faction.escalation_level
 		# This list owns the row; selection is managed separately.
 		@warning_ignore("return_value_discarded")
-		faction_list.add_item(LocalizationManager.get_string(str(data.name_key)) + " · " + str(int(relationship)) + " · " + LocalizationManager.get_string("ui.threat") + " " + str(int(threat)) + " · " + str(faction.escalation_level) + "/5")
+		faction_list.add_item(LocalizationManager.get_string(str(data.name_key)) + " · " + str(int(relationship)) + " · " + LocalizationManager.get_string("ui.threat") + " " + str(int(threat)) + " · " + LocalizationManager.get_string("escalation."+str(clampi(level,0,5))))
+		faction_list.set_item_custom_fg_color(faction_list.item_count-1,FactionView.text_color(id))
 	var index: int = FactionSystem.factions.keys().find(selected_faction)
 	if index >= 0:
 		faction_list.select(index)
+	var active:Dictionary=FactionSystem.factions.get(selected_faction,{})
+	@warning_ignore("unsafe_call_argument")
+	var active_level:int=int(active.get("escalation_level",0))
+	var accent:Color=FactionView.color(selected_faction)
+	if is_instance_valid(faction_strip):faction_strip.color=accent
+	if is_instance_valid(escalation_label):
+		escalation_label.text=LocalizationManager.get_string("ui.escalation")+": "+LocalizationManager.get_string("escalation."+str(clampi(active_level,0,5)))
+		escalation_label.add_theme_color_override("font_color",accent)
+	for segment_index:int in ladder_segments.size():
+		ladder_segments[segment_index].color=accent if segment_index<active_level else Color("46545d")
 	journal.text = "[b]" + LocalizationManager.get_string("ui.journal") + "[/b]\n\n"
 	for id:String in QuestSystem.active_quests:
 		var quest:QuestData=load("res://data/quests/"+id+".tres") as QuestData

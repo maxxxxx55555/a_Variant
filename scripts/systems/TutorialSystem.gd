@@ -39,7 +39,7 @@ func refresh() -> void:
 	var text:String= LocalizationManager.get_string("tutorial.campaign_title" if CampaignSystem.active else "tutorial.title") + "\n"
 	for goal:String in progress:
 		all_done = all_done and progress[goal]
-		text += ("✓ " if progress[goal] else "□ ") + LocalizationManager.get_string("tutorial." + goal) + "\n"
+		text += LocalizationManager.get_string("tutorial.done" if progress[goal] else "tutorial.pending") + " · " + LocalizationManager.get_string("tutorial." + goal) + "\n"
 	completed = completed or all_done
 	if completed:
 		text += "\n" + LocalizationManager.get_string("tutorial.basics_complete" if CampaignSystem.active else "tutorial.completed")

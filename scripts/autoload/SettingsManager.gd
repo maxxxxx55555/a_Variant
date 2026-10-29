@@ -12,6 +12,9 @@ var mouse_sensitivity: float = 0.003
 var camera_bobbing: bool = false
 var camera_shake: bool = false
 var reduced_motion: bool = false
+var hit_stop_enabled: bool = true
+var hit_stop_ms: int = 75
+var damage_numbers: bool = true
 var language: String = "ru"
 var language_confirmed: bool = false
 
@@ -39,6 +42,9 @@ func save_settings() -> void:
 	config.set_value("gameplay", "camera_bobbing", camera_bobbing)
 	config.set_value("gameplay", "camera_shake", camera_shake)
 	config.set_value("gameplay", "reduced_motion", reduced_motion)
+	config.set_value("gameplay", "hit_stop_enabled", hit_stop_enabled)
+	config.set_value("gameplay", "hit_stop_ms", hit_stop_ms)
+	config.set_value("gameplay", "damage_numbers", damage_numbers)
 	config.set_value("language", "lang", language)
 	config.set_value("language", "confirmed", language_confirmed)
 
@@ -50,8 +56,9 @@ func valid_settings(config: ConfigFile) -> bool:
 	for field:String in ["master_volume","music_volume","sfx_volume","ui_volume"]:
 		if not Guard.numeric(config.get_value("audio",field,0.5),0,1): return false
 	if not Guard.numeric(config.get_value("controls","mouse_sensitivity",0.003),0.0001,0.1): return false
-	for field:String in ["camera_bobbing","camera_shake","reduced_motion"]:
+	for field:String in ["camera_bobbing","camera_shake","reduced_motion","hit_stop_enabled","damage_numbers"]:
 		if not config.get_value("gameplay",field,false) is bool: return false
+	if not Guard.numeric(config.get_value("gameplay","hit_stop_ms",75),60,90,true): return false
 	if config.get_value("language","lang","ru") not in ["ru","en"]: return false
 	for section:String in config.get_sections():
 		for field:String in config.get_section_keys(section):
@@ -74,6 +81,11 @@ func load_settings() -> void:
 		camera_bobbing = config.get_value("gameplay", "camera_bobbing", false)
 		camera_shake = config.get_value("gameplay", "camera_shake", false)
 		reduced_motion = config.get_value("gameplay", "reduced_motion", false)
+		hit_stop_enabled = config.get_value("gameplay", "hit_stop_enabled", true)==true
+		# valid_settings() already enforced an integral 60..90 range before this branch.
+		@warning_ignore("unsafe_call_argument")
+		hit_stop_ms = clampi(config.get_value("gameplay", "hit_stop_ms", 75),60,90)
+		damage_numbers = config.get_value("gameplay", "damage_numbers", true)==true
 		language = config.get_value("language", "lang", "ru")
 		language_confirmed = config.get_value("language", "confirmed", true)==true
 	if OS.get_environment("GAME_LANGUAGE") in ["ru","en"]:language=OS.get_environment("GAME_LANGUAGE")

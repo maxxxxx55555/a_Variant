@@ -113,7 +113,7 @@ def compose(profile, mood):
 
 def effect(name):
     length = {'victory': 2.8, 'defeat': 2.2, 'upgrade': 1.1, 'potion': .65,
-              'enemy_death': .9, 'ambience_forest': 16, 'ambience_camp': 16}.get(name, .38)
+              'loot_chime': .46, 'enemy_death': .9, 'ambience_forest': 16, 'ambience_camp': 16}.get(name, .38)
     n = int(length * RATE)
     t = np.arange(n) / RATE
     noise = RNG.standard_normal(n)
@@ -159,6 +159,13 @@ def effect(name):
     elif name in ['defeat', 'enemy_death']:
         sound = np.sin(2 * np.pi * (100 * t + 55 * .2 * (1 - np.exp(-t / .2)))) * np.exp(-t * 4)
         sound += np.convolve(noise, np.ones(11) / 11, mode='same') * np.exp(-t * 9) * .4
+    elif name == 'loot_chime':
+        # Four rising bell partials; rarity playback transposes the same cue upward.
+        sound = np.zeros(n)
+        for index, note in enumerate([79, 84, 88, 91]):
+            start = min(int(index * .06 * RATE), n - 4)
+            part = voice(note, (n - start) / RATE, 'bell')
+            sound[start:] += part[:n - start] * (.34 - index * .05)
     else:
         # Wood, parchment and short coin sounds for menus.
         sound = (np.sin(2 * np.pi * 310 * t) * .3 + noise * .25) * np.exp(-t * 45)
@@ -230,6 +237,7 @@ def generate(project, profile):
     if profile == 'oaths':
         effects += ['swing', 'attack', 'hit', 'hit_metal', 'hit_flesh', 'block', 'enemy_hurt', 'enemy_death', 'ambience_forest', 'ambience_camp']
         effects += [f'footstep_{material}_{index}' for material in ['grass', 'dirt', 'stone', 'wood', 'snow'] for index in range(3)]
+        effects += ['loot_chime']
     supplied = json.loads((output / 'music-provenance.json').read_text(encoding='utf-8')) if preserve_music else {}
     for name in effects:
         old = previous.get('sfx', {}).get(name, {})

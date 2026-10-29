@@ -1,6 +1,11 @@
 extends PanelContainer
+const IconView=preload("res://scripts/ui/IconSet.gd")
+const ThemeRef=preload("res://scripts/ui/MarchTheme.gd")
+const FactionView=preload("res://scripts/ui/FactionStyle.gd")
+const MotionView=preload("res://scripts/ui/UIMotion.gd")
 
 var town_id: String = ""
+var faction_band: ColorRect
 var title_label: Label
 var description: RichTextLabel
 var resources_label: Label
@@ -29,8 +34,7 @@ func page() -> VBoxContainer:
 
 func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	var style:StyleBoxFlat= StyleBoxFlat.new()
-	style.bg_color = Color("17232b")
+	var style:StyleBoxFlat= ThemeRef.panel(Color("171c21"),Color("c9a227"))
 	style.content_margin_left = 70
 	style.content_margin_right = 70
 	style.content_margin_top = 45
@@ -41,9 +45,12 @@ func _ready() -> void:
 	add_child(layout)
 	var header:HBoxContainer= HBoxContainer.new()
 	layout.add_child(header)
+	header.add_child(IconView.rect("town",Color("c9a227"),Vector2(28,28),"TownIcon"))
 	title_label = Label.new()
 	title_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	title_label.add_theme_font_size_override("font_size", 34)
+	title_label.add_theme_font_override("font",ThemeRef.heading_font(700))
+	title_label.add_theme_color_override("font_color",Color("e8dcc3"))
 	header.add_child(title_label)
 	details=Button.new()
 	details.name="TownDetails"
@@ -52,6 +59,11 @@ func _ready() -> void:
 	# The container owns this action button and its callback.
 	@warning_ignore("return_value_discarded")
 	action(header, "ui.close", func()->void: get_tree().current_scene.call("toggle_pause"))
+	faction_band=ColorRect.new()
+	faction_band.name="FactionBand"
+	faction_band.custom_minimum_size=Vector2(0,4)
+	faction_band.color=Color("c9a227")
+	layout.add_child(faction_band)
 	description = RichTextLabel.new()
 	description.fit_content=true
 	description.custom_minimum_size.y = 150
@@ -72,7 +84,7 @@ func _ready() -> void:
 	var siege_page:VBoxContainer=page()
 	summary=Label.new()
 	summary.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
-	summary.add_theme_color_override("font_color",Color("b6c2c5"))
+	summary.add_theme_color_override("font_color",Color("91a0a7"))
 	journey.add_child(summary)
 	delivery_button = action(journey, "town.deliver", func()->void:
 		var ok:bool= CampaignSystem.deliver_supplies(current_faction())
@@ -91,7 +103,7 @@ func _ready() -> void:
 	for resource:String in ["food", "wood", "ore", "stone"]:
 		var panel:PanelContainer=PanelContainer.new()
 		panel.size_flags_horizontal=Control.SIZE_EXPAND_FILL
-		panel.add_theme_stylebox_override("panel",preload("res://scripts/ui/MarchTheme.gd").panel(Color("24343e")))
+		panel.add_theme_stylebox_override("panel",ThemeRef.panel(Color(0.10,0.12,0.14,0.9),Color("46545d")))
 		row.add_child(panel)
 		var trade_column:VBoxContainer= VBoxContainer.new()
 		trade_column.add_theme_constant_override("separation",15)
@@ -174,6 +186,9 @@ func action(parent: Node, key: String, callback: Callable) -> Button:
 		control.autowrap_mode=TextServer.AUTOWRAP_OFF
 		control.custom_minimum_size.x=140
 	parent.add_child(control)
+	var icons:Dictionary={"ui.close":"close","town.deliver":"food","town.report":"journal","siege.begin":"siege","siege.wait":"pause","siege.surrender":"oath","siege.lift":"exit","siege.assault":"army"}
+	if icons.has(key):IconView.apply(control,str(icons[key]),20)
+	MotionView.attach(control)
 	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
 	@warning_ignore("return_value_discarded")
 	control.pressed.connect(callback)
@@ -181,6 +196,9 @@ func action(parent: Node, key: String, callback: Callable) -> Button:
 
 func localize() -> void:
 	for index:int in 3: tabs.set_tab_title(index,LocalizationManager.get_string(str(["town.journey","town.trade","town.siege"][index])))
+	tabs.set_tab_icon(0,IconView.texture("town"))
+	tabs.set_tab_icon(1,IconView.texture("diplomacy"))
+	tabs.set_tab_icon(2,IconView.texture("siege"))
 	details.text=LocalizationManager.get_string("town.details")
 	for control:Button in find_children("*", "Button", true, false):
 		if control.has_meta("text_key"):
@@ -211,7 +229,10 @@ func refresh() -> void:
 	var faction:Dictionary=factions.filter(func(f:Dictionary)->bool:return f.id==town.faction)[0]
 	var faction_id:String=town.faction
 	var delivery_cost:Dictionary=CampaignSystem.definition.delivery_cost
+	var accent:Color=FactionView.color(faction_id)
 	title_label.text = LocalizationManager.get_string(str(town.name))
+	title_label.add_theme_color_override("font_color",FactionView.text_color(faction_id))
+	if is_instance_valid(faction_band):faction_band.color=accent
 	summary.text=LocalizationManager.get_string("town.next")
 	description.text = "[b]" + LocalizationManager.get_string(str(faction.name)) + "[/b]\n" + LocalizationManager.get_string(str(faction.story)) + "\n\n" + LocalizationManager.get_string("ui.town_help")
 	var food:float=EconomySystem.stockpiles.food

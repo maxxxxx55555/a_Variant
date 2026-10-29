@@ -1,0 +1,52 @@
+{
+  "enemy_scale_per_level": 0.3,
+  "loot_multiplier": 2.0,
+  "weak_settlement_multiplier": 0.5,
+  "starting_supplies": {"food": 150.0, "wood": 80.0, "ore": 40.0, "stone": 50.0, "gold": 200.0},
+  "poverty_supplies": {"food": 0.0, "wood": 0.0, "ore": 0.0, "stone": 0.0, "gold": 0.0},
+  "oaths": [
+    {
+      "id": "iron",
+      "name": "oath.iron.name",
+      "description": "oath.iron.desc",
+      "banner": "oath.banner.iron",
+      "color": "#B4534B",
+      "effects": {"iron_forever": true}
+    },
+    {
+      "id": "poverty",
+      "name": "oath.poverty.name",
+      "description": "oath.poverty.desc",
+      "banner": "oath.banner.poverty",
+      "color": "#C9A227",
+      "effects": {"no_supplies": true}
+    },
+    {
+      "id": "peace",
+      "name": "oath.peace.name",
+      "description": "oath.peace.desc",
+      "banner": "oath.banner.peace",
+      "color": "#7FB069",
+      "effects": {"sieges_banned": true}
+    },
+    {
+      "id": "wanderer",
+      "name": "oath.wanderer.name",
+      "description": "oath.wanderer.desc",
+      "banner": "oath.banner.wanderer",
+      "color": "#5B84C4",
+      "effects": {"double_loot": true, "weak_settlement": true}
+    }
+  ],
+  "titles": {
+    "0": "oath.title.story",
+    "1": "oath.title.normal",
+    "2": "oath.title.hard",
+    "3": "oath.title.expert"
+  },
+  "routes": {
+    "diplomatic": "oath.title.diplomat",
+    "military": "oath.title.conqueror",
+    "mixed": "oath.title.arbiter"
+  }
+}

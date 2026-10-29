@@ -7,56 +7,56 @@
       "name": "faction.woodland_freeholders.name",
       "story": "faction.woodland_freeholders.desc",
       "relationship": 10,
-      "color": "#799554"
+      "color": "#528034"
     },
     {
       "id": "iron_guild",
       "name": "faction.iron_guild.name",
       "story": "faction.iron_guild.desc",
       "relationship": 15,
-      "color": "#7c8c9b"
+      "color": "#639cc0"
     },
     {
       "id": "borderland_watch",
       "name": "faction.borderland_watch.name",
       "story": "faction.borderland_watch.desc",
       "relationship": 0,
-      "color": "#a56449"
+      "color": "#83392f"
     },
     {
       "id": "river_covenant",
       "name": "faction.river_covenant.name",
       "story": "faction.river_covenant.desc",
       "relationship": 0,
-      "color": "#4a939b"
+      "color": "#9ce4de"
     },
     {
       "id": "stone_circle",
       "name": "faction.stone_circle.name",
       "story": "faction.stone_circle.desc",
       "relationship": 5,
-      "color": "#9c916f"
+      "color": "#cab080"
     },
     {
       "id": "marsh_keepers",
       "name": "faction.marsh_keepers.name",
       "story": "faction.marsh_keepers.desc",
       "relationship": 0,
-      "color": "#7e6b96"
+      "color": "#342f5b"
     },
     {
       "id": "sunfield_union",
       "name": "faction.sunfield_union.name",
       "story": "faction.sunfield_union.desc",
       "relationship": 10,
-      "color": "#c2a253"
+      "color": "#f9e59c"
     },
     {
       "id": "pass_clans",
       "name": "faction.pass_clans.name",
       "story": "faction.pass_clans.desc",
       "relationship": 0,
-      "color": "#86685c"
+      "color": "#ae8265"
     }
   ],
   "towns": [

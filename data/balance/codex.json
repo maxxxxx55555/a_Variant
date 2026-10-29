@@ -1,0 +1,39 @@
+{
+  "categories": [
+    {"id": "history", "title": "codex.category.history"},
+    {"id": "factions", "title": "codex.category.factions"},
+    {"id": "places", "title": "codex.category.places"},
+    {"id": "bestiary", "title": "codex.category.bestiary"}
+  ],
+  "entries": [
+    {"id": "history_founding", "category": "history", "title": "codex.history.founding.title", "body": "codex.history.founding.body", "unlock": {"kind": "start"}},
+    {"id": "history_long_winter", "category": "history", "title": "codex.history.winter.title", "body": "codex.history.winter.body", "unlock": {"kind": "day", "day": 12}},
+    {"id": "history_second_oath", "category": "history", "title": "codex.history.second.title", "body": "codex.history.second.body", "unlock": {"kind": "ng"}},
+    {"id": "history_finale", "category": "history", "title": "codex.history.finale.title", "body": "codex.history.finale.body", "unlock": {"kind": "ending", "id": "any"}},
+
+    {"id": "faction_woodland_freeholders", "category": "factions", "title": "faction.woodland_freeholders.name", "body": "codex.faction.woodland_freeholders.body", "unlock": {"kind": "bound", "id": "woodland_freeholders"}},
+    {"id": "faction_iron_guild", "category": "factions", "title": "faction.iron_guild.name", "body": "codex.faction.iron_guild.body", "unlock": {"kind": "bound", "id": "iron_guild"}},
+    {"id": "faction_borderland_watch", "category": "factions", "title": "faction.borderland_watch.name", "body": "codex.faction.borderland_watch.body", "unlock": {"kind": "bound", "id": "borderland_watch"}},
+    {"id": "faction_river_covenant", "category": "factions", "title": "faction.river_covenant.name", "body": "codex.faction.river_covenant.body", "unlock": {"kind": "bound", "id": "river_covenant"}},
+    {"id": "faction_stone_circle", "category": "factions", "title": "faction.stone_circle.name", "body": "codex.faction.stone_circle.body", "unlock": {"kind": "bound", "id": "stone_circle"}},
+    {"id": "faction_marsh_keepers", "category": "factions", "title": "faction.marsh_keepers.name", "body": "codex.faction.marsh_keepers.body", "unlock": {"kind": "bound", "id": "marsh_keepers"}},
+    {"id": "faction_sunfield_union", "category": "factions", "title": "faction.sunfield_union.name", "body": "codex.faction.sunfield_union.body", "unlock": {"kind": "bound", "id": "sunfield_union"}},
+    {"id": "faction_pass_clans", "category": "factions", "title": "faction.pass_clans.name", "body": "codex.faction.pass_clans.body", "unlock": {"kind": "bound", "id": "pass_clans"}},
+
+    {"id": "place_greenhaven", "category": "places", "title": "town.greenhaven", "body": "codex.place.greenhaven.body", "unlock": {"kind": "town", "id": "greenhaven"}},
+    {"id": "place_old_watch", "category": "places", "title": "town.old_watch", "body": "codex.place.old_watch.body", "unlock": {"kind": "town", "id": "old_watch"}},
+    {"id": "place_high_pass", "category": "places", "title": "town.high_pass", "body": "codex.place.high_pass.body", "unlock": {"kind": "town", "id": "high_pass"}},
+    {"id": "place_willow_wharf", "category": "places", "title": "town.willow_wharf", "body": "codex.place.willow_wharf.body", "unlock": {"kind": "town", "id": "willow_wharf"}},
+    {"id": "place_winter_gate", "category": "places", "title": "town.winter_gate", "body": "codex.place.winter_gate.body", "unlock": {"kind": "town", "id": "winter_gate"}},
+    {"id": "place_moss_hearth", "category": "places", "title": "town.moss_hearth", "body": "codex.place.moss_hearth.body", "unlock": {"kind": "town", "id": "moss_hearth"}},
+
+    {"id": "landmark_shrine", "category": "places", "title": "codex.landmark.shrine.title", "body": "codex.landmark.shrine.body", "unlock": {"kind": "point", "id": "woodland_freeholders_shrine"}},
+    {"id": "landmark_ruins", "category": "places", "title": "codex.landmark.ruins.title", "body": "codex.landmark.ruins.body", "unlock": {"kind": "point", "id": "marsh_keepers_ruins"}},
+    {"id": "landmark_mine", "category": "places", "title": "codex.landmark.mine.title", "body": "codex.landmark.mine.body", "unlock": {"kind": "point", "id": "stone_circle_mine"}},
+
+    {"id": "bestiary_raider", "category": "bestiary", "title": "codex.bestiary.raider.title", "body": "codex.bestiary.raider.body", "unlock": {"kind": "camp_any"}},
+    {"id": "bestiary_guard", "category": "bestiary", "title": "codex.bestiary.guard.title", "body": "codex.bestiary.guard.body", "unlock": {"kind": "assault_any"}},
+    {"id": "bestiary_oathbreaker", "category": "bestiary", "title": "codex.bestiary.oathbreaker.title", "body": "codex.bestiary.oathbreaker.body", "unlock": {"kind": "ending", "id": "mixed"}},
+    {"id": "bestiary_warlord", "category": "bestiary", "title": "codex.bestiary.warlord.title", "body": "codex.bestiary.warlord.body", "unlock": {"kind": "ending", "id": "military"}}
+  ]
+}

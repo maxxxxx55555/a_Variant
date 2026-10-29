@@ -4,6 +4,7 @@ builds/
 *.import
 !assets/art/meadow_painted.png.import
 .test-profile/
+qa_tmp/
 __pycache__/
 
 !assets/art/realistic/**/*.import
