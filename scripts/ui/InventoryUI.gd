@@ -1,4 +1,5 @@
 extends Control
+const UITheme=preload("res://scripts/ui/MarchTheme.gd")
 
 @onready var item_list: ItemList = $MarginContainer/HBoxContainer/LeftPanel/ItemList
 @onready var item_card_label: RichTextLabel = $MarginContainer/HBoxContainer/RightPanel/ItemCardLabel
@@ -12,8 +13,10 @@ extends Control
 @onready var weapon_btn: Button = $MarginContainer/HBoxContainer/LeftPanel/EquipSlots/WeaponBtn
 
 var selected_index: int = -1
+var title_label: Label
 
 func _ready() -> void:
+	_style_shell()
 	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
 	@warning_ignore("return_value_discarded")
 	EventBus.inventory_updated.connect(refresh_inventory)
@@ -52,6 +55,51 @@ func _ready() -> void:
 	refresh_inventory()
 	refresh_equipment()
 
+# A single slate card holds both columns; the world dims behind it.
+func _style_shell() -> void:
+	var scrim:ColorRect = $ColorRect as ColorRect
+	scrim.color = Color(UITheme.INK, 0.8)
+	var margin:MarginContainer = $MarginContainer as MarginContainer
+	for side:String in ["left", "right"]:
+		margin.add_theme_constant_override("margin_" + side, 260)
+	for side:String in ["top", "bottom"]:
+		margin.add_theme_constant_override("margin_" + side, 140)
+	var card:PanelContainer = PanelContainer.new()
+	card.name = "InventoryCard"
+	card.add_theme_stylebox_override("panel", UITheme.panel(UITheme.SLATE))
+	card.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(card)
+	move_child(card, 1)
+	card.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	card.offset_left = 220
+	card.offset_right = -220
+	card.offset_top = 100
+	card.offset_bottom = -100
+	var left:VBoxContainer = $MarginContainer/HBoxContainer/LeftPanel as VBoxContainer
+	left.custom_minimum_size = Vector2(470, 0)
+	left.add_theme_constant_override("separation", 12)
+	title_label = Label.new()
+	title_label.name = "InventoryTitle"
+	title_label.text = LocalizationManager.get_string("ui.inventory")
+	title_label.set_meta("locale_key", "ui.inventory")
+	title_label.add_theme_font_override("font", UITheme.display_font())
+	title_label.add_theme_font_size_override("font_size", 36)
+	title_label.add_theme_color_override("font_color", UITheme.BRASS)
+	left.add_child(title_label)
+	left.move_child(title_label, 0)
+	for slot:Button in [head_btn, torso_btn, legs_btn, weapon_btn]:
+		slot.custom_minimum_size = Vector2(0, 46)
+		slot.alignment = HORIZONTAL_ALIGNMENT_LEFT
+		slot.add_theme_font_size_override("font_size", 18)
+	item_list.add_theme_font_size_override("font_size", 19)
+	item_list.custom_minimum_size = Vector2(0, 260)
+	item_card_label.add_theme_font_size_override("normal_font_size", 20)
+	item_card_label.add_theme_font_size_override("bold_font_size", 22)
+	item_card_label.add_theme_color_override("default_color", UITheme.CHALK)
+	for action:Button in [equip_button, use_button, drop_button]:
+		action.custom_minimum_size = Vector2(170, 54)
+		action.add_theme_font_size_override("font_size", 20)
+
 func refresh_inventory() -> void:
 	equip_button.text = LocalizationManager.get_string("ui.equip")
 	use_button.text = LocalizationManager.get_string("ui.use")
@@ -66,7 +114,14 @@ func refresh_inventory() -> void:
 		# This list owns the row; selection is managed separately.
 		@warning_ignore("return_value_discarded")
 		item_list.add_item(display_name)
-	clear_card()
+	# Open on a real item so the detail column is never an empty page.
+	if GameState.inventory.is_empty():
+		clear_card()
+		return
+	if selected_index < 0 or selected_index >= GameState.inventory.size():
+		selected_index = 0
+	item_list.select(selected_index)
+	update_card(selected_index)
 
 func refresh_equipment() -> void:
 	head_btn.text = get_slot_text("head")
@@ -211,6 +266,8 @@ func _on_drop_pressed() -> void:
 		EventBus.inventory_updated.emit()
 
 func localize_inventory(_language:String) -> void:
+	if title_label:
+		title_label.text = LocalizationManager.get_string("ui.inventory")
 	var selection:int=selected_index
 	refresh_inventory()
 	refresh_equipment()

@@ -1,4 +1,5 @@
 extends Control
+const UITheme=preload("res://scripts/ui/MarchTheme.gd")
 
 @onready var pop_label: Label = $MarginContainer/VBoxContainer/PopLabel
 @onready var happy_bar: ProgressBar = $MarginContainer/VBoxContainer/HappyBar
@@ -14,6 +15,7 @@ var wait_button: Button
 var repair_button: Button
 
 func _ready() -> void:
+	_style_shell()
 	if TimeSystem:
 		# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
 		@warning_ignore("return_value_discarded")
@@ -26,6 +28,45 @@ func _ready() -> void:
 	@warning_ignore("return_value_discarded")
 	EventBus.equipment_updated.connect(refresh_ui)
 	refresh_ui()
+
+# The settlement reads as a steward's ledger, not a bare form.
+func _style_shell() -> void:
+	var scrim:ColorRect = $ColorRect as ColorRect
+	scrim.color = Color(UITheme.INK, 0.8)
+	var card:PanelContainer = PanelContainer.new()
+	card.name = "SettlementCard"
+	card.add_theme_stylebox_override("panel", UITheme.panel(UITheme.SLATE))
+	card.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(card)
+	move_child(card, 1)
+	card.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	card.offset_left = 250
+	card.offset_right = -250
+	card.offset_top = 96
+	card.offset_bottom = -96
+	var margin:MarginContainer = $MarginContainer as MarginContainer
+	for side:String in ["left", "right"]:
+		margin.add_theme_constant_override("margin_" + side, 300)
+	for side:String in ["top", "bottom"]:
+		margin.add_theme_constant_override("margin_" + side, 140)
+	var column:VBoxContainer = $MarginContainer/VBoxContainer as VBoxContainer
+	column.add_theme_constant_override("separation", 10)
+	var title:Label = Label.new()
+	title.text = LocalizationManager.get_string("ui.settlement")
+	title.set_meta("locale_key", "ui.settlement")
+	title.add_theme_font_override("font", UITheme.display_font())
+	title.add_theme_font_size_override("font_size", 36)
+	title.add_theme_color_override("font_color", UITheme.BRASS)
+	column.add_child(title)
+	column.move_child(title, 0)
+	pop_label.add_theme_font_size_override("font_size", 22)
+	pop_label.add_theme_color_override("font_color", UITheme.CHALK)
+	for label:Label in [forecast_label, resources_label]:
+		label.add_theme_font_size_override("font_size", 19)
+		label.add_theme_color_override("font_color", UITheme.MIST)
+	for bar:ProgressBar in [happy_bar, health_bar]:
+		bar.custom_minimum_size.y = 8
+		bar.show_percentage = false
 
 func build_controls() -> void:
 	var container:Node= $MarginContainer/VBoxContainer

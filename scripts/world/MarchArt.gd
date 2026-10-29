@@ -94,7 +94,9 @@ static func label(parent: Node3D, title: String, position: Vector3, color: Color
 	label_node.font_size = 36
 	label_node.pixel_size = 0.008
 	label_node.modulate = color
-	label_node.outline_size = 9
+	# A tight ink edge instead of a thick halo that reads as a plate at distance.
+	label_node.outline_size = 4
+	label_node.outline_modulate = Color(0.03, 0.06, 0.08, 0.88)
 	label_node.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 	label_node.visibility_range_end = 45
 	parent.add_child(label_node)

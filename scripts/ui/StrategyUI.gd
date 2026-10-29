@@ -16,25 +16,56 @@ var campaign_panels:PanelsView
 
 func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	var style:StyleBoxFlat= StyleBoxFlat.new()
-	style.bg_color = Color(0.075, 0.07, 0.065, 0.98)
-	style.content_margin_left = 50
-	style.content_margin_right = 50
-	style.content_margin_top = 30
-	style.content_margin_bottom = 30
-	add_theme_stylebox_override("panel", style)
+	# Scrim plus a single ledger card; the council never covers the world edge to edge.
+	var scrim:StyleBoxFlat = StyleBoxFlat.new()
+	scrim.bg_color = Color(UITheme.INK, 0.8)
+	scrim.set_corner_radius_all(0)
+	scrim.set_content_margin_all(0)
+	add_theme_stylebox_override("panel", scrim)
+	var frame:MarginContainer = MarginContainer.new()
+	frame.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	frame.add_theme_constant_override("margin_left", 260)
+	frame.add_theme_constant_override("margin_right", 260)
+	frame.add_theme_constant_override("margin_top", 84)
+	frame.add_theme_constant_override("margin_bottom", 92)
+	add_child(frame)
+	var card:PanelContainer = PanelContainer.new()
+	card.name = "CouncilCard"
+	var surface:StyleBoxFlat = UITheme.panel(UITheme.SLATE)
+	surface.content_margin_left = 60
+	surface.content_margin_right = 60
+	surface.content_margin_top = 46
+	surface.content_margin_bottom = 40
+	card.add_theme_stylebox_override("panel", surface)
+	# The card hugs its content; leftover viewport stays world, not dead panel.
+	var stack:VBoxContainer = VBoxContainer.new()
+	frame.add_child(stack)
+	stack.add_child(card)
+	card.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
+	card.custom_minimum_size.y = 800
 	var column:VBoxContainer= VBoxContainer.new()
-	column.add_theme_constant_override("separation", 18)
-	add_child(column)
+	column.add_theme_constant_override("separation", 14)
+	card.add_child(column)
 	var header:HBoxContainer= HBoxContainer.new()
+	header.add_theme_constant_override("separation", 20)
 	column.add_child(header)
 	title_label = Label.new()
 	title_label.text = LocalizationManager.get_string("ui.strategy")
 	title_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	title_label.add_theme_font_override("font", UITheme.display_font())
+	title_label.add_theme_font_size_override("font_size", 42)
+	title_label.add_theme_color_override("font_color", UITheme.BRASS)
 	header.add_child(title_label)
 	# The container owns this action button and its callback.
 	@warning_ignore("return_value_discarded")
-	button(header, "ui.close", func()->void: get_tree().current_scene.call("toggle_pause"))
+	var close_button:Button = button(header, "ui.close", func()->void: get_tree().current_scene.call("toggle_pause"))
+	close_button.custom_minimum_size = Vector2(140, 58)
+	close_button.size_flags_horizontal = Control.SIZE_SHRINK_END
+	var rule:ColorRect = ColorRect.new()
+	rule.color = UITheme.LINE_SOFT
+	rule.custom_minimum_size.y = 1
+	rule.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	column.add_child(rule)
 	tabs = TabContainer.new()
 	tabs.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	column.add_child(tabs)
@@ -133,9 +164,12 @@ func _ready() -> void:
 	journal = RichTextLabel.new()
 	journal.name = "Journal"
 	journal.bbcode_enabled = true
+	journal.custom_minimum_size.y = 380
 	tabs.add_child(journal)
 	result_label = Label.new()
 	result_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	result_label.add_theme_font_size_override("font_size", 19)
+	result_label.add_theme_color_override("font_color", UITheme.BRASS)
 	column.add_child(result_label)
 	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
 	@warning_ignore("return_value_discarded")

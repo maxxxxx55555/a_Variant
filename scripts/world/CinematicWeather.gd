@@ -42,9 +42,11 @@ func apply_weather() -> void:
 			shader.set_shader_parameter("wetness",wet)
 	for kind:Variant in RealWorldArt.materials:
 		if kind in ["wood","roof","stone"]: RealWorldArt.materials[kind].roughness = 0.58 if raining else 0.84
-	environment.fog_density = 0.004 if mist else (0.0028 if raining else 0.0018)
-	environment.fog_light_color = Color("536c7d") if raining else Color("829095")
-	sunlight.light_energy = 0.38 if raining else 0.72
+	# Weather shifts both the density and the temperature of the light.
+	environment.fog_density = 0.0046 if mist else (0.0032 if raining else 0.0022)
+	environment.fog_light_color = Color("7d8c96") if mist else (Color("5b7285") if raining else Color("8b98a2"))
+	sunlight.light_energy = 0.62 if mist else (0.45 if raining else 1.12)
+	sunlight.light_color = Color("cdd7dc") if mist else (Color("b9c8d2") if raining else Color("ffd6ab"))
 
 func _process(delta: float) -> void:
 	if last_weather != int(WeatherSystem.current_weather): apply_weather()

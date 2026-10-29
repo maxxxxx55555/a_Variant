@@ -1,4 +1,5 @@
 extends Control
+const UITheme=preload("res://scripts/ui/MarchTheme.gd")
 
 @onready var recipe_list: ItemList = $MarginContainer/HBoxContainer/RecipeList
 @onready var info_label: RichTextLabel = $MarginContainer/HBoxContainer/VBoxContainer/InfoLabel
@@ -7,6 +8,7 @@ extends Control
 var selected_recipe: RecipeData = null
 
 func _ready() -> void:
+	_style_shell()
 	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
 	@warning_ignore("return_value_discarded")
 	brew_button.pressed.connect(_on_brew_pressed)
@@ -20,6 +22,50 @@ func _ready() -> void:
 	@warning_ignore("return_value_discarded")
 	EventBus.language_changed.connect(func(_lang:Variant)->void: refresh_recipes())
 	refresh_recipes()
+
+# Same ledger shell as the inventory: scrim, card, titled column.
+func _style_shell() -> void:
+	var scrim:ColorRect = $ColorRect as ColorRect
+	scrim.color = Color(UITheme.INK, 0.8)
+	var card:PanelContainer = PanelContainer.new()
+	card.name = "AlchemyCard"
+	card.add_theme_stylebox_override("panel", UITheme.panel(UITheme.SLATE))
+	card.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(card)
+	move_child(card, 1)
+	card.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	card.offset_left = 220
+	card.offset_right = -220
+	card.offset_top = 100
+	card.offset_bottom = -100
+	var margin:MarginContainer = $MarginContainer as MarginContainer
+	for side:String in ["left", "right"]:
+		margin.add_theme_constant_override("margin_" + side, 260)
+	for side:String in ["top", "bottom"]:
+		margin.add_theme_constant_override("margin_" + side, 140)
+	var row:HBoxContainer = $MarginContainer/HBoxContainer as HBoxContainer
+	row.add_theme_constant_override("separation", 40)
+	var holder:VBoxContainer = VBoxContainer.new()
+	holder.add_theme_constant_override("separation", 12)
+	row.add_child(holder)
+	row.move_child(holder, 0)
+	var title:Label = Label.new()
+	title.text = LocalizationManager.get_string("ui.alchemy")
+	title.set_meta("locale_key", "ui.alchemy")
+	title.add_theme_font_override("font", UITheme.display_font())
+	title.add_theme_font_size_override("font_size", 36)
+	title.add_theme_color_override("font_color", UITheme.BRASS)
+	holder.add_child(title)
+	recipe_list.reparent(holder)
+	recipe_list.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	recipe_list.custom_minimum_size = Vector2(470, 0)
+	recipe_list.add_theme_font_size_override("font_size", 19)
+	info_label.add_theme_font_size_override("normal_font_size", 20)
+	info_label.add_theme_font_size_override("bold_font_size", 24)
+	info_label.add_theme_color_override("default_color", UITheme.CHALK)
+	brew_button.custom_minimum_size = Vector2(220, 56)
+	brew_button.size_flags_horizontal = Control.SIZE_SHRINK_END
+	brew_button.add_theme_font_size_override("font_size", 20)
 
 func refresh_recipes() -> void:
 	var selection:int=AlchemySystem.known_recipes.find(selected_recipe)
