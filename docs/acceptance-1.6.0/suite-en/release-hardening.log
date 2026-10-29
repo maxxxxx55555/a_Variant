@@ -1,0 +1,10 @@
+Godot Engine v4.7.stable.official.5b4e0cb0f - https://godotengine.org
+
+HARDENING PHASE: original-field mutations
+HARDENING PHASE: original mutations complete
+HARDENING PHASE: military-field mutations
+HARDENING PHASE: military mutations complete
+HARDENING PHASE: stack-cap input
+HARDENING PHASE: equipment-cap input
+MUTATED SAVE FIELDS: 1855
+RELEASE HARDENING RESULT: PASS

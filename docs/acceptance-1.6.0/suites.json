@@ -1,0 +1,1347 @@
+{
+  "schema": 1,
+  "title": "Marchland Oaths 1.6.0 rendered full-campaign suites",
+  "engine": "4.7.stable.official.5b4e0cb0f",
+  "source_commit": "5c40fac1d7aba3167241a798973acf1726cf77c4",
+  "command": "python tests/run_tests.py --godot <godot> --rendered --full-campaign --language <ru|en> --audio-driver Dummy --artifacts <folder>",
+  "isolated_profile": "throwaway APPDATA/LOCALAPPDATA/XDG folders, GAME_AUDIO_MUTED=1, GAME_QA=1 (source builds must reject it), gl_compatibility rendering",
+  "suites": {
+    "ru": {
+      "locale": "ru",
+      "total": 82,
+      "passed": 82,
+      "reported_pass_lines": 82,
+      "per_case_logs_shipped": true,
+      "per_case_log_bytes": 31253,
+      "console_log": "suite-ru-console.log",
+      "cases": [
+        {
+          "case": "actor_material_lifetime",
+          "status": "PASS",
+          "log": "suite-ru/actor_material_lifetime.log",
+          "log_sha256": "56735d649ffb55fa14cfb3cc9678b82f0cf351401d8cd8037030f7e2beac8e66",
+          "console_sha256": "6a4e9224e7b39363d5f4be1b591fce16fe5d56d1d2fe2e99b85bafb9f23f7ed3",
+          "leak_lines": []
+        },
+        {
+          "case": "archer_presentation",
+          "status": "PASS",
+          "log": "suite-ru/archer_presentation.log",
+          "log_sha256": "cfc41aaa2ca46f6b69d80c5d0a08351087ef31c99794b3ac57361a5846a2e67d",
+          "console_sha256": "cdd3afc133ecae20540c4d594f7c52f082691e0ba92a8869c757a832744d6d7f",
+          "leak_lines": []
+        },
+        {
+          "case": "army-casualty-lifetime",
+          "status": "PASS",
+          "log": "suite-ru/army-casualty-lifetime.log",
+          "log_sha256": "3d8c9c4220179b01fc69c6bdd63b44423fc9d8b65d7186837caefde506382ca0",
+          "console_sha256": "5323d074a37992d125f8d0f4fcd3e7437b6e1191be8ce6684d148db8a37af049",
+          "leak_lines": []
+        },
+        {
+          "case": "army-pause-regression",
+          "status": "PASS",
+          "log": "suite-ru/army-pause-regression.log",
+          "log_sha256": "57ffceb5c6abd91b4f1b440883f044aac67637944ac9f7344346e5bc0b5e3e89",
+          "console_sha256": "be2d5dbe92db074fd2cce598668f6297810b804ea4a483eeff36a22efff589c9",
+          "leak_lines": []
+        },
+        {
+          "case": "art_assets",
+          "status": "PASS",
+          "log": "suite-ru/art_assets.log",
+          "log_sha256": "8c8262a5f3129e1f6423e63b7fa6fc30bb7599664d2d29acf495e5879337ed16",
+          "console_sha256": "52802c3f03178099dfe4f2095b9fe6405b364d628363deccb5fbeecd6fde4f05",
+          "leak_lines": []
+        },
+        {
+          "case": "atomic_economy",
+          "status": "PASS",
+          "log": "suite-ru/atomic_economy.log",
+          "log_sha256": "c48e745009b9985b9b7dd6f2edd60b7c2d1b8244d19440b1a62a949094fe169a",
+          "console_sha256": "5b7ba9a01e6d6d948abb119180a74723cc74107b1545d58f50aa5b3f25b15c73",
+          "leak_lines": []
+        },
+        {
+          "case": "audio",
+          "status": "PASS",
+          "log": "suite-ru/audio.log",
+          "log_sha256": "4403372462e0c2bc7bfc3f3938ca705295c74df776da10bac1f70b40faa680ac",
+          "console_sha256": "29b41a36ac6a1477a9c391e2cfd1d021fc34ca9d4e7a63edb7334d40ba964a0a",
+          "leak_lines": []
+        },
+        {
+          "case": "build_integrity",
+          "status": "PASS",
+          "log": "suite-ru/build_integrity.log",
+          "log_sha256": "a07cea433ea5e8d909b4382134be60b44306b08750bc697fbacf14a6302fe77e",
+          "console_sha256": "13e7332b61c9200e66c428ff621c10260a939d85f5b57e58ec8f641a2fd08a3f",
+          "leak_lines": []
+        },
+        {
+          "case": "campaign-route-diplomatic",
+          "status": "PASS",
+          "log": "suite-ru/campaign-route-diplomatic.log",
+          "log_sha256": "c14f2baa65363ccf9a5ea3e3026a6d912cbbb15348850132eafd836afd9938db",
+          "console_sha256": "7ba60e90be843755c14f6b82b6f07be0f8fae879596a95207b44a091f53eb666",
+          "leak_lines": []
+        },
+        {
+          "case": "campaign-route-military",
+          "status": "PASS",
+          "log": "suite-ru/campaign-route-military.log",
+          "log_sha256": "d2109887d0b45495fbca6e0df2af75e903685a8ee84666a45221dc0fb071a1d8",
+          "console_sha256": "6d9c8f09aa726c09508c2b720d41e4a0e57fface5200259eb3e8207225c7f4d0",
+          "leak_lines": []
+        },
+        {
+          "case": "campaign",
+          "status": "PASS",
+          "log": "suite-ru/campaign.log",
+          "log_sha256": "045fb8ea45758d0e354e4818c3638963ed51d39fb9516b351359683ea4cc5373",
+          "console_sha256": "e4d409c0d85fdce0af412a05ec5e439273c24961a87b161c17c1a077acbbf11f",
+          "leak_lines": []
+        },
+        {
+          "case": "campaign_finale",
+          "status": "PASS",
+          "log": "suite-ru/campaign_finale.log",
+          "log_sha256": "44096718593d729c9ec5bdaaed314011880353b1a581d3281825b8dc27c777f2",
+          "console_sha256": "a15f1b082beb317c58ba83a4655c84785714e620eea534676bf0e1c493f2ffc3",
+          "leak_lines": []
+        },
+        {
+          "case": "civilians",
+          "status": "PASS",
+          "log": "suite-ru/civilians.log",
+          "log_sha256": "3b9169c1493340cae27796b263ac5583e7be32af8e45175b1ab8dd765d7bd73d",
+          "console_sha256": "705309bcfe546d5d3679bab99a2c160d7ca5a3aac20c074089bfe42a4c27a5a1",
+          "leak_lines": []
+        },
+        {
+          "case": "clear-play",
+          "status": "PASS",
+          "log": "suite-ru/clear-play.log",
+          "log_sha256": "d74ba0f0396b9caff1a9d01ced88dc3a0ed95c3ef96db149bda6234ab2da4f84",
+          "console_sha256": "78ce8750fb9871bf9772e56d40520f90cd2fe61d414e5a109a86e909bfbfbca7",
+          "leak_lines": []
+        },
+        {
+          "case": "codex",
+          "status": "PASS",
+          "log": "suite-ru/codex.log",
+          "log_sha256": "da9232d6f6aaf32432d77c218107d9a737bd16e7ebc50a2928697d2d2d546768",
+          "console_sha256": "b84d8cc0a8bca2576aeb79b1a89c9e5782faeefb0d3c2c1fe478c04331c2304b",
+          "leak_lines": []
+        },
+        {
+          "case": "combat_cover",
+          "status": "PASS",
+          "log": "suite-ru/combat_cover.log",
+          "log_sha256": "e2f7342138e3ca0ebd028e1fec2311b3246c5b1b1bff9340f5a9f9e522e3a0fc",
+          "console_sha256": "75ca801d7de40a5ff229b9c8c8b3ef4a96bbf0fb496758befd97ec0eaa324ceb",
+          "leak_lines": []
+        },
+        {
+          "case": "combat_feel",
+          "status": "PASS",
+          "log": "suite-ru/combat_feel.log",
+          "log_sha256": "40fffb9393cea874ca33cad408d34257e4585651e2e0ed85381b863d542b6ab9",
+          "console_sha256": "e31ac06183267ca70c2dd06d63b04f230563352545fe60da884eac80861c2d0f",
+          "leak_lines": []
+        },
+        {
+          "case": "comfort-preferences",
+          "status": "PASS",
+          "log": "suite-ru/comfort-preferences.log",
+          "log_sha256": "f21a839a6a4dc6996bc878dcec5490b3dd1b4d2ef90c94a1a6d97d9d5ab0a241",
+          "console_sha256": "16c7b7faf89fc37f3b786e025f554b5e07b374ab45f7cf26176e5c939547b251",
+          "leak_lines": []
+        },
+        {
+          "case": "companion-scan-regression",
+          "status": "PASS",
+          "log": "suite-ru/companion-scan-regression.log",
+          "log_sha256": "7f3df5479af39d3f3b97b8f9795790256b3091d5da63aabb984250d6625d610c",
+          "console_sha256": "9b30642ddd8cf333db29ab946c134b6ff8d59c264e3c29b64be2dc86966ca16e",
+          "leak_lines": []
+        },
+        {
+          "case": "context_audio",
+          "status": "PASS",
+          "log": "suite-ru/context_audio.log",
+          "log_sha256": "261d4c460ea762524d7d749a94012510cdac729441e3cb2b2a0b79e1fd361b92",
+          "console_sha256": "1d20ba1a6b244baacf27516df5ac624ae93dd45d6ab1b08657c6d834ac177d1d",
+          "leak_lines": []
+        },
+        {
+          "case": "credits",
+          "status": "PASS",
+          "log": "suite-ru/credits.log",
+          "log_sha256": "894f99033c84a45c5382c25673519624053b040533eab76835a8f33820d5dde0",
+          "console_sha256": "08a96ba8ad0bba2f65f37c785e3f1807a5a7d1e555d0cfb31e9a71ac3496e906",
+          "leak_lines": []
+        },
+        {
+          "case": "critical_read_bounds",
+          "status": "PASS",
+          "log": "suite-ru/critical_read_bounds.log",
+          "log_sha256": "69ee0d34472445540650a54af148eff7e78c0c4227be8ceb395e55a56c687a0e",
+          "console_sha256": "fb726679305639f8011974a038a3337e157fec681a2c0ee91131bf86ae12300d",
+          "leak_lines": []
+        },
+        {
+          "case": "design_pass",
+          "status": "PASS",
+          "log": "suite-ru/design_pass.log",
+          "log_sha256": "4cc1c95a24905ea8494682ffd119ad86676834d8f970dae935b0e13eec26d9c3",
+          "console_sha256": "c8947771ef2bc5f14a95bd52de3ddb70a9d17cbd4b34fce60de87f4b2f9b4af1",
+          "leak_lines": []
+        },
+        {
+          "case": "detailed_figures",
+          "status": "PASS",
+          "log": "suite-ru/detailed_figures.log",
+          "log_sha256": "f5c6f14f8074b537eb5244708e81f77fd0d8b51739ee2ed856898a4ceada8d34",
+          "console_sha256": "500e094888130471accad01bec5e0b5e51b15266fa9a17fe33c2f9a17e60a452",
+          "leak_lines": []
+        },
+        {
+          "case": "disabled-explanations",
+          "status": "PASS",
+          "log": "suite-ru/disabled-explanations.log",
+          "log_sha256": "41dc649b23f4d5588d38f41c71c53d1f1e65109d388351ab055b573ee366341e",
+          "console_sha256": "00db54825f0176becf6d0b96423581078db77f4da19897dc2083d87ef639f162",
+          "leak_lines": []
+        },
+        {
+          "case": "exact-float-limits",
+          "status": "PASS",
+          "log": "suite-ru/exact-float-limits.log",
+          "log_sha256": "9b7459aa03a8545de5c8de32485aae29fc821619432d448966d721180d686b26",
+          "console_sha256": "76309de5e5ff82aed7356f7ffba1a44ef544940fde9172d05349a857043f6b0e",
+          "leak_lines": []
+        },
+        {
+          "case": "house_cache",
+          "status": "PASS",
+          "log": "suite-ru/house_cache.log",
+          "log_sha256": "b5557b3c7a44775665777a35319065690159cf0a32c17252af7b081ec2210b14",
+          "console_sha256": "fea01690250f3bc9bac50202f1d8b211b768297c6b13ac07a02fce7d0358f742",
+          "leak_lines": []
+        },
+        {
+          "case": "identity",
+          "status": "PASS",
+          "log": "suite-ru/identity.log",
+          "log_sha256": "a0f96a772c46a695688695c46c91ec358b4435c671637da24127352d346709ac",
+          "console_sha256": "ad690195b46c652639fa0e8b79a06dd087e61109fccd5879ca67362c6e725f8a",
+          "leak_lines": []
+        },
+        {
+          "case": "import",
+          "status": "PASS",
+          "log": "suite-ru/import.log",
+          "log_sha256": "b60f94e5f8654601ed69f20de69db891cd3bdced1622e76ea32b7b46e36d8126",
+          "console_sha256": "27aa7dfa274308ace84fe673d2782ce9f4049578c12bcac1bfa4ffbc73a18292",
+          "leak_lines": []
+        },
+        {
+          "case": "initial-idle-pose",
+          "status": "PASS",
+          "log": "suite-ru/initial-idle-pose.log",
+          "log_sha256": "cca67571430767b65284b4be0fef415ba4c22a55c00e2947008bd765a895960f",
+          "console_sha256": "dc763ffb053d427a6d22a5875b2d1a7a5427c230176899d66d05288ada982fe4",
+          "leak_lines": []
+        },
+        {
+          "case": "integrity_notice",
+          "status": "PASS",
+          "log": "suite-ru/integrity_notice.log",
+          "log_sha256": "a54d80f14a7e5a4e3c10f1c05fb6da5e6b8d0a36ce8db373e9401a55811621f5",
+          "console_sha256": "123158d714e5e0c1c1dedec92815635046f6342af25bbe1ca848b385b4157c46",
+          "leak_lines": []
+        },
+        {
+          "case": "invalid-combat-inputs",
+          "status": "PASS",
+          "log": "suite-ru/invalid-combat-inputs.log",
+          "log_sha256": "46389c9106b19a89f852e2f9b8c935806aae9c2bf10596ac9edce7c84683978a",
+          "console_sha256": "39e06f3bd217e8fe35e9fe0a65e813e32bdfc53fd3319cba07bb1f6eb2a77715",
+          "leak_lines": []
+        },
+        {
+          "case": "iron-death-reentry",
+          "status": "PASS",
+          "log": "suite-ru/iron-death-reentry.log",
+          "log_sha256": "be7938af7fba4ad39010016167f7a2e0091b2ba2f973f5bab0fc97d9b34c8e49",
+          "console_sha256": "b219a31d33515651103c02a010749442c70e10f615f304cac1385c9febe2bd40",
+          "leak_lines": []
+        },
+        {
+          "case": "landmark-presentation",
+          "status": "PASS",
+          "log": "suite-ru/landmark-presentation.log",
+          "log_sha256": "c02e113f15cb9040e991796cb2ff9e69513ca42df4b0dccdff1bf4f6bdc83600",
+          "console_sha256": "95b19b09b6328af1ce5b0b276210774e13c825556db42cd0b0419455917aa1f4",
+          "leak_lines": []
+        },
+        {
+          "case": "legacy_migration",
+          "status": "PASS",
+          "log": "suite-ru/legacy_migration.log",
+          "log_sha256": "dcc6e2ccd7243b90dbe86a6379011cc3cb904f87881651825746d14ffd2f6136",
+          "console_sha256": "a4209f112f1792a13feba4f5009779b17c6236a00d0f0e8618b5ca08d7fc0c4f",
+          "leak_lines": []
+        },
+        {
+          "case": "live-world-locale",
+          "status": "PASS",
+          "log": "suite-ru/live-world-locale.log",
+          "log_sha256": "594936029ce8217c4ee2130df92f547f672364b89ca76fd52202eb2253abedc9",
+          "console_sha256": "a9ea446f4dea1a924e53b6ae974519bee942334d77b9c23750593a5330ca6a15",
+          "leak_lines": []
+        },
+        {
+          "case": "localization",
+          "status": "PASS",
+          "log": "suite-ru/localization.log",
+          "log_sha256": "ebabf093096016b78f49d909381e23a0f792a2ca3073e379d75654c2bff8a2e1",
+          "console_sha256": "0d6ad2a0e08f9892aad1ca092e849895bb49b9ff060ff78bed8063e8f24aa670",
+          "leak_lines": []
+        },
+        {
+          "case": "localized-feedback",
+          "status": "PASS",
+          "log": "suite-ru/localized-feedback.log",
+          "log_sha256": "6a61920d74bf15d2c97740f7d711453b62d714bae01aa0bef09097ec7fe21e2d",
+          "console_sha256": "55e4636332ba9267164114e9666ae90b0cc37ef82c3a16f3b9fb33e9d7a16d1f",
+          "leak_lines": []
+        },
+        {
+          "case": "locomotion-gait",
+          "status": "PASS",
+          "log": "suite-ru/locomotion-gait.log",
+          "log_sha256": "c93afd0b5d96d349704868436a00c908f3f1712416321915c55c1aa808cf17e4",
+          "console_sha256": "8e2ef6307a8aad76147a73e11e91482f7d366c027352bade747d16aad6037898",
+          "leak_lines": []
+        },
+        {
+          "case": "loot_feel",
+          "status": "PASS",
+          "log": "suite-ru/loot_feel.log",
+          "log_sha256": "352297876056820c9b4d54a378ad4e313f7d19939d88111bb6a5c8609efcefdc",
+          "console_sha256": "f779fc6bb85261dc0ceb99777849075441e31dfdd279a4cafff5436b7cb0feb6",
+          "leak_lines": []
+        },
+        {
+          "case": "map-navigation",
+          "status": "PASS",
+          "log": "suite-ru/map-navigation.log",
+          "log_sha256": "6398e591d0751b64d7cb6f137b819fcd2496e8dd3d1ed3d3286249f98aa8355c",
+          "console_sha256": "8623c049d9da597353e27e8d1f351db6dac8950aabc9ac158b0ac776ae3f2d5c",
+          "leak_lines": []
+        },
+        {
+          "case": "mechanics-inputs",
+          "status": "PASS",
+          "log": "suite-ru/mechanics-inputs.log",
+          "log_sha256": "5ec1b8a440bf95592249243b8dbbda113317b2d65deb6f0ef060c58d49fb8474",
+          "console_sha256": "15f5051027b1429ee51b9d439ecb58877c44c662b2c447b862dc2b6f2f5265b8",
+          "leak_lines": []
+        },
+        {
+          "case": "mechanics-route",
+          "status": "PASS",
+          "log": "suite-ru/mechanics-route.log",
+          "log_sha256": "dac441d9319e98b296c390fd71133e2f49b4cee7d66179714f40a8d41a634a51",
+          "console_sha256": "01be10db13b833a640187a3b9d7ba69237fbcac64b3c4259d3049f0bc727182e",
+          "leak_lines": []
+        },
+        {
+          "case": "movement_comfort",
+          "status": "PASS",
+          "log": "suite-ru/movement_comfort.log",
+          "log_sha256": "74fed52b4212b68ce684e708e7b0ae2d9cb4b08f14ec803012dd2c7d57af58f5",
+          "console_sha256": "54d2e14d4884b77dccf84ea6b02cb05850e56a43dbdb5ef3ed71cc62e60b70a4",
+          "leak_lines": []
+        },
+        {
+          "case": "music-transitions",
+          "status": "PASS",
+          "log": "suite-ru/music-transitions.log",
+          "log_sha256": "3d6825bae303357ad63c97a36fb7fe9039aea66425e0e31608ae3f66dd230ee9",
+          "console_sha256": "5ee16355db92692b50b3ad107d655b7d7014e988de1356e4cbbd4b3258b12d7e",
+          "leak_lines": []
+        },
+        {
+          "case": "navigation-matrix",
+          "status": "PASS",
+          "log": "suite-ru/navigation-matrix.log",
+          "log_sha256": "3dcee9913170df120d55edb1b1853f2e761a04d787c28992e75af436234927f4",
+          "console_sha256": "84a27d79dd87764eeddb4e0578913e96af3840eb4ecfafaabe3eb4e0450fc3ed",
+          "leak_lines": []
+        },
+        {
+          "case": "oath_migration",
+          "status": "PASS",
+          "log": "suite-ru/oath_migration.log",
+          "log_sha256": "0bc61d96e2cd79c59e9418f55a735e6b64e1bee3b6e943d86223a3977dd6113a",
+          "console_sha256": "813a651b2ad7cad0571a922badc322b8ec207baff795bb2c715c98616e109a6a",
+          "leak_lines": []
+        },
+        {
+          "case": "packed-append-regression",
+          "status": "PASS",
+          "log": "suite-ru/packed-append-regression.log",
+          "log_sha256": "e8638fc5ade70f6058b8816e0bdeee15f031cd950f43ce35656d909fe22ff026",
+          "console_sha256": "12c0796e748746fbd4fd1c1219907215a10810d3ec4ec8d681329dd644347a90",
+          "leak_lines": []
+        },
+        {
+          "case": "playthrough",
+          "status": "PASS",
+          "log": "suite-ru/playthrough.log",
+          "log_sha256": "57649bd5fb410fbdb46659f5d90fe55e0d5cbec6fbc621ffbb3cc5e89e050b92",
+          "console_sha256": "19ab334b97fd145b11dd9bd24621946e1278b73b1721c007c6e18913704a8e43",
+          "leak_lines": []
+        },
+        {
+          "case": "premium-ui",
+          "status": "PASS",
+          "log": "suite-ru/premium-ui.log",
+          "log_sha256": "6f81ae4cbdd674e63e2ba00b809d813a2f84975a242f2fbac54b3c4b279e08c7",
+          "console_sha256": "9b9454c7b9f4d7f4bf99e0bf0183aff343340cbb3456465c0de05ffac1df5417",
+          "leak_lines": []
+        },
+        {
+          "case": "presentation",
+          "status": "PASS",
+          "log": "suite-ru/presentation.log",
+          "log_sha256": "73974b185492cb3e50ebedea5c93cc73fa18d9791504778173644c5e4c420754",
+          "console_sha256": "9fe14fabc56cc66251479e71a4808a060930a0e782a3565b9e9da9be8e954a26",
+          "leak_lines": []
+        },
+        {
+          "case": "profile-contract",
+          "status": "PASS",
+          "log": "suite-ru/profile-contract.log",
+          "log_sha256": "1978630b7226886ca0ebb579bfe967e48c73e64974e5915d6d58e81165b294f0",
+          "console_sha256": "3ee3e32f50f91f06dd2e64f11a9e8c81db007d1f6e130c9e81975b953bf80771",
+          "leak_lines": []
+        },
+        {
+          "case": "qa-audio-lifetime",
+          "status": "PASS",
+          "log": "suite-ru/qa-audio-lifetime.log",
+          "log_sha256": "d3fba1b4bbf224b98ad39a181e09e079111cbbcaf6ddb447d89a8f55cecfeed0",
+          "console_sha256": "c1f2480a3d278e7725d5d72f1420442e2ec50520a40f51fe3ca3bddf835fb02c",
+          "leak_lines": []
+        },
+        {
+          "case": "qa-seed",
+          "status": "PASS",
+          "log": "suite-ru/qa-seed.log",
+          "log_sha256": "24e0f0f9217cc955d56ca0b70178334a005b7fef26cd0be22bab61fff7fa3688",
+          "console_sha256": "2204bc03ad3abf76c61bcfb55011877ad51f1de450c4107ce2b64f81dbab7436",
+          "leak_lines": []
+        },
+        {
+          "case": "qa_router",
+          "status": "PASS",
+          "log": "suite-ru/qa_router.log",
+          "log_sha256": "d21b6fcb1cf8abe90d789c806c41148b1ed8cea1493f0d2fa78aa37971be0501",
+          "console_sha256": "79ed0ffbbd095206df737720f7c5876a0b5d0f7e01140979a0aa2128ef8157b7",
+          "leak_lines": []
+        },
+        {
+          "case": "quest_tracker",
+          "status": "PASS",
+          "log": "suite-ru/quest_tracker.log",
+          "log_sha256": "e2d4c3f55f1d0d7b56a3a74f13aa4ff8690421ac6cdd39b508a3c821942936cf",
+          "console_sha256": "61c2b1fb13af54f9e8ed8ac57643580cfd61c2c0f91cad7c2b4fcbffc4389182",
+          "leak_lines": []
+        },
+        {
+          "case": "regressions",
+          "status": "PASS",
+          "log": "suite-ru/regressions.log",
+          "log_sha256": "405bfbac93489e875fdaaf5dd9ac78bef3e4f8d89ca97354d5b2d93b22398f17",
+          "console_sha256": "d444fb6925ae9cd251e14b3c3344f1202d5f6e83b23ee6a014a2c538c735f1d3",
+          "leak_lines": []
+        },
+        {
+          "case": "release-details",
+          "status": "PASS",
+          "log": "suite-ru/release-details.log",
+          "log_sha256": "9b460ed569dfdeb6f8c39afa45db388c3a360aeea3410751cbee334afc11d323",
+          "console_sha256": "d9d854143c954318fdbaba39e06878abcf5acd8cace9aa84f92f905f086ed617",
+          "leak_lines": []
+        },
+        {
+          "case": "release-hardening",
+          "status": "PASS",
+          "log": "suite-ru/release-hardening.log",
+          "log_sha256": "21d0819b2d95234bda4272abcb9bfd8b64a8b024c3b7c79ff59efcd287e82680",
+          "console_sha256": "be5d3b1647739d92d43f1b3528f9fac0ce70302eebc5b19faad1d24d10f7f520",
+          "leak_lines": []
+        },
+        {
+          "case": "road-landmarks",
+          "status": "PASS",
+          "log": "suite-ru/road-landmarks.log",
+          "log_sha256": "3765381f0d7b197ae9d07714186ef007c2d39fec0df7d3429beeea6010aff87d",
+          "console_sha256": "639e653e47f4a8d1bf899c6dc959a8d77e822e3d4fd728623ba9b851154ec12a",
+          "leak_lines": []
+        },
+        {
+          "case": "rpg-icons",
+          "status": "PASS",
+          "log": "suite-ru/rpg-icons.log",
+          "log_sha256": "6c0e8ab7cb91d95ac9810e0af609806cb5a602220dcdb1caf068e5ab53bb0418",
+          "console_sha256": "13d54d1cf236f98bd246d29330deafc6431eb09770f7650ccb6933e3689feec2",
+          "leak_lines": []
+        },
+        {
+          "case": "save-float-precision",
+          "status": "PASS",
+          "log": "suite-ru/save-float-precision.log",
+          "log_sha256": "cd1fcd5d2090c0caa735f99521e033217a050d91a83aa53dde8c81c795839cfa",
+          "console_sha256": "309522f4cb6c6c9cecfc7c8e6427abd0219a7f339030f693081e6a53c29cee04",
+          "leak_lines": []
+        },
+        {
+          "case": "save_guard",
+          "status": "PASS",
+          "log": "suite-ru/save_guard.log",
+          "log_sha256": "24e94f660d76b72baa94303ded47b8149c2be2e8cb109d8dbc2ca9c4471f2439",
+          "console_sha256": "3fc43a38ae9f6243591ab90abc9d8eb04f89fff18dd15651f84989b970ec6ad6",
+          "leak_lines": []
+        },
+        {
+          "case": "save_recovery",
+          "status": "PASS",
+          "log": "suite-ru/save_recovery.log",
+          "log_sha256": "60d092b3246d9bb3903a6f5f516ceb10b8d9a2e643438cdc9c98f53b8b582f65",
+          "console_sha256": "4f098d145c95b9e2f071f73a581ad7c5f5c2f6557696169cf77c72d9b3421974",
+          "leak_lines": []
+        },
+        {
+          "case": "second_oath",
+          "status": "PASS",
+          "log": "suite-ru/second_oath.log",
+          "log_sha256": "005e3a564b3818f9cca2fafe64446943d92c58ef7c60ffb2576b49a251af25c3",
+          "console_sha256": "1301e7e5b71b8bc5f1e98efb380cb57350b3d4f21d4ae10ae2cc30271efb4d95",
+          "leak_lines": []
+        },
+        {
+          "case": "seeded-fuzz",
+          "status": "PASS",
+          "log": "suite-ru/seeded-fuzz.log",
+          "log_sha256": "c596f91aab6c056fe8a96941cf151969d14a614bab3713a82941303c42e7278a",
+          "console_sha256": "447c8071e333a73fea7d9b984ba8181fe8491bfedb3b860bc32f2bfc471043c6",
+          "leak_lines": []
+        },
+        {
+          "case": "settings-navigation",
+          "status": "PASS",
+          "log": "suite-ru/settings-navigation.log",
+          "log_sha256": "fed8fb5967db662d23c797e24711a1be675e43c2703e8871a8402470eb6b7030",
+          "console_sha256": "e18002eb140f616092934b712514d7f32e72acd0e090e9d0cbfee717abb5fe89",
+          "leak_lines": []
+        },
+        {
+          "case": "settings_bounds",
+          "status": "PASS",
+          "log": "suite-ru/settings_bounds.log",
+          "log_sha256": "3cd65e7dc996e9721540a9e78b26a37414bcc3ff8404cc228816061bf2cb5411",
+          "console_sha256": "e4b9e09a8f36fa489ee30a416347e3ee820113236f2f8780f4ac69a423876b32",
+          "leak_lines": []
+        },
+        {
+          "case": "settlement_evolution",
+          "status": "PASS",
+          "log": "suite-ru/settlement_evolution.log",
+          "log_sha256": "e8b37819da7d77f724117dc137d357070d1385673228d731de47807dc1d93df3",
+          "console_sha256": "295f3ecdb6c54972871553b51a7951b6e4c69b240ae55171f79df9db5e020b95",
+          "leak_lines": []
+        },
+        {
+          "case": "siege",
+          "status": "PASS",
+          "log": "suite-ru/siege.log",
+          "log_sha256": "39d44d8605e2dc24eca5cc93a6c25b50a64e4cac4100035505a8743e45fca8d7",
+          "console_sha256": "883fa84f0f535d70a52f5e6a7f89d40cc0a1c20eb4a48f978e65e07f8a4c64fa",
+          "leak_lines": []
+        },
+        {
+          "case": "stats",
+          "status": "PASS",
+          "log": "suite-ru/stats.log",
+          "log_sha256": "9aa3a6b3e8b364841a83be5f17ce2cf507c4f82a48827061427027c3034e3ae5",
+          "console_sha256": "1993b92f2c77b917746decd8c6031a30d17dc335066235c49a25af2b33d668cf",
+          "leak_lines": []
+        },
+        {
+          "case": "strategy",
+          "status": "PASS",
+          "log": "suite-ru/strategy.log",
+          "log_sha256": "ce373dd8a83d986ecdcb19b172d82ce197611ff12163de5c163db018ddb47486",
+          "console_sha256": "44c0456c29ff626c85e01dcb8fe1c67f8bcb4f9f0a785d4afaf757542db61634",
+          "leak_lines": []
+        },
+        {
+          "case": "terrain_sampling",
+          "status": "PASS",
+          "log": "suite-ru/terrain_sampling.log",
+          "log_sha256": "cc63c99475d44c266f6637eef36daa383e6d0e091ac92964b9b0b1d4c34f1e79",
+          "console_sha256": "8d2850631c25bf26c1f6c4902de81bb0dd5bbcfb1d5c8f7ffff3736bc1111176",
+          "leak_lines": []
+        },
+        {
+          "case": "ui_audio_feedback",
+          "status": "PASS",
+          "log": "suite-ru/ui_audio_feedback.log",
+          "log_sha256": "4e8d310aa4c72ab66f4658f8868bdb6566d211eb2df67b96c1766c6051188053",
+          "console_sha256": "093a71e6a79eeae8d63fa09552b806b566bb58a1f3426158103127e760be8382",
+          "leak_lines": []
+        },
+        {
+          "case": "untrusted-exploration",
+          "status": "PASS",
+          "log": "suite-ru/untrusted-exploration.log",
+          "log_sha256": "4feae4e72945061508b6d5efb78787f3fda120aff811479c3740751a5de88090",
+          "console_sha256": "54179d37f0fdd1bf7457aec482e9cd851c379cf916131d55547e1cbaf774a410",
+          "leak_lines": []
+        },
+        {
+          "case": "user-exit-pause-discard",
+          "status": "PASS",
+          "log": "suite-ru/user-exit-pause-discard.log",
+          "log_sha256": "1086abafebcbbed1a441b0dd2928f5122dc72540d1e936cc3f64c3030725e3a3",
+          "console_sha256": "1eed1d0e7ecc9772913806e7e2873a21673263bcb07103b164c961b02a6e5cc9",
+          "leak_lines": []
+        },
+        {
+          "case": "user-exit-pause-retry",
+          "status": "PASS",
+          "log": "suite-ru/user-exit-pause-retry.log",
+          "log_sha256": "bb1e998679c41e9ba1370d67272488cdb439dbe08db8be858d73beae1a8d6c19",
+          "console_sha256": "6314f295a8863aa00275c89d8a8a6411fa535c14238debb96d4ac4ba9d0de2cb",
+          "leak_lines": []
+        },
+        {
+          "case": "user-exit-title-exit",
+          "status": "PASS",
+          "log": "suite-ru/user-exit-title-exit.log",
+          "log_sha256": "eb58123989af8123281bd1589965730a5df82442a1a15e86f0313c550b8ce524",
+          "console_sha256": "54ebb6ac817a33632cb8de37841406b38a7a7bc4db310e83cf474cad491b938a",
+          "leak_lines": []
+        },
+        {
+          "case": "user-exit-title-wm-close",
+          "status": "PASS",
+          "log": "suite-ru/user-exit-title-wm-close.log",
+          "log_sha256": "d1f94b143ecacd42b87ea6e0384e7fd7b804ff1b940f3750d1265eef55fa9d11",
+          "console_sha256": "f83ccd0120a1fab60446509527b42ce1ca55af1d3f3867caf65fcdb1cc2e6427",
+          "leak_lines": []
+        },
+        {
+          "case": "weapon_detail",
+          "status": "PASS",
+          "log": "suite-ru/weapon_detail.log",
+          "log_sha256": "032d7d62c4dde3c331dcdf4d767bb1c9848b13df766eca3c1cb4c02bc9626778",
+          "console_sha256": "001dfaa4ad2350b857f6fe995154c1954ead4914c9ca50207c755bca30cd91cb",
+          "leak_lines": []
+        },
+        {
+          "case": "weapon_view",
+          "status": "PASS",
+          "log": "suite-ru/weapon_view.log",
+          "log_sha256": "27ecf715248034123c7ceeeedff72812d92fd28a25c934fbb5f1cba8ae1fd141",
+          "console_sha256": "900c4480c8604c8aad3a1e9f2de548b8bcae1c73ab2262e8c188d61454b2a73e",
+          "leak_lines": []
+        },
+        {
+          "case": "world-sky-lifetime",
+          "status": "PASS",
+          "log": "suite-ru/world-sky-lifetime.log",
+          "log_sha256": "c9f1864f369718697e708bbdb227e4a768d451ffe2ffecc8caf9157fd3efaaea",
+          "console_sha256": "76fa730b91dd24a156b7523e261bf50d4d7373d110a5f9c30a7f3477d5a3108a",
+          "leak_lines": []
+        }
+      ]
+    },
+    "en": {
+      "locale": "en",
+      "total": 82,
+      "passed": 82,
+      "reported_pass_lines": 82,
+      "per_case_logs_shipped": true,
+      "per_case_log_bytes": 30722,
+      "console_log": "suite-en-console.log",
+      "cases": [
+        {
+          "case": "actor_material_lifetime",
+          "status": "PASS",
+          "log": "suite-en/actor_material_lifetime.log",
+          "log_sha256": "56735d649ffb55fa14cfb3cc9678b82f0cf351401d8cd8037030f7e2beac8e66",
+          "console_sha256": "6a4e9224e7b39363d5f4be1b591fce16fe5d56d1d2fe2e99b85bafb9f23f7ed3",
+          "leak_lines": []
+        },
+        {
+          "case": "archer_presentation",
+          "status": "PASS",
+          "log": "suite-en/archer_presentation.log",
+          "log_sha256": "cfc41aaa2ca46f6b69d80c5d0a08351087ef31c99794b3ac57361a5846a2e67d",
+          "console_sha256": "cdd3afc133ecae20540c4d594f7c52f082691e0ba92a8869c757a832744d6d7f",
+          "leak_lines": []
+        },
+        {
+          "case": "army-casualty-lifetime",
+          "status": "PASS",
+          "log": "suite-en/army-casualty-lifetime.log",
+          "log_sha256": "3d8c9c4220179b01fc69c6bdd63b44423fc9d8b65d7186837caefde506382ca0",
+          "console_sha256": "5323d074a37992d125f8d0f4fcd3e7437b6e1191be8ce6684d148db8a37af049",
+          "leak_lines": []
+        },
+        {
+          "case": "army-pause-regression",
+          "status": "PASS",
+          "log": "suite-en/army-pause-regression.log",
+          "log_sha256": "57ffceb5c6abd91b4f1b440883f044aac67637944ac9f7344346e5bc0b5e3e89",
+          "console_sha256": "be2d5dbe92db074fd2cce598668f6297810b804ea4a483eeff36a22efff589c9",
+          "leak_lines": []
+        },
+        {
+          "case": "art_assets",
+          "status": "PASS",
+          "log": "suite-en/art_assets.log",
+          "log_sha256": "8c8262a5f3129e1f6423e63b7fa6fc30bb7599664d2d29acf495e5879337ed16",
+          "console_sha256": "52802c3f03178099dfe4f2095b9fe6405b364d628363deccb5fbeecd6fde4f05",
+          "leak_lines": []
+        },
+        {
+          "case": "atomic_economy",
+          "status": "PASS",
+          "log": "suite-en/atomic_economy.log",
+          "log_sha256": "c48e745009b9985b9b7dd6f2edd60b7c2d1b8244d19440b1a62a949094fe169a",
+          "console_sha256": "5b7ba9a01e6d6d948abb119180a74723cc74107b1545d58f50aa5b3f25b15c73",
+          "leak_lines": []
+        },
+        {
+          "case": "audio",
+          "status": "PASS",
+          "log": "suite-en/audio.log",
+          "log_sha256": "4403372462e0c2bc7bfc3f3938ca705295c74df776da10bac1f70b40faa680ac",
+          "console_sha256": "29b41a36ac6a1477a9c391e2cfd1d021fc34ca9d4e7a63edb7334d40ba964a0a",
+          "leak_lines": []
+        },
+        {
+          "case": "build_integrity",
+          "status": "PASS",
+          "log": "suite-en/build_integrity.log",
+          "log_sha256": "a07cea433ea5e8d909b4382134be60b44306b08750bc697fbacf14a6302fe77e",
+          "console_sha256": "13e7332b61c9200e66c428ff621c10260a939d85f5b57e58ec8f641a2fd08a3f",
+          "leak_lines": []
+        },
+        {
+          "case": "campaign-route-diplomatic",
+          "status": "PASS",
+          "log": "suite-en/campaign-route-diplomatic.log",
+          "log_sha256": "c7f11160492844f94c004acafe00c62faaa62ac40476a24f860681290cf381dc",
+          "console_sha256": "c129eabe92115ceb1c79f93fc2b697e77165e48012e6b810fedb8f5356071f0f",
+          "leak_lines": []
+        },
+        {
+          "case": "campaign-route-military",
+          "status": "PASS",
+          "log": "suite-en/campaign-route-military.log",
+          "log_sha256": "39b2358793bc52cf0fc44e4f2a58623d2488ff13e40b827cf0f2a48a376b0a7d",
+          "console_sha256": "4a8dddde339b32416aae263cbea7f58c8fcccd6780ddf185c92cb7e3d80f5f9f",
+          "leak_lines": []
+        },
+        {
+          "case": "campaign",
+          "status": "PASS",
+          "log": "suite-en/campaign.log",
+          "log_sha256": "045fb8ea45758d0e354e4818c3638963ed51d39fb9516b351359683ea4cc5373",
+          "console_sha256": "e4d409c0d85fdce0af412a05ec5e439273c24961a87b161c17c1a077acbbf11f",
+          "leak_lines": []
+        },
+        {
+          "case": "campaign_finale",
+          "status": "PASS",
+          "log": "suite-en/campaign_finale.log",
+          "log_sha256": "44096718593d729c9ec5bdaaed314011880353b1a581d3281825b8dc27c777f2",
+          "console_sha256": "a15f1b082beb317c58ba83a4655c84785714e620eea534676bf0e1c493f2ffc3",
+          "leak_lines": []
+        },
+        {
+          "case": "civilians",
+          "status": "PASS",
+          "log": "suite-en/civilians.log",
+          "log_sha256": "3b9169c1493340cae27796b263ac5583e7be32af8e45175b1ab8dd765d7bd73d",
+          "console_sha256": "705309bcfe546d5d3679bab99a2c160d7ca5a3aac20c074089bfe42a4c27a5a1",
+          "leak_lines": []
+        },
+        {
+          "case": "clear-play",
+          "status": "PASS",
+          "log": "suite-en/clear-play.log",
+          "log_sha256": "d74ba0f0396b9caff1a9d01ced88dc3a0ed95c3ef96db149bda6234ab2da4f84",
+          "console_sha256": "78ce8750fb9871bf9772e56d40520f90cd2fe61d414e5a109a86e909bfbfbca7",
+          "leak_lines": []
+        },
+        {
+          "case": "codex",
+          "status": "PASS",
+          "log": "suite-en/codex.log",
+          "log_sha256": "da9232d6f6aaf32432d77c218107d9a737bd16e7ebc50a2928697d2d2d546768",
+          "console_sha256": "b84d8cc0a8bca2576aeb79b1a89c9e5782faeefb0d3c2c1fe478c04331c2304b",
+          "leak_lines": []
+        },
+        {
+          "case": "combat_cover",
+          "status": "PASS",
+          "log": "suite-en/combat_cover.log",
+          "log_sha256": "e2f7342138e3ca0ebd028e1fec2311b3246c5b1b1bff9340f5a9f9e522e3a0fc",
+          "console_sha256": "75ca801d7de40a5ff229b9c8c8b3ef4a96bbf0fb496758befd97ec0eaa324ceb",
+          "leak_lines": []
+        },
+        {
+          "case": "combat_feel",
+          "status": "PASS",
+          "log": "suite-en/combat_feel.log",
+          "log_sha256": "40fffb9393cea874ca33cad408d34257e4585651e2e0ed85381b863d542b6ab9",
+          "console_sha256": "e31ac06183267ca70c2dd06d63b04f230563352545fe60da884eac80861c2d0f",
+          "leak_lines": []
+        },
+        {
+          "case": "comfort-preferences",
+          "status": "PASS",
+          "log": "suite-en/comfort-preferences.log",
+          "log_sha256": "f21a839a6a4dc6996bc878dcec5490b3dd1b4d2ef90c94a1a6d97d9d5ab0a241",
+          "console_sha256": "16c7b7faf89fc37f3b786e025f554b5e07b374ab45f7cf26176e5c939547b251",
+          "leak_lines": []
+        },
+        {
+          "case": "companion-scan-regression",
+          "status": "PASS",
+          "log": "suite-en/companion-scan-regression.log",
+          "log_sha256": "7f3df5479af39d3f3b97b8f9795790256b3091d5da63aabb984250d6625d610c",
+          "console_sha256": "9b30642ddd8cf333db29ab946c134b6ff8d59c264e3c29b64be2dc86966ca16e",
+          "leak_lines": []
+        },
+        {
+          "case": "context_audio",
+          "status": "PASS",
+          "log": "suite-en/context_audio.log",
+          "log_sha256": "261d4c460ea762524d7d749a94012510cdac729441e3cb2b2a0b79e1fd361b92",
+          "console_sha256": "1d20ba1a6b244baacf27516df5ac624ae93dd45d6ab1b08657c6d834ac177d1d",
+          "leak_lines": []
+        },
+        {
+          "case": "credits",
+          "status": "PASS",
+          "log": "suite-en/credits.log",
+          "log_sha256": "894f99033c84a45c5382c25673519624053b040533eab76835a8f33820d5dde0",
+          "console_sha256": "08a96ba8ad0bba2f65f37c785e3f1807a5a7d1e555d0cfb31e9a71ac3496e906",
+          "leak_lines": []
+        },
+        {
+          "case": "critical_read_bounds",
+          "status": "PASS",
+          "log": "suite-en/critical_read_bounds.log",
+          "log_sha256": "69ee0d34472445540650a54af148eff7e78c0c4227be8ceb395e55a56c687a0e",
+          "console_sha256": "fb726679305639f8011974a038a3337e157fec681a2c0ee91131bf86ae12300d",
+          "leak_lines": []
+        },
+        {
+          "case": "design_pass",
+          "status": "PASS",
+          "log": "suite-en/design_pass.log",
+          "log_sha256": "4cc1c95a24905ea8494682ffd119ad86676834d8f970dae935b0e13eec26d9c3",
+          "console_sha256": "c8947771ef2bc5f14a95bd52de3ddb70a9d17cbd4b34fce60de87f4b2f9b4af1",
+          "leak_lines": []
+        },
+        {
+          "case": "detailed_figures",
+          "status": "PASS",
+          "log": "suite-en/detailed_figures.log",
+          "log_sha256": "f5c6f14f8074b537eb5244708e81f77fd0d8b51739ee2ed856898a4ceada8d34",
+          "console_sha256": "500e094888130471accad01bec5e0b5e51b15266fa9a17fe33c2f9a17e60a452",
+          "leak_lines": []
+        },
+        {
+          "case": "disabled-explanations",
+          "status": "PASS",
+          "log": "suite-en/disabled-explanations.log",
+          "log_sha256": "41dc649b23f4d5588d38f41c71c53d1f1e65109d388351ab055b573ee366341e",
+          "console_sha256": "00db54825f0176becf6d0b96423581078db77f4da19897dc2083d87ef639f162",
+          "leak_lines": []
+        },
+        {
+          "case": "exact-float-limits",
+          "status": "PASS",
+          "log": "suite-en/exact-float-limits.log",
+          "log_sha256": "9b7459aa03a8545de5c8de32485aae29fc821619432d448966d721180d686b26",
+          "console_sha256": "76309de5e5ff82aed7356f7ffba1a44ef544940fde9172d05349a857043f6b0e",
+          "leak_lines": []
+        },
+        {
+          "case": "house_cache",
+          "status": "PASS",
+          "log": "suite-en/house_cache.log",
+          "log_sha256": "b5557b3c7a44775665777a35319065690159cf0a32c17252af7b081ec2210b14",
+          "console_sha256": "fea01690250f3bc9bac50202f1d8b211b768297c6b13ac07a02fce7d0358f742",
+          "leak_lines": []
+        },
+        {
+          "case": "identity",
+          "status": "PASS",
+          "log": "suite-en/identity.log",
+          "log_sha256": "b210204f7840ed4971f088cc39c0f9f29114210910b2240800c5d10a989f12d7",
+          "console_sha256": "bf57856495287e688b49d032b163141464cb87e671b4ab91859d98a764bed6d2",
+          "leak_lines": []
+        },
+        {
+          "case": "import",
+          "status": "PASS",
+          "log": "suite-en/import.log",
+          "log_sha256": "a05b8d39b7fbeb2ed7a600472244b904ce169d9428203c08b2bc20f87ac4532a",
+          "console_sha256": "d3b92035a68fb39168647f3199ed9a9de0a69277301b1293b5a548043de59b73",
+          "leak_lines": []
+        },
+        {
+          "case": "initial-idle-pose",
+          "status": "PASS",
+          "log": "suite-en/initial-idle-pose.log",
+          "log_sha256": "cca67571430767b65284b4be0fef415ba4c22a55c00e2947008bd765a895960f",
+          "console_sha256": "dc763ffb053d427a6d22a5875b2d1a7a5427c230176899d66d05288ada982fe4",
+          "leak_lines": []
+        },
+        {
+          "case": "integrity_notice",
+          "status": "PASS",
+          "log": "suite-en/integrity_notice.log",
+          "log_sha256": "a54d80f14a7e5a4e3c10f1c05fb6da5e6b8d0a36ce8db373e9401a55811621f5",
+          "console_sha256": "123158d714e5e0c1c1dedec92815635046f6342af25bbe1ca848b385b4157c46",
+          "leak_lines": []
+        },
+        {
+          "case": "invalid-combat-inputs",
+          "status": "PASS",
+          "log": "suite-en/invalid-combat-inputs.log",
+          "log_sha256": "46389c9106b19a89f852e2f9b8c935806aae9c2bf10596ac9edce7c84683978a",
+          "console_sha256": "39e06f3bd217e8fe35e9fe0a65e813e32bdfc53fd3319cba07bb1f6eb2a77715",
+          "leak_lines": []
+        },
+        {
+          "case": "iron-death-reentry",
+          "status": "PASS",
+          "log": "suite-en/iron-death-reentry.log",
+          "log_sha256": "be7938af7fba4ad39010016167f7a2e0091b2ba2f973f5bab0fc97d9b34c8e49",
+          "console_sha256": "b219a31d33515651103c02a010749442c70e10f615f304cac1385c9febe2bd40",
+          "leak_lines": []
+        },
+        {
+          "case": "landmark-presentation",
+          "status": "PASS",
+          "log": "suite-en/landmark-presentation.log",
+          "log_sha256": "c02e113f15cb9040e991796cb2ff9e69513ca42df4b0dccdff1bf4f6bdc83600",
+          "console_sha256": "95b19b09b6328af1ce5b0b276210774e13c825556db42cd0b0419455917aa1f4",
+          "leak_lines": []
+        },
+        {
+          "case": "legacy_migration",
+          "status": "PASS",
+          "log": "suite-en/legacy_migration.log",
+          "log_sha256": "dcc6e2ccd7243b90dbe86a6379011cc3cb904f87881651825746d14ffd2f6136",
+          "console_sha256": "a4209f112f1792a13feba4f5009779b17c6236a00d0f0e8618b5ca08d7fc0c4f",
+          "leak_lines": []
+        },
+        {
+          "case": "live-world-locale",
+          "status": "PASS",
+          "log": "suite-en/live-world-locale.log",
+          "log_sha256": "594936029ce8217c4ee2130df92f547f672364b89ca76fd52202eb2253abedc9",
+          "console_sha256": "a9ea446f4dea1a924e53b6ae974519bee942334d77b9c23750593a5330ca6a15",
+          "leak_lines": []
+        },
+        {
+          "case": "localization",
+          "status": "PASS",
+          "log": "suite-en/localization.log",
+          "log_sha256": "ebabf093096016b78f49d909381e23a0f792a2ca3073e379d75654c2bff8a2e1",
+          "console_sha256": "0d6ad2a0e08f9892aad1ca092e849895bb49b9ff060ff78bed8063e8f24aa670",
+          "leak_lines": []
+        },
+        {
+          "case": "localized-feedback",
+          "status": "PASS",
+          "log": "suite-en/localized-feedback.log",
+          "log_sha256": "6a61920d74bf15d2c97740f7d711453b62d714bae01aa0bef09097ec7fe21e2d",
+          "console_sha256": "55e4636332ba9267164114e9666ae90b0cc37ef82c3a16f3b9fb33e9d7a16d1f",
+          "leak_lines": []
+        },
+        {
+          "case": "locomotion-gait",
+          "status": "PASS",
+          "log": "suite-en/locomotion-gait.log",
+          "log_sha256": "c93afd0b5d96d349704868436a00c908f3f1712416321915c55c1aa808cf17e4",
+          "console_sha256": "8e2ef6307a8aad76147a73e11e91482f7d366c027352bade747d16aad6037898",
+          "leak_lines": []
+        },
+        {
+          "case": "loot_feel",
+          "status": "PASS",
+          "log": "suite-en/loot_feel.log",
+          "log_sha256": "352297876056820c9b4d54a378ad4e313f7d19939d88111bb6a5c8609efcefdc",
+          "console_sha256": "f779fc6bb85261dc0ceb99777849075441e31dfdd279a4cafff5436b7cb0feb6",
+          "leak_lines": []
+        },
+        {
+          "case": "map-navigation",
+          "status": "PASS",
+          "log": "suite-en/map-navigation.log",
+          "log_sha256": "6398e591d0751b64d7cb6f137b819fcd2496e8dd3d1ed3d3286249f98aa8355c",
+          "console_sha256": "8623c049d9da597353e27e8d1f351db6dac8950aabc9ac158b0ac776ae3f2d5c",
+          "leak_lines": []
+        },
+        {
+          "case": "mechanics-inputs",
+          "status": "PASS",
+          "log": "suite-en/mechanics-inputs.log",
+          "log_sha256": "5ec1b8a440bf95592249243b8dbbda113317b2d65deb6f0ef060c58d49fb8474",
+          "console_sha256": "15f5051027b1429ee51b9d439ecb58877c44c662b2c447b862dc2b6f2f5265b8",
+          "leak_lines": []
+        },
+        {
+          "case": "mechanics-route",
+          "status": "PASS",
+          "log": "suite-en/mechanics-route.log",
+          "log_sha256": "3133aa4c059fc1d047f07faa33437f2400d3d55153a3463576a747c15e458937",
+          "console_sha256": "b2e046a91a5eeeddadb42cdde7d323bb684511d8a77dedf5ae02aeecc978dcdc",
+          "leak_lines": []
+        },
+        {
+          "case": "movement_comfort",
+          "status": "PASS",
+          "log": "suite-en/movement_comfort.log",
+          "log_sha256": "74fed52b4212b68ce684e708e7b0ae2d9cb4b08f14ec803012dd2c7d57af58f5",
+          "console_sha256": "54d2e14d4884b77dccf84ea6b02cb05850e56a43dbdb5ef3ed71cc62e60b70a4",
+          "leak_lines": []
+        },
+        {
+          "case": "music-transitions",
+          "status": "PASS",
+          "log": "suite-en/music-transitions.log",
+          "log_sha256": "3d6825bae303357ad63c97a36fb7fe9039aea66425e0e31608ae3f66dd230ee9",
+          "console_sha256": "5ee16355db92692b50b3ad107d655b7d7014e988de1356e4cbbd4b3258b12d7e",
+          "leak_lines": []
+        },
+        {
+          "case": "navigation-matrix",
+          "status": "PASS",
+          "log": "suite-en/navigation-matrix.log",
+          "log_sha256": "3dcee9913170df120d55edb1b1853f2e761a04d787c28992e75af436234927f4",
+          "console_sha256": "84a27d79dd87764eeddb4e0578913e96af3840eb4ecfafaabe3eb4e0450fc3ed",
+          "leak_lines": []
+        },
+        {
+          "case": "oath_migration",
+          "status": "PASS",
+          "log": "suite-en/oath_migration.log",
+          "log_sha256": "0bc61d96e2cd79c59e9418f55a735e6b64e1bee3b6e943d86223a3977dd6113a",
+          "console_sha256": "813a651b2ad7cad0571a922badc322b8ec207baff795bb2c715c98616e109a6a",
+          "leak_lines": []
+        },
+        {
+          "case": "packed-append-regression",
+          "status": "PASS",
+          "log": "suite-en/packed-append-regression.log",
+          "log_sha256": "e8638fc5ade70f6058b8816e0bdeee15f031cd950f43ce35656d909fe22ff026",
+          "console_sha256": "12c0796e748746fbd4fd1c1219907215a10810d3ec4ec8d681329dd644347a90",
+          "leak_lines": []
+        },
+        {
+          "case": "playthrough",
+          "status": "PASS",
+          "log": "suite-en/playthrough.log",
+          "log_sha256": "57649bd5fb410fbdb46659f5d90fe55e0d5cbec6fbc621ffbb3cc5e89e050b92",
+          "console_sha256": "19ab334b97fd145b11dd9bd24621946e1278b73b1721c007c6e18913704a8e43",
+          "leak_lines": []
+        },
+        {
+          "case": "premium-ui",
+          "status": "PASS",
+          "log": "suite-en/premium-ui.log",
+          "log_sha256": "6f81ae4cbdd674e63e2ba00b809d813a2f84975a242f2fbac54b3c4b279e08c7",
+          "console_sha256": "9b9454c7b9f4d7f4bf99e0bf0183aff343340cbb3456465c0de05ffac1df5417",
+          "leak_lines": []
+        },
+        {
+          "case": "presentation",
+          "status": "PASS",
+          "log": "suite-en/presentation.log",
+          "log_sha256": "73974b185492cb3e50ebedea5c93cc73fa18d9791504778173644c5e4c420754",
+          "console_sha256": "9fe14fabc56cc66251479e71a4808a060930a0e782a3565b9e9da9be8e954a26",
+          "leak_lines": []
+        },
+        {
+          "case": "profile-contract",
+          "status": "PASS",
+          "log": "suite-en/profile-contract.log",
+          "log_sha256": "1978630b7226886ca0ebb579bfe967e48c73e64974e5915d6d58e81165b294f0",
+          "console_sha256": "3ee3e32f50f91f06dd2e64f11a9e8c81db007d1f6e130c9e81975b953bf80771",
+          "leak_lines": []
+        },
+        {
+          "case": "qa-audio-lifetime",
+          "status": "PASS",
+          "log": "suite-en/qa-audio-lifetime.log",
+          "log_sha256": "950ef89e690c91cb6557a0a1c7ca4bb62b1956bbaeafe7d3e5f8207827991713",
+          "console_sha256": "9a8a57790bd1f0dc3dac57c3a5a7a087461b92bf9ba3de5d4626b4411b96b789",
+          "leak_lines": []
+        },
+        {
+          "case": "qa-seed",
+          "status": "PASS",
+          "log": "suite-en/qa-seed.log",
+          "log_sha256": "24e0f0f9217cc955d56ca0b70178334a005b7fef26cd0be22bab61fff7fa3688",
+          "console_sha256": "2204bc03ad3abf76c61bcfb55011877ad51f1de450c4107ce2b64f81dbab7436",
+          "leak_lines": []
+        },
+        {
+          "case": "qa_router",
+          "status": "PASS",
+          "log": "suite-en/qa_router.log",
+          "log_sha256": "d21b6fcb1cf8abe90d789c806c41148b1ed8cea1493f0d2fa78aa37971be0501",
+          "console_sha256": "79ed0ffbbd095206df737720f7c5876a0b5d0f7e01140979a0aa2128ef8157b7",
+          "leak_lines": []
+        },
+        {
+          "case": "quest_tracker",
+          "status": "PASS",
+          "log": "suite-en/quest_tracker.log",
+          "log_sha256": "e2d4c3f55f1d0d7b56a3a74f13aa4ff8690421ac6cdd39b508a3c821942936cf",
+          "console_sha256": "61c2b1fb13af54f9e8ed8ac57643580cfd61c2c0f91cad7c2b4fcbffc4389182",
+          "leak_lines": []
+        },
+        {
+          "case": "regressions",
+          "status": "PASS",
+          "log": "suite-en/regressions.log",
+          "log_sha256": "405bfbac93489e875fdaaf5dd9ac78bef3e4f8d89ca97354d5b2d93b22398f17",
+          "console_sha256": "d444fb6925ae9cd251e14b3c3344f1202d5f6e83b23ee6a014a2c538c735f1d3",
+          "leak_lines": []
+        },
+        {
+          "case": "release-details",
+          "status": "PASS",
+          "log": "suite-en/release-details.log",
+          "log_sha256": "9b460ed569dfdeb6f8c39afa45db388c3a360aeea3410751cbee334afc11d323",
+          "console_sha256": "d9d854143c954318fdbaba39e06878abcf5acd8cace9aa84f92f905f086ed617",
+          "leak_lines": []
+        },
+        {
+          "case": "release-hardening",
+          "status": "PASS",
+          "log": "suite-en/release-hardening.log",
+          "log_sha256": "21d0819b2d95234bda4272abcb9bfd8b64a8b024c3b7c79ff59efcd287e82680",
+          "console_sha256": "be5d3b1647739d92d43f1b3528f9fac0ce70302eebc5b19faad1d24d10f7f520",
+          "leak_lines": []
+        },
+        {
+          "case": "road-landmarks",
+          "status": "PASS",
+          "log": "suite-en/road-landmarks.log",
+          "log_sha256": "3765381f0d7b197ae9d07714186ef007c2d39fec0df7d3429beeea6010aff87d",
+          "console_sha256": "639e653e47f4a8d1bf899c6dc959a8d77e822e3d4fd728623ba9b851154ec12a",
+          "leak_lines": []
+        },
+        {
+          "case": "rpg-icons",
+          "status": "PASS",
+          "log": "suite-en/rpg-icons.log",
+          "log_sha256": "6c0e8ab7cb91d95ac9810e0af609806cb5a602220dcdb1caf068e5ab53bb0418",
+          "console_sha256": "13d54d1cf236f98bd246d29330deafc6431eb09770f7650ccb6933e3689feec2",
+          "leak_lines": []
+        },
+        {
+          "case": "save-float-precision",
+          "status": "PASS",
+          "log": "suite-en/save-float-precision.log",
+          "log_sha256": "cd1fcd5d2090c0caa735f99521e033217a050d91a83aa53dde8c81c795839cfa",
+          "console_sha256": "309522f4cb6c6c9cecfc7c8e6427abd0219a7f339030f693081e6a53c29cee04",
+          "leak_lines": []
+        },
+        {
+          "case": "save_guard",
+          "status": "PASS",
+          "log": "suite-en/save_guard.log",
+          "log_sha256": "24e94f660d76b72baa94303ded47b8149c2be2e8cb109d8dbc2ca9c4471f2439",
+          "console_sha256": "3fc43a38ae9f6243591ab90abc9d8eb04f89fff18dd15651f84989b970ec6ad6",
+          "leak_lines": []
+        },
+        {
+          "case": "save_recovery",
+          "status": "PASS",
+          "log": "suite-en/save_recovery.log",
+          "log_sha256": "60d092b3246d9bb3903a6f5f516ceb10b8d9a2e643438cdc9c98f53b8b582f65",
+          "console_sha256": "4f098d145c95b9e2f071f73a581ad7c5f5c2f6557696169cf77c72d9b3421974",
+          "leak_lines": []
+        },
+        {
+          "case": "second_oath",
+          "status": "PASS",
+          "log": "suite-en/second_oath.log",
+          "log_sha256": "005e3a564b3818f9cca2fafe64446943d92c58ef7c60ffb2576b49a251af25c3",
+          "console_sha256": "1301e7e5b71b8bc5f1e98efb380cb57350b3d4f21d4ae10ae2cc30271efb4d95",
+          "leak_lines": []
+        },
+        {
+          "case": "seeded-fuzz",
+          "status": "PASS",
+          "log": "suite-en/seeded-fuzz.log",
+          "log_sha256": "c596f91aab6c056fe8a96941cf151969d14a614bab3713a82941303c42e7278a",
+          "console_sha256": "447c8071e333a73fea7d9b984ba8181fe8491bfedb3b860bc32f2bfc471043c6",
+          "leak_lines": []
+        },
+        {
+          "case": "settings-navigation",
+          "status": "PASS",
+          "log": "suite-en/settings-navigation.log",
+          "log_sha256": "fed8fb5967db662d23c797e24711a1be675e43c2703e8871a8402470eb6b7030",
+          "console_sha256": "e18002eb140f616092934b712514d7f32e72acd0e090e9d0cbfee717abb5fe89",
+          "leak_lines": []
+        },
+        {
+          "case": "settings_bounds",
+          "status": "PASS",
+          "log": "suite-en/settings_bounds.log",
+          "log_sha256": "3cd65e7dc996e9721540a9e78b26a37414bcc3ff8404cc228816061bf2cb5411",
+          "console_sha256": "e4b9e09a8f36fa489ee30a416347e3ee820113236f2f8780f4ac69a423876b32",
+          "leak_lines": []
+        },
+        {
+          "case": "settlement_evolution",
+          "status": "PASS",
+          "log": "suite-en/settlement_evolution.log",
+          "log_sha256": "e8b37819da7d77f724117dc137d357070d1385673228d731de47807dc1d93df3",
+          "console_sha256": "295f3ecdb6c54972871553b51a7951b6e4c69b240ae55171f79df9db5e020b95",
+          "leak_lines": []
+        },
+        {
+          "case": "siege",
+          "status": "PASS",
+          "log": "suite-en/siege.log",
+          "log_sha256": "39d44d8605e2dc24eca5cc93a6c25b50a64e4cac4100035505a8743e45fca8d7",
+          "console_sha256": "883fa84f0f535d70a52f5e6a7f89d40cc0a1c20eb4a48f978e65e07f8a4c64fa",
+          "leak_lines": []
+        },
+        {
+          "case": "stats",
+          "status": "PASS",
+          "log": "suite-en/stats.log",
+          "log_sha256": "9aa3a6b3e8b364841a83be5f17ce2cf507c4f82a48827061427027c3034e3ae5",
+          "console_sha256": "1993b92f2c77b917746decd8c6031a30d17dc335066235c49a25af2b33d668cf",
+          "leak_lines": []
+        },
+        {
+          "case": "strategy",
+          "status": "PASS",
+          "log": "suite-en/strategy.log",
+          "log_sha256": "ce373dd8a83d986ecdcb19b172d82ce197611ff12163de5c163db018ddb47486",
+          "console_sha256": "44c0456c29ff626c85e01dcb8fe1c67f8bcb4f9f0a785d4afaf757542db61634",
+          "leak_lines": []
+        },
+        {
+          "case": "terrain_sampling",
+          "status": "PASS",
+          "log": "suite-en/terrain_sampling.log",
+          "log_sha256": "cc63c99475d44c266f6637eef36daa383e6d0e091ac92964b9b0b1d4c34f1e79",
+          "console_sha256": "8d2850631c25bf26c1f6c4902de81bb0dd5bbcfb1d5c8f7ffff3736bc1111176",
+          "leak_lines": []
+        },
+        {
+          "case": "ui_audio_feedback",
+          "status": "PASS",
+          "log": "suite-en/ui_audio_feedback.log",
+          "log_sha256": "4e8d310aa4c72ab66f4658f8868bdb6566d211eb2df67b96c1766c6051188053",
+          "console_sha256": "093a71e6a79eeae8d63fa09552b806b566bb58a1f3426158103127e760be8382",
+          "leak_lines": []
+        },
+        {
+          "case": "untrusted-exploration",
+          "status": "PASS",
+          "log": "suite-en/untrusted-exploration.log",
+          "log_sha256": "4feae4e72945061508b6d5efb78787f3fda120aff811479c3740751a5de88090",
+          "console_sha256": "54179d37f0fdd1bf7457aec482e9cd851c379cf916131d55547e1cbaf774a410",
+          "leak_lines": []
+        },
+        {
+          "case": "user-exit-pause-discard",
+          "status": "PASS",
+          "log": "suite-en/user-exit-pause-discard.log",
+          "log_sha256": "1086abafebcbbed1a441b0dd2928f5122dc72540d1e936cc3f64c3030725e3a3",
+          "console_sha256": "1eed1d0e7ecc9772913806e7e2873a21673263bcb07103b164c961b02a6e5cc9",
+          "leak_lines": []
+        },
+        {
+          "case": "user-exit-pause-retry",
+          "status": "PASS",
+          "log": "suite-en/user-exit-pause-retry.log",
+          "log_sha256": "bb1e998679c41e9ba1370d67272488cdb439dbe08db8be858d73beae1a8d6c19",
+          "console_sha256": "6314f295a8863aa00275c89d8a8a6411fa535c14238debb96d4ac4ba9d0de2cb",
+          "leak_lines": []
+        },
+        {
+          "case": "user-exit-title-exit",
+          "status": "PASS",
+          "log": "suite-en/user-exit-title-exit.log",
+          "log_sha256": "eb58123989af8123281bd1589965730a5df82442a1a15e86f0313c550b8ce524",
+          "console_sha256": "54ebb6ac817a33632cb8de37841406b38a7a7bc4db310e83cf474cad491b938a",
+          "leak_lines": []
+        },
+        {
+          "case": "user-exit-title-wm-close",
+          "status": "PASS",
+          "log": "suite-en/user-exit-title-wm-close.log",
+          "log_sha256": "d1f94b143ecacd42b87ea6e0384e7fd7b804ff1b940f3750d1265eef55fa9d11",
+          "console_sha256": "f83ccd0120a1fab60446509527b42ce1ca55af1d3f3867caf65fcdb1cc2e6427",
+          "leak_lines": []
+        },
+        {
+          "case": "weapon_detail",
+          "status": "PASS",
+          "log": "suite-en/weapon_detail.log",
+          "log_sha256": "032d7d62c4dde3c331dcdf4d767bb1c9848b13df766eca3c1cb4c02bc9626778",
+          "console_sha256": "001dfaa4ad2350b857f6fe995154c1954ead4914c9ca50207c755bca30cd91cb",
+          "leak_lines": []
+        },
+        {
+          "case": "weapon_view",
+          "status": "PASS",
+          "log": "suite-en/weapon_view.log",
+          "log_sha256": "27ecf715248034123c7ceeeedff72812d92fd28a25c934fbb5f1cba8ae1fd141",
+          "console_sha256": "900c4480c8604c8aad3a1e9f2de548b8bcae1c73ab2262e8c188d61454b2a73e",
+          "leak_lines": []
+        },
+        {
+          "case": "world-sky-lifetime",
+          "status": "PASS",
+          "log": "suite-en/world-sky-lifetime.log",
+          "log_sha256": "c9f1864f369718697e708bbdb227e4a768d451ffe2ffecc8caf9157fd3efaaea",
+          "console_sha256": "76fa730b91dd24a156b7523e261bf50d4d7373d110a5f9c30a7f3477d5a3108a",
+          "leak_lines": []
+        }
+      ]
+    }
+  },
+  "leak_policy": "the runner fails any case whose log contains an ObjectDB leak, orphan-node or resource-still-in-use line",
+  "limits": "Automated rendered cases on one Windows host. Not a human playtest; they do not prove the absence of other defects.",
+  "verdict": "PASS"
+}
