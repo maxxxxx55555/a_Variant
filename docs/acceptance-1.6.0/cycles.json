@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "title": "Marchland Oaths 1.6.0 seeded cycle evidence",
+  "result": "PASS",
+  "source_commit": "f1d40cecb222c3ffa2a78d69d82b7f57c3f02ae4",
+  "runs": {
+    "ru": {
+      "result": "PASS",
+      "seeds": 50,
+      "steps_per_seed": 28,
+      "total_steps": 1400,
+      "second_oath_seeds": 25,
+      "node_growth": 0,
+      "failures": [],
+      "record": "fuzz-50-seeds-ru.json",
+      "record_sha256": "4003376c4414c908bb3d878bd45321a72cf0884320a72e7f97890135e8600a1e"
+    },
+    "en": {
+      "result": "PASS",
+      "seeds": 50,
+      "steps_per_seed": 28,
+      "total_steps": 1400,
+      "second_oath_seeds": 25,
+      "node_growth": 0,
+      "failures": [],
+      "record": "fuzz-50-seeds-en.json",
+      "record_sha256": "4003376c4414c908bb3d878bd45321a72cf0884320a72e7f97890135e8600a1e"
+    }
+  },
+  "scope": "Fifty seeded mechanics cycles per locale, 28 steps each, with save/load identity assertions and Second Oath laps in 25 of the 50 seeds. These are seeded mechanics cycles, not fifty full campaign playthroughs. The two complete sixty-objective campaign routes are separate suite cases recorded in suites.json.",
+  "leak_policy": "The seeded-fuzz case fails on any new assertion failure and on node growth across the run."
+}

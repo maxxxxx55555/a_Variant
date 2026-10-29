@@ -1,0 +1,254 @@
+{
+  "schema": 1,
+  "title": "Marchland Oaths 1.6.0 rendered gallery review",
+  "result": "PASS",
+  "source_commit": "f1d40cecb222c3ffa2a78d69d82b7f57c3f02ae4",
+  "acceptance_document": "docs/GALLERY_ACCEPTANCE_1.6.0.md",
+  "acceptance_document_sha256": "1ea8574a3179a3c46f59c442e85d6702da6d24d13e9265124f76e89a153813ef",
+  "reviewed_frames": 56,
+  "reviewed_locales": [
+    "en",
+    "ru"
+  ],
+  "reviewed_resolutions": [
+    "1280x720",
+    "1920x1080"
+  ],
+  "screens_per_locale_and_viewport": 14,
+  "method": "Every frame inspected at native size in both locales and both viewports after the final capture; automated design-token, icon-provenance and copy contracts run separately.",
+  "defects_found_and_fixed_before_acceptance": [
+    "Codex tabs showed raw node names instead of localized category titles",
+    "Codex close button had an icon and no readable label",
+    "Settlement happiness and health used the danger fill at healthy values",
+    "Diplomacy faction list clipped two of the eight factions"
+  ],
+  "open_issues": [],
+  "staged_state": "Statistics rows, the credits NG+ banner, the tier 4 settlement and the finale composition are labelled QA fixtures in the acceptance document; they are not presented as a fresh save.",
+  "scope": "Readable controls, no clipping or missing glyphs in the reviewed frames. Stylized presentation; no photorealism or AAA claim. Human playtesting stays an owner check in HANDOFF.md.",
+  "frames": {
+    "en-1280x720-codex.png": {
+      "sha256": "0af38fe4bf9463b86e4172f87f28c664241cefc700cbec81c1d0f007a448e5ba",
+      "bytes": 58013
+    },
+    "en-1280x720-credits.png": {
+      "sha256": "939c677f7da9a938725e2224a7fe7bf0fb6e1a183e8263515a8c44d65676be20",
+      "bytes": 906772
+    },
+    "en-1280x720-diplomacy.png": {
+      "sha256": "fc8890ba78b3754ce7055dea14e1883735dd4778cd66dfb345ec87e12eadd135",
+      "bytes": 85559
+    },
+    "en-1280x720-ending-staged.png": {
+      "sha256": "cb96a99c06ca9abb3152cde46c5c21415a9a3dd86e8c122963ca69482360b241",
+      "bytes": 1402446
+    },
+    "en-1280x720-homestead.png": {
+      "sha256": "b0ebf9c2aa10447e4e036fd4c008b3e0f78717838bab3ab17f18f747fb9daaa2",
+      "bytes": 1322097
+    },
+    "en-1280x720-inventory.png": {
+      "sha256": "4bc2770d663ee15822a3c815808dd9b1eaa39783ae8e5e529dfc0eefd948aec3",
+      "bytes": 523896
+    },
+    "en-1280x720-loading.png": {
+      "sha256": "6791a5baa13caa11e505d3448e68ed381b9319e1e4ea354300f7af7fe911c197",
+      "bytes": 20535
+    },
+    "en-1280x720-settings-reduced.png": {
+      "sha256": "b097cd5a62bfa9bf4cdf731f78389a465d8ee866ca31fd8802ad600811673fd0",
+      "bytes": 535580
+    },
+    "en-1280x720-settlement.png": {
+      "sha256": "3a2839e22c9123db32a4ff02ade415b7ca30d094f2fc44141bfdce8710382d7d",
+      "bytes": 533369
+    },
+    "en-1280x720-stats.png": {
+      "sha256": "f0306aee72532a68c603494f88bef5a86875dfd2e6a5741766dbba93fcf735fc",
+      "bytes": 57420
+    },
+    "en-1280x720-title.png": {
+      "sha256": "74a85ac1f04b1a2f14379881502df313556c88b03ae64a3629cd3c1d33e3cf37",
+      "bytes": 1651949
+    },
+    "en-1280x720-trade.png": {
+      "sha256": "e2d62acdac0f0841cc06db5b71a18d70f0d10d01f55d287daf86cae4c98796b0",
+      "bytes": 33593
+    },
+    "en-1280x720-village-rain.png": {
+      "sha256": "4b2a659a8015b5b34df624593215ea8b41fb522bbd6d9b4567bd01d1ee57497d",
+      "bytes": 1222695
+    },
+    "en-1280x720-world-map.png": {
+      "sha256": "9d034d2ece78612943cfcb75ed31e2923ea050a7262dacf6492899c64fc9e4d3",
+      "bytes": 91189
+    },
+    "en-1920x1080-codex.png": {
+      "sha256": "7847cb478f7004a43c3208656f2dad5fa18f157ed434e5dae0ae2ac25af9c4fa",
+      "bytes": 101237
+    },
+    "en-1920x1080-credits.png": {
+      "sha256": "af2f0d3a62c350f7f19302906a8e2012f7a1c3d72a09e81cf3b6a8cfb4670088",
+      "bytes": 1540839
+    },
+    "en-1920x1080-diplomacy.png": {
+      "sha256": "2cab3a1abe2e24f7c6f29644ab78970c6d8d0fea12be1d0aab84f4fa6de9ddd5",
+      "bytes": 153138
+    },
+    "en-1920x1080-ending-staged.png": {
+      "sha256": "9a90c5184eea738bfd9e2e7d91793d177bd2dcadc8560cfca47cf1e54a9307ee",
+      "bytes": 2444641
+    },
+    "en-1920x1080-homestead.png": {
+      "sha256": "a081ad642490474dd9cb27aab18c65f8aca28563a18036b63cf03cadcd769d3c",
+      "bytes": 2817103
+    },
+    "en-1920x1080-inventory.png": {
+      "sha256": "752e2fb1c72af43392370060a029956895869a05e61dca4fa4631b060bbaf63b",
+      "bytes": 1098637
+    },
+    "en-1920x1080-loading.png": {
+      "sha256": "116113303e0fc9969757d9a43e21a4a5b78f95747148dc14656b1946e8fcc676",
+      "bytes": 34348
+    },
+    "en-1920x1080-settings-reduced.png": {
+      "sha256": "00ffc5328e226475e38ab6b2220454903aa12beeb9809e05a906810db9a27868",
+      "bytes": 1119551
+    },
+    "en-1920x1080-settlement.png": {
+      "sha256": "0f0e9a24f36964790a90420e10faeb9c717944a14d974b884a66e2e37a114587",
+      "bytes": 1084005
+    },
+    "en-1920x1080-stats.png": {
+      "sha256": "4a66d07345c60154e608fb6c51785d8ec2d9f2700b432e9570eb5097cc9b9c36",
+      "bytes": 94123
+    },
+    "en-1920x1080-title.png": {
+      "sha256": "9418702ed97cf9b7ffc150f8fbcd63275573946547d87c5dc52baa7e3580e7a8",
+      "bytes": 2779240
+    },
+    "en-1920x1080-trade.png": {
+      "sha256": "b02c8535d77f744be03476f660cb8697333eaf6f444f9a01512eed0fb12dbaa5",
+      "bytes": 56936
+    },
+    "en-1920x1080-village-rain.png": {
+      "sha256": "7209d0a1d3cad4e29ce4c2463f7da7b6d18a90ce7cbd431b813e5a0be3d660d0",
+      "bytes": 2558025
+    },
+    "en-1920x1080-world-map.png": {
+      "sha256": "620124681d21be4784dc755d19c8ac5d6afb68c5d1a53fedc8c9c329c027bceb",
+      "bytes": 161593
+    },
+    "ru-1280x720-codex.png": {
+      "sha256": "d01a7d9189d3cc39d0ca989f2258e1820138861550fff899beabab3bd3013776",
+      "bytes": 61079
+    },
+    "ru-1280x720-credits.png": {
+      "sha256": "056af012f45d9f9c999881aba754a7e93b2d51047c170eec68e6172595268bcf",
+      "bytes": 906463
+    },
+    "ru-1280x720-diplomacy.png": {
+      "sha256": "7fd5266968d17b09ca031b630f69a70e3dfc0f39d93a0c5801079d706897bcfe",
+      "bytes": 91282
+    },
+    "ru-1280x720-ending-staged.png": {
+      "sha256": "c3dce5b8d2505e6de7d71708671e3b314a3e724da69bff6cae3edff57d29a806",
+      "bytes": 1400817
+    },
+    "ru-1280x720-homestead.png": {
+      "sha256": "d691eff614a632122510bda8a00984fd1a00bbd490a20570e352e5f34d6adb46",
+      "bytes": 1315687
+    },
+    "ru-1280x720-inventory.png": {
+      "sha256": "e3d307315d7cadb907fdd75f489e3feaa4925bd09ab350b018483f0508a84323",
+      "bytes": 524844
+    },
+    "ru-1280x720-loading.png": {
+      "sha256": "5215aae478fbb600f210b397cc3d431961c8b7fb30241bf58181e3903692b937",
+      "bytes": 20666
+    },
+    "ru-1280x720-settings-reduced.png": {
+      "sha256": "58d3b9b05ae3a47e868479b197cefeb812041084bca831639e13b0447b26a034",
+      "bytes": 536432
+    },
+    "ru-1280x720-settlement.png": {
+      "sha256": "f309345c93b3a309a017c181e99d0851daf8351c8720bf5519c8fef709602773",
+      "bytes": 532609
+    },
+    "ru-1280x720-stats.png": {
+      "sha256": "a4605e7dc120e69d26f6cb0f0bcf4e36e313c29ce751f31cb8f6a2c7b93a055a",
+      "bytes": 59988
+    },
+    "ru-1280x720-title.png": {
+      "sha256": "f6168f890cc18419477e75621a4b1037aa09fb31f5c31c41411bfbedd6275a33",
+      "bytes": 1619428
+    },
+    "ru-1280x720-trade.png": {
+      "sha256": "53b93ca9f59df2e41771f877ed535e04078250ecf6d3304aab74143ced77fc73",
+      "bytes": 36069
+    },
+    "ru-1280x720-village-rain.png": {
+      "sha256": "2884f96672c2a1d31a6f62984204c3e0ceaf4a984307e1a04bf267dc7d3962c6",
+      "bytes": 1223394
+    },
+    "ru-1280x720-world-map.png": {
+      "sha256": "e34bce77663b543a18562f1bd10796b1c7260e8e34eaad7249041d7145d17127",
+      "bytes": 103278
+    },
+    "ru-1920x1080-codex.png": {
+      "sha256": "06bde7ceb74ad1ed55a64d64a3177ffdac73b783804944b3d6a7412faa8242dd",
+      "bytes": 106101
+    },
+    "ru-1920x1080-credits.png": {
+      "sha256": "4b8d6e90b251afbe67cd9570312992b3fd507cc646d9c0d59ea2c1edbb03a7b8",
+      "bytes": 1536971
+    },
+    "ru-1920x1080-diplomacy.png": {
+      "sha256": "01fa14ffc23398c52fcbf3a565cc3dd9266e45513031f0128de56de58c518841",
+      "bytes": 162299
+    },
+    "ru-1920x1080-ending-staged.png": {
+      "sha256": "5b311433d2167032112f77d9a52cd37b4674425ca721c42366a26cd5887663a9",
+      "bytes": 2439191
+    },
+    "ru-1920x1080-homestead.png": {
+      "sha256": "3253d8f6294ffc00401f913276819841825edde311e0bb6e61c2769a6ff3c3db",
+      "bytes": 2814541
+    },
+    "ru-1920x1080-inventory.png": {
+      "sha256": "4c3f8515274075a36eecd4eed2287cb603b9f52c1915443cfe52f620f06668af",
+      "bytes": 1098616
+    },
+    "ru-1920x1080-loading.png": {
+      "sha256": "22ff72cc729d021033ce215bf19da0510643fbe40c12e0bb9f6cb9410ba11854",
+      "bytes": 34173
+    },
+    "ru-1920x1080-settings-reduced.png": {
+      "sha256": "c418b629c3a0888e3cbb8ea7d828364d22180accc97ded923d1e759c5d7eefbe",
+      "bytes": 1119105
+    },
+    "ru-1920x1080-settlement.png": {
+      "sha256": "07351b7d437f353732b6efa2e196f96ffb9e8fda541ec95b2820973b429ef53b",
+      "bytes": 1078096
+    },
+    "ru-1920x1080-stats.png": {
+      "sha256": "aacf5ae85c9384b851e0eadd224a1677a3befd8efab315116da50f9a2518b273",
+      "bytes": 96428
+    },
+    "ru-1920x1080-title.png": {
+      "sha256": "c90b19583ce5ab251859de0a4668722a3ec4e50ae83f9a13ebfea97828fdc178",
+      "bytes": 2730435
+    },
+    "ru-1920x1080-trade.png": {
+      "sha256": "3b2aeeb1d268d5001a1351ea5d617b9fa280062fc0c272c37a7091be0faded69",
+      "bytes": 60147
+    },
+    "ru-1920x1080-village-rain.png": {
+      "sha256": "e912bf4483b2fecb0177c2e9c90c4da7dbcd361972f8d2d420760fe67832a57d",
+      "bytes": 2555518
+    },
+    "ru-1920x1080-world-map.png": {
+      "sha256": "51f24cbf7703e8a7e89ca26a881998457ce96d69144592147d600ddf8bb6040e",
+      "bytes": 176020
+    }
+  }
+}

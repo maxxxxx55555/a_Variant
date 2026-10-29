@@ -1,0 +1,22 @@
+GIT ENVIRONMENT PASS: redirected directory/worktree/index/object store ignored; sentinel unchanged
+core.autocrlf=false tools/build_manifest.py: PASS
+CRITICAL DATA TRUST ANCHOR VERIFIED
+core.autocrlf=false tests/test_copy_contract.py: PASS
+COPY CONTRACT PASS: 806 keys, scene/model source audit and canonical copy
+core.autocrlf=false tests/test_audio_assets.py: PASS
+AUDIO ASSETS PASS: 42 WAV assets; levels, data, loop seams and envelopes verified
+core.autocrlf=false tests/test_critical_manifest.py: PASS
+CRITICAL DATA TRUST ANCHOR VERIFIED
+CRITICAL DATA TRUST ANCHOR GENERATED
+CRITICAL MANIFEST PASS: 10 files, stable generation, tamper and replacement rejection
+core.autocrlf=true tools/build_manifest.py: PASS
+CRITICAL DATA TRUST ANCHOR VERIFIED
+core.autocrlf=true tests/test_copy_contract.py: PASS
+COPY CONTRACT PASS: 806 keys, scene/model source audit and canonical copy
+core.autocrlf=true tests/test_audio_assets.py: PASS
+AUDIO ASSETS PASS: 42 WAV assets; levels, data, loop seams and envelopes verified
+core.autocrlf=true tests/test_critical_manifest.py: PASS
+CRITICAL DATA TRUST ANCHOR VERIFIED
+CRITICAL DATA TRUST ANCHOR GENERATED
+CRITICAL MANIFEST PASS: 10 files, stable generation, tamper and replacement rejection
+CHECKOUT BYTES PASS: plain Git LF/CRLF defaults, effective attributes, manifest/copy/audio and tamper contracts
