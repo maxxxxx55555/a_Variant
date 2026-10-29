@@ -1,0 +1,1333 @@
+{
+  "schema": 1,
+  "title": "Marchland Oaths 1.6.0 mechanics matrix execution evidence",
+  "engine": "4.7.stable.official.5b4e0cb0f",
+  "commit_under_test": "8011045af16e190c7f5e96d07ec008028d4dca3b",
+  "display_locales": [
+    "ru",
+    "en"
+  ],
+  "references": {
+    "tests/MechanicsRoute.gd": {
+      "source_sha256": "9775bfcbf836e7ec9cb19b93f3669ecd39edef12c9f03147399ba06be09e3d70",
+      "runs": {
+        "ru": [
+          {
+            "case": "test_mechanics_route-ru",
+            "entry": "tests/test_mechanics_route.gd",
+            "switches": [],
+            "locale": "ru",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 900,
+            "log": "logs/test_mechanics_route-ru",
+            "log_sha256": "3267f431146ec76e9d8b3a5a4c98b6f22cb2e2b90c5de18188b92c1dda494d1f",
+            "engine_errors": []
+          }
+        ],
+        "en": [
+          {
+            "case": "test_mechanics_route-en",
+            "entry": "tests/test_mechanics_route.gd",
+            "switches": [],
+            "locale": "en",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 900,
+            "log": "logs/test_mechanics_route-en",
+            "log_sha256": "edd4eae2b88e3814fc2310f542e7d9e0cebce496fdd2f98478a7d2b9205941af",
+            "engine_errors": []
+          }
+        ]
+      }
+    },
+    "tests/fuzz_seeded.gd": {
+      "source_sha256": "0e74b20569e06799edcd345f05162e96b116eea1fdb6cedc1443694ec4e0d632",
+      "runs": {
+        "ru": [
+          {
+            "case": "fuzz_seeded-ru",
+            "entry": "tests/fuzz_seeded.gd",
+            "switches": [],
+            "locale": "ru",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/fuzz_seeded-ru",
+            "log_sha256": "c596f91aab6c056fe8a96941cf151969d14a614bab3713a82941303c42e7278a",
+            "engine_errors": []
+          }
+        ],
+        "en": [
+          {
+            "case": "fuzz_seeded-en",
+            "entry": "tests/fuzz_seeded.gd",
+            "switches": [],
+            "locale": "en",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/fuzz_seeded-en",
+            "log_sha256": "c596f91aab6c056fe8a96941cf151969d14a614bab3713a82941303c42e7278a",
+            "engine_errors": []
+          }
+        ]
+      }
+    },
+    "tests/test_army_casualty_lifetime.gd": {
+      "source_sha256": "6d18ffe2432be0b9f7759963af656f6046ba89ee327a08986a5e60379fb9a4fb",
+      "runs": {
+        "ru": [
+          {
+            "case": "test_army_casualty_lifetime-ru",
+            "entry": "tests/test_army_casualty_lifetime.gd",
+            "switches": [],
+            "locale": "ru",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_army_casualty_lifetime-ru",
+            "log_sha256": "3d8c9c4220179b01fc69c6bdd63b44423fc9d8b65d7186837caefde506382ca0",
+            "engine_errors": []
+          }
+        ],
+        "en": [
+          {
+            "case": "test_army_casualty_lifetime-en",
+            "entry": "tests/test_army_casualty_lifetime.gd",
+            "switches": [],
+            "locale": "en",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_army_casualty_lifetime-en",
+            "log_sha256": "3d8c9c4220179b01fc69c6bdd63b44423fc9d8b65d7186837caefde506382ca0",
+            "engine_errors": []
+          }
+        ]
+      }
+    },
+    "tests/test_army_pause_regression.gd": {
+      "source_sha256": "06661793d6ab0fd0b1155e30bd13c655927d26a8986d3e5cbfd0a8ad367b07a9",
+      "runs": {
+        "ru": [
+          {
+            "case": "test_army_pause_regression-ru",
+            "entry": "tests/test_army_pause_regression.gd",
+            "switches": [],
+            "locale": "ru",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_army_pause_regression-ru",
+            "log_sha256": "57ffceb5c6abd91b4f1b440883f044aac67637944ac9f7344346e5bc0b5e3e89",
+            "engine_errors": []
+          }
+        ],
+        "en": [
+          {
+            "case": "test_army_pause_regression-en",
+            "entry": "tests/test_army_pause_regression.gd",
+            "switches": [],
+            "locale": "en",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_army_pause_regression-en",
+            "log_sha256": "57ffceb5c6abd91b4f1b440883f044aac67637944ac9f7344346e5bc0b5e3e89",
+            "engine_errors": []
+          }
+        ]
+      }
+    },
+    "tests/test_atomic_economy.gd": {
+      "source_sha256": "355f58a2a0db3ba866b84c9731e343fa93a4a1da1900ab6283150e3c2f7702a3",
+      "runs": {
+        "ru": [
+          {
+            "case": "test_atomic_economy-ru",
+            "entry": "tests/test_atomic_economy.gd",
+            "switches": [],
+            "locale": "ru",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_atomic_economy-ru",
+            "log_sha256": "c48e745009b9985b9b7dd6f2edd60b7c2d1b8244d19440b1a62a949094fe169a",
+            "engine_errors": []
+          }
+        ],
+        "en": [
+          {
+            "case": "test_atomic_economy-en",
+            "entry": "tests/test_atomic_economy.gd",
+            "switches": [],
+            "locale": "en",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_atomic_economy-en",
+            "log_sha256": "c48e745009b9985b9b7dd6f2edd60b7c2d1b8244d19440b1a62a949094fe169a",
+            "engine_errors": []
+          }
+        ]
+      }
+    },
+    "tests/test_audio.gd": {
+      "source_sha256": "4b7ea74b1f03186805ea876bfa218c5ddcc859c438b9d9162acadbf963eb548b",
+      "runs": {
+        "ru": [
+          {
+            "case": "test_audio-ru",
+            "entry": "tests/test_audio.gd",
+            "switches": [],
+            "locale": "ru",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_audio-ru",
+            "log_sha256": "4403372462e0c2bc7bfc3f3938ca705295c74df776da10bac1f70b40faa680ac",
+            "engine_errors": []
+          }
+        ],
+        "en": [
+          {
+            "case": "test_audio-en",
+            "entry": "tests/test_audio.gd",
+            "switches": [],
+            "locale": "en",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_audio-en",
+            "log_sha256": "4403372462e0c2bc7bfc3f3938ca705295c74df776da10bac1f70b40faa680ac",
+            "engine_errors": []
+          }
+        ]
+      }
+    },
+    "tests/test_campaign.gd": {
+      "source_sha256": "9aaeaabd8e1cedd79ff06e8155507819ae822aed6ae50b4f8dfc8dfd9f8da62e",
+      "runs": {
+        "ru": [
+          {
+            "case": "test_campaign-ru",
+            "entry": "tests/test_campaign.gd",
+            "switches": [],
+            "locale": "ru",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 600,
+            "log": "logs/test_campaign-ru",
+            "log_sha256": "75300ea2f2977ce2227f955c90a7b2f6fffeaf17fa452b8fca73f92963a05f9b",
+            "engine_errors": []
+          }
+        ],
+        "en": [
+          {
+            "case": "test_campaign-en",
+            "entry": "tests/test_campaign.gd",
+            "switches": [],
+            "locale": "en",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 600,
+            "log": "logs/test_campaign-en",
+            "log_sha256": "75300ea2f2977ce2227f955c90a7b2f6fffeaf17fa452b8fca73f92963a05f9b",
+            "engine_errors": []
+          }
+        ]
+      }
+    },
+    "tests/test_campaign_finale.gd": {
+      "source_sha256": "06be001d20459e15c2092b24afe8d852c4ce8f70c62813719f0a3967bb92f8e6",
+      "runs": {
+        "ru": [
+          {
+            "case": "test_campaign_finale-ru",
+            "entry": "tests/test_campaign_finale.gd",
+            "switches": [],
+            "locale": "ru",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_campaign_finale-ru",
+            "log_sha256": "44096718593d729c9ec5bdaaed314011880353b1a581d3281825b8dc27c777f2",
+            "engine_errors": []
+          }
+        ],
+        "en": [
+          {
+            "case": "test_campaign_finale-en",
+            "entry": "tests/test_campaign_finale.gd",
+            "switches": [],
+            "locale": "en",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_campaign_finale-en",
+            "log_sha256": "44096718593d729c9ec5bdaaed314011880353b1a581d3281825b8dc27c777f2",
+            "engine_errors": []
+          }
+        ]
+      }
+    },
+    "tests/test_civilians.gd": {
+      "source_sha256": "6155343b2d4d1eb0d31176b0e2d4e2c096bad55ae633fd8a75fd8f405b530b98",
+      "runs": {
+        "ru": [
+          {
+            "case": "test_civilians-ru",
+            "entry": "tests/test_civilians.gd",
+            "switches": [],
+            "locale": "ru",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_civilians-ru",
+            "log_sha256": "3b9169c1493340cae27796b263ac5583e7be32af8e45175b1ab8dd765d7bd73d",
+            "engine_errors": []
+          }
+        ],
+        "en": [
+          {
+            "case": "test_civilians-en",
+            "entry": "tests/test_civilians.gd",
+            "switches": [],
+            "locale": "en",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_civilians-en",
+            "log_sha256": "3b9169c1493340cae27796b263ac5583e7be32af8e45175b1ab8dd765d7bd73d",
+            "engine_errors": []
+          }
+        ]
+      }
+    },
+    "tests/test_codex.gd": {
+      "source_sha256": "b0c27897c18ee464998cad6823092b4d97776d893863561b6e69ac4a77cfea9f",
+      "runs": {
+        "ru": [
+          {
+            "case": "test_codex-ru",
+            "entry": "tests/test_codex.gd",
+            "switches": [],
+            "locale": "ru",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_codex-ru",
+            "log_sha256": "da9232d6f6aaf32432d77c218107d9a737bd16e7ebc50a2928697d2d2d546768",
+            "engine_errors": []
+          }
+        ],
+        "en": [
+          {
+            "case": "test_codex-en",
+            "entry": "tests/test_codex.gd",
+            "switches": [],
+            "locale": "en",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_codex-en",
+            "log_sha256": "da9232d6f6aaf32432d77c218107d9a737bd16e7ebc50a2928697d2d2d546768",
+            "engine_errors": []
+          }
+        ]
+      }
+    },
+    "tests/test_combat_cover.gd": {
+      "source_sha256": "9c1d2d91f3565055d3a30bb559321ba380be3ed1d597a28ac7e76415e2fdc711",
+      "runs": {
+        "ru": [
+          {
+            "case": "test_combat_cover-ru",
+            "entry": "tests/test_combat_cover.gd",
+            "switches": [],
+            "locale": "ru",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_combat_cover-ru",
+            "log_sha256": "e2f7342138e3ca0ebd028e1fec2311b3246c5b1b1bff9340f5a9f9e522e3a0fc",
+            "engine_errors": []
+          }
+        ],
+        "en": [
+          {
+            "case": "test_combat_cover-en",
+            "entry": "tests/test_combat_cover.gd",
+            "switches": [],
+            "locale": "en",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_combat_cover-en",
+            "log_sha256": "e2f7342138e3ca0ebd028e1fec2311b3246c5b1b1bff9340f5a9f9e522e3a0fc",
+            "engine_errors": []
+          }
+        ]
+      }
+    },
+    "tests/test_combat_feel.gd": {
+      "source_sha256": "17a14aa5d1977a1f1042922f7f51fa04a0dcdeab0099fadd91325b7273c2798b",
+      "runs": {
+        "ru": [
+          {
+            "case": "test_combat_feel-ru",
+            "entry": "tests/test_combat_feel.gd",
+            "switches": [],
+            "locale": "ru",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_combat_feel-ru",
+            "log_sha256": "40fffb9393cea874ca33cad408d34257e4585651e2e0ed85381b863d542b6ab9",
+            "engine_errors": []
+          }
+        ],
+        "en": [
+          {
+            "case": "test_combat_feel-en",
+            "entry": "tests/test_combat_feel.gd",
+            "switches": [],
+            "locale": "en",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_combat_feel-en",
+            "log_sha256": "40fffb9393cea874ca33cad408d34257e4585651e2e0ed85381b863d542b6ab9",
+            "engine_errors": []
+          }
+        ]
+      }
+    },
+    "tests/test_comfort_preferences.gd": {
+      "source_sha256": "2487753d2a13903888babd7bc19eb494dfcce36799c561a8d406ca504e79c198",
+      "runs": {
+        "ru": [
+          {
+            "case": "test_comfort_preferences-ru",
+            "entry": "tests/test_comfort_preferences.gd",
+            "switches": [],
+            "locale": "ru",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_comfort_preferences-ru",
+            "log_sha256": "f21a839a6a4dc6996bc878dcec5490b3dd1b4d2ef90c94a1a6d97d9d5ab0a241",
+            "engine_errors": []
+          }
+        ],
+        "en": [
+          {
+            "case": "test_comfort_preferences-en",
+            "entry": "tests/test_comfort_preferences.gd",
+            "switches": [],
+            "locale": "en",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_comfort_preferences-en",
+            "log_sha256": "f21a839a6a4dc6996bc878dcec5490b3dd1b4d2ef90c94a1a6d97d9d5ab0a241",
+            "engine_errors": []
+          }
+        ]
+      }
+    },
+    "tests/test_companion_scan_regression.gd": {
+      "source_sha256": "0d04a28c04f9209ace9c26bec5dbb1f63c32de9b35d674655a553ec7419bae9b",
+      "runs": {
+        "ru": [
+          {
+            "case": "test_companion_scan_regression-ru",
+            "entry": "tests/test_companion_scan_regression.gd",
+            "switches": [],
+            "locale": "ru",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_companion_scan_regression-ru",
+            "log_sha256": "7f3df5479af39d3f3b97b8f9795790256b3091d5da63aabb984250d6625d610c",
+            "engine_errors": []
+          }
+        ],
+        "en": [
+          {
+            "case": "test_companion_scan_regression-en",
+            "entry": "tests/test_companion_scan_regression.gd",
+            "switches": [],
+            "locale": "en",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_companion_scan_regression-en",
+            "log_sha256": "7f3df5479af39d3f3b97b8f9795790256b3091d5da63aabb984250d6625d610c",
+            "engine_errors": []
+          }
+        ]
+      }
+    },
+    "tests/test_context_audio.gd": {
+      "source_sha256": "44f634507234ba6338fa05c871a4c6d13a158ef20d1d986c20d2cf8d4d084f53",
+      "runs": {
+        "ru": [
+          {
+            "case": "test_context_audio-ru",
+            "entry": "tests/test_context_audio.gd",
+            "switches": [],
+            "locale": "ru",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_context_audio-ru",
+            "log_sha256": "261d4c460ea762524d7d749a94012510cdac729441e3cb2b2a0b79e1fd361b92",
+            "engine_errors": []
+          }
+        ],
+        "en": [
+          {
+            "case": "test_context_audio-en",
+            "entry": "tests/test_context_audio.gd",
+            "switches": [],
+            "locale": "en",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_context_audio-en",
+            "log_sha256": "261d4c460ea762524d7d749a94012510cdac729441e3cb2b2a0b79e1fd361b92",
+            "engine_errors": []
+          }
+        ]
+      }
+    },
+    "tests/test_design_pass.gd": {
+      "source_sha256": "6442dfffb625941b0ceda68921a11691dd3124dde98cca062ed4d7e96e4e033c",
+      "runs": {
+        "ru": [
+          {
+            "case": "test_design_pass-ru",
+            "entry": "tests/test_design_pass.gd",
+            "switches": [],
+            "locale": "ru",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_design_pass-ru",
+            "log_sha256": "4cc1c95a24905ea8494682ffd119ad86676834d8f970dae935b0e13eec26d9c3",
+            "engine_errors": []
+          }
+        ],
+        "en": [
+          {
+            "case": "test_design_pass-en",
+            "entry": "tests/test_design_pass.gd",
+            "switches": [],
+            "locale": "en",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_design_pass-en",
+            "log_sha256": "4cc1c95a24905ea8494682ffd119ad86676834d8f970dae935b0e13eec26d9c3",
+            "engine_errors": []
+          }
+        ]
+      }
+    },
+    "tests/test_design_system.py": {
+      "source_sha256": "7ab74a85796bfe02c2bc9849dfc6327d924fe767bed9a34a7bc4a1a8de3a5d13",
+      "runs": {
+        "ru": [
+          {
+            "case": "test_design_system-ru",
+            "entry": "tests/test_design_system.py",
+            "switches": [],
+            "locale": "ru",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_design_system-ru",
+            "log_sha256": "54caadbe34d261fea29e93b07665423416ee213b3bf76dd30fb8ce3c3df1f2f1",
+            "engine_errors": []
+          }
+        ],
+        "en": [
+          {
+            "case": "test_design_system-en",
+            "entry": "tests/test_design_system.py",
+            "switches": [],
+            "locale": "en",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_design_system-en",
+            "log_sha256": "54caadbe34d261fea29e93b07665423416ee213b3bf76dd30fb8ce3c3df1f2f1",
+            "engine_errors": []
+          }
+        ]
+      }
+    },
+    "tests/test_gameplay.gd": {
+      "source_sha256": "a7db3a0962e8736e7b304b74629db356575c03b1a5ef90b31bad2ac489dace30",
+      "runs": {
+        "ru": [
+          {
+            "case": "test_gameplay-ru",
+            "entry": "tests/test_gameplay.gd",
+            "switches": [],
+            "locale": "ru",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 600,
+            "log": "logs/test_gameplay-ru",
+            "log_sha256": "405bfbac93489e875fdaaf5dd9ac78bef3e4f8d89ca97354d5b2d93b22398f17",
+            "engine_errors": []
+          },
+          {
+            "case": "test_gameplay-playthrough-ru",
+            "entry": "tests/test_gameplay.gd",
+            "switches": [
+              "--",
+              "--playthrough"
+            ],
+            "locale": "ru",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 600,
+            "log": "logs/test_gameplay-playthrough-ru",
+            "log_sha256": "675cb422043e592bee67a9646e8bedcf62a2103e371ba925450178f5405d3307",
+            "engine_errors": []
+          }
+        ],
+        "en": [
+          {
+            "case": "test_gameplay-en",
+            "entry": "tests/test_gameplay.gd",
+            "switches": [],
+            "locale": "en",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 600,
+            "log": "logs/test_gameplay-en",
+            "log_sha256": "405bfbac93489e875fdaaf5dd9ac78bef3e4f8d89ca97354d5b2d93b22398f17",
+            "engine_errors": []
+          },
+          {
+            "case": "test_gameplay-playthrough-en",
+            "entry": "tests/test_gameplay.gd",
+            "switches": [
+              "--",
+              "--playthrough"
+            ],
+            "locale": "en",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 600,
+            "log": "logs/test_gameplay-playthrough-en",
+            "log_sha256": "675cb422043e592bee67a9646e8bedcf62a2103e371ba925450178f5405d3307",
+            "engine_errors": []
+          }
+        ]
+      }
+    },
+    "tests/test_invalid_combat_inputs.gd": {
+      "source_sha256": "d7766206196d5d6c9d684528feeae43b9eeeffd2e96dcb0c2b4effef703f3362",
+      "runs": {
+        "ru": [
+          {
+            "case": "test_invalid_combat_inputs-ru",
+            "entry": "tests/test_invalid_combat_inputs.gd",
+            "switches": [],
+            "locale": "ru",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_invalid_combat_inputs-ru",
+            "log_sha256": "46389c9106b19a89f852e2f9b8c935806aae9c2bf10596ac9edce7c84683978a",
+            "engine_errors": []
+          }
+        ],
+        "en": [
+          {
+            "case": "test_invalid_combat_inputs-en",
+            "entry": "tests/test_invalid_combat_inputs.gd",
+            "switches": [],
+            "locale": "en",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_invalid_combat_inputs-en",
+            "log_sha256": "46389c9106b19a89f852e2f9b8c935806aae9c2bf10596ac9edce7c84683978a",
+            "engine_errors": []
+          }
+        ]
+      }
+    },
+    "tests/test_iron_death_reentry.gd": {
+      "source_sha256": "f04b9f30dd31071c136bf5df9a6e02d4665ede92c4f1788af21131050c534c1a",
+      "runs": {
+        "ru": [
+          {
+            "case": "test_iron_death_reentry-ru",
+            "entry": "tests/test_iron_death_reentry.gd",
+            "switches": [],
+            "locale": "ru",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_iron_death_reentry-ru",
+            "log_sha256": "d8a7413703c46d0e145382404b452c4bcdf19b51c78fd1ca9c2f8245adfbf8a0",
+            "engine_errors": []
+          }
+        ],
+        "en": [
+          {
+            "case": "test_iron_death_reentry-en",
+            "entry": "tests/test_iron_death_reentry.gd",
+            "switches": [],
+            "locale": "en",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_iron_death_reentry-en",
+            "log_sha256": "d8a7413703c46d0e145382404b452c4bcdf19b51c78fd1ca9c2f8245adfbf8a0",
+            "engine_errors": []
+          }
+        ]
+      }
+    },
+    "tests/test_localization.gd": {
+      "source_sha256": "d1c6ddb6bc426aa36a540539d2f783ec037e2c878ebeefc92333abb42bf0224c",
+      "runs": {
+        "ru": [
+          {
+            "case": "test_localization-ru",
+            "entry": "tests/test_localization.gd",
+            "switches": [],
+            "locale": "ru",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_localization-ru",
+            "log_sha256": "ebabf093096016b78f49d909381e23a0f792a2ca3073e379d75654c2bff8a2e1",
+            "engine_errors": []
+          }
+        ],
+        "en": [
+          {
+            "case": "test_localization-en",
+            "entry": "tests/test_localization.gd",
+            "switches": [],
+            "locale": "en",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_localization-en",
+            "log_sha256": "ebabf093096016b78f49d909381e23a0f792a2ca3073e379d75654c2bff8a2e1",
+            "engine_errors": []
+          }
+        ]
+      }
+    },
+    "tests/test_loot_feel.gd": {
+      "source_sha256": "97fd7f832c76f1fe725744876728f7bbb4f29f53eace895a0d77ce567ed8b338",
+      "runs": {
+        "ru": [
+          {
+            "case": "test_loot_feel-ru",
+            "entry": "tests/test_loot_feel.gd",
+            "switches": [],
+            "locale": "ru",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_loot_feel-ru",
+            "log_sha256": "352297876056820c9b4d54a378ad4e313f7d19939d88111bb6a5c8609efcefdc",
+            "engine_errors": []
+          }
+        ],
+        "en": [
+          {
+            "case": "test_loot_feel-en",
+            "entry": "tests/test_loot_feel.gd",
+            "switches": [],
+            "locale": "en",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_loot_feel-en",
+            "log_sha256": "352297876056820c9b4d54a378ad4e313f7d19939d88111bb6a5c8609efcefdc",
+            "engine_errors": []
+          }
+        ]
+      }
+    },
+    "tests/test_mechanics_inputs.gd": {
+      "source_sha256": "8b7f1803f565e4489569616c8d41e508c7072f3d0ec84c955edc54691700c508",
+      "runs": {
+        "ru": [
+          {
+            "case": "test_mechanics_inputs-ru",
+            "entry": "tests/test_mechanics_inputs.gd",
+            "switches": [],
+            "locale": "ru",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_mechanics_inputs-ru",
+            "log_sha256": "5ec1b8a440bf95592249243b8dbbda113317b2d65deb6f0ef060c58d49fb8474",
+            "engine_errors": []
+          }
+        ],
+        "en": [
+          {
+            "case": "test_mechanics_inputs-en",
+            "entry": "tests/test_mechanics_inputs.gd",
+            "switches": [],
+            "locale": "en",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_mechanics_inputs-en",
+            "log_sha256": "5ec1b8a440bf95592249243b8dbbda113317b2d65deb6f0ef060c58d49fb8474",
+            "engine_errors": []
+          }
+        ]
+      }
+    },
+    "tests/test_movement_comfort.gd": {
+      "source_sha256": "f8b0f188c5cd969c352eff4545523b2822756c1c1e509dd6ec875243a41bf130",
+      "runs": {
+        "ru": [
+          {
+            "case": "test_movement_comfort-ru",
+            "entry": "tests/test_movement_comfort.gd",
+            "switches": [],
+            "locale": "ru",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_movement_comfort-ru",
+            "log_sha256": "74fed52b4212b68ce684e708e7b0ae2d9cb4b08f14ec803012dd2c7d57af58f5",
+            "engine_errors": []
+          }
+        ],
+        "en": [
+          {
+            "case": "test_movement_comfort-en",
+            "entry": "tests/test_movement_comfort.gd",
+            "switches": [],
+            "locale": "en",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_movement_comfort-en",
+            "log_sha256": "74fed52b4212b68ce684e708e7b0ae2d9cb4b08f14ec803012dd2c7d57af58f5",
+            "engine_errors": []
+          }
+        ]
+      }
+    },
+    "tests/test_navigation_matrix.gd": {
+      "source_sha256": "bc5ac8774e5202a9b0fe56a3e0115e8fc9262317d0c9461bd03cb7abc20c943c",
+      "runs": {
+        "ru": [
+          {
+            "case": "test_navigation_matrix-ru",
+            "entry": "tests/test_navigation_matrix.gd",
+            "switches": [],
+            "locale": "ru",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 600,
+            "log": "logs/test_navigation_matrix-ru",
+            "log_sha256": "7b8caa85150771404bf99be91dbee2d86076f42f8184f23961b1bd8c902034d1",
+            "engine_errors": []
+          }
+        ],
+        "en": [
+          {
+            "case": "test_navigation_matrix-en",
+            "entry": "tests/test_navigation_matrix.gd",
+            "switches": [],
+            "locale": "en",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 600,
+            "log": "logs/test_navigation_matrix-en",
+            "log_sha256": "7b8caa85150771404bf99be91dbee2d86076f42f8184f23961b1bd8c902034d1",
+            "engine_errors": []
+          }
+        ]
+      }
+    },
+    "tests/test_oath_migration.gd": {
+      "source_sha256": "c46d30d8c9f8bb2730ffc2819d41ccedd85dac3979fa8bebba9f141ae3c540a2",
+      "runs": {
+        "ru": [
+          {
+            "case": "test_oath_migration-ru",
+            "entry": "tests/test_oath_migration.gd",
+            "switches": [],
+            "locale": "ru",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_oath_migration-ru",
+            "log_sha256": "0bc61d96e2cd79c59e9418f55a735e6b64e1bee3b6e943d86223a3977dd6113a",
+            "engine_errors": []
+          }
+        ],
+        "en": [
+          {
+            "case": "test_oath_migration-en",
+            "entry": "tests/test_oath_migration.gd",
+            "switches": [],
+            "locale": "en",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_oath_migration-en",
+            "log_sha256": "0bc61d96e2cd79c59e9418f55a735e6b64e1bee3b6e943d86223a3977dd6113a",
+            "engine_errors": []
+          }
+        ]
+      }
+    },
+    "tests/test_profile_contract.gd": {
+      "source_sha256": "7de34ac5facbb0188eafb563001058d26b70bf015c45ebfa3b9ecdb1eb783704",
+      "runs": {
+        "ru": [
+          {
+            "case": "test_profile_contract-ru",
+            "entry": "tests/test_profile_contract.gd",
+            "switches": [],
+            "locale": "ru",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_profile_contract-ru",
+            "log_sha256": "1978630b7226886ca0ebb579bfe967e48c73e64974e5915d6d58e81165b294f0",
+            "engine_errors": []
+          }
+        ],
+        "en": [
+          {
+            "case": "test_profile_contract-en",
+            "entry": "tests/test_profile_contract.gd",
+            "switches": [],
+            "locale": "en",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_profile_contract-en",
+            "log_sha256": "1978630b7226886ca0ebb579bfe967e48c73e64974e5915d6d58e81165b294f0",
+            "engine_errors": []
+          }
+        ]
+      }
+    },
+    "tests/test_quest_tracker.gd": {
+      "source_sha256": "749aa45250acd1a745a10b51a7d0b56efc8b2907391a9663bbb01391d6206527",
+      "runs": {
+        "ru": [
+          {
+            "case": "test_quest_tracker-ru",
+            "entry": "tests/test_quest_tracker.gd",
+            "switches": [],
+            "locale": "ru",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_quest_tracker-ru",
+            "log_sha256": "e2d4c3f55f1d0d7b56a3a74f13aa4ff8690421ac6cdd39b508a3c821942936cf",
+            "engine_errors": []
+          }
+        ],
+        "en": [
+          {
+            "case": "test_quest_tracker-en",
+            "entry": "tests/test_quest_tracker.gd",
+            "switches": [],
+            "locale": "en",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_quest_tracker-en",
+            "log_sha256": "e2d4c3f55f1d0d7b56a3a74f13aa4ff8690421ac6cdd39b508a3c821942936cf",
+            "engine_errors": []
+          }
+        ]
+      }
+    },
+    "tests/test_release_hardening.gd": {
+      "source_sha256": "ec887a86fe77f8143102acd7f84a86f60170751d02e4e75da89acc9f3c4092a7",
+      "runs": {
+        "ru": [
+          {
+            "case": "test_release_hardening-ru",
+            "entry": "tests/test_release_hardening.gd",
+            "switches": [],
+            "locale": "ru",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 900,
+            "log": "logs/test_release_hardening-ru",
+            "log_sha256": "21d0819b2d95234bda4272abcb9bfd8b64a8b024c3b7c79ff59efcd287e82680",
+            "engine_errors": []
+          }
+        ],
+        "en": [
+          {
+            "case": "test_release_hardening-en",
+            "entry": "tests/test_release_hardening.gd",
+            "switches": [],
+            "locale": "en",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 900,
+            "log": "logs/test_release_hardening-en",
+            "log_sha256": "21d0819b2d95234bda4272abcb9bfd8b64a8b024c3b7c79ff59efcd287e82680",
+            "engine_errors": []
+          }
+        ]
+      }
+    },
+    "tests/test_save_float_precision.gd": {
+      "source_sha256": "58d952479657ffd44a5ee189d9f53f76ba7a4e90c0747468d014aa332cb3b74e",
+      "runs": {
+        "ru": [
+          {
+            "case": "test_save_float_precision-ru",
+            "entry": "tests/test_save_float_precision.gd",
+            "switches": [],
+            "locale": "ru",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_save_float_precision-ru",
+            "log_sha256": "cd1fcd5d2090c0caa735f99521e033217a050d91a83aa53dde8c81c795839cfa",
+            "engine_errors": []
+          }
+        ],
+        "en": [
+          {
+            "case": "test_save_float_precision-en",
+            "entry": "tests/test_save_float_precision.gd",
+            "switches": [],
+            "locale": "en",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_save_float_precision-en",
+            "log_sha256": "cd1fcd5d2090c0caa735f99521e033217a050d91a83aa53dde8c81c795839cfa",
+            "engine_errors": []
+          }
+        ]
+      }
+    },
+    "tests/test_save_recovery.gd": {
+      "source_sha256": "759ede0adddb255308263538f71c8e618dd93ffbc2316511f9d5e16c04be0019",
+      "runs": {
+        "ru": [
+          {
+            "case": "test_save_recovery-ru",
+            "entry": "tests/test_save_recovery.gd",
+            "switches": [],
+            "locale": "ru",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_save_recovery-ru",
+            "log_sha256": "60d092b3246d9bb3903a6f5f516ceb10b8d9a2e643438cdc9c98f53b8b582f65",
+            "engine_errors": []
+          }
+        ],
+        "en": [
+          {
+            "case": "test_save_recovery-en",
+            "entry": "tests/test_save_recovery.gd",
+            "switches": [],
+            "locale": "en",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_save_recovery-en",
+            "log_sha256": "60d092b3246d9bb3903a6f5f516ceb10b8d9a2e643438cdc9c98f53b8b582f65",
+            "engine_errors": []
+          }
+        ]
+      }
+    },
+    "tests/test_second_oath.gd": {
+      "source_sha256": "62ef80f43b4f7ff7667b6bb9427555134865e9c540ec1d91008ead3417623bb1",
+      "runs": {
+        "ru": [
+          {
+            "case": "test_second_oath-ru",
+            "entry": "tests/test_second_oath.gd",
+            "switches": [],
+            "locale": "ru",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_second_oath-ru",
+            "log_sha256": "005e3a564b3818f9cca2fafe64446943d92c58ef7c60ffb2576b49a251af25c3",
+            "engine_errors": []
+          }
+        ],
+        "en": [
+          {
+            "case": "test_second_oath-en",
+            "entry": "tests/test_second_oath.gd",
+            "switches": [],
+            "locale": "en",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_second_oath-en",
+            "log_sha256": "005e3a564b3818f9cca2fafe64446943d92c58ef7c60ffb2576b49a251af25c3",
+            "engine_errors": []
+          }
+        ]
+      }
+    },
+    "tests/test_settings_bounds.gd": {
+      "source_sha256": "f662de03a71a0e44c8cdb28419d888631c3c6af39e3e3fc077a7a4772f072934",
+      "runs": {
+        "ru": [
+          {
+            "case": "test_settings_bounds-ru",
+            "entry": "tests/test_settings_bounds.gd",
+            "switches": [],
+            "locale": "ru",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_settings_bounds-ru",
+            "log_sha256": "3cd65e7dc996e9721540a9e78b26a37414bcc3ff8404cc228816061bf2cb5411",
+            "engine_errors": []
+          }
+        ],
+        "en": [
+          {
+            "case": "test_settings_bounds-en",
+            "entry": "tests/test_settings_bounds.gd",
+            "switches": [],
+            "locale": "en",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_settings_bounds-en",
+            "log_sha256": "3cd65e7dc996e9721540a9e78b26a37414bcc3ff8404cc228816061bf2cb5411",
+            "engine_errors": []
+          }
+        ]
+      }
+    },
+    "tests/test_settlement_evolution.gd": {
+      "source_sha256": "93da36f245bb368bb6ebd7457b1ebe9139e5cd07d13486ff3d3ba8eb9a6db615",
+      "runs": {
+        "ru": [
+          {
+            "case": "test_settlement_evolution-ru",
+            "entry": "tests/test_settlement_evolution.gd",
+            "switches": [],
+            "locale": "ru",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_settlement_evolution-ru",
+            "log_sha256": "e8b37819da7d77f724117dc137d357070d1385673228d731de47807dc1d93df3",
+            "engine_errors": []
+          }
+        ],
+        "en": [
+          {
+            "case": "test_settlement_evolution-en",
+            "entry": "tests/test_settlement_evolution.gd",
+            "switches": [],
+            "locale": "en",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_settlement_evolution-en",
+            "log_sha256": "e8b37819da7d77f724117dc137d357070d1385673228d731de47807dc1d93df3",
+            "engine_errors": []
+          }
+        ]
+      }
+    },
+    "tests/test_siege.gd": {
+      "source_sha256": "bb968907efdbe149419806f1d04afaf064756a2681c101633eb820eaa6c1d955",
+      "runs": {
+        "ru": [
+          {
+            "case": "test_siege-ru",
+            "entry": "tests/test_siege.gd",
+            "switches": [],
+            "locale": "ru",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_siege-ru",
+            "log_sha256": "39d44d8605e2dc24eca5cc93a6c25b50a64e4cac4100035505a8743e45fca8d7",
+            "engine_errors": []
+          }
+        ],
+        "en": [
+          {
+            "case": "test_siege-en",
+            "entry": "tests/test_siege.gd",
+            "switches": [],
+            "locale": "en",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_siege-en",
+            "log_sha256": "39d44d8605e2dc24eca5cc93a6c25b50a64e4cac4100035505a8743e45fca8d7",
+            "engine_errors": []
+          }
+        ]
+      }
+    },
+    "tests/test_stats.gd": {
+      "source_sha256": "5791db51ca3370f09edccb9ec232d0b117d1647fb5387f9c79f86ffce447cdcc",
+      "runs": {
+        "ru": [
+          {
+            "case": "test_stats-ru",
+            "entry": "tests/test_stats.gd",
+            "switches": [],
+            "locale": "ru",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_stats-ru",
+            "log_sha256": "9aa3a6b3e8b364841a83be5f17ce2cf507c4f82a48827061427027c3034e3ae5",
+            "engine_errors": []
+          }
+        ],
+        "en": [
+          {
+            "case": "test_stats-en",
+            "entry": "tests/test_stats.gd",
+            "switches": [],
+            "locale": "en",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_stats-en",
+            "log_sha256": "9aa3a6b3e8b364841a83be5f17ce2cf507c4f82a48827061427027c3034e3ae5",
+            "engine_errors": []
+          }
+        ]
+      }
+    },
+    "tests/test_strategy.gd": {
+      "source_sha256": "919a8aed96aa9e17319d6f1f8d8879e25e285f4c95417d3e50e21fc352666f41",
+      "runs": {
+        "ru": [
+          {
+            "case": "test_strategy-ru",
+            "entry": "tests/test_strategy.gd",
+            "switches": [],
+            "locale": "ru",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 600,
+            "log": "logs/test_strategy-ru",
+            "log_sha256": "cae579de0badc70661713831449a8b1c750eb133dfa7d2acf0a8a958d3ff0e4b",
+            "engine_errors": []
+          }
+        ],
+        "en": [
+          {
+            "case": "test_strategy-en",
+            "entry": "tests/test_strategy.gd",
+            "switches": [],
+            "locale": "en",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 600,
+            "log": "logs/test_strategy-en",
+            "log_sha256": "cae579de0badc70661713831449a8b1c750eb133dfa7d2acf0a8a958d3ff0e4b",
+            "engine_errors": []
+          }
+        ]
+      }
+    },
+    "tests/test_ui_audio_feedback.gd": {
+      "source_sha256": "3c15b5840a60c410f6d86c7c99ba178874d37bdeda5d3739c2a90c0d5748764c",
+      "runs": {
+        "ru": [
+          {
+            "case": "test_ui_audio_feedback-ru",
+            "entry": "tests/test_ui_audio_feedback.gd",
+            "switches": [],
+            "locale": "ru",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_ui_audio_feedback-ru",
+            "log_sha256": "4e8d310aa4c72ab66f4658f8868bdb6566d211eb2df67b96c1766c6051188053",
+            "engine_errors": []
+          }
+        ],
+        "en": [
+          {
+            "case": "test_ui_audio_feedback-en",
+            "entry": "tests/test_ui_audio_feedback.gd",
+            "switches": [],
+            "locale": "en",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_ui_audio_feedback-en",
+            "log_sha256": "4e8d310aa4c72ab66f4658f8868bdb6566d211eb2df67b96c1766c6051188053",
+            "engine_errors": []
+          }
+        ]
+      }
+    },
+    "tests/test_untrusted_exploration.gd": {
+      "source_sha256": "2daa6682f94aae52a249b9cd51b312ac2572d5bafb678bd7747f6a62966c0ba2",
+      "runs": {
+        "ru": [
+          {
+            "case": "test_untrusted_exploration-ru",
+            "entry": "tests/test_untrusted_exploration.gd",
+            "switches": [],
+            "locale": "ru",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_untrusted_exploration-ru",
+            "log_sha256": "4feae4e72945061508b6d5efb78787f3fda120aff811479c3740751a5de88090",
+            "engine_errors": []
+          }
+        ],
+        "en": [
+          {
+            "case": "test_untrusted_exploration-en",
+            "entry": "tests/test_untrusted_exploration.gd",
+            "switches": [],
+            "locale": "en",
+            "status": "PASS",
+            "exit_code": 0,
+            "timeout_s": 300,
+            "log": "logs/test_untrusted_exploration-en",
+            "log_sha256": "4feae4e72945061508b6d5efb78787f3fda120aff811479c3740751a5de88090",
+            "engine_errors": []
+          }
+        ]
+      }
+    }
+  },
+  "cells_total": 256,
+  "cells_without_passing_execution": [],
+  "failing_references": [],
+  "limits": "Headless Compatibility GL runs with the Dummy audio driver in throwaway save profiles. This records executable evidence for the mapped matrix cells; it does not replace a human play session, an exported build smoke test, or a published binary check."
+}
