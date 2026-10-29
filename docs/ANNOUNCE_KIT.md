@@ -1,64 +1,72 @@
-# Marchland Oaths 1.5.2 — announcement kit
+# Marchland Oaths 1.6.0 — announcement kit
 
-Prepared for the gated Windows release: [Marchland Oaths 1.5.2](https://github.com/maxxxxx55555/a_Variant/releases/tag/v1.5.2). Distribution and announcement require the published release receipt and the five owner checks in [HANDOFF](HANDOFF.md). Older rejected diagnostic images remain historical and must not be used.
+Prepared for the gated Windows release `v1.6.0`. Distribution and announcement require the published release receipt, a fresh `sha256sum -c` over the exact published assets, and the five owner checks in [HANDOFF](HANDOFF.md). The older rejected diagnostic frames in `press/` root stay labelled as they are and must not be used.
 
-## EN announcement — 220 words
+## EN announcement — 255 words
 
-Marchland Oaths v1.5.2 is available as a portable Windows x64 release. Begin a frontier journey, explore its roads and settlements, trade supplies, build a homestead, and guide a sixty-objective campaign through its accepted diplomatic and military routes. The illustrated title, readable controls, atlas, settings, and credits share the same restrained visual direction.
+Marchland Oaths v1.6.0, Second Oath & Polish, is available as a portable Windows x64 release. Complete a sixty-objective campaign, then bind a Second Oath: your roster, equipment, titles and chosen difficulty carry into a fresh eight-region map under one of four modifiers — the Oath of Iron, Poverty, Peace or the Wanderer. Enemies scale with every cycle, and the oath banner is shown in the finale, in the save-slot list and in the credits.
 
-Choose English or Russian and switch languages during play. The soundtrack follows the journey with four distinct compositions: Stone Path to Dusk, Hearths Among the Hills, Steel and Rain, and Standards at Dawn. Oaths Remembered and The Last Watch accompany the endings. Separate music, effects, interface, and master controls let you set a comfortable mix.
+A twenty-five-entry World Codex opens through real events rather than a counter. The quest tracker places the current objective on the HUD, on a compass, on the atlas and in the toast channel, in Russian or English.
 
-The game runs offline after extraction and needs no account or live service. Authenticated saves, bounded validation, backups, and critical-data checks help detect ordinary corruption and editing. Valid protected 1.4.0 and 1.5.0 profiles retain their installation keys and progress; back up the complete profile before upgrading. Iron-mode death remains terminal, while ordinary recovery retains its disclosed cost.
+Combat and loot gained a feel pass: brief hit-stop, hit flashes, colour-coded damage and a predictable block cost; rarity frames, a pitched pickup chime and a small pop. Settlements now visibly grow through four tiers and tint with the season, and a local statistics page records runs, regions, peak wealth and playtime per difficulty. Every counter stays inside your profile; nothing is reported anywhere.
 
-This is an unsigned portable Windows edition: normal Windows security warnings may appear. Android and store certification are outside this release. Automated tests cover defined scenarios on the available host; they do not promise every-device compatibility, universal absence of bugs, invulnerable protection, or AAA production scale. Review the included credits, licenses, and owner handoff before sharing.
+The game plays offline after extraction and needs no account or live service. Saves from 1.4.0 and 1.5.0 load with safe defaults and a backup before a one-way migration. This portable EXE is not Authenticode signed, so Windows may show a normal warning. Android and store certification are outside this release. Automated checks cover defined scenarios on the tested host; they are not a human playtest and do not claim AAA scale, the absence of all bugs, or unbreakable offline security.
 
-## RU announcement — 208 words
+## RU announcement — 224 words
 
-Marchland Oaths v1.5.2 вышла в виде переносимой игры для Windows x64. Отправляйтесь в путешествие по пограничью, исследуйте дороги и поселения, торгуйте припасами и обустраивайте хозяйство. Кампания включает шестьдесят целей и проверенные дипломатический и военный маршруты. Иллюстрированное меню, карта, настройки и титры оформлены в едином сдержанном стиле, а основные действия доступны через понятные кнопки.
+Marchland Oaths 1.6.0, «Второй обет и полировка», вышла как переносимая игра для Windows x64. Пройдя кампанию из шестидесяти целей, можно связать Второй обет: состав, снаряжение, титулы и выбранная сложность переходят в новую карту из восьми регионов под одной из четырёх клятв — железа, бедности, мира или странника. Враги усиливаются с каждым циклом, а знамя клятвы показывается в финале, в списке сохранений и в титрах.
 
-Игра поддерживает русский и английский языки с переключением во время прохождения. Четыре отдельные композиции сопровождают разные ситуации: Stone Path to Dusk, Hearths Among the Hills, Steel and Rain и Standards at Dawn. Для концовок предусмотрены Oaths Remembered и The Last Watch. Громкость музыки, эффектов, интерфейса и общего микса регулируется раздельно.
+Кодекс из двадцати пяти записей открывается реальными событиями, а не счётчиком. Трекер заданий выводит текущую цель на интерфейс, на компас, на карту и в канал уведомлений — на русском или английском.
 
-После распаковки можно играть без сети, аккаунта и внешнего сервиса. Аутентификация сохранений, проверка допустимых значений, резервные копии и контроль игровых данных помогают обнаруживать обычное повреждение и редактирование файлов. Корректные защищённые профили версий 1.4.0 и 1.5.0 сохраняют ключ установки и прогресс. Перед обновлением скопируйте всю папку профиля. Железный режим сохраняет окончательность смерти; обычное восстановление имеет указанную стоимость.
+Бой и добыча получили проход ощущений: короткий hit-stop, вспышки попаданий, цвет цифр урона и предсказуемая цена блока; рамка и свечение по редкости, звук подсъёма с высотой по рангу и небольшой «pop». Поселения заметно растут до четырёх ступеней и окрашиваются по сезону, а локальная статистика считает забеги, регионы, пик богатства и время игры по сложностям. Все счётчики остаются в профиле и никуда не отправляются.
 
-Переносимый EXE не подписан Authenticode, поэтому Windows может показать стандартное предупреждение. Android и сертификация магазинов в этот выпуск не входят. Автоматические проверки охватывают определённые сценарии на доступном компьютере; масштаб AAA, отсутствие любых ошибок, неуязвимость защиты и совместимость со всеми устройствами не обещаются. Лицензии, происхождение материалов и инструкция владельцу приложены.
+Игра работает офлайн после распаковки, без аккаунта и внешнего сервиса. Сохранения 1.4.0 и 1.5.0 загружаются с безопасными значениями по умолчанию и резервной копией перед односторонней миграцией. Переносимый EXE не подписан Authenticode, поэтому Windows покажет обычное предупреждение. Android и магазины в этот выпуск не входят. Автоматические проверки покрывают заданные сценарии на доступном компьютере; они не заменяют ручной прогон и не обещают масштаб AAA, отсутствие любых ошибок или неуязвимость офлайн-защиты.
 
 ## Features EN
 
-- Sixty-objective campaign with diplomatic and military routes.
-- Exploration, settlements, trade, crafting and homestead systems.
-- Live English/Russian switching and persistent language preference.
-- Four distinct musical moods plus victory and defeat cues.
-- Independent Master, Music, SFX and UI levels.
-- Five manual slots, autosave, difficulty selection and iron mode.
-- Authenticated saves and valid protected 1.4.0/1.5.0 profile compatibility.
+- Second Oath (New Game+): carries roster, gear, titles and difficulty into a new eight-region map.
+- Four oath modifiers — Iron, Poverty, Peace, Wanderer — with stated effects and a refusal explanation when one cannot be honoured.
+- Enemy strength scales with the cycle number; the oath banner persists into the finale, save list and credits.
+- Twenty-five-entry World Codex in four categories, unlocked by real events.
+- Quest tracker: HUD objective, compass direction, atlas marker and localized toasts, all in step with each other.
+- Combat feel: bounded hit-stop, hit flash, colour-coded damage numbers, readable block stamina; damage tables and hitboxes unchanged.
+- Loot feel: rarity frame, glow and pickup chime pitched by rank, small pop animation; inventory rows, slots and tooltips agree.
+- Visible settlement growth through four tiers from actually built levels, plus a seasonal landscape tint.
+- Local per-profile statistics: runs, victories, losses, regions, peak wealth, playtime and per-difficulty bests.
+- Live English/Russian switching across 806 catalog keys, with authenticated saves and backup/recovery.
 - Portable offline Windows x64 build with in-game credits and bundled provenance.
 
 ## Features RU
 
-- Кампания из шестидесяти целей с дипломатическим и военным маршрутами.
-- Исследование мира, поселения, торговля, ремесло и хозяйство.
-- Переключение русского и английского языков с сохранением выбора.
-- Четыре музыкальных настроения и отдельные сигналы победы и поражения.
-- Независимые уровни общего звука, музыки, эффектов и интерфейса.
-- Пять ручных слотов, автосохранение, выбор сложности и железный режим.
-- Аутентификация сохранений и совместимость корректных профилей 1.4.0/1.5.0.
-- Переносимая Windows x64 сборка без сети, с титрами и происхождением материалов.
+- Второй обет (New Game+): отряд, снаряжение, титулы и сложность переходят в новую карту из восьми регионов.
+- Четыре клятвы — железо, бедность, мир, странник — с явными эффектами и пояснением отказа, когда клятву нельзя соблюсти.
+- Враги усиливаются номером цикла; знамя клятвы сохраняется в финале, списке сохранений и титрах.
+- Кодекс из двадцати пяти записей в четырёх разделах, открываемых реальными событиями.
+- Трекер заданий: цель на интерфейсе, направление компаса, метка на карте и локализованные уведомления действуют согласованно.
+- Ощущение боя: ограниченный hit-stop, вспышка попадания, цвет цифр урона, понятная выносливость блока; таблицы урона и хитбоксы не изменены.
+- Ощущение добычи: рамка и свечение по редкости, звук подъёма с высотой по рангу, короткая анимация «pop»; строки, слоты и подсказки инвентаря согласованы.
+- Видный рост поселения до четырёх ступеней из реально построенных уровней и сезонная окраска ландшафта.
+- Локальная статистика профиля: забеги, победы, поражения, регионы, пик богатства, время игры и рекорды по сложностям.
+- Живое переключение русского и английского на 806 ключах каталога, аутентификация сохранений, резервные копии и восстановление.
+- Переносимая Windows x64 сборка без сети, с игровыми титрами и приложенным происхождением материалов.
 
 ## Screenshots
 
-- [01-en-gallery-title.png](press/v1.5.2/01-en-gallery-title.png) — Title and language selection.
-- [02-en-gallery-village-rain.png](press/v1.5.2/02-en-gallery-village-rain.png) — Actual village in rainy weather.
-- [03-ru-gallery-trade.png](press/v1.5.2/03-ru-gallery-trade.png) — Settlement decisions in Russian.
-- [04-ru-gallery-world-map.png](press/v1.5.2/04-ru-gallery-world-map.png) — Regional atlas in Russian.
-- [05-en-gallery-ending-staged.png](press/v1.5.2/05-en-gallery-ending-staged.png) — Staged diplomatic ending layout; not a complete-playthrough screenshot.
-- [06-ru-iron-death.png](press/v1.5.2/06-ru-iron-death.png) — Controlled permanent-death fixture; resume and load are disabled.
-- [07-en-gallery-credits.png](press/v1.5.2/07-en-gallery-credits.png) — Credits and licenses.
-- [08-ru-gallery-settings.png](press/v1.5.2/08-ru-gallery-settings.png) — Settings and independent audio controls.
+[press/v1.6.0](press/v1.6.0/CAPTIONS.md) is the release press set: eight actual rendered frames taken from the 56-frame acceptance gallery in [galleries/1.6.0](galleries/1.6.0), both locales and both release viewports. Three frames are explicitly staged fixtures (citadel-tier settlement, seeded statistics, scripted finale) and are labelled as such in `press/v1.6.0/manifest.json`.
+
+- [01-en-title.png](press/v1.6.0/01-en-title.png) — Title, language selection and authored menu icons.
+- [02-ru-homestead.png](press/v1.6.0/02-ru-homestead.png) — In-world HUD with the quest tracker at dusk (Russian).
+- [03-en-codex.png](press/v1.6.0/03-en-codex.png) — World Codex with localized categories and an opened entry.
+- [04-ru-settlement.png](press/v1.6.0/04-ru-settlement.png) — Settlement at citadel tier with semantic meters (Russian, staged).
+- [05-en-inventory.png](press/v1.6.0/05-en-inventory.png) — Inventory rarity colours, slot frames and equipment icons.
+- [06-ru-world-map.png](press/v1.6.0/06-ru-world-map.png) — Atlas with town, road and live objective markers (Russian).
+- [07-en-stats.png](press/v1.6.0/07-en-stats.png) — Local statistics per difficulty (staged profile).
+- [08-ru-ending-staged.png](press/v1.6.0/08-ru-ending-staged.png) — Staged finale with the Second Oath action (Russian).
 
 ## Requirements and credits
 
-Windows x64, a GPU/driver supporting the Godot 4.7 OpenGL Compatibility renderer, complete extraction, offline play. No CPU/RAM/VRAM minimum or broad hardware certification is claimed.
+Windows x64, a GPU/driver supporting the Godot 4.7 OpenGL Compatibility renderer, complete extraction, offline play. No CPU/RAM/VRAM minimum or broad hardware certification is claimed. Art, audio and typography provenance and license terms are listed in [../assets/CREDITS.md](../assets/CREDITS.md) and `assets/audio/*provenance*.json`; generated illustrations are disclosed and retouched, and the presentation is stylized indie art.
 
-Godot uses MIT and bundled third-party notices; fonts use SIL OFL. Licensed models, generated illustrations and Gemini/Lyria compositions retain their recorded provenance and terms. Generated music is not claimed to be CC0 or a human performance. Repository-synthesized effects have separate CC0 notices. Preserve all notices; see [asset credits](../assets/CREDITS.md), [soundtrack](../assets/audio/SOUNDTRACK.md) and [integrity scope](../SAVE-INTEGRITY.md).
+## Previous release
 
-Unsigned portable executable; Android and stores excluded. No AAA, universal zero-bug, unbreakable DRM or every-device claims.
+[Marchland Oaths 1.5.2](https://github.com/maxxxxx55555/a_Variant/releases/tag/v1.5.2) remains published and unchanged: ZIP `MarchlandOaths-Windows-1.5.2.zip`, SHA256 `9149f4c1c44cda9da19213d0e8e2c760beac02b1093eba567900138a95fe615b`, press set in [press/v1.5.2](press/v1.5.2/CAPTIONS.md). Its kit text was replaced here for the current edition; the release itself, its assets and its acceptance record are immutable history.

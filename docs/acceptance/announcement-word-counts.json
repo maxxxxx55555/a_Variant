@@ -1,4 +1,6 @@
 {
-  "en": 224,
-  "ru": 211
+  "release": "1.6.0",
+  "en": 255,
+  "ru": 224,
+  "measured_from": "docs/ANNOUNCE_KIT.md announcement paragraphs"
 }

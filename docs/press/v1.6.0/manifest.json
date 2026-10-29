@@ -1,0 +1,121 @@
+{
+  "result": "VISUALLY_REVIEWED",
+  "release": "1.6.0",
+  "captured_with": "tests/capture_gallery.gd against the shipping project",
+  "gallery_acceptance": "docs/GALLERY_ACCEPTANCE_1.6.0.md",
+  "full_gallery": "docs/galleries/1.6.0",
+  "images": [
+    {
+      "file": "01-en-title.png",
+      "source_gallery_file": "en-1920x1080-title.png",
+      "locale": "en",
+      "caption": "Title, language selection and authored menu icons",
+      "sha256": "9418702ed97cf9b7ffc150f8fbcd63275573946547d87c5dc52baa7e3580e7a8",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "source_commit": "d92b9cff3e33955ccb9e885d41c2242cb636852c",
+      "staged": false,
+      "publishable_after_gate_and_owner_acceptance": true
+    },
+    {
+      "file": "02-ru-homestead.png",
+      "source_gallery_file": "ru-1920x1080-homestead.png",
+      "locale": "ru",
+      "caption": "In-world HUD with the quest tracker over the homestead at dusk (Russian)",
+      "sha256": "3253d8f6294ffc00401f913276819841825edde311e0bb6e61c2769a6ff3c3db",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "source_commit": "d92b9cff3e33955ccb9e885d41c2242cb636852c",
+      "staged": false,
+      "publishable_after_gate_and_owner_acceptance": true
+    },
+    {
+      "file": "03-en-codex.png",
+      "source_gallery_file": "en-1920x1080-codex.png",
+      "locale": "en",
+      "caption": "World Codex with localized categories and an opened entry",
+      "sha256": "7847cb478f7004a43c3208656f2dad5fa18f157ed434e5dae0ae2ac25af9c4fa",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "source_commit": "d92b9cff3e33955ccb9e885d41c2242cb636852c",
+      "staged": false,
+      "publishable_after_gate_and_owner_acceptance": true
+    },
+    {
+      "file": "04-ru-settlement.png",
+      "source_gallery_file": "ru-1920x1080-settlement.png",
+      "locale": "ru",
+      "caption": "Settlement at citadel tier with semantic happiness and health meters (Russian)",
+      "sha256": "07351b7d437f353732b6efa2e196f96ffb9e8fda541ec95b2820973b429ef53b",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "source_commit": "d92b9cff3e33955ccb9e885d41c2242cb636852c",
+      "staged": true,
+      "publishable_after_gate_and_owner_acceptance": true
+    },
+    {
+      "file": "05-en-inventory.png",
+      "source_gallery_file": "en-1920x1080-inventory.png",
+      "locale": "en",
+      "caption": "Inventory with rarity colours, slot frames and equipment icons",
+      "sha256": "752e2fb1c72af43392370060a029956895869a05e61dca4fa4631b060bbaf63b",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "source_commit": "d92b9cff3e33955ccb9e885d41c2242cb636852c",
+      "staged": false,
+      "publishable_after_gate_and_owner_acceptance": true
+    },
+    {
+      "file": "06-ru-world-map.png",
+      "source_gallery_file": "ru-1920x1080-world-map.png",
+      "locale": "ru",
+      "caption": "Atlas with town, road and live objective markers (Russian)",
+      "sha256": "51f24cbf7703e8a7e89ca26a881998457ce96d69144592147d600ddf8bb6040e",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "source_commit": "d92b9cff3e33955ccb9e885d41c2242cb636852c",
+      "staged": false,
+      "publishable_after_gate_and_owner_acceptance": true
+    },
+    {
+      "file": "07-en-stats.png",
+      "source_gallery_file": "en-1920x1080-stats.png",
+      "locale": "en",
+      "caption": "Local statistics: runs, regions, peak wealth and per-difficulty bests",
+      "sha256": "4a66d07345c60154e608fb6c51785d8ec2d9f2700b432e9570eb5097cc9b9c36",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "source_commit": "d92b9cff3e33955ccb9e885d41c2242cb636852c",
+      "staged": true,
+      "publishable_after_gate_and_owner_acceptance": true
+    },
+    {
+      "file": "08-ru-ending-staged.png",
+      "source_gallery_file": "ru-1920x1080-ending-staged.png",
+      "locale": "ru",
+      "caption": "Staged finale composition showing the Second Oath action (Russian)",
+      "sha256": "5b311433d2167032112f77d9a52cd37b4674425ca721c42366a26cd5887663a9",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "source_commit": "d92b9cff3e33955ccb9e885d41c2242cb636852c",
+      "staged": true,
+      "publishable_after_gate_and_owner_acceptance": true
+    }
+  ]
+}

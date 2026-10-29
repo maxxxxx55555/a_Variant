@@ -26,6 +26,10 @@ def main():
         artifacts.mkdir(parents=True, exist_ok=True)
         environment = os.environ.copy()
         environment['GAME_AUDIO_MUTED'] = '1'
+        # The QA gate needs both the compiled private feature and this variable. A source run can never
+        # have the feature, so supplying the variable makes every case a live negative test of
+        # QARouter.authorized() instead of letting an unset variable look like a pass.
+        environment['GAME_QA'] = '1'
         environment['GAME_LANGUAGE'] = args.language
         for variable, folder in [('APPDATA', 'roaming'), ('LOCALAPPDATA', 'local'), ('XDG_DATA_HOME', 'data'), ('XDG_CONFIG_HOME', 'config'), ('XDG_CACHE_HOME', 'cache')]:
             path = profile / folder

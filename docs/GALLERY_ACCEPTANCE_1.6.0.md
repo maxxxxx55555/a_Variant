@@ -42,11 +42,12 @@ These fixtures live in a temporary QA profile and are discarded after capture.
 
 ## Review result
 
-The first capture pass exposed three real presentation defects, all fixed before the final set was accepted:
+The first capture pass exposed four real presentation defects, all fixed before the final set was accepted:
 
 1. Codex tabs displayed raw node names (`Category_history`) instead of localized category titles.
 2. The Codex close button had an icon and no readable label.
 3. Settlement happiness and health used the danger red fill even at healthy values; they now use semantic sage/brass/danger fills.
+4. The diplomacy faction list clipped two of the eight factions out of view; the list now owns its rows and the final frame shows all eight names.
 
 The final set was inspected at native size in both locales and both viewports. Text does not clip, the eight council factions are all visible, the Codex labels localize, the settlement meters read correctly, and the reduced-motion toggle is visibly enabled in `settings-reduced`. Automated checks cover the design tokens, icon provenance and copy rules separately; final human playtesting remains an owner check in `HANDOFF.md`.
 

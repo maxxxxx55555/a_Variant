@@ -21,4 +21,25 @@ for row in report['rows']:
 doc=(root/'docs/MECHANICS_MATRIX.md').read_text(encoding='utf-8')
 for rel in refs:assert '../'+rel in doc,rel
 assert 'Publication remains locked' in doc or report['coverage_status']=='EXECUTED_PASS'
-print('MECHANICS MAPPING PASS:',len(report['rows']),'mechanics,',len(report['rows'])*8,'cells;',report['coverage_status'])
+locales='n/a'
+if report['coverage_status']=='EXECUTED_PASS':
+ # An EXECUTED_PASS claim is only as good as the run that produced it, so the evidence file must
+ # exist, report a clean sweep, and still match the bytes of every source it says it executed.
+ pointer=report.get('execution_evidence','')
+ assert pointer and not pointer.startswith('..'),'EXECUTED_PASS needs a repository-relative evidence path'
+ evidence=root/pointer
+ assert evidence.is_file(),'EXECUTED_PASS names evidence that is not shipped: '+pointer
+ executed=json.loads(evidence.read_text(encoding='utf-8'))
+ assert executed.get('failing_references')==[] and executed.get('cells_without_passing_execution')==[],pointer
+ assert len(executed.get('display_locales',[]))>=2 and executed.get('references'),pointer
+ import hashlib
+ for rel,record in executed['references'].items():
+  source=root/rel
+  assert source.is_file(),rel
+  # Both sides hash LF-normalized bytes: the repository stores these sources with LF, while a Windows
+  # autocrlf checkout presents CRLF. Content changes still break the digest; line endings alone must not.
+  assert hashlib.sha256(source.read_bytes().replace(b'\r\n', b'\n')).hexdigest()==record['source_sha256'],\
+   'evidence is stale for '+rel+'; re-run tools/collect_mechanics_evidence.py'
+ assert executed['references'].keys()>=refs,pointer
+ locales=','.join(executed['display_locales'])
+print('MECHANICS MAPPING PASS:',len(report['rows']),'mechanics,',len(report['rows'])*8,'cells;',report['coverage_status'],'in',locales)

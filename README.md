@@ -8,7 +8,7 @@ Finishing a campaign now opens **the Second Oath**: roster, equipped gear, earne
 
 Save schema version 4 keeps the existing `user://` directory, five manual slots, autosave and iron rules; published 1.4.0 and 1.5.0 profiles load with safe defaults for the new oath fields, one-way and backed up. Checksummed v1–v3 saves remain accepted and v4 saves carry the per-installation HMAC.
 
-Verification: 806 RU/EN catalog keys, 105 shipping scripts clean under the strict warning gate, 83 test sources, 42 licensed WAV assets, and a mechanics matrix of 32 mechanics × 8 columns = 256 cells whose 381 references resolve to 39 executed sources in both locales. 50 seeded fuzz cycles assert save/load identity inside Second Oath laps, a 30-minute soak holds object counts flat, and the native verifier runs the victory and iron-death routes on the exported QA pack.
+Verification: 806 RU/EN catalog keys, 105 shipping scripts clean under the strict warning gate, 85 test sources, 42 licensed WAV assets, and a mechanics matrix of 32 mechanics × 8 columns = 256 cells whose 381 references resolve to 39 executed sources in both locales. 50 seeded fuzz cycles assert save/load identity inside Second Oath laps, a 30-minute soak holds object counts flat, and the native verifier runs the victory and iron-death routes on the exported QA pack.
 
 ## Current edition scope
 
@@ -37,9 +37,9 @@ Retained: live RU/EN presentation, four mood compositions and two musical finale
 
 Normal Exit, window close and guarded QA rejection now wait for actual audio playback disposal before terminating. Save failures retain Retry/Stay/Discard, repeated accepted dialog callbacks cannot write twice, and private verifier cleanup remains reusable. Source test drivers drain audio explicitly and the runner rejects resource-leak warnings.
 
-Coverage: 69 rendered Godot cases per locale;192 mechanics cells; actual campaign, save, integrity and UI routes, plus Python checkout/provenance/license/copy/export contracts. Fresh complete source/native/soak results and exact artifact hashes are recorded by the release gate and current acceptance certificate. Earlier release measurements are historical and do not establish acceptance of this patch.
+Coverage: 256 mechanics matrix cells, executed Godot cases per locale counted in the gated suite logs; actual campaign, save, integrity and UI routes, plus Python checkout/provenance/license/copy/export contracts. Fresh complete source/native/soak results and exact artifact hashes are recorded by the release gate and current acceptance certificate. Earlier release measurements are historical and do not establish acceptance of this patch.
 
-See [patch notes](docs/RELEASE_1.5.2.md), [acceptance certificate](docs/ACCEPTANCE_CERTIFICATE.md), [mechanics coverage](docs/MECHANICS_MATRIX.md), [save integrity](SAVE-INTEGRITY.md) and [the scoped promise inventory](docs/PROMISE_MATRIX.md). Portable Windows x64; Godot Compatibility/OpenGL-capable GPU; offline. The EXE is not Authenticode signed. Android artifacts are omitted. Finite automated tests do not replace owner play/listening checks or guarantee zero possible bugs, unbreakable offline security or AAA scale.
+See [patch notes](docs/RELEASE_1.6.0.md), [acceptance certificate](docs/ACCEPTANCE_CERTIFICATE.md), [mechanics coverage](docs/MECHANICS_MATRIX.md), [save integrity](SAVE-INTEGRITY.md) and [the scoped promise inventory](docs/PROMISE_MATRIX.md). Portable Windows x64; Godot Compatibility/OpenGL-capable GPU; offline. The EXE is not Authenticode signed. Android artifacts are omitted. Finite automated tests do not replace owner play/listening checks or guarantee zero possible bugs, unbreakable offline security or AAA scale.
 
 ---
 
@@ -92,7 +92,7 @@ python tools/export_release.py --godot /path/to/godot --output /fresh/staging/Ma
 python tests/run_tests.py --godot /path/to/godot --rendered --full-campaign --artifacts /path/to/logs
 ```
 
-The current source runner contains 69 Godot invocations per locale with --rendered, including import; --full-campaign adds two complete route cases (71 rendered total). Final executed counts are recorded in the gated release evidence. Python checks cover resources, export, copy/edition contracts, isolation, soundtrack and audio assets. These include46 core gameplay assertions,15 introductory playthrough checks, strategy, 687 RU/EN keys, sieges, civilians, cover, weapon models, triangle-exact cached terrain sampling, audio and saves. Complete diplomatic and military routes use actual movement, attacks, interactions and ordinary UI payments. The native verifier accepts `--military` for the conquest route. Normal difficulty is the full-route test baseline; other hardware and long unscripted play sessions require further independent QA.
+The current source runner contains 69 Godot invocations per locale with --rendered, including import; --full-campaign adds two complete route cases (71 rendered total). Final executed counts are recorded in the gated release evidence. Python checks cover resources, export, copy/edition contracts, isolation, soundtrack and audio assets. These include 46 core gameplay assertions, 15 introductory playthrough checks, strategy, 806 RU/EN keys, sieges, civilians, cover, weapon models, triangle-exact cached terrain sampling, audio and saves. Complete diplomatic and military routes use actual movement, attacks, interactions and ordinary UI payments. The native verifier accepts `--military` for the conquest route. Normal difficulty is the full-route test baseline; other hardware and long unscripted play sessions require further independent QA.
 
 Identical static assets share normalized meshes and preserve gameplay colliders. The 1.2 rainy village measured 5.07 seconds to load and 49.66 FPS over 180 rendered frames, with 337 draw calls at 1280×720 on this AMD integrated GPU. These are measurements from one machine.
 

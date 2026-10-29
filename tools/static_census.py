@@ -12,7 +12,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 TEXT_SUFFIXES = {'.gd', '.tscn', '.tres', '.csv', '.json', '.godot', '.cfg', '.md', '.py', '.yml'}
 ASSET_FOLDERS = ('assets', 'scenes', 'data')
-MARKERS = re.compile(r'\b(TODO|FIXME|XXX|HACK|LOREM\s+IPSUM)\b')
+# Bracketed so this rule does not match the pattern that declares it.
+MARKERS = re.compile(r'\b([T]ODO|[F]IXME|[X]{3}|[H]ACK|LOREM\s+IPSUM)\b')
 ENGINE_VIRTUAL = re.compile(r'^_(ready|process|physics_process|enter_tree|exit_tree|initialize|'
                            r'toast|input|unhandled_input|input_event|draw|setup|notification|'
                            r'get_configuration_warnings|validate|save|load|duplicate)\w*$')
@@ -21,7 +22,9 @@ FUNCTION = re.compile(r'^(?:@\w+\s+)*(static\s+)?func\s+(\*?\w+)\s*\(', re.M)
 
 def tracked() -> list[str]:
     result = subprocess.run(['git', 'ls-files', '-z'], cwd=ROOT, capture_output=True)
-    return sorted(path for path in result.stdout.decode().split('\0') if path)
+    # git lists the index, so a file deleted before staging still appears here. Counting it would both
+    # crash the corpus read and publish an inventory number the shipped tree cannot match.
+    return sorted(path for path in result.stdout.decode().split('\0') if path and (ROOT / path).exists())
 
 
 def corpus(files: list[str]) -> str:

@@ -37,6 +37,13 @@ def digest(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def source_digest(path: Path) -> str:
+    # Test sources carry no eol attribute, so a Windows autocrlf checkout hands us CRLF bytes for a
+    # blob the repository stores with LF. Hashing the raw working-copy bytes would call this evidence
+    # stale on any other checkout, so the digest pins the shipped line endings instead.
+    return hashlib.sha256(path.read_bytes().replace(b'\r\n', b'\n')).hexdigest()
+
+
 def referenced_paths(matrix: dict) -> list[str]:
     found = set()
     for row in matrix['rows']:
@@ -152,7 +159,7 @@ def main():
             per_locale[locale] = [run_case(options.godot, reference, mode, switches, locale, logs)
                                   for mode, switches in modes]
             print(reference, locale, *[record['status'] for record in per_locale[locale]], sep=' ')
-        executions[reference] = {'source_sha256': digest(ROOT / reference), 'runs': per_locale}
+        executions[reference] = {'source_sha256': source_digest(ROOT / reference), 'runs': per_locale}
     columns = matrix['columns']
     uncovered = []
     for row in matrix['rows']:

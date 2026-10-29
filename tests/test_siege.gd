@@ -1,4 +1,4 @@
-extends SceneTree
+extends "res://tests/AudioCleanTree.gd"
 
 var failures := 0
 
@@ -16,7 +16,7 @@ func run() -> void:
 	var siege: Node = root.get_node_or_null("SiegeSystem")
 	check(siege != null, "Sieges have a persistent simulation")
 	if not siege:
-		quit(1)
+		finish_test(1)
 		return
 	campaign.new_campaign(1, false)
 	var army: Node = root.get_node("ArmySystem")
@@ -59,4 +59,4 @@ func run() -> void:
 	siege._on_day_passed(2)
 	check(not siege.states.has(fid), "An unsupplied besieging army must lift its blockade")
 	print("SIEGE RESULT: ", "PASS" if failures == 0 else "FAIL", " failures=", failures)
-	quit(0 if failures == 0 else 1)
+	finish_test(0 if failures == 0 else 1)
