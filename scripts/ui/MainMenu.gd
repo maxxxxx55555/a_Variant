@@ -3,6 +3,7 @@ const TypeRefMarchCredits=preload("res://scripts/ui/MarchCredits.gd")
 const TypeRefStatsPanel=preload("res://scripts/ui/StatsPanel.gd")
 const TitleBackdropView=preload("res://scripts/ui/TitleBackdrop.gd")
 const MotionView=preload("res://scripts/ui/UIMotion.gd")
+const Chrome=preload("res://scripts/ui/MarchTheme.gd")
 
 var continue_button: Button
 var difficulty_choice: OptionButton
@@ -17,125 +18,21 @@ func _ready() -> void:
 	var backdrop:Control=TitleBackdropView.new()
 	backdrop.name="TitleBackdrop"
 	add_child(backdrop)
-	var shade:ColorRect= ColorRect.new()
-	shade.name="MenuShade"
-	shade.color = Color(0.055,0.075,0.09,0.80)
-	shade.anchor_right = 0.46
-	shade.anchor_bottom = 1.0
-	shade.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	add_child(shade)
+	add_child(_scrim())
 	var margin:MarginContainer= MarginContainer.new()
 	margin.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	margin.anchor_right = 0.54
-	margin.add_theme_constant_override("margin_left", 64)
-	margin.add_theme_constant_override("margin_right", 24)
-	margin.add_theme_constant_override("margin_top", 44)
-	margin.add_theme_constant_override("margin_bottom", 40)
+	margin.add_theme_constant_override("margin_left", 104)
+	margin.add_theme_constant_override("margin_right", 1156)
+	margin.add_theme_constant_override("margin_top", 84)
+	margin.add_theme_constant_override("margin_bottom", 56)
 	add_child(margin)
-	var rail:HBoxContainer= HBoxContainer.new()
-	margin.add_child(rail)
 	var column:VBoxContainer= VBoxContainer.new()
-	column.custom_minimum_size.x = 520
-	column.add_theme_constant_override("separation", 16)
-	rail.add_child(column)
-	var spacer:Control=Control.new()
-	spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	spacer.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	rail.add_child(spacer)
-	theme = preload("res://scripts/ui/MarchTheme.gd").create()
-	var title:Label= Label.new()
-	title.text = LocalizationManager.get_string("ui.title")
-	title.set_meta("locale_key","ui.title")
-	title.add_theme_font_size_override("font_size", 54)
-	title.add_theme_font_override("font", preload("res://scripts/ui/MarchTheme.gd").heading_font(700))
-	title.add_theme_color_override("font_color", Color("e8dcc3"))
-	column.add_child(title)
-	var subtitle:Label= Label.new()
-	subtitle.text = LocalizationManager.get_string("ui.preview")
-	subtitle.set_meta("locale_key","ui.preview")
-	subtitle.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	subtitle.add_theme_color_override("font_color", Color("91a0a7"))
-	column.add_child(subtitle)
-	var language_choice:OptionButton= OptionButton.new()
-	language_choice.name="LanguageChoice"
-	language_choice.auto_translate_mode=Node.AUTO_TRANSLATE_MODE_DISABLED
-	language_choice.add_item("Русский")
-	language_choice.add_item("English")
-	language_choice.selected = 0 if SettingsManager.language == "ru" else 1
-	column.add_child(language_choice)
-	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
-	@warning_ignore("return_value_discarded")
-	language_choice.item_selected.connect(func(index:int)->void:
-		SettingsManager.language = "ru" if index == 0 else "en"
-		SettingsManager.language_confirmed=true
-		SettingsManager.apply_settings()
-		SettingsManager.save_settings()
-		localize()
-	)
-	progression_label = Label.new()
-	progression_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	progression_label.add_theme_color_override("font_color", Color("C9A227"))
-	progression_label.add_theme_font_size_override("font_size", 20)
-	progression_label.hide()
-	column.add_child(progression_label)
-	var intro:Label= Label.new()
-	intro.text = LocalizationManager.get_string("ui.campaign_summary")
-	intro.tooltip_text=LocalizationManager.get_string("ui.campaign_intro")
-	intro.set_meta("locale_tooltip","ui.campaign_intro")
-	intro.set_meta("locale_key","ui.campaign_summary")
-	intro.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	intro.custom_minimum_size.y = 96
-	column.add_child(intro)
-	var slot_choice:OptionButton= OptionButton.new()
-	slot_choice.name="SlotChoice"
-	for index:int in 7:
-		slot_choice.add_item(LocalizationManager.get_string("ui.slot") + " " + str(index + 1) if index < 5 else LocalizationManager.get_string("ui.autosave" if index == 5 else "ui.iron_save"))
-	slot_choice.selected = SaveSystem.newest_slot()
-	if slot_choice.selected < 5: SaveSystem.selected_slot = slot_choice.selected
-	cached_save = SaveSystem.load_slot(slot_choice.selected)
-	column.add_child(slot_choice)
-	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
-	@warning_ignore("return_value_discarded")
-	slot_choice.item_selected.connect(func(index:int)->void:
-		if index < 5: SaveSystem.selected_slot = index
-		cached_save = SaveSystem.load_slot(index)
-		var campaign_data: Dictionary = saved_campaign()
-		continue_button.disabled = cached_save.is_empty() or not campaign_data.get("active", false) or campaign_data.get("iron_dead", false)
-		continue_button.tooltip_text=LocalizationManager.get_string("ui.no_campaign_save") if continue_button.disabled else ""
-		refresh_progression()
-	)
-	var continue_action:Callable = func()->void:
-		CampaignSystem.pending_load = cached_save
-		CampaignSystem.restore_state(saved_campaign())
-		MarchTransition.go_to.call_deferred("res://scenes/world/march.tscn")
-	continue_button = action(column, "ui.continue", continue_action, "continue")
-	var campaign: Dictionary = saved_campaign()
-	continue_button.disabled = cached_save.is_empty() or not campaign.get("active", false) or campaign.get("iron_dead", false)
-	difficulty_choice = OptionButton.new()
-	difficulty_choice.name="DifficultyChoice"
-	for id:String in ["story", "normal", "hard", "expert"]:
-		difficulty_choice.add_item(LocalizationManager.get_string("difficulty." + id))
-	difficulty_choice.selected = 1
-	column.add_child(difficulty_choice)
-	iron_choice = CheckBox.new()
-	iron_choice.text = LocalizationManager.get_string("ui.iron_mode")
-	iron_choice.set_meta("locale_key","ui.iron_mode")
-	column.add_child(iron_choice)
-	# The container owns this action button and its callback.
-	var campaign_action:Callable = func()->void:
-		SettingsManager.language_confirmed=true
-		SettingsManager.save_settings()
-		CampaignSystem.new_campaign(difficulty_choice.selected, iron_choice.button_pressed)
-		MarchTransition.go_to.call_deferred("res://scenes/world/march.tscn")
-	@warning_ignore("return_value_discarded")
-	action(column, "ui.new_campaign", campaign_action, "new_campaign")
-	var stats_button:Button=action(column,"ui.stats",open_stats,"stats")
-	stats_button.name="StatsButton"
-	var credits_button:Button=action(column,"ui.credits",open_credits,"credits")
-	credits_button.name="CreditsButton"
-	# The container owns this action button and its callback.
-	@warning_ignore("return_value_discarded")
-	action(column, "ui.exit", MarchTransition.quit_game, "exit")
+	column.add_theme_constant_override("separation", 0)
+	margin.add_child(column)
+	theme = Chrome.create()
+	_build_header(column)
+	_build_actions(column)
+	_build_setup(column)
 	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
 	@warning_ignore("return_value_discarded")
 	EventBus.language_changed.connect(func(_language:Variant)->void:localize())
@@ -150,12 +47,222 @@ func _ready() -> void:
 	@warning_ignore("return_value_discarded")
 	preload("res://scripts/security/QARouter.gd").request(self)
 
-func action(parent: Node, key: String, callback: Callable, icon_name: String = "") -> Button:
+# One cinematic veil carries the column; no hard panel edge over the painting.
+func _scrim() -> TextureRect:
+	var gradient:Gradient = Gradient.new()
+	# A full-width veil: the fade lives well inside the frame, so no edge can cut.
+	gradient.offsets = PackedFloat32Array([0.0, 0.3, 0.48, 0.64])
+	gradient.colors = PackedColorArray([
+		Color(Chrome.INK, 0.975),
+		Color(Chrome.INK, 0.96),
+		Color(Chrome.INK, 0.74),
+		Color(Chrome.INK, 0.0),
+	])
+	var texture:GradientTexture2D = GradientTexture2D.new()
+	texture.gradient = gradient
+	texture.width = 512
+	texture.height = 8
+	texture.fill = GradientTexture2D.FILL_LINEAR
+	texture.fill_from = Vector2(0, 0)
+	texture.fill_to = Vector2(1, 0)
+	var shade:TextureRect = TextureRect.new()
+	shade.name = "MenuShade"
+	shade.texture = texture
+	shade.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	shade.stretch_mode = TextureRect.STRETCH_SCALE
+	shade.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	shade.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	shade.offset_right = 0.0
+	return shade
+
+func _build_header(column: VBoxContainer) -> void:
+	var title:Label= Label.new()
+	title.text = LocalizationManager.get_string("ui.title")
+	title.set_meta("locale_key","ui.title")
+	title.add_theme_font_size_override("font_size", 64)
+	title.add_theme_font_override("font", Chrome.heading_font(700))
+	title.add_theme_color_override("font_color", Chrome.PARCHMENT)
+	column.add_child(title)
+	column.add_child(_spacer(16))
+	column.add_child(_hairline(240, Chrome.BRASS))
+	column.add_child(_spacer(20))
+	var subtitle:Label= Label.new()
+	subtitle.text = LocalizationManager.get_string("ui.preview")
+	subtitle.set_meta("locale_key","ui.preview")
+	subtitle.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	subtitle.custom_minimum_size.x = 620
+	subtitle.add_theme_font_size_override("font_size", 23)
+	subtitle.add_theme_color_override("font_color", Chrome.CHALK)
+	column.add_child(subtitle)
+	column.add_child(_spacer(10))
+	var intro:Label= Label.new()
+	intro.text = LocalizationManager.get_string("ui.campaign_summary")
+	intro.tooltip_text=LocalizationManager.get_string("ui.campaign_intro")
+	intro.set_meta("locale_tooltip","ui.campaign_intro")
+	intro.set_meta("locale_key","ui.campaign_summary")
+	intro.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	intro.custom_minimum_size.x = 620
+	intro.add_theme_font_size_override("font_size", 19)
+	intro.add_theme_color_override("font_color", Chrome.MIST)
+	column.add_child(intro)
+	progression_label = Label.new()
+	progression_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	progression_label.add_theme_color_override("font_color", Chrome.BRASS)
+	progression_label.add_theme_font_size_override("font_size", 20)
+	progression_label.hide()
+	column.add_child(progression_label)
+	column.add_child(_spacer(30))
+
+func _build_actions(column: VBoxContainer) -> void:
+	var continue_action:Callable = func()->void:
+		CampaignSystem.pending_load = cached_save
+		CampaignSystem.restore_state(saved_campaign())
+		MarchTransition.go_to.call_deferred("res://scenes/world/march.tscn")
+	continue_button = action(column, "ui.continue", continue_action, "continue")
+	cached_save = SaveSystem.load_slot(SaveSystem.newest_slot())
+	var campaign: Dictionary = saved_campaign()
+	continue_button.disabled = cached_save.is_empty() or not campaign.get("active", false) or campaign.get("iron_dead", false)
+	continue_button.tooltip_text=LocalizationManager.get_string("ui.no_campaign_save") if continue_button.disabled else ""
+	column.add_child(_spacer(10))
+	var campaign_action:Callable = func()->void:
+		SettingsManager.language_confirmed=true
+		SettingsManager.save_settings()
+		CampaignSystem.new_campaign(difficulty_choice.selected, iron_choice.button_pressed)
+		MarchTransition.go_to.call_deferred("res://scenes/world/march.tscn")
+	# The container owns this action button and its callback.
+	@warning_ignore("return_value_discarded")
+	action(column, "ui.new_campaign", campaign_action, "new_campaign", true)
+	column.add_child(_spacer(10))
+	var stats_button:Button=action(column,"ui.stats",open_stats,"stats")
+	stats_button.name="StatsButton"
+	var credits_button:Button=action(column,"ui.credits",open_credits,"credits")
+	credits_button.name="CreditsButton"
+	# The container owns this action button and its callback.
+	@warning_ignore("return_value_discarded")
+	action(column, "ui.exit", MarchTransition.quit_game, "exit")
+	column.add_child(_spacer(24))
+	column.add_child(_hairline(620, Chrome.EDGE))
+	column.add_child(_spacer(18))
+
+func _build_setup(column: VBoxContainer) -> void:
+	var language_choice:OptionButton= OptionButton.new()
+	language_choice.name="LanguageChoice"
+	language_choice.auto_translate_mode=Node.AUTO_TRANSLATE_MODE_DISABLED
+	language_choice.add_item("Русский")
+	language_choice.add_item("English")
+	language_choice.selected = 0 if SettingsManager.language == "ru" else 1
+	_setting_row(column, "ui.language", language_choice)
+	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
+	@warning_ignore("return_value_discarded")
+	language_choice.item_selected.connect(func(index:int)->void:
+		SettingsManager.language = "ru" if index == 0 else "en"
+		SettingsManager.language_confirmed=true
+		SettingsManager.apply_settings()
+		SettingsManager.save_settings()
+		localize()
+	)
+	var slot_choice:OptionButton= OptionButton.new()
+	slot_choice.name="SlotChoice"
+	for index:int in 7:
+		slot_choice.add_item(LocalizationManager.get_string("ui.slot") + " " + str(index + 1) if index < 5 else LocalizationManager.get_string("ui.autosave" if index == 5 else "ui.iron_save"))
+	slot_choice.selected = SaveSystem.newest_slot()
+	if slot_choice.selected < 5: SaveSystem.selected_slot = slot_choice.selected
+	cached_save = SaveSystem.load_slot(slot_choice.selected)
+	_setting_row(column, "ui.slot", slot_choice)
+	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
+	@warning_ignore("return_value_discarded")
+	slot_choice.item_selected.connect(func(index:int)->void:
+		if index < 5: SaveSystem.selected_slot = index
+		cached_save = SaveSystem.load_slot(index)
+		var campaign_data: Dictionary = saved_campaign()
+		continue_button.disabled = cached_save.is_empty() or not campaign_data.get("active", false) or campaign_data.get("iron_dead", false)
+		continue_button.tooltip_text=LocalizationManager.get_string("ui.no_campaign_save") if continue_button.disabled else ""
+		refresh_progression()
+	)
+	difficulty_choice = OptionButton.new()
+	difficulty_choice.name="DifficultyChoice"
+	for id:String in ["story", "normal", "hard", "expert"]:
+		difficulty_choice.add_item(LocalizationManager.get_string("difficulty." + id))
+	difficulty_choice.selected = 1
+	_setting_row(column, "ui.difficulty", difficulty_choice)
+	iron_choice = CheckBox.new()
+	iron_choice.text = LocalizationManager.get_string("ui.iron_mode")
+	iron_choice.set_meta("locale_key","ui.iron_mode")
+	iron_choice.add_theme_font_size_override("font_size", 19)
+	iron_choice.add_theme_color_override("font_color", Chrome.MIST)
+	column.add_child(_spacer(6))
+	column.add_child(iron_choice)
+
+# A settings ledger: quiet label left, control aligned to a shared column.
+func _setting_row(column: VBoxContainer, key: String, control: Control) -> void:
+	var row:HBoxContainer= HBoxContainer.new()
+	row.add_theme_constant_override("separation", 24)
+	var label:Label= Label.new()
+	label.text = LocalizationManager.get_string(key)
+	label.set_meta("locale_key", key)
+	label.custom_minimum_size.x = 190
+	label.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	label.add_theme_font_size_override("font_size", 20)
+	label.add_theme_color_override("font_color", Chrome.MIST)
+	row.add_child(label)
+	control.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	control.custom_minimum_size.y = 54
+	control.add_theme_font_size_override("font_size", 21)
+	row.add_child(control)
+	column.add_child(row)
+	column.add_child(_spacer(8))
+	column.add_child(_hairline(620, Chrome.EDGE))
+	column.add_child(_spacer(8))
+
+func _spacer(height: int) -> Control:
+	var gap:Control= Control.new()
+	gap.custom_minimum_size.y = height
+	gap.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	return gap
+
+func _hairline(width: int, color: Color) -> Control:
+	var row:HBoxContainer= HBoxContainer.new()
+	row.add_theme_constant_override("separation", 0)
+	var bar:ColorRect= ColorRect.new()
+	bar.color = color
+	bar.custom_minimum_size = Vector2(width, 1)
+	bar.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	bar.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	row.add_child(bar)
+	var filler:Control= Control.new()
+	filler.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	filler.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	row.add_child(filler)
+	return row
+
+func action(parent: Node, key: String, callback: Callable, icon_name: String = "", primary: bool = false) -> Button:
 	var control:Button= Button.new()
 	control.text = LocalizationManager.get_string(key)
 	control.set_meta("locale_key",key)
-	control.custom_minimum_size.y = 56
-	control.alignment = HORIZONTAL_ALIGNMENT_LEFT
+	control.custom_minimum_size.y = 58 if not primary else 64
+	control.alignment = HORIZONTAL_ALIGNMENT_LEFT if not primary else HORIZONTAL_ALIGNMENT_CENTER
+	control.add_theme_font_size_override("font_size", 24)
+	for state:String in ["normal","hover","pressed","disabled"]:
+		var prefix:String = "menu-row-" if not primary else "button-primary-"
+		var box:StyleBoxTexture = StyleBoxTexture.new()
+		box.texture = load("res://assets/ui/" + prefix + state + ".svg")
+		box.set_texture_margin_all(12)
+		box.content_margin_left = 26 if not primary else 30
+		box.content_margin_right = 20
+		box.content_margin_top = 16
+		box.content_margin_bottom = 16
+		control.add_theme_stylebox_override(state, box)
+	var focus:StyleBoxFlat = StyleBoxFlat.new()
+	focus.bg_color = Color.TRANSPARENT
+	focus.border_color = Chrome.BRASS
+	focus.set_border_width_all(2)
+	focus.set_corner_radius_all(6)
+	focus.set_expand_margin_all(1)
+	control.add_theme_stylebox_override("focus", focus)
+	if primary:
+		for color_name:String in ["font_color","font_hover_color","font_pressed_color"]:
+			control.add_theme_color_override(color_name, Chrome.INK)
+		control.add_theme_color_override("font_disabled_color", Chrome.MIST)
 	parent.add_child(control)
 	if not icon_name.is_empty():
 		preload("res://scripts/ui/IconSet.gd").apply(control,icon_name,24)
