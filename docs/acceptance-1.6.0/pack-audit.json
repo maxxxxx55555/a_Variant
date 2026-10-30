@@ -1,0 +1,145 @@
+{
+  "result": "PASS",
+  "source_role": "1.6.0-release-export",
+  "template": {
+    "path_kind": "private custom build, never published",
+    "sha256": "aef9b76ee672ba562c3b63b61e9ab35522e9f843242dd7079c134ad27916aea9",
+    "engine_source_commit": "5b4e0cb0fd279832bbdd69fed5354d4e5ad26f88",
+    "compiler": "llvm-mingw-20261020-ucrt-x86_64",
+    "official_template_sha256": "c42eb5d17f683eb8bcd52c19a9f36ebf811b1788623878d5276a7d9ffc09f95c",
+    "note": "Godot compiles SCRIPT_AES256_ENCRYPTION_KEY into the template; an official template carries no key and cannot mount an encrypted pack, which the probe below records."
+  },
+  "packs": {
+    "public": {
+      "result": "PASS",
+      "packs": [
+        {
+          "pack": "MarchlandOaths.pck",
+          "role": "public",
+          "result": "PASS",
+          "godot_version": "4.7.0",
+          "embedded_in_executable": false,
+          "directory_encrypted": true,
+          "all_files_encrypted": true,
+          "file_count": 1255,
+          "pack_bytes": 176808620,
+          "pack_sha256": "78582396d2c3333c38bea444b18da1f05da831c9e9655e4168f88c2c1f9f2166",
+          "verification_sources": 0,
+          "critical_payloads": [
+            {
+              "path": "assets/audio/catalog.json",
+              "bytes": 6545,
+              "sha256": "33baaa3b46fe2c5df09a3c55996a66ce5223d223f4a9d2df0f8e93e45a133623"
+            }
+          ],
+          "entry_count": 1255,
+          "critical_manifest_digests_checked": 10,
+          "critical_manifest_mismatches": [],
+          "every_critical_digest_matches_decrypted_payload": true
+        },
+        {
+          "pack": "MarchlandOaths.exe",
+          "role": "public",
+          "result": "PASS",
+          "godot_version": "4.7.0",
+          "embedded_in_executable": true,
+          "directory_encrypted": true,
+          "all_files_encrypted": true,
+          "file_count": 1255,
+          "pack_bytes": 248071864,
+          "pack_sha256": "41533c753b476427dc225a39e6b8945f275ca5128a2ef4553322b500a61d0b42",
+          "verification_sources": 0,
+          "critical_payloads": [
+            {
+              "path": "assets/audio/catalog.json",
+              "bytes": 6545,
+              "sha256": "33baaa3b46fe2c5df09a3c55996a66ce5223d223f4a9d2df0f8e93e45a133623"
+            }
+          ],
+          "entry_count": 1255,
+          "critical_manifest_digests_checked": 10,
+          "critical_manifest_mismatches": [],
+          "every_critical_digest_matches_decrypted_payload": true
+        }
+      ]
+    },
+    "qa": {
+      "result": "PASS",
+      "packs": [
+        {
+          "pack": "MarchlandOaths.pck",
+          "role": "qa",
+          "result": "PASS",
+          "godot_version": "4.7.0",
+          "embedded_in_executable": false,
+          "directory_encrypted": true,
+          "all_files_encrypted": true,
+          "file_count": 1259,
+          "pack_bytes": 176829404,
+          "pack_sha256": "922783cc42282e11764715f2a80370bec6f979fcc6fd9d8ef96d0b4bfc30534f",
+          "verification_sources": 4,
+          "critical_payloads": [
+            {
+              "path": "assets/audio/catalog.json",
+              "bytes": 6545,
+              "sha256": "33baaa3b46fe2c5df09a3c55996a66ce5223d223f4a9d2df0f8e93e45a133623"
+            }
+          ],
+          "entry_count": 1259,
+          "critical_manifest_digests_checked": 10,
+          "critical_manifest_mismatches": [],
+          "every_critical_digest_matches_decrypted_payload": true
+        },
+        {
+          "pack": "MarchlandOaths.exe",
+          "role": "qa",
+          "result": "PASS",
+          "godot_version": "4.7.0",
+          "embedded_in_executable": true,
+          "directory_encrypted": true,
+          "all_files_encrypted": true,
+          "file_count": 1259,
+          "pack_bytes": 248092648,
+          "pack_sha256": "3dd7548b4e76657c593817adc80c9d7eb6760cbd580174c1eae56a76cbe5cfc1",
+          "verification_sources": 4,
+          "critical_payloads": [
+            {
+              "path": "assets/audio/catalog.json",
+              "bytes": 6545,
+              "sha256": "33baaa3b46fe2c5df09a3c55996a66ce5223d223f4a9d2df0f8e93e45a133623"
+            }
+          ],
+          "entry_count": 1259,
+          "critical_manifest_digests_checked": 10,
+          "critical_manifest_mismatches": [],
+          "every_critical_digest_matches_decrypted_payload": true
+        }
+      ]
+    }
+  },
+  "stock_engine_mount_probe": {
+    "engine": "stock Godot 4.7.stable.official (compiled without any key)",
+    "pack": "MarchlandOaths.pck",
+    "command": [
+      "--headless",
+      "--main-pack",
+      "<pack>",
+      "--quit"
+    ],
+    "exit": 0,
+    "seconds": 0.797,
+    "mounted_the_encrypted_pack": false,
+    "result": "PASS",
+    "console_head": [
+      "ERROR: The MD5 sum of the decrypted file does not match the expected value. It could be that the file is corrupt, or that the provided decryption key is invalid.",
+      "   at: open_and_parse (core/io/file_access_encrypted.cpp:113)",
+      "ERROR: Can't open encrypted pack directory.",
+      "   at: try_open_pack (core/io/file_access_pack.cpp:348)",
+      "ERROR: Cannot open resource pack 'C:\\Users\\Maxsim\\Documents\\Qoder\\2026-10-29\\36d68a7b\\private_build\\exports\\public\\MarchlandOaths.pck'.",
+      "   at: _setup (core/config/project_settings.cpp:691)",
+      "Godot Engine v4.7.stable.official.5b4e0cb0f - https://godotengine.org",
+      ""
+    ],
+    "log_sha256": "c91ba623f135fb126ba0dab5c508aa542c26e738889e13bb975724b60176d446"
+  }
+}

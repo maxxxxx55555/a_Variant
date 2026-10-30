@@ -2,7 +2,7 @@
   "schema": 1,
   "title": "Marchland Oaths 1.6.0 rendered gallery review",
   "result": "PASS",
-  "source_commit": "f1d40cecb222c3ffa2a78d69d82b7f57c3f02ae4",
+  "source_commit": "9c0c145d8512cc9b667ea71cc36d33925a73e5ee",
   "acceptance_document": "docs/GALLERY_ACCEPTANCE_1.6.0.md",
   "acceptance_document_sha256": "1ea8574a3179a3c46f59c442e85d6702da6d24d13e9265124f76e89a153813ef",
   "reviewed_frames": 56,

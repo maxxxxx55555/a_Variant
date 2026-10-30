@@ -32,7 +32,7 @@ PROMISE MATRIX PASS: 3278 original entries, explicit scope and existing test ref
 MECHANICS MAPPING PASS: 32 mechanics, 256 cells; EXECUTED_PASS in ru,en
 .......
 ----------------------------------------------------------------------
-Ran 7 tests in 0.001s
+Ran 7 tests in 0.000s
 
 OK
 ORPHAN SIDECARS: 0 []

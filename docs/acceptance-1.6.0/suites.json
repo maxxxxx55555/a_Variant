@@ -2,7 +2,7 @@
   "schema": 1,
   "title": "Marchland Oaths 1.6.0 rendered full-campaign suites",
   "engine": "4.7.stable.official.5b4e0cb0f",
-  "source_commit": "5c40fac1d7aba3167241a798973acf1726cf77c4",
+  "source_commit": "9c0c145d8512cc9b667ea71cc36d33925a73e5ee",
   "command": "python tests/run_tests.py --godot <godot> --rendered --full-campaign --language <ru|en> --audio-driver Dummy --artifacts <folder>",
   "isolated_profile": "throwaway APPDATA/LOCALAPPDATA/XDG folders, GAME_AUDIO_MUTED=1, GAME_QA=1 (source builds must reject it), gl_compatibility rendering",
   "suites": {
@@ -12,7 +12,7 @@
       "passed": 82,
       "reported_pass_lines": 82,
       "per_case_logs_shipped": true,
-      "per_case_log_bytes": 31253,
+      "per_case_log_bytes": 31443,
       "console_log": "suite-ru-console.log",
       "cases": [
         {
@@ -83,16 +83,16 @@
           "case": "campaign-route-diplomatic",
           "status": "PASS",
           "log": "suite-ru/campaign-route-diplomatic.log",
-          "log_sha256": "c14f2baa65363ccf9a5ea3e3026a6d912cbbb15348850132eafd836afd9938db",
-          "console_sha256": "7ba60e90be843755c14f6b82b6f07be0f8fae879596a95207b44a091f53eb666",
+          "log_sha256": "d241170dbdded5ccc19e876f7904f38f6ec72b349e7a822553e1e11cbc53680f",
+          "console_sha256": "e8140d8519e8ddff4be3fdf380ace6348a7152112a09e48adca24648f228c230",
           "leak_lines": []
         },
         {
           "case": "campaign-route-military",
           "status": "PASS",
           "log": "suite-ru/campaign-route-military.log",
-          "log_sha256": "d2109887d0b45495fbca6e0df2af75e903685a8ee84666a45221dc0fb071a1d8",
-          "console_sha256": "6d9c8f09aa726c09508c2b720d41e4a0e57fface5200259eb3e8207225c7f4d0",
+          "log_sha256": "a18a1599b99b6d74f8c596b34f2b6b25c8e266919287d2df1289d7eec51d2541",
+          "console_sha256": "14176a45bbb96c691bb91571714094a0d6b911637ec9512d471e6c4f8931c8c6",
           "leak_lines": []
         },
         {
@@ -235,16 +235,16 @@
           "case": "identity",
           "status": "PASS",
           "log": "suite-ru/identity.log",
-          "log_sha256": "a0f96a772c46a695688695c46c91ec358b4435c671637da24127352d346709ac",
-          "console_sha256": "ad690195b46c652639fa0e8b79a06dd087e61109fccd5879ca67362c6e725f8a",
+          "log_sha256": "d2b664b41c1daf13161e2569c65c202e36a9f8dd8b30458e2fec86e2bc700645",
+          "console_sha256": "3aa91de056a8c4523c3e1da52c99f8c307eed4430abb58731024cd0ef6270053",
           "leak_lines": []
         },
         {
           "case": "import",
           "status": "PASS",
           "log": "suite-ru/import.log",
-          "log_sha256": "b60f94e5f8654601ed69f20de69db891cd3bdced1622e76ea32b7b46e36d8126",
-          "console_sha256": "27aa7dfa274308ace84fe673d2782ce9f4049578c12bcac1bfa4ffbc73a18292",
+          "log_sha256": "60ab46f1cb590d9c6c420d5e8bbaead6ea599fd299b90f71089ffe34796368a9",
+          "console_sha256": "00367a1e30127d478fd390477e79ee715a5dced5f00d8836478ef23fea3e5d83",
           "leak_lines": []
         },
         {
@@ -355,8 +355,8 @@
           "case": "mechanics-route",
           "status": "PASS",
           "log": "suite-ru/mechanics-route.log",
-          "log_sha256": "dac441d9319e98b296c390fd71133e2f49b4cee7d66179714f40a8d41a634a51",
-          "console_sha256": "01be10db13b833a640187a3b9d7ba69237fbcac64b3c4259d3049f0bc727182e",
+          "log_sha256": "21fb89b310605593717700951efb725ee373eccb6ea99201be2ad68951aea270",
+          "console_sha256": "a49e7f6e699c76c99d3da003a960f024533e88229ecff053f3c87fb719e76192",
           "leak_lines": []
         },
         {
@@ -435,8 +435,8 @@
           "case": "qa-audio-lifetime",
           "status": "PASS",
           "log": "suite-ru/qa-audio-lifetime.log",
-          "log_sha256": "d3fba1b4bbf224b98ad39a181e09e079111cbbcaf6ddb447d89a8f55cecfeed0",
-          "console_sha256": "c1f2480a3d278e7725d5d72f1420442e2ec50520a40f51fe3ca3bddf835fb02c",
+          "log_sha256": "f5251c7b75d81b8c70df7abedba80e7218bd0a29d71fd0c8931eadfbf5e46396",
+          "console_sha256": "961a32a37d6671abc69cc3b8389d86dc4af1746acc3b9219a0349746f89001af",
           "leak_lines": []
         },
         {
@@ -679,7 +679,7 @@
       "passed": 82,
       "reported_pass_lines": 82,
       "per_case_logs_shipped": true,
-      "per_case_log_bytes": 30722,
+      "per_case_log_bytes": 30724,
       "console_log": "suite-en-console.log",
       "cases": [
         {
@@ -750,16 +750,16 @@
           "case": "campaign-route-diplomatic",
           "status": "PASS",
           "log": "suite-en/campaign-route-diplomatic.log",
-          "log_sha256": "c7f11160492844f94c004acafe00c62faaa62ac40476a24f860681290cf381dc",
-          "console_sha256": "c129eabe92115ceb1c79f93fc2b697e77165e48012e6b810fedb8f5356071f0f",
+          "log_sha256": "7207c59e0199e28b0a8ea412e8241baa8d7e6ba7370e4b2ec375f090affb9749",
+          "console_sha256": "dcb1b635422f61d0b962207d84cf20c96cccf7dbd39d4e8d4697b617bfc7760f",
           "leak_lines": []
         },
         {
           "case": "campaign-route-military",
           "status": "PASS",
           "log": "suite-en/campaign-route-military.log",
-          "log_sha256": "39b2358793bc52cf0fc44e4f2a58623d2488ff13e40b827cf0f2a48a376b0a7d",
-          "console_sha256": "4a8dddde339b32416aae263cbea7f58c8fcccd6780ddf185c92cb7e3d80f5f9f",
+          "log_sha256": "4d9ccd79aed0d4e8cd9e436f3762c9797bb0581be780a44c889fc86fdcaf4f89",
+          "console_sha256": "cb4af537185d2209229cfb16dc66d7b199ab1c7e15d8cdf7936ffc002b5dfa31",
           "leak_lines": []
         },
         {
@@ -902,8 +902,8 @@
           "case": "identity",
           "status": "PASS",
           "log": "suite-en/identity.log",
-          "log_sha256": "b210204f7840ed4971f088cc39c0f9f29114210910b2240800c5d10a989f12d7",
-          "console_sha256": "bf57856495287e688b49d032b163141464cb87e671b4ab91859d98a764bed6d2",
+          "log_sha256": "38222b3cd269cbfc8a5624efd4377b40755d9c5c99b4bb414853c2713ad48f36",
+          "console_sha256": "568c3e7774a4e237e2986b38b281fa653a7836503d7e8499815492f71568e94d",
           "leak_lines": []
         },
         {
@@ -1022,8 +1022,8 @@
           "case": "mechanics-route",
           "status": "PASS",
           "log": "suite-en/mechanics-route.log",
-          "log_sha256": "3133aa4c059fc1d047f07faa33437f2400d3d55153a3463576a747c15e458937",
-          "console_sha256": "b2e046a91a5eeeddadb42cdde7d323bb684511d8a77dedf5ae02aeecc978dcdc",
+          "log_sha256": "813e53d320ce2c9111e5078dcd27de8a348345f280b2fbb351795ebc540ac911",
+          "console_sha256": "e081b38139ba5b58e42743d957c45485b1ec39e731d9112be82d5b662debfb30",
           "leak_lines": []
         },
         {
@@ -1102,8 +1102,8 @@
           "case": "qa-audio-lifetime",
           "status": "PASS",
           "log": "suite-en/qa-audio-lifetime.log",
-          "log_sha256": "950ef89e690c91cb6557a0a1c7ca4bb62b1956bbaeafe7d3e5f8207827991713",
-          "console_sha256": "9a8a57790bd1f0dc3dac57c3a5a7a087461b92bf9ba3de5d4626b4411b96b789",
+          "log_sha256": "b2e371e2dc9700fe2513be521dabe3985e44f22d60a80e03e79c2127592faa4d",
+          "console_sha256": "d9fb392b864f13e1edf0d9289c2dd47e30895d74b0a6f1a20cb239e4446082ff",
           "leak_lines": []
         },
         {

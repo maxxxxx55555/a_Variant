@@ -1,0 +1,112 @@
+{
+  "schema": 1,
+  "title": "Marchland Oaths 1.6.0 render benchmark against the v1.5.3 baseline",
+  "source_commit": "9c0c145d8512cc9b667ea71cc36d33925a73e5ee",
+  "baseline_commit": "01f7174cb574dc3a130547ae7976aab12aba730f",
+  "repeats": 3,
+  "scene": "tests/render_benchmark.gd rainy village, normal difficulty, 60 warm-up frames then 180 measured frames at 1280x720, Compatibility renderer, Dummy audio, fresh profile per run",
+  "current": {
+    "samples": [
+      {
+        "load_ms": 8297,
+        "fps": 59.0938936309915,
+        "draw_calls": 356,
+        "primitives": 295509,
+        "exit": 0,
+        "errors": []
+      },
+      {
+        "load_ms": 7544,
+        "fps": 60.0200066688896,
+        "draw_calls": 356,
+        "primitives": 295509,
+        "exit": 0,
+        "errors": []
+      },
+      {
+        "load_ms": 7861,
+        "fps": 60.1403274306716,
+        "draw_calls": 356,
+        "primitives": 295509,
+        "exit": 0,
+        "errors": []
+      }
+    ],
+    "errors": [],
+    "load_ms": 7861,
+    "load_ms_range": [
+      7544,
+      8297
+    ],
+    "fps": 60.02,
+    "fps_range": [
+      59.0938936309915,
+      60.1403274306716
+    ],
+    "draw_calls": 356,
+    "draw_calls_range": [
+      356,
+      356
+    ],
+    "primitives": 295509,
+    "primitives_range": [
+      295509,
+      295509
+    ]
+  },
+  "baseline": {
+    "samples": [
+      {
+        "load_ms": 9395,
+        "fps": 59.4255529877847,
+        "draw_calls": 341,
+        "primitives": 294869,
+        "exit": 0,
+        "errors": []
+      },
+      {
+        "load_ms": 7165,
+        "fps": 60.0200066688896,
+        "draw_calls": 341,
+        "primitives": 294869,
+        "exit": 0,
+        "errors": []
+      },
+      {
+        "load_ms": 7821,
+        "fps": 60.0,
+        "draw_calls": 341,
+        "primitives": 294869,
+        "exit": 0,
+        "errors": []
+      }
+    ],
+    "errors": [],
+    "load_ms": 7821,
+    "load_ms_range": [
+      7165,
+      9395
+    ],
+    "fps": 60.0,
+    "fps_range": [
+      59.4255529877847,
+      60.0200066688896
+    ],
+    "draw_calls": 341,
+    "draw_calls_range": [
+      341,
+      341
+    ],
+    "primitives": 294869,
+    "primitives_range": [
+      294869,
+      294869
+    ]
+  },
+  "fps_delta_percent": 0.03,
+  "load_delta_percent": 0.51,
+  "result": "PASS",
+  "display_cap_note": "Both trees report about 60 FPS, which is the display refresh cap, so FPS works as a pass/fail signal rather than a fine-grained comparison. Load time and draw calls are the discriminating measurements, and load time itself varies between runs, which is why every raw sample and the median are recorded.",
+  "baseline_note": "The baseline worktree is the published v1.5.3 tree (01f7174), the immediate predecessor of this edition, measured on the same host in the same session.",
+  "limits": "Six single runs on one Windows host with an AMD integrated GPU. This is a smoke comparison, not a statistically rigorous performance study."
+}

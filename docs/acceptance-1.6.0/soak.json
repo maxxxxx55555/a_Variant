@@ -1,0 +1,78 @@
+{
+  "schema": 1,
+  "title": "Marchland Oaths 1.6.0 measured gameplay soak",
+  "command": "godot --audio-driver Dummy --rendering-method gl_compatibility --resolution 1280x720 --script res://tests/soak_gameplay.gd with GAME_SOAK_SECONDS=1800 and an isolated profile",
+  "result": "PASS",
+  "requested_seconds_per_run": 1800,
+  "runs": [
+    {
+      "run": "1.6.0",
+      "requested_seconds": 1800,
+      "actual_seconds": 2562.719,
+      "result": "PASS",
+      "cycles": 3,
+      "checkpoints": 21,
+      "failures": 0,
+      "errors": [],
+      "rendered": true,
+      "normal_speed": true,
+      "audio_driver": "Dummy",
+      "language": "ru",
+      "viewport": "1280x720",
+      "object_samples": [
+        {
+          "cycle": 1,
+          "elapsed_ms": 865266,
+          "nodes": 60,
+          "objects": 2177,
+          "orphans": 0,
+          "resources": 362
+        },
+        {
+          "cycle": 2,
+          "elapsed_ms": 1714661,
+          "nodes": 60,
+          "objects": 2177,
+          "orphans": 0,
+          "resources": 362
+        },
+        {
+          "cycle": 3,
+          "elapsed_ms": 2562718,
+          "nodes": 60,
+          "objects": 2177,
+          "orphans": 0,
+          "resources": 362
+        }
+      ],
+      "result_sha256": "0379b59607c46c57ef4fa6b6b97805ff9374402210a375dace578bf88c134ff0",
+      "console_sha256": "1f1cc12935d7e392e780ee9a5c3f0e147ee47fed0da0cb372f39c24c82f3b109",
+      "engine_log_sha256": "c4b920ccc2f315d9c3b8700b628c985b7cb33366c22f302ec6d439be98b17a9e",
+      "source_commit": "9c0c145d8512cc9b667ea71cc36d33925a73e5ee"
+    }
+  ],
+  "total_actual_seconds": 2562.719,
+  "complete_cycles": 3,
+  "checkpoints": 21,
+  "cycle_trend": {
+    "first": {
+      "objects": 2177,
+      "resources": 362,
+      "nodes": 60,
+      "orphans": 0
+    },
+    "last": {
+      "objects": 2177,
+      "resources": 362,
+      "nodes": 60,
+      "orphans": 0
+    },
+    "delta": {
+      "objects": 0,
+      "resources": 0,
+      "nodes": 0,
+      "orphans": 0
+    }
+  },
+  "scope": "Each cycle is a real rendered diplomatic campaign route with pause, settings, manual save and load checkpoints per region. Object/resource/node/orphan counts are sampled after each completed cycle, never estimated. A single-cycle run cannot by itself show a trend, so the trend is only reported when at least two samples exist."
+}

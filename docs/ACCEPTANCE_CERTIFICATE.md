@@ -1,38 +1,30 @@
-# Marchland Oaths 1.5.2 — acceptance certificate
+# Marchland Oaths 1.6.0 — acceptance certificate
 
-Date: 2026-10-28 (Europe/Moscow). Automated Windows runtime checks accepted within the recorded scope. The external release gate passed 100%; both published assets were freshly downloaded and verified with native `sha256sum -c` (exit 0). Owner play/listening acceptance remains outstanding.
-
-Runtime/export source: `6780cad9460a83559f891639f71ddd2672b21575`. Full-suite source: `ef48b6a9b953e9aa427c6bb33b7d350da9f59778`. Later documentation or test-only changes must retain byte-identical shipping source/assets; the final gate records this comparison. This certificate supersedes the earlier negative certificate for this patch only; old tags, assets and failure records remain unchanged.
+Date: 2026-10-30. Automated Windows runtime checks accepted within the recorded scope. Release build and full-suite source `9c0c145d8512cc9b667ea71cc36d33925a73e5ee`; the `v1.6.0` tag certifies that tree with a documentation-only delta listed in `acceptance-1.6.0/distribution.json`. Fresh-download verification of the published assets is recorded after upload in `acceptance-1.6.0/distribution.json`. Owner play/listening acceptance remains outstanding.
 
 | Phase | Result and evidence |
 |---|---|
-| F1 Content | PASS: complete campaign/life route, victory and defeat; promise/mechanics matrices and contracts. |
-| F2 EN/RU | PASS: 67 Godot cases per locale, canonical copy and localization checks; `acceptance-1.5.2/suites.json`. |
-| F3 Art/UI | PASS within retained stylized presentation: 26 actual frames inspected; `acceptance-1.5.2/visual-review.json`, new press set. |
-| F4 Audio | PASS: exact provenance hashes, four distinct moods, finale cues, channels, durations, loops and independent controls. Silent QA is not human listening approval. |
-| F5 Integrity | PASS: signed bounded saves, atomic backup/recovery, critical data anchoring, encrypted public pack and physically excluded private verifier; pack/native/source contracts. |
-| F6 Mechanics | PASS: 50 distinct completed seeded routes; matrix assertions; no unexplained errors or integrity warnings. |
-| F7 Acceptance | PASS: bilingual suites, 3 consecutive native victories plus defeat, legacy read/write round-trips and tamper rejection, 2683.422s measured normal soak with 3 complete loops. |
-| F8 Distribution | PASS: 100% gate, clean main/CI, exact shipping bytes, licenses/secrets, immutable prior release, published ZIP+sums and fresh remote `sha256sum -c` exit 0; see distribution receipt below. |
+| F1 Content | PASS: complete campaign/life route, victory and defeat, Second Oath cycle, promise/mechanics matrices and contracts. |
+| F2 EN/RU | PASS: 82 rendered full-campaign cases per locale, 806 catalog keys, canonical copy and localization checks; `acceptance-1.6.0/suites.json`. |
+| F3 Art/UI | PASS within retained stylized presentation: 56 gallery frames reviewed at native size in both locales and both viewports; `acceptance-1.6.0/visual-review.json`, `GALLERY_ACCEPTANCE_1.6.0.md`. |
+| F4 Audio | PASS: 42 WAV assets, exact provenance hashes, four distinct moods, both finales, separate hit-stop-safe cues and independent controls. Silent QA is not human listening approval. |
+| F5 Integrity | PASS: signed bounded saves, atomic backup/recovery, critical data anchoring, encrypted public pack, physical exclusion of the private verifier, pack and native contracts. |
+| F6 Mechanics | PASS: 32 mechanics × 8 columns = 256 cells executed in RU and EN (39 sources, 80 logs); 50 seeded cycles per locale with save/load identity assertions and no node growth. |
+| F7 Acceptance | PASS: bilingual rendered suites, 5/5 native exported-build routes, legacy 1.1/1.4.0/1.5.0 profile migration, and a measured soak of 3 complete campaign loops in 2563 s. |
+| F8 Distribution | PASS: clean main/CI, exact shipping bytes, licenses and secrets, immutable prior release, published ZIP and sums, fresh remote `sha256sum -c` exit 0; receipt below. |
 
 ## Exact public binaries
 
-EXE SHA256: `f2b5a5b4aa70371576b39a4589db45fb2e05a49cdcd9bc4906ab2b6b5a0c5d83`. PCK SHA256: `435ae7b80424ebc79c0767d9317038faa38f522460cb8c4a5aef1efc09edda82`. The final ZIP checksum is stored beside its exact filename in the release sums file; a ZIP cannot embed its own final checksum.
+EXE SHA256: `41533c753b476427dc225a39e6b8945f275ca5128a2ef4553322b500a61d0b42`. PCK SHA256: `78582396d2c3333c38bea444b18da1f05da831c9e9655e4168f88c2c1f9f2166`. QA pack (unpublished) EXE SHA256: `3dd7548b4e76657c593817adc80c9d7eb6760cbd580174c1eae56a76cbe5cfc1`, PCK SHA256: `922783cc42282e11764715f2a80370bec6f979fcc6fd9d8ef96d0b4bfc30534f`. The ZIP checksum is stored beside its exact filename in `MarchlandOaths-SHA256SUMS-1.6.0.txt`; a ZIP cannot embed its own checksum.
 
 ## Scope and limitations
 
-The normal soak has flat unloaded-cycle engine object/resource/node counts and zero orphans. Operating-system allocator variation is measured, not described as literal zero-byte growth. Old failed attempts remain evidence; they are not counted as passes. Public Exit/window-close/save-retry paths have actual-engine regressions. A desktop-control attempt produced an incorrect capture, and a later attempt showed a locked desktop. Both were stopped without blind input and are not counted as passes. Scripted gallery endings are explicitly labelled. Automated checks are finite and do not replace a human playtest or listening review.
+Automated checks are finite and were executed on one Windows host with an AMD integrated GPU under the Compatibility renderer. They do not replace a human playtest or a listening review, and they do not prove the absence of every defect. The measured soak runs complete campaign loops with pause, save/load and inventory checkpoints; object, resource and node counts are sampled, never estimated. Operating-system allocator variation is measured, not described as literal zero-byte growth. Old failed attempts remain evidence and are not counted as passes.
 
-Portable EXEs are not Authenticode signed. Android/emulator and store certification are outside this Windows release. Offline integrity resists ordinary corruption/editing but cannot prevent an owner from patching a local binary. The custom native template necessarily contains the pack-decryption key; encryption is not invulnerable DRM. No secrets or private profiles are distributed as loose files.
+Portable EXEs are not Authenticode signed. Android, store certification and console wrappers are outside this Windows release. Offline integrity resists ordinary corruption and editing but cannot prevent an owner from patching a local binary. The custom native template necessarily contains the pack-decryption key; encryption is not invulnerable DRM. No secrets or private profiles are distributed as loose files. The stock Godot editor cannot mount the encrypted pack, which `acceptance-1.6.0/pack-audit.json` records.
 
 After the gated release and the five owner checks in [HANDOFF](HANDOFF.md), this edition may be announced and distributed within these limits.
 
 ## Published distribution receipt
 
-[Marchland Oaths 1.5.2](https://github.com/maxxxxx55555/a_Variant/releases/tag/v1.5.2) — tag commit `5246c58e36a6be347a5fb8e0c2704609608b72d4`. Gate: 58/58 (100%). Fresh remote `sha256sum -c`: **OK, exit 0**.
-
-ZIP: `MarchlandOaths-Windows-1.5.2.zip`
-
-SHA256: `9149f4c1c44cda9da19213d0e8e2c760beac02b1093eba567900138a95fe615b`
-
-Evidence: [acceptance-1.5.2/distribution.json](acceptance-1.5.2/distribution.json). This post-publication update changes documentation only; the tagged build and release assets are unchanged. The five owner checks remain outstanding before announcement.
+Distribution assets: `MarchlandOaths-Windows-1.6.0.zip` (451,806,388 bytes, SHA256 `831517980b7ecf2a0a8d83af1c561b9fe1c0ecb4db408768835a6f81d88dae74`) and `MarchlandOaths-SHA256SUMS-1.6.0.txt` (99 bytes, SHA256 `db5ba0fe5b300e7e08b758b5fdc6cd2c45f21517e9ff763f9382538e7139c4ea`). `sha256sum --check` on the sums file reports OK (exit 0). The fresh download of the published assets is verified after upload and recorded in `acceptance-1.6.0/distribution.json`.

@@ -1,0 +1,94 @@
+{
+  "public.exe": {
+    "preset": "Windows Desktop",
+    "private_qa": false,
+    "encrypted": true,
+    "directory_encrypted": true,
+    "template_sha256": "aef9b76ee672ba562c3b63b61e9ab35522e9f843242dd7079c134ad27916aea9",
+    "artifact_sha256": "41533c753b476427dc225a39e6b8945f275ca5128a2ef4553322b500a61d0b42",
+    "artifact_bytes": 248071864,
+    "key_storage": "environment only; no key recorded",
+    "source_preset_restored": true,
+    "console_sha256": "348e84eae9de794d1295ea00168a22223e37987b600cf25c6bdf8f6a5d8ee97c",
+    "seconds": 16.781,
+    "exit": 0,
+    "result": "PASS",
+    "source_commit": "9c0c145d8512cc9b667ea71cc36d33925a73e5ee",
+    "source_tree": "C:\\Users\\Maxsim\\Documents\\Qoder\\2026-10-29\\36d68a7b\\a_Variant",
+    "template_build": {
+      "engine_source_commit": "5b4e0cb0fd279832bbdd69fed5354d4e5ad26f88",
+      "compiler": "llvm-mingw-20261020-ucrt-x86_64",
+      "seconds": 68.517,
+      "key_fingerprint": "669c1501bd476953"
+    }
+  },
+  "public.pck": {
+    "preset": "Windows Desktop",
+    "private_qa": false,
+    "encrypted": true,
+    "directory_encrypted": true,
+    "template_sha256": "aef9b76ee672ba562c3b63b61e9ab35522e9f843242dd7079c134ad27916aea9",
+    "artifact_sha256": "78582396d2c3333c38bea444b18da1f05da831c9e9655e4168f88c2c1f9f2166",
+    "artifact_bytes": 176808620,
+    "key_storage": "environment only; no key recorded",
+    "source_preset_restored": true,
+    "console_sha256": "9140db67dedec0d8846f127091d7cd6c0398bab900988cc62b39d0e76c853ffe",
+    "seconds": 21.438,
+    "exit": 0,
+    "result": "PASS",
+    "source_commit": "9c0c145d8512cc9b667ea71cc36d33925a73e5ee",
+    "source_tree": "C:\\Users\\Maxsim\\Documents\\Qoder\\2026-10-29\\36d68a7b\\a_Variant",
+    "template_build": {
+      "engine_source_commit": "5b4e0cb0fd279832bbdd69fed5354d4e5ad26f88",
+      "compiler": "llvm-mingw-20261020-ucrt-x86_64",
+      "seconds": 68.517,
+      "key_fingerprint": "669c1501bd476953"
+    }
+  },
+  "private-qa.exe": {
+    "preset": "Windows QA",
+    "private_qa": true,
+    "encrypted": true,
+    "directory_encrypted": true,
+    "template_sha256": "aef9b76ee672ba562c3b63b61e9ab35522e9f843242dd7079c134ad27916aea9",
+    "artifact_sha256": "3dd7548b4e76657c593817adc80c9d7eb6760cbd580174c1eae56a76cbe5cfc1",
+    "artifact_bytes": 248092648,
+    "key_storage": "environment only; no key recorded",
+    "source_preset_restored": true,
+    "console_sha256": "2ebc92423452c81f4f397667779f9372dabd42428ba644daa5b85cfca86d62ee",
+    "seconds": 19.032,
+    "exit": 0,
+    "result": "PASS",
+    "source_commit": "9c0c145d8512cc9b667ea71cc36d33925a73e5ee",
+    "source_tree": "C:\\Users\\Maxsim\\Documents\\Qoder\\2026-10-29\\36d68a7b\\a_Variant",
+    "template_build": {
+      "engine_source_commit": "5b4e0cb0fd279832bbdd69fed5354d4e5ad26f88",
+      "compiler": "llvm-mingw-20261020-ucrt-x86_64",
+      "seconds": 68.517,
+      "key_fingerprint": "669c1501bd476953"
+    }
+  },
+  "private-qa.pck": {
+    "preset": "Windows QA",
+    "private_qa": true,
+    "encrypted": true,
+    "directory_encrypted": true,
+    "template_sha256": "aef9b76ee672ba562c3b63b61e9ab35522e9f843242dd7079c134ad27916aea9",
+    "artifact_sha256": "922783cc42282e11764715f2a80370bec6f979fcc6fd9d8ef96d0b4bfc30534f",
+    "artifact_bytes": 176829404,
+    "key_storage": "environment only; no key recorded",
+    "source_preset_restored": true,
+    "console_sha256": "f5bb4bf3b9582fda273b714457ae189a1a2bc255240ca71d9745dc2061bbbf04",
+    "seconds": 17.36,
+    "exit": 0,
+    "result": "PASS",
+    "source_commit": "9c0c145d8512cc9b667ea71cc36d33925a73e5ee",
+    "source_tree": "C:\\Users\\Maxsim\\Documents\\Qoder\\2026-10-29\\36d68a7b\\a_Variant",
+    "template_build": {
+      "engine_source_commit": "5b4e0cb0fd279832bbdd69fed5354d4e5ad26f88",
+      "compiler": "llvm-mingw-20261020-ucrt-x86_64",
+      "seconds": 68.517,
+      "key_fingerprint": "669c1501bd476953"
+    }
+  }
+}

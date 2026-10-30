@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "title": "Marchland Oaths 1.6.0 Python contract chain",
-  "source_commit": "f1d40cecb222c3ffa2a78d69d82b7f57c3f02ae4",
+  "source_commit": "9c0c145d8512cc9b667ea71cc36d33925a73e5ee",
   "result": "PASS",
   "cases": {
     "tests/test_verification.py": {
@@ -57,7 +57,7 @@
       "result": "PASS",
       "exit": 0,
       "log": "contracts/test_repo_isolation.py.log",
-      "log_sha256": "83166b089fbcb82fac63f22522fa6ae99bb5e46368cd35d756277fd463dd6346",
+      "log_sha256": "fe836cbecd3b6b4f70bec51b58d30c3e45ad72ae7fb3cb63421a0f7337e651ae",
       "last_line": "OK"
     },
     "tools/static_census.py": {

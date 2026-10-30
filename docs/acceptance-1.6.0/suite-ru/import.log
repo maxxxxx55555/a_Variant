@@ -11,9 +11,11 @@ WARNING: Detected another project.godot at res://qa_tmp/baseline. The folder wil
 [  83% ] first_scan_filesystem | Начало сканирование файлов…
 [ DONE ] first_scan_filesystem
 
-[   0% ] update_scripts_classes | Started Регистрация глобальных классов… (2 steps)
+[   0% ] update_scripts_classes | Started Регистрация глобальных классов… (4 steps)
 [   0% ] update_scripts_classes | 
-[  33% ] update_scripts_classes | 
+[  20% ] update_scripts_classes | 
+[  40% ] update_scripts_classes | 
+[  60% ] update_scripts_classes | 
 [ DONE ] update_scripts_classes
 
 [   0% ] loading_editor_layout | Started Загрузка редактора (5 steps)

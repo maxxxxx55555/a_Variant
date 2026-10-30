@@ -2,7 +2,7 @@
   "schema": 1,
   "title": "Marchland Oaths 1.6.0 mechanics matrix execution evidence",
   "engine": "4.7.stable.official.5b4e0cb0f",
-  "commit_under_test": "20d304123317196df473e08589028f195f2154c4",
+  "commit_under_test": "9c0c145d8512cc9b667ea71cc36d33925a73e5ee",
   "display_locales": [
     "ru",
     "en"
@@ -21,7 +21,7 @@
             "exit_code": 0,
             "timeout_s": 900,
             "log": "logs/test_mechanics_route-ru",
-            "log_sha256": "23d6daf05cd764cc6884a2cb40145018321c909cdc50e98ce9020a2281c2d6ed",
+            "log_sha256": "96a4f7ebca902b3a894437f0c00d8fb71c92d5c6aed0cbf7a3a3a048a9af26e8",
             "engine_errors": []
           }
         ],
@@ -35,7 +35,7 @@
             "exit_code": 0,
             "timeout_s": 900,
             "log": "logs/test_mechanics_route-en",
-            "log_sha256": "2d8ee8a14e94a3a0c70e4947207d815d3426ebfdc07b3dffce94e086fcb798c4",
+            "log_sha256": "a7212ee8431dc9caae1e769d4fb939f7638ecc0e04a1329f02f04b3485f73148",
             "engine_errors": []
           }
         ]
