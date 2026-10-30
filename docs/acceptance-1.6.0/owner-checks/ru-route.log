@@ -1,0 +1,15 @@
+Godot Engine v4.7.stable.custom_build - https://godotengine.org
+OpenGL API 3.3.0 Core Profile Context 22.20.44.221025 - Compatibility - Using Device: ATI Technologies Inc. - AMD Radeon(TM) Graphics
+
+CAMPAIGN ROUTE: diplomatic region 1 hp=92.8 gold=70.0 army=5
+CAMPAIGN ROUTE: diplomatic region 2 hp=77.2166666666667 gold=560.0 army=5
+CAMPAIGN ROUTE: diplomatic region 3 hp=68.7166666666667 gold=952.5 army=5
+CAMPAIGN ROUTE: diplomatic region 4 hp=72.8833333333334 gold=1395.0 army=5
+CAMPAIGN ROUTE: diplomatic region 5 hp=95.9148293963255 gold=1737.5 army=5
+CAMPAIGN ROUTE: diplomatic region 6 hp=90.3992418663495 gold=2130.0 army=5
+CAMPAIGN ROUTE: diplomatic region 7 hp=100.0 gold=2532.5 army=5
+CAMPAIGN ROUTE: diplomatic region 8 hp=100.0 gold=2904.0 army=5
+CAMPAIGN ROUTE RESULT: PASS route=diplomatic quests=60 days=8
+QA CYCLE: {"days":8,"elapsed_ms":201555,"quests":60,"result":"PASS","route":"diplomatic","seed":7401,"state_sha256":"22557bf0d7998b6b1b5be1ced919a91a1d68ec3e4d87ced7151956f3818a05b4","trace":[{"gold":70.0,"hp":92.80000000000001,"region":0,"weather":0},{"gold":560.0,"hp":77.21666666666668,"region":1,"weather":0},{"gold":952.5,"hp":68.71666666666668,"region":2,"weather":1},{"gold":1395.0,"hp":72.88333333333335,"region":3,"weather":0},{"gold":1737.5,"hp":95.91482939632549,"region":4,"weather":2},{"gold":2130.0,"hp":90.39924186634947,"region":5,"weather":0},{"gold":2532.5,"hp":100.0,"region":6,"weather":1},{"gold":2904.0,"hp":100.0,"region":7,"weather":2}]}
+WARNING: 1 ObjectDB instance was leaked at exit (run with `--verbose` for details).
+   at: cleanup (core\object\object.cpp:2535)

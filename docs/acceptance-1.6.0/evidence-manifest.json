@@ -32,6 +32,14 @@
     "native-victory-2.log": "45f7c5f8bef5a91d67b4f133731d32ce313b5e937704e3bc9a79db41f2f4593f",
     "native-victory-3.log": "f53c1d40b44067abf6f66d16d6d226fc810b8f2cdbfd24989dc28f302a166b7d",
     "native.json": "619719df02baf26cd1ef666d3fda701ac937fc504b20c56563e3d296b8ac0a03",
+    "owner-checks/en-qa-journey.png": "1eb129480c4a3fc2c3cb70885ea827bbf4852421e5c314d1962fcf9227714180",
+    "owner-checks/en-qa-map.png": "085ae055d44afade0cb338dd0e627e3a02a187221e6a7b9cb1234bf1fe09031e",
+    "owner-checks/en-qa-village.png": "35b1670bf4de0bddd6e6599d28c5716552e6d892a40f4f6af04601f21deda4e4",
+    "owner-checks/en-qa.png": "adbbfac4d633ca145c39b50cb8a7cba9c1c14b1c7945f97b06d82b5ff10563e0",
+    "owner-checks/en-route.log": "36d7bdc4d28b0b7f3148335b3ae477fd6548f4efa366200b3d01d0c8078d5cc8",
+    "owner-checks/ru-qa-map.png": "4ac5add2d8bd73ea8bb1437da107a17cfee29d43305558f13824814e09842045",
+    "owner-checks/ru-qa.png": "303bbba1ed1cae59cdf3ffa15d3dde7770f17ef28d555ee455026c1dc9702000",
+    "owner-checks/ru-route.log": "e2d2fcff77e6e21c95e82b2c0ac08b52e9d77e4ad8414150e41a36971d81cf2c",
     "pack-audit.json": "69befdb064d24d366b296a0706a6815dadcf241dcb987a15d75930a42a21b807",
     "perf.json": "a380cda569216d6d49bfb9e89f2730165973193cbc2f149060ebe5395d2aff40",
     "public-qa-rejection.log": "e9a588443e27c7eadf97966f5654ad72f0866c78d4772faeafea8666eaf21ff5",
@@ -370,5 +378,5 @@
     "suites.json": "614ad1131fc85b4d2574dc7721700bdb7b0b37d494ae2880515461caba393030",
     "visual-review.json": "66dce96ba732a479a98cf6f08da7c7f145522fe13c91976c3b5f949bcd6ae42d"
   },
-  "count": 365
+  "count": 373
 }
