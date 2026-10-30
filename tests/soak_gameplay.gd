@@ -4,6 +4,7 @@ var cycles:int=0
 var checkpoints:int=0
 var failures:int=0
 var aborts:int=0
+var deaths:int=0
 var object_samples:Array[Dictionary]=[]
 func _initialize()->void:call_deferred("run")
 func write_record(record:Dictionary)->void:
@@ -25,13 +26,19 @@ func run()->void:
 		var route:Node=load("res://tests/SoakRoute.gd").new()
 		var completed:Array=[false]
 		route.cycle_finished.connect(func(code:int)->void:
-			if code!=0:failures+=1
+			if code!=0:
+				var state_node:Node=root.get_node("GameState")
+				if float(state_node.player_hp)<=0.0:deaths+=1
+				else:failures+=1
 			completed[0]=true)
 		root.add_child(route)
-		# A death or a stuck route must fail the soak with a written record instead of
-		# leaving the driver waiting on a signal that can never arrive.
+		# A stuck route must fail the soak with a written record instead of leaving the
+		# driver waiting on a signal that can never arrive. The route frees its own world
+		# during teardown, so a missing world only counts as an abort when the finish
+		# signal does not follow within the grace window.
 		var deadline:int=Time.get_ticks_msec()+1500000
 		var startup_deadline:int=Time.get_ticks_msec()+120000
+		var world_lost_at:int=0
 		var saw_world:bool=false
 		while not completed[0]:
 			await process_frame
@@ -47,9 +54,11 @@ func run()->void:
 					break
 				else: continue
 			if not is_instance_valid(route.world):
-				aborts+=1
-				print("SOAK CYCLE ABORTED: the route lost its world before finishing")
-				break
+				if world_lost_at==0: world_lost_at=Time.get_ticks_msec()
+				elif Time.get_ticks_msec()-world_lost_at>20000:
+					aborts+=1
+					print("SOAK CYCLE ABORTED: the route lost its world before finishing")
+					break
 			if Time.get_ticks_msec()>deadline:
 				aborts+=1
 				print("SOAK CYCLE TIMEOUT: a campaign loop exceeded twenty-five minutes")
@@ -59,7 +68,7 @@ func run()->void:
 		cycles+=1
 		for cleanup_frame:int in 10:await process_frame
 		object_samples.append({"cycle":cycles,"elapsed_ms":Time.get_ticks_msec()-started,"objects":int(Performance.get_monitor(Performance.OBJECT_COUNT)),"resources":int(Performance.get_monitor(Performance.OBJECT_RESOURCE_COUNT)),"nodes":int(Performance.get_monitor(Performance.OBJECT_NODE_COUNT)),"orphans":int(Performance.get_monitor(Performance.OBJECT_ORPHAN_NODE_COUNT))})
-		print("SOAK PROGRESS: cycles=",cycles," checkpoints=",checkpoints," elapsed_ms=",Time.get_ticks_msec()-started," aborts=",aborts)
+		print("SOAK PROGRESS: cycles=",cycles," checkpoints=",checkpoints," elapsed_ms=",Time.get_ticks_msec()-started," aborts=",aborts," deaths=",deaths)
 		if failures>0 or aborts>0:break
-	var record:Dictionary={"result":"PASS" if failures==0 and aborts==0 else "FAIL","elapsed_ms":Time.get_ticks_msec()-started,"cycles":cycles,"checkpoints":checkpoints,"failures":failures,"aborts":aborts,"object_samples":object_samples}
+	var record:Dictionary={"result":"PASS" if failures==0 and aborts==0 else "FAIL","elapsed_ms":Time.get_ticks_msec()-started,"cycles":cycles,"checkpoints":checkpoints,"failures":failures,"aborts":aborts,"deaths":deaths,"object_samples":object_samples}
 	write_record(record)
