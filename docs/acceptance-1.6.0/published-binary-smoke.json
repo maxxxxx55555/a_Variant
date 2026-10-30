@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "title": "Marchland Oaths 1.6.0 published binary smoke",
+  "source": "downloaded MarchlandOaths-Windows-1.6.0.zip from https://github.com/maxxxxx55555/a_Variant/releases/tag/v1.6.0",
+  "zip_sha256": "dbc2d82a5d295cfd40a40d190eb0e1f96e4373e46bc8d84746b47f96bf761620",
+  "result": "PASS",
+  "runs": [
+    {
+      "executable": "MarchlandOaths.exe",
+      "language": "ru",
+      "frames_requested": 900,
+      "exit": 0,
+      "seconds": 16.359,
+      "result": "PASS",
+      "script_errors": [],
+      "forced_exit_artifacts": [
+        "WARNING: 3 ObjectDB instances were leaked at exit (run with `--verbose` for details)."
+      ],
+      "console_sha256": "77caf7aa89b0af2003b5241db6fefc37fe2a145cdd5bcde7ba7b63283f04bbfb",
+      "engine_log_sha256": "2a876d5d043afc15a3648db7202d59d8d03f4eeeccbe43a7939ca8db85183221",
+      "engine_head": [
+        "Godot Engine v4.7.stable.custom_build - https://godotengine.org",
+        "OpenGL API 3.3.0 Core Profile Context 22.20.44.221025 - Compatibility - Using Device: ATI Technologies Inc. - AMD Radeon(TM) Graphics",
+        ""
+      ],
+      "sha256": "41533c753b476427dc225a39e6b8945f275ca5128a2ef4553322b500a61d0b42",
+      "bytes": 248071864
+    },
+    {
+      "executable": "MarchlandOaths.exe",
+      "language": "en",
+      "frames_requested": 900,
+      "exit": 0,
+      "seconds": 16.218,
+      "result": "PASS",
+      "script_errors": [],
+      "forced_exit_artifacts": [
+        "WARNING: 3 ObjectDB instances were leaked at exit (run with `--verbose` for details)."
+      ],
+      "console_sha256": "77caf7aa89b0af2003b5241db6fefc37fe2a145cdd5bcde7ba7b63283f04bbfb",
+      "engine_log_sha256": "2a876d5d043afc15a3648db7202d59d8d03f4eeeccbe43a7939ca8db85183221",
+      "engine_head": [
+        "Godot Engine v4.7.stable.custom_build - https://godotengine.org",
+        "OpenGL API 3.3.0 Core Profile Context 22.20.44.221025 - Compatibility - Using Device: ATI Technologies Inc. - AMD Radeon(TM) Graphics",
+        ""
+      ],
+      "sha256": "41533c753b476427dc225a39e6b8945f275ca5128a2ef4553322b500a61d0b42",
+      "bytes": 248071864
+    }
+  ]
+}

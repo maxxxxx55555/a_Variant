@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "title": "Marchland Oaths 1.6.0 published distribution",
+  "result": "PASS",
+  "release": "https://github.com/maxxxxx55555/a_Variant/releases/tag/v1.6.0",
+  "tag": "v1.6.0",
+  "tag_commit": "8101110acf5bfc13bd6d45526866fcae54b83692",
+  "suite_source_commit": "9c0c145d8512cc9b667ea71cc36d33925a73e5ee",
+  "assets": {
+    "MarchlandOaths-Windows-1.6.0.zip": {
+      "sha256": "dbc2d82a5d295cfd40a40d190eb0e1f96e4373e46bc8d84746b47f96bf761620",
+      "bytes": 451817849
+    },
+    "MarchlandOaths-SHA256SUMS-1.6.0.txt": {
+      "sha256": "a1f42da909ac50673712fbd56635ed6bb6a711a36131295faa0adf1ca4e81cec",
+      "bytes": 99
+    }
+  },
+  "fresh_download": {
+    "command": "gh release download v1.6.0 && sha256sum --check MarchlandOaths-SHA256SUMS-1.6.0.txt",
+    "exit": 0,
+    "stdout": "MarchlandOaths-Windows-1.6.0.zip: OK",
+    "sums_text": "dbc2d82a5d295cfd40a40d190eb0e1f96e4373e46bc8d84746b47f96bf761620  MarchlandOaths-Windows-1.6.0.zip"
+  },
+  "published_binary_smoke": "published-binary-smoke.json",
+  "documentation_delta": [],
+  "documentation_delta_is_docs_only": true
+}

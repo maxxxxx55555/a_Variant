@@ -111,4 +111,12 @@ Unchanged from 1.5.x; re-verified against the shipped files.
 
 ## Published distribution receipt
 
-Distribution assets: `MarchlandOaths-Windows-1.6.0.zip` (451,817,849 bytes, SHA256 `dbc2d82a5d295cfd40a40d190eb0e1f96e4373e46bc8d84746b47f96bf761620`) and `MarchlandOaths-SHA256SUMS-1.6.0.txt` (99 bytes, SHA256 `a1f42da909ac50673712fbd56635ed6bb6a711a36131295faa0adf1ca4e81cec`). `sha256sum --check` on the sums file reports OK (exit 0). The fresh download of the published assets is verified after upload and recorded in `acceptance-1.6.0/distribution.json`.
+[Marchland Oaths 1.6.0](https://github.com/maxxxxx55555/a_Variant/releases/tag/v1.6.0) — tag `v1.6.0` at `8101110acf5bfc13bd6d45526866fcae54b83692`. Both assets were freshly downloaded from the release and checked with native `sha256sum --check`: **OK, exit 0**.
+
+ZIP: `MarchlandOaths-Windows-1.6.0.zip` (451,817,849 bytes)
+
+SHA256: `dbc2d82a5d295cfd40a40d190eb0e1f96e4373e46bc8d84746b47f96bf761620`
+
+Sums: `MarchlandOaths-SHA256SUMS-1.6.0.txt` (99 bytes), SHA256 `a1f42da909ac50673712fbd56635ed6bb6a711a36131295faa0adf1ca4e81cec`.
+
+The downloaded executable booted in both locales for 900 frames and exited cleanly without script errors (`acceptance-1.6.0/published-binary-smoke.json`). Evidence: [acceptance-1.6.0/distribution.json](acceptance-1.6.0/distribution.json). This post-publication update changes documentation only; the tagged build and release assets are unchanged. The five owner checks in [HANDOFF](HANDOFF.md) remain outstanding before announcement.
