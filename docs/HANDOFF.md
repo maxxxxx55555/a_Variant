@@ -18,4 +18,4 @@ These owner checks are not claimed complete by the automated gate. After the rel
 
 ## Previous release
 
-[Marchland Oaths 1.5.2](https://github.com/maxxxxx55555/a_Variant/releases/tag/v1.5.2) — tag commit `5246c58e36a6be347a5fb8e0c2704609608b72d4`, ZIP `MarchlandOaths-Windows-1.5.2.zip`, SHA256 `9149f4c1c44cda9da19213d0e8e2c760beac02b1093eba567900138a95fe615b`, gate 58/58, fresh remote `sha256sum -c` OK. Evidence: [acceptance-1.5.2/distribution.json](acceptance-1.5.2/distribution.json). That tag and its assets are immutable; earlier handoffs remain in git history.
+[Marchland Oaths 1.5.2](https://github.com/maxxxxx55555/a_Variant/releases/tag/v1.5.2) — tag commit `5246c58e36a6be347a5fb8e0c2704609608b72d4`, ZIP `MarchlandOaths-Windows-1.5.2.zip`, SHA256 `9149f4c1c44cda9da19213d0e8e2c760beac02b1093eba567900138a95fe615b`, gate 100% (29 recorded checks in acceptance-1.5.2/distribution.json), fresh remote `sha256sum -c` OK. Evidence: [acceptance-1.5.2/distribution.json](acceptance-1.5.2/distribution.json). That tag and its assets are immutable; earlier handoffs remain in git history.

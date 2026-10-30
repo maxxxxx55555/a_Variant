@@ -8,7 +8,7 @@ Finishing a campaign now opens **the Second Oath**: roster, equipped gear, earne
 
 Save schema version 4 keeps the existing `user://` directory, five manual slots, autosave and iron rules; published 1.4.0 and 1.5.0 profiles load with safe defaults for the new oath fields, one-way and backed up. Checksummed v1–v3 saves remain accepted and v4 saves carry the per-installation HMAC.
 
-Verification: 806 RU/EN catalog keys, 105 shipping scripts clean under the strict warning gate, 85 test sources, 42 licensed WAV assets, and a mechanics matrix of 32 mechanics × 8 columns = 256 cells whose 381 references resolve to 39 executed sources in both locales. 50 seeded fuzz cycles assert save/load identity inside Second Oath laps, a 30-minute soak holds object counts flat, and the native verifier runs the victory and iron-death routes on the exported QA pack.
+Verification: 806 RU/EN catalog keys, 105 shipping scripts clean under the strict warning gate, 85 test sources, 42 licensed WAV assets, and a mechanics matrix of 32 mechanics × 8 columns = 256 cells whose 381 references resolve to 39 executed sources in both locales. 50 seeded fuzz cycles per locale — 25 of them entering a Second Oath lap — assert save/load identity, a measured soak of three complete campaign loops (2562.7 s) ends with identical object counts, and the native verifier runs the victory and iron-death routes on the exported QA pack.
 
 ## Current edition scope
 

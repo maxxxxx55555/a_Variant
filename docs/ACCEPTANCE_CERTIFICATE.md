@@ -1,6 +1,6 @@
 # Marchland Oaths 1.6.0 — acceptance certificate
 
-Date: 2026-10-30. Automated Windows runtime checks accepted within the recorded scope. Runtime sources, both rendered suites and the exported binaries are from commit `9c0c145d8512cc9b667ea71cc36d33925a73e5ee`; the tag adds only documentation and the soak driver's teardown-aware watchdog, with the exact file list in `acceptance-1.6.0/distribution.json`. Both published assets were freshly downloaded and verified with native `sha256sum -c` (exit 0). Owner play/listening acceptance remains outstanding.
+Date: 2026-10-30. Automated Windows runtime checks accepted within the recorded scope. Runtime sources, both rendered suites and the exported binaries are from commit `9c0c145d8512cc9b667ea71cc36d33925a73e5ee`; the tag adds only documentation and the soak driver's teardown-aware watchdog, with the complete file list under `source_delta_from_suite_commit` in `acceptance-1.6.0/distribution.json`. Both published assets were freshly downloaded and verified with native `sha256sum -c` (exit 0). Owner play/listening acceptance remains outstanding.
 
 | Phase | Result and evidence |
 |---|---|

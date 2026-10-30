@@ -1,6 +1,6 @@
 # Marchland Oaths 1.6.0 — final release report
 
-Release URL: [Marchland Oaths 1.6.0](https://github.com/maxxxxx55555/a_Variant/releases/tag/v1.6.0). Runtime sources, both rendered suites and the exported binaries are from commit `9c0c145d8512cc9b667ea71cc36d33925a73e5ee`. The tagged tree adds only documentation and the soak driver's teardown-aware watchdog — no runtime file differs — and the exact file list is stored in `acceptance-1.6.0/distribution.json`.
+Release URL: [Marchland Oaths 1.6.0](https://github.com/maxxxxx55555/a_Variant/releases/tag/v1.6.0). Runtime sources, both rendered suites and the exported binaries are from commit `9c0c145d8512cc9b667ea71cc36d33925a73e5ee`. The tagged tree adds only documentation and the soak driver's teardown-aware watchdog — no runtime file differs — and the complete file list is stored under `source_delta_from_suite_commit` in `acceptance-1.6.0/distribution.json`.
 
 Automated acceptance at that tree: EN 82/82, RU 82/82 rendered full-campaign cases; executed mechanics matrix 32 mechanics × 8 columns = 256 cells in both locales; 50 seeded cycles per locale; a measured soak of 3 complete campaign loops in 2563 s; 5/5 native exported-build routes; 4/4 encrypted export artifacts audited against the shipped trust anchor; 56 reviewed gallery frames. Full receipts: [certificate](ACCEPTANCE_CERTIFICATE.md), [suite evidence](acceptance-1.6.0/suites.json), [mechanics execution](acceptance/mechanics-execution-1.6.0.json), [announcement kit](ANNOUNCE_KIT.md).
 
@@ -105,9 +105,21 @@ Unchanged from 1.5.x; re-verified against the shipped files.
 
 ## Русский
 
-Автоматическая приёмка выполнена на дереве `9c0c145d8512cc9b667ea71cc36d33925a73e5ee`: в обеих локалях пройдены все 82 отрисованные полнокампанейские проверки, включая две полные кампании по 60 целей; матрица механик 32×8=256 ячеек имеет исполненные доказательства в RU и EN; 50 сидовых циклов на локаль; измеренный soak: 3 полные петли кампании за 2563 с, без утечек и осиротевших узлов; нативные маршруты на экспортированных сборках: 5/5 маршрутов (три победы, железная смерть и отказ публичной сборки); 4 из 4 зашифрованных артефактов, критические данные сверены с расшифрованным содержимым; 56 кадров галереи проверены вручную.
+Автоматическая приёмка выполнена на дереве `9c0c145d8512cc9b667ea71cc36d33925a73e5ee`: в обеих локалях пройдены все 82 отрисованные полнокампанейские проверки, включая две полные кампании по 60 целей; матрица механик 32×8=256 ячеек имеет исполненные доказательства в RU и EN; 50 сидовых циклов на локаль; измеренный soak: 3 полные петли кампании за 2563 с, без утечек и осиротевших узлов; нативные маршруты на экспортированных сборках: 5/5 маршрутов (три победы, железная смерть и отказ публичной сборки); 4 из 4 зашифрованных артефактов, критические данные сверены с расшифрованным содержимым; 56 кадров галереи осмотрены в обеих локалях и обоих разрешениях.
 
 Ограничения: EXE не подписан, проверки не заменяют ручной прогон и прослушивание, офлайн-защита не является DRM. Контрольные суммы, URL релиза и приёмка — в [сертификате](ACCEPTANCE_CERTIFICATE.md) и [HANDOFF](HANDOFF.md).
+
+## Independent post-release pass (2026-10-30)
+
+After publication, a separate pass re-verified the released bytes and the repository without changing them:
+
+- **Published artifacts.** Both assets were downloaded again; the sums file reports OK (exit 0). The ZIP contains 597 files, one top-level folder, 56 gallery frames, 14 license files and no test, tool, key, credential or verifier path. The decrypted public pack and the executable's embedded pack both audit at 1255 entries with every critical digest matching. The shipped executable boots in RU and EN with no script errors, and rejects the private verifier with exit 64.
+- **Negative and hostile scenarios.** Twenty runs — ten scenarios in each locale — covered corrupted saves, tampered critical data and manifests, bounded reads, mid-world locale switching, tracker pause and teardown, the Second Oath, the Codex, oath migration and real 1.1 profile migration, plus a ten-seed fuzz. All twenty passed with no error, leak or orphan log line.
+- **Documentation audit.** Every number and hash in the release documents was compared with the evidence files. Seven discrepancies were found and corrected: a legacy-case count, two imprecise fuzz and soak phrasings, an unverifiable historical gate figure, a human-review wording that overstated who looked at the frames, and a pointer to a file list that lived under a different field. The corrected documents are in this commit.
+- **Security review.** One medium observation and four low ones. The medium item is the legacy checksum import path, now stated precisely in [SAVE-INTEGRITY](../SAVE-INTEGRITY.md); it is bounded by the downgrade lock and by the fact that a device owner can already read the install key. The low items are an uncapped integrity log, a silent drop of a corrupt statistics/codex file with no dialog, build-host paths inside shipped logs, and no fsync before rename. None of them changes gameplay data, opens a remote surface, or weakens the public/QA separation.
+- **Two observations from the scenario runs.** The seeded fuzz leaves four constant, non-growing orphan nodes from its fixtures (visible as `orphans: 4` in the shipped fuzz records); the measured soak reports zero after every cycle. `tests/test_live_world_locale.gd` always switches RU→EN regardless of the launch locale, so its two locale legs assert the same transition.
+
+None of these changed a runtime byte; the published release stays as tagged.
 
 ## Published distribution receipt
 
