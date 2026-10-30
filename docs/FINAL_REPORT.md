@@ -1,6 +1,6 @@
 # Marchland Oaths 1.6.0 — final release report
 
-Release URL: [Marchland Oaths 1.6.0](https://github.com/maxxxxx55555/a_Variant/releases/tag/v1.6.0). Release build and full-suite source `9c0c145d8512cc9b667ea71cc36d33925a73e5ee`; the `v1.6.0` tag certifies that tree with a documentation-only delta, listed in `acceptance-1.6.0/distribution.json`.
+Release URL: [Marchland Oaths 1.6.0](https://github.com/maxxxxx55555/a_Variant/releases/tag/v1.6.0). Runtime sources, both rendered suites and the exported binaries are from commit `9c0c145d8512cc9b667ea71cc36d33925a73e5ee`. The tagged tree adds only documentation and the soak driver's teardown-aware watchdog — no runtime file differs — and the exact file list is stored in `acceptance-1.6.0/distribution.json`.
 
 Automated acceptance at that tree: EN 82/82, RU 82/82 rendered full-campaign cases; executed mechanics matrix 32 mechanics × 8 columns = 256 cells in both locales; 50 seeded cycles per locale; a measured soak of 3 complete campaign loops in 2563 s; 5/5 native exported-build routes; 4/4 encrypted export artifacts audited against the shipped trust anchor; 56 reviewed gallery frames. Full receipts: [certificate](ACCEPTANCE_CERTIFICATE.md), [suite evidence](acceptance-1.6.0/suites.json), [mechanics execution](acceptance/mechanics-execution-1.6.0.json), [announcement kit](ANNOUNCE_KIT.md).
 
@@ -111,4 +111,4 @@ Unchanged from 1.5.x; re-verified against the shipped files.
 
 ## Published distribution receipt
 
-Distribution assets: `MarchlandOaths-Windows-1.6.0.zip` (451,806,388 bytes, SHA256 `831517980b7ecf2a0a8d83af1c561b9fe1c0ecb4db408768835a6f81d88dae74`) and `MarchlandOaths-SHA256SUMS-1.6.0.txt` (99 bytes, SHA256 `db5ba0fe5b300e7e08b758b5fdc6cd2c45f21517e9ff763f9382538e7139c4ea`). `sha256sum --check` on the sums file reports OK (exit 0). The fresh download of the published assets is verified after upload and recorded in `acceptance-1.6.0/distribution.json`.
+Distribution assets: `MarchlandOaths-Windows-1.6.0.zip` (451,817,849 bytes, SHA256 `dbc2d82a5d295cfd40a40d190eb0e1f96e4373e46bc8d84746b47f96bf761620`) and `MarchlandOaths-SHA256SUMS-1.6.0.txt` (99 bytes, SHA256 `a1f42da909ac50673712fbd56635ed6bb6a711a36131295faa0adf1ca4e81cec`). `sha256sum --check` on the sums file reports OK (exit 0). The fresh download of the published assets is verified after upload and recorded in `acceptance-1.6.0/distribution.json`.

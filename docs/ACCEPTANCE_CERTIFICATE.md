@@ -1,6 +1,6 @@
 # Marchland Oaths 1.6.0 — acceptance certificate
 
-Date: 2026-10-30. Automated Windows runtime checks accepted within the recorded scope. Release build and full-suite source `9c0c145d8512cc9b667ea71cc36d33925a73e5ee`; the `v1.6.0` tag certifies that tree with a documentation-only delta listed in `acceptance-1.6.0/distribution.json`. Fresh-download verification of the published assets is recorded after upload in `acceptance-1.6.0/distribution.json`. Owner play/listening acceptance remains outstanding.
+Date: 2026-10-30. Automated Windows runtime checks accepted within the recorded scope. Runtime sources, both rendered suites and the exported binaries are from commit `9c0c145d8512cc9b667ea71cc36d33925a73e5ee`; the tag adds only documentation and the soak driver's teardown-aware watchdog, with the exact file list in `acceptance-1.6.0/distribution.json`. Fresh-download verification of the published assets is recorded after upload in `acceptance-1.6.0/distribution.json`. Owner play/listening acceptance remains outstanding.
 
 | Phase | Result and evidence |
 |---|---|
@@ -27,4 +27,4 @@ After the gated release and the five owner checks in [HANDOFF](HANDOFF.md), this
 
 ## Published distribution receipt
 
-Distribution assets: `MarchlandOaths-Windows-1.6.0.zip` (451,806,388 bytes, SHA256 `831517980b7ecf2a0a8d83af1c561b9fe1c0ecb4db408768835a6f81d88dae74`) and `MarchlandOaths-SHA256SUMS-1.6.0.txt` (99 bytes, SHA256 `db5ba0fe5b300e7e08b758b5fdc6cd2c45f21517e9ff763f9382538e7139c4ea`). `sha256sum --check` on the sums file reports OK (exit 0). The fresh download of the published assets is verified after upload and recorded in `acceptance-1.6.0/distribution.json`.
+Distribution assets: `MarchlandOaths-Windows-1.6.0.zip` (451,817,849 bytes, SHA256 `dbc2d82a5d295cfd40a40d190eb0e1f96e4373e46bc8d84746b47f96bf761620`) and `MarchlandOaths-SHA256SUMS-1.6.0.txt` (99 bytes, SHA256 `a1f42da909ac50673712fbd56635ed6bb6a711a36131295faa0adf1ca4e81cec`). `sha256sum --check` on the sums file reports OK (exit 0). The fresh download of the published assets is verified after upload and recorded in `acceptance-1.6.0/distribution.json`.

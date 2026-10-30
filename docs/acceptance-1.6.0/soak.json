@@ -48,7 +48,7 @@
       "result_sha256": "0379b59607c46c57ef4fa6b6b97805ff9374402210a375dace578bf88c134ff0",
       "console_sha256": "1f1cc12935d7e392e780ee9a5c3f0e147ee47fed0da0cb372f39c24c82f3b109",
       "engine_log_sha256": "c4b920ccc2f315d9c3b8700b628c985b7cb33366c22f302ec6d439be98b17a9e",
-      "source_commit": "9c0c145d8512cc9b667ea71cc36d33925a73e5ee"
+      "source_commit": "b1e317042d0dacfd7668bdfdc7bcd989677c93bf"
     }
   ],
   "total_actual_seconds": 2562.719,
