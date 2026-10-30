@@ -62,6 +62,20 @@ func fail(message: String) -> void:
 	failed = true
 	print("FAIL: ", message)
 
+# A death releases the world, so every later diagnostic must survive a freed player.
+func scene_alive() -> bool:
+	return is_instance_valid(world) and is_instance_valid(player)
+
+func position_text() -> String:
+	return str(player.position) if is_instance_valid(player) else "an unloaded player"
+
+func scene_gone(where: String) -> bool:
+	if scene_alive():
+		return false
+	if not failed:
+		fail("The world was released " + where)
+	return true
+
 func capture(suffix: String) -> void:
 	if OS.get_environment("GAME_CAPTURE_GALLERY") != "1" or DisplayServer.get_name() == "headless": return
 	await process_frame
@@ -71,7 +85,7 @@ func capture(suffix: String) -> void:
 func frame() -> void:
 	await physics_frame
 	if state.player_hp <= 0 and not failed:
-		fail("The campaign route died at " + str(player.position))
+		fail("The campaign route died at " + position_text())
 
 func nearest_enemy(radius:float)->EnemyView:
 	var result:EnemyView
@@ -88,6 +102,7 @@ func combat() -> void:
 	Input.action_release("sprint")
 	var frames:int= 0
 	while is_instance_valid(nearest_enemy(22)) and frames < 5000 and not failed:
+		if scene_gone("during combat"): return
 		frames += 1
 		var enemy:EnemyView=nearest_enemy(22)
 		player.look_at(Vector3(enemy.global_position.x, player.global_position.y, enemy.global_position.z))
@@ -110,10 +125,12 @@ func combat() -> void:
 	if frames >= 5000: fail("A reachable combat encounter did not resolve")
 
 func walk_to(destination: Vector3, stop: float = 1.7) -> void:
+	if scene_gone("before walking to " + str(destination)): return
 	var frames:int= 0
 	while Vector2(player.position.x - destination.x, player.position.z - destination.z).length() > stop and frames < 12000 and not failed:
 		frames += 1
 		if nearest_enemy(16): await combat()
+		if scene_gone("while walking to " + str(destination)): return
 		player.look_at(Vector3(destination.x, player.position.y, destination.z))
 		player.camera.rotation = Vector3.ZERO
 		Input.action_press("move_forward")
@@ -121,7 +138,7 @@ func walk_to(destination: Vector3, stop: float = 1.7) -> void:
 		await frame()
 	Input.action_release("move_forward")
 	Input.action_release("sprint")
-	if frames >= 12000: fail("Route blocked walking to " + str(destination) + " from " + str(player.position))
+	if frames >= 12000: fail("Route blocked walking to " + str(destination) + " from " + position_text())
 
 func talk(id: String) -> void:
 	var data:Dictionary=campaign.town(id)
@@ -129,10 +146,13 @@ func talk(id: String) -> void:
 	var town_z:float=data.z
 	await walk_to(Vector3(town_x, 0, town_z + 6.8), 0.25)
 	if failed: return
+	if scene_gone("before talking to " + id): return
 	player.camera.look_at(Vector3(town_x, world.terrain.ground_at(town_x, town_z) + 1.1, town_z + 5))
 	await frame()
+	if scene_gone("while walking up to " + id): return
 	player.interact()
 	await process_frame
+	if scene_gone("after talking to " + id): return
 	if not world.town_ui.visible: fail("The reeve could not be reached through E interaction: " + id)
 	if id == campaign.definition.towns[0].id:
 		await capture("journey")
@@ -203,6 +223,7 @@ func run() -> void:
 	equip_best()
 	await combat()
 	for index:int in 8:
+		if failed: break
 		if failed: break
 		var population:PopulationSystemView=qa_population_system
 		population.update_worker_assignments({"farmers": 10, "woodcutters": 2, "miners": 1, "guards": 0, "blacksmiths": 0})
@@ -315,6 +336,9 @@ func run() -> void:
 		if index < 7 and campaign.definition.towns[index + 1].id not in campaign.roads: fail("Regional work did not open the next campaign road")
 		await region_checkpoint()
 	var expected:String= "military" if military else "diplomatic"
+	if scene_gone("before the finale checks"):
+		quit(1)
+		return
 	if campaign.ending() != expected: fail("The full route did not reach its expected campaign ending")
 	if campaign.completed.size() != 60:
 		for quest:Variant in campaign.definition.quests:

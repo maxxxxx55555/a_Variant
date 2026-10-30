@@ -87,6 +87,16 @@ source now guards it.
   an unlabeled Codex close control, healthy settlement meters painted in danger red, and a diplomacy list
   that clipped two of eight factions. All four were fixed in shipping code and recaptured; the review record
   is `docs/GALLERY_ACCEPTANCE_1.6.0.md`.
+- **Soak opened a second campaign and crashed on a real death.** The measured soak reuses one process for
+  several campaign loops. On the second loop a genuine combat death released the world; the route's pending
+  coroutines then dereferenced the freed player and the driver waited for a cycle-finished signal that could
+  never arrive, so the process ended without writing its measured record. `scripts/verification/CampaignRoute.gd`
+  now checks that the world and player are still alive after every awaited step, reports "The world was
+  released ..." instead of touching a freed object, and stops the regional loop on that failure;
+  `tests/SoakRoute.gd` restores the avatar between regions (a lifecycle soak is not a difficulty study) and
+  guards each checkpoint; `tests/soak_gameplay.gd` watches every cycle with a validity check and a
+  twenty-five-minute deadline and always writes its result. A cycle that loses its world now fails the soak
+  loudly instead of killing it silently.
 
 The matrix contract itself was tightened in the same pass: `EXECUTED_PASS` now refuses to publish unless the
 evidence file ships in the repository, reports a clean sweep in both locales and still matches the bytes of
