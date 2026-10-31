@@ -22,7 +22,7 @@ Profiles published by 1.4.0 and 1.5.0 already carry the HMAC and load exactly as
 
 The exchange is asserted end to end in `tests/test_legacy_import.gd` for both locales: a silent load is refused, the pending entry names exactly that file, the dialog carries the localized title, body and both actions, confirming restores the real 1.1 state and re-signs it under schema 4, and declining leaves the file untouched. `tests/test_legacy_migration.gd` and `tests/test_oath_migration.gd` now exercise the same two-step path against the shipped 1.1 fixtures. Four localization keys were added, so each catalog holds 810 entries, and the test inventory is 86 sources.
 
-@@MEASURED@@
+The full gate was re-run at this tree: 83 rendered full-campaign cases in RU and 83 in EN (all passing, each log hashed in `acceptance-1.6.1/suites.json`), the executed 32×8 mechanics matrix in both locales, 3 complete campaign loops of measured soak in 2546 s with identical object counts, 5/5 native routes on the exported builds, and 2/2 — every critical data digest matched its decrypted payload, and a stock engine still cannot mount the encrypted pack.
 
 ## Honest limits
 
