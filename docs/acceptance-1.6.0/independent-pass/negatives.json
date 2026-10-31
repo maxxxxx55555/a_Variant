@@ -148,5 +148,18 @@
   },
   "total": 20,
   "passed": 20,
-  "note": "Ten scenarios in RU and EN. The fuzz case ran with GAME_FUZZ_SEEDS=10 and --fixed-fps 30. The marker for test_critical_read_bounds is \"CRITICAL READ BOUNDS: PASS\"."
+  "note": "Ten scenarios in RU and EN. The fuzz case ran with GAME_FUZZ_SEEDS=10 and --fixed-fps 30. The marker for test_critical_read_bounds is \"CRITICAL READ BOUNDS: PASS\".",
+  "locale_probes": {
+    "ru": {
+      "log": "logs/locale-probe-ru.console.log",
+      "log_sha256": "bf3efea2780de28f426325a3bfc09250efc39ee1a073a50edcf25e4bb22bd1ba",
+      "marker": "LOCALE PROBE: requested=ru active=ru title=\u041d\u043e\u0432\u0430\u044f \u043a\u0430\u043c\u043f\u0430\u043d\u0438\u044f"
+    },
+    "en": {
+      "log": "logs/locale-probe-en.console.log",
+      "log_sha256": "d9146e0324b260fed8bd99dac06643065308197bc67f78e337281498ff67119e",
+      "marker": "LOCALE PROBE: requested=en active=en title=New campaign"
+    }
+  },
+  "locale_evidence": "The twenty case logs are locale-independent by design: those tests print only their terminal marker, so RU and EN runs hash identically. Two probe runs record the active language and a localized string, which is what proves the locale split."
 }

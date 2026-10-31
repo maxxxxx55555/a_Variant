@@ -28,6 +28,8 @@
     "fuzz-50-seeds-ru.json": "4003376c4414c908bb3d878bd45321a72cf0884320a72e7f97890135e8600a1e",
     "independent-pass/logs/fuzz_seeded-en.console.log": "f0c52986fcb36c2c3cb895ebfc5c7b2ddf14d12b83b964eb93e4a90365936f67",
     "independent-pass/logs/fuzz_seeded-ru.console.log": "f0c52986fcb36c2c3cb895ebfc5c7b2ddf14d12b83b964eb93e4a90365936f67",
+    "independent-pass/logs/locale-probe-en.console.log": "d9146e0324b260fed8bd99dac06643065308197bc67f78e337281498ff67119e",
+    "independent-pass/logs/locale-probe-ru.console.log": "bf3efea2780de28f426325a3bfc09250efc39ee1a073a50edcf25e4bb22bd1ba",
     "independent-pass/logs/test_build_integrity-en.console.log": "a07cea433ea5e8d909b4382134be60b44306b08750bc697fbacf14a6302fe77e",
     "independent-pass/logs/test_build_integrity-ru.console.log": "a07cea433ea5e8d909b4382134be60b44306b08750bc697fbacf14a6302fe77e",
     "independent-pass/logs/test_codex-en.console.log": "da9232d6f6aaf32432d77c218107d9a737bd16e7ebc50a2928697d2d2d546768",
@@ -46,7 +48,7 @@
     "independent-pass/logs/test_save_recovery-ru.console.log": "60d092b3246d9bb3903a6f5f516ceb10b8d9a2e643438cdc9c98f53b8b582f65",
     "independent-pass/logs/test_second_oath-en.console.log": "005e3a564b3818f9cca2fafe64446943d92c58ef7c60ffb2576b49a251af25c3",
     "independent-pass/logs/test_second_oath-ru.console.log": "005e3a564b3818f9cca2fafe64446943d92c58ef7c60ffb2576b49a251af25c3",
-    "independent-pass/negatives.json": "fd81e8d260f9b861b4880ed3334e8d83673d5f94ff484529006736f6cdd49033",
+    "independent-pass/negatives.json": "b3fec655b27d1eaad403a10ca6ea560af2412c95444a09ae8b3e182b9abe79aa",
     "independent-pass/zip-layout.json": "c7dce6226fce6766e1f092ffdeb76a5b22880b0ca596ef961a7dd8760ea84c2a",
     "legacy.json": "0f44e0ad0ebbad3814cdbdcb271a8bb92e70f0ef5519175db30b6127a3eee4fc",
     "native-iron-death.log": "79ada33f9f3d7c4674b655882f79d445f99c458769e5a866df1bdb549cb5ff50",
@@ -412,5 +414,5 @@
     "suites.json": "614ad1131fc85b4d2574dc7721700bdb7b0b37d494ae2880515461caba393030",
     "visual-review.json": "66dce96ba732a479a98cf6f08da7c7f145522fe13c91976c3b5f949bcd6ae42d"
   },
-  "count": 407
+  "count": 409
 }

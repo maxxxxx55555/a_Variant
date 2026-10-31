@@ -44,8 +44,8 @@ In the engine the chime plays as a spatial cue on `SFX_Environment` with a fixed
 These are cosmetic notes from a second pair of eyes on the shipped frames, recorded so a future pass can decide about them; none of them obscures information or blocks a control.
 
 - An unchecked oath toggle is a small grey dot without a visible track; the checked state reads clearly, the unchecked one is subtle.
-- The banner preview bar communicates the oath only by its colour; the oath name sits in the row above it.
-- The iron-mode checkbox on the title screen is a dark square on a dark row (about 1.4:1 boundary contrast). Its label and check glyph measure 6.1:1, so the control stays operable and readable, but the unchecked outline is quiet.
+- The banner preview bar communicates the oath only by its colour; the oath name is exposed as the bar's tooltip, which the oath panel test asserts.
+- The iron-mode checkbox on the title screen is a dark square on a darker row, so the unchecked outline is quiet; its label stays readable. This is a style note, not a measured accessibility claim — the ratio depends on where the row background is sampled.
 - Map labels sit directly on the dotted roads without a text halo; they remain readable at 1280×720 in both languages.
 - The tier-3 hall is a flat procedural block with a plain prism roof next to textured village houses. It reads as a landmark by silhouette, not by material.
 
