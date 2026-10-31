@@ -57,10 +57,18 @@ func _encoded(data: Dictionary, context: String) -> String:
 	if auth.is_empty(): return ""
 	return JSON.stringify({"version":SCHEMA_VERSION,"timestamp":Time.get_unix_time_from_system(),"checksum":calculate_checksum(body),"data":body,"auth":auth},"",true,true)
 
+# A checksum-only body is never promoted into an authenticated backup: without the player's
+# confirmation for that exact file it is not trusted enough to be re-signed.
+func _read_previous(path: String) -> Dictionary:
+	var data: Dictionary = _read_valid_save(path)
+	if not data.is_empty() and last_read_schema < SCHEMA_VERSION and legacy_authorised != path:
+		return {}
+	return data
+
 func _store(path: String, data: Dictionary) -> bool:
 	if not Guard.can_write(): return false
 	if not Policy.valid(data): return false
-	var previous:Dictionary= _read_valid_save(path)
+	var previous:Dictionary= _read_previous(path)
 	# Preserve the authenticated envelope and timestamp for an unchanged state.
 	# Legacy files still migrate; invalid primaries still recover from their backup.
 	if not previous.is_empty() and Guard.locked(purpose(path)):
@@ -70,7 +78,7 @@ func _store(path: String, data: Dictionary) -> bool:
 			if record.get("version")==SCHEMA_VERSION and JSON.stringify(_normalize_numbers(previous),"",true,true)==JSON.stringify(_normalize_numbers(data),"",true,true):return true
 	var encoded:String= _encoded(data,purpose(path))
 	if encoded.is_empty(): return false
-	if previous.is_empty(): previous = _read_valid_save(backup_path(path))
+	if previous.is_empty(): previous = _read_previous(backup_path(path))
 	if not previous.is_empty() and path != slot_path(6):
 		if not Guard.atomic_text(backup_path(path),_encoded(previous,purpose(path))): return false
 	elif FileAccess.file_exists(path) and previous.is_empty():

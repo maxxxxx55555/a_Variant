@@ -57,7 +57,8 @@ func run()->void:
 	check(not is_instance_valid(dialog),"The dialog releases itself after the answer")
 
 	var declined:String="user://legacy-import-decline.json"
-	check(not stage(declined).is_empty(),"A second checksum-only file is staged")
+	var declined_expected:Dictionary=stage(declined)
+	check(not declined_expected.is_empty(),"A second checksum-only file is staged")
 	var before:String=FileAccess.get_file_as_string(declined)
 	check(not before.is_empty(),"The staged file is readable")
 	check(saves._load_path(declined).is_empty(),"The second silent load is refused too")
@@ -78,5 +79,18 @@ func run()->void:
 	check(FileAccess.get_file_as_string(declined)==before,"Declining leaves the legacy file byte-identical")
 	var untouched:Dictionary=JSON.parse_string(before)
 	check(int(untouched.get("version")) < 4,"No silent re-signing happened behind the player's back")
+	# A declined body must never return later as an authenticated backup of that slot.
+	check(saves._store(declined, declined_expected),"An ordinary write into the declined slot succeeds")
+	var backup_text:String=FileAccess.get_file_as_string(saves.backup_path(declined))
+	var promoted:bool=false
+	if not backup_text.is_empty():
+		var backup_envelope:Dictionary=JSON.parse_string(backup_text)
+		var backup_body:Variant=backup_envelope.get("data")
+		if backup_body is String:
+			promoted=JSON.parse_string(backup_body as String)==declined_expected
+		else:
+			promoted=backup_body is Dictionary and (backup_body as Dictionary)==declined_expected
+	check(not promoted,"A declined checksum-only body is never promoted into an authenticated backup")
+	check(FileAccess.file_exists(declined+".rejected"),"The declined file is preserved as .rejected instead")
 	print("LEGACY IMPORT RESULT: ","PASS" if failures==0 else "FAIL")
 	quit(0 if failures==0 else 1)
