@@ -39,6 +39,16 @@ The earlier wording of check 4 claimed the rare pickup chime is quieter than the
 
 In the engine the chime plays as a spatial cue on `SFX_Environment` with a fixed −6 dB player gain, a 3 m unit size and a 38 m maximum distance (`scripts/audio/AudioDirector.gd`), so at arm's length it arrives around −18.6 dBFS RMS against music that sits near −23 dBFS RMS at 0 dB on the Music bus. In plain terms: **the chime is a short, bright cue that is louder than the bed while it rings, not quieter.** The documentation was corrected rather than the mix, because this is a listening decision, not a defect: the owner check is now "confirm the chime reads as a pickup and does not mask the music", and the numbers above are the starting point for that judgement. The music bus has its own slider, so a player who prefers a quieter effect can lower effects without losing the soundtrack.
 
+## Style observations from the independent frame review
+
+These are cosmetic notes from a second pair of eyes on the shipped frames, recorded so a future pass can decide about them; none of them obscures information or blocks a control.
+
+- An unchecked oath toggle is a small grey dot without a visible track; the checked state reads clearly, the unchecked one is subtle.
+- The banner preview bar communicates the oath only by its colour; the oath name sits in the row above it.
+- The iron-mode checkbox on the title screen is a dark square on a dark row (about 1.4:1 boundary contrast). Its label and check glyph measure 6.1:1, so the control stays operable and readable, but the unchecked outline is quiet.
+- Map labels sit directly on the dotted roads without a text halo; they remain readable at 1280×720 in both languages.
+- The tier-3 hall is a flat procedural block with a plain prism roof next to textured village houses. It reads as a landmark by silhouette, not by material.
+
 ## What this record does not claim
 
 It does not replace playing, listening or judging. It removes guesswork about mechanics, localization and what the frames contain, and it records one documentation claim that measurement did not support. The release assets published on GitHub are unchanged by this record.

@@ -1,0 +1,152 @@
+{
+  "schema": 1,
+  "title": "Marchland Oaths 1.6.0 independent negative and feature scenario run",
+  "engine": "4.7.stable.official.5b4e0cb0f",
+  "source_commit": "fa1e1dd",
+  "command": "godot --headless --audio-driver Dummy --rendering-method gl_compatibility --path . --script res://tests/<case>.gd with GAME_QA=1, GAME_AUDIO_MUTED=1, isolated profiles",
+  "cases": {
+    "fuzz_seeded-en": {
+      "exit": 0,
+      "marker": "FUZZ RESULT: PASS seeds=10 steps=280 second_oath_seeds=5",
+      "bad_lines": [],
+      "log": "logs/fuzz_seeded-en.console.log",
+      "log_sha256": "f0c52986fcb36c2c3cb895ebfc5c7b2ddf14d12b83b964eb93e4a90365936f67"
+    },
+    "fuzz_seeded-ru": {
+      "exit": 0,
+      "marker": "FUZZ RESULT: PASS seeds=10 steps=280 second_oath_seeds=5",
+      "bad_lines": [],
+      "log": "logs/fuzz_seeded-ru.console.log",
+      "log_sha256": "f0c52986fcb36c2c3cb895ebfc5c7b2ddf14d12b83b964eb93e4a90365936f67"
+    },
+    "test_build_integrity-en": {
+      "exit": 0,
+      "marker": "BUILD INTEGRITY RESULT: PASS",
+      "bad_lines": [],
+      "log": "logs/test_build_integrity-en.console.log",
+      "log_sha256": "a07cea433ea5e8d909b4382134be60b44306b08750bc697fbacf14a6302fe77e"
+    },
+    "test_build_integrity-ru": {
+      "exit": 0,
+      "marker": "BUILD INTEGRITY RESULT: PASS",
+      "bad_lines": [],
+      "log": "logs/test_build_integrity-ru.console.log",
+      "log_sha256": "a07cea433ea5e8d909b4382134be60b44306b08750bc697fbacf14a6302fe77e"
+    },
+    "test_codex-en": {
+      "exit": 0,
+      "marker": "CODEX RESULT: PASS",
+      "bad_lines": [],
+      "log": "logs/test_codex-en.console.log",
+      "log_sha256": "da9232d6f6aaf32432d77c218107d9a737bd16e7ebc50a2928697d2d2d546768"
+    },
+    "test_codex-ru": {
+      "exit": 0,
+      "marker": "CODEX RESULT: PASS",
+      "bad_lines": [],
+      "log": "logs/test_codex-ru.console.log",
+      "log_sha256": "da9232d6f6aaf32432d77c218107d9a737bd16e7ebc50a2928697d2d2d546768"
+    },
+    "test_critical_read_bounds-en": {
+      "exit": 0,
+      "marker": "CRITICAL READ BOUNDS: PASS",
+      "bad_lines": [],
+      "log": "logs/test_critical_read_bounds-en.console.log",
+      "log_sha256": "69ee0d34472445540650a54af148eff7e78c0c4227be8ceb395e55a56c687a0e"
+    },
+    "test_critical_read_bounds-ru": {
+      "exit": 0,
+      "marker": "CRITICAL READ BOUNDS: PASS",
+      "bad_lines": [],
+      "log": "logs/test_critical_read_bounds-ru.console.log",
+      "log_sha256": "69ee0d34472445540650a54af148eff7e78c0c4227be8ceb395e55a56c687a0e"
+    },
+    "test_legacy_migration-en": {
+      "exit": 0,
+      "marker": "LEGACY MIGRATION RESULT: PASS",
+      "bad_lines": [],
+      "log": "logs/test_legacy_migration-en.console.log",
+      "log_sha256": "dcc6e2ccd7243b90dbe86a6379011cc3cb904f87881651825746d14ffd2f6136"
+    },
+    "test_legacy_migration-ru": {
+      "exit": 0,
+      "marker": "LEGACY MIGRATION RESULT: PASS",
+      "bad_lines": [],
+      "log": "logs/test_legacy_migration-ru.console.log",
+      "log_sha256": "dcc6e2ccd7243b90dbe86a6379011cc3cb904f87881651825746d14ffd2f6136"
+    },
+    "test_live_world_locale-en": {
+      "exit": 0,
+      "marker": "LIVE WORLD LOCALE RESULT: PASS",
+      "bad_lines": [],
+      "log": "logs/test_live_world_locale-en.console.log",
+      "log_sha256": "594936029ce8217c4ee2130df92f547f672364b89ca76fd52202eb2253abedc9"
+    },
+    "test_live_world_locale-ru": {
+      "exit": 0,
+      "marker": "LIVE WORLD LOCALE RESULT: PASS",
+      "bad_lines": [],
+      "log": "logs/test_live_world_locale-ru.console.log",
+      "log_sha256": "594936029ce8217c4ee2130df92f547f672364b89ca76fd52202eb2253abedc9"
+    },
+    "test_oath_migration-en": {
+      "exit": 0,
+      "marker": "OATH MIGRATION RESULT: PASS",
+      "bad_lines": [],
+      "log": "logs/test_oath_migration-en.console.log",
+      "log_sha256": "0bc61d96e2cd79c59e9418f55a735e6b64e1bee3b6e943d86223a3977dd6113a"
+    },
+    "test_oath_migration-ru": {
+      "exit": 0,
+      "marker": "OATH MIGRATION RESULT: PASS",
+      "bad_lines": [],
+      "log": "logs/test_oath_migration-ru.console.log",
+      "log_sha256": "0bc61d96e2cd79c59e9418f55a735e6b64e1bee3b6e943d86223a3977dd6113a"
+    },
+    "test_quest_tracker-en": {
+      "exit": 0,
+      "marker": "QUEST TRACKER RESULT: PASS",
+      "bad_lines": [],
+      "log": "logs/test_quest_tracker-en.console.log",
+      "log_sha256": "e2d4c3f55f1d0d7b56a3a74f13aa4ff8690421ac6cdd39b508a3c821942936cf"
+    },
+    "test_quest_tracker-ru": {
+      "exit": 0,
+      "marker": "QUEST TRACKER RESULT: PASS",
+      "bad_lines": [],
+      "log": "logs/test_quest_tracker-ru.console.log",
+      "log_sha256": "e2d4c3f55f1d0d7b56a3a74f13aa4ff8690421ac6cdd39b508a3c821942936cf"
+    },
+    "test_save_recovery-en": {
+      "exit": 0,
+      "marker": "SAVE RECOVERY RESULT: PASS",
+      "bad_lines": [],
+      "log": "logs/test_save_recovery-en.console.log",
+      "log_sha256": "60d092b3246d9bb3903a6f5f516ceb10b8d9a2e643438cdc9c98f53b8b582f65"
+    },
+    "test_save_recovery-ru": {
+      "exit": 0,
+      "marker": "SAVE RECOVERY RESULT: PASS",
+      "bad_lines": [],
+      "log": "logs/test_save_recovery-ru.console.log",
+      "log_sha256": "60d092b3246d9bb3903a6f5f516ceb10b8d9a2e643438cdc9c98f53b8b582f65"
+    },
+    "test_second_oath-en": {
+      "exit": 0,
+      "marker": "SECOND OATH RESULT: PASS",
+      "bad_lines": [],
+      "log": "logs/test_second_oath-en.console.log",
+      "log_sha256": "005e3a564b3818f9cca2fafe64446943d92c58ef7c60ffb2576b49a251af25c3"
+    },
+    "test_second_oath-ru": {
+      "exit": 0,
+      "marker": "SECOND OATH RESULT: PASS",
+      "bad_lines": [],
+      "log": "logs/test_second_oath-ru.console.log",
+      "log_sha256": "005e3a564b3818f9cca2fafe64446943d92c58ef7c60ffb2576b49a251af25c3"
+    }
+  },
+  "total": 20,
+  "passed": 20,
+  "note": "Ten scenarios in RU and EN. The fuzz case ran with GAME_FUZZ_SEEDS=10 and --fixed-fps 30. The marker for test_critical_read_bounds is \"CRITICAL READ BOUNDS: PASS\"."
+}
