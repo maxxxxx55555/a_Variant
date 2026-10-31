@@ -126,7 +126,7 @@ def main():
         assets = subprocess.run([sys.executable, str(project / 'tests/test_audio_assets.py')], timeout=60)
         if assets.returncode:
             return assets.returncode
-        for source_contract in ['test_public_qa_contract.py','test_release_export_tool.py','test_critical_manifest.py','test_design_system.py']:
+        for source_contract in ['test_public_qa_contract.py','test_release_export_tool.py','test_critical_manifest.py','test_design_system.py','test_release_packaging.py']:
             result=subprocess.run([sys.executable,str(project/'tests'/source_contract)],timeout=60)
             if result.returncode:return result.returncode
         for name, switches in cases:

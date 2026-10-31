@@ -46,3 +46,13 @@ Confirming applies it and re-signs it under schema 4 with the per-slot lock; dec
 and applies nothing. The existing per-slot guard still refuses a checksum-only file wherever authenticated progress
 already exists. Four localization keys were added (810 per locale) and `tests/test_legacy_import.gd` asserts the whole
 exchange in both languages, including that a refusal changes no bytes.
+
+## 1.6.2 — the confirmation had a side door
+
+A review of the 1.6.1 fix found that a declined checksum-only body could still be promoted into the slot's
+authenticated backup by a later ordinary save, because that write path read the file again without the confirmation
+check. `_store` now trusts a previous body only from the exact file the player just confirmed; otherwise the write
+proceeds with no backup candidate and the untouched original is preserved as `.rejected`.
+`tests/test_legacy_import.gd` asserts the declined-then-saved sequence. The release packaging list also now carries
+the current edition's `docs/acceptance-1.6.x/` folder, which 1.6.1 shipped without, and the packaging tool fails a
+build whose shipped documents reference repository files the archive leaves out.
