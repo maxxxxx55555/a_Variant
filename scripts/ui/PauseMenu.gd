@@ -225,32 +225,40 @@ func _on_load() -> void:
 	if CampaignSystem.active and CampaignSystem.iron_mode:
 		return
 	var loaded:Dictionary= SaveSystem.load_game()
-	if not loaded.is_empty():
-		GameState.player_hp = loaded.get("hp", 100.0)
-		GameState.player_stamina = loaded.get("stamina", 100.0)
-		var inventory:Array=loaded.get("inventory",[])
-		var equipment:Dictionary=loaded.get("equipment",{})
-		GameState.restore_items(inventory,equipment)
-		GameState.clamp_values()
-		GameState.recalculate_stats()
-		var simulation:Dictionary=loaded.get("simulation",{})
-		restore_simulation(simulation)
+	if loaded.is_empty() and SaveSystem.has_pending_legacy():
+		var path: String = SaveSystem.pending_legacy_path()
+		MarchTransition.confirm_legacy_import(path, func(data: Dictionary) -> void: _apply_loaded(data, false))
+		return
+	_apply_loaded(loaded, true)
 
-		var world_node:Node= get_tree().current_scene
-		if world_node and world_node.has_method("load_world_state") and loaded.has("world"):
-			# The active world implements this guarded scene lifecycle contract.
-			@warning_ignore("return_value_discarded")
-			world_node.call("load_world_state",loaded["world"])
+func _apply_loaded(loaded: Dictionary, notify_missing: bool) -> void:
+	if loaded.is_empty():
+		if notify_missing:
+			EventBus.notification_posted.emit(LocalizationManager.get_string("msg.save_error"), true)
+		return
+	GameState.player_hp = loaded.get("hp", 100.0)
+	GameState.player_stamina = loaded.get("stamina", 100.0)
+	var inventory:Array=loaded.get("inventory",[])
+	var equipment:Dictionary=loaded.get("equipment",{})
+	GameState.restore_items(inventory,equipment)
+	GameState.clamp_values()
+	GameState.recalculate_stats()
+	var simulation:Dictionary=loaded.get("simulation",{})
+	restore_simulation(simulation)
 
-		EventBus.inventory_updated.emit()
-		EventBus.equipment_updated.emit()
-		EventBus.player_hp_changed.emit(GameState.player_hp, GameState.max_hp)
-		EventBus.player_stamina_changed.emit(GameState.player_stamina, GameState.max_stamina)
-		save_btn.disabled = false
-		localize()
-		_on_resume()
-	else:
-		EventBus.notification_posted.emit(LocalizationManager.get_string("msg.save_error"), true)
+	var world_node:Node= get_tree().current_scene
+	if world_node and world_node.has_method("load_world_state") and loaded.has("world"):
+		# The active world implements this guarded scene lifecycle contract.
+		@warning_ignore("return_value_discarded")
+		world_node.call("load_world_state",loaded["world"])
+
+	EventBus.inventory_updated.emit()
+	EventBus.equipment_updated.emit()
+	EventBus.player_hp_changed.emit(GameState.player_hp, GameState.max_hp)
+	EventBus.player_stamina_changed.emit(GameState.player_stamina, GameState.max_stamina)
+	save_btn.disabled = false
+	localize()
+	_on_resume()
 
 func build_settings_frame() -> void:
 	settings_backdrop=Panel.new()

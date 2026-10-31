@@ -79,8 +79,9 @@ func run()->void:
 		var target:String="user://oath-migration-"+name+".json"
 		DirAccess.remove_absolute(Guard.lock_path(saves.purpose(target)))
 		check(DirAccess.copy_absolute(fixture(name),target)==OK,"Copy shipped pre-1.6 profile: "+name)
-		var loaded:Dictionary=saves._load_path(target)
-		check(not loaded.is_empty(),"Checksum-only pre-1.6 profile loads and re-signs under the 1.6 schema: "+name)
+		check(saves._load_path(target).is_empty(),"A checksum-only profile is refused until the player confirms it: "+name)
+		var loaded:Dictionary=saves.confirm_legacy_import(target)
+		check(not loaded.is_empty(),"A confirmed pre-1.6 profile loads and re-signs under the 1.6 schema: "+name)
 		if loaded.is_empty():
 			continue
 		var migrated:Dictionary=block(loaded)

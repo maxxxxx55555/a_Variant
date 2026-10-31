@@ -99,10 +99,8 @@ func _ready() -> void:
 	slot_choice.item_selected.connect(func(index:int)->void:
 		if index < 5: SaveSystem.selected_slot = index
 		cached_save = SaveSystem.load_slot(index)
-		var campaign_data: Dictionary = saved_campaign()
-		continue_button.disabled = cached_save.is_empty() or not campaign_data.get("active", false) or campaign_data.get("iron_dead", false)
-		continue_button.tooltip_text=LocalizationManager.get_string("ui.no_campaign_save") if continue_button.disabled else ""
-		refresh_progression()
+		refresh_slot_state()
+		_ask_legacy_import()
 	)
 	var continue_action:Callable = func()->void:
 		CampaignSystem.pending_load = cached_save
@@ -111,6 +109,7 @@ func _ready() -> void:
 	continue_button = action(column, "ui.continue", continue_action, "continue")
 	var campaign: Dictionary = saved_campaign()
 	continue_button.disabled = cached_save.is_empty() or not campaign.get("active", false) or campaign.get("iron_dead", false)
+	_ask_legacy_import()
 	difficulty_choice = OptionButton.new()
 	difficulty_choice.name="DifficultyChoice"
 	for id:String in ["story", "normal", "hard", "expert"]:
@@ -205,6 +204,22 @@ func _whole(value: Variant) -> int:
 		@warning_ignore("unsafe_call_argument")
 		return int(value)
 	return 0
+
+func refresh_slot_state() -> void:
+	var campaign_data: Dictionary = saved_campaign()
+	continue_button.disabled = cached_save.is_empty() or not campaign_data.get("active", false) or campaign_data.get("iron_dead", false)
+	continue_button.tooltip_text=LocalizationManager.get_string("ui.no_campaign_save") if continue_button.disabled else ""
+	refresh_progression()
+
+# A checksum-only profile is offered, never applied: the player confirms the import for that slot.
+func _ask_legacy_import() -> void:
+	if not cached_save.is_empty() or not SaveSystem.has_pending_legacy():
+		return
+	var path: String = SaveSystem.pending_legacy_path()
+	MarchTransition.confirm_legacy_import(path, func(data: Dictionary) -> void:
+		cached_save = data
+		refresh_slot_state()
+	)
 
 func open_stats() -> void:
 	if find_child("StatsPanel", true, false):

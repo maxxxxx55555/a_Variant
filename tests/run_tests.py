@@ -89,7 +89,7 @@ def main():
         cases.append(('invalid-combat-inputs', ['--headless','--script','res://tests/test_invalid_combat_inputs.gd']))
         cases.append(('untrusted-exploration', ['--headless','--script','res://tests/test_untrusted_exploration.gd']))
         cases.append(('packed-append-regression', ['--headless','--script','res://tests/test_packed_append_regression.gd']))
-        for case in ['second_oath','codex','quest_tracker','combat_feel','loot_feel','settlement_evolution','stats','design_pass','oath_migration']:
+        for case in ['second_oath','codex','quest_tracker','combat_feel','loot_feel','settlement_evolution','stats','design_pass','oath_migration','legacy_import']:
             cases.append((case, ['--headless','--script','res://tests/test_' + case + '.gd']))
         cases.insert(2, ('audio', ['--headless', '--script', 'res://tests/test_audio.gd']))
         if portrait:

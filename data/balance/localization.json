@@ -2591,6 +2591,22 @@
     "ru": "Более высокое сглаживание смягчает края и требует больше ресурсов GPU.",
     "en": "Higher anti-aliasing smooths edges and uses more GPU power."
   },
+  "ui.legacy_import_title": {
+    "ru": "Старый формат сохранения",
+    "en": "Old save format"
+  },
+  "ui.legacy_import_body": {
+    "ru": "Этот файл создан до появления подписанных профилей и проверяется только контрольной суммой. Импортировать его в этот слот?",
+    "en": "This file predates signed profiles and is checked by checksum only. Import it into this slot?"
+  },
+  "ui.legacy_import_accept": {
+    "ru": "Импортировать",
+    "en": "Import"
+  },
+  "ui.legacy_import_decline": {
+    "ru": "Не импортировать",
+    "en": "Do not import"
+  },
   "ui.unsaved_title": {
     "ru": "Сохранение не удалось",
     "en": "Progress could not be saved"

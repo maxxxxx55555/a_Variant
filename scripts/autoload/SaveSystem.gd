@@ -9,6 +9,11 @@ const SECRET_SALT:String= "OathsOfTheMarch_v1_Salt"
 const Guard = preload("res://scripts/security/SaveGuard.gd")
 const Policy = preload("res://scripts/security/MarchSavePolicy.gd")
 var selected_slot: int = 0
+# A checksum-only v1-v3 body is the pre-1.6 migration path. It is never applied silently: the
+# load records it as pending and only an explicit player confirmation imports that one file.
+var legacy_pending: Dictionary = {}
+var legacy_authorised: String = ""
+var last_read_schema: int = 0
 
 func slot_path(index: int) -> String:
 	if index == 5: return "user://autosave.json"
@@ -90,8 +95,32 @@ func _load_path(path: String) -> Dictionary:
 		recovered = true
 	if not data.is_empty() and recovered: Guard.report_recovery("integrity.save_recovered",path)
 	if data.is_empty() and (FileAccess.file_exists(path) or FileAccess.file_exists(backup_path(path))): Guard.report_recovery("integrity.save_rejected",path)
+	if not data.is_empty() and last_read_schema < SCHEMA_VERSION and legacy_authorised != path:
+		legacy_pending[path] = true
+		return {}
 	if Guard.can_write() and not data.is_empty() and (recovered or not Guard.locked(purpose(path))):
 		if not _store(path,data): EventBus.notification_posted.emit(LocalizationManager.get_string("msg.save_write_error"),true)
+	return data
+
+func has_pending_legacy() -> bool:
+	return not legacy_pending.is_empty()
+
+func pending_legacy_path() -> String:
+	return "" if legacy_pending.is_empty() else str(legacy_pending.keys()[0])
+
+func cancel_legacy_import(path: String) -> void:
+	# Dictionary.erase returns whether it removed something; the caller only needs the state cleared.
+	@warning_ignore("return_value_discarded")
+	legacy_pending.erase(path)
+
+func confirm_legacy_import(path: String) -> Dictionary:
+	if not legacy_pending.has(path): return {}
+	legacy_authorised = path
+	var data: Dictionary = _load_path(path)
+	legacy_authorised = ""
+	@warning_ignore("return_value_discarded")
+	legacy_pending.erase(path)
+	if not data.is_empty(): EventBus.notification_posted.emit(LocalizationManager.get_string("msg.game_loaded"), false)
 	return data
 
 func load_game() -> Dictionary:
@@ -100,6 +129,7 @@ func load_game() -> Dictionary:
 	return data
 
 func _read_valid_save(path: String) -> Dictionary:
+	last_read_schema = 0
 	var text:String= Guard.bounded_text(path)
 	if text.is_empty() or not Guard.safe_text(text): return {}
 	var payload_value:Variant=JSON.parse_string(text)
@@ -109,6 +139,7 @@ func _read_valid_save(path: String) -> Dictionary:
 	if not Guard.numeric(version,1,SCHEMA_VERSION,true): return {}
 	var decoded:Variant
 	var schema:int=version
+	last_read_schema = schema
 	if schema == SCHEMA_VERSION:
 		if not payload.get("data") is String:return {}
 		var body:String=payload.data

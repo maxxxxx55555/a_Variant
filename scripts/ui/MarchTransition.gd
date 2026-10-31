@@ -6,6 +6,7 @@ var loading_bar:ProgressBar
 var busy:bool=false
 var quitting:bool=false
 var unsaved_dialog:ConfirmationDialog
+var legacy_dialog:ConfirmationDialog
 const TITLE:String="res://scenes/ui/main_menu.tscn"
 const TIP_COUNT:int=6
 func _ready() -> void:
@@ -148,6 +149,37 @@ func confirm_unsaved(retry:Callable,leave:Callable) -> void:
 	@warning_ignore("return_value_discarded")
 	unsaved_dialog.canceled.connect(close_unsaved)
 	unsaved_dialog.popup_centered(Vector2i(660,240))
+
+func confirm_legacy_import(path: String, on_done: Callable) -> void:
+	if quitting or path.is_empty():
+		on_done.call({})
+		return
+	if is_instance_valid(legacy_dialog):
+		legacy_dialog.popup_centered()
+		return
+	legacy_dialog = ConfirmationDialog.new()
+	legacy_dialog.theme = preload("res://scripts/ui/MarchTheme.gd").create()
+	legacy_dialog.title = LocalizationManager.get_string("ui.legacy_import_title")
+	legacy_dialog.dialog_text = LocalizationManager.get_string("ui.legacy_import_body")
+	legacy_dialog.ok_button_text = LocalizationManager.get_string("ui.legacy_import_accept")
+	legacy_dialog.cancel_button_text = LocalizationManager.get_string("ui.legacy_import_decline")
+	add_child(legacy_dialog)
+	var finish: Callable = func(data: Dictionary) -> void:
+		var dialog: ConfirmationDialog = legacy_dialog
+		legacy_dialog = null
+		if is_instance_valid(dialog):
+			dialog.queue_free()
+		on_done.call(data)
+	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
+	@warning_ignore("return_value_discarded")
+	legacy_dialog.confirmed.connect(func() -> void: finish.call(SaveSystem.confirm_legacy_import(path)))
+	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
+	@warning_ignore("return_value_discarded")
+	legacy_dialog.canceled.connect(func() -> void:
+		SaveSystem.cancel_legacy_import(path)
+		finish.call({})
+	)
+	legacy_dialog.popup_centered()
 
 func close_unsaved() -> void:
 	if is_instance_valid(unsaved_dialog):
