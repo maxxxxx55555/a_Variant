@@ -10,10 +10,13 @@ const Guard = preload("res://scripts/security/SaveGuard.gd")
 const Policy = preload("res://scripts/security/MarchSavePolicy.gd")
 var selected_slot: int = 0
 # A checksum-only v1-v3 body is the pre-1.6 migration path. It is never applied silently: the
-# load records it as pending and only an explicit player confirmation imports that one file.
+# load records the exact bytes as pending and only an explicit player confirmation for those
+# bytes imports them. Consent is bound to a digest, not to a pathname, so a file swapped while
+# the dialog is open cannot be promoted by an older answer.
 var legacy_pending: Dictionary = {}
 var legacy_authorised: String = ""
 var last_read_schema: int = 0
+var last_read_digest: String = ""
 
 func slot_path(index: int) -> String:
 	if index == 5: return "user://autosave.json"
@@ -58,17 +61,28 @@ func _encoded(data: Dictionary, context: String) -> String:
 	return JSON.stringify({"version":SCHEMA_VERSION,"timestamp":Time.get_unix_time_from_system(),"checksum":calculate_checksum(body),"data":body,"auth":auth},"",true,true)
 
 # A checksum-only body is never promoted into an authenticated backup: without the player's
-# confirmation for that exact file it is not trusted enough to be re-signed.
+# confirmation for those exact bytes it is not trusted enough to be re-signed.
 func _read_previous(path: String) -> Dictionary:
 	var data: Dictionary = _read_valid_save(path)
-	if not data.is_empty() and last_read_schema < SCHEMA_VERSION and legacy_authorised != path:
+	if not data.is_empty() and last_read_schema < SCHEMA_VERSION and legacy_authorised != last_read_digest:
 		return {}
 	return data
+
+# Rejected originals are kept one per rejection: a later decline must not destroy the bytes
+# an earlier one preserved.
+func _preserve_rejected(path: String) -> bool:
+	var target: String = path + ".rejected"
+	var suffix: int = 2
+	while FileAccess.file_exists(target):
+		target = "%s.rejected-%d" % [path, suffix]
+		suffix += 1
+	return DirAccess.copy_absolute(path, target) == OK
 
 func _store(path: String, data: Dictionary) -> bool:
 	if not Guard.can_write(): return false
 	if not Policy.valid(data): return false
-	var previous:Dictionary= _read_previous(path)
+	var primary:Dictionary= _read_previous(path)
+	var previous:Dictionary= primary
 	# Preserve the authenticated envelope and timestamp for an unchanged state.
 	# Legacy files still migrate; invalid primaries still recover from their backup.
 	if not previous.is_empty() and Guard.locked(purpose(path)):
@@ -79,10 +93,10 @@ func _store(path: String, data: Dictionary) -> bool:
 	var encoded:String= _encoded(data,purpose(path))
 	if encoded.is_empty(): return false
 	if previous.is_empty(): previous = _read_previous(backup_path(path))
+	if FileAccess.file_exists(path) and primary.is_empty():
+		if not _preserve_rejected(path): return false
 	if not previous.is_empty() and path != slot_path(6):
 		if not Guard.atomic_text(backup_path(path),_encoded(previous,purpose(path))): return false
-	elif FileAccess.file_exists(path) and previous.is_empty():
-		if DirAccess.copy_absolute(path,path+".rejected") != OK: return false
 	if not Guard.atomic_text(path,encoded): return false
 	return Guard.lock(purpose(path))
 
@@ -97,24 +111,28 @@ func save_game(game_data: Dictionary, autosave: bool = false) -> bool:
 func _load_path(path: String) -> Dictionary:
 	if Guard.transaction_depth!=0:return {}
 	var data:Dictionary= _read_valid_save(path)
+	var body_digest:String= last_read_digest
 	var recovered:bool= false
 	if data.is_empty() and path != slot_path(6):
 		data = _read_valid_save(backup_path(path))
 		recovered = true
+		body_digest = last_read_digest
+	# An unconfirmed checksum-only body is recorded by its exact bytes and never reaches game
+	# state or the recovery notices; only confirm_legacy_import() for that digest applies it.
+	if not data.is_empty() and last_read_schema < SCHEMA_VERSION and legacy_authorised != body_digest:
+		legacy_pending[path] = body_digest
+		return {}
 	if not data.is_empty() and recovered: Guard.report_recovery("integrity.save_recovered",path)
 	if data.is_empty() and (FileAccess.file_exists(path) or FileAccess.file_exists(backup_path(path))): Guard.report_recovery("integrity.save_rejected",path)
-	if not data.is_empty() and last_read_schema < SCHEMA_VERSION and legacy_authorised != path:
-		legacy_pending[path] = true
-		return {}
 	if Guard.can_write() and not data.is_empty() and (recovered or not Guard.locked(purpose(path))):
 		if not _store(path,data): EventBus.notification_posted.emit(LocalizationManager.get_string("msg.save_write_error"),true)
 	return data
 
-func has_pending_legacy() -> bool:
-	return not legacy_pending.is_empty()
+func has_pending_legacy(path: String) -> bool:
+	return legacy_pending.has(path)
 
-func pending_legacy_path() -> String:
-	return "" if legacy_pending.is_empty() else str(legacy_pending.keys()[0])
+func pending_legacy_digest(path: String) -> String:
+	return str(legacy_pending.get(path, ""))
 
 func cancel_legacy_import(path: String) -> void:
 	# Dictionary.erase returns whether it removed something; the caller only needs the state cleared.
@@ -123,9 +141,16 @@ func cancel_legacy_import(path: String) -> void:
 
 func confirm_legacy_import(path: String) -> Dictionary:
 	if not legacy_pending.has(path): return {}
-	legacy_authorised = path
+	var expected: String = str(legacy_pending[path])
+	legacy_authorised = expected
 	var data: Dictionary = _load_path(path)
 	legacy_authorised = ""
+	if data.is_empty():
+		# The bytes behind this slot are no longer the ones the player was shown, so nothing is
+		# applied and the current body stays pending for a fresh question.
+		if legacy_pending.has(path) and str(legacy_pending[path]) != expected:
+			EventBus.notification_posted.emit(LocalizationManager.get_string("msg.legacy_changed"), true)
+		return {}
 	@warning_ignore("return_value_discarded")
 	legacy_pending.erase(path)
 	if not data.is_empty(): EventBus.notification_posted.emit(LocalizationManager.get_string("msg.game_loaded"), false)
@@ -138,8 +163,10 @@ func load_game() -> Dictionary:
 
 func _read_valid_save(path: String) -> Dictionary:
 	last_read_schema = 0
+	last_read_digest = ""
 	var text:String= Guard.bounded_text(path)
 	if text.is_empty() or not Guard.safe_text(text): return {}
+	last_read_digest = _text_digest(text)
 	var payload_value:Variant=JSON.parse_string(text)
 	if not payload_value is Dictionary:return {}
 	var payload:Dictionary=payload_value
@@ -192,5 +219,13 @@ func calculate_checksum(data: String) -> String:
 	var ctx:HashingContext= HashingContext.new()
 	if ctx.start(HashingContext.HASH_SHA256)!=OK:return ""
 	if ctx.update((data + SECRET_SALT).to_utf8_buffer())!=OK:return ""
+	var res:PackedByteArray= ctx.finish()
+	return res.hex_encode()
+
+# The exact bytes of a save file, so a player's answer can be bound to the body it was about.
+func _text_digest(text: String) -> String:
+	var ctx:HashingContext= HashingContext.new()
+	if ctx.start(HashingContext.HASH_SHA256)!=OK:return ""
+	if ctx.update(text.to_utf8_buffer())!=OK:return ""
 	var res:PackedByteArray= ctx.finish()
 	return res.hex_encode()

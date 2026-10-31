@@ -7,6 +7,8 @@ var busy:bool=false
 var quitting:bool=false
 var unsaved_dialog:ConfirmationDialog
 var legacy_dialog:ConfirmationDialog
+var legacy_dialog_path:String=""
+var legacy_dialog_done:Callable
 const TITLE:String="res://scenes/ui/main_menu.tscn"
 const TIP_COUNT:int=6
 func _ready() -> void:
@@ -155,7 +157,11 @@ func confirm_legacy_import(path: String, on_done: Callable) -> void:
 		on_done.call({})
 		return
 	if is_instance_valid(legacy_dialog):
-		legacy_dialog.popup_centered()
+		# A second slot never silently reuses the first dialog: the older request is answered
+		# with an empty load, and its file stays pending for its own question later.
+		_finish_legacy_dialog({})
+	if not SaveSystem.has_pending_legacy(path):
+		on_done.call({})
 		return
 	legacy_dialog = ConfirmationDialog.new()
 	legacy_dialog.theme = preload("res://scripts/ui/MarchTheme.gd").create()
@@ -164,22 +170,32 @@ func confirm_legacy_import(path: String, on_done: Callable) -> void:
 	legacy_dialog.ok_button_text = LocalizationManager.get_string("ui.legacy_import_accept")
 	legacy_dialog.cancel_button_text = LocalizationManager.get_string("ui.legacy_import_decline")
 	add_child(legacy_dialog)
-	var finish: Callable = func(data: Dictionary) -> void:
-		var dialog: ConfirmationDialog = legacy_dialog
-		legacy_dialog = null
-		if is_instance_valid(dialog):
-			dialog.queue_free()
-		on_done.call(data)
+	legacy_dialog_path = path
+	legacy_dialog_done = on_done
 	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
 	@warning_ignore("return_value_discarded")
-	legacy_dialog.confirmed.connect(func() -> void: finish.call(SaveSystem.confirm_legacy_import(path)))
+	legacy_dialog.confirmed.connect(func() -> void:
+		_finish_legacy_dialog(SaveSystem.confirm_legacy_import(legacy_dialog_path))
+	)
 	# This signal is wired once per owning node; lifecycle and navigation tests cover teardown.
 	@warning_ignore("return_value_discarded")
 	legacy_dialog.canceled.connect(func() -> void:
-		SaveSystem.cancel_legacy_import(path)
-		finish.call({})
+		SaveSystem.cancel_legacy_import(legacy_dialog_path)
+		_finish_legacy_dialog({})
 	)
 	legacy_dialog.popup_centered()
+
+func _finish_legacy_dialog(data: Dictionary) -> void:
+	var dialog: ConfirmationDialog = legacy_dialog
+	var done: Callable = legacy_dialog_done
+	legacy_dialog = null
+	legacy_dialog_path = ""
+	legacy_dialog_done = Callable()
+	if is_instance_valid(dialog):
+		dialog.hide()
+		dialog.queue_free()
+	if done.is_valid():
+		done.call(data)
 
 func close_unsaved() -> void:
 	if is_instance_valid(unsaved_dialog):

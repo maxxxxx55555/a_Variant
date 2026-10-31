@@ -673,6 +673,7 @@ ui.legacy_import_title,Старый формат сохранения,Old save f
 ui.legacy_import_body,Этот файл создан до появления подписанных профилей и проверяется только контрольной суммой. Импортировать его в этот слот?,This file predates signed profiles and is checked by checksum only. Import it into this slot?
 ui.legacy_import_accept,Импортировать,Import
 ui.legacy_import_decline,Не импортировать,Do not import
+msg.legacy_changed,Файл был изменён после вашего ответа. Импорт не выполнен.,This file changed after you answered. Nothing was imported.
 ui.unsaved_title,Сохранение не удалось,Progress could not be saved
 ui.unsaved_body,Прогресс ещё не записан. Повторите сохранение или оставайтесь в игре.,Your progress is still unsaved. Retry the save or stay in the game.
 ui.retry_save,Повторить сохранение,Retry save

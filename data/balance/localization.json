@@ -2607,6 +2607,10 @@
     "ru": "Не импортировать",
     "en": "Do not import"
   },
+  "msg.legacy_changed": {
+    "ru": "Файл был изменён после вашего ответа. Импорт не выполнен.",
+    "en": "This file changed after you answered. Nothing was imported."
+  },
   "ui.unsaved_title": {
     "ru": "Сохранение не удалось",
     "en": "Progress could not be saved"

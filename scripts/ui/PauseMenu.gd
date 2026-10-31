@@ -224,9 +224,9 @@ func _on_save(autosave: bool = false) -> bool:
 func _on_load() -> void:
 	if CampaignSystem.active and CampaignSystem.iron_mode:
 		return
+	var path: String = SaveSystem.slot_path(SaveSystem.selected_slot)
 	var loaded:Dictionary= SaveSystem.load_game()
-	if loaded.is_empty() and SaveSystem.has_pending_legacy():
-		var path: String = SaveSystem.pending_legacy_path()
+	if loaded.is_empty() and SaveSystem.has_pending_legacy(path):
 		MarchTransition.confirm_legacy_import(path, func(data: Dictionary) -> void: _apply_loaded(data, false))
 		return
 	_apply_loaded(loaded, true)
