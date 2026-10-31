@@ -99,32 +99,32 @@ def packaging_list() -> dict:
     return members
 
 
-def unresolved_references(members: dict) -> list[str]:
+def documentation_index() -> set:
+    """Every file under docs/, as repository-relative posix paths, in one walk.
+
+    Resolving each reference against the filesystem instead made the contract take minutes on
+    Windows; a single walk keeps it a few seconds as the evidence folders grow.
+    """
+    return {path.relative_to(ROOT).as_posix() for path in (ROOT / 'docs').rglob('*') if path.is_file()}
+
+
+def unresolved_references(members: dict, index: set = None) -> list[str]:
     """A shipped document may not point at a repository file that the archive leaves behind.
 
     The 1.6.1 bundle shipped patch notes whose evidence folder was not in the download; this
     turns that class of mistake into a packaging failure instead of a review finding.
     """
-    resolve_roots = [ROOT, ROOT / 'docs']
+    known = documentation_index() if index is None else index
     unresolved = []
     for name, path in sorted(members.items()):
         if not name.endswith(('.md', '.json', '.txt')):
             continue
         text = path.read_text(encoding='utf-8', errors='replace')
         for token in sorted(set(REFERENCE.findall(text))):
-            for base in resolve_roots:
-                candidate = base / token
-                try:
-                    if not candidate.is_file():
-                        continue
-                    relative = candidate.resolve().relative_to(ROOT).as_posix()
-                except (OSError, ValueError):
-                    continue
-                if not relative.startswith('docs/'):
-                    continue
-                if PREFIX + relative not in members:
-                    unresolved.append(name + ' -> ' + relative)
-                break
+            candidates = [token] if token.startswith('docs/') else ['docs/' + token, token]
+            relative = next((candidate for candidate in candidates if candidate in known), None)
+            if relative is not None and PREFIX + relative not in members:
+                unresolved.append(name + ' -> ' + relative)
     return unresolved
 
 
