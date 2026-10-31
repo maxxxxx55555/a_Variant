@@ -100,7 +100,7 @@ Unchanged from 1.5.x; re-verified against the shipped files.
 - Automated checks are finite and were executed on one Windows host with an AMD integrated GPU. They are not a human playtest, a listening review, or a performance guarantee on other hardware.
 - Offline integrity resists ordinary corruption and editing; it is not DRM and cannot stop an owner from patching a local binary.
 - The custom native template necessarily contains the pack-decryption key. The pack is encrypted and audited; the key is not published.
-- A CI run of the import step aborted once inside the Ubuntu runner's allocator (`realloc(): invalid next size`) and passed on an immediate re-run of the identical commit; it is recorded here as a runner-side event, not a game change.
+- The CI import step aborted three times inside the Ubuntu runner's allocator (`realloc(): invalid next size`) on different files, and passed on an immediate re-run of each identical commit; it is recorded here as an engine/runner event, not a game change. A `docs/.gdignore` now keeps 98 documentation images out of the editor import graph to reduce that load.
 - The soak harness previously lost its process when a real death released the world in a later cycle; the harness now reports that case and always writes its measured record (see [BUG_REGRESSIONS](BUG_REGRESSIONS.md)).
 
 ## Русский
