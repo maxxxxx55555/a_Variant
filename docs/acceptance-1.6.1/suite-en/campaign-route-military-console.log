@@ -1,0 +1,12 @@
+Godot Engine v4.7.stable.official.5b4e0cb0f - https://godotengine.org
+
+CAMPAIGN ROUTE: military region 1 hp=92.8 gold=70.0 army=5
+CAMPAIGN ROUTE: military region 2 hp=67.2166666666667 gold=795.5 army=5
+CAMPAIGN ROUTE: military region 3 hp=83.8731627296588 gold=1423.5 army=5
+CAMPAIGN ROUTE: military region 4 hp=81.9833989501313 gold=2090.0 army=5
+CAMPAIGN ROUTE: military region 5 hp=77.1872358805869 gold=2656.5 army=5
+CAMPAIGN ROUTE: military region 6 hp=71.6716483506109 gold=3214.5 army=5
+CAMPAIGN ROUTE: military region 7 hp=100.0 gold=3802.5 army=5
+CAMPAIGN ROUTE: military region 8 hp=100.0 gold=4359.0 army=5
+CAMPAIGN ROUTE RESULT: PASS route=military quests=60 days=16
+QA CYCLE: {"days":16,"elapsed_ms":266891,"quests":60,"result":"PASS","route":"military","seed":7401,"state_sha256":"9ee6120456a7ff3c43aa43709aad3311baee8d9fb2bc2154f0fdc4fd96dc2a8a","trace":[{"gold":70.0,"hp":92.80000000000001,"region":0,"weather":0},{"gold":795.5,"hp":67.21666666666668,"region":1,"weather":1},{"gold":1423.5,"hp":83.87316272965882,"region":2,"weather":1},{"gold":2090.0,"hp":81.98339895013126,"region":3,"weather":0},{"gold":2656.5,"hp":77.1872358805869,"region":4,"weather":0},{"gold":3214.5,"hp":71.67164835061088,"region":5,"weather":2},{"gold":3802.5,"hp":100.0,"region":6,"weather":0},{"gold":4359.0,"hp":100.0,"region":7,"weather":0}]}

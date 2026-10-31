@@ -1,5 +1,7 @@
 # Marchland Oaths 1.6.0 — announcement kit
 
+> 1.6.1 is the current release: a security patch that makes the import of a pre-1.4 save an explicit, player-confirmed action instead of a silent one. It changes no gameplay, art or audio, so the copy below still describes the product; add "now 1.6.1" wherever the edition is named.
+
 Prepared for the gated Windows release `v1.6.0`. Distribution and announcement require the published release receipt, a fresh `sha256sum -c` over the exact published assets, and the five owner checks in [HANDOFF](HANDOFF.md). The older rejected diagnostic frames in `press/` root stay labelled as they are and must not be used.
 
 ## EN announcement — 255 words

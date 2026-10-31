@@ -1,0 +1,90 @@
+{
+  "schema": 1,
+  "title": "Marchland Oaths 1.6.1 legacy profile migration",
+  "result": "PASS",
+  "source_commit": "c88a2a89a5f60febd87d68efae632c7db5ce9ea8",
+  "cases": [
+    {
+      "case": "legacy_migration",
+      "locale": "ru",
+      "result": "PASS",
+      "marker": "LEGACY MIGRATION RESULT: PASS",
+      "log": "suite-ru/legacy_migration.log",
+      "log_sha256": "dcc6e2ccd7243b90dbe86a6379011cc3cb904f87881651825746d14ffd2f6136"
+    },
+    {
+      "case": "legacy_migration",
+      "locale": "en",
+      "result": "PASS",
+      "marker": "LEGACY MIGRATION RESULT: PASS",
+      "log": "suite-en/legacy_migration.log",
+      "log_sha256": "dcc6e2ccd7243b90dbe86a6379011cc3cb904f87881651825746d14ffd2f6136"
+    },
+    {
+      "case": "oath_migration",
+      "locale": "ru",
+      "result": "PASS",
+      "marker": "OATH MIGRATION RESULT: PASS",
+      "log": "suite-ru/oath_migration.log",
+      "log_sha256": "0bc61d96e2cd79c59e9418f55a735e6b64e1bee3b6e943d86223a3977dd6113a"
+    },
+    {
+      "case": "oath_migration",
+      "locale": "en",
+      "result": "PASS",
+      "marker": "OATH MIGRATION RESULT: PASS",
+      "log": "suite-en/oath_migration.log",
+      "log_sha256": "0bc61d96e2cd79c59e9418f55a735e6b64e1bee3b6e943d86223a3977dd6113a"
+    }
+  ],
+  "fixtures": {
+    "inherited-license-hashes.json": {
+      "sha256": "915e32e5e57400a0566b066816a0215b9327eb1f9c15ea8bb46ad5055e5c9995",
+      "bytes": 3280
+    },
+    "legacy-MarchlandOaths-military.json": {
+      "sha256": "cab1cc22699225700d5d37a2ff01ab0d29aa94c75943089b91a0baf95cfea754",
+      "bytes": 30312
+    },
+    "legacy-MarchlandOaths.json": {
+      "sha256": "4c6f954cf6217869f39978857b57dbd7b58b18b1010cdbacec7e81837a204271",
+      "bytes": 19607
+    },
+    "protected-v1.4.0-autosave.json": {
+      "sha256": "b8d89b6b0123ea26964d4c08ce90c027f97b23356d6598f62beccf1de050c1d8",
+      "bytes": 11826
+    },
+    "protected-v1.4.0-provenance.json": {
+      "sha256": "a33b3f143f2c5101d6653161fbe0177154bdb73f859b67140e89da4460891229",
+      "bytes": 657,
+      "provenance": {
+        "origin_version": "1.4.0",
+        "original_revision": "156cfdc6a2cef2e459c764ea624c49b50d3706b0",
+        "original_windows_zip_sha256": "7a6dbeddbd50db23497d1c559deb6105d2541dbc8ca1ce02a2976a232e7cc156",
+        "fixture": "protected-v1.4.0-autosave.json",
+        "fixture_sha256": "b8d89b6b0123ea26964d4c08ce90c027f97b23356d6598f62beccf1de050c1d8",
+        "fixture_bytes": 11826,
+        "installation_key": "Private original test-profile key retained outside repository; never a public artifact",
+        "method": "Byte-identical saved profile produced by the original1.4.0 game; exact protected migration runs use an isolated copy of the private original test installation"
+      }
+    },
+    "protected-v1.5.0-autosave.json": {
+      "sha256": "07ce9ba555abe2e1dd0841e8c94a34541c79fecd22ac4c88a1bd452cbc57fe55",
+      "bytes": 11822
+    },
+    "protected-v1.5.0-provenance.json": {
+      "sha256": "d7a2dc4a42dc489e37346dbf9934a8e543f8d6dd39b1b0eb2e439a06df5ccd4f",
+      "bytes": 515,
+      "provenance": {
+        "origin_version": "1.5.0",
+        "original_release_revision": "bfae9d780a6d7dca85b8767b35636ca4179aa8b1",
+        "original_windows_exe_sha256": "3e13e406c0e3e1f7eb45d2ba204f51096bc57fd5864d5eef9d93483943f3c60a",
+        "fixture_sha256": "07ce9ba555abe2e1dd0841e8c94a34541c79fecd22ac4c88a1bd452cbc57fe55",
+        "fixture_bytes": 11822,
+        "original_complete_campaign_result": "PASS",
+        "method": "Byte-identical autosave from the original published1.5.0 native verification profile; installation key retained privately"
+      }
+    }
+  },
+  "scope": "Real 1.1 campaign profiles and protected 1.4.0/1.5.0 autosaves with recorded publication provenance are loaded, migrated to authenticated schema 4 and reloaded in both display locales. The oath migration case also asserts that a pre-1.6 profile gains safe oath defaults and keeps its Codex progress. Migration is one-way and keeps a backup."
+}

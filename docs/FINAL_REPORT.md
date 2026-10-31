@@ -1,135 +1,61 @@
-# Marchland Oaths 1.6.0 — final release report
+# Marchland Oaths 1.6.1 — release report
 
-Release URL: [Marchland Oaths 1.6.0](https://github.com/maxxxxx55555/a_Variant/releases/tag/v1.6.0). Runtime sources, both rendered suites and the exported binaries are from commit `9c0c145d8512cc9b667ea71cc36d33925a73e5ee`. The tagged tree adds only documentation and the soak driver's teardown-aware watchdog — no runtime file differs — and the complete file list is stored under `source_delta_from_suite_commit` in `acceptance-1.6.0/distribution.json`.
+Release URL: [Marchland Oaths 1.6.1](https://github.com/maxxxxx55555/a_Variant/releases/tag/v1.6.1). Runtime sources, both rendered suites and the exported binaries are from commit `c88a2a89a5f60febd87d68efae632c7db5ce9ea8`.
 
-Automated acceptance at that tree: EN 82/82, RU 82/82 rendered full-campaign cases; executed mechanics matrix 32 mechanics × 8 columns = 256 cells in both locales; 50 seeded cycles per locale; a measured soak of 3 complete campaign loops in 2563 s; 5/5 native exported-build routes; 4/4 encrypted export artifacts audited against the shipped trust anchor; 56 reviewed gallery frames. Full receipts: [certificate](ACCEPTANCE_CERTIFICATE.md), [suite evidence](acceptance-1.6.0/suites.json), [mechanics execution](acceptance/mechanics-execution-1.6.0.json), [announcement kit](ANNOUNCE_KIT.md).
+1.6.1 is a patch that closes one finding from the security review of 1.6.0. A save written before signed profiles (schema v1–v3) carries no HMAC, because that format predates it, and 1.6.0 applied such a file the moment it was read and then re-signed it as an authenticated v4 save. That made one path where forged state needed no key. Since 1.6.1 the file is refused until the player confirms the import for that slot, in the active language: confirming applies it and re-signs it under schema 4 with the per-slot lock, declining leaves it byte-identical. No gameplay, balance, art or audio file changed, and no save format changed.
 
-## Goals G1–G7
+## What was verified
 
-| Goal | Result | Executed evidence | Rendered evidence |
-|---|---|---|---|
-| G1 Second Oath / New Game+ | PASS: four authored oaths, carried roster/gear/titles/difficulty, per-cycle scaling, banner in finale/save list/credits, stacking cycles | `tests/test_second_oath.gd`, `tests/test_oath_migration.gd`, `tests/test_campaign_finale.gd`, both 60-objective routes | `ending-staged`, `credits` |
-| G2 World Codex | PASS: 25 entries unlocked by real events, locked/unlocked split, protected-profile state | `tests/test_codex.gd`, `tests/test_oath_migration.gd` | `codex` |
-| G3 Quest tracker | PASS: HUD objective, measured distance, compass, map marker, toasts, joint teardown, pause persistence | `tests/test_quest_tracker.gd`, `tests/test_navigation_matrix.gd` | `homestead`, `world-map` |
-| G4 Combat feel | PASS: bounded hit-stop (60–90 ms, 75 ms default, off under reduced motion), flash, recoil, spark, damage numbers, block cost 8 → 30% | `tests/test_combat_feel.gd`, `tests/test_comfort_preferences.gd` | no dedicated frame: feel is asserted in engine, not photographable |
-| G5 Loot feel | PASS: rarity colour/glow/halo, pitched chime, pickup pop, shared accent from ground to bag | `tests/test_loot_feel.gd`, `tests/test_audio.gd` | `inventory` |
-| G6 Settlement tiers | PASS: four visible tiers from real built levels (1/6/15/25), upgrade cue, seasonal tint | `tests/test_settlement_evolution.gd` | `settlement`, `village-rain` |
-| G7 Local statistics | PASS: campaigns, regions, peak wealth, playtime, per-difficulty rows, local-only statement | `tests/test_stats.gd` | `stats` |
-
-## Design pass: before → after
-
-| Surface | 1.5.3 baseline | 1.6.0 |
+| Area | Result | Evidence |
 |---|---|---|
-| Palette | inherited muted gold/ink, ad-hoc tints | eight-point token set applied to every surface; semantic sage/brass/danger fills replace colour-only meaning |
-| Typography | two display faces, mixed sizes | Literata display + Manrope UI scales with tabular numerals on statistics |
-| Icons | mixed authored and text-only controls | authored icon set covering every button and tab; label always present next to the icon |
-| Motion | drift, pop and breathing effects always on | reduced-motion support stops drift, pop and halo breathing without hiding information |
-| Galleries | 26 frames, 1280×720 only, EN/RU | 56 frames, 14 screens × 2 locales × 2 viewports (1280×720, 1920×1080) in `docs/galleries/1.6.0/` |
+| The new refusal | PASS in both locales: silent load returns nothing and records exactly that file as pending | `tests/test_legacy_import.gd`, `acceptance-1.6.1/suite-ru/` and `suite-en/` |
+| The confirmation | PASS: localized title, body and both actions; the accepted action holds keyboard focus | `tests/test_legacy_import.gd`, `docs/galleries/1.6.1/` |
+| Confirmed import | PASS: restores the real 1.1 state and writes an authenticated schema 4 file | `tests/test_legacy_import.gd`, `tests/test_legacy_migration.gd` |
+| Declined import | PASS: nothing is applied and the file is unchanged byte for byte | `tests/test_legacy_import.gd` |
+| Existing slots | PASS: a checksum-only file is still refused in any slot holding authenticated progress | `tests/test_save_recovery.gd`, `tests/test_profile_contract.gd` |
+| Whole suite | 83/83 RU and 83/83 EN rendered full-campaign cases | `acceptance-1.6.1/suites.json` |
+| Executed matrix | 32 mechanics × 8 columns = 256 cells, `EXECUTED_PASS` in RU and EN | `acceptance/mechanics-execution-1.6.0.json` re-executed at this tree |
+| Soak | 3 complete campaign loops in 2546 s of measured runtime, zero failures, zero aborts, zero deaths, identical object counts | `acceptance-1.6.1/soak.json` |
+| Native builds | 5/5 routes on the exported QA and public binaries | `acceptance-1.6.1/native.json` |
+| Export integrity | 4/4 artifacts, every critical digest matched after decryption | `acceptance-1.6.1/pack-audit.json` |
+| Localization | 810 keys per locale (4 added), copy contract and compiled catalog | `tests/test_copy_contract.py`, `acceptance-1.6.1/contracts.json` |
 
-The four defects the capture pass found (raw Codex tab names, unlabeled Codex close, danger-red healthy meters, clipped eighth faction) are fixed and recaptured; the review record is [GALLERY_ACCEPTANCE_1.6.0.md](GALLERY_ACCEPTANCE_1.6.0.md).
+## Performance against the recorded 1.6.0 figures
 
-## First fifteen minutes
-
-1. The title screen states the edition and carries the authored icon set and focus treatment.
-2. The opening region teaches movement, interaction and one real objective inside a live settlement.
-3. The HUD objective, compass and distance readout describe the same target within the first quest.
-4. The first combat lands with hit-stop, a flash, a spark and a damage number on the first three hits.
-5. The first settlement has a visible tier and a seasonal sky that matches the weather.
-6. The Codex opens its first entry from an ordinary action — entering the first town — rather than from a menu.
-
-## Mechanics matrix delta
-
-| Edition | Mechanics | Columns | Cells | Execution record |
-|---|---|---|---|---|
-| 1.5.2 | 24 | 8 | 192 | mapped, `EXECUTED_PASS` |
-| 1.6.0 | 32 | 8 | 256 | mapped, `EXECUTED_PASS` in RU and EN (39 referenced sources, 80 executed logs) |
-
-The contract refuses to publish if any referenced source's bytes changed after the evidence was produced; it triggered exactly that refusal once during this cycle and evidence was regenerated.
-
-## QA summary
-
-| Check | RU | EN |
-|---|---|---|
-| Rendered full-campaign cases | 82/82 | 82/82 |
-| Complete 60-objective routes | diplomatic + military PASS | diplomatic + military PASS |
-| Executed mechanics route | PASS | PASS |
-| Seeded fuzz | 50 seeds, 25 inside the Second Oath, node growth 0 | same |
-| Legacy 1.1 profiles and protected 1.4.0/1.5.0 saves | PASS | PASS |
-| Python contract chain (15 contracts) | PASS | shared |
-| Strict compile gate | 105 shipping scripts, 49 warning categories as errors | shared |
-| Static census | 0 dead code, 0 orphan sidecars, 0 dev markers | shared |
-
-Logs for every case ship in `acceptance-1.6.0/suite-ru/` and `acceptance-1.6.0/suite-en/` with per-case SHA256 in `suites.json`.
-
-## Performance against the v1.5.3 baseline
-
-| Metric | v1.5.3 baseline (`01f7174`) | 1.6.0 (`9c0c145`) | Change |
+| Metric | 1.6.0 (recorded, `9c0c145`) | 1.6.1 (`c88a2a8`) | Change |
 |---|---|---|---|
-| Scene load | 7821 ms | 7861 ms | +0.51% |
-| Frames per second | 60.00 | 60.02 | +0.03% |
-| Draw calls | 341 | 356 | +15 |
-| Primitives | 294869 | 295509 | +640 |
+| Scene load | 7861 ms | 7254 ms | -7.72% |
+| Frames per second | 60.02 | 60.08 | +0.10% |
+| Draw calls | 356 | 356 | +0 |
+| Primitives | 295509 | 295509 | +0 |
 
-Three runs per tree of the same scripted rainy-village camera on one Windows host with an AMD integrated GPU; medians shown, every sample recorded in `acceptance-1.6.0/perf.json`. Absolute figures vary with drivers and background load, so this is a smoke comparison, not a benchmark suite.
+Medians of three runs per edition on the same Windows host. 1.6.1 changes no rendering, asset or scene code, so it is compared with the 1.6.0 medians rather than a re-created older worktree; the basis and every raw sample are in `acceptance-1.6.1/perf.json`. Load time on this machine moves by hundreds of milliseconds between sessions, so the load figure is a no-regression check, not a measurement of improvement.
 
 ## Artifacts
 
 | Asset | Bytes | SHA256 |
 |---|---|---|
-| `MarchlandOaths.exe` | 248071864 | `41533c753b476427dc225a39e6b8945f275ca5128a2ef4553322b500a61d0b42` |
-| `MarchlandOaths.pck` | 176808620 | `78582396d2c3333c38bea444b18da1f05da831c9e9655e4168f88c2c1f9f2166` |
+| `MarchlandOaths.exe` | 252281128 | `4db12ce899fdb19148b3307b21a2549d3fb21ea44651c430978f21c479efa50f` |
+| `MarchlandOaths.pck` | 181017884 | `ad3b39ea572871e0fc109a0efa8565b8084a8c6f8a6b06cd7a3d20aebba0c287` |
 
-The public pack is directory- and file-encrypted; the private QA pack is never published. A stock Godot editor cannot mount the encrypted pack (`acceptance-1.6.0/pack-audit.json`). The ZIP and sums digests are recorded in the published distribution receipt below, because an archive cannot embed its own checksum.
-
-## Music checksums
-
-Unchanged from 1.5.x; re-verified against the shipped files.
-
-| Mood/cue | Title | SHA256 |
-|---|---|---|
-| exploration | Stone Path to Dusk | `928d3e830ab86c2ef9a170658fd5405a7b883e1d5c90e3481ef93afdd21d5813` |
-| settlement | Hearths Among the Hills | `78749767a35ed41dcf151579f2a92c3479b90a6672984eef70aac05ff61d0315` |
-| combat | Steel and Rain | `f43353c344afffd1d4982dfeeb6ed55537cc5feec5ce1e7a623a01edf95ce921` |
-| war | Standards at Dawn | `4e52901ed029631e514f0c2994fe2122492f9e428f14e5c1f791e68de6337ed3` |
-| victory | Oaths Remembered | `1ccb20ebe5767031c1699ddf42d2cd7f87d29f8c2c429d6450ffa21b3c7608b2` |
-| defeat | The Last Watch | `035c080389e01cf7dd2fb030a6f150e4afa6e41c97850fdfc0785641cdaa34ca` |
+The public pack is directory- and file-encrypted; the private QA pack is never published. A stock Godot editor cannot mount the encrypted pack (`acceptance-1.6.1/pack-audit.json`). The `MarchlandOaths-Windows-1.6.1.zip` and `MarchlandOaths-SHA256SUMS-1.6.1.txt` digests are recorded in the published distribution receipt, because an archive cannot embed its own checksum.
 
 ## Open questions and limits
 
-- Portable Windows x64 executables are not Authenticode signed; Windows shows its normal warning.
-- Automated checks are finite and were executed on one Windows host with an AMD integrated GPU. They are not a human playtest, a listening review, or a performance guarantee on other hardware.
-- Offline integrity resists ordinary corruption and editing; it is not DRM and cannot stop an owner from patching a local binary.
-- The custom native template necessarily contains the pack-decryption key. The pack is encrypted and audited; the key is not published.
-- The CI import step aborted three times inside the Ubuntu runner's allocator (`realloc(): invalid next size`) on different files, and passed on an immediate re-run of each identical commit; it is recorded here as an engine/runner event, not a game change. A `docs/.gdignore` now keeps 98 documentation images out of the editor import graph to reduce that load.
-- The soak harness previously lost its process when a real death released the world in a later cycle; the harness now reports that case and always writes its measured record (see [BUG_REGRESSIONS](BUG_REGRESSIONS.md)).
+- The published Windows executables are not Authenticode signed; Windows shows its normal warning.
+- The checks ran on one Windows host with an AMD integrated GPU and are not a human playtest or a listening review.
+- This patch removes a silent injection path. It does not make offline integrity unbreakable: the installation key is readable by the device owner, and a patched binary is out of scope for any client-side protection.
+- Whether the dialog wording is clear to a player is an owner judgement, listed in [HANDOFF](HANDOFF.md).
+- The Ubuntu CI import step aborted intermittently in the engine allocator on 1.6.0 commits and passed on re-run; `docs/.gdignore` keeps documentation images out of that import.
 
 ## Русский
 
-Автоматическая приёмка выполнена на дереве `9c0c145d8512cc9b667ea71cc36d33925a73e5ee`: в обеих локалях пройдены все 82 отрисованные полнокампанейские проверки, включая две полные кампании по 60 целей; матрица механик 32×8=256 ячеек имеет исполненные доказательства в RU и EN; 50 сидовых циклов на локаль; измеренный soak: 3 полные петли кампании за 2563 с, без утечек и осиротевших узлов; нативные маршруты на экспортированных сборках: 5/5 маршрутов (три победы, железная смерть и отказ публичной сборки); 4 из 4 зашифрованных артефактов, критические данные сверены с расшифрованным содержимым; 56 кадров галереи осмотрены в обеих локалях и обоих разрешениях.
+Marchland Oaths 1.6.1 — патч, закрывающий одно замечание из обзора безопасности версии 1.6.0. Сейв формата v1–v3 не содержит HMAC (этот формат появился раньше подписания), и в 1.6.0 такой файл применялся сразу при чтении, а первая запись переподписывала его как аутентифицированный v4: получался путь подмены состояния, для которого ключ установки вообще не требовался.
 
-Ограничения: EXE не подписан, проверки не заменяют ручной прогон и прослушивание, офлайн-защита не является DRM. Контрольные суммы, URL релиза и приёмка — в [сертификате](ACCEPTANCE_CERTIFICATE.md) и [HANDOFF](HANDOFF.md).
+Теперь файл не применяется молча: загрузчик отказывает и запоминает только этот файл как ожидающий решения, игра один раз спрашивает на активном языке («Старый формат сохранения», «Импортировать» / «Не импортировать»). Согласение применяет состояние и сразу переподписывает файл схемой 4 с блокировкой слота; отказ ничего не применяет и оставляет файл байт-в-байт прежним — это проверяется тестом. Схема сейвов, слоты, автосохранение и железный режим не изменены; геймплей, баланс, графика и звук не менялись.
 
-## Independent post-release pass (2026-10-30)
-
-After publication, a separate pass re-verified the released bytes and the repository without changing them:
-
-- **Published artifacts.** Both assets were downloaded again; the sums file reports OK (exit 0). The ZIP contains 597 files, one top-level folder, 56 gallery frames, 14 license files and no test, tool, key, credential or verifier path (`acceptance-1.6.0/independent-pass/zip-layout.json`, recomputed from the copy whose digest equals the published asset). The decrypted public pack and the executable's embedded pack both audit at 1255 entries with every critical digest matching. The shipped executable boots in RU and EN with exit code 0 and no script errors, and rejects the private verifier with exit 64. Because the 900-frame run is stopped between frames, the engine reports objects still alive at exit; that forced-exit warning is recorded in `published-binary-smoke.json` rather than hidden.
-- **Negative and hostile scenarios.** Twenty runs — ten scenarios in each locale — covered corrupted saves, tampered critical data and manifests, bounded reads, mid-world locale switching, tracker pause and teardown, the Second Oath, the Codex, oath migration and real 1.1 profile migration, plus a ten-seed fuzz. All twenty passed with no error, leak or orphan log line; the per-case exit codes, markers and log digests are in `acceptance-1.6.0/independent-pass/negatives.json`. Those tests print only their terminal marker, so the RU and EN logs are identical by design; two probe runs beside them record the active locale and a localized string ("Новая кампания" / "New campaign") as the evidence for the locale split.
-- **Documentation audit.** Every number and hash in the release documents was compared with the evidence files. Six discrepancies were found and corrected: a legacy-case count, two imprecise fuzz and soak phrasings, an unverifiable historical gate figure, a human-review wording that overstated who looked at the frames, and a pointer to a file list that lived under a different field. The corrected documents are in this commit.
-- **Security review.** One medium observation and four low ones. The medium item is the legacy checksum import path, now stated precisely in [SAVE-INTEGRITY](../SAVE-INTEGRITY.md); it is bounded by the downgrade lock and by the fact that a device owner can already read the install key. The low items are an uncapped integrity log, a silent drop of a corrupt statistics/codex file with no dialog, build-host paths inside shipped logs, and no fsync before rename. None of them changes gameplay data, opens a remote surface, or weakens the public/QA separation.
-- **Owner-check frames.** The screens that had no frame in the first pass — the Second Oath panel, the refused siege under the Oath of Peace, the carried-oath line on the title screen, and the same hearth at tier 2 and tier 3 — were captured from shipping code in both locales and added under `acceptance-1.6.0/owner-checks/`.
-- **Two observations from the scenario runs.** The seeded fuzz leaves four constant, non-growing orphan nodes from its fixtures (visible as `orphans: 4` in the shipped fuzz records); the measured soak reports zero after every cycle. `tests/test_live_world_locale.gd` always switches RU→EN regardless of the launch locale, so its two locale legs assert the same transition.
-
-None of these changed a runtime byte; the published release stays as tagged.
+Приёмка: 83 и 83 отрисованных полнокампанейских проверок на локаль, исполненная матрица 32×8=256 ячеек в RU и EN, измеренный soak: 3 полные петли кампании за 2546 с, без утечек и осиротевших узлов, 5/5 маршрутов (три победы, железная смерть и отказ публичной сборки) маршрутов на экспортированных сборках, 4/4 из 4/4 зашифрованных артефактов, критические данные сверены с расшифрованным содержимым. Каталог — 810 ключей (добавлено 4), тестовых источников — 86.
 
 ## Published distribution receipt
 
-[Marchland Oaths 1.6.0](https://github.com/maxxxxx55555/a_Variant/releases/tag/v1.6.0) — tag `v1.6.0` at `8101110acf5bfc13bd6d45526866fcae54b83692`. Both assets were freshly downloaded from the release and checked with native `sha256sum --check`: **OK, exit 0**.
-
-ZIP: `MarchlandOaths-Windows-1.6.0.zip` (451,817,849 bytes)
-
-SHA256: `dbc2d82a5d295cfd40a40d190eb0e1f96e4373e46bc8d84746b47f96bf761620`
-
-Sums: `MarchlandOaths-SHA256SUMS-1.6.0.txt` (99 bytes), SHA256 `a1f42da909ac50673712fbd56635ed6bb6a711a36131295faa0adf1ca4e81cec`.
-
-The downloaded executable booted in both locales for 900 frames and exited cleanly without script errors (`acceptance-1.6.0/published-binary-smoke.json`). Evidence: [acceptance-1.6.0/distribution.json](acceptance-1.6.0/distribution.json). This post-publication update changes documentation only; the tagged build and release assets are unchanged. The five owner checks in [HANDOFF](HANDOFF.md) remain outstanding before announcement.
+[Marchland Oaths 1.6.1](https://github.com/maxxxxx55555/a_Variant/releases/tag/v1.6.1) — distribution assets `MarchlandOaths-Windows-1.6.1.zip` (478,395,889 bytes, SHA256 `a8e03864d72a88c27dc769432d2ec6d33ecfc831b6ceac4906cba8791a0a7636`) and `MarchlandOaths-SHA256SUMS-1.6.1.txt` (99 bytes, SHA256 `3fa197def7d01bb4e3c779bdc741ddc6c2889b6720508acd82b025f310ac350e`). `sha256sum --check` on the sums file reports OK (exit 0). The fresh download of the published assets and a boot of the downloaded executable are recorded in `acceptance-1.6.1/distribution.json`.

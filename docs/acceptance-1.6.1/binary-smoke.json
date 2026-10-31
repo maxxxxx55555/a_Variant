@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "title": "Marchland Oaths 1.6.1 exported public binary smoke",
+  "command": "<public exe> --audio-driver Dummy --rendering-method gl_compatibility --resolution 1280x720 --quit-after 900 in a throwaway profile",
+  "scope": "The shipped Windows executable boots, runs its real title flow for 900 frames and exits with no script errors. Because the engine is asked to quit between frames, ObjectDB warnings about objects still alive at exit are recorded as forced-exit artifacts; the ordered-teardown soak is the leak evidence. This is a boot smoke test, not a playthrough.",
+  "runs": [
+    {
+      "executable": "MarchlandOaths.exe",
+      "language": "ru",
+      "frames_requested": 900,
+      "exit": 0,
+      "seconds": 16.484,
+      "result": "PASS",
+      "script_errors": [],
+      "forced_exit_artifacts": [
+        "WARNING: 3 ObjectDB instances were leaked at exit (run with `--verbose` for details)."
+      ],
+      "console_sha256": "77caf7aa89b0af2003b5241db6fefc37fe2a145cdd5bcde7ba7b63283f04bbfb",
+      "engine_log_sha256": "2a876d5d043afc15a3648db7202d59d8d03f4eeeccbe43a7939ca8db85183221",
+      "engine_head": [
+        "Godot Engine v4.7.stable.custom_build - https://godotengine.org",
+        "OpenGL API 3.3.0 Core Profile Context 22.20.44.221025 - Compatibility - Using Device: ATI Technologies Inc. - AMD Radeon(TM) Graphics",
+        ""
+      ],
+      "sha256": "4db12ce899fdb19148b3307b21a2549d3fb21ea44651c430978f21c479efa50f",
+      "bytes": 252281128
+    },
+    {
+      "executable": "MarchlandOaths.exe",
+      "language": "en",
+      "frames_requested": 900,
+      "exit": 0,
+      "seconds": 16.204,
+      "result": "PASS",
+      "script_errors": [],
+      "forced_exit_artifacts": [
+        "WARNING: 3 ObjectDB instances were leaked at exit (run with `--verbose` for details)."
+      ],
+      "console_sha256": "77caf7aa89b0af2003b5241db6fefc37fe2a145cdd5bcde7ba7b63283f04bbfb",
+      "engine_log_sha256": "2a876d5d043afc15a3648db7202d59d8d03f4eeeccbe43a7939ca8db85183221",
+      "engine_head": [
+        "Godot Engine v4.7.stable.custom_build - https://godotengine.org",
+        "OpenGL API 3.3.0 Core Profile Context 22.20.44.221025 - Compatibility - Using Device: ATI Technologies Inc. - AMD Radeon(TM) Graphics",
+        ""
+      ],
+      "sha256": "4db12ce899fdb19148b3307b21a2549d3fb21ea44651c430978f21c479efa50f",
+      "bytes": 252281128
+    }
+  ],
+  "result": "PASS"
+}

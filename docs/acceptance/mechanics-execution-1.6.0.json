@@ -2,7 +2,7 @@
   "schema": 1,
   "title": "Marchland Oaths 1.6.0 mechanics matrix execution evidence",
   "engine": "4.7.stable.official.5b4e0cb0f",
-  "commit_under_test": "9c0c145d8512cc9b667ea71cc36d33925a73e5ee",
+  "commit_under_test": "c88a2a89a5f60febd87d68efae632c7db5ce9ea8",
   "display_locales": [
     "ru",
     "en"
@@ -21,7 +21,7 @@
             "exit_code": 0,
             "timeout_s": 900,
             "log": "logs/test_mechanics_route-ru",
-            "log_sha256": "96a4f7ebca902b3a894437f0c00d8fb71c92d5c6aed0cbf7a3a3a048a9af26e8",
+            "log_sha256": "37d42302e6357dce25bef34cd1918e84b7367f65341551e1a534def0f21229d9",
             "engine_errors": []
           }
         ],
@@ -35,7 +35,7 @@
             "exit_code": 0,
             "timeout_s": 900,
             "log": "logs/test_mechanics_route-en",
-            "log_sha256": "a7212ee8431dc9caae1e769d4fb939f7638ecc0e04a1329f02f04b3485f73148",
+            "log_sha256": "066cacb5fe80e62e952119ccea5c82102003b0e6841a5a20afcfc1f3bd6eafba",
             "engine_errors": []
           }
         ]
@@ -711,7 +711,7 @@
             "exit_code": 0,
             "timeout_s": 300,
             "log": "logs/test_localization-ru",
-            "log_sha256": "ebabf093096016b78f49d909381e23a0f792a2ca3073e379d75654c2bff8a2e1",
+            "log_sha256": "31dbb849ff8bb5fed683878854193218cf3735a29b197efe15bfc56bd6195478",
             "engine_errors": []
           }
         ],
@@ -725,7 +725,7 @@
             "exit_code": 0,
             "timeout_s": 300,
             "log": "logs/test_localization-en",
-            "log_sha256": "ebabf093096016b78f49d909381e23a0f792a2ca3073e379d75654c2bff8a2e1",
+            "log_sha256": "31dbb849ff8bb5fed683878854193218cf3735a29b197efe15bfc56bd6195478",
             "engine_errors": []
           }
         ]
@@ -864,7 +864,7 @@
       }
     },
     "tests/test_oath_migration.gd": {
-      "source_sha256": "9fa1610d8408864a7fdb381fa8d1270121ab6e01d847c1ef9a732c2aca9a0ebb",
+      "source_sha256": "abe3c0c98e55ae235d5a5ec18ed98fe8d55c28bd6c93f2d28486f2253e691e50",
       "runs": {
         "ru": [
           {

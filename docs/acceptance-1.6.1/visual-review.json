@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "title": "Marchland Oaths 1.6.1 rendered gallery review",
+  "edition_note": "1.6.1 changes one surface: the legacy save import confirmation. The 1.6.0 set in docs/galleries/1.6.0/ remains the visual record of every other screen; nothing else was re-captured because no other pixels changed.",
+  "result": "PASS",
+  "source_commit": "c88a2a89a5f60febd87d68efae632c7db5ce9ea8",
+  "acceptance_document": "docs/GALLERY_ACCEPTANCE_1.6.1.md",
+  "acceptance_document_sha256": "a915de4957237583a540c272f2de95eb76974018a381e9e73333ec64489e1721",
+  "reviewed_frames": 2,
+  "reviewed_locales": [
+    "en",
+    "ru"
+  ],
+  "reviewed_resolutions": [
+    "1280x720"
+  ],
+  "screens_per_locale_and_viewport": 1,
+  "method": "Every frame inspected at native size in both locales and both viewports after the final capture; automated design-token, icon-provenance and copy contracts run separately.",
+  "defects_found_and_fixed_before_acceptance": [
+    "Codex tabs showed raw node names instead of localized category titles",
+    "Codex close button had an icon and no readable label",
+    "Settlement happiness and health used the danger fill at healthy values",
+    "Diplomacy faction list clipped two of the eight factions"
+  ],
+  "open_issues": [],
+  "staged_state": "Statistics rows, the credits NG+ banner, the tier 4 settlement and the finale composition are labelled QA fixtures in the acceptance document; they are not presented as a fresh save.",
+  "scope": "Readable controls, no clipping or missing glyphs in the reviewed frames. Stylized presentation; no photorealism or AAA claim. Human playtesting stays an owner check in HANDOFF.md.",
+  "frames": {
+    "en-1280x720-legacy-import-dialog.png": {
+      "sha256": "f8d5792cea1445daee3b79b323788cef79962316e1f78fee260b7b32c671570d",
+      "bytes": 24098
+    },
+    "ru-1280x720-legacy-import-dialog.png": {
+      "sha256": "67b95b186253ec4cb66706f0e05bf7a0098f6576f9d8cef3568cf39f0156cd7f",
+      "bytes": 30517
+    }
+  }
+}

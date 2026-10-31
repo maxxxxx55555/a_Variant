@@ -35,3 +35,14 @@ Resource credit bounds and transaction/save-load reentry protection, with negati
 - Executed mechanics evidence: `tests/test_mechanics_route.gd` runs `tests/MechanicsRoute.gd`, `tools/collect_mechanics_evidence.py` executes every matrix reference in both locales, and `tools/static_census.py` replaces hand-counted orphan/dead-code claims.
 - Defects found by that execution and fixed before release: the finale left no control focused when the Second Oath was unavailable, the tracker relocalization test assumed the launch locale was Russian, and seeded fuzz reported the authored plain (zero-modifier) Second Oath as lost state.
 - Full notes: [RELEASE_1.6.0.md](RELEASE_1.6.0.md).
+
+## 1.6.1 — legacy save import needs a person
+
+A security review of 1.6.0 found that a checksum-only v1–v3 profile was applied silently and re-signed as an
+authenticated v4 save, so forging that one path never needed the installation key. The compatibility path stays, but it
+is no longer silent: the loader now refuses such a file, records it as pending, and the game asks once — in the active
+language, with localized Import / Do not import actions — whether that slot's old profile should be imported.
+Confirming applies it and re-signs it under schema 4 with the per-slot lock; declining leaves the file byte-identical
+and applies nothing. The existing per-slot guard still refuses a checksum-only file wherever authenticated progress
+already exists. Four localization keys were added (810 per locale) and `tests/test_legacy_import.gd` asserts the whole
+exchange in both languages, including that a refusal changes no bytes.

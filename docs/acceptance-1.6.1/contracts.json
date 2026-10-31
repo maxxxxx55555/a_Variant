@@ -1,0 +1,113 @@
+{
+  "schema": 1,
+  "title": "Marchland Oaths 1.6.1 Python contract chain",
+  "source_commit": "c88a2a89a5f60febd87d68efae632c7db5ce9ea8",
+  "result": "PASS",
+  "cases": {
+    "tests/test_verification.py": {
+      "result": "PASS",
+      "exit": 0,
+      "log": "contracts/test_verification.py.log",
+      "log_sha256": "51ca573ec6de293653e6c6f6cfe99be350f621558c7fb704813711bae1950eac",
+      "last_line": "ALL VERIFICATION TESTS PASSED SUCCESSFULLY!"
+    },
+    "tests/test_checkout_bytes.py": {
+      "result": "PASS",
+      "exit": 0,
+      "log": "contracts/test_checkout_bytes.py.log",
+      "log_sha256": "99013e7f6afa790d79c5e83c0ad652f9fd6c5e907f016b017c89d63ce7ed676b",
+      "last_line": "CHECKOUT BYTES PASS: plain Git LF/CRLF defaults, effective attributes, manifest/copy/audio and tamper contracts"
+    },
+    "tests/test_license_bytes.py": {
+      "result": "PASS",
+      "exit": 0,
+      "log": "contracts/test_license_bytes.py.log",
+      "log_sha256": "b15f04ed9aa2d74281e43f6470b9edb210a91b597f5fba742fa37f26fa918cc0",
+      "last_line": "INHERITED LICENSE BYTE CONTRACT PASS: 14 files from published1.4.0"
+    },
+    "tests/test_export_contract.py": {
+      "result": "PASS",
+      "exit": 0,
+      "log": "contracts/test_export_contract.py.log",
+      "log_sha256": "66d2ea3053484e73276f0bd3ebb7b47835a02304a6678822e77a84fbde389802",
+      "last_line": "EXPORT CONTRACT PASS: 2 presets with compiled data and notices"
+    },
+    "tests/test_copy_contract.py": {
+      "result": "PASS",
+      "exit": 0,
+      "log": "contracts/test_copy_contract.py.log",
+      "log_sha256": "0099b8bcfbbcd1186a9e360676d13644de183718283f2d378b55692bb321e94c",
+      "last_line": "COPY CONTRACT PASS: 810 keys, scene/model source audit and canonical copy"
+    },
+    "tests/test_promise_matrix.py": {
+      "result": "PASS",
+      "exit": 0,
+      "log": "contracts/test_promise_matrix.py.log",
+      "log_sha256": "6bef98cf66ea3616debecdcdf567e83cffb186e38e280fb74bd2eb471712da6d",
+      "last_line": "PROMISE MATRIX PASS: 3278 original entries, explicit scope and existing test references"
+    },
+    "tests/test_mechanics_matrix.py": {
+      "result": "PASS",
+      "exit": 0,
+      "log": "contracts/test_mechanics_matrix.py.log",
+      "log_sha256": "ee06f40d5dbdbce707cf61e23a7c4ffeda8214944e4ba51d7a9bfe3341cce5d8",
+      "last_line": "MECHANICS MAPPING PASS: 32 mechanics, 256 cells; EXECUTED_PASS in ru,en"
+    },
+    "tests/test_repo_isolation.py": {
+      "result": "PASS",
+      "exit": 0,
+      "log": "contracts/test_repo_isolation.py.log",
+      "log_sha256": "fe836cbecd3b6b4f70bec51b58d30c3e45ad72ae7fb3cb63421a0f7337e651ae",
+      "last_line": "OK"
+    },
+    "tools/static_census.py": {
+      "result": "PASS",
+      "exit": 0,
+      "log": "contracts/static_census.py.log",
+      "log_sha256": "d67c087e38f46cda0076934dfc9c9f7d9d1ba8a1acc7cec0184737e90e0a9b2b",
+      "last_line": "STATIC CENSUS: PASS"
+    },
+    "tests/test_soundtrack.py": {
+      "result": "PASS",
+      "exit": 0,
+      "log": "contracts/test_soundtrack.py.log",
+      "log_sha256": "50327d5eb68ba46dc1b7d4d2b91c80bea11109fde4e2b5fdb1339c7dbfe6857b",
+      "last_line": "SOUNDTRACK PASS: 4 unique mood compositions and two musical finales"
+    },
+    "tests/test_audio_assets.py": {
+      "result": "PASS",
+      "exit": 0,
+      "log": "contracts/test_audio_assets.py.log",
+      "log_sha256": "2d884dbe12f5a7dfc34f117cd7777fb10e4994da806ca7964a5ac242dc395a58",
+      "last_line": "AUDIO ASSETS PASS: 42 WAV assets; levels, data, loop seams and envelopes verified"
+    },
+    "tests/test_public_qa_contract.py": {
+      "result": "PASS",
+      "exit": 0,
+      "log": "contracts/test_public_qa_contract.py.log",
+      "log_sha256": "9dd4d0af622b9358f2d186f9bdf76d5d1400fdf01d09aab653db37d7890903ac",
+      "last_line": "PUBLIC QA CONTRACT PASS: separate feature/env gate, physical exclusion, encrypted presets"
+    },
+    "tests/test_release_export_tool.py": {
+      "result": "PASS",
+      "exit": 0,
+      "log": "contracts/test_release_export_tool.py.log",
+      "log_sha256": "89a4a7f3245b990749343fb89d06958a01b686a7c2e1d3d7954d36af1d9a77fa",
+      "last_line": "RELEASE EXPORT PREFLIGHT PASS: missing/invalid key rejected, no secret output or mutation"
+    },
+    "tests/test_critical_manifest.py": {
+      "result": "PASS",
+      "exit": 0,
+      "log": "contracts/test_critical_manifest.py.log",
+      "log_sha256": "3b2b74b0f93ad2c164f2fc60026b3932e81d77537cd0af74db23cda82f9c7e74",
+      "last_line": "CRITICAL MANIFEST PASS: 10 files, stable generation, tamper and replacement rejection"
+    },
+    "tests/test_design_system.py": {
+      "result": "PASS",
+      "exit": 0,
+      "log": "contracts/test_design_system.py.log",
+      "log_sha256": "54caadbe34d261fea29e93b07665423416ee213b3bf76dd30fb8ce3c3df1f2f1",
+      "last_line": "DESIGN SYSTEM RESULT: PASS"
+    }
+  }
+}

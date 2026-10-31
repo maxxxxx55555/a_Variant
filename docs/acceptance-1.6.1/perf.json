@@ -1,0 +1,97 @@
+{
+  "schema": 1,
+  "title": "Marchland Oaths 1.6.1 render benchmark against the recorded 1.6.0 figures",
+  "source_commit": "c88a2a89a5f60febd87d68efae632c7db5ce9ea8",
+  "repeats": 3,
+  "current": {
+    "samples": [
+      {
+        "load_ms": 7474,
+        "fps": 60.0801068090788,
+        "draw_calls": 356,
+        "primitives": 295509,
+        "exit": 0,
+        "errors": []
+      },
+      {
+        "load_ms": 7254,
+        "fps": 59.8205383848455,
+        "draw_calls": 356,
+        "primitives": 295509,
+        "exit": 0,
+        "errors": []
+      },
+      {
+        "load_ms": 6851,
+        "fps": 60.0801068090788,
+        "draw_calls": 356,
+        "primitives": 295509,
+        "exit": 0,
+        "errors": []
+      }
+    ],
+    "errors": [],
+    "load_ms": 7254,
+    "load_ms_range": [
+      6851,
+      7474
+    ],
+    "fps": 60.08,
+    "fps_range": [
+      59.8205383848455,
+      60.0801068090788
+    ],
+    "draw_calls": 356,
+    "draw_calls_range": [
+      356,
+      356
+    ],
+    "primitives": 295509,
+    "primitives_range": [
+      295509,
+      295509
+    ]
+  },
+  "comparison": {
+    "previous_edition": "1.6.0",
+    "previous_commit": "9c0c145d8512cc9b667ea71cc36d33925a73e5ee",
+    "previous_source_commit": "9c0c145d8512cc9b667ea71cc36d33925a73e5ee",
+    "load_ms": 7861,
+    "fps": 60.02,
+    "draw_calls": 356,
+    "primitives": 295509,
+    "previous_samples": [
+      {
+        "load_ms": 8297,
+        "fps": 59.0938936309915,
+        "draw_calls": 356,
+        "primitives": 295509,
+        "exit": 0,
+        "errors": []
+      },
+      {
+        "load_ms": 7544,
+        "fps": 60.0200066688896,
+        "draw_calls": 356,
+        "primitives": 295509,
+        "exit": 0,
+        "errors": []
+      },
+      {
+        "load_ms": 7861,
+        "fps": 60.1403274306716,
+        "draw_calls": 356,
+        "primitives": 295509,
+        "exit": 0,
+        "errors": []
+      }
+    ],
+    "load_delta_percent": -7.72,
+    "fps_delta_percent": 0.1,
+    "draw_call_delta": 0,
+    "primitive_delta": 0
+  },
+  "comparison_basis": "1.6.1 changes no rendering, asset or scene code, so it is measured against the medians recorded for 1.6.0 on this same host rather than against a re-created v1.5.3 worktree. Both sessions report their raw samples: load time moves by tens of percent between sessions on this machine, and about 60 FPS is the display refresh cap, so neither figure is a fine-grained comparison.",
+  "result": "PASS",
+  "limits": "Three single runs on one Windows host with an AMD integrated GPU. A smoke comparison, not a statistically rigorous performance study."
+}

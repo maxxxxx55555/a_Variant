@@ -22,7 +22,7 @@ F6 adds two terminal recovery explanations:687 keys per language. Iron death kee
 
 ## Marchland Oaths 1.6.0 — Second Oath & Polish
 
-Catalog: 806 keys in each of RU and EN. 119 keyed entries were added for this edition and none were removed, so every 1.5.x string still resolves. The additions are grouped as codex 44, oath 28, stats 12, settlement 7, escalation 6, objective 5, ui 4, flow 3, ending 2, menu 2, tutorial 2 and hud, map, siege and credits 1 each.
+Catalog: 810 keys in each of RU and EN. 119 keyed entries were added for 1.6.0 and none were removed, so every 1.5.x string still resolves; 1.6.1 adds four more for the legacy-import confirmation (title, body, accept, decline). The additions are grouped as codex 44, oath 28, stats 12, settlement 7, escalation 6, objective 5, ui 4, flow 3, ending 2, menu 2, tutorial 2 and hud, map, siege and credits 1 each.
 
 `tests/test_verification.py` proves the two CSV files hold the identical key set, that each compiled entry in `data/balance/localization.json` equals its RU and EN source row, and that placeholder sets match per key. `tests/test_localization.gd` repeats the same checks against the compiled catalog the shipping build actually reads and rejects duplicate or empty keys. `tools/compile_localization.py` regenerates the compiled catalog; `tools/build_manifest.py` then re-signs it into `scripts/security/TrustedData.gd`, because the runtime reads critical data from the embedded snapshot rather than from disk.
 

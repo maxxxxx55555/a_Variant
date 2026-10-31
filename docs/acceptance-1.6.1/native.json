@@ -1,0 +1,128 @@
+{
+  "routes": [
+    {
+      "label": "native-victory-1",
+      "exe_sha256": "d6a8ac833d97e1a7ae9c370948d6c6b8affa67f69b84f0d12c84371a79cace30",
+      "args": [
+        "--verify-build"
+      ],
+      "exit": 0,
+      "seconds": 149.625,
+      "expected_marker": "CAMPAIGN ROUTE RESULT: PASS",
+      "terminal_marker": true,
+      "rejection_marker": false,
+      "unexpected_errors": [],
+      "log_sha256": "8ce84fe9a33255ead78277409fa10bed0ac6115a3fd8b80f51a4c626976429ca",
+      "console_tail": [
+        "CAMPAIGN ROUTE: diplomatic region 7 hp=100.0 gold=2532.5 army=5",
+        "CAMPAIGN ROUTE: diplomatic region 8 hp=100.0 gold=2924.0 army=5",
+        "CAMPAIGN ROUTE RESULT: PASS route=diplomatic quests=60 days=8",
+        "QA CYCLE: {\"days\":8,\"elapsed_ms\":148030,\"quests\":60,\"result\":\"PASS\",\"route\":\"diplomatic\",\"seed\":7401,\"state_sha256\":\"7ff0e58ac9e50520f63dc112bae7aa097acb550562713000cbb96d9a79e48308\",\"trace\":[{\"gold\":70.0,\"hp\":92.80000000000001,\"region\":0,\"weather\":0},{\"gold\":560.0,\"hp\":77.21666666666668,\"region\":1,\"weather\":0},{\"gold\":952.5,\"hp\":68.71666666666668,\"region\":2,\"weather\":1},{\"gold\":1395.0,\"hp\":81.21666666666668,\"region\":3,\"weather\":0},{\"gold\":1737.5,\"hp\":69.24816272965882,\"region\":4,\"weather\":1},{\"gold\":2130.0,\"hp\":98.7325751996828,\"region\":5,\"weather\":0},{\"gold\":2532.5,\"hp\":100.0,\"region\":6,\"weather\":1},{\"gold\":2924.0,\"hp\":100.0,\"region\":7,\"weather\":1}]}",
+        "WARNING: 1 ObjectDB instance was leaked at exit (run with `--verbose` for details).",
+        "   at: cleanup (core\\object\\object.cpp:2535)"
+      ],
+      "result": "PASS",
+      "log": "native-victory-1.log"
+    },
+    {
+      "label": "native-victory-2",
+      "exe_sha256": "d6a8ac833d97e1a7ae9c370948d6c6b8affa67f69b84f0d12c84371a79cace30",
+      "args": [
+        "--verify-build"
+      ],
+      "exit": 0,
+      "seconds": 149.297,
+      "expected_marker": "CAMPAIGN ROUTE RESULT: PASS",
+      "terminal_marker": true,
+      "rejection_marker": false,
+      "unexpected_errors": [],
+      "log_sha256": "230f85cba48917680b0a19c3da77fa18a3c33efffc7c72df8aca65225a21e757",
+      "console_tail": [
+        "CAMPAIGN ROUTE: diplomatic region 7 hp=100.0 gold=2532.5 army=5",
+        "CAMPAIGN ROUTE: diplomatic region 8 hp=100.0 gold=2924.0 army=5",
+        "CAMPAIGN ROUTE RESULT: PASS route=diplomatic quests=60 days=8",
+        "QA CYCLE: {\"days\":8,\"elapsed_ms\":147764,\"quests\":60,\"result\":\"PASS\",\"route\":\"diplomatic\",\"seed\":7401,\"state_sha256\":\"2021d2539397e8ad7a16c4716bce2b98c765edb54f989805668ab7e41ff63511\",\"trace\":[{\"gold\":70.0,\"hp\":92.80000000000001,\"region\":0,\"weather\":0},{\"gold\":560.0,\"hp\":77.21666666666668,\"region\":1,\"weather\":0},{\"gold\":952.5,\"hp\":68.71666666666668,\"region\":2,\"weather\":1},{\"gold\":1395.0,\"hp\":78.71666666666668,\"region\":3,\"weather\":0},{\"gold\":1737.5,\"hp\":66.74816272965882,\"region\":4,\"weather\":1},{\"gold\":2130.0,\"hp\":65.09348647066601,\"region\":5,\"weather\":0},{\"gold\":2532.5,\"hp\":100.0,\"region\":6,\"weather\":0},{\"gold\":2924.0,\"hp\":100.0,\"region\":7,\"weather\":2}]}",
+        "WARNING: 1 ObjectDB instance was leaked at exit (run with `--verbose` for details).",
+        "   at: cleanup (core\\object\\object.cpp:2535)"
+      ],
+      "result": "PASS",
+      "log": "native-victory-2.log"
+    },
+    {
+      "label": "native-victory-3",
+      "exe_sha256": "d6a8ac833d97e1a7ae9c370948d6c6b8affa67f69b84f0d12c84371a79cace30",
+      "args": [
+        "--verify-build"
+      ],
+      "exit": 0,
+      "seconds": 149.406,
+      "expected_marker": "CAMPAIGN ROUTE RESULT: PASS",
+      "terminal_marker": true,
+      "rejection_marker": false,
+      "unexpected_errors": [],
+      "log_sha256": "a47c68ae98baaaf69dd12a1631fff7ab9a2a15a9a7e8a4d908309428ae0fe6e0",
+      "console_tail": [
+        "CAMPAIGN ROUTE: diplomatic region 7 hp=100.0 gold=2552.5 army=5",
+        "CAMPAIGN ROUTE: diplomatic region 8 hp=100.0 gold=2924.5 army=5",
+        "CAMPAIGN ROUTE RESULT: PASS route=diplomatic quests=60 days=8",
+        "QA CYCLE: {\"days\":8,\"elapsed_ms\":147963,\"quests\":60,\"result\":\"PASS\",\"route\":\"diplomatic\",\"seed\":7401,\"state_sha256\":\"e02d004fbb6319ea9efb5c009b3833873f3d5027beb9d309caf130af44d31f9f\",\"trace\":[{\"gold\":70.0,\"hp\":92.80000000000001,\"region\":0,\"weather\":0},{\"gold\":560.0,\"hp\":77.21666666666668,\"region\":1,\"weather\":0},{\"gold\":952.5,\"hp\":70.84166666666668,\"region\":2,\"weather\":1},{\"gold\":1395.0,\"hp\":80.84166666666668,\"region\":3,\"weather\":0},{\"gold\":1737.5,\"hp\":75.17237532808402,\"region\":4,\"weather\":0},{\"gold\":2130.0,\"hp\":69.656787798108,\"region\":5,\"weather\":0},{\"gold\":2552.5,\"hp\":100.0,\"region\":6,\"weather\":0},{\"gold\":2924.5,\"hp\":100.0,\"region\":7,\"weather\":0}]}",
+        "WARNING: 1 ObjectDB instance was leaked at exit (run with `--verbose` for details).",
+        "   at: cleanup (core\\object\\object.cpp:2535)"
+      ],
+      "result": "PASS",
+      "log": "native-victory-3.log"
+    },
+    {
+      "label": "native-iron-death",
+      "exe_sha256": "d6a8ac833d97e1a7ae9c370948d6c6b8affa67f69b84f0d12c84371a79cace30",
+      "args": [
+        "--verify-build",
+        "--defeat"
+      ],
+      "exit": 0,
+      "seconds": 7.078,
+      "expected_marker": "NATIVE IRON DEATH: PASS",
+      "terminal_marker": true,
+      "rejection_marker": false,
+      "unexpected_errors": [],
+      "log_sha256": "17f44ff7296f2b61b923fabd47d2865e019607dfb0507db46d8570e3521dd88e",
+      "console_tail": [
+        "Godot Engine v4.7.stable.custom_build - https://godotengine.org",
+        "",
+        "NATIVE IRON DEATH: PASS",
+        "WARNING: 1 ObjectDB instance was leaked at exit (run with `--verbose` for details).",
+        "   at: cleanup (core\\object\\object.cpp:2535)"
+      ],
+      "result": "PASS",
+      "log": "native-iron-death.log"
+    },
+    {
+      "label": "public-qa-rejection",
+      "exe_sha256": "4db12ce899fdb19148b3307b21a2549d3fb21ea44651c430978f21c479efa50f",
+      "args": [
+        "--verify-build"
+      ],
+      "exit": 64,
+      "seconds": 1.031,
+      "expected_marker": "",
+      "terminal_marker": true,
+      "rejection_marker": true,
+      "unexpected_errors": [],
+      "log_sha256": "a1e02e4c135d7b463629a379d5368061b83748de588105d8645ee26a509995ee",
+      "console_tail": [
+        "Godot Engine v4.7.stable.custom_build - https://godotengine.org",
+        "",
+        "QA arguments require a private QA export and GAME_QA=1",
+        "WARNING: 1 ObjectDB instance was leaked at exit (run with `--verbose` for details).",
+        "   at: cleanup (core\\object\\object.cpp:2535)"
+      ],
+      "result": "PASS",
+      "log": "public-qa-rejection.log"
+    }
+  ],
+  "passed": 5,
+  "total": 5,
+  "verdict": "PASS",
+  "public_rejection_text": "QA arguments require a private QA export and GAME_QA=1",
+  "limits": "Runs the exported packs themselves: three consecutive diplomatic victories, the iron-death terminal route and the public build refusing the private verifier. Not a human playtest."
+}

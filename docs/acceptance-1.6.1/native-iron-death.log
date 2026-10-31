@@ -1,0 +1,5 @@
+Godot Engine v4.7.stable.custom_build - https://godotengine.org
+
+NATIVE IRON DEATH: PASS
+WARNING: 1 ObjectDB instance was leaked at exit (run with `--verbose` for details).
+   at: cleanup (core\object\object.cpp:2535)
