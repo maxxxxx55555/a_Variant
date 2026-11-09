@@ -1,69 +1,53 @@
-# Marchland Oaths 1.6.1 — release report
+# Marchland Oaths 1.6.2 — release report
 
-Release URL: [Marchland Oaths 1.6.1](https://github.com/maxxxxx55555/a_Variant/releases/tag/v1.6.1). Runtime sources, both rendered suites and the exported binaries are from commit `c88a2a89a5f60febd87d68efae632c7db5ce9ea8`.
+Release URL: none yet — no GitHub Release v1.6.2 exists. Runtime sources are from commit `f7a3155` plus the 1.6.2 completion commit on top of it. The last published release is [Marchland Oaths 1.6.1](https://github.com/maxxxxx55555/a_Variant/releases/tag/v1.6.1).
 
-1.6.1 is a patch that closes one finding from the security review of 1.6.0. A save written before signed profiles (schema v1–v3) carries no HMAC, because that format predates it, and 1.6.0 applied such a file the moment it was read and then re-signed it as an authenticated v4 save. That made one path where forged state needed no key. Since 1.6.1 the file is refused until the player confirms the import for that slot, in the active language: confirming applies it and re-signs it under schema 4 with the per-slot lock, declining leaves it byte-identical. No gameplay, balance, art or audio file changed, and no save format changed.
+1.6.2 is a patch that closes two ways the 1.6.1 legacy-save confirmation could still be bypassed. A save written before signed profiles (schema v1–v3) carries no HMAC, because that format predates it, and 1.6.1 stopped applying such a file silently: the loader refused it, remembered it as pending, and the game asked once, in the active language, whether to import it into that slot. Two reviews found that a declined file could still be promoted into the slot's authenticated backup by a later ordinary save, and that an answer given for one file could be applied to different bytes swapped in while the dialog was open. Since 1.6.2, `_store` trusts a previous body only from the exact file just confirmed (otherwise the write proceeds with no backup candidate and the untouched original is preserved as `.rejected`), and consent is bound to a SHA-256 digest of the exact file text, per slot — if the bytes changed while the question was open, nothing is applied and the current body stays pending for a fresh question. No gameplay, balance, art or audio file changed, and no save format changed. This completion also adds the missing 1.6.2 patch notes, acceptance evidence, certificate and report, corrects the stale version metadata (`export_presets.cfg` 1.6.0.0 → 1.6.2.0, README title, QUICK_START, CREDITS), and removes two empty autoload scripts (`WorldManager.gd`, `InputManager.gd`) that nothing used.
 
 ## What was verified
 
 | Area | Result | Evidence |
 |---|---|---|
-| The new refusal | PASS in both locales: silent load returns nothing and records exactly that file as pending | `tests/test_legacy_import.gd`, `acceptance-1.6.1/suite-ru/` and `suite-en/` |
-| The confirmation | PASS: localized title, body and both actions; the accepted action holds keyboard focus | `tests/test_legacy_import.gd`, `docs/galleries/1.6.1/` |
-| Confirmed import | PASS: restores the real 1.1 state and writes an authenticated schema 4 file | `tests/test_legacy_import.gd`, `tests/test_legacy_migration.gd` |
-| Declined import | PASS: nothing is applied and the file is unchanged byte for byte | `tests/test_legacy_import.gd` |
-| Existing slots | PASS: a checksum-only file is still refused in any slot holding authenticated progress | `tests/test_save_recovery.gd`, `tests/test_profile_contract.gd` |
-| Whole suite | 83/83 RU and 83/83 EN rendered full-campaign cases | `acceptance-1.6.1/suites.json` |
-| Executed matrix | 32 mechanics × 8 columns = 256 cells, `EXECUTED_PASS` in RU and EN | `acceptance/mechanics-execution-1.6.0.json` re-executed at this tree |
-| Soak | 3 complete campaign loops in 2546 s of measured runtime, zero failures, zero aborts, zero deaths, identical object counts | `acceptance-1.6.1/soak.json` |
-| Native builds | 5/5 routes on the exported QA and public binaries | `acceptance-1.6.1/native.json` |
-| Export integrity | 4/4 artifacts, every critical digest matched after decryption | `acceptance-1.6.1/pack-audit.json` |
-| Localization | 810 keys per locale (4 added), copy contract and compiled catalog | `tests/test_copy_contract.py`, `acceptance-1.6.1/contracts.json` |
+| The declined-backup side door | PASS (asserted in code): declined-then-saved preserves the original as `.rejected` instead of promoting it | `tests/test_legacy_import.gd`, `scripts/autoload/SaveSystem.gd` (`_store`, `_read_previous`, `_preserve_rejected`) |
+| The byte-bound answer | PASS (asserted in code): a file swapped while the dialog is open is not imported under the earlier answer; the current body stays pending and the player is told the file changed | `tests/test_legacy_import.gd`, `scripts/autoload/SaveSystem.gd` (`confirm_legacy_import`) |
+| The confirmation | PASS (asserted in code): localized title, body and both actions; the accepted action holds keyboard focus; prompts are per slot | `tests/test_legacy_import.gd`, `docs/galleries/1.6.2/` |
+| Confirmed import | PASS (asserted in code): restores the real 1.1 state and writes an authenticated schema 4 file | `tests/test_legacy_import.gd`, `tests/test_legacy_migration.gd` |
+| Declined import | PASS (asserted in code): nothing is applied and the file is unchanged byte for byte | `tests/test_legacy_import.gd` |
+| Existing slots | PASS (asserted in code): a checksum-only file is still refused in any slot holding authenticated progress | `tests/test_save_recovery.gd`, `tests/test_profile_contract.gd` |
+| Source gate | PARTIAL: editor import + strict warning gate 104/105 (single failure is a sparse-checkout artefact, file present in HEAD); Python contracts 3 PASS / 6 sparse-missing | `docs/acceptance-1.6.2/suites.json` |
+| Whole suite | NOT RE-RUN: last executed rendered gate is 83/83 RU and 83/83 EN for 1.6.1 | `docs/acceptance-1.6.1/suites.json` |
+| Executed matrix | NOT RE-EXECUTED: 32 mechanics × 8 columns = 256 cells, `EXECUTED_PASS` in RU and EN for 1.6.0/1.6.1 | `acceptance/mechanics-execution-1.6.0.json` |
+| Soak | NOT RE-RUN: last measured soak is 3 complete campaign loops in 2546 s for 1.6.1 | `acceptance-1.6.1/soak.json` |
+| Native builds | NOT RE-RUN: last native routes are 5/5 on the exported 1.6.1 builds | `acceptance-1.6.1/native.json` |
+| Export integrity | PENDING: no 1.6.2 artifacts exist yet | `docs/acceptance-1.6.2/distribution.json` |
+| Localization | PASS: 811 keys per locale, identical key sets, no missing translation; copy contract PASS. The 1.6.1 notes said 810 keys; that count was wrong by one (813 CSV rows: header, 811 keys, one empty row) | `tests/test_copy_contract.py`, `data/strings/en.csv`, `data/strings/ru.csv` |
 
-## Performance against the recorded 1.6.0 figures
+## Performance
 
-| Metric | 1.6.0 (recorded, `9c0c145`) | 1.6.1 (`c88a2a8`) | Change |
-|---|---|---|---|
-| Scene load | 7861 ms | 7254 ms | -7.72% |
-| Frames per second | 60.02 | 60.08 | +0.10% |
-| Draw calls | 356 | 356 | +0 |
-| Primitives | 295509 | 295509 | +0 |
-
-Medians of three runs per edition on the same Windows host. 1.6.1 changes no rendering, asset or scene code, so it is compared with the 1.6.0 medians rather than a re-created older worktree; the basis and every raw sample are in `acceptance-1.6.1/perf.json`. Load time on this machine moves by hundreds of milliseconds between sessions, so the load figure is a no-regression check, not a measurement of improvement.
+Not re-measured for 1.6.2. The 1.6.2 code changes no rendering, asset or scene code, so the recorded 1.6.1 medians stand as the no-regression baseline: scene load 7254 ms, 60.08 FPS, 356 draw calls, 295509 primitives (medians of three runs on the same Windows host; load time moves by hundreds of milliseconds between sessions).
 
 ## Artifacts
 
-| Asset | Bytes | SHA256 |
-|---|---|---|
-| `MarchlandOaths.exe` | 252281128 | `4db12ce899fdb19148b3307b21a2549d3fb21ea44651c430978f21c479efa50f` |
-| `MarchlandOaths.pck` | 181017884 | `ad3b39ea572871e0fc109a0efa8565b8084a8c6f8a6b06cd7a3d20aebba0c287` |
+None for 1.6.2 yet. The latest published artifacts are the 1.6.1 ones: `MarchlandOaths.exe` (252281128 bytes, SHA256 `4db12ce899fdb19148b3307b21a2549d3fb21ea44651c430978f21c479efa50f`) and `MarchlandOaths.pck` (181017884 bytes, SHA256 `ad3b39ea572871e0fc109a0efa8565b8084a8c6f8a6b06cd7a3d20aebba0c287`), in `MarchlandOaths-Windows-1.6.1.zip` (478396417 bytes, SHA256 `845bc95693354f678c785524210f005cf2a57e50a9a49ab66c86f80d92648567`).
 
-The public pack is directory- and file-encrypted; the private QA pack is never published. A stock Godot editor cannot mount the encrypted pack (`acceptance-1.6.1/pack-audit.json`). The `MarchlandOaths-Windows-1.6.1.zip` and `MarchlandOaths-SHA256SUMS-1.6.1.txt` digests are recorded in the published distribution receipt, because an archive cannot embed its own checksum.
+The public pack is directory- and file-encrypted; the private QA pack is never published. A stock Godot editor cannot mount the encrypted pack (`acceptance-1.6.1/pack-audit.json`). The encrypted export requires the private matching template and script-encryption key, which live outside the repository; the source tree in this commit is export-ready, but the published 1.6.2 ZIP and its sums can only be produced from the build environment that holds them.
 
 ## Open questions and limits
 
 - The published Windows executables are not Authenticode signed; Windows shows its normal warning.
-- The checks ran on one Windows host with an AMD integrated GPU and are not a human playtest or a listening review.
-- This patch removes a silent injection path. It does not make offline integrity unbreakable: the installation key is readable by the device owner, and a patched binary is out of scope for any client-side protection.
+- The source gate ran on a Linux host with Godot 4.7 Stable, in a sparse checkout; the rendered gate, soak, native routes and published-binary smoke check were not re-run for 1.6.2 and are not a human playtest or a listening review.
+- This patch removes two silent injection paths. It does not make offline integrity unbreakable: the installation key is readable by the device owner, and a patched binary is out of scope for any client-side protection.
 - Whether the dialog wording is clear to a player is an owner judgement, listed in [HANDOFF](HANDOFF.md).
 - The Ubuntu CI import step aborted intermittently in the engine allocator on 1.6.0 commits and passed on re-run; `docs/.gdignore` keeps documentation images out of that import.
 
 ## Русский
 
-Marchland Oaths 1.6.1 — патч, закрывающий одно замечание из обзора безопасности версии 1.6.0. Сейв формата v1–v3 не содержит HMAC (этот формат появился раньше подписания), и в 1.6.0 такой файл применялся сразу при чтении, а первая запись переподписывала его как аутентифицированный v4: получался путь подмены состояния, для которого ключ установки вообще не требовался.
+Marchland Oaths 1.6.2 — патч, закрывающий два пути обхода подтверждения импорта старых сейвов из 1.6.1. Сейв формата v1–v3 не содержит HMAC, и в 1.6.1 такой файл уже не применялся молча: загрузчик отказывал и запоминал его как ожидающий решения, а игра один раз спрашивала на активном языке, импортировать ли его в этот слот. Две проверки нашли, что отклонённый файл мог вернуться через резервную копию слота при обычной записи, а ответ, данный для одного файла, мог примениться к другим байтам, подменённым, пока диалог открыт.
 
-Теперь файл не применяется молча: загрузчик отказывает и запоминает только этот файл как ожидающий решения, игра один раз спрашивает на активном языке («Старый формат сохранения», «Импортировать» / «Не импортировать»). Согласение применяет состояние и сразу переподписывает файл схемой 4 с блокировкой слота; отказ ничего не применяет и оставляет файл байт-в-байт прежним — это проверяется тестом. Схема сейвов, слоты, автосохранение и железный режим не изменены; геймплей, баланс, графика и звук не менялись.
+Теперь `_store` доверяет предыдущему телу только из файла, который игрок только что подтвердил, а согласие привязано к SHA-256-дайджесту точного текста файла, по слотам: если байты изменились, пока шёл вопрос, ничего не применяется, а текущее тело остаётся ожидающим нового вопроса. Схема сейвов, слоты, автосохранение и железный режим не меняются; геймплей, баланс, графика и звук не менялись. Это доведение также добавляет недостающие заметки к патчу 1.6.2, доказательства приёмки, сертификат и отчёт, исправляет устаревшие метаданные версий и удаляет два пустых автозагружаемых скрипта, которые нигде не использовались.
 
-Приёмка: 83 и 83 отрисованных полнокампанейских проверок на локаль, исполненная матрица 32×8=256 ячеек в RU и EN, измеренный soak: 3 полные петли кампании за 2546 с, без утечек и осиротевших узлов, 5/5 маршрутов (три победы, железная смерть и отказ публичной сборки) маршрутов на экспортированных сборках, 4/4 из 4/4 зашифрованных артефактов, критические данные сверены с расшифрованным содержимым. Каталог — 810 ключей (добавлено 4), тестовых источников — 86.
+Приёмка в этом доведении — только исходный гейт на Linux с Godot 4.7 Stable: импорт и строгий гейт предупреждений 104/105 (единственное падение — артефакт sparse-чекаута, файл есть в репозитории), Python-контракты 3 PASS / 6 падений только из-за отсутствующих в чекауте файлов. Отрисованный гейт, soak, нативные маршруты и дымовая проверка опубликованного бинаря для 1.6.2 не перезапускались — последние исполненные относятся к 1.6.1 (83 и 83 проверок на локаль, 3 петли за 2546 с, 5/5 маршрутов). Каталог — 811 ключей в каждой локали (в заметках 1.6.1 было ошибочно 810), тестовых GDScript-источников — 86.
 
 ## Published distribution receipt
 
-[Marchland Oaths 1.6.1](https://github.com/maxxxxx55555/a_Variant/releases/tag/v1.6.1) — tag `v1.6.1` at `5153f464dc0a704362e2a5f1b95a46273370d593`. Both assets were freshly downloaded from the release and checked with native `sha256sum --check`: **MarchlandOaths-Windows-1.6.1.zip: OK, exit 0**.
-
-ZIP: `MarchlandOaths-Windows-1.6.1.zip` (478,396,417 bytes)
-
-SHA256: `845bc95693354f678c785524210f005cf2a57e50a9a49ab66c86f80d92648567`
-
-Sums: `MarchlandOaths-SHA256SUMS-1.6.1.txt` (99 bytes), SHA256 `3ea20674cc19235b72fa3b1e5b147355dc602d0e3b747f4fce786f150bf831d8`.
-
-The downloaded executable booted in both locales for 900 frames and exited with code 0 and no script errors (`acceptance-1.6.1/published-binary-smoke.json`). Evidence: [acceptance-1.6.1/distribution.json](acceptance-1.6.1/distribution.json). This post-publication update changes documentation only; the tagged build and release assets are unchanged. The owner checks in [HANDOFF](HANDOFF.md) remain outstanding before announcement.
+None yet for 1.6.2. When published, record here: tag, tag commit, ZIP name and bytes, ZIP SHA256, sums file and SHA256, and the fresh-download `sha256sum -c` result with exit code. The owner checks in [HANDOFF](HANDOFF.md) remain outstanding before announcement.

@@ -56,3 +56,5 @@ proceeds with no backup candidate and the untouched original is preserved as `.r
 `tests/test_legacy_import.gd` asserts the declined-then-saved sequence. The release packaging list also now carries
 the current edition's `docs/acceptance-1.6.x/` folder, which 1.6.1 shipped without, and the packaging tool fails a
 build whose shipped documents reference repository files the archive leaves out.
+Completion (2026-11-10): the 1.6.2 patch notes, acceptance evidence (`docs/acceptance-1.6.2/`), certificate and report were missing from the repository and are added; `export_presets.cfg` now carries 1.6.2.0, README/QUICK_START/CREDITS titles are corrected to 1.6.2, and the two empty autoload scripts `WorldManager.gd`/`InputManager.gd` are removed. The 1.6.1 key count is corrected to 811 per locale. Rendered gate and published ZIP remain open steps before announcement.
+

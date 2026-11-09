@@ -1,40 +1,32 @@
-# Marchland Oaths 1.6.1 — acceptance certificate
+# Marchland Oaths 1.6.2 — acceptance certificate
 
-Date: 2026-10-31. Automated Windows runtime checks accepted within the recorded scope. Runtime sources, both rendered suites and the exported binaries are from commit `c88a2a89a5f60febd87d68efae632c7db5ce9ea8`. Fresh-download verification of the published assets is recorded after upload in `acceptance-1.6.1/distribution.json`. Owner play/listening acceptance remains outstanding.
+Date: 2026-11-10. Source-gate checks accepted within the recorded scope. Runtime sources are from commit `f7a3155` plus the 1.6.2 completion commit on top of it (patch notes, acceptance evidence, version metadata, removal of two unused autoload scripts). The rendered full-campaign gate and the published distribution are **not** part of this certificate: the last executed rendered gate is the 1.6.1 one, and no v1.6.2 release exists yet. Owner play/listening acceptance remains outstanding.
 
-This edition is a patch. It closes one finding from the security review of 1.6.0: a checksum-only v1–v3 save was applied silently and then re-signed as an authenticated v4 save, so that path never needed the installation key. Such a file is now refused until the player confirms the import for that slot, in the active language; confirming applies and re-signs it, declining leaves the bytes untouched.
+This edition is a patch. It closes two ways a checksum-only v1–v3 save could still be applied after the 1.6.1 confirmation: a declined file could be promoted into the slot's authenticated backup by a later ordinary save, and an answer given for one file could be applied to different bytes swapped in while the dialog was open. The first is closed by trusting a previous body in `_store` only from the exact file just confirmed; the second by binding consent to a SHA-256 digest of the exact file text, per slot.
 
 | Phase | Result and evidence |
 |---|---|
-| P1 Change | PASS: silent checksum-only import removed; explicit localized confirmation added; schema, slots and autosave rules unchanged. |
-| P2 Regression | PASS: `tests/test_legacy_import.gd` asserts refusal, pending state, dialog texts, confirmed import, re-signing and byte-identical refusal in RU and EN; `tests/test_legacy_migration.gd` and `tests/test_oath_migration.gd` exercise the shipped 1.1 fixtures through the same two-step path. |
-| P3 EN/RU | PASS: 83 rendered full-campaign cases per locale, 810 catalog keys, canonical copy and localization checks; `acceptance-1.6.1/suites.json`. |
-| P4 Art/UI | PASS within retained presentation: the one new surface is reviewed at native size in both locales; `acceptance-1.6.1/visual-review.json`, `GALLERY_ACCEPTANCE_1.6.1.md`. |
-| P5 Integrity | PASS: signed bounded saves, atomic backup/recovery, critical data anchoring, encrypted public pack, physical exclusion of the private verifier, pack and native contracts. |
-| P6 Mechanics | PASS: 32 mechanics × 8 columns = 256 cells executed in RU and EN; 50 seeded cycles per locale with save/load identity assertions and no node growth. |
-| P7 Acceptance | PASS: bilingual rendered suites, 5/5 native exported-build routes, legacy 1.1/1.4.0/1.5.0 profile migration, and 3 complete campaign loops in 2546 s of measured runtime. |
-| P8 Distribution | PASS: clean main/CI, exact shipping bytes, licenses and secrets, immutable prior releases, published ZIP and sums; receipt below. |
+| P1 Change | PASS: declined checksum-only body is no longer promoted into an authenticated backup (preserved as `.rejected` instead); consent is bound to the file digest, not the pathname; prompts are per slot. `scripts/autoload/SaveSystem.gd`, `docs/RELEASE_1.6.2.md`. |
+| P2 Regression | PASS (asserted in code, not re-executed here as a rendered run): `tests/test_legacy_import.gd` asserts refusal, pending state, dialog texts, confirmed import, re-signing, byte-identical refusal, the declined-then-saved sequence and the swapped-file refusal in RU and EN; `tests/test_legacy_migration.gd` and `tests/test_oath_migration.gd` exercise the shipped 1.1 fixtures through the same two-step path. |
+| P3 EN/RU | PASS (source gate): 811 catalog keys per locale, identical key sets, no missing translation; copy contract PASS. Rendered cases not re-run in this completion; last executed rendered gate is `docs/acceptance-1.6.1/suites.json` (83 per locale). |
+| P4 Art/UI | PASS within retained presentation: the one touched surface is reviewed at native size in both locales; `docs/acceptance-1.6.2/visual-review.json`, `docs/GALLERY_ACCEPTANCE_1.6.2.md`. |
+| P5 Integrity | PASS: signed bounded saves, atomic backup/recovery, critical data anchoring, encrypted public pack, physical exclusion of the private verifier, pack and native contracts (as in 1.6.1; no save-format change). |
+| P6 Mechanics | NOT RE-EXECUTED here: 32 mechanics × 8 columns = 256 cells were executed in RU and EN for 1.6.0/1.6.1; the 1.6.2 code changes touch only the save path and packaging tooling. Re-execution is an open step before publication. |
+| P7 Acceptance | PARTIAL: source gate executed in Godot 4.7 Stable on Linux (editor import, strict warning gate 104/105 with the single failure a sparse-checkout artefact, Python contracts 3 PASS / 6 sparse-missing). Rendered suites, soak and native exported-build routes not re-run; see `docs/acceptance-1.6.2/suites.json`. |
+| P8 Distribution | PENDING: no v1.6.2 ZIP, sums or tag exist yet. The encrypted export requires the private template and key held outside the repository; see `docs/acceptance-1.6.2/distribution.json`. |
 
 ## Exact public binaries
 
-EXE SHA256: `4db12ce899fdb19148b3307b21a2549d3fb21ea44651c430978f21c479efa50f`. PCK SHA256: `ad3b39ea572871e0fc109a0efa8565b8084a8c6f8a6b06cd7a3d20aebba0c287`. QA pack (unpublished) EXE SHA256: `d6a8ac833d97e1a7ae9c370948d6c6b8affa67f69b84f0d12c84371a79cace30`, PCK SHA256: `51c2c79b4165bfd7113a6ee0890ea7aee79e9593bd1aa36c75ce0ee8a85779fa`. The ZIP checksum is stored beside its exact filename in `MarchlandOaths-SHA256SUMS-1.6.1.txt`; a ZIP cannot embed its own checksum.
+None for 1.6.2 yet. The 1.6.1 binaries remain the latest published ones (EXE SHA256 `4db12ce899fdb19148b3307b21a2549d3fb21ea44651c430978f21c479efa50f`, PCK SHA256 `ad3b39ea572871e0fc109a0efa8565b8084a8c6f8a6b06cd7a3d20aebba0c287`, ZIP SHA256 `845bc95693354f678c785524210f005cf2a57e50a9a49ab66c86f80d92648567`).
 
 ## Scope and limitations
 
-Automated checks are finite and were executed on one Windows host with an AMD integrated GPU under the Compatibility renderer. They do not replace a human playtest or a listening review, and they do not prove the absence of every defect. The measured soak samples object, resource and node counts after each completed campaign loop; operating-system allocator variation is measured, not described as literal zero-byte growth. Old failed attempts remain evidence and are not counted as passes.
+Source-gate checks are finite and were executed on a Linux host with Godot 4.7 Stable, in a sparse checkout for the Python contracts and the strict-compile gate; the six Python failures recorded there are checkout artefacts, each verified present in HEAD, not established defects. They do not replace a human playtest or a listening review, and they do not prove the absence of every defect. The rendered gate, soak, native routes and published-binary smoke check were not re-run for 1.6.2 and must be run before the ZIP is published.
 
-Portable EXEs are not Authenticode signed. Android, store certification and console wrappers are outside this Windows release. This patch removes a silent state-injection path; offline integrity still resists ordinary corruption and editing without preventing an owner from patching a local binary, and the custom native template necessarily contains the pack-decryption key. The stock Godot editor cannot mount the encrypted pack, which `acceptance-1.6.1/pack-audit.json` records.
+Portable EXEs are not Authenticode signed. Android, store certification and console wrappers are outside this Windows release. This patch removes two silent state-injection paths; offline integrity still resists ordinary corruption and editing without preventing an owner from patching a local binary, and the custom native template necessarily contains the pack-decryption key. The stock Godot editor cannot mount the encrypted pack, which `acceptance-1.6.1/pack-audit.json` records.
 
-After the gated release and the owner checks in [HANDOFF](HANDOFF.md), this edition may be announced and distributed within these limits.
+After the rendered gate, the exported-build verification, the owner checks in [HANDOFF](HANDOFF.md) and publication of the ZIP with a fresh `sha256sum -c` receipt, this edition may be announced and distributed within these limits. Until then, do not announce 1.6.2 as released.
 
 ## Published distribution receipt
 
-[Marchland Oaths 1.6.1](https://github.com/maxxxxx55555/a_Variant/releases/tag/v1.6.1) — tag `v1.6.1` at `5153f464dc0a704362e2a5f1b95a46273370d593`. Both assets were freshly downloaded from the release and checked with native `sha256sum --check`: **MarchlandOaths-Windows-1.6.1.zip: OK, exit 0**.
-
-ZIP: `MarchlandOaths-Windows-1.6.1.zip` (478,396,417 bytes)
-
-SHA256: `845bc95693354f678c785524210f005cf2a57e50a9a49ab66c86f80d92648567`
-
-Sums: `MarchlandOaths-SHA256SUMS-1.6.1.txt` (99 bytes), SHA256 `3ea20674cc19235b72fa3b1e5b147355dc602d0e3b747f4fce786f150bf831d8`.
-
-The downloaded executable booted in both locales for 900 frames and exited with code 0 and no script errors (`acceptance-1.6.1/published-binary-smoke.json`). Evidence: [acceptance-1.6.1/distribution.json](acceptance-1.6.1/distribution.json). This post-publication update changes documentation only; the tagged build and release assets are unchanged. The owner checks in [HANDOFF](HANDOFF.md) remain outstanding before announcement.
+None yet. When the release is published, record it here and in `docs/acceptance-1.6.2/distribution.json`: tag, tag commit, ZIP name and bytes, ZIP SHA256, sums file and SHA256, and the fresh-download `sha256sum -c` result with exit code.

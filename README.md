@@ -1,4 +1,4 @@
-# Marchland Oaths — 1.6.0
+# Marchland Oaths — 1.6.2
 
 Marchland Oaths is a first-person frontier RPG with settlement management, small armies and diplomacy: unite eight regions through alliances, conquest or a mixture of both, then take a Second Oath and do it again harder. Offline, Windows x64, Russian and English.
 

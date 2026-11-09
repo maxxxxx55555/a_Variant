@@ -1,6 +1,6 @@
 # Marchland Oaths 1.6.2 — owner handoff
 
-Release: Marchland Oaths 1.6.2. Read [the patch notes](RELEASE_1.6.2.md) and [the 1.6.1 notes](RELEASE_1.6.1.md), [acceptance](ACCEPTANCE_CERTIFICATE.md) and use the [announcement kit](ANNOUNCE_KIT.md). This is a portable offline Windows x64 edition; Android and store submissions are omitted. 1.6.1 made the game ask before importing a save from before signed profiles; 1.6.2 closes the one way an old file could still slip in after you answered **Do not import**, so check 1 below is the check that matters for this patch.
+Release: Marchland Oaths 1.6.2 — source-complete, publication pending. Read [the patch notes](RELEASE_1.6.2.md) and [the 1.6.1 notes](RELEASE_1.6.1.md), [acceptance](ACCEPTANCE_CERTIFICATE.md) and use the [announcement kit](ANNOUNCE_KIT.md). This is a portable offline Windows x64 edition; Android and store submissions are omitted. 1.6.1 made the game ask before importing a save from before signed profiles; 1.6.2 closes the one way an old file could still slip in after you answered **Do not import**, so check 1 below is the check that matters for this patch. There is no v1.6.2 ZIP yet: the encrypted export needs the private template and key held outside the repository, and the rendered gate was not re-run for 1.6.2 — do not announce or redistribute 1.6.2 until the ZIP exists, `sha256sum -c` reports OK on a fresh download, and the six checks below are done.
 
 Six checks the automated gate cannot make for you:
 

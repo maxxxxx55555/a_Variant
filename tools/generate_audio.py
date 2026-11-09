@@ -151,7 +151,11 @@ def effect(name):
         sound += np.convolve(noise, np.ones(12) / 12, mode='same') * np.sin(np.pi * t / length) ** 2 * .12
     elif name in ['victory', 'upgrade', 'purchase', 'pickup', 'grant']:
         sound = np.zeros(n)
-        notes = [72, 76, 79, 84] if name == 'victory' else [72, 79, 84] if name == 'upgrade' else [79, 84]
+        # Each cue gets its own arpeggio: purchase and pickup used to share
+        # the same two notes (79, 84), so both WAVs were byte-identical.
+        notes = {'victory': [72, 76, 79, 84], 'upgrade': [72, 79, 84],
+                 'purchase': [76, 81, 84], 'pickup': [79, 84],
+                 'grant': [72, 76, 79]}[name]
         for index, note in enumerate(notes):
             start = min(int(index * length / (len(notes) + 2) * RATE), n - 4)
             part = voice(note, (n - start) / RATE, 'bell')

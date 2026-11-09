@@ -1,4 +1,4 @@
-# Art and audio credits — 1.5.0
+# Art and audio credits — 1.6.2
 
 Original in-game illustrations and meadow texture: OpenAI image generation, created for this edition. Generation records and SHA-256 digests are in assets/art/*provenance.json.
 

@@ -4,7 +4,7 @@ const SETTINGS_FILE:String= "user://settings.cfg"
 const Guard = preload("res://scripts/security/SaveGuard.gd")
 
 var master_volume: float = 1.0
-var music_volume: float = 0.3
+var music_volume: float = 0.65
 var sfx_volume: float = 0.8
 var ui_volume: float = 0.8
 var msaa_quality:int=2
@@ -73,7 +73,7 @@ func load_settings() -> void:
 	if valid: valid=config.parse(text)==OK and valid_settings(config)
 	if valid:
 		master_volume = config.get_value("audio", "master_volume", 1.0)
-		music_volume = config.get_value("audio", "music_volume", 0.3)
+		music_volume = config.get_value("audio", "music_volume", 0.65)
 		sfx_volume = config.get_value("audio", "sfx_volume", 0.8)
 		ui_volume = config.get_value("audio", "ui_volume", 0.8)
 		mouse_sensitivity = config.get_value("controls", "mouse_sensitivity", 0.003)
