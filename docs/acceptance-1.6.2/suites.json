@@ -1,1 +1,48 @@
-{"command":"godot --headless --path . --editor --import --quit, then python3 tools/check_gdscript_warnings.py (49 warning categories as errors)","date":"2026-11-10","engine":"4.7.stable.official.5b4e0cb0f","host":"Linux, Godot 4.7 Stable editor binary","localization":{"en_keys":811,"key_sets_identical":true,"missing_translations":0,"ru_keys":811},"python_contracts":{"test_audio_assets":"FAIL (sparse-missing): assets/audio/catalog.json absent from sparse checkout, present in HEAD","test_checkout_bytes":"FAIL (sparse-missing): assets/audio/catalog.json absent from sparse checkout, present in HEAD","test_copy_contract":"PASS: 811 keys per locale","test_critical_manifest":"FAIL (sparse-missing): assets/audio/catalog.json absent from sparse checkout, present in HEAD","test_license_bytes":"FAIL (sparse-missing): assets/art/characters/LICENSE.txt absent from sparse checkout, present in HEAD","test_mechanics_matrix":"FAIL (sparse-missing): docs/acceptance/mechanics-execution-1.6.0.json absent from sparse checkout, present in HEAD","test_promise_matrix":"PASS: 3278 original entries","test_repo_isolation":"PASS: 7 tests, OK","test_soundtrack":"FAIL (sparse-missing): assets/audio/catalog.json absent from sparse checkout, present in HEAD"},"rendered_gate":{"last_executed":"docs/acceptance-1.6.1/suites.json","open_step":"Re-run python tests/run_tests.py --godot <godot> --rendered --full-campaign --language <ru|en> on a full checkout, and record suites here before publishing the ZIP","status":"NOT_RERUN"},"schema":1,"scope":"Source gate only. This file records what was actually executed for the 1.6.2 completion. It does NOT claim a rendered full-campaign re-run: the last executed rendered gate is the 1.6.1 one in docs/acceptance-1.6.1/suites.json (83 cases per locale). The 1.6.2 code changes touch only the save path and packaging tooling, and the completion commit on top of f7a3155 changes only documentation, version metadata and two unused autoload scripts.","source_commit":"f7a31555f3e6e12ddda16379bd3ec9cf68c7caf0","strict_compile":{"failed":["scripts/ui/TitleBackdrop.gd: Preload file \"res://assets/art/title_painting.png\" does not exist"],"failure_cause":"sparse checkout artefact: assets/art/title_painting.png is present in HEAD (blob 26d98f5) but absent from the sparse checkout used for the run; a full-checkout re-run is expected at 105/105","passed":104,"result":"FAIL (sparse-missing only)","shipping_scripts":105},"title":"Marchland Oaths 1.6.2 source-gate suites"}
+{
+  "command": "godot --headless --path . --editor --import --quit, then python3 tools/check_gdscript_warnings.py (49 warning categories as errors)",
+  "date": "2026-11-10",
+  "engine": "4.7.stable.official.5b4e0cb0f",
+  "host": "Linux, Godot 4.7 Stable editor binary",
+  "localization": {
+    "en_keys": 811,
+    "key_sets_identical": true,
+    "missing_translations": 0,
+    "ru_keys": 811
+  },
+  "python_contracts": {
+    "test_checkout_bytes": "PASS: plain Git LF/CRLF defaults, effective attributes, manifest/copy/audio and tamper contracts",
+    "test_critical_manifest": "PASS: 10 files, stable generation, tamper and replacement rejection",
+    "test_mechanics_matrix": "PASS: 32 mechanics, 256 cells; EXECUTED_PASS in ru,en",
+    "test_license_bytes": "PASS: 14 files from published 1.4.0",
+    "test_soundtrack": "PASS: 4 unique mood compositions and two musical finales",
+    "test_audio_assets": "PASS: 42 WAV assets; levels, data, loop seams and envelopes verified",
+    "test_copy_contract": "PASS: 811 keys per locale",
+    "test_promise_matrix": "PASS: 3278 original entries",
+    "test_repo_isolation": "PASS: 7 tests, OK",
+    "test_release_packaging": "PASS: 1022 members, 981 documents, 3 evidence entries, reference oracle fires"
+  },
+  "rendered_gate": {
+    "last_executed": "docs/acceptance-1.6.1/suites.json",
+    "open_step": "Re-run python tests/run_tests.py --godot <godot> --rendered --full-campaign --language <ru|en> on a full checkout, and record suites here before publishing the ZIP",
+    "status": "NOT_RERUN"
+  },
+  "schema": 1,
+  "scope": "Source gate only, executed on a full checkout of the 1.6.2 completion (commit c9ddb82 on top of f7a3155). This file records what was actually executed for the 1.6.2 completion. It does NOT claim a rendered full-campaign re-run: the last executed rendered gate is the 1.6.1 one in docs/acceptance-1.6.1/suites.json (83 cases per locale). The 1.6.2 code changes touch only the save path, the audio generator/purchase cue, the music-volume default and packaging tooling — no rendering, asset, scene, balance or save-format code.",
+  "source_commit": "c9ddb82d403c9701129a288037af25c1724a1bc6",
+  "strict_compile": {
+    "passed": 105,
+    "shipping_scripts": 105,
+    "result": "PASS",
+    "failed": [],
+    "failure_cause": null,
+    "detail": "STRICT SHIPPING COMPILE PASS 105 scripts 49 categories, errors: [] — full checkout, Godot 4.7.stable.official.5b4e0cb0f, editor import exit 0"
+  },
+  "title": "Marchland Oaths 1.6.2 source-gate suites",
+  "headless_gameplay_gate": {
+    "command": "GODOT_BIN=<godot 4.7> python3 tests/run_tests.py --godot <godot 4.7> --artifacts /tmp/avfull-gate/artifacts",
+    "result": "PASS",
+    "godot_cases_passed": 79,
+    "godot_cases_failed": 0,
+    "detail": "79/79 Godot cases PASS, exit 0: import, regressions, audio, playthrough, credits, release-details, localization, presentation, identity, siege, combat, save_guard, legacy_migration, legacy_import, second_oath, codex, quest_tracker, combat_feel, loot_feel, settlement_evolution, strategy, campaign and more; static contracts re-run inside run_tests.py all PASS (verification 811 keys, checkout bytes, soundtrack, audio assets 42 WAV, release packaging 1022/981/3, strict compile 105/105)"
+  }
+}

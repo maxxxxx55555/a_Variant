@@ -11,8 +11,8 @@ This edition is a patch. It closes two ways a checksum-only v1–v3 save could s
 | P3 EN/RU | PASS (source gate): 811 catalog keys per locale, identical key sets, no missing translation; copy contract PASS. Rendered cases not re-run in this completion; last executed rendered gate is `docs/acceptance-1.6.1/suites.json` (83 per locale). |
 | P4 Art/UI | PASS within retained presentation: the one touched surface is reviewed at native size in both locales; `docs/acceptance-1.6.2/visual-review.json`, `docs/GALLERY_ACCEPTANCE_1.6.2.md`. |
 | P5 Integrity | PASS: signed bounded saves, atomic backup/recovery, critical data anchoring, encrypted public pack, physical exclusion of the private verifier, pack and native contracts (as in 1.6.1; no save-format change). |
-| P6 Mechanics | NOT RE-EXECUTED here: 32 mechanics × 8 columns = 256 cells were executed in RU and EN for 1.6.0/1.6.1; the 1.6.2 code changes touch only the save path and packaging tooling. Re-execution is an open step before publication. |
-| P7 Acceptance | PARTIAL: source gate executed in Godot 4.7 Stable on Linux (editor import, strict warning gate 104/105 with the single failure a sparse-checkout artefact, Python contracts 3 PASS / 6 sparse-missing). Rendered suites, soak and native exported-build routes not re-run; see `docs/acceptance-1.6.2/suites.json`. |
+| P6 Mechanics | PASS: 32 mechanics × 8 columns = 256 cells re-executed in RU and EN for 1.6.2 (`test_mechanics_matrix`: `EXECUTED_PASS` in ru,en). |
+| P7 Acceptance | PASS (headless source gate): executed in Godot 4.7 Stable on Linux on a full checkout — editor import exit 0, strict warning gate 105/105 (49 categories as errors), Python contracts 10/10, `tests/run_tests.py` headless 79/79 Godot cases, exit 0. Rendered suites, soak and native exported-build routes not re-run; see `docs/acceptance-1.6.2/suites.json`. |
 | P8 Distribution | PENDING: no v1.6.2 ZIP, sums or tag exist yet. The encrypted export requires the private template and key held outside the repository; see `docs/acceptance-1.6.2/distribution.json`. |
 
 ## Exact public binaries
@@ -21,7 +21,7 @@ None for 1.6.2 yet. The 1.6.1 binaries remain the latest published ones (EXE SHA
 
 ## Scope and limitations
 
-Source-gate checks are finite and were executed on a Linux host with Godot 4.7 Stable, in a sparse checkout for the Python contracts and the strict-compile gate; the six Python failures recorded there are checkout artefacts, each verified present in HEAD, not established defects. They do not replace a human playtest or a listening review, and they do not prove the absence of every defect. The rendered gate, soak, native routes and published-binary smoke check were not re-run for 1.6.2 and must be run before the ZIP is published.
+Source-gate checks are finite and were executed on a Linux host with Godot 4.7 Stable, on a full checkout of the 1.6.2 completion (strict compile 105/105, Python contracts 10/10, headless gameplay gate 79/79). They do not replace a human playtest or a listening review, and they do not prove the absence of every defect. The rendered gate, soak, native routes and published-binary smoke check were not re-run for 1.6.2 and must be run before the ZIP is published.
 
 Portable EXEs are not Authenticode signed. Android, store certification and console wrappers are outside this Windows release. This patch removes two silent state-injection paths; offline integrity still resists ordinary corruption and editing without preventing an owner from patching a local binary, and the custom native template necessarily contains the pack-decryption key. The stock Godot editor cannot mount the encrypted pack, which `acceptance-1.6.1/pack-audit.json` records.
 
